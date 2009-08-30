@@ -1,0 +1,164 @@
+/*
+//////////////////////////////////////////////////////////
+//  SUPER ORDERS                                        //
+//                                                      //
+//  By Frank Koehl (PM: BlindSide)                      //
+//                                                      //
+//  Powered by Zen-Cart (www.zen-cart.com)              //
+//  Portions Copyright (c) 2005 The Zen-Cart Team       //
+//                                                      //
+//  Released under the GNU General Public License       //
+//  available at www.zen-cart.com/license/2_0.txt       //
+//  or see "license.txt" in the downloaded zip          //
+//////////////////////////////////////////////////////////
+//  DESCRIPTION:   Stylesheet used for custom CSS       //
+//  defines in Super Order files.                       //
+//////////////////////////////////////////////////////////
+// $Id: super_stylesheet.css 25 2006-02-03 18:55:56Z BlindSide $
+*/
+
+.invoiceHeading {
+font-family: Verdana, Arial, sans-serif; font-size: 14px;
+color: #000000; font-weight: bold;
+}
+.dataTableRowUnique{
+background-color: #FFFFCC;
+}
+.dataTableRowUniqueOver{
+background-color: #FFFFFF;
+}
+.dataTableContentUnique{
+font-weight:bold;
+border-top:1px solid #9a9a9a;
+}
+.paymentRow{
+background-color:#99FF99;
+}
+.paymentContent{
+color:#000000;
+font-size:9px;
+}
+.paymentRowOver{
+background-color:#FFFEDE;
+border:1px solid #000000;
+cursor:pointer;
+cursor:hand;
+}
+.purchaseOrderRow{
+background-color:#9999FF;
+}
+.purchaseOrderContent{
+color:#000000;
+font-size:9px;
+}
+.purchaseOrderRowOver{
+background-color:#FFFEDE;
+cursor:pointer;
+cursor:hand;
+}
+.refundRow{
+background-color:#ffb3b5;
+}
+.refundContent{
+color:#000000;
+font-size:9px;
+}
+.refundRowOver{
+background-color:#FFFEDE;
+border:1px solid #000000;
+cursor:pointer;
+cursor:hand;
+}
+.warningBox{
+background-color:#FF9999;
+}
+.warningText{
+font-size:10px;
+font-weight:bold;
+border-color:#FF0000;
+border-style:solid;
+border-width:3px;
+}
+
+TD.ot-custom-Text {
+}
+TD.ot-custom-Amount{
+font-weight:bold;
+}
+
+td.balanceDueNone,td.status-completed{
+font-weight:bold;
+color:00CC00;
+}
+td.balanceDueNeg,td.status-cancelled{
+font-weight:bold;
+color:FF0000;
+}
+td.balanceDueRem{
+font-weight:bold;
+color:0000FF;
+}
+td.balanceDueNull{
+font-weight:bold;
+text-decoration: line-through;
+color:9F9F9F;
+}
+.printHeaderRow{
+color:666666;
+}
+.printHeaderContent{
+color:666666;
+font-size:10px;
+font-weight:bold;
+}
+.printMain{
+color:666666;
+font-size:10px;
+}
+.printTableHeadingContent{
+border-bottom:1px solid #000000;
+color:666666;
+font-size:10px;
+font-weight:bold;
+}
+.printTableContent{
+color:666666;
+font-size:10px;
+}
+td.ot-subtotal-AmountPrint,td.ot-cod-fee-AmountPrint,td.ot-group-pricing-AmountPrint,td.ot-gv-AmountPrint,td.ot-loworderfee-AmountPrint,td.ot-shipping-AmountPrint,td.ot-subtotal-AmountPrint,td.ot-tax-AmountPrint,td.ot-coupon-AmountPrint{
+color:666666;
+font-size:10px;
+}
+td.ot-subtotal-TextPrint,td.ot-cod-fee-TextPrint,td.ot-total-TextPrint,td.ot-group-pricing-TextPrint,td.ot-gv-TextPrint,td.ot-loworderfee-TextPrint,td.ot-shipping-TextPrint,td.ot-subtotal-TextPrint,td.ot-tax-TextPrint,td.ot-coupon-TextPrint{
+color:666666;
+font-weight:bold;
+font-size:10px;
+}
+td.ot-total-AmountPrint{
+color:666666;
+border-top:1px solid #000000;
+font-size:10px;
+font-weight:bold;
+}
+
+span.status-completed{
+background-color:#00CC00;
+border-color:#000000;
+border-style:solid;
+border-width:1px;
+padding: 0.2cm;
+color:FFFFFF;
+font-size:12px;
+font-weight:bold;
+}
+
+span.status-cancelled{
+background-color:#FF0000;
+border-color:#000000;
+border-style:solid;
+border-width:1px;
+padding: 0.2cm;
+color:FFFFFF;
+font-size:12px;
+font-weight:bold;
+}
