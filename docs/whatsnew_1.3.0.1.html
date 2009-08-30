@@ -1,0 +1,156 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: whatsnew_1.3.0.1.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:11px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+h5 { color: #5778ce;	font-size: 16px; margin-bottom:0px; margin-top:0px; }
+
+
+-->
+</style>
+<title>What's New in Zen Cart(tm) v1.3.0</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<h1>Upgrade Instructions from v1.3.0 to 1.3.0.1 </h1>
+<p>If you are upgrading from Zen Cart v1.3.0, the process is simple:<br>
+  - compare all the changed files with the files on your own site... and re-apply your customizations to the new files<br>
+  - upload the new files (with your customizations added) to your site<br>
+  - upload the <span class="filename">zc_install</span> folder to your server, and run <span class="filename">zc_install/index.php</span> <br>
+  ... select <strong>Database Upgrade</strong> from the System Inspection screen. Apply the required updates. </p>
+<p>If you are upgrading from a version prior to v1.3.0, please follow the instructions in the &quot;<a href="2.readme_how_to_upgrade.html">how to upgrade</a>&quot; documentation in the /docs folder </p>
+<h1>CHANGELOG - List of Changed Files </h1>
+<p>For a list of files that have been changed since v1.3.0, see the <a href="changelog-v1-3-0-1.html" target="_blank">changelog-v1-3-0-1.html</a> </p>
+<h1>Whats New ... </h1>
+<h3><strong>The following bugfixes are included in v1.3.0.1: </strong></h3>
+<ul>
+  <li>foreach error on open_basedir check in zc_install </li>
+  <li>FILENAME_PRODUCTS_ALL definition restored</li>
+  <li>changed 'true' to true in various product listing pages to fix minor logic problems</li>
+  <li>fixed the infrastructure which calls extra_main_template_vars folder contents</li>
+  <li>order_history sidebox errors fixed</li>
+  <li>fixed error in functions_email related to a call to non-existent utilGeneral:varNotNull()</li>
+  <li>&quot;cannot delete a product&quot; bug fixed</li>
+  <li>date-of-birth validations are now more reliable</li>
+  <li>removed double &lt;form&gt; tag from create-account template</li>
+  <li>removed debug code from address_book and shopping-cart pages </li>
+  <li>renamed some form-names and other objects to prevent duplicate-names on any page</li>
+  <li>documentation update to remind that PHP 4.3.2 is the minimum supported version</li>
+  <li>query-tidying to prevent more MySQL5 incompatibility errors related to STRICT_TRANS_TABLES</li>
+  <li>added EZ-Pages footer to classic template</li>
+  <li>moved &quot;Site Map&quot; configuration setting from &quot;Product Info&quot; into &quot;Layout Settings&quot;</li>
+  <li>added Site Map link control for information sidebox </li>
+  <li>fixed bug which caused the default language to become unassigned in Admin after editing langs </li>
+  <li>fixed bug in &quot;copy product&quot; in admin   </li>
+  <li>fixed forum/nickname bug in create-account </li>
+  <li>fixed the Check-For-Updates button in admin header</li>
+  <li>installer does a smarter check for PHP version compatibility</li>
+  <li>fixed bug in determining order-status, regardless of price=0</li>
+  <li>fixed bug leaving remnants of code if category-tabs is disabled  </li>
+  <li>added warning if end up with products in top-level category</li>
+  <li>suppress communication error crash if smtp server cannot be reached</li>
+  <li>added &quot;Version&quot; button to admin menu bar for easy reference to what Zen Cart version installed</li>
+  <li>clarify wording in some entries in Admin-&gt;Configuration-&gt;Email Options</li>
+  <li>added mod_security workaround in zc_install via .htaccess</li>
+  <li>fixed template for product-reviews where 2 product links appeared if not logged in</li>
+  <li>fixed bug in products-to-categories copier</li>
+  <li>fixed bugs in gv-send     page where wrong info was displayed and logic was confused</li>
+  <li>fixed bug in ez-pages footer where alternate-URL info was ignored </li>
+  <li>fixed display bug in manufacturer-info sidebox  </li>
+  <li>fixed shopping-cart &quot;update&quot; buttons ... to work properly and align properly</li>
+  <li>fixed typo in order class preventing IP address from being stored properly</li>
+  <li>fixed bug preventing proper display of product model number on templates</li>
+  <li>added missing &quot;EZ-Pages Settings&quot; option to the Admin-&gt;Configuration menu (only affected upgrades from v1.2.x)</li>
+  <li>fixed bug where coupon &quot;division by zero&quot; errors would appear if cart only contained free prods</li>
+  <li>fixed bug in SaleMaker preventing ability to copy a sale</li>
+  <li>fixed display bug for discount pricing where product min-qty matched first discount level</li>
+  <li>fixed filename spelling of paypal.php to paypal for admin consistency purposes</li>
+  <li>fixed function which generates ez-pages links in sideboxes</li>
+  <li>fixed rounding error on coupons</li>
+  <li>fixed missing javascript support for discount coupons in admin invoice/orders page</li>
+  <li>fixed paypal bug preventing IPN's if using language override for meta_tags.php</li>
+  <li>fixed paypal bug preventing refunds from being tracked properly</li>
+  <li>added missing option in Admin-&gt;Config-&gt;Layout Settings-&gt;Shopping Cart-Show Totals</li>
+</ul>
+<h1>IMPORTANT NOTES </h1>
+<ul>
+<li><span class="error">Please be sure to review and apply the <a href="./important_site_security_recommendations.html" target="_blank">Site Security Recommendations</a> to your site prior to taking your shop &quot;live&quot;.</span> If you are uncertain about how site security applies to you, talk to your web host to ensure that you have proper measures in place. <br />
+</li>
+</ul>
+<h1>UPGRADING YOUR TEMPLATES </h1>
+Zen Cart&trade; has had a major overhaul of the templating system for v1.3.x.  As such, you have two options:
+<ul>
+<li>
+upgrade your existing template by applying the new stylesheet and moving a few lines of code around; or</li>
+<li>the best way to have almost-tableless and much tidier template code, is to make a new template (based on template_default) and carefully re-apply your own customizations to the new template system.</li>
+</ul>
+
+
+<p>For further information on template upgrading, see the forum discussion on this topic. </p></td>
+</tr>
+</table>
+<br /><br />
+<br /><br />
+</body>
+</html>

@@ -1,0 +1,14 @@
+# $Id: .htaccess 2996 2006-02-09 00:42:17Z drbyte $
+#
+# This is used with Apache WebServers
+# The following blocks direct HTTP requests in this directory recursively
+#
+# This does not affect PHP include/require functions
+#
+# Example: direct access to http://server/admin/includes/application_top.php will not work with the following installed
+
+<Files *.php>
+Order Deny,Allow
+Deny from all
+Allow from localhost
+</Files>

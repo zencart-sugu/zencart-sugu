@@ -1,0 +1,8 @@
+
+#prevent directory browsing -- for security
+IndexIgnore */*
+
+<Limit GET POST PUT>
+Order Allow,Deny
+Deny from All
+</Limit>

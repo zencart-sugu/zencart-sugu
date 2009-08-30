@@ -1,0 +1,58 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: read_me_jscript-en.html 3273 2006-03-27 16:48:29Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+.style1 {color: #CC0000}
+.style2 {color: #0033FF}
+-->
+</style>
+<title>JScript Overrides in Zen Cart(tm)</title>
+<h1><strong>JavaScript Override How-To</strong> </h1>
+<h2>Site-Wide jscript's</h2>
+<h3>jscript*.js files -- to be &quot;linked&quot; by your site </h3>
+<p>Any file in the <code class="filename">includes/templates/<span class="style2">{template_directory}</span>/jscript/</code> directory with the following filename format will be loaded globally on every page of your shop: <br />
+<code class="filename">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>jscript_<span class="style1">{unique_name}</span>.js</strong></code><br />
+<em>(where <span class="style1">{unique_name}</span> can be anything you want) </em><br />
+<br />
+<br />
+Effectively, the file will be loaded as if you had inserted the following into an HTML page:<br />
+
+<br />
+<code class="filename">&lt;script language=&quot;javascript&quot; src=&quot;includes/templates/<span class="style2">{template_directory}</span>/jscript/jscript_<span class="style1">{unique_name}</span>.js&quot;&gt;&lt;/script&gt;</code><br />
+</p>
+<h3>jscript*.php files -- to be &quot;included&quot; in your HTML content sent to the browser, inline.</h3>
+<p>If you need to control the content of certain PHP variables inside jscript code on the page, OR if you need to include several &lt;script&gt;...&lt;/script&gt; tags, use a jscript_*.<strong>php</strong> file instead. <br />
+However, <span class="style1">in this case, <strong>you DO need to include</strong></span> the <span class="filename">&lt;script .... &gt;</span> and <span class="filename">&lt;/script&gt;</span> tags in the file. </p>
+<p>&nbsp; </p>
+<h2>Page-Specific jscript's</h2>
+<p>For page-specific operation, put the file under the <code class="filename">/includes/modules/pages/{pagename}/</code> folder. </p>
+<h3>jscript*.js files -- to be &quot;linked&quot; by your site </h3>
+<p>NOTE: <span class="style1">jscript_*.js</span> files must <strong>not</strong> contain any <code class="filename">&lt;script...&gt; .... &lt;/script&gt;</code> tags. <span class="style1">They should contain ONLY the contents that are to go &quot;between&quot; those tags. <br />
+</span></p>
+<h3>jscript*.php files -- to be &quot;included&quot; in your HTML content sent to the browser, inline.</h3>
+<p>If you need to control the content of certain PHP variables inside jscript code on the page, use a jscript_*.<strong>php</strong> file.<br />
+However, <span class="style1">in this case, you <strong>DO need to include</strong></span> the <span class="filename">&lt;script .... &gt;</span> and <span class="filename">&lt;/script&gt;</span> tags in the file. </p>

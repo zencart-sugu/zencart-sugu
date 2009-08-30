@@ -1,0 +1,78 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: read_me_onload-en.html 3273 2006-03-27 16:48:29Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+.style1 {color: #CC0000}
+.style2 {color: #0033FF}
+
+-->
+</style>
+<title>OnLoad() Overrides in Zen Cart(tm)</title>
+<h1><strong>On_Load Override How-To</strong> </h1>
+<p><em>Another example of Zen Magic.</em><br />
+<br /> 
+Zen Cart's modular system can be used to insert <span class="filename">&lt;BODY&gt;</span> tag &quot;onload&quot; event handling on a site-wide or per-page basis very easily. Within your <span class="filename">/includes/templates/YOURTEMPLATE</span> folder, you can create a <span class="heading">/jscript/on_load</span> folder for this purpose. <br />
+<br />
+Any <span class="heading">on_load_*.js</span> file in this directory can be used to 
+modify the body tag with a javascript <code>on_load()</code> function.<br />
+<h2>Site-Wide Use</h2>
+<p>For site-wide operation, just name the file <code class="filename">on_load.js</code> and store it in the <span class="filename">/includes/templates/YOURTEMPLATE/jscript/on_load </span>folder. Multiple files may be present, and can be added by adding an underscore and more letters to the filename.
+<h2>Page-Specific Use </h2>
+<p>For page-specific operation, put the file under the <code class="filename">/includes/modules/pages/{pagename}/</code> folder. <br />
+<h1>File Contents </h1>
+<p>NOTE: <span class="style1">on_load_*.js</span> files must contain ONLY the raw code to be inserted in the <code class="filename">&lt;body&gt;</code> tag in the <code class="filename">on_load=""</code> parameter.<br />
+<br />
+The effect is like this:<br />
+<code class="filename">&lt;body onload=&quot;WHATEVER_YOUR_FILE_CONTAINS_GOES_HERE&quot;&gt;</code><br />
+<br />
+Essentially, the contents of the file will be a function call to the DOM or to functions loaded in a jscript file. 
+<h2><strong>OVERRIDE Operation:</strong></h2>
+<p>1. Checks the existence of "on_load" scripts for the <strong>individual page</strong> first <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Looks in "<code class="filename">/includes/modules/pages/<span class="style2">{PAGENAME}</span>/</code>" for files named "<span class="style1">on_load_*.js</span>"<br />
+2. Then checks for site-wide overrides in "<code class="filename">includes/templates/<span class="style2">TEMPLATE</span>/jscript/on_load/<span class="style1">on_load_*.js</span></code>"<br />
+<h1>EXAMPLES</h1>
+<h3><strong>EXAMPLE #1 (per-page on_load coding)</strong></h3>
+<p> Two live examples of this exist for the default &quot;login&quot; and &quot;contact us&quot; pages in Zen Cart.<br /> 
+Let's look at the login page: </p>
+<p>You'll see that in /includes/modules/pages/login/on_load_main.js the code that is inserted into the &lt;body&gt; tag for that page is this:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="filename">document.getElementById('email_address').focus();</code></p>
+<p>This is a DOM call to set focus on the &quot;email_address&quot; field on the page as the first spot where the cursor will be flashing when the page is opened.</p>
+<p>When the login page is loaded, the &lt;body&gt; tag will read like this:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="filename">&lt;body id=&quot;login&quot; onload=&quot;document.getElementById('email_address').focus();&quot;&gt; </code><br />
+</p>
+<h3><strong>EXAMPLE #2 (on_load calls on all pages in your shop)</strong></h3>
+<p>Sometimes a designer wishes to preload rollover images on the page for menu purposes. In this case, the implementation is two-fold:</p>
+<p>1. Create a file with javascript function definitions for the preload activities, and place it in:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="filename">includes/templates/<span class="style2">{template_directory}</span>/jscript/jscript_preloadimages.js</code></p>
+<p>2. Create a file for the onload code as:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="filename">includes/templates/<span class="style2">{template_directory}</span>/jscript/on_load/on_load_image_preload.js</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;and in the file put just one function call to match the preload function definition in your js file, such as:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="filename">preloadImages();</code></p>
+<p>3. Of course, be sure to upload the real image files, etc to support the preload activities.
+</p>
+<br />
+</p>

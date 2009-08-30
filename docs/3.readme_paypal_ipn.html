@@ -1,0 +1,269 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 3.readme_paypal_ipn.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+	<head>
+		<title>PayPal Instant Payment Notification - Features &amp;amp; Installation Instructions</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+		<meta name="author" content="Ian Wilson &amp; Kim Elliott" />
+		<meta name="copyright" content="2004, 2006" />
+	</head>
+
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; font-size: 18px;}
+h3 { color: #5778ce; font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29; font-size: 14px;}
+-->
+</style>
+<body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center>
+<h1 class="intro">PayPal (IPN) Instant Payment Notification<br />
+Features &amp; Installation Instructions</h1>
+</center>
+<div>
+<h1>Overview of PayPal (IPN) Instant Payment Notification  Module </h1>
+<ul type="disc">
+<li>Fully integrated with the Zen Cart&trade; checkout process, Payment and Order Totals classes. </li>
+<li> PayPal's (IPN) Instant Payment Notification automatically updates the store's database, regardless of whether the customer returns to the site or not. </li>
+<li> All PayPal IPN Information available directly on Admin Orders Page </li>
+<li> Full support for Zen Cart&trade;'s built in coupons, gift certificates, downloadable products and shipping options. </li>
+<li> Supports PayPal Instant Payments, e-checks, credit card payments, and multiple currencies. </li>
+<li> Order-status changes with type of payment and/or refund/payment denial/cancellation. <br />
+</li>
+</ul>
+</div>
+<div>
+<h1>Prerequisites for Use</h1>
+<ul type="disc">
+<li>Completed, working installation of Zen Cart&trade; v1.3.0</li>
+<li>Premier or Merchant Business Account from PayPal.<br />
+<br />
+<em>Some account configurations may need to be made in your PayPal <br />
+account 
+(at www.paypal.com) for various options that are available. <br />
+See Frequently Asked Questions below for more information.</em><br />
+</li>
+</ul>
+</div>
+<div>
+<h1>PayPal IPN Module Installation</h1>
+<h3>Installing the Module</h3>
+<ul type="disc">
+<li>Open your Zen Cart&trade; Admin page.</li>
+<li>Point your cursor at <em>Modules</em> on the menu bar.</li>
+<li>Choose <em>Payment</em> from the dropdown menu.</li>
+<li>Click the icon on the <em>PayPal IPN</em> row.</li>
+<li>Click the <strong>Install</strong> button.</li>
+</ul>
+<em>Congratulations! You have installed the PayPal IPN module.</em>
+<br />
+<br />
+<h3>Upgrading the Module (or activating changes made in a new version)</h3>
+This is only 
+relevant if you've just installed an upgrade to Zen Cart&trade;, from an earlier version:
+<ul type="disc">
+<li>Open your Zen Cart&trade; Admin page.</li>
+<li>Point your cursor at <em>Modules</em> on the menu bar.</li>
+<li>Choose <em>Payment</em> from the dropdown menu.</li>
+<li>Click the icon on the <em>PayPal IPN</em> row.</li>
+<li>Click on the <strong><em>edit</em></strong> button .</li>
+<li>Write down all the settings that were previously configured.</li>
+<li>Click on OK </li>
+<li>Click the <strong>Remove</strong> button. This will uninstall configuration settings from the old version </li>
+<li>Click the <strong>Install</strong> button to activate the new version.</li>
+<li>Re-enter your configuration settings which you recorded earlier. </li>
+</ul>
+<em>Congratulations! You have installed the updated PayPal IPN module.</em>
+<h1>PayPal IPN Module Configuration</h1>
+<h3>Configuring the Module</h3>
+<ul type="disc">
+<li><strong>Enable PayPal Module</strong> - Do you want to accept PayPal payments?
+<ul type="disc">
+<li> True<br />
+<em>Choose True if not on by default</em></li>
+<li> False<br />
+<em>Choosing False here will disable the module, meaning customers won't see it as an option during checkout</em></li>
+</ul>
+</ul>
+<ul>
+<li><strong>Business ID</strong> - Primary email address for your PayPal account<br />
+<em>It's important to use the <strong>primary</strong> email address for your PayPal account.</em> <br>
+NOTE: This must match <STRONG>EXACTLY </STRONG>the primary email address on your   paypal account settings. It <STRONG>IS case-sensitive</STRONG>, so please check   your paypal preferences at paypal.com and be sure to enter the EXACT same   primary email address here.</li>
+<br />
+<br />
+<li><strong>Transaction Currency</strong> - Choose the currency/currencies you want to accept<br />
+<ul type="disc">
+<li> Selected Currency (means customer-selected currency...the mode the customer is shopping in while placing the order on your site) <br />
+<em>Choose this option if you wish to accept payments in multiple currencies.</em></li>
+<br />
+<li> Only USD<br />
+<em>Choose this option if you wish to accept payments <strong>only</strong> in US Dollars.</em><br>
+<br />
+</li>
+<li> Only CAD<br />
+<em>Choose this option if you wish to accept payments <strong>only</strong> in Canadian Dollars.</em></li>
+<br />
+<li> Only EUR<br />
+<em>Choose this option if you wish to accept payments <strong>only</strong> in Euros.</em></li>
+<br />
+<li> Only GBP<br />
+<em>Choose this option if you wish to accept payments <strong>only</strong> in British Pounds.</em></li>
+<br />
+<li> Only JPY<br />
+<em>Choose this option if you wish to accept payments <strong>only</strong> in Japanese Yen.</em></li>
+<br />
+<li> Only AUD<br />
+<em>Choose this option if you wish to accept payments <strong>only</strong> in Australian Dollars.</em></li>
+<br />
+</ul>
+<li><strong>Payment Zone</strong> - If a zone is selected, only enable this payment method for that zone. Customers in other zones will not see PayPal as a payment option during checkout. </li>
+<br />
+
+<li><strong>Set Pending Notification Status</strong> - Set the status of orders made with this payment module that are not yet completed to this value ('Pending' recommended)</li>
+<br />
+<li><strong>Set Order Status</strong> - Set the status of orders made with this payment module that have completed payment to this value ('Processing' recommended)<br>
+(This is the status that is set when paypal sends notification via IPN to your store that the order has been paid for successfully on the paypal site.) </li>
+<br />
+<li><strong>Set Refund Order Status</strong> - Set the status of orders  made with this payment module that have been refunded (in whole or in part) to this value ('Pending' recommended)</li>
+<br />
+<li><strong>Sort order of display</strong> - Sort order of display ... ie: what order the payment modules are displayed in during checkout. Lowest value is displayed first.</li>
+<br />
+<li><strong></strong><strong>Continue Button Text</strong> - When the customer is on the paypal site to make payment, there is a &quot;continue&quot; button that brings the customer back to your site once the payment process is completed. What you enter here is the text you want that button to display. Leave blank to just use &quot;Continue&quot; (default = blank).</li>
+<br />
+<li><strong>Page Style </strong> - On the paypal.com site, you can customize the appearance of the paypal page which your customers see while paying for their purchase. When you customize that page, you can give it a name. The default name is &quot;paypal&quot;, and &quot;paypal&quot; is the page-name used if you don't specify another name on the paypal site.<br>
+  If you have created a customized page-style (aka template) on the paypal.com site, you can enter that page-style name here so it is used during customer-checkout.<br>
+  You can use &quot;paypal&quot; to use the default style supplied by paypal.<br>
+  You can use &quot;primary&quot; if you wish to use the style you have created and designated as primary on the paypal.com site.<br>
+  In most cases, setting/leaving this as &quot;paypal&quot; is perfectly acceptable.</li>
+<br />
+<li><strong>Mode for PayPal web services</strong> - Choose the URL for PayPal live or test services</li>
+<ul type="disc">
+  <li>www.paypal.com/cgi-bin/webscr<br />
+    <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choose this URL for Live Services</em></li>
+  <li>(might have to use www.paypal.com/us/cgi-bin/webscr) </li>
+  </ul>
+<br />
+<li><strong>Debug Email Notifications</strong> - You can turn off/on the ability to receive email notifications of all the paypal IPN activity that happens between the paypal server and your store. These are very TECHNICAL emails, and will not be of much benefit unless troubleshooting a paypal problem with a support technician.<br>
+  <br>
+</li>
+
+
+<li><strong>Debug Email Address</strong> - You can specify here the email address to which debug emails will be sent if this paypal IPN payment module has debug-emails enabled.<br>
+  Be sure to check your junk-email settings as sometimes these emails will be classified as possible junk-mail.<br>
+  <br>
+</li>
+<li><strong>Status Live/Testing</strong> - FOR PROGRAMMERS ONLY - If you are having difficulties with the paypal IPN module, you can put the module into Test mode and simulate IPN transactions to your store. <br>
+BEST TO LEAVE THIS SET TO &quot;Live&quot;. Otherwise, real transactions will not process. </li>
+</ul>
+<br />
+</div>
+<div>
+<h1>Frequently Asked Questions</h1>
+<p><strong>Do I need to enable IPN in my PayPal Acccount Profile? What URL should I specify for the IPN feature to be used?</strong><br />
+<br />
+<strong>Yes</strong>, you should enable it. <br />
+1. Log into your PayPal account and go to <strong>Profile</strong><br />
+2. Click on <strong>"Instant Payment Notification Preferences"</strong><br />
+3. Click on Edit<br />
+The URL should point to: <span class="filename">http://www.mydomain.com/ipn_main_handler.php</span> <br />
+<em>or </em>if you have the Zen Cart&trade; program in a subdirectory: <span class="filename"><br>
+http://www.mydomain.com/<strong>subdirectory</strong>/ipn_main_handler.php</span><br />
+<br />
+
+<br />
+<strong>Do I need to turn on the Auto-Return Feature in PayPal?</strong><br />
+<br />
+<strong>Yes</strong>. Enabling the Auto-Return feature in your PayPal account profile will return your customers to your site automatically 5-10 seconds after they've completed payment and finish their transaction in your Zen Cart&trade; store .<br />
+<br />
+1. Log into your PayPal account and go to <strong>Profile</strong><br />
+2. 
+Click on <strong>"Website Payments Preferences"</strong><br />
+3.
+Change <strong>Auto-Return</strong> to "On"<br />
+
+4. Provide a return URL: <br />
+For nonSSL sites:<br />
+<span class="filename"><strong>http://</strong>www.mysite.com/MY_SHOP/index.php?main_page=checkout_process</span><br />
+<em>or</em><br />
+For sites with their own SSL Certificates:<br />
+<span class="filename"><strong>https://</strong>www.mysite.com/MY_SHOP/index.php?main_page=checkout_process</span><br /> 
+<em>or</em><br />
+
+<span class="filename">https://<strong>mysite.secureserver.net</strong>/MY_SHOP/index.php?main_page=checkout_process</span><br />
+<br />
+<strong>Should I enable &quot;PayPal Account Optional&quot;?</strong><br />
+This is your choice.<br />
+</p>
+<p><strong>Sessions</strong><br />
+Note: The sessions work automatically. Do not change your sessions setting in the Zen Cart Admin. </p>
+</div>
+<h1>MORE INFORMATION</h1>
+<a href="https://www.paypal.com/en_US/pdf/PP_OrderManagement_IntegrationGuide.pdf" target="_blank">https://www.paypal.com/en_US/pdf/PP_OrderManagement_IntegrationGuide.pdf </a>
+<div>
+<br />
+<br />
+</div>
+</td>
+</tr>
+</table>
+<br /><br />
+<p align="center"><em>Zen Cart&trade; Copyright 2005</em></p>
+</body>
+</html>

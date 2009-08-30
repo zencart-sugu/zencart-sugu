@@ -1,0 +1,274 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 4.readme_html_email_templates-en.html 3792 2006-06-18 05:22:55Z drbyte $
+ */
+//-->
+<html>
+	<head>
+		<title>HTML Email Support in Zen Cart(tm)</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+		<meta name="author" content="Ian Wilson &amp; Kim Elliott" />
+		<meta name="copyright" content="2004" />
+</head>
+
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; font-size: 18px;}
+h3 { color: #5778ce; font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29; font-size: 14px;}
+.style1 {font-size: 14pt}
+-->
+</style>
+<body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center>
+<h1 class="intro">HTML EMail Support in Zen Cart&trade; </h1>
+</center>
+<div>
+<h1>HOW TO USE - Rich Text Editors / Email Archiving / HTML Mail Sending</h1>
+<h3>Enabling HTML/Rich-Text Edit editor support:</h3>
+<p>You can choose your editor setting under <span class="filename">Configuration | My Store | &nbsp;HTML Editor<br />
+</span></p>
+<h3>Email System Settings relating to rich text messages </h3>
+<p>In the ADMIN section, goto <span class="filename">Configuration | E-Mail Options</span></p>
+a.&nbsp;Make sure your &quot;<strong>E-Mail Transport Method</strong>&quot; is set appropriately for the webserver you're using.<br />
+b.&nbsp;<strong>Use MIME HTML When Sending Emails</strong> = &quot;true&quot;<br />
+c.&nbsp;<strong>Send E-Mails</strong> = true<br />
+d.&nbsp;<strong>Email Archiving Active?</strong> = We recommend setting this to &quot;true&quot; -- note, this will increase your database size regularly.<br />
+<h3>Where do I go to send HTML messages? </h3>
+You can send <strong>newsletters</strong> from the admin area, under the <span class="filename">&quot;Tools&quot; | &quot;Newsletter Manager&quot;</span>.<br />
+This works with <strong>Product Notifications</strong>, since they're generated with the Newsletter Manager screen, too.
+<p>You can also use <span class="filename">&quot;Tools&quot; | &quot;Send Email&quot;</span>, or in your Admin <span class="filename">&quot;Customers&quot; | &quot;Customers&quot;</span> screen, click &quot;<strong>email</strong>&quot;.</p>
+<p>Same for your <strong>Coupons</strong>, <strong>Gift Certificate Mail</strong>, and <strong>Gift Certificate Queue</strong>.</p>
+<h3>What if I have my own HTML code to paste into an email? (rather than using the editor) </h3>
+ You can optionally toggle the HTML editor's &quot;source&quot; option on (check the box, or click the symbol), and just paste raw HTML into the editor directly, if you wish.<br />
+Further, if you leave the editor disabled, but enable sending HTML messages, you can simply paste the raw HTML in the rich text field directly. 
+</div>
+<div>
+<h1>COMMENTS &amp; FAQ's</h1>
+
+
+<h3>What about text-only messages/customers?
+</h3>
+<p>You can enter customizable TEXT-ONLY content in the lower section, which will be sent along with the HTML in case readers don't have HTML-compatible email clients.&nbsp;If you leave the &quot;TEXT ONLY&quot; area blank, your HTML content will be converted (roughly by removing HTML tags) and sent along as the Text portion anyway.</p>
+<h3>How do I change the Logo in my HTML emails ? </h3>
+<p>In the /email folder, you have a file called &quot;header.jpg&quot;. Simply change the contents of this file in order to reflect the new logo in the HTML emails you send. </p>
+<h3>EMAIL FROM-ADDRESS SHOWS UP FUNNY</h3>
+<p>If your &quot;FROM&quot; email addresses contain extra brackets &quot;)&quot;, this is due to having an incorrectly-formed email address defined in your store EMAIL_FROM setting.</p>
+<h3>EDITORS NOT WORKING WITH YOUR BROWSER</h3>
+<p>If you find that the HTML editors aren't working properly for you due to the browser you use, the easiest workaround is to turn off the editors in Admin, and paste raw code instead - perhaps from your favorite HTML editor?</p>
+<p>Mozilla has some known issues regarding pasting text into HTMLarea... it's a security setting in your javascript setup.</p>
+<h3>BOUNCE HANDLING</h3>
+<p>Zen Cart doesn't handle email/newsletter bounces automatically.</p>
+<p>If you get email &quot;bounces&quot; coming back to you, you can turn off a subscriber's settings by going into the ADMIN | CUSTOMERS area, and entering their email address in the &quot;search&quot; boxin the upper-right corner, then press Enter. Then you can edit the subscriber's account settings (email, HTML, newsletter, etc)</p>
+</div>
+<div>
+<h1 align="center" class="intro">HOW TO USE the HTML Mail Template System</h1>
+<p>The email template system operates through the <span class="filename">email_*.htm</span> files in your <span class="filename">/email</span> folder.</p>
+<h1>EMAIL TEMPLATE STYLESHEET</h1>
+<p>Since HTML-based email standards are varied more widely than the shape of each cloud in the sky, it's impossible to predict the behaviour of any email client's output rendering.&nbsp;Thus, linked stylesheets are not recommended.&nbsp;Some clients will completely reject an email that has a stylesheet link ref in it.</p>
+<p>In coding your HTML email message templates, it's best to code to HTML 3.2 and CSS1 standards for optimum compatibility.</p>
+<h1>TEMPLATE SYSTEM KEYWORDS MATRIX</h1>
+The following key words are replaced with active HTML by the various modules.&nbsp;Simply retain them in any revisions you make to your template structure, and all should come out just fine !!!<br />
+Note that all template tags should be prefixed with a $<br />
+<h3>All Modules</h3>
+$EMAIL_FIRST_NAME&nbsp;(most modules supply the customer names)<br />
+$EMAIL_LAST_NAME<br />
+&nbsp;<br />
+$EMAIL_TO_NAME<br />
+$EMAIL_TO_ADDRESS&nbsp;(TO: email address)<br />
+$EMAIL_FROM_NAME<br />
+$EMAIL_FROM_ADDRESS&nbsp;(FROM: email address.... default is EMAIL_FROM defined in Admin)<br />
+$EMAIL_STORE_NAME&nbsp;(Defined in Admin | My Store)<br />
+$EMAIL_STORE_OWNER&nbsp;(Store Owner's NAME -- defined in Admin)<br />
+$EMAIL_STORE_URL&nbsp;(Preformatted A HREF for your store's URL, using STORE_NAME for the displayed text)<br />
+$EMAIL_DATE_LONG&nbsp;(ie: Monday June 14, 2004 11:28 am)<br />
+$EMAIL_DATE_SHORT&nbsp;(ie: 06/14/2004)<br />
+$BASE_HREF&nbsp;(store http root)<br />
+$EXTRA_INFO&nbsp;(this is the &quot;office-use-only&quot; section at the bottom of messages cc'd to Admin)<br />
+&nbsp;<br />
+These 3 are defined in &quot;languages/..../email_extras.php&quot;:<br />
+$EMAIL_DISCLAIMER&nbsp;(general disclaimer)<br />
+$EMAIL_SPAM_DISCLAIMER&nbsp;(disclaimer re: SPAM -- should be customized to your country's laws...and of course you should abide by them!)<br />
+$EMAIL_FOOTER_COPYRIGHT<br />
+&nbsp;<br />
+$EMAIL_MESSAGE_HTML&nbsp;(this is any composed text (via editors) that you plan to send)<br />
+&nbsp;<br />
+
+<h2>ADMIN AREA:</h2>
+
+<h3>Coupon</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME,<br />
+$EMAIL_MESSAGE_HTML&nbsp;(message composed in Admin)<br />
+$COUPON_TEXT_TO_REDEEM&nbsp;(&quot;You've received a coupon&quot;)<br />
+$COUPON_TEXT_VOUCHER_IS&nbsp;(The voucher number is:&quot;)<br />
+$COUPON_CODE&nbsp;(Actual voucher number)<br />
+$COUPON_DESCRIPTION&nbsp;(Coupon description, if supplied in Admin area when coupon was created)<br />
+$COUPON_TEXT_REMEMBER&nbsp;(&quot;Keep this number safe so you don't forget it&quot;)<br />
+$COUPON_REDEEM_STORENAME_URL&nbsp;(&quot;To redeem, come visit us at our store: +URL&quot;)<br />
+<h3>GV-Mail-From-Admin</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME<br />
+$EMAIL_MESSAGE_HTML&nbsp;(Message composed in Admin)<br />
+$GV_WORTH&nbsp;(&quot;You've received a GV worth: &quot; )<br />
+$GV_AMOUNT&nbsp;(GV amount)<br />
+$GV_REDEEM&nbsp;(To redeem, goto our store, or click here:)<br />
+$GV_CODE_URL&nbsp;(URL to redeem GV)<br />
+<h3>GV-Queue in Admin (to release purchased GV's after screening)</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME<br />
+$GV_NOTICE_INTRO&nbsp;(You purchased a GV from our store: URL)&nbsp;(optional)<br />
+$GV_NOTICE_AMOUNT_URL&nbsp;(You purchased a GV of $$$$ from our store: URL)<br />
+$GV_NOTICE_VALUE&nbsp;(Amount of GV purchased, and now being released)<br />
+$TEXT_REDEEM_COUPON_MESSAGE_BODY&nbsp;(null unless defined in lang file)<br />
+$TEXT_REDEEM_COUPON_MESSAGE_FOOTER&nbsp;(null unless defined in lang file)&nbsp;<br />
+<h3>Low Stock</h3>
+- $EMAIL_SUBJECT<br />
+- $EMAIL_MESSAGE_HTML -- contains the low-stock details generated by the checkout process<br />
+
+<h3>Newsletters &amp; Product Notifications, and Admin Emails</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME,<br />
+$EMAIL_MESSAGE_HTML&nbsp;(composed by Admin)<br />
+<h3>Order Status Updates from Admin</h3>
+$EMAIL_CUSTOMERS_NAME&nbsp;(extracted from Orders table -- combines first/last names based on what's in DB)<br />
+$EMAIL_STORE_NAME<br />
+$EMAIL_TEXT_ORDER_NUMBER&nbsp;(Order Number from database)<br />
+$EMAIL_TEXT_INVOICE_URL&nbsp;(URL to access &quot;My Account History&quot;)<br />
+$EMAIL_TEXT_DATE_ORDERED&nbsp;(Order Date)<br />
+$EMAIL_TEXT_STATUS_UPDATED&nbsp;(&quot;Has been updated to:&quot;)<br />
+$EMAIL_TEXT_STATUS_LABEL&nbsp;(&quot;New Status:&quot;)<br />
+$EMAIL_TEXT_NEW_STATUS&nbsp;(actual status description and comments)<br />
+$EMAIL_TEXT_STATUS_PLEASE_REPLY&nbsp;(&quot;Please reply to this address if you have questions&quot;)<br />
+<h3>Password Forgotten:</h3>
+$EMAIL_SUBJECT&nbsp;(&quot;password reset requested&quot;)<br />
+$CUSTOMERS_NAME&nbsp;(Admin or customer's name)<br />
+$EMAIL_MESSAGE_HTML&nbsp;(actual pwd reset info)<br />
+&nbsp;<br />
+<h2>CATALOG AREA:</h2>
+<h3>Contact-Us</h3>
+$CONTACT_US_OFFICE_FROM&nbsp;(Office-Use: contains from email address &amp; contact name)<br />
+$EMAIL_MESSAGE_HTML&nbsp;(message composed by customer to admin)<br />
+<h3>Welcome Email</h3>
+$EMAIL_GREETING&nbsp;(Mr/Ms/Dear + first and/or last-names)<br />
+$EMAIL_WELCOME&nbsp;(&quot;Welcome to ....storename....&quot;)<br />
+&nbsp;<br />
+$COUPON_BLOCK ... this already CONTAINS the following, and is only displayed IF they have been set for new customers via the Admin | My Store | GV/Coupons.<br />
+.....$COUPON_TEXT_VOUCHER_IS<br />
+.....$COUPON_DESCRIPTION<br />
+.....$COUPON_TEXT_TO_REDEEM<br />
+.....$COUPON_CODE<br />
+$GV_BLOCK ... this already contains the following, and is only displayed if GV's have been set for new customers, see coupons above.<br />
+.....$GV_WORTH<br />
+.....$GV_REDEEM<br />
+.....$GV_CODE_URL<br />
+&nbsp;<br />
+$EMAIL_MESSAGE_HTML&nbsp;(the actual welcome message: defined by the &quot;EMAIL_TEXT&quot; constant)<br />
+$EMAIL_CONTACT_OWNER<br />
+$EMAIL_CLOSURE<br />
+<h3>GV Send to a friend, after purchased and applied to my account</h3>
+GV Pic is displayed, with these beside it:&nbsp;<br />
+......$EMAIL_GV_AMOUNT&nbsp;<br />
+......$GV_REDEEM_CODE<br />
+$EMAIL_STORE_NAME<br />
+$EMAIL_GV_TEXT_HEADER&nbsp;(I'm sending you a GV)<br />
+$EMAIL_GV_AMOUNT&nbsp;(Amount of)<br />
+$EMAIL_GV_FROM&nbsp;(From my name)<br />
+$EMAIL_GV_MESSAGE&nbsp;(&quot;With a message from me&quot;)<br />
+$EMAIL_GV_SEND_TO&nbsp;(Your name)<br />
+$EMAIL_MESSAGE_HTML&nbsp;(My message -- entered before sending)<br />
+$GV_REDEEM_HOW&nbsp;(How to redeem the GV)<br />
+$GV_REDEEM_URL&nbsp;(URL to redeem)<br />
+$EMAIL_GV_FIXED_FOOTER&nbsp;(If you're having problems redeeming, enter it during checkout, or contact storeowner)<br />
+$EMAIL_GV_SHOP_FOOTER&nbsp;(null at present)<br />
+<h3>Tell-A-Friend</h3>
+$EMAIL_TEXT_HEADER&nbsp;(&quot;Important Information&quot;)<br />
+$EMAIL_GREET&nbsp;(&quot;Hi _____&quot;)<br />
+$EMAIL_INTRO&nbsp;(&quot;Your friend thought you might like this. Here's their message:&quot;)<br />
+EMAIL_MESSAGE_HTML&nbsp;(Message composed by referrer)<br />
+$EMAIL_PRODUCT_LINK<br />
+$EMAIL_CONTACT_STORE<br />
+<h3>Order-Confirmation</h3>
+$EMAIL_TEXT_HEADER&nbsp;(&quot;Order Confirmation&quot;)<br />
+$INTRO_STORE_NAME<br />
+$INTRO_ORDER_NUM_TITLE&nbsp;(&quot;Order Number:&quot;)<br />
+$INTRO_ORDER_NUMBER&nbsp;(actual order number)<br />
+$INTRO_DATE_TITLE&nbsp;(&quot;Ordered on:&quot;)<br />
+$INTRO_DATE_ORDERED&nbsp;(Date ordered)<br />
+$INTRO_URL_TITLE&nbsp;(Description in A HREF to My Account)<br />
+$INTRO_URL_VALUE&nbsp;(A HREF to My Account)<br />
+$ORDER_COMMENTS&nbsp;(Customer's comments entered at order time)<br />
+$PRODUCTS_TITLE&nbsp;(&quot;Product Details:&quot;)<br />
+$PRODUCTS_LIST&nbsp;(Detailed list of products and attributes and prices)<br />
+$ORDER_TOTALS&nbsp;(Order totals)<br />
+$HEADING_ADDRESS_INFORMATION&nbsp;(&quot;Address Info:&quot;)<br />
+$ADDRESS_DELIVERY_TITLE&nbsp;(&quot;Delivery address:&quot;)<br />
+$ADDRESS_DELIVERY_ADDRESS&nbsp;(Actual delivery address on order)<br />
+$SHIPPING_METHOD_TEXT&nbsp;(&quot;Shipping Method&quot;)<br />
+$SHIPPING_METHOD_TITLE&nbsp;(Shipping method selected)<br />
+$ADDRESS_BILLING_TITLE&nbsp;(&quot;Billing address:&quot;)<br />
+$ADDRESS_BILLING_DETAIL&nbsp;(Billing address on order)<br />
+$PAYMENT_METHOD_TEXT&nbsp;(&quot;Payment Method:&quot;)<br />
+$PAYMENT_METHOD_TITLE&nbsp;(Payment method selected)<br />
+$PAYMENT_METHOD_FOOTER&nbsp;(Payment method footer, if any)<br />
+<h3><br />
+
+</h3>
+</div>
+</td>
+</tr>
+</table>
+<br /><br />
+<p align="center"><em>Zen Cart&trade; Copyright 2005</em></p>
+</body>
+</html>

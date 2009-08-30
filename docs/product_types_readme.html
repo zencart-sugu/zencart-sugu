@@ -1,0 +1,155 @@
+﻿<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: product_types_readme.html 3775 2006-06-15 01:05:20Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+
+
+-->
+</style>
+<title>An Introduction to Product Types in Zen Cart&trade; v1.2</title>
+
+
+<h1>An Introduction to Product Types in Zen Cart&trade; v1.2</h1>
+<h2>1. Introduction</h2>
+<p>A much requested feature in Zen Cart&trade; was the ability to have unique information layouts for different types of products.<br>
+For example a Music Video needs to have different information stored and displayed, compared to say a Garden Bench.</p>
+<p>Previously there has been no easy way for a Zen Cart&trade; Store user to do this without ripping apart the core code. The Product Type system was designed to help alleviate that problem. </p>
+<p>Throughout this mini-tutorial we will use the Music Product type that comes as standard with V1.2 as an example. It is not in anyway meant to be an exhaustive treatise on implementing your own product type, as this will always depend on exactly what you are trying to implement.</p>
+<p>However it should provide enough of an overview to get you started. As ever our <a href="http://www.zen-cart.com/forum" target="_blank">support forums at www.zen-cart.com</a>, are always there to help you when you get stuck.<br>
+</p>
+<h2>2. Database Schema</h2>
+<p>The Product Types System uses a number of required, and some ( @@TODO ) non-required tables within the Zen Cart&trade; database. The required database tables are:</p>
+<p>PRODUCT_TYPES<br>
+PRODUCT_TYPE_LAYOUT<br>
+GET_TERMS_TO_FILTER</p>
+<h3>PRODUCT_TYPES </h3>
+<p>The _PRODUCT_TYPES database is used to track base information relating to the product types currently installed. It consists of 8 fields.</p>
+<p>type_id<br>
+
+type_name<br>
+type_handler<br>
+type_master_type<br>
+allow_add_to_cart<br>
+default_image<br>
+date_added<br>
+last_modified<br>
+</p>
+<p> <span class="heading">type_id</span> is an auto_incrementing field and is used to cross reference the type with other Database Tables used by the Product Type System.</p>
+<p> <span class="heading">type_name</span> is user defined, but you should try and stick with the naming conventions that the core team have decided on. For example in Zen Cart&trade; 1.2 we have Products - General for the standard product, and Product - Music for a product type designed for Music CD's. Then we have Document - General for a basic layout for an information only Document, and Document-Product for a Document that can be sold. These names are used in the drop down that appears in the admin product creation pages.</p>
+<p> <span class="heading">type_handler</span> again is user defined and is used to build the URL to the code that actually does the work for the product type. It is best to define this similarly to the type_name. For example if the type_name is Product-Music, the type_handler would be product_music. For compatibility across operating systems you should always stick to lower case for the type_handler. More explanation will be given later as to how the type_handler is used to access the unique code for a given product type.</p>
+<p> <span class="heading">type_master_type</span> is used to link product types together. This is mainly used if you want to build separate sideboxes to display a category tree of just certain product types. For example the Document types are linked so that we can provide a sidebox that can be used just to navigate categories containing Document Types.</p>
+<p> <span class="heading">allow_add_to_cart</span>. Provision is made with this field to create product_types that are for information purpose only, and because of that you do not want to allow the shopper to add them to the cart. The basic Document type is a good example of this.</p>
+<p> <span class="heading">default_image</span> is reserved for future usage.</p>
+<p> <span class="heading">date_added/last_modified</span> are for internal code use only.</p>
+<p>&nbsp;</p>
+<h3>PRODUCT_TYPE_LAYOUT</h3>
+<p> It has always been possible in Zen Cart&trade;, using the admin interface, to decide which elements of a product's information are displayed. Originally this information was saved in the CONFIGURATION table. However as different product types will have differing types of information, we now use a separate table for product types. </p>
+<p>The layout of this table is similar to an entry in the configuration table. The fields are</p>
+<p>configuration_id<br>
+configuration_title<br>
+configuration_key<br>
+configuration_value<br>
+configuration_description<br>
+product_type_id<br>
+sort_order<br>
+last_modified<br>
+date_added<br>
+use_function<br>
+set_function</p>
+<p>an example here is an entry for the music product type. </p>
+<p class="filename">INSERT INTO product_type_layout (configuration_title, configuration_key, configuration_value, configuration_description, product_type_id, sort_order, set_function, date_added) VALUES ('Show Record Company', 'SHOW_PRODUCT_MUSIC_INFO_RECORD_COMPANY', '1', 'Display Record Company on Product Info 0= off 1= on', '2', '4', 'zen_cfg_select_drop_down(array(array(\'id\'=&gt;\'1\', \'text\'=&gt;\'True\'), array(\'id\'=&gt;\'0\', \'text\'=&gt;\'False\')), ', now());</p>
+<p>This lets the store admin decide whether the Record Company linked to the music product is shown on the product info page. Of course you would need to code the music product info page to use this value e.g.</p>
+<p> <span class="filename">if (SHOW_PRODUCT_MUSIC_INFO_RECORD_COMPANY == '1') {<br>
+?&gt;<br>
+ &nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class=&quot;main&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php echo sprintf(TEXT_RECORD_COMPANY_URL, zen_href_link(FILENAME_REDIRECT, 'action=url&amp;goto=' . <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;urlencode($products_record_company_url), 'NONSSL', true, false)); ?&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&lt;?php<br>
+} // SHOW_PRODUCT_MUSIC_INFO_URL</span><br>
+</p>
+<p>This is just one example, and you should look at the product info code (and associated entries in the PRODUCT_TYPE_LAYOUT table for more examples.<br>
+</p>
+<h3>GET_TERMS_TO_FILTER</h3>
+<p>This table is not strictly part of the core Product Types System, but is used to handle new filter sideboxes. </p>
+<p>Filter sideboxes are used to filter product lists based on some variables.</p>
+<p>The main example of this is the manufacturers sidebox. This allows you to filter a product lists based on the manufacturer of the product.</p>
+<p>e.g. show all products whose manufacturer is Microsoft.</p>
+<p>The music product type adds two filter sideboxes, Record Company and Music Genre.</p>
+<p>There is only one field in this table:</p>
+<p><span class="heading">get_term_name</span> - this is the name of the $_GET variable that is returned by the filter sidebox. The relevance of this will be discussed in more depth when we look at catalog side code for the Product Type System.</p>
+<p>&nbsp;</p>
+<h2>3. Admin Code</h2>
+<p>In previous versions all code for handling adding categories/products was contained within the <span class="filename">admin/categories.php</span> file. To accommodate the Product Types System, this file needed to be split up.</p>
+<p><span class="filename">admin/categories.php</span> now deals only with displaying and managing the category tree. It also contains the button for adding a new product. On requesting a new product, categories.php will call the file<span class="filename"> [product handler].php</span>. The <span class="heading">[product handler]</span> is the name stored in the product_types database table. e.g product_music.php is the admin handler for the Music Type product.</p>
+<p>This handler file is basically a skeleton and in general you can just directly copy the <span class="filename">product.php</span> handler to be your handler file. Note you will also have to create a corresponding language file. </p>
+<p>The product handler page then includes a number of needed files.<br>
+The two most important are:</p>
+<p class="filename">admin/includes/modules/[handler_name]/collect_info.php<br>
+admin/includes/modules/[handler_name]/preview_info.php</p>
+<p>again <span class="heading">[handler name]</span> is the type_handler entry in the product_types table.</p>
+<p><strong>These two files are responsible for actually creating a new entry in the product table and as such will need the most customizing if your product type contains new fields/options for your product type.</strong></p>
+<p><span class="heading">collect_info.php</span> contains the code that is used to collect the product details e.g.</p>
+<p>product name <br>
+product description<br>
+product price<br>
+etc.</p>
+<p><span class="heading">preview_info.php</span> is used to preview the created product prior to adding it to the database permanently.</p>
+<p>Within the admin/includes/modules directories there are an number of other files you can override. By this I mean by adding a file of the same name to your admin/includes/modules/[handler name]/ directory, it will be used in preference.</p>
+<p>Those files are:</p>
+<p><span class="heading">update_product.php</span></p>
+<p>This code is used to update the various tables to actually add the product to the database. You only need to override this file if your product type requires extra fields to be added to the database.</p>
+<p>e.g the Music Type stores Genre Type, and record company in a separate table called product_music_extra, it therefore needs to add code to update.php to make sure information from collect_info.php is added to this table.</p>
+<p><span class="heading">copy_to_confirm.php</span></p>
+<p>This code is used when you ask to copy a product to a new product. If your product type uses extra tables to store information then you need to add code here to ensure that information is copied to the new product</p>
+<p>e.g. the Music Type adds code here to make sure data in products_music_extra table is copied to the new product.</p>
+<p><span class="heading">delete_product_confirm.php</span></p>
+<p>This code is used when you delete a product. You may want to remove information stored in other tables associated with your product type here.</p>
+<p><span class="heading">move_product_confirm.php</span></p>
+<p>This code is used when moving a product between categories, in general there should be no reason to override this file as moves are done using the product_id. However someone somewhere may have use for it.<br>
+</p>
+<h2>4. Catalog Code</h2>
+<p>The changes needed to support a product type in the catalog code are less onerous than in the admin area.</p>
+<p>Essentially you only need to provide a handler page to show the product_info. To create a new product info page you must first create a new directory <span class="heading">/includes/modules/pages/[handler name]_info</span></p>
+<p>Initially you should copy all of the files contained within the includes/modules/pages/<strong>product_info</strong>/ directory into your includes/modules/pages/[handler name]_info/ directory.</p>
+<p>Usually the only file you will need to edit within this directory is main_template_vars.php. And, technically, you shouldn't even need to edit that file at all. Instead, simply create your own script in the <span class="heading">/includes/templates/YOUR_TEMPLATE/[handler name]_info/extra_main_template_vars folder</span>. This file will be loaded by the basic main_template_vars.php file (you still have to copy it from the product_info folder so it can process the basics) and prepare the needed contents for your template (assuming you code the logic for this in that file). </p>
+<p>e.g. The Music Type adds code here to load information regarding Music genre, Record Company etc. from the product_music_extra table.</p>
+<p>You then need to create a template for the product info page for your Product Type. The template should be placed in includes/templates/template_default/templates or alternatively in includes/templates/[your template]/templates if you want to keep it separate from core code.</p>
+<p>The template file should be called:</p>
+<p><span class="heading">tpl_[handler name]_info_display.php</span>, again [handler name] being the same as the entry in the type_handler field of the product_types table.</p>
+<p>You will of course have to adjust the template to include any extra information associated with your Product type.</p>
+<p>One important point: Within the template generally a number of constants are used to decide if a certain element is displayed. For example in the standard product info page, SHOW_PRODUCT_INFO_QUANTITY if set to 1 will display the quantity in stock. These constants are loaded from the database/product_type_layout table. <br />
+It is good practice to create separate constants for each product type within this table. For example, the Music type uses SHOW_PRODUCT_MUSIC_INFO_QUANTITY instead of SHOW_PRODUCT_INFO_QUANTITY. This allows admin to set the layouts of different product types separately from each other.</p>
+<h2>5. Filter Side boxes</h2>
+<p>One important addition to the Product Types System in the catalog are sideboxes which can filter a product listing. You may already be familiar with this when using the Manufacturers sidebox. This allows you to restrict a product listing to a specific manufacturer. </p>
+<p>The Music type adds two additional filter sideboxes. These are Music Genre and Record Company. If you look at the code say for the Music genre sidebox in<span class="filename"> includes/modules/sideboxes/music_genre.php</span> you can see that the ID for the music genre selected will be passed in the url as a $_GET variable called music_genre_name. In order for this to be processed correctly we need an automatic way of registering these filter terms. As mentioned earlier in the section on databases you can do this by adding the name of the filter variable to the <span class="heading">get_terms_to_filter</span> database table.</p>
+<h2>6. Written Product Type Contributions </h2>
+<p>As an example of how to create a product type you might want to look at the Book product type created by Justin K (jazzyjus). This includes an excellent readme file, and nicely commented code.</p>
+<p>The Books product type is available from the <a href="http://www.zen-cart.com/index.php?main_page=index&cPath=40" target="_blank">Zen Cart&trade; Downloads area</a> </p>
+<p>&nbsp;</p>

@@ -1,0 +1,222 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 2.readme_how_to_upgrade-en.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:10px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; font-size: 18px;}
+h3 { color: #5778ce; font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29; font-size: 14px;}
+-->
+</style>
+<title>Upgrading Zen Cart(tm) in 3 Easy Steps!</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center><h1 class="intro">3 EASY STEPS TO UPGRADE ZEN CART&trade;</h1></center>
+<div>
+<h1>Paypal IPN - Important:<br />
+If upgrading from versions prior to 1.2.2d</h1>
+This version of Zen-Cart contains a new implementation of the Paypal IPN payment module. If you are already using Paypal IPN please be sure to read the following paragraph.<br />
+<br />The Paypal IPN code has been re-written for a couple of reasons. Firstly, previous converted oSC contributions did not work correctly with Gift Vouchers & Discount Coupons. This also means that any future Order Total methods similar to GV's and discount coupons would have problems working with Paypal IPN.
+Secondly, because of the original layout of checkout code, the Paypal IPN code was unecessarily complicated. We have re-written large portions of checkout code in order to greatly reduce the complexity of Paypal IPN code.<br /> 
+<br />
+If you are already using Paypal IPN you should be aware of the following consquences:<br />
+<ul>
+<li>The new Paypal IPN code does not support the following:
+<ul><li>Customised Paypal Page Layouts</li>
+<li>Also changes to paypal database table structure/contents from previous versions<br />
+</li>
+</ul>
+<li>You should also be aware of the following
+</li>
+<ul><li>You should ensure you make a hard copy of the detail contained in the old admin Paypal IPN list prior to upgrading</li>
+<li>You will lose your old IPN history details due to database changes for this new support</li>
+<li>See special upgrade instructions regarding &quot;Activating PayPal&quot; at the end of this document </li>
+</ul>
+<br />
+</ul>
+We will be actively upgrading IPN for future versions based on user feedback.
+</div>
+<div>
+<h1>Getting Started ... </h1>
+This is a basic guide to upgrading Zen Cart&trade;.  If you have not yet installed Zen Cart, please see the <a href="./1.readme_installation-en.html">1.readme_installation-en.html </a>file for installation instructions. <br />
+<br /> 
+To upgrade Zen Cart&trade;, you'll need the same basic tools you used to install and customize it in the first place:  An FTP program, a text editor friendly to HTML/PHP code, phpMyAdmin or equivalent access to your MySQL database, and your Control Panel for managing your webspace.<br />
+<br />
+Additionally, you will find a file-comparison tool like <a href="http://winmerge.sf.net" target="_blank">WinMerge</a>,  <a href="http://www.scootersoftware.com/" target="_blank">Beyond Compare</a> or ExamDiff (Linux) to be very helpful.
+(There's also <a href="http://www.barebones.com" target="_blank">BBedit</a> for the Mac.)<br />
+<br />
+Upgrading follows 3 easy steps. We suggest you take your time going through each stage carefully and methodically. Don't rush the process. And as always, be sure you keep good backups first. <br />
+<br />
+We highly recommend you pay special attention to getting familiar with the demo data in the new version, so that you can become comfortable with the many new features contained in the new release.
+<div>
+<h1>1. Preparation</h1>
+Unzip a copy of the new version of Zen Cart&trade;, upload it to your webserver into a "<span class="filename">demo</span>" folder, and install the new version into a separate database, and include the Demo products.
+This is just for a place for you to play with the new version and get used to its new features.  These can be deleted after conversion is complete.<br />
+<br />
+Study the new features, and the documented changes to the template structures, as well as the "changelog".  Use the demo products in the demo shop as examples. See also the supporting documentation provided with the new release.<br />
+<br />
+<br />
+Make a full backup of your database (dump to SQL file). Store this file on your PC for later reference. <br />
+<br />
+Make a full backup of your site files (ftp to your PC and zip it up for safe-keeping).<br />
+Keep the backup on your PC to use in next steps. Perhaps call this folder &quot;<span class="filename">\zen_backup</span>&quot;.<br />
+<br />
+<br />
+Now let's find out the differences/customizations details between your site and the original Zen Cart files.<br />
+<br />
+Unzip a copy of the original Zen Cart&trade; files for the version you <em>originally installed</em> or last upgraded from (ie:&nbsp;perhaps v1.1.3 or even 1.2.0).  This should be placed in a separate working folder on your PC (perhaps &quot;<span class="filename">\zen_orig</span>&quot;).<br />
+<br />
+Make a list of any add-ons you have installed, for later reference.<br />
+<br />
+Run a tool like <a href="http://winmerge.sf.net" target="_blank">WinMerge</a> to compare the "Original" Zen Cart&trade; files in &quot;<span class="filename">\zen_orig</span>&quot; against your working backup files in &quot;<span class="filename">\zen_backup</span>&quot;.<br />
+Note all the files that are "different". In WinMerge, double-click on each file and note what the differences are.  <br />
+If the differences are just language defines for display text, those will be simple to carry forward.<br />
+If the differences are actual programming/code differences, you will need to make detailed notes in order to carry over those changes to the new new new version.<br />
+Any mods/add-ons you've installed will likely contain many programming changes, and may not be fully compatible with the newer Zen Cart&trade; release.<br />
+<br />
+Your list of add-on's may help you narrow down the source of any differences you're finding between versions.  You may have to download the add-on again to take a look at the readme or code contained  in it.  You may have to contact the author to ask for an updated version.<br />
+<br />
+<br />
+As you make your list of changed files, etc, at this stage, you may want to move things into the Zen Cart&trade; template-override structure, if you haven't already done so. See the <a href="http://www.zen-cart.com" target="_blank">Zen Cart&trade; site</a> for FAQ's on the template system. <br />
+</div>
+<div><h1>2. Execution</h1>
+Download and unzip the latest Zen Cart&trade; version to your PC.  This will be in a 3rd directory (perhaps &quot;<span class="filename">\zen_new</span>&quot;), separate from the other two folders compared above.<br />
+<br />
+Using the list of files you made earlier, go through each "changed" file, and make your changes from the old version into the new version.<br />
+Simple language edits will be just a matter of copy-and-paste.<br />
+Programming changes to core components will be more difficult and require significant testing.<br />
+You may find WinMerge handy at this stage to apply edits as well. However, you will see many extra differences that may not be related to your own customizations, or that may conflict. Be careful making changes to program code. <br />
+<br />
+Note that there will be several changes you will have to make to files that you have overridden using the template overrides system. Thus, you'll want to compare files from <span class="filename">/includes/templates/MYTEMPLATE/*</span> to <span class="filename">/includes/template/template_default/*</span> ... and the same with language file overrides, sideboxes, etc.<br />
+</div>
+<div>
+<h1><strong>3. Testing</strong></h1>
+Make a NEW database to install the new version of Zen Cart&trade; into. <br />
+<br />
+If the last backup you made of your data is older than the last order that might have been processed or customer registration, make a fresh database backup.<br />
+Restore your database from the backup in step #1 earlier into your NEW database just created.<br />
+<br />
+If your <span class="filename">/zen_new</span> folder doesn't have "<span class="filename">/includes/configure.php</span>" and "<span class="filename">/admin/includes/configure.php</span>" files, copy them from your old store folder.<br />
+<br />
+EDIT your "<span class="filename">/zen_new/includes/configure.php</span>" file and ensure that your DATABASE_NAME matches your NEW database. Also verify database username and password in case that information has changed.  Save this file, and be sure to upload it as part of the next step:<br />
+<br />
+Upload the files from your modified "new version" (created in step 2) to your server, into an alternate folder, perhaps called "<span class="filename">/store_new</span>".<br />
+<br />
+Run <span class="filename">/zc_install/index.php</span> and choose "<em>Upgrade</em>" when prompted.  (Don't select "Install", or you will overwrite your database.) (If &quot;Upgrade&quot; is not offered, then the installer was unable to connect to your database to confirm what version its structure is at. Check your configure.php settings.)<br />
+<br />
+Test your customizations.  Edit as needed.  Compare with the test/demo install performed earlier, as needed.<br />
+<br />
+When satisfied that all is OK, go live.<br />
+If significant time has passed since you did your last backup, you may want to repeat the steps in this &quot;Testing&quot; section again, using a fresh backup from your live shop. You don't need to re-upload files again ... simply do the database restore, and run the installer to do the database upgrade again. <br />
+<br />
+To go live, put your shop into &quot;Down for Maintenance&quot; mode in the admin area. Be sure to add your IP address to the list of allowed addresses to get into the site for previewing. <br />
+This can be done easiest by renaming "<span class="filename">store_new</span>" to "<span class="filename">store</span>". (You'll have to rename &quot;store&quot; to something else first.) <br />
+Test it to be sure that things are operating as desired. If you have small problems to repair, turn &quot;Down for maintenance&quot; on and off again as necessary.<br />
+<br />
+</div>
+<div>
+<h1>Help and Support</h1>
+For additional help and support issues, check out our <strong>FAQ's</strong> and visit our <strong>Support Forums</strong> on the web at: <a href="http://www.zen-cart.com" target="_blank">www.zen-cart.com</a><br />
+<br />
+<em>Good Luck with your upgrade.  We're glad you're enjoying the Zen Cart&trade; Experience!</em> <br />
+<br /><br /><hr />
+</div>
+<div>
+<h1 class="intro">Special Upgrade Steps Specific to Zen Cart&trade; Versions </h1>
+<h1>Upgrading from v1.2.1, v1.2.2 or v1.2.3</h1>
+Upgrade is a simple process:
+<ul>
+<li>Ensure that you merge your customizations into the new distribution files from the Zen Cart&trade; v.1.3.0 zip file.  Refer to the changelog for more detailed information on changes.</li>
+<li>Then upload the new version files, including the files for your customizations/templates, to your webserver.</li>
+<li>Run the Installer (<span class="filename">zc_install/index.php</span>) to upgrade the database structure. On the "System Inspection" page, you'll be offered the option to "Install", "Upgrade", or "Upgrade Database Only". If you're upgrading from v1.2.x you may choose "Upgrade Database Only", as you won't need to change the contents of the configure.php files.</li>
+</ul>
+<h3>Files which can be deleted</h3>
+The following files can be safely deleted from your system:<br />
+<span class="filename">/ipn.php<br />
+/admin/paypal_ipn.php<br />
+/admin/paypal_ipn_order.php<br />
+/admin/includes/classes/paypal_ipn.class.php</span><br />
+<span class="filename">/admin/includes/languages/english/paypal_ipn.php</span><br />
+<span class="filename">/admin/includes/languages/english/images/buttons/button_products_price_manag.gif</span><br />
+<span class="filename">/includes/classes/paypal/*.*</span> (whole folder)<br />
+<span class="filename">/includes/languages/english/bb_index.php</span><br />
+<span class="filename">/includes/modules/pages/bb_modules/*.*</span> (whole folder)<br />
+<span class="filename">/includes/modules/payment/paypal/application_bottom.inc.php<br />
+/includes/modules/payment/paypal/application_top.inc.php<br />
+/includes/modules/payment/paypal/admin </span> (whole folder)<br />
+<span class="filename">/includes/modules/payment/paypal/catalog </span> (whole folder)<br />
+<span class="filename">/includes/modules/payment/paypal/classes </span> (whole folder)<br />
+<span class="filename">/includes/modules/payment/paypal/functions </span> (whole folder)<br />
+<span class="filename">/includes/modules/payment/paypal/images </span> (whole folder)<br />
+<span class="filename">/includes/modules/payment/paypal/languages </span> (whole folder)<br />
+<span class="filename">/includes/templates/template_default/templates/tpl_bb_modules_default.php</span><br />
+<br />
+<br />
+<h1>Activating the <em>PayPal</em> Payment Module </h1>
+In each of 1.2.1, 1.2.2, 1.2.3, and 1.3.0, the PayPal module had overhauls. If you are using the PayPal module, you'll need to reactivate it after installing the new files:<br />
+To activate it, you'll need to "Remove" and "Install" the PayPal module in <span class="filename"> Admin | Modules | Payment</span>.  <br />
+<br />
+Take note of the email addresses already configured in your PayPal module before removing, so you can re-enter them after Installing the module again.<br />
+</div>
+</td>
+</tr>
+</table>
+<br /><br />
+<p align="center"><em>Zen Cart&trade; Copyright 2005</em></p>
+</body>
+</html>

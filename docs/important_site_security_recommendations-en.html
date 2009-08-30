@@ -1,0 +1,146 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: important_site_security_recommendations-en.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:11px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40; background-color: #d7e0f2; }
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+.style1 {font-size: 10}
+
+
+-->
+</style>
+<title>Site Security Recommendations for Zen Cart(tm)</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center>
+<h1 class="intro">Zen Cart&trade; Site Security </h1>
+</center>
+<span class="style1">The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License. <br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em></span><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<h1 align="center">STEPS IN SECURING YOUR ZEN CART&trade; STORE </h1>
+<p>The following is a list of several steps you can take to secure your Zen Cart&trade; site:  </p>
+<h1>1. Delete the /zc_install folder </h1>
+<p>Once installation is complete, delete the <span class="filename">/zc_install</span> folder from the server. <br />
+Don't simply rename the folder, as this leaves you vulnerable if someone were to discover this renamed folder.
+</p>
+<h1>2. Set configure.php files read-only</h1>
+<p>It's important that you CHMOD (set permissions) on the two configure.php files as read-only.<br />
+Typically this means setting it to &quot;644&quot;, or in some cases &quot;444&quot;.</p>
+<p> If you cannot do this with your FTP software, try using the File Manager supplied with your webhosting account.</p>
+<p> If you're using a Windows server, simply set the file as &quot;Read-Only&quot; for &quot;Everyone&quot; and especially the <strong>IUSR_xxxxx</strong> user if running IIS, or the &quot;System&quot; account or &quot;apache user&quot; if running Apache.</p>
+<h1>3. Rename your &quot;/admin&quot; folder </h1>
+<p>Renaming the &quot;admin&quot; folder makes it much harder for would-be hackers to get into your admin area. </p>
+<p><em>(Before making the following changes, make sure to have a current backup of your files and your database.)</em></p>
+<p>A- Open your <span class="filename">admin/includes/configure.php</span>, using a simple text editor like notepad. <br>
+Change all instances of <span class="filename">/admin/</span> to your chosen new admin folder-name.</p>
+<p>Change this section:</p>
+<p class="filename">define('DIR_WS_ADMIN', '<span class="pseudolink">/admin/</span>');<br>
+define('DIR_WS_CATALOG', '/');<br>
+define('DIR_WS_HTTPS_ADMIN', '<span class="pseudolink">/admin/</span>');<br>
+define('DIR_WS_HTTPS_CATALOG', '/');</p>
+<p>And this section:</p>
+<p><span class="filename">define('DIR_FS_ADMIN', '/home/mystore.com/www/public</span><span class="pseudolink">/admin/</span><span class="filename">');<br>
+define('DIR_FS_CATALOG', '/home/mystore.com/www/public/');</span></p>
+<p>B- Find your Zen Cart<span class="filename"> /admin/</span> directory, using your FTP software or your webhost File Manager.<br />
+Rename the directory to match the settings you just made in your <span class="filename">admin/includes/configure.php</span>.</p>
+<p>C - You should also protect your admin area by using a .htaccess file similar to the one shown below, and placing it into /admin/includes. (This should already exist in Zen Cart versions 1.2.7 and greater.) </p>
+<h1>4. Delete any unused Admin accounts </h1>
+<p><span class="filename">Admin-&gt;Tools-&gt;Admin Settings</span><br />
+In your admin area, open the <strong>Tools </strong>menu, and choose <strong>Admin Settings</strong><br />
+- Check for any unused admin accounts, and delete them. Especially the &quot;Demo&quot; account, if it exists.</p>
+<h1>5. Admin Password Security </h1>
+<p><strong>It is wise to use complicated passwords so that a would-be hacker cannot easily guess them.</strong><br />
+<br />
+<span class="error">You can change your admin password</span> in Admin-&gt;Tools-&gt;Admin Settings, and click on the &quot;<strong>Reset Password</strong>&quot; button, or click on the icon that looks like a recycle symbol. </p>
+<p>We recommend that you use passwords that are at least 8 characters long.<br /> 
+Making them alpha-numeric (including letters, numbers, upper-and-lower-case, etc) helps too.</p>
+<h1>6. Protect your &quot;define pages&quot; content in &quot;html_includes&quot; </h1>
+<p>After you have finished editing your <strong>define pages</strong> (Admin-&gt;Tools-&gt;Define Pages Editor), you should protect them:</p>
+<p> A. Download a copy of them to your PC using your FTP software.  They are located in the <span class="filename">/includes/languages/english/html_includes</span> area.</p>
+<p>B. Make them CHMOD 644 or 444 (or &ldquo;read-only&rdquo; for Windows hosts). See notes above on CHMOD. <br>
+<span class="filename">/includes/languages/english/html_includes</span> &ndash; and all files/folders underneath</p>
+<p>If you make them read-only, then a would-be hacker cannot edit them if they gain access to your system, unless they can get permissions to change the read-only status, which is more complicated.<br />
+<br />
+<span class="error">NOTE: Of course, once you set them read-only, then you'll have to go and set them read-write before making additional changes using the define-pages editor. </span></p>
+<h1>7. Use .htaccess files to protect against unwanted snooping </h1>
+<p>In several folders, there are<span class="filename"> .htaccess </span>files to prevent users from being able to browse through the files on your site unless they know exact filenames. Some also prevent access to &quot;any&quot; .PHP scripts, since it's expected that all PHP files in those folders will be accessed by other PHP files, and not by a browser directly. This is good for security.<br />
+If you delete these files, you run the risk of leaving yourself open to people snooping around.</p>
+<p>There are also some semi-&quot;blank&quot; <span class="filename">index.html</span> files in several folders. These files are there to protect you in case your FTP software won't upload .htaccess files, or your server won't accept them. These only prevent directory browsing, and do not stop execution of .PHP files. It's a good &quot;alternative&quot;, although using <span class="filename">.htaccess</span> files in ALL of these folders is  the better choice, for servers that accept them.</p>
+<p>Suggested content for <span class="filename">.htaccess</span> files in folders where there is an <span class="filename">index.html</span> file <span class="error">but NOT</span> yet an <span class="filename">.htaccess</span> file would be something like the following (depends on your server configuration):<br />
+<div class="callout"><span class="filename">#.htaccess to prevent unauthorized directory browsing or access to .php files <br />
+&nbsp;&nbsp;&nbsp;IndexIgnore */*<br>
+&nbsp;&nbsp;&nbsp;&lt;Files *.php&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Order Deny,Allow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Deny from all<br>
+&nbsp;&nbsp;&nbsp;&lt;/Files&gt;</span><br>
+</div>
+<p>If your webhost configuration doesn't allow you to create/use your own <span class="filename">.htaccess</span> files, sometimes they provide an interface in your hosting admin control panel where you can set the desired <span class="filename">.htaccess</span> settings. </p>
+<p>It is recommended that you work with your host to configure these settings if this is the method they require. <span class="error">You need to choose -- and use -- the appropriate method for your server.</span> As mentioned above, it's best to work with your web hosting company to select and implement the best method for your specific server. We can't tell you what to use for your specific server, but we offer these guidelines as a starting point.</p>
+<h1>Disable &quot;Allow Guest To Tell A Friend&quot; feature </h1>
+You may wish to go to Admin-&gt;Email Options-&gt;Allow Guest To Tell A Friend and set the option to 'false'. This will prevent non-logged-in customers from using your server to send unwanted email messages. <br />
+</td>
+</tr>
+</table>
+<div align="center"><br />
+<em>Copyright 2006 Zen Cart</em> <br />
+<br />
+<br />
+</div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: whatsnew_1.3.0.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:11px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+h5 { color: #5778ce;	font-size: 16px; margin-bottom:0px; margin-top:0px; }
+.style2 {color: FF0000; font-weight: bold; }
+
+
+-->
+</style>
+<title>What's New in Zen Cart(tm) v1.3.0</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<h1>NOTE FOR UPGRADERS</h1>
+<p><strong>If you are using PayPal</strong>, you'll need to REMOVE and re-INSTALL the paypal payment module in Admin-&gt;Modules-&gt;Payment, after upgrading.<br />
+  <br />
+If you need a reference for paypal settings, <a href="./3.readme_paypal_ipn.html" target="_blank">see the Zen Cart + Paypal Setup document in the /docs folder</a>, or refer to <a href="https://www.paypal.com/en_US/pdf/integration_guide.pdf " target="_blank">the paypal site for technical documentation</a>.</p>
+<h1>CHANGELOG - List of Changed Files </h1>
+<p>For a list of files that have been changed since v1.2.6, see the <a href="./changelog-v1-3-0.html" target="_blank">changelog-v1-3-0.html</a> </p>
+<h1>Whats New ... </h1>
+<h3><strong>The following are the major NEW ADDITIONS to v1.3.0d: </strong></h3>
+<h2><strong>Template System Cleanup</strong></h2>
+<ul>
+<li> All catalog pages are XHTML-Compliant (XHTML Transitional) <br />
+</li>
+<li>Template layouts have been redesigned with customer-usability in mind <br />
+</li>
+<li>Business Logic has been removed from templates, leaving only display logic where needed.<br />
+This means template files are smaller, tidier, easier to follow, and easier to customize.<br />
+To accomplish this, many components have been refactored as modules.
+<br />
+</li>
+<li>Enhancements<br />
+- breadcrumbs can be enabled/disabled via admin switch<br />
+</li>
+<li>New button-set for default/demo templates </li>
+</ul>
+<h2><strong>Added Features </strong></h2>
+<ul>
+<li><strong>New Unlimited EZ-Pages</strong><br />
+Inspired by sunrom's &quot;Unlimited Information Pages&quot; contribution, EZPages has been integrated into the core code, and enhanced to enable use in header, footer, or even sidebox.<br />
+It's even possible to have more than one sidebox, with a few coding alterations.<br />
+Enabling/disabling placement and sort order is all handled from the admin interface under the &quot;Tools-&gt;EZ-Pages&quot; menu.<br />
+You can even group pages into chapters, and also specify a TOC (Table of Contents) for a certain chapter, which also allows a previous/next navigation through that chapter's pages.<br />
+Also allows for SSL mode and &quot;open in new window&quot; mode on a per-page basis. <br />
+Currently only supports a single language. <br />
+</li>
+<li><strong>CSS Stylesheet control on a per-page basis</strong><br />
+Inspired by Juxi Joza's contribution, you can now use a different stylesheet for each page of your site, including per-product or per-manufacturer or per-language delineations.<br />
+Also added printer-friendly stylesheet support (css/print*.css files) <br />
+See the <a href="./readme_css_system.html" target="_blank">readme_css_system.html</a> for more information.
+<br />
+</li>
+<li><strong>PHPMailer</strong><br />
+The email subsystem has been replaced with the popular PHPMailer class. This will work around many limitations to the older legacy email subsystem which resulted in odd email problems with various hosting configurations and various email clients having problems reading contents.<br />
+</li>
+<li><strong>PayPal IPN updated</strong><br />
+Added missing code to process e-checks<br />
+Added debug facility
+<br />
+<em>(NOTE: Requires that you &quot;remove&quot; and re-&quot;install&quot; your Paypal payment module in Admin)</em> <br />
+</li>
+<li> <strong>Site Map and 404 trapper</strong> <br />
+Inspired by NetworkDad's contribution and langer's error404 contribution as well as suggestions/contributions by several others, the Site Map link (now in the Information sidebox) shows a navigable map of all categories and some core static pages. Great &quot;spider food&quot;!<br /> 
+Enabling the switch to trap for &quot;page not found&quot; and &quot;product not found&quot; errors, also takes customers (and spiders) to the Site Map for alternate choices for finding their intended link.<br />
+Sample .htaccess for &quot;page-not-found&quot; support can be found in the &quot;extras&quot; folder. <br />
+</li>
+<li><strong>PHP Minimum Version</strong> requirement is now PHP v4.3.2<br />
+We have raised the minimum supported configuration to PHP v4.3.2 due to the number of bugs fixed to that point. Some session-handling features in 4.3.2 function much more smoothly than in versions previous to that. Specifically, Zen Cart's &quot;recreate session&quot; switch only functions on PHP v4.3.2 or higher. Functionally-speaking, Zen Cart &quot;will&quot; still operate on PHP versions as low as 4.1.2, but you run the risk of odd login/security problems and some email issues.<br />
+If you run into problems with Zen Cart and are using a PHP version prior to v4.3.2, we suggest you strongly encourage your host to upgrade, or to move you to a server that 'is' upgraded.<br />
+</li>
+<li><strong>Notifier Subsystem</strong><br>
+  The notifier subsystem allows you to &quot;hook&quot; into various cart events to alter the normal behaviour of standard activities. One possible use for this is the potential to activate a &quot;buy one get one free&quot; sort of feature during checkout.
+    <br>
+    See <a href="http://www.zen-cart.com/wiki/index.php/Developers_API_Tutorials#Observer_Class">wiki</a> for detailed explanations and examples. <br />
+</li>
+<li><strong>Coding optimization</strong>:<br />
+- autoloader system implemented to replace application_top. Now split out into several separate components, found in the &quot;init_includes&quot; folder. Any customizations to these files can be overridden by using the &quot;override&quot; folder.<br />
+- javascript &quot;modules/pages/xxxx/jscript*.js&quot; files now supported for inclusion by reference rather than only as inline javascript sent to the browser (from &quot;jscript*.php&quot; files). <br>
+- More documentation in the <a href="http://www.zen-cart.com/wiki/index.php/Developers_API_Tutorials#InitSystem">wiki</a><br />
+</li>
+<li><strong>Admin Multiple Categories Links Manager</strong> navigation enhanced </li>
+<li><strong>NEW shipping modules</strong><br>
+  - <strong>freeoptions</strong> - offers the ability to have free shipping while any of the other shipping modules are displayed. It can be based on any combination of total, items, or weight. (The older &quot;freeshipper&quot; was free-only, the new freeoptions allows combinations.) <br>
+  - <strong>perweightunit</strong> - allows to charge shipping based strictly on the weight of the entire order. (this could be cloned on a per-currency level if needed, etc) </li>
+<li><strong>Category Metatags</strong> support added<br>
+  Now you can configure metatag information specific to individual categories.
+  <br />
+</li>
+<li><strong>Attributes System</strong><br />
+- Added textarea option on TEXT attributes, defined in Option Name Manager, allowing multi-line text-input attribute fields. <br>
+- 
+Attribute Controller delete all Option Values to 1 Option Name with confirmation<br /> 
+</li>
+</ul>
+<h1>Other Changes in 1.3.0: </h1>
+<h3><strong>The following are additional changes/fixes in v1.3.0</strong>:</h3>
+<ul>
+  <li>Various SQL updates implemented for improved MySQL 5 compatibility</li>
+  <li>Paypal module now processes echecks </li>
+  <li><span class="filename">admin/includes/configure.php</span> now contains DIR_FS_DOWNLOAD. Previously it was defined in admin/download_manager.php. It is advised to add this entry to your admin/includes/configure.php during an upgrade, as future releases may not retain the definition in the download_manager file.</li>
+  <li>NEW: Moved meta-tag separators out of modules/meta_tags.php into english/meta_tags.php </li>
+<li>NEW: If a category contains only one product, clicking on that category now takes you directly to that product's page (can disable this in admin). </li>
+<li>NEW: &quot;information&quot; sidebox links can be enabled/disabled via admin switches </li>
+<li>NEW: Added ability to skip sending certain email confirmations by defining EMAIL_MODULES_TO_SKIP</li>
+<li>NEW: Admin home page now shows visitor history statistics for the last 10 days. </li>
+<li>NEW: Admin Order-Edit page now allows shopowner to click and mask-out CC/CVV info</li>
+<li>NEW: Admin Order-Edit page is more printer-friendly</li>
+<li>NEW: Option to clear Admin Activity Log added to Admin-&gt;Tools-&gt;Store Manager   </li>
+<li>NEW: Admin Server Information page now shows version-history info </li>
+<li>NEW: added admin support to prevent menu from appearing behind input boxes in IE </li>
+<li>NEW: Language overrides for english.php do NOT need to be complete files. Only need &quot;changed&quot; defines in the override file, since the master is loaded after the override.</li>
+<li>NEW: Customer can remove a discount coupon from their order by entering REMOVE for code  </li>
+<li>NEW: Products can now be free-shipping if virtual OR a combo of virtual plus physical (thus downloads are available AND stock is decreased when the product is ordered) </li>
+<li>Enhanced logic for attribute pricing based on Customer Store Status and Customer 
+Authorization</li>
+<li>Enhanced Whos-Online information display. Spiders' info grouped together and more reliable. </li>
+<li>Changed products_options_values field in database to BLOB format to allow more content </li>
+<li>docblock headers added to changed files</li>
+<li>Added &quot;down for maintenance&quot; notice in admin as well as catalog </li>
+<li>Security enhancements to prevent register_global and xss hacks.</li>
+<li>Several database index definitions were updated.</li>
+<li>Demo database contents updated for stronger XHTML compliance </li>
+<li>Breadcrumb trail in catalog now leaves last entry &quot;not&quot; as a live link. Can turn on again in admin. </li>
+<li>Admin product/categories breadcrumb trail reversed ... to make it more intuitive.</li>
+<li>Installer code optimized to better handle version detection and consolidate functions</li>
+<li>Enhance: zen_db_perform function now accepts upper-case or lower-case parameters </li>
+<li>Enhance: Split_page_results also accepts upper- and lower-case parameters (thx to forum tips) </li>
+<li>Unsubscribe URL is now shorter -- shortened parameter to just 'addr'</li>
+<li>Admin login boxes are now aligned </li>
+<li>Admin &quot;shopping_cart&quot; class &amp; &quot;validations&quot; functions dropped - now uses catalog version</li>
+<li>Admin &quot;modules&quot; (pay/ship/ot) now auto enter &quot;edit&quot; mode upon installation </li>
+<li>SQL errors now explain the full query for easier troubleshooting</li>
+<li>Session-handling improvements </li>
+<li>Enhance: email system now checks more aggressively for injection attempts</li>
+<li>Enhance: email attempts to display currency symbols more accurately   </li>
+<li>extra_main_template_vars overrides improved </li>
+<li>Bugfix - Rounding problems related to tax-calculations</li>
+<li>Bugfix to catch more installer error messages ... in some rare cases were being ignored.</li>
+<li> Bugfix - Product Notification selections on checkout now get stored properly </li>
+<li>Bugfix - Checkout-Shipping -- calculations were evaluating as cheapest when results were false vs actually cheapest.</li>
+<li> Bugfix -- product_music_info wasn't loading extra_main_template_vars overrides properly.</li>
+<li> More detailed error messages now appear when SQL problems occur.</li>
+<li>Bugfix: Admin coupon-admin page navigates more friendly.</li>
+<li>Bugfix: Admin specials navigation fixes.</li>
+<li>Bugfix: Developers Toolkit no longer dies with &quot;permission denied&quot; when searching directories for which it doesn't have read privileges.</li>
+<li>Bugfix: whos_online was missing a define in admin area.</li>
+<li> Per-page language files now load both the override file, and then the master file, so that missed definitions are not lost.</li>
+<li> Bugfix: zen_href_link() now uses DIR_WS_HTTPS_CATALOG path when building SSL links.</li>
+<li> Bugfix: free-shipping wasn't always being calculated properly when zero-weight=free.</li>
+<li>Bugfix: gv_send wasn't always trapping for error conditions properly. Timeout extended also. </li>
+<li>Bugfix: corrected missing error messages in Admin area </li>
+<li>Bugfix: group pricing and coupons/GV calculations tidied</li>
+<li>Bugfix: tpl_account_default wasn't properly listening to the admin switches for newsletter-unsubscribe and cust-product-notification-status, and didn't properly disable display of both links if both were set to disabled in admin. </li>
+<li>Bugfix: fixed proportional image bug where images that are smaller than defined image sizes were proportionally enlarged beyond proper resolution</li>
+<li>update product-listing templates to use a gif button instead of hard-coded button for Multiple Add To Cart</li>
+<li>Bugfix: coupon restrictions had conflicts between allowed and disallowed products </li>
+<li>Bugfix: smarter &lt;noscript&gt; code for multiple product images </li>
+<li>Breadcrumb &quot;home&quot; link now has 'short' URL </li>
+<li>Bugfix: when unlinking a product from multiple categories, now keeps connection to current category </li>
+<li>Bugfix: minor syntax updates to styles in HTML email templates </li>
+<li>Bugfix: session timeout problem resolved when moving from http to https domains</li>
+<li> Bugfix: currencies and languages sideboxes were displaying on checkout incorrectly</li>
+<li>Bugfix: product_music product type was not deleting relational records if product was deleted. Fix included adding override support at the per-product-type level for deletions. </li>
+<li>Bugfix: cascading deletes for entire category now also handles prod-type-specific content </li>
+<li>Enhanced: Switch added to downloads manager to allow non-redirected downloads to be streamed in chunks rather than the whole file. Helpful for servers with low PHP memory_limit</li>
+<li> Some debug-only code has been relocated out of template files and into debug_blocks folder</li>
+<li> Bugfix: No longer creates a blank phpBB account if no nickname entered during create-account</li>
+<li> Bugfix: Logoff link no longer shows in header after logging off</li>
+<li>Bugfix: Admin button-bar items now work better when processing items found via search </li>
+<li>Bugfix: fixed javascript bug in authorizenet_aim module if CVV wasn't being captured</li>
+<li>Bugfix: Music Genre editor window image option removed--was extraneous and prevented edits </li>
+<li>Bugfix: Music Media Manager error if media was mistakenly not added to collection </li>
+<li>Bugfix: Media Manager wasn't trapping errors during upload of clips if folder not writable </li>
+<li>Bugfix: Group Pricing &quot;deletes&quot; handle warnings and deletions smarter </li>
+<li>Bugfix: Newsletters/Products-Notifications now skips ob_flush if irrelevant</li>
+<li>Bugfix: GV usage is now cleared properly post-checkout </li>
+<li>messageStack code and dependencies on boxes class changed significantly  </li>
+<li>phpBB code moved out of the &quot;sniffer&quot; class into its own dedicated class </li>
+<li>Renamed several files in the &quot;docs&quot; folder due to case-sensitivity issues in some browsers </li>
+<li>Extraneous image files removed from distribution. Several new images added for newer template resources.</li>
+<li>&quot;empty.txt&quot; files removed except for in sample &quot;classic&quot; override folders</li>
+<li>blue_strip template removed  </li>
+<li></li>
+<li>main_template_vars_images.php is now handled by modules/main_product_image.php &amp; template file </li>
+<li> main_template_vars_images_additional is now handled by modules/additional_images.php &amp; template file </li>
+<li>main_template_vars_attributes.php is now handled by modules/attributes.php and template </li>
+</ul>
+<ul>
+  <li>tpl_list_box_content.php is now handled by tpl_columnar_display.php and tpl_tabular_display.php, depending on whether you require tables (tabular) as output. </li>
+</ul>
+<p>&nbsp;</p>
+<h1>IMPORTANT NOTES </h1>
+<ul>
+<li><span class="error">Please be sure to review and apply the <a href="./important_site_security_recommendations.html" target="_blank">Site Security Recommendations</a> to your site prior to taking your shop &quot;live&quot;.</span> If you are uncertain about how site security applies to you, talk to your web host to ensure that you have proper measures in place. <br />
+</li>
+<li>XHTML Compliance:  For true XHTML compliance, you should verify that all your product descriptions are fully XHTML-compliant. Also, any custom pages you have created or modified may need to be reviewed individually for XHTML compliance. </li>
+</ul>
+<ul>
+  <li>You may wish to go to Admin-&gt;Email Options-&gt;Allow Guest To Tell A Friend and set the option to 'false'. This will prevent non-logged-in customers from using your server to send unwanted email messages. (This is turned off by default on fresh installs. Upgraders should consider turning this off manually.) </li>
+</ul>
+<h1>Notes for Upgraders ... from v1.2.x to v1.3.0</h1>
+The following items are things you should pay particular attention to when upgrading your files from v1.2.x to v1.3.0:
+<ul>
+<li><h5>admin/includes/configure.php</h5>
+<span class="filename">admin/includes/configure.php</span> now contains <span class="filename">DIR_FS_DOWNLOAD</span> for fresh installs. Previously it was defined in<span class="filename"> admin/download_manager.php</span>. It is advised to add this entry to your <span class="filename">admin/includes/configure.php</span> MANUALLY during an upgrade, as future releases may rely on this setting being set as such. <br />
+</li>
+<li><h5>meta_tags custom separators</h5>
+meta_tags.php: 'PRIMARY_SECTION', 'SECONDARY_SECTION', 'TERTIARY_SECTION' moved <strong>from </strong><span class="filename">modules/meta_tags.php </span><strong>into</strong> <span class="filename">languages/english/meta_tags.php</span> <br />
+</li>
+<li><h5>DEFINE PAGES</h5>
+If your active template is 'classic', then you need to BE CAREFUL to not overwrite your customized files in the<span class="filename"> /includes/languages/english/html_includes/classic/*.* </span>area.<br>
+<span class="style2">NOTE: BEFORE UPGRADING, it is wise to make a backup copy of all the files/folders in:</span> <span class="filename">/includes/languages/english/html_includes</span><br />
+</li>
+<li><h5>Tell a friend</h5>
+  You may wish to go to Admin-&gt;Email Options-&gt;Allow Guest To Tell A Friend and set the option to 'false'. This will prevent non-logged-in customers from using your server to send unwanted email messages. (This is turned off by default on fresh installs. Upgraders should consider turning this off manually.) </li>
+</ul>
+<h1>UPGRADING YOUR TEMPLATES </h1>
+Zen Cart&trade; has had a major overhaul of the templating system for v1.3.0.  As such, you have two options:
+<ul>
+<li>
+upgrade your existing template by applying the new stylesheet and moving a few lines of code around; or</li>
+<li>the best way to have almost-tableless and much tidier template code, is to make a new template and carefully re-apply your own customizations to the new template system.</li>
+</ul>
+
+
+<p>For further information on template upgrading, see the forum discussion on this topic. </p></td>
+</tr>
+</table>
+<br /><br />
+<br /><br />
+</body>
+</html>

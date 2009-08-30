@@ -1,0 +1,166 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: important_site_security_recommendations.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:11px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40; background-color: #d7e0f2; }
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+.style1 {font-size: 10}
+
+
+-->
+</style>
+<title>Site Security Recommendations for Zen Cart(tm)</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center>
+        <h1 class="intro">Zen Cart&#8482;サイト　セキュリティー...</h1>
+      </center>
+<br />
+Zen Cart&trade;GNU General Public License の下、ソフトウェアの利用、機能の追加、変更などに費用がかかることはありません。 
+<br />
+<br />
+
+ソフトウェアのご利用に費用はかかりませんが、あなたがこのソフトウェアの新バージョンをダウンロードした機会などに寄付していただくことは、常に歓迎いたします。このことは、Zen Cartのメンテナンス、機能のアップグレード、無料のサポートフォーラム、そしてあなたのオンラインショップ構築ソフトの継続的なサポートに役立つのです。 
+<br />
+<br />
+寄付はこちらのURLでしていただけます：
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>/<a href="http://www.zen-cart.jp/59.html" target="_blank">日本語版「Zen Cartに貢献する」</a>
+<br />
+<br />
+あなたのサポートに感謝いたします。<br />
+<em>Zen Cart? 開発チーム一同</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade;はosCommerceから派生しました。/ Copyrightc 2003 osCommerce<br />
+このプログラムは利用者のお役に立つことを願い、しかし一切の保証なしに提供されています。<br />
+商品としての適格性(MERCHANTABILITY)や、特定目的への適合(FITNESS FOR A PARTICULAR PURPOSE)についての暗黙の保証もしておりません。<br />
+このソフトウェアは、GNU General Public Licenseの下、再配布することができます。<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+このソフトウェアはOSIが認証したオープンソースソフトウェアです。<br />
+OSIはOpen Source Initiativeが認証したというマークです。
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+    <td> <h1 align="center">あなたのZEN CART&#8482;を安全にするステップ</h1>
+      <p>下記のステップはあなたのZEN CART！&#8482;サイトを安全にします：</p>
+      <h1>1./zc_installフォルダーを削除する</h1>
+      <p>一度完全にインストールすれば、サーバーから <span class="filename">/zc_install</span>フォルダーを削除しましょう。<br>
+        名前を付けなおしたフォルダーを見つけて攻撃を受けやすくしたようなフォルダー名にしないでください。</p>
+      <h1>2. configure.phpファイルの属性（パーミッション）をread-onlyにする</h1>
+      <p>２つのconfigure.phpの属性（パーミッション）を変更することが重要です。これは属性（パーミッション）を&quot;644&quot;,場合によっては&quot;444&quot;に設定することを 
+        意味します。<br>
+        It's important that you CHMOD (set permissions) on the two configure.php 
+        files as read-only.<br />
+        Typically this means setting it to &quot;644&quot;, or in some cases &quot;444&quot;.</p>
+      <p> FTPソフトで変更出来なければ、貴方のサーバーのアカウントで提供されているファイルマネージャを使って試してください。</p>
+      <p> Windowsサーバーの場合、&quot;Everyone&quot;を&quot;Read-Only&quot;としてファイルを設定してください。特にIISの場合、IUSR_xxxxx 
+        userは設定してください。もしくは &quot;System&quot; かApacheが機能しているなら &quot;apache user&quot;。</p>
+<h1>3. &quot;/admin&quot;のリネーム</h1>
+      <p>&quot;admin&quot;フォルダーのリネームをすることでハッカーが管理者エリアに進入し難くします。</p>      
+      <p><em>（以下の変更をする前に、ファイルをデータベースのバックアップをしましょう。）</em></p>
+<p>A- admin/includes/configure.phpを開き、ノートパッドの様なエディターを使い、新しいadminのフォルダー名を/admin/の代わりに 
+        変更しましょう。<br>
+      </p>
+      <p>この箇所を変更します（青字部分）：</p>
+<p class="filename">define('DIR_WS_ADMIN', '<span class="pseudolink">/admin/</span>');<br>
+define('DIR_WS_CATALOG', '/');<br>
+define('DIR_WS_HTTPS_ADMIN', '<span class="pseudolink">/admin/</span>');<br>
+define('DIR_WS_HTTPS_CATALOG', '/');</p>
+      <p>そしてこの箇所も（青字部分）：</p>
+<p><span class="filename">define('DIR_FS_ADMIN', '/home/mystore.com/www/public</span><span class="pseudolink">/admin/</span><span class="filename">');<br>
+define('DIR_FS_CATALOG', '/home/mystore.com/www/public/');</span></p>
+      <p>B- Zen Carのt<span class="filename">/admin/</span> ディレクトリーにFTPソフトかwebホスティングのファイルマネージャを使って、<br>
+        　　ディレクトリーを<span class="filename">admin/includes/configure.php</span>.で行ったセッティングと合う様にリネームしましょう。<br>
+        <br>
+        C-.htaccessファイルを使って管理者エリアを守りましょう。配置場所は/admin/includesの中です。（Zen Cartのバージョンが<br>
+        　　　1.2.7かそれ以上の場合はすでにあります。）</p>
+      <h1>4. 使用しない管理者アカウントは削除</h1>
+      <p><span class="filename">管理者画面 -&gt; 追加設定・ツール -&gt; 管理者の設定</span><br />
+        管理者エリアで<strong>追加設定・ツール</strong>を開き、<strong>管理者の設定</strong>を選びます。そして、使われていない管理者アカウントをチェックします。 
+        特に &quot;Demo&quot;アカウントがあれば削除します。I</p>
+      <h1>5. 管理者のパスワードの保護</h1>
+      <p><strong>ハッカーが簡単に考えられない複雑なパスワードを使用することが懸命です。</strong><br />
+        <br />
+        管理者画面 -&gt; 追加設定・ツール -&gt; 管理者の設定で<span class="error">管理者のパスワードの変更が出来ます。</span>”<strong>パスワードをリセット</strong>”かもしくはリサイクルマークの様なアイコンをクリックします。</p>
+      <p>８文字以上のパスワードの使用をお薦めます。パスワードとして記号と文字を使用した物もよいでしょう。</p>
+      <h1>6. &quot;html_includes&quot;の&quot;define pages&quot;の内容の保護</h1>
+      <p><strong>定番ページの編集</strong>が終わった後(管理者メニュー-&gt;追加設定・ツール-&gt;定番ページの編集)、編集したものを保護しましょう：</p>
+      <p> A. FTPソフトを使って編集したファイルをダウンロードします。そのファイルは<span class="filename">/includes/languages/japanese/html_includes</span> 
+        に　　あります。</p>
+      <p>B. 編集したファイルの属性（パーミッション）を644もしくは444にします。上記の属性（パーミッション）を参照下さい。<br>
+        　　<span class="filename">/includes/languages/japanese/html_includes</span>　そしてフォルダーの中の全てのファイル。</p> 
+      <p>属性の変更を行ったら、ハッカーはもっとも複雑化されたread-onlyを変える許可を得ない限りシステムにアクセスしてもファイルを編集出来ないでしょう。<br />
+        <br />
+        <span class="error">NOTE: もちろん、ファイルをに属性（パーミッション）をread-onlyに設定すると、定番ページの編集で追加変更をする前に属性（パーミッション）をread-writeに設定する必要があります。<br>
+        </span></p>
+      <h1>7. 無用なスヌーピング（のぞき見）から守るために.htaccessファイルの利用</h1>
+      <p>複数のフォルダーの<span class="filename">.htaccess</span>は正確なファイル名を知らない限り貴方のサイトのファイルの閲覧からユーザーを防ぎます。<br>
+        ”どの”PHPスクリプトへのアクセスを防ぎます。それらのフォルダーの中の全てのPHPファイルは他のPHPファイルにアクセ<br>
+        スされる、直接的にブラウザーでアクセスされないもしも、これらのファイルを削除すると、他の人がのぞき見回る為に開くリスクにさらされます。</p>
+      <p>また、複数フォルダーに&quot;blank” <span class="filename">index.html</span>があります。これらのファイルはFTPソフトが.htaccessをアップロードしない、もしくは<br>
+        サーバーが.htaccessを受け付けない場合に貴方を守るためにあります。ディレクトリーの閲覧を防ぐだけのこれらは、.PHPファイルの実行を止めません。 
+        全てのフォルダーへの.htaccessの利用はサーバーが<span class="filename">.htaccess</span>を受け付けるのであれば良い選択ですが、&quot;blank&quot; 
+        index.htmlも良い”選択肢”です。<br>
+        <br>
+        index.htmlファイルがあるフォルダーの <span class="filename">.htaccess</span> ファイル内容が<span class="error">まだ</span>設定されていない場合<span class="filename">.htaccess</span> 
+        ファイルは 以下のようなものになります。（サーバーの設定によります）：<br>
+      </p>
+      <div class="callout"><span class="filename">#.権限のない（許可されていない）ディレクトリーのブラウジングもしくは.PHPファイルへのアクセスを防ぐ<br>
+        　.htaccess<br />
+        &nbsp;&nbsp;&nbsp;IndexIgnore */*<br>
+        &nbsp;&nbsp;&nbsp;&lt;Files *.php&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Order Deny,Allow<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Deny from all<br>
+        &nbsp;&nbsp;&nbsp;&lt;/Files&gt;</span></div>
+      <p>もしも、あなたのサーバー設定であなた自身の <span class="filename">.htaccess</span>を作る/使う事が許されていないなら、 
+        望む <span class="filename">.htaccess</span>の設定が設置が出来るコントロールパネルの画面が用意されている場合があります。</p>
+      <p>これがホスティング会社が必要とする方法であればサーバーにこれらの設定をすることを薦めます。<span class="error">サーバーに適切な方法を選び使用することが必要です。</span> 
+        上記に触れたとおり、あなたのサーバーに対して最良の方法を選択し提供するサーバー会社を利用するのがベストです。あなたがどのサーバーを使うかは 
+        わかりませんが、スタートポイントとしてこれらのガイドラインを提供します</p>
+      <h1>&quot;友達に知らせる&quot;を利用不可にする</h1>
+      ”一般設定-&gt;メールの設定-&gt;友達に知らせる”で設定を’off'に設定します。これはログインしていない利用者があなたのサーバーから不必要なメールを送る 
+      事を防ぎます。<br />
+</td>
+</tr>
+</table>
+<div align="center"><br />
+<em>Copyright 2006 Zen Cart</em> <br />
+<br />
+<br />
+</div>
+</body>
+</html>

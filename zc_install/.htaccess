@@ -1,0 +1,15 @@
+# $Id: .htaccess 3781 2006-06-16 04:33:28Z drbyte $
+
+# The following disables mod_security in apache, which may be necessary during installation
+# This file should only be used INSIDE the zc_install folder. Using the following directive elsewhere can
+# cause security problems on your site. Talk to your webhost if you are concerned about its effects.
+
+<IfModule mod_security.c>
+    SecFilterEngine Off
+    SecFilterScanPOST Off
+</IfModule>
+
+## If for some reason the above doesn't produce the desired results, simply remove the # from the 
+## following lines:
+#SecFilterEngine off
+#SecFilterScanPOST Off

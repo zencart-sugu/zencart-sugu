@@ -1,0 +1,193 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: changelog-v1-3-0-2.html 3826 2006-06-21 17:47:38Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+
+
+-->
+</style>
+<title>Zen Cart(tm) Changelog</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+<tr><td>
+<h1 align="center" class="intro">Version 1.3.0.2</h1>
+NOTE: For a listing of What's New in this release, please see the <a href="whatsnew_1.3.0.2.html" target="_blank">whatsnew_1.3.0.2.html</a> file in the <span class="filename">/docs</span> folder. <br />
+<br />
+The following is a list of FILE changes:
+<h1>Changed Files (since  release of v1.3.0.1)</h1>
+<p>/admin/coupon_admin.php<br>
+  /admin/coupon_restrict.php<br>
+  /admin/gv_sent.php<br>
+  /admin/languages.php<br>
+  /admin/orders.php<br>
+  /admin/reviews.php<br>
+  /admin/specials.php<br>
+  /admin/tax_classes.php<br>
+  /admin/includes/init_includes/init_templates.php<br>
+  /admin/includes/languages/english.php<br>
+  /admin/includes/languages/english/coupon_admin.php<br>
+  /admin/includes/languages/english/coupon_restrict.php<br>
+  /admin/includes/languages/english/specials.php<br>
+  /admin/includes/languages/english/tax_classes.php<br>
+  /admin/includes/modules/products_previous_next.php<br>
+  /docs/0.about_zen_cart.html<br>
+  /docs/1.readme_installation.html<br>
+  /docs/2.readme_how_to_upgrade.html<br>
+  /docs/3.readme_paypal_ipn.html<br>
+  /docs/4.readme_html_email_templates.html<br>
+  /docs/5.renaming_the_admin_directory.html<br>
+  /docs/changelog-v1-3-0-1.html<br>
+  /docs/changelog-v1-3-0.html<br>
+  /docs/important_site_security_recommendations.html<br>
+  /docs/index.html<br>
+  /docs/product_types_readme.html<br>
+  /docs/whatsnew_1.3.0.1.html<br>
+  /docs/whatsnew_1.3.0.html<br>
+  /email/email_template_gv_mail.html<br>
+  /includes/version.php<br>
+  /includes/classes/message_stack.php<br>
+  /includes/functions/audience.php<br>
+  /includes/functions/functions_email.php<br>
+  /includes/functions/functions_ezpages.php<br>
+  /includes/functions/functions_general.php<br>
+  /includes/functions/html_output.php<br>
+  /includes/functions/sessions.php<br>
+  /includes/functions/whos_online.php<br>
+  /includes/init_includes/init_sanitize.php<br>
+  /includes/languages/english.php<br>
+  /includes/languages/english/account.php<br>
+  /includes/modules/checkout_new_address.php<br>
+  /includes/modules/create_account.php<br>
+  /includes/modules/meta_tags.php<br>
+  /includes/modules/product_listing.php<br>
+  /includes/modules/order_total/ot_coupon.php<br>
+/includes/modules/order_total/ot_gv.php<br>
+/includes/modules/pages/account_edit/header_php.php<br>
+  /includes/modules/pages/address_book_process/header_php.php<br>
+  /includes/modules/pages/advanced_search_result/header_php.php<br>
+  /includes/modules/pages/checkout_confirmation/jscript_main.php<br>
+  /includes/modules/pages/checkout_payment/jscript_main.php<br>
+  /includes/modules/pages/checkout_shipping/header_php.php<br>
+  /includes/modules/pages/login/header_php.php<br>
+  /includes/modules/pages/products_all/header_php.php<br>
+  /includes/modules/pages/shopping_cart/header_php.php<br>
+  /includes/modules/shipping/freeoptions.php<br>
+  /includes/modules/sideboxes/shopping_cart.php<br>
+  /includes/templates/classic/css/stylesheet_new.css<br>
+  /includes/templates/template_default/common/html_header.php<br>
+  /includes/templates/template_default/common/tpl_main_page.php<br>
+  /includes/templates/template_default/common/tpl_tabular_display.php<br>
+  /includes/templates/template_default/css/stylesheet.css<br>
+  /includes/templates/template_default/sideboxes/tpl_search.php<br>
+  /includes/templates/template_default/sideboxes/tpl_search_header.php<br>
+  /includes/templates/template_default/sideboxes/tpl_shopping_cart.php<br>
+  /includes/templates/template_default/templates/tpl_account_edit_default.php<br>
+  /includes/templates/template_default/templates/tpl_account_history_info_default.php<br>
+  /includes/templates/template_default/templates/tpl_checkout_success_default.php<br>
+  /includes/templates/template_default/templates/tpl_contact_us_default.php<br>
+  /includes/templates/template_default/templates/tpl_modules_address_book_details.php<br>
+  /includes/templates/template_default/templates/tpl_modules_checkout_new_address.php<br>
+  /includes/templates/template_default/templates/tpl_modules_create_account.php<br>
+  /includes/templates/template_default/templates/tpl_modules_downloads.php<br>
+  /includes/templates/template_default/templates/tpl_modules_shipping_estimator.php<br>
+  /includes/templates/template_default/templates/tpl_password_forgotten_default.php<br>
+  /zc_install/.htaccess<br>
+  /zc_install/mysql_zencart.sql<br>
+  /zc_install/techsupp.php<br>
+  /zc_install/version.php<br>
+  /zc_install/demo/mysql_demo.sql<br>
+  /zc_install/includes/classes/class.installer_version_manager.php<br>
+  /zc_install/includes/classes/installer.php<br>
+  /zc_install/includes/languages/english.php<br>
+  /zc_install/includes/languages/english/inspect.php<br>
+  /zc_install/includes/modules/pages/database_setup/header_php.php<br>
+  /zc_install/includes/modules/pages/database_upgrade/header_php.php<br>
+  /zc_install/includes/modules/pages/inspect/header_php.php<br>
+  /zc_install/includes/modules/pages/system_setup/header_php.php<br>
+  /zc_install/includes/templates/template_default/css/stylesheet.css<br>
+  /zc_install/includes/templates/template_default/templates/database_upgrade_default.php<br>
+  /zc_install/includes/templates/template_default/templates/display_errors.php<br>
+  /zc_install/includes/templates/template_default/templates/inspect_default.php
+  <br>
+</p>
+<h1>Deleted Files</h1>
+<ul>
+<li>none</li>
+</ul>
+<h1>New Files</h1>
+<ul>
+<li>/docs/changelog-v1-3-0-2.html</li>
+<li>/docs/whatsnew_1.3.0.2.html</li>
+<li>/zc_install/db_rebuilt_autoincrement.sql</li>
+<li>/zc_install/mysql_upgrade_zencart_1301_to_1302.sql</li>
+<li>/zc_install/includes/templates/template_default/images/stop.gif</li>
+</ul>
+<h1>&nbsp;</h1>
+</td>
+</tr>
+</table>
+<p align="center"><em>Zen Cart&trade; Copyright 2006</em></p>
+<br /><br />
+</body>
+</html>

@@ -1,0 +1,38 @@
+# +----------------------------------------------------------------------+
+# |zen-cart Open Source E-commerce                                       |
+# +----------------------------------------------------------------------+
+# | Copyright (c) 2003 The zen-cart developers                           |
+# |                                                                      |
+# | http://www.zen-cart.com/index.php                                    |
+# |                                                                      |
+# | Portions Copyright (c) 2003 osCommerce                               |
+# +----------------------------------------------------------------------+
+# | This source file is subject to version 2.0 of the GPL license,       |
+# | that is bundled with this package in the file LICENSE, and is        |
+# | available through the world-wide-web at the following url:           |
+# | http://www.zen-cart.com/license/2_0.txt.                             |
+# | If you did not receive a copy of the zen-cart license and are unable |
+# | to obtain it through the world-wide-web, please send a note to       |
+# | license@zen-cart.com so we can mail you a copy immediately.          |
+# +----------------------------------------------------------------------+
+# $Id: tld.txt 2154 2005-10-13 02:08:55Z drbyte $
+# 
+
+# Original 7 TLDs
+com     # all are eligible to register
+edu     # degree-granting educational institutions of higher education
+gov     # United States Government
+int     # organizations established by international treaties
+mil     # United States Military
+net     # all are eligible to register
+org     # noncommercial community, all are eligible to register
+
+# Recent additions
+aero    # members of the air-transport industry
+biz     # businesses
+coop    # cooperative associations
+info    # all are eligible to register
+museum  # museums
+name    # individuals
+pro     # credentialed professionals
+

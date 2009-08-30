@@ -1,0 +1,120 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: whatsnew_1.3.0.2-l10n-jp-3.html 3812 2006-06-19 22:02:29Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:11px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+h5 { color: #5778ce;	font-size: 16px; margin-bottom:0px; margin-top:0px; }
+
+
+-->
+</style>
+<title>What's New in Zen Cart(tm) v1.3.0.2-l10n-jp-3</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<h1>Upgrade Instructions from v1.3.0.2-l10n-jp-2 to 1.3.0.2-l10n-jp-3</h1>
+<p>If you are upgrading from Zen Cart v1.3.0.2-l10n-jp-2, the process is simple:<br>
+  - compare all the changed files with the files on your own site... and re-apply your customizations to the new files<br>
+  - upload the new files (with your customizations added) to your site<br>
+  - run the zc_install/mysql_upgrade_zencart_1302jp2_to_1302jp3.sql file<br>
+    on your database. Will work with the "SQL Query Executor" tool in the
+Admin<br>
+    (Tools > Install SQL Patches).
+
+
+
+<h1>CHANGELOG - List of Changed Files </h1>
+<p>For a list of files that have been changed since v1.3.0.2-l10n-jp-2, see the <a
+href="changelog-v1-3-0-2-l10n-jp-3.html" target="_blank">changelog-v1-3-0-2-l10n-jp-3.html</a> </p>
+<h1>Whats New ... </h1>
+<h3><strong>The following bugfixes are included in v1.3.0.2-l10n-jp-3: </strong></h3>
+<ul>
+<li>Added PHP5/MySQL5 support</li>
+<li>Added functionality which force register_globals set off</li>
+<li>Added Upgrade Sql for update from v1.3.0.2-l10n-jp-2 to v1.3.0.2-l10n-jp-3</li>
+<li>Fixed XSS Vulnerability in v1.3.7 found out</li>
+<li>Fixed PHPMailer Vulnerability</li>
+<li>Fixed SQL Injection Vulinerability(http://zen-cart.jp/bbs/viewtopic.php?t=2656)</li>
+</ul>
+<h1>IMPORTANT NOTES </h1>
+<ul>
+<li><span class="error">Please be sure to review and apply the <a href="./important_site_security_recommendations-en.html" target="_blank">Site Security Recommendations</a> to your site prior to taking your shop &quot;live&quot;.</span> If you are uncertain about how site security applies to you, talk to your web host to ensure that you have proper measures in place. <br />
+</li>
+</ul>
+<h1>UPGRADING YOUR TEMPLATES </h1>
+Zen Cart&trade; has had a major overhaul of the templating system for v1.3.x.  As such, you have two options:
+<ul>
+<li>
+upgrade your existing template by applying the new stylesheet and moving a few lines of code around; or</li>
+<li>the best way to have almost-tableless and much tidier template code, is to make a new template (based on template_default) and carefully re-apply your own customizations to the new template system.</li>
+</ul>
+
+
+<p>For further information on template upgrading, see the forum discussion on this topic. </p></td>
+</tr>
+</table>
+<br /><br />
+<br /><br />
+</body>
+</html>

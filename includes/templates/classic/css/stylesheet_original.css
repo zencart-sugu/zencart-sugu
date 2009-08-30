@@ -1,0 +1,464 @@
+/*
+//
+// +----------------------------------------------------------------------+
+// |zen-cart Open Source E-commerce                                       |
+// +----------------------------------------------------------------------+
+// | Copyright (c) 2003 The zen-cart developers                           |
+// |                                                                      |
+// | http://www.zen-cart.com/index.php                                    |
+// |                                                                      |
+// | Portions Copyright (c) 2003 osCommerce                               |
+// +----------------------------------------------------------------------+
+// | This source file is subject to version 2.0 of the GPL license,       |
+// | that is bundled with this package in the file LICENSE, and is        |
+// | available through the world-wide-web at the following url:           |
+// | http://www.zen-cart.com/license/2_0.txt.                             |
+// | If you did not receive a copy of the zen-cart license and are unable |
+// | to obtain it through the world-wide-web, please send a note to       |
+// | license@zen-cart.com so we can mail you a copy immediately.          |
+// +----------------------------------------------------------------------+
+// $Id: stylesheet_original.css 3286 2006-03-28 01:14:04Z drbyte $
+*/
+BODY {
+	background-color: #e5edf5;
+	color: #000000;
+	margin: 0px;
+	margin-bottom: 10px;
+	padding: 0px;
+   font: 11px Verdana, Arial, sans-serif;
+}
+
+.centershop {
+	padding: 0px;
+	margin: 0px auto;
+	/*position: relative;*/
+	text-align: left;
+	width: 750px !important;
+}
+
+TD.main, P.main {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+A {
+  color: #428dff;
+  text-decoration: none;
+}
+
+A:hover {
+  color: #ffb062;
+  text-decoration: none;
+}
+
+FORM {
+	display: inline;
+}
+.banners {
+  padding: 15px;
+}
+
+/*HEADER CSS*/
+
+TABLE.header {
+  background-image: url(../images/header_bg.jpg);
+  background-repeat: repeat-x;
+  background-color: #ffffff;
+  border-right: 1px solid #9a9a9a;
+  border-left: 1px solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+TABLE.headerNavigation {
+  background-image: url(../images/tile_back.jpg);
+  background-color: #abbbd3;
+  border-right: 1px solid #9a9a9a;
+  border-left: 1px solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
+  width: 100% !important;
+}
+
+TD.headerNavigation {
+  position: relative;
+  vertical-align: middle;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color:#000000;
+  letter-spacing:1px;
+  padding: 5px;
+}
+
+TD.breadCrumb {
+  font-size: 10px;
+  font-weight: bold;
+  color: #9a9a9a;
+  padding: 3px;
+  border-bottom: 1px dotted #9a9a9a;
+}
+
+TD.headerNavigation A, TD.headerNavigation A:visited, td.footertop a  {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+TD.headerNavigation A:hover, td.footertop a:hover  {
+  color: #a8cfff;
+}
+
+TR.headerError {
+  background: #ff0000;
+}
+
+TD.headerError {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  background: #ff0000;
+  color: #ffffff;
+  font-weight : bold;
+  text-align : center;
+}
+
+TR.headerInfo {
+  background: #00ff00;
+}
+
+TD.headerInfo {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  background: #00ff00;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+
+/*SIDEBOX CSS*/
+
+.column_left, .column_right, .column_single {
+  background: #ffffff;
+  padding: 2px;
+}
+
+.boxText {
+  font-size: 11px;
+  line-height: 125%;
+}
+.leftbox, .rightbox, .centerbox, .singlebox {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  background: #ffffff;
+  border: 1px solid #9a9a9a;
+  margin-bottom: 15px;
+}
+
+.leftboxheading, .rightboxheading, .centerboxheading, .singleboxheading {
+  /*background-color: #abbbd3;*/
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 3px;
+  height: 20px;
+  padding-left: 5px;
+}
+
+td.leftboxheading a, td.rightboxheading a, td.centerboxheading a, td.singleboxheading a {
+  color: #ffffff;
+}
+
+TR.leftboxheading, TR.rightboxheading, TR.centerboxheading, TR.singleboxheading {
+  background: #abbbd3;
+  background-image: url(../images/tile_back.jpg);
+}
+
+.leftboxcontent, .rightboxcontent, .centerboxcontent, .singleboxcontent {
+  line-height: 125%;
+  padding: 4px;
+  border-top: 1px solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+.leftboxfooter, .rightboxfooter, .centerboxfooter, .singleboxfooter {
+  background-color: #abbbd3;
+  background-image: url(../images/tile_back.jpg);
+  margin-bottom: 15px;
+}
+
+.plainBox, .plainbox-description {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  background: #ffffff;
+  border:1px solid #9a9a9a;
+  padding: 5px;
+}
+.plainBoxHeading, TD.tableHeading {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 11px 5px 5px;
+}
+.productListing-heading {
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 3px;
+  height: 20px;
+}
+
+TD.productListing-heading{
+  background-color: #abbbd3;
+  background-image: url(../images/tile_back.jpg);
+}
+
+TD.productlisting {
+  border:1px solid #9a9a9a;
+}
+
+TD.productListing-data {
+  font-size: 10px;
+  padding: 5px;
+}
+
+/*center main section
+-----------------------------------*/
+TD.pageHeading, DIV.pageHeading, h1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #9a9a9a;
+  padding-top: 11px;
+}
+
+.center_column {
+  padding: 8px;
+}
+.main_page{
+  width: 100% !important;
+  background-color: #ffffff;
+  border-right: 1px solid #9a9a9a;
+  border-left: 1px solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
+  padding: 5px;
+}
+
+/* footer
+--------------*/
+
+TABLE.footer {
+  background: #ffffff;
+  text-align: center;
+  font-size: 10px;
+  border-right: 1px solid #9a9a9a;
+  border-left: 1px solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+TR.footertop {
+  background: #abbbd3;
+  background-image: url(../images/tile_back.jpg);
+  font-size: 11px;
+}
+
+TD.footertop, TD.footerbottom {
+  padding: 5px;
+}
+
+/*miscellaneous areas
+-------------------------------------*/
+TD.cartBox {
+   background: #eff4f8;
+   font-size: 10px;
+   padding: 3px;
+   border: 1px dotted #ffb062;
+}
+
+TR.productListing-odd, TR.upcomingProducts-odd {
+  background: #ffffff;
+}
+
+TR.productListing-even, TR.upcomingProducts-even, .productsNotifications {
+  background: #eff4f8;
+}
+
+TD.productListing-data-description-odd {
+  background: #ffffff;
+  font-size: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+TD.productListing-data-description-even {
+  background: #eff4f8;
+  font-size: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+td.pageresults a {
+  color: #428dff;
+}
+
+td.pageresults a:hover {
+  background: #FFFF33;
+}
+
+SPAN.newItemInCart {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+TD.smallText, SPAN.smallText, P.smallText, td.pageresults{
+   font-size: 10px;
+}
+
+TD.fieldKey {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+TD.fieldValue {
+  font-size: 12px;
+}
+
+CHECKBOX, INPUT, RADIO, SELECT {
+  font-size: 11px;
+}
+
+TEXTAREA {
+  width: 100%;
+  font-size: 11px;
+}
+
+.greetUser {
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+SPAN.greetUser {
+   color: #f0a480;
+   font-weight: bold;
+}
+
+SPAN.markProductOutOfStock {
+	color: #c76170;
+	font: bold 12px Verdana, Arial, sans-serif;
+}
+
+span.normalprice {
+	text-decoration: line-through;
+}
+
+SPAN.productSpecialPrice, SPAN.productSalePrice, .stockWarning, span.coming {
+  color: #ff0000;
+}
+
+span.productSpecialPriceSale {
+  color: #ff0000;
+	text-decoration: line-through;
+}
+
+SPAN.productPriceDiscount, .inputRequirement {
+  font-size: 10px;
+  color: #FF0000;
+}
+.moduleRow { }
+.moduleRowOver { background-color: #D7E9F7; cursor: pointer; }
+.moduleRowSelected { background-color: #E9F4FC; }
+
+/* message box */
+
+.messageBox {}
+.messageStackError, .messageStackWarning, errorBox {
+  background-color: #ff0000;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 4px;
+  border: 1px solid #9a9a9a;
+}
+.messageStackSuccess { background-color: #b3ffa8; padding: 2px; border: 1px solid #9a9a9a; }
+.messageStackCaution { font-family: Verdana, Arial, sans-serif; font-size: 10px; background-color: #ffff00; }
+
+/* checkout totals */
+TD.ot-subtotal-Text, TD.ot-cod-fee-Text, TD.ot-total-Text, TD.ot-group-pricing-Text, TD.ot-gv-Text, TD.ot-loworderfee-Text, TD.ot-shipping-Text, TD.ot-subtotal-Text, TD.ot-tax-Text, TD.ot-coupon-Text {
+  font-weight: bold;
+}
+TD.ot-total-Amount {
+  font-weight: bold;
+  border-top: 1px solid #9a9a9a;
+}
+TD.ot-subtotal-Amount, TD.ot-cod-fee-Amount, TD.ot-group-pricing-Amount, TD.ot-gv-Amount, TD.ot-loworderfee-Amount, TD.ot-shipping-Amount, TD.ot-subtotal-Amount, TD.ot-tax-Amount, TD.ot-coupon-Amount {}
+
+
+/* product_info attribute comments */
+
+.ProductInfoComments, TD.ProductInfoComments, SPAN.ProductInfoComments {
+  color: #ff0000;
+  font-size: 10px;
+  text-align : left;
+  font-weight: bold;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-top: 1px solid #9a9a9a;
+}
+
+/* General alert span class */
+/*TD.alert, SPAN.alert {
+  color: #FF0000;
+  font-weight: bold;
+}*/
+
+/* General alert span class */
+TD.alertBlack, SPAN.alertBlack {
+  color: #000000;
+  font-weight: bold;
+}
+
+/* popup tables */
+TABLE.popupattributeqty, TABLE.popupcouponhelp, TABLE.popupcvvhelp, TABLE.popupimage, TABLE.popupimageadditional, TABLE.popupsearchhelp, TABLE.popupshippingestimator, TABLE.popupinfoshoppingcart {
+  background-color: #ffffff;
+	margin: 6px;
+  padding: 6px;
+  font: 11px Verdana, Arial, sans-serif;
+}
+
+/* categories_description */
+TABLE.categoriesdescription {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  background: #D0D0D0;
+  border:1px solid #9a9a9a;
+}
+
+TD.categoriesdescription {
+  font-size: 11px;
+  line-height: 1.0;
+}
+
+/* categories box parent and child categories */
+A.category-top {
+  color: #008000;
+  text-decoration: none;
+}
+A.category-links {
+  color: #004080;
+  text-decoration: none;
+}
+A.category-subs, A.category-products {
+  color: #FF0000;
+  text-decoration: none;
+}
+SPAN.category-subs-parent {
+  font-weight: bold;
+}
+SPAN.category-subs-selected {
+  font-weight: bold;
+}
+
+/* attribute images table */
+TABLE.products-attributes-images {
+/*  width: 100%; */
+/*  border: 1px solid #9a9a9a; */
+  float: left;
+  padding: 2px;
+}

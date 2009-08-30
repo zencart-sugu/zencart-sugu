@@ -1,0 +1,124 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 5.renaming_the_admin_directory-en.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:10px; }
+td.plainbox, div.callout {background-color: #d7e0f2; border: 1px dashed; border-color: C96E29; padding: 8; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+
+
+-->
+</style>
+<title>Installing Zen Cart(tm)</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Welcome to Zen Cart&trade; ...</h1></center>
+<br />
+The Zen Cart&trade; software is made available to you for use, additions, changes, modifications, etc. without charge, under the GNU General Public License.
+<br />
+<br />
+While we do not charge for this software, donations are greatly appreciated each time you download a new version, to help cover the expenses of maintenance, upgrades, updates, the free support forum and the continued development of this software for your online e-commerce store.
+<br />
+<br />
+Donations can be made at:
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<br />
+<br />
+We appreciate your support.<br />
+<em>The Zen Cart&trade; Team</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade; is derived from: Copyright  2003 osCommerce<br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />
+and is redistributable under the GNU General Public License<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center>
+<h1 class="intro">Admin Directory Security </h1>
+</center>
+<div>
+<h1>What is this article about? </h1>
+It is recommended for additional security that you rename your 
+admin directory after installation. This way, it will be significantly harder for hackers to find your admin area or attempt any attack on breaking into it. <br>
+<br />
+</div>
+<div><h1>How to Rename the Admin Directory</h1>
+<p>Before making any changes, make sure to have a current backup of your files and your database.</p>
+<h2>1- Open your admin configuration file: <span class="filename">admin/includes/configure.php</span></h2>
+<p>In this file, change all instances of <span class="filename">/admin/</span> to your chosen name:</p>
+<p>Change this section:</p>
+<p class="filename">// NOTE: be sure to leave the trailing '/' at the end of these lines if you make changes!<br>
+// * DIR_WS_* = Webserver directories (virtual/URL)<br>
+// these paths are relative to top of your webspace ... (ie: under the public_html or httpdocs folder)<br>
+define('DIR_WS_ADMIN', '/admin/');<br>
+define('DIR_WS_CATALOG', '/');<br>
+define('DIR_WS_HTTPS_ADMIN', '/admin/');<br>
+define('DIR_WS_HTTPS_CATALOG', '/');</p>
+<p>Change this section:</p>
+<p class="filename">// * DIR_FS_* = Filesystem directories (local/physical)<br>
+//the following path is a COMPLETE path to your Zen Cart files. eg: /var/www/vhost/accountname/public_html/store/<br>
+define('DIR_FS_ADMIN', '/home/mystore.com/www/public/admin/');<br>
+define('DIR_FS_CATALOG', '/home/mystore.com/www/public/');<br>
+</p>
+<h2>2- Rename your admin directory </h2>
+<p>Using your FTP software, find your Zen Cart&trade; <span class="filename">/admin/ </span>directory. Rename the directory to match the new name used in step 1 above when you edited your <span class="filename">admin/includes/configure.php</span><br>
+</p>
+</div>
+
+<div>
+<h1>Additional Information </h1>
+<p>For more information on site-security, see <a href="./important_site_security_recommendations-en.html" target="_blank">important_site_security_recommendations-en.html</a></p>
+<p>For additional help and support issues, visit our <strong>FAQ's</strong> and our <strong>Support Forums</strong> on the web.<br />
+<a href="http://www.zen-cart.com" target="_blank"><strong>Zen Cart&trade; Website</strong></a>
+<br />
+<br />
+<br />
+<em>Good Luck with the software and Enjoy the Zen Cart&trade; Experience!</em> <br />
+<br />
+</p>
+</div>
+</td>
+</tr>
+</table>
+<p align="center"><em>Zen Cart&trade; Copyright 2005</em></p>
+<br /><br />
+</body>
+</html>

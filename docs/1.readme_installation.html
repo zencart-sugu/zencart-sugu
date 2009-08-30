@@ -1,0 +1,295 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 1.readme_installation.html 3825 2006-06-21 17:07:47Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {background-color: #d7e0f2; border: 1px dashed; border-color: C96E29; padding: 8; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+
+
+-->
+</style>
+<title>Zen Cart(tm)のインストール</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Zen Cart&trade;へようこそ</h1></center>
+<br />
+The Zen Cart&trade; GNU General Public License の下、ソフトウェアの利用、機能の追加、変更などに費用がかかることはありません。 
+<br />
+<br />
+ソフトウェアのご利用に費用はかかりませんが、あなたがこのソフトウェアの新バージョンをダウンロードした機会などに寄付していただくことは、常に歓迎いたします。このことは、Zen Cartのメンテナンス、機能のアップグレード、無料のサポートフォーラム、そしてあなたのオンラインショップ構築ソフトの継続的なサポートに役立つのです。 
+<br />
+<br />
+寄付はこちらのURLでしていただけます：
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>
+<a href="http://www.zen-cart.jp" target="_blank">日本語版The Zen Cart&trade;に貢献する </a>
+<br />
+<br />
+あなたのサポートに感謝いたします。<br />
+<em>The Zen Cart&trade; 開発チーム</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade;はosCommerceから派生しました。/ Copyright(c) 2003 osCommerce<br />
+このプログラムは利用者のお役に立つことを願い、しかし一切の保証なしに提供されています。<br />
+商品としての適格性(MERCHANTABILITY)や、特定目的への適合(FITNESS FOR A PARTICULAR PURPOSE)についての暗黙の保証もしておりません。<br />
+このソフトウェアは、GNU General Public Licenseの下、再配布することができます。 <br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+This software is OSI Certified Open Source Software.<br />
+OSI Certified is a certification mark of the Open Source Initiative.
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center><h1 class="intro">新しくインストールする</h1></center>
+<div><h1>まず最初に... </h1>
+<p>これは、Zen Cart&trade; インストールのための基本ガイドです。もしあなたが既にZen Cart&trade; の旧バージョンを導入済みでこの新バージョンへのアップグレードをするつもりなら、 <strong><a href="./2.readme_how_to_upgrade.html" target="_blank">アップグレードガイド (Upgrade Instructions)</a></strong>と<strong><a href="./index.html" target="_blank">最新情報 (What's New documentation)</a></strong>をご覧ください。<br />
+</p>
+<h2>基本事項 </h2>
+<p>あなたはZen Cart&trade;をオンラインショッピングカートを構築するためにダウンロードしました。</p>
+<p>以下を確認してみてください</p>
+<h3>1. ドメインはお持ちでしょうか？</h3>
+<p>もしお持ちでないなら<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=10" target="_blank">Zen Cart&tradeがうごく干すティングサービス一覧;</a>をご覧頂き、独自ドメインの契約を行ってください。</p>
+<h3>2. FTPソフトはお持ちでしょうか?</h3>
+<p>もしお持ちでないなら<a href="http://www.flashfxp.com/" target="_blank">FlashFXP</a>や<a href="http://filezilla.sourceforge.net/" target="_blank">FileZilla</a>や<a href="http://www2.biglobe.ne.jp/~sota/ffftp.html" target="_blank">FFFTP</a>などのFTPソフトウェアをダウンロード、インストールし、ご自身のPCからWebサーバーへ転送できるように設定してください。<br />
+注意: Webサーバーとはインターネット上に存在し、あなたの保有しているドメインがホストされているサーバーのことです。</p>
+<h3>3. テキストエディターはお持ちでしょうか?</h3>
+<p>もしお持ちでないなら<a href="http://ultraedit.com/" target="_blank">UltraEdit</a>や <a href="http://www5f.biglobe.ne.jp/~t-susumu/library/tpad.html" target="_blank">Terapad</a>や<a href="http://www.barebones.com" target="_blank">BBedit</a>(Mac), Kedit (linux)などのテキストエディターをダウンロード、インストールしてください。ファイルの変更に使用します</p>
+<p><span class="error">注意: <strong>絶対に</strong>CPanelや MSワードなどリッチテキストを扱えるエディターを使用しないでください。</span> Windowsに標準でついている Notepadでも充分ですが、扱えるファイルサイズの問題などが発生する場合があります。</p>
+<h3>4. 契約しているWebサーバーの管理画面から、MySQLデータベースとユーザーを作成することができるでしょうか? </h3>
+<p>先に進む前に、今一度MySQLへのアクセス権、usernameとパスワードを持っているか確認してください。あなたはホスティングサーバーのコントロールパネルからデータベースを作成する必要があります。わからない場合はホスティング契約している会社にお問い合わせください。Zen Cart&trade;はあなたのためにデータベースを作ることができません。 </p>
+<p>(MySQLのデータベースに SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX, DROPの許可をもらう必要があります。 &nbsp;&nbsp;hSphere hostであればこれは&quot;dba&quot; アクセスになります、もしくはread/writeになります )<br />
+</p>
+<h3>お済みでしょうか？  </h3>
+<p>これら４つに全てイエスであれば先に進む用意が出来ました。</p>
+<h3></h3>
+<h3>ZIP ファイル</h3>
+<p>このファイルをお読みになっているということは、既に <a href="http://sourceforge.net/project/showfiles.php?group_id=83781&package_id=171544" target="_blank">Zen Cart&trade; distribution file</a>を解凍していることと思われます。ファイル類はあなたのPC内のフォルダにありますね。もしPC内に解凍していないのでしたら、フォルダ構造を保ったままPC上に解凍してください。<br />
+</p>
+</div>
+<div><h1>Zen Cart&trade;のファイル群をWebサーバーにアップロードする</h1>
+<p>FTPソフトウェアを使って、全ファイルをあなたのWebサーバ内のディレクトリにアップロードしてください。 <span class="filename">/catalog
+</span><br />
+<em>(&quot;/catalog&quot; はフォルダ名の一例です。フォルダ名を &quot;決めない&quot; こともできるし、&quot;/zencart&quot; や &quot;/store&quot; など、好きなフォルダ名にすることもできます)</em> <br />
+<br />
+<em>注意:ファイルをアップロードする際には、FTP プログラムと Web サーバが&quot;<span class="error">長いファイル名をサポートしているか確認してください</span>&quot;. 例として MacOS では、初期状態ではロングファイルネームをサポートしてないことが多いようです。その場合には設定の変更が必要です。</em> </p>
+<h3>どのフォルダーにアップロードするか?</h3>
+それぞれのWebホスティングサービスはフォルダの命名規則を持っているはずです。<br>
+表には見せることのないたくさんのファイルを持つことも可能です。ブラウザー経由で見られるものは通常このようなフォルダーに格納されています。:
+<p>- /home/YOURNAME/public_html<br>
+もしくは<br>
+- /var/www/YOURNAME/httpdocs<br>
+もしくは<br>
+- /usr/accounts/a/b/YOURNAME/httpd<br>
+などなど</p>
+<p>もしわからない場合は、ホスティングサービス契約者にお問い合わせください。</p>
+</div>
+
+<div>
+<h1><strong>configure.php ファイルを作成する</strong></h1>
+サーバ上にファイルを2つ作成します。これら configure.php ファイルでは、特定のサーバとファイルの位置を指定します。作成が終わったら、それらのファイルのパーミッションを変更する必要があります。 
+<br />
+<br />
+注意：パーミッション設定の変更は、FTP プログラムの chmod 機能で行うことができます。一般的には、ディレクトリやファイル上で右クリックすることでこのオプションを含むメニューが表示されるはずです。 <br />
+<br />
+
+サーバ上で、以下のファイルを探します file: <span class="filename"><strong>/catalog/includes/</strong>dist-configure.php</span>
+<br />
+このファイルを<span class="filename">configure.php </span>にリネームし、パーミッションを「777(read-write-execute for all)」に変更します。 
+<br />
+<br />
+
+次に、サーバ上で以下のファイルを探します <span class="filename"><strong>/catalog/admin/</strong>includes/dist-configure.php</span>
+<br />
+このファイルを<span class="filename">configure.php </span>にリネームし、パーミッションを「777(read-write-execute for all)」に変更します。 <br />
+<br />
+<br />
+<br />
+<strong>IIS (Webサーバ)ユーザへの注意</strong> もしIIS for Windowsホスティングを使っている場合、パーミッション変更を &quot;chmod 777&quot; とするようなやり方は耳慣れないかもしれません。IISでは、ファイルを(または下のセクションで説明しているフォルダ)を右クリックし「プロパティ」を選択します。「セキュリティ」タブにある &quot;IUSR_SOMETHING user&quot; の情報で、少なくとも &quot;read&quot; and &quot;write&quot; 特権を持っていることを確認してください。&quot;modify&quot; 権限もあればベストだと思います。この作業は、上で説明した全てのファイル・フォルダについて行います。(もし IUSR_XXXXXX user がリストにない場合、&quot;Add&quot; をクリックしてリストに加えてからパーミッションを設定してください。) <br />
+</div>
+<div><h1>フォルダにパーミッションを設定する</h1>
+次に、以下のディレクトリのパーミッションを「777 (read/write/execute)」に設定します。
+<br />
+<br />
+<span class="filename">/catalog/cache<br />
+/catalog/images<br />
+/catalog/includes/languages/english/html_includes<br />
+/catalog/media<br />
+/catalog/pub<br />
+/catalog/admin/backups <br />
+/catalog/admin/images/graphs<br /></span>
+<br />
+注意：&quot;catalog/images&quot; ディレクトリを開き、全てのサブディレクトリ、そのサブディレクトリまで「777」に変更してください。例として(これはリストの一部ですが) <br />
+<span class="filename">/catalog/images/attributes<br />
+/catalog/images/dvd<br />
+/catalog/images/large<br />
+/catalog/images/large/dvd<br />
+/catalog/images/medium <br />
+/catalog/images/upload<br /></span>
+<br />
+注意：<span class="filename"> /images</span> 内のディレクトリ、サブディレクトリ内でひとつでもパーミッション変更に漏れがあると、後で「ディレクトリに書き込みができません」というエラーメッセージが発生するでしょう。 <br />
+<br />
+その他のフォルダーとファイルに関しては、CHMODを644もしくは444にしてください。これはあなたの契約しているサーバーの設定次第です。</div>
+<div>
+<h1>インストーラーを起動する前に</h1>
+インストーラーはインテリジェントで、以下にリストされた項目への答えを自動的に収集するようになっています。
+<br />
+<br />
+ですが、いくつかのサーバーでは挙動が異なる場合があるので、自動的に収集された答えが正しいかどうか念のため確かめてください。  <br />
+<br />
+インストールに必要な情報： <br />
+<ul>
+<li><strong>新しい Zen Cart&trade; ディレクトリへの物理パス</strong><br />
+例: <span class="filename">/home2/zencart/public_html/catalog</span></li><br /><br />
+<li><strong>仮想 HTTP パス (あなたのショップのドメインとディレクトリの URL) </strong><br />
+例: <span class="filename">http://www.mydomain.com/catalog</span><br /></li><br />
+<li><strong>仮想 HTTPS サーバー (あなたのドメインのセキュア URL) </strong><br />
+例: <span class="filename">https://www.mydomain.com</span><br />
+注意：もし仮想サーバーの証明書が共有である場合には、以下のようになるでしょう:<br />
+<span class="filename">https://mydomain.secureservername.net/</span><br />
+もしくは
+<span class="filename">https://secure.sharedservername.net/~username</span><br />
+</li><br />
+<li><strong>仮想 HTTPS パス (あなたのショップのドメインとディレクトリのセキュア URL) </strong><br />
+例: <span class="filename">https://www.mydomain.com/catalog</span><br />
+もしくは
+ <span class="filename">https://secure.sharedservername.net/~username/catalog</span></li>
+</ul>
+</div>
+<div>
+<h1>インストーラーを起動する</h1>
+ブラウザに、あなたの新しいショップのURLを入力してください。インストーラーが自動的にスタートします。 <br />
+例: <span class="filename">http://www.mydomain.com/catalog</span> <br />
+- または - インストーラーを直接起動するには <span class="filename">http://www.mydomain.com/catalog/zc_install</span><br />
+<br />
+<em>この際にファイル名とディレクトリの一覧が表示されたら、ホスティング会社に PHP ファイルを自動的に起動する設定にするにはどうしたらよいか、尋ねてください。
+ </em><br />
+<br />
+&quot;Zen Cart&trade;へようこそ&quot; のページが表示され、Zen Cart&trade;の特徴説明を読むことができるはずです。 <br />
+<em>続ける(Continue)</em>を押すと、ライセンス許諾の画面が表示され、 GPL ライセンスを読み、許諾することが求められます。 <br />
+<h3>システムの調査</h3>
+次に、あなたのサーバーが Zen Cart&trade; を動作させるための技術要件に合致しているかどうかの調査が始まり、いくつかの設定が求められます。 赤いマークや &quot;X&quot; 印のものは設定が必須です。オレンジか黄色の &quot;caution&quot; は、セットアップに対する警告です。 画像フォルダや、このファイルの上段で説明した項目についても記載されています。もしサーバーに変更を加えた場合には、<em>Re-Check</em> をクリックするか、F5 ボタンを押して表示をリフレッシュし、変更を反映させてください。<br />
+<br />
+If a previous version of Zen Cart&trade;の旧バージョンがサーバー上で見つかると、インストーラーはデータベースのパッチレベルを調べて表示します。この場合には、&quot;upgrade&quot; ボタンが表示され、必要ならアップグレードすることができます。アップグレードについては<strong>アップグレードファイル(upgrade instructions)</strong>をご覧ください<br />
+<br />
+&quot;事前チェック (pre-flight-check)&quot; に問題がなければ(理想的には全てがグリーンにチェックされた状態なら)、インストール前の調査は OK ですから &quot;インストール (Install)&quot; ボタンを押してください。<br />
+<h3>システムセットアップ</h3>
+システムセットアップページでは、"インストーラーを起動する前に (Before Running the Installer)" で記述した事項を完了する必要があります。<br />
+<br />
+SSLを使用したい(ログイン、チェックアウト、管理画面などで)場合はオンにする必要がありますが、SSL証明書を取得していない場合はこの機能をオンにしないでください。<em>この設定は後日変更することができます。 (詳細は <a href="http://www.zen-cart.jp">Zen-Cart.jp</a> サイトにある FAQ をご覧ください。)</em><br />
+<br />
+注意：もし以下のようなエラーメッセージが表示されたら、上述のプロセスについて一つも作業の漏れがないかチェックしてください。
+全てのエラーメッセージで、<span class="pseudolink">more info...</span>をクリックするとエラー内容に対応したヘルプが表示されます。<br />
+<div class="callout">
+<strong>警告：問題が起きました</strong><br />
+<ul>
+<li><span class="error"> /includes/configure.php がありません。</span>  <span class="pseudolink">more info...</span></li>
+<li><span class="error">/admin/includes/configure.php がありません。</span>  <span class="pseudolink">more info...</span> </li>
+<br />
+</ul>
+</div>
+<h3>phpBB のセットアップ</h3>
+次に、phpBB のパスについての情報が求められます。もしphpBB (掲示板ソフトウェア)を既にインストール済みであれば、パス情報を設定することで、Zen Cart&trade; とのデータ連携・同期をすることができます。 <span class="filename">......public_html/forums</span>という場所にある場合には、 <span class="filename">/forums</span> と Zen Cart&trade; インストーラーに入力します。</div>
+<h3>データベースのセットアップ</h3>
+次の画面では、MySQL データベースのユーザー名、パスワードなどの情報を設定します。これらの情報は、ホスティングサービスで提供される cPanel などの管理ツールで確認することができます。もし新規の MySQL データベースを作成していない場合には、一つ作成してください。MySQL データベース、ユーザ名とパスワードの作成に助力が必要な場合には、ホスティング会社に連絡することをお薦めします。データベースが作成されていないと、 インストーラーは次のステップに進むことができません。<br />
+<br />
+<em>画面上のほかの情報：</em>
+<ul>
+<li>現時点では、Zen Cart&trade; で利用可能なデータベースはMySQL だけです。将来のリリースでは、他のデータベースもサポートする予定です。</li>
+
+<li>セキュリティ上の理由から、データベースのセッションをストアしておくことをお薦めします。</li></ul>
+<h3>ショップのセットアップ</h3>
+次に、あなたのショップの情報を入力します。<br />
+<br />
+<em>注意："デモデータ(demo data)" 以外の全ての情報は、後ほど管理画面で再び設定し直すことができます。</em><br />
+<br />
+<div class="callout"><strong>デモデータ(demo data)</strong><br />
+デモ用データをインストールしたい場合には「はい(yes)」をクリックしてください。
+  <br>
+  <br>
+デモデータは Zen Cart&trade; が持つ豊富な特徴をご理解いただくために用意したサンプルですので、機能を学ぶためにはインストールされることをお薦めします。 <br>
+<br>
+後で決定することもできますが、デモデータを含むテストサイトと同時に、独立の実際データを持ったサイトをセットアップすることもできます。そうすれば、あなたは商品例や特徴を確かめるためにいつでもデモサイトを参照することができるでしょう。</div> 
+<br />
+<br />
+「ショップ設定を保存 (Save Store Settings)」ボタンをクリックすると、データベーステーブルが作成され、デモデータが(選択した場合には)ロードされるため、しばらく間があるはずです。
+<h3>管理のセットアップ</h3>
+次に、ログイン名、管理者のメールアドレス、パスワードなどの管理者情報を設定します。 <br>
+<br>
+注意：ログイン名・パスワードの大文字・小文字の記入は正確に行ってください。<br>
+<br>
+管理者設定を保存すれば、インストール作業は完了です! <br>
+インストールが正常に行われたか確かめるためには、ただちに管理画面とショップ側画面の表示をチェックしてみてください。<br />
+</div>
+<div>
+<h1>インストール後に</h1>
+ショップ側画面にアクセスすると、<em>configure.php</em> ファイルと <span class="filename"> /zc_install </span> ディレクトリについての警告が表示されているはずです。 <br />
+<br />
+<br />
+<strong>configure.php ファイルについて</strong> <br>
+<em>configure.php</em> ファイルのパーミッションを、<span class="filename">chmod 644 </span><em>(サーバーによっては444)</em><br>
+に変更する必要があります。 <br>
+ファイルは以下の場所にあります：<br>
+<span class="filename">/catalog/includes/configure.php<br>
+/catalog/admin/includes/configure.php </span><br />
+<br />
+また、これらのファイルには、インストール時にサーバの設定内容が記載されているので、あなたの PC にダウンロードし、コピーを保存しておくのもお薦めです。
+<br>
+<br>
+エラーや問題が生じた際、多くの場合にはこの2ファイルの内容を調整することで解決できるはずです。 <br />
+<br />
+<strong>zc_install ディレクトリについて</strong> <br>
+次に、<span class="filename"> /catalog/zc_install </span>ディレクトリを削除するか、 例として以下のような名前に変更します。<br>
+例：<span class="filename"> /catalog/zc_install_complete </span> <br>
+<br>
+注意：<span class="filename">zc_install_complete</span>は例であり、このファイルを読んだクラッカーが試す恐れがあるので、<em>別の名前</em> にしてください! <br />
+</div>
+<div>
+<h1>次のステップ</h1>
+"<em>あなたのショップを設定するための第一歩(First Steps To Set Up Your Online Shop)</em>" を学ぶためには、<a href="http://www.zen-cart.com">Zen Cart&trade; サイト</a>の FAQ セクション(または <a href="http://zen-cart.jp">日本語公式サイト</a>)などをご覧ください。</div>
+<div>
+<h1>ヘルプとサポート</h1>
+ヘルプやサポートについては、<a href="http://www.zen-cart.com">Zen Cart&trade; サイト</a>の <strong>FAQ</strong> や <strong>Support Forums</strong>、日本語による情報提供やサポートは <a href="http://zen-cart.jp">日本語公式サイト</a>　をご利用ください。 <br>
+<br>
+<br>
+<em>あなたが Zen Cart&trade; を活用し、成功することを祈ります!</em> <br />
+<br />
+</div>
+</td>
+</tr>
+</table>
+<p align="center"><em>Zen Cart&trade; Copyright 2003 - 2006 </em></p>
+<br /><br />
+</body>
+</html>

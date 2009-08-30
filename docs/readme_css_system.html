@@ -1,0 +1,63 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: readme_css_system.html 3273 2006-03-27 16:48:29Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px;	width: 100%; }
+
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+
+-->
+</style>
+<title>CSS Per-Page Stylesheet Documentation in Zen Cart(tm)</title>
+
+<h1>CSS ページごとのスタイルシート</h1>
+<p><em> (この機能の大部分は２００５年３月１５日のJuxi Zozaからの投稿を採用しています。</em></p>
+<h2>Zen Cart スタイルシート</h2>
+<p>Zen Cart(tm) のスタイルシートはこちらのフォルダーにあります。： /includes/templates/YOUR_TEMPLATE/css</p>
+<p>以下は明確な条件下でZen Cartに組み込まれている明確なスタイルシートを引き出す力をいかに利用するかについての詳細です。</p>
+<p>CSSのファイルは下記の順でブラウザが読み込みます。：（１つ以上合う場合はアルファベット順で）:</p>
+
+<code class="filename"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style*.css 
+// 通常読み込まれます。少なくとも１つは幅広い属性を含んだものとなります。<br />
+language_stylesheet.css // 指定された言語が選択される場合、全てのページを変更します。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page_name.css // １ページの変更<br />
+&nbsp;language_page_name.css // 指定された言語が選択される場合、１ページ変更します。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c_??_??.css 
+//カテゴリの全てのinfoページを変更します。<br />
+&nbsp;&nbsp;&nbsp;language_c_??_??.css // 指定された言語が選択される場合、infoページを変更します。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_??.css 
+// メーカーリストのページを変更します。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;language_m_??.css // 指定された言語が選択される場合、メーカーリストのページを変更します。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p_??.css 
+// 商品詳細ページを変更します。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;language_p_??.css // 指定された言語が選択される場合、商品詳細ページを変更します。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print*.css 
+// ページ印刷に適したサイズに変更します。</code> 
+<p>'stylesheet.css'は最初に読み込まれ、そのほかのCSSも含まれます。それぞれのファイルは以前に読み込まれたファイルよりも先に読み込まれます。読み込みにかかる時間を省くには新しい利用者や利用者に変更させたい箇所は後に読み込まれるCSSファイルに記述するだけです。同じページに異なった言語で異なるオーバーライドが出来ます。と言うのも、異なったスタイルシートが一度に読み込ま
+  れることがないからです。</p>
+<p>例えば、誰かが貴方のサイトでフランス語を選んだ場合は、'french_stylesheet.css'が読み込まれます。その場合、'stylesheet.css'に変更を加えれば、フランスのお客様へは背景イメージの変わります。</p>
+<p>利用者が他のページを見た場合、そのページのCSSファイルが読み込まれます。'page_x'に違った’背景イメージ’や’背景色’が欲しい場合、'.plainBox'回りにボーダー（線）が不必要な場合、でも、２・３のページでは必要で、また、そのページのうちの１つを黒いページに他は赤くしたい場合です。</p>
+<p>個人情報保護指針に新しいタグや&lt;span class=&quot;newtag&quot;&gt; 作る場合、'german_privacy.css'を'.newtag 
+  { text-transform: uppercase }'としてCSSファイルに定義するだけです。というのも　他の国は必要ありませんが、ドイツでは専門語句はすべて大文字で記述しなければなりません。</p>
+<p>CSSファイルと標準的なタグを出来る限り使い、必要なときだけCSSタグの属性を変えましょう。 出来るならコアコードに手を加えず、CSSファイルを利用し作業しましょう。スタイルシートのコーディングがZenCartのコードから取り除かれたり、’アップグレードせずにいる’か’手を加えたもの元に戻す事’を決めないといけないときに,最終的にCSSを学ぶとあなたのサイトはうまく働いているでしょう。</p>

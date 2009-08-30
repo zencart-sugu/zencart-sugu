@@ -1,0 +1,44 @@
+Zen Cart(tm) - The Art of E-Commerce
+Welcome to Zen Cart(tm) E-Commerce
+Version 1.3.0.2-l10n-jp-5
+
+THE FOLLOWING IS A VERY SIMPLIFIED INSTALLATION DOCUMENT.
+WE SUGGEST YOU USE THE HTML VERSIONS IN THE /docs FOLDER FOR MORE DETAILED INSTRUCTIONS.
+
+ALL OF OUR README DOCUMENTS ARE IN THE /docs FOLDER OF THIS DISTRIBUTION.
+
+
+Zen Cart has a built-in automatic installation system. However to use this you must first unpack
+the code to a web server.
+
+The web server can either be on your local computer or on an internet host.
+
+To start off, you should have to extract the Zen Cart(tm) ZIP file. How you do this depends on the operating system you use.
+
+Once extracted, you will have a directory containing the Zen Cart(tm) scripts.
+
+The contents of this directory needs to be moved to your webserver, either by copying the directory or
+by using an FTP progam.
+
+You will then need to run the install script.
+
+To do this you need to open a browser and type in the URL.
+
+If you are running on a your own computer, this will be
+
+   http://localhost/{zen-cart-directory}/zc_install/
+
+or if on a live server:
+
+   http://{www.mydomain.com}/zc_install/
+
+You then only need to follow the prompts to install Zen Cart(tm).
+
+For more detailed installation instructions, please see the /docs/1.readme_installation.html document in this distribution.
+
+
+
+
+
+
+(Document Revision: $Id: INSTALL.TXT 3822 2006-06-21 15:39:57Z drbyte $)

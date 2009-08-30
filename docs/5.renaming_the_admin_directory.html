@@ -1,0 +1,122 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 5.renaming_the_admin_directory.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:10px; }
+td.plainbox, div.callout {background-color: #d7e0f2; border: 1px dashed; border-color: C96E29; padding: 8; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; 	font-size: 18px;}
+h3 { color: #5778ce;	font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29;	font-size: 14px;}
+
+
+-->
+</style>
+<title>Installing Zen Cart(tm)</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center><h1 class="intro">Zen Cart&trade;へようこそ ...</h1></center>
+<br />
+Zen Cart&trade;GNU General Public License の下、ソフトウェアの利用、機能の追加、変更などに費用がかかることはありません。 
+<br />
+<br />
+ソフトウェアのご利用に費用はかかりませんが、あなたがこのソフトウェアの新バージョンをダウンロードした機会などに寄付していただくことは、常に歓迎いたします。このことは、Zen Cartのメンテナンス、機能のアップグレード、無料のサポートフォーラム、そしてあなたのオンラインショップ構築ソフトの継続的なサポートに役立つのです。 
+<br />
+<br />
+寄付はこちらのURLでしていただけます：
+<a href="http://www.zen-cart.com/index.php?main_page=infopages&pages_id=14" target="_blank">The Zen Cart&trade; Team Page</a>/<a href="http://www.zen-cart.jp/59.html" target="_blank">日本語版「Zen Cartに貢献する」</a>
+<br />
+<br />
+あなたのサポートに感謝いたします。<br />
+<em>Zen Cart潤・開発チーム一同</em><br />
+<br />
+
+<center>
+<span class="small">
+Zen Cart&trade;はosCommerceから派生しました。/ Copyright潤・2003 osCommerce<br />
+このプログラムは利用者のお役に立つことを願い、しかし一切の保証なしに提供されています。<br />
+商品としての適格性(MERCHANTABILITY)や、特定目的への適合(FITNESS FOR A PARTICULAR PURPOSE)についての暗黙の保証もしておりません。<br />
+このソフトウェアは、GNU General Public Licenseの下、再配布することができます。<br /><br />
+</span>
+</center>
+</td></tr></table>
+
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+このソフトウェアはOSIが認証したオープンソースソフトウェアです。<br />
+OSIはOpen Source Initiativeが認証したというマークです。
+</td></tr></table>
+<br />
+
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center>
+        <h1 class="intro">管理者ディレクトリーのセキュリティー</h1>
+</center>
+<div>
+        <h1>この項目について</h1>
+インストールを行った後に管理者（admin）ディレクトリーをリネームする追加の保護策を薦めます。このようにすることでハッカー達が管理者エリアを見つけたり攻撃を試みたりすることを著しく難しくします。<br>
+</div>
+<div>
+        <h1>Admin Directoryのリネームの方法</h1>
+        <p>変更を行う前にファイルとデータベースのバックアップを取りましょう。.</p>
+        <h2>1- admin configurationを開きます。：　<span class="filename">admin/includes/configure.php</span></h2>        <p>このファイルの<span class="filename">/admin/</span> の部分をあんたが選んだ名前に変更します。</p>
+        <p>この部分の変更：</p>
+<p class="filename">// NOTE: be sure to leave the trailing '/' at the end of these lines if you make changes!<br>
+// * DIR_WS_* = Webserver directories (virtual/URL)<br>
+// these paths are relative to top of your webspace ... (ie: under the public_html or httpdocs folder)<br>
+define('DIR_WS_ADMIN', '/admin/');<br>
+define('DIR_WS_CATALOG', '/');<br>
+define('DIR_WS_HTTPS_ADMIN', '/admin/');<br>
+define('DIR_WS_HTTPS_CATALOG', '/');</p>
+        <p>この部分の変更：</p>
+<p class="filename">// * DIR_FS_* = Filesystem directories (local/physical)<br>
+//the following path is a COMPLETE path to your Zen Cart files. eg: /var/www/vhost/accountname/public_html/store/<br>
+define('DIR_FS_ADMIN', '/home/mystore.com/www/public/admin/');<br>
+define('DIR_FS_CATALOG', '/home/mystore.com/www/public/');<br>
+</p>
+        <h2>2- admin directoryをリネームします。</h2>
+        <p>FTPソフトを使って Zen Cart&trade; <span class="filename"></span>の<span class="filename">/admin/ 
+          </span>directoryを探します。そして、ステップ１で<span class="filename">admin/includes/configure.php</span>で編集した名前を使ってマッチするようにディレクトリーをリネームします。 
+          <br>
+        </p>
+</div>
+
+<div>
+        <h1>ヘルプとサポート</h1>
+        <p>サイトセキュリティーに関しての情報は<a href="./important_site_security_recommendations.html" target="_blank">important_site_security_recommendations.html</a>を参照下さい。</p>
+        <p>ヘルプやサポートは<a href="http://www.zen-cart.com" target="_blank"><strong>Zen Cart&trade; 
+          ウェブサイト</strong></a> の<strong>FAQ's</strong> や<strong>Support Forums、</strong> 日本語のによる情報提供やサポートは<a href="http://www.zen-cart.com">日本語公式サイト</a>をご利用下さい。<br />
+          <br />
+          あなたが Zen Cart? を活用し、成功することを祈ります! <br />
+          <br />
+        </p>
+        </div>
+</td>
+</tr>
+</table>
+<p align="center"><em>Zen Cart&trade; Copyright 2005</em></p>
+<br /><br />
+</body>
+</html>

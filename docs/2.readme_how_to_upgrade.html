@@ -1,0 +1,233 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 2.readme_how_to_upgrade.html 3782 2006-06-16 06:00:34Z drbyte $
+ */
+//-->
+<html>
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:10px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; font-size: 18px;}
+h3 { color: #5778ce; font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29; font-size: 14px;}
+-->
+</style>
+<title>Upgrading Zen Cart(tm) in 3 Easy Steps!</title><body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center>
+  <h1 class="intro">Zen Cart&trade;へようこそ</h1>
+</center>
+<br />
+Zen Cart™ は GNU General Public License の下に提供されており、ソフトウェアの利用、機能の追加、変更などに費用がかかることはありません。
+<br />
+ソフトウェアの利用に費用はかかりませんが、あなたがこのソフトウェアの新バージョンをダウンロードした機会などに寄付していただくことは、常に歓迎いたします。
+このことは、Zen Cart™ のメンテナンス、機能のアップグレード、無料のサポートフォーラム、そしてあなたのオンラインショップ構築ソフトの継続的なサポートに役立つのです。
+<br>
+<br>
+寄付はこちらのURLでしていただけます： <a href="http://www.zen-cart.com/modules/freecontent/index.php?id=6" target="_blank">The Zen Cart™ Team Page</a> / <a href="http://www.zen-cart.jp/59.html" target="_blank">日本語版「Zen Cartに貢献する」</a> <br>
+<br>
+あなたのサポートに感謝いたします。<br>
+<em>Zen Cart™ 開発チーム一同</em><br />
+<br />
+<center>
+<span class="small">
+Zen Cart™ はosCommerceから派生しました。/ Copyright© 2003 osCommerce<br>
+このプログラムは利用者のお役に立つことを願い、しかし<i>一切の保証なし</i>に提供されています。<br>
+、 商品としての適格性(MERCHANTABILITY)や、特定目的への適合(FITNESS FOR A PARTICULAR PURPOSE)についての暗黙の保証もしておりません。<br>
+このソフトウェアは、GNU General Public License の下で再配布することができます。 <br />
+</span>
+</center>
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+このソフトウェアはOSIが認証したオープンソースソフトウェアです。<br />
+OSIはOpen Source Initiativeが認証したというマークです。</td>
+  </tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center><h1 class="intro">Zen Cart™ をアップグレードするための簡単な3ステップ</h1>
+</center>
+<div>
+<h1>Paypal IPN - 重要事項:<br />
+1.2.2d以前のバージョンからのアップグレードを行う場合</h1>
+<p>このバージョンのZen-CartはPaypal IPNの支払いモジュールを新しくインプリメントしています。もしあなたが既にPaypal IPNを利用しているのでしたら、以下の注意をよくお読みください。<br />
+    <br />
+  Paypal IPNのコードはいくつかの理由によって再書き込みされます。<br>
+  第一に、oSCのモジュールを流用したPaypal用モジュールは、ギフト機能と割引券を使用したときに正しく動作しませんでした。これはまた、注文の合計金額の計算方法においても同様のトラブルが発生します。次にオリジナルの精算のプログラムコードのせいで、Paypal IPN
+  のコードがうまく足されませんでした。我々は精算部のコードをたくさん書き直しました。<br>
+  <br />
+    よって、もしPaypal IPNモジュールを使っていた場合、以下の点について充分な注意を払ってください。<br />
+</p>
+<ul>
+<li>新しいPaypal IPN 対応機能は以下をサポートしません。
+  <ul>
+    <li>Paypalページのカスタマイズレイアウト</li>
+    <li>Paypalデータベーステーブルの構造を以前のバージョンから変更します。<br />
+</li>
+</ul>
+<li>また、以下の点についても同様に注意してください。</li>
+<ul>
+  <li>アップグレードの際は、以前のPaypal IPNのリストをハードコピーとしてバックアップを持っていておいてください</li>
+  <li>昔のIPNの履歴は消えてしまいます。</li>
+  <li>このドキュメントの最後にある、&quot;Paypalを有効にする&quot;を参考にしてください。</li>
+</ul>
+<br />
+</ul>
+ユーザーのフィードバックをもとに、IPNをアップグレードし、将来のバージョンに組み込んでいきます。</div>
+<div>
+<h1>まず最初に…</h1>
+これは Zen Cart™ をアップグレードするための基本的なガイドです。もしまだ Zen Cart™ をインストールしていない場合には、<a href="http://zencart-jp.sourceforge.jp/develop/work/zen-cart-v1.2.0-l10n-jp-6/README1st.html">README1st</a> ファイルをお読みください。新規インストール方法が説明されています。 <br><br />
+<br /> 
+Zen Cart™ をアップグレードするためには、インストールやカスタマイズの際に使用した基本的なツールが必要です。：FTP ソフトウェア、 HTML/PHP コードの編集に使うテキストエディタ、phpMyAdmin または同等の MySQL データベース操作ソフトウェア、ホスティングサービスを設定するためのコントロール画面です。<br />
+<br />
+さらに、<a href="http://winmerge.sf.net">WinMerge</a> (<a href="http://www.geocities.co.jp/SiliconValley-SanJose/8165/winmerge.html">日本語版</a>) のようなファイル比較ツールもあると便利でしょう。 
+(Macユーザーには<a href="http://www.barebones.com" target="_blank">BBedit</a> のようなツールもあります)<br />
+<br />
+アップグレードは簡単な3ステップですが、注意深く順序に従って行ってください。そして常に重要なことですが、バックアップを最初に取りましょう。
+<br />
+<br />
+また、新バージョンの新しい特徴を理解するためにはデモ商品がどのように登録・表示されているかをご覧になることを強くお薦めします。
+<div>
+<h1>1. 準備する</h1>
+Zen Cart™ の新バージョンのファイルを解凍したら、Webサーバーの "<span class="filename">demo</span>" フォルダにアップロードします。そして新バージョンを別のデータベースにインストールします。その際、デモ商品を含めるようにします。これはあなたが新バージョンのさまざまな特徴に慣れるためで、後に削除します。 <br />
+<br />
+新しい特徴についてやテンプレート構造の記述について調べ、また"changelog"を参照してください。デモ商品についても操作してみてください。<br />
+<br />
+<br />
+あなたのデータベースのバックアップを全て取り(SQL ファイルにダンプし)、このファイルを後で参照するために PC にコピーしておきます。<br />
+また、サイトのファイルのバックアップも取り、安全に保存しておくためにまとめて zip 圧縮などをしておきます。<br>
+バックアップファイルは次のステップで使うために、例えば "<span class="filename">\zen_backup</span>" などという名前で保存しておきます。 <br>
+<br />
+<br />
+次に、あなたのサイトとオリジナルの Zen Cart™ ファイルを比べ、カスタマイズの詳細をチェックします。
+<br>
+<br />
+<strong>以前実際にインストールした</strong>オリジナルの Zen Cart™ ファイル、または最後にアップグレードした版(例：おそらく v1.1.3)を解凍し、これを新たな名前を付けたフォルダ(例：<span class="filename">\zen_orig</span>")に置きます。 <br>
+<br />
+<br />
+後で参照するために、あなたがインストールしたアドオン(追加)機能のリストを作成します。
+<br>
+<br />
+<a href="http://winmerge.sf.net">WinMerge</a> のようなファイル比較ツールを起動し、 "<span class="filename">\zen_orig</span>" 内の "オリジナル" Zen Cart™ ファイルと "<span class="filename">\zen_backup</span>" 内のあなたの現ショップのバックアップファイルを比較します。<br>
+<strong>異なっている</strong>ファイルを全て記録します。WinMerge の場合、リスト上で異なっているファイルをダブルクリックすると相違箇所が表示されます。 <br>
+もし相違点が単に表示用の文言などであれば、無視してください。逆に相違点がプログラムコードであれば、詳しく記録し、後で新しいバージョンに引き継ぐようにします。 <br>
+過去にインストールしたモジュール類などは多くのプログラムコードを含んでいるはずですが、Zen Cart™ の新バージョンと完全に互換性がないかもしれません。 <br />
+<br />
+先に作成しておいたアドオン(追加)機能のリストは、ファイル比較をした際に見つかった相違箇所について見当をつける場合に役立つでしょう。必要ならアド
+オンを再度ダウンロードし、READMEファイルやプログラムコードをチェックしてください。また、制作者に最新版について尋ねる必要もあるかもしれませ
+ん。
+<br>
+<br />
+<br />
+テンプレートファイルについても、相違箇所が見つかったファイルのリストを作成しました。これによって今回は(カスタマイズ内容を新バージョンに引き継が
+せたい場合は) Zen Cart™ のテンプレート・オーバーライド構造を利用しやすくなったはずです。もし内容がわからなければ、 <a href="http://www.zen-cart.com">Zen Cart™</a> サイトのテンプレートシステムについての FAQ (日本語サイト：<a href="http://www.zen-cart.jp/90.html#content_1_0">カスタマイズデザインを残したままZen-Cartのアップグレードを行う方法</a>) などをご覧ください。<br />
+</div>
+<div><h1>2. アップグレード実行</h1>
+Zen Cart™ の最新バージョンをダウンロードします。これは3つめのディレクトリになるはずです。(例："<span class="filename">\zen_new</span>"), <br />
+<br />
+先に作成したリストを利用して、<strong>相違箇所が見つかった</strong>ファイルを調べ、古いファイルの変更部分を新しいファイルにも反映していきます。 <br>
+テキストの変更だけなら、単にコピー＆ペーストで済むでしょう。 <br>
+コア・コンポーネントのプログラムコードを変更するのは難しく、厳密なテストが必要です。ここでもまた WinMerge を用いて相違箇所を新しいファイルに適用すると便利です。ですが、あなた自身がカスタマイズしたのではない相違箇所が多数見つかったりコンフリクトを起こ したりするかもしれませんから、プログラムコードの変更には十分に注意してください。 <br />
+<br />
+テンプレートのオーバーライドシステムを使っている場合には、<span class="filename">/includes/templates/MYTEMPLATE/*</span> と <span class="filename">/includes/template/template_default/*</span> などいくつかのファイルの変更が必要です。同様にランゲージファイル、サイドボックスなどのオーバーライドについてもチェックします。<br />
+</div>
+<div>
+<h1><strong>3. テストする</strong></h1>
+<p>Zen Cart™ の新しいバージョンで使用する新しいデータベースを作ります。<br />
+    <br />
+  作業中にあなたのショップで顧客が登録したり注文をしたりしているかもしれませんので、念のため最新のデータベースのバックアップを取ります。
+  <br>
+  ステップ1で作成したデータベースのバックアップで、作ったばかりの新しいデータベースを再構築します。 <br />
+  <br />
+  あなたの <span class="filename">/zen_new</span> フォルダに "<span class="filename">/includes/configure.php</span>" と "<span class="filename">/admin/includes/configure.php</span>" のファイルがない場合、あなたの古いショップのフォルダからコピーします。<br>
+  <br />
+"<span class="filename">/zen_new/includes/configure.php</span>" ファイルを編集し、データベース名が新しいデータベース名と同じであることを確認してください。またデータベースのユーザ名とパスワードについても同様です。ファイルを保存し、次のステップでアップロードするのを忘れないでください。 <br />
+    <br />
+あなたが変更を加えた新バージョン(ステップ2で作成)を、サーバーの別フォルダにアップロードします。フォルダ名は例えば "<span class="filename">/store_new</span>" などとします。 <br />
+    <br />
+    <span class="filename">/zc_install/index.php</span> を起動し、求められたら "<strong>アップグレード (Upgrade)</strong>" を選択します。"インストール (Install)" を選ぶとデータベースを上書きしてしまうので注意してください!)<br>
+<br />
+カスタマイズした内容をテストしたり、必要なら編集をしてください。また必要なら、テストインストール版と動作の比較などを行ってください。<br />
+全てが OK であれば、ショップを再び開店状態にします。
+<br>
+もしこの間に最後のバックアップから一定の時間が経っていれば、開店中のショップの最新のデータベースバックアップを利用して、この「テストする」ステッ プを繰り返します。ファイルを再度アップロードする必要はなく、データベースの再構築だけを行います。そのためにはインストーラーを起動し、データベース のアップグレードを再度行います。 <br />
+    <br />
+ショップを開店するには、管理画面でショップを "メンテナンス中 (Down for Maintenance)" に設定し、あなたの IP アドレスを接続許可リストに加え、サイトのプレビューを行います。 <br>
+これは、先に現在のショップのフォルダ名(例："store" など)を変更しておき、"<span class="filename">store_new</span>" を "<span class="filename">store</span>" に変更すれば、最も簡単に行うことができます。 <br>
+ショップが正しく動作しているかテストしてください。もし修正点が見つかったら、直るまでショップを "メンテナンス中 (Down for Maintenance)" に設定することを繰り返します。 <br />
+    <br />
+</p>
+</div>
+<div>
+<h1>ヘルプとサポート</h1>
+ヘルプやサポートについては、<a href="http://www.zen-cart.com">Zen Cart™ サイト</a> の <strong>FAQ</strong> や <strong>Support Forum</strong>、日本語による情報提供やサポートは <a href="http://zen-cart.jp">日本語公式サイト</a> をご利用ください。 <br>
+<br>
+<em>アップグレードおめでとうございます! あなたが Zen Cart™ を活用してくれることを嬉しく思います!</em> <br />
+<br /><hr />
+</div>
+<div>
+<h1 class="intro"> Zen Cart&trade; の特定バージョンに対する特別なアップグレード</h1>
+<h1>v1.2.1, v1.2.2 or v1.2.3からのアップグレード</h1>
+アップグレードは非常にシンプルです
+<ul>
+<li>あなたの行ったカスタマイズがv.1.3.0の解凍ファイルの中に含まれているかをよく確認してください。変更点の詳細については、changelogを参照してください。</li>
+<li>それから、新しいバージョンのファイルをアップロードしてください。あなたがカスタマイズを行った、コードとテンプレートも含みます。</li>
+<li>データベース構造をアップグレードするためにインストーラーを実行してください。 (<span class="filename">zc_install/index.php</span>)  "System Inspection" ページにて&quot;インストール&quot;と&quot;アップグレード&quot;&quot;データベースのみアップグレード&quot;の3種類のオプションを選ぶことが可能です<br>
+  もしv1.2からのアップグレードの場合、&quot;データベースのみアップグレード&quot;を選択してください。そうずればconfigure.phpの内容を変更することなく済みます。</li>
+</ul>
+<h3>不要なファイル</h3>
+以下のファイルは削除しても問題ありません。<br />
+<span class="filename">/ipn.php<br />
+/admin/paypal_ipn.php<br />
+/admin/paypal_ipn_order.php<br />
+/admin/includes/classes/paypal_ipn.class.php</span><br />
+<span class="filename">/admin/includes/languages/english/paypal_ipn.php</span><br />
+<span class="filename">/admin/includes/languages/english/images/buttons/button_products_price_manag.gif</span><br />
+<span class="filename">/includes/classes/paypal/*.*</span> (フォルダー全体)<br />
+<span class="filename">/includes/languages/english/bb_index.php</span><br />
+<span class="filename">/includes/modules/pages/bb_modules/*.*</span> (フォルダー全体)<br />
+<span class="filename">/includes/modules/payment/paypal/application_bottom.inc.php<br />
+/includes/modules/payment/paypal/application_top.inc.php<br />
+/includes/modules/payment/paypal/admin </span> (フォルダー全体)<br />
+<span class="filename">/includes/modules/payment/paypal/catalog </span> (フォルダー全体)<br />
+<span class="filename">/includes/modules/payment/paypal/classes </span> (フォルダー全体)<br />
+<span class="filename">/includes/modules/payment/paypal/functions </span> (フォルダー全体)<br />
+<span class="filename">/includes/modules/payment/paypal/images </span> (フォルダー全体)<br />
+<span class="filename">/includes/modules/payment/paypal/languages </span> (フォルダー全体)<br />
+<span class="filename">/includes/templates/template_default/templates/tpl_bb_modules_default.php</span><br />
+<br />
+<br />
+<h1><em>PayPal</em> モジュールのアクティベート</h1>
+v1.2.1, v1.2.2, v1.2.3, そして v1.3.0は、PayPal モジュールを完全に作り直しました。もしPaypalモジュールをお使いの場合、ファイルを再インストールした後、再アクティベートを行う必要があります。<br />
+アクティベートを行うには、"削除(Remove)"を行い <span class="filename"> Admin | Modules | Payment</span>.にあるPaypalモジュールをインストールする必要があります。  <br />
+<br />
+削除を行う前に、PayPalモジュールに設定していたe-メールアドレスを記録しておいてください。新しいモジュールをインストールした後、再度入力を行ってください。<br />
+</div>
+</td>
+</tr>
+</table>
+<br /><br />
+<p align="center"><em>Zen Cart&trade; Copyright 2006</em></p>
+</body>
+</html>

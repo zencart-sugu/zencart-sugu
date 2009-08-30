@@ -1,0 +1,272 @@
+<!--
+/**
+ * @package documentation
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: 4.readme_html_email_templates.html 3792 2006-06-18 05:22:55Z drbyte $
+ */
+//-->
+<html>
+	<head>
+		<title>HTML Email Support in Zen Cart(tm)</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!-- 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/> -->
+		<meta name="author" content="Ian Wilson &amp; Kim Elliott" />
+		<meta name="copyright" content="2004" />
+</head>
+
+<style type="text/css">
+<!--
+body, table{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+table.intro {border-color:C96E29; }
+td.intro{background-color:#EEEEEE ; border-color:5778ce; font-size:14px; }
+td.plainbox, div.callout {border: 1px dashed; border-color: C96E29; margin:5 40 5 40;}
+.heading {background-color:5778CE; font-weight:bold; font-size:14px; width: 100%; }
+.title1 {color:C96E29; font-weight:bold; font-size:22px; }
+.title2 {color:C96E29; font-weight:bold; font-size:13px; }
+.small {font-size:10px ;}
+.error {color:FF0000; }
+.filename {font-family: mono, "Courier New", Courier ; font-size:14px; color: c96e29;}
+.pseudolink {text-decoration:underline; color:5778CE;}
+h1.intro { color: #ffffff; border:1px solid #aca893; background-color: #c96e29;  font-size: 22px;   padding: 4px;}
+h1 { color: #ffffff;    border:1px solid #aca893;   background-color: #5778ce;   font-size: 20px;   padding: 4px;}
+h2 { color: #c96e29; font-size: 18px;}
+h3 { color: #5778ce; font-size: 16px; margin-bottom:0px;}
+h4 { color: #c96e29; font-size: 14px;}
+-->
+</style>
+<body>
+
+<table class="intro" cellspacing="4" cellpadding="6" border="3" width="748px" align="center">
+<tr><td class="intro">
+<center>
+  <h1 class="intro">Zen Cart&trade; へようこそ</h1>
+</center>
+<br />
+Zen Cart&trade; は GNU General Public License の下に提供されており、ソフトウェアの利用、機能の追加、変更などに費用がかかることはありません。
+<br />
+ソフトウェアの利用に費用はかかりませんが、あなたがこのソフトウェアの新バージョンをダウンロードした機会などに寄付していただくことは、常に歓迎いたします。
+このことは、Zen Cart&trade; のメンテナンス、機能のアップグレード、無料のサポートフォーラム、そしてあなたのオンラインショップ構築ソフトの継続的なサポートに役立つのです。<br />
+<br />
+寄付はこちらのURLでしていただけます：
+ <a href="http://www.zen-cart.com/modules/freecontent/index.php?id=6" target="_blank">The Zen Cart? Team Page</a> / <a href="http://www.zen-cart.jp/59.html" target="_blank">日本語版「Zen Cartに貢献する」</a> <br><br />
+<br />
+あなたのサポートに感謝いたします。<br />
+<em>Zen Cart&trade;  開発チーム一同</em><br />
+<br />
+<center>
+<span class="small">
+Zen Cart&trade; はosCommerceから派生しました。/ Copyrightc 2003 osCommerce<br>
+このプログラムは利用者のお役に立つことを願い、しかし<i>一切の保証なし</i>に提供されています。<br>
+、 商品としての適格性(MERCHANTABILITY)や、特定目的への適合(FITNESS FOR A PARTICULAR PURPOSE)についての暗黙の保証もしておりません。<br>
+このソフトウェアは、GNU General Public License の下で再配布することができます。 <br /><br />
+</span>
+</center>
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td align="center"><img src="osi-certified-120x100.png" /><br />
+このソフトウェアはOSIが認証したオープンソースソフトウェアです。<br />
+OSIはOpen Source Initiativeが認証したというマークです。
+</td></tr></table>
+<br />
+<table border="3" width="748px" align="center" cellpadding="6">
+  <tr>
+<td>
+<center>
+<h1 class="intro"> Zen Cart&trade;のe-メールサポート </h1>
+</center>
+<div>
+<h1>使い方 - リッチテキストエディタ / e-メールのアーカイビング / HTMLメールの送信 </h1>
+<h3>HTML/リッチテキストエディタのサポートを有効にする</h3>
+<p>エディターの設定は<span class="filename">Configuration | My Store | &nbsp;HTML Editor
+</span>で行うことができます。<br /></p>
+<h3>リッチテキストでメッセージを作成する際の、e-メールシステムの設定方法</h3>
+<p>管理画面で<span class="filename">Configuration | E-Mail Options</span>へ行ってください。</p>
+
+a.&nbsp;あなたの使っているWebサーバーに&quot;e-メール配信方法&quot;が正しく設定されているか確認してください。<br />
+b.&nbsp;<strong>メールを送るときはMIME HTMLを &quot;true&quot;にしてください</strong><br />
+c.&nbsp;<strong>Send E-Mailsは &quot;true&quot;にしてください</strong> <br />
+d.&nbsp;<strong>E-mail  アーカイビングはアクティブになっていますか？</strong>  この設定は&quot;true&quot;にしておくことをお勧めします。-- 注意　 この設定はデータベースサイズが恒常的に増大します。<br />
+<h3>HTMLメールを送るには、どこから行えばよいですか？</h3>
+管理画面の<span class="filename">&quot;Tools&quot; | &quot;Newsletter Manager&quot;</span>からメルマガを配信することが可能です。.<br />
+この機能は商品通知機能と連動します。この商品通知はメルマガマネージャー画面から生成されます。
+<p>もしくは<span class="filename">&quot;Tools&quot; | &quot;Send Email&quot;</span>からも作成できます。もしくは管理画面の<span class="filename">&quot;Customers&quot; | &quot;Customers&quot;</span> で&quot;<strong>e-メール</strong>&quot;をクリックしてください。</p>
+<p><strong>クーポンメール</strong>, <strong>ギフトメールなども同様の方法で作成できます。</strong></p>
+<h3>エディターを使わずに、e-メールに直接HTMLコードをコピーペーストしたらどうなりますか？</h3>
+ HTMLエディターの&quot;ソース(source)&quot;オプションをONにすることで、生HTMLを記述することができます。<br />
+さらに、エディターを無効にしたままでHTMLメール送信を有効にしておくと生HTMLを直接記述することができます。</div>
+<div>
+<h1>コメント&amp; FAQ</h1>
+
+
+<h3>テキストのみ受信する設定にしているお客様に対してはどうなりますか？</h3>
+<p>HTMLメールを受け取れないメーラーを使っている人のために、下段に、テキストのみのコンテンツを入れる箇所があります。&nbsp;&quot;TEXTのみ&quot;のエリアを空白にしておくと、HTMLコンテンツが変換されます。HTMLタグを削除するのみの処理になります。テキスト部のみが送られます。</p>
+<h3>HTMLメールの中のロゴを変更するには？</h3>
+<p>/email フォルダーの中に &quot;header.jpg&quot;というファイルがあります。.こちらを差し替えることでHTMLメールのロゴ画像を変更することができます。</p>
+<h3>メールの送信者のアドレスの見え方が変</h3>
+<p>&quot;送信者&quot;のメールアドレスに&quot;)&quot;が入っている場合にそうなることがあります。</p>
+<h3>使っているブラウザでエディターが動作しない</h3>
+<p>お使いのブラウザでHTMLエディターが正しく動作しない場合、管理画面で、エディターを使用しない設定にしてください。そして、普段使っているHTMLエディターを用いて作成した生htmlを直接貼り付けてください。</p>
+<h3>バウンスのコントロールBOUNCE HANDLING</h3>
+<p>Zen Cartはメールバウンスのコントロールはできません。</p>
+<p>メールがバウンスされた場合、管理画面の顧客（CUSTOMER）を選択し、検索ボックスにe-メールアドレスを入れて、該当者のメールアドレスを探し出し、該当者のアカウント設定を変更してください。</p>
+</div>
+<div>
+<h1 align="center" class="intro"> HTMLメールのテンプレートシステムの使い方</h1>
+<p>e-メールのテンプレートシステムは<span class="filename">/email</span> フォルダーの中にある<span class="filename">email_*.htm</span> を操作します。 </p>
+<h1>e-メール テンプレートのスタイルシート</h1>
+<p>HTMLメールの標準形が広がり、全てのメーラー側で同じように見えるようにすることが不可能になりました。それゆえ、スタイルシートをリンクしておくことは推奨されません。いくつかのメーラーではスタイルシートのリンクを排除するものもあります。</p>
+<p>HTMLメールのテンプレートを加工するにあたっては、HTML3.2とCSS1を用いて記述するのが最適です。</p>
+<h1>テンプレートシステムのキーワードマトリクス</h1>
+以下のキーワードはHTMLメールの中で、置き換えられる文字列です。あなたが作成したテンプレートに挿入することで正しく動作します。<br />
+注意　必ず最初に$が付きます<br />
+<h3>全てのモジュール</h3>
+<p>$EMAIL_FIRST_NAME&nbsp;(ほとんどのモジュールでお客さまの名前を提供します)<br />
+  $EMAIL_LAST_NAME<br />
+&nbsp;<br />
+  $EMAIL_TO_NAME<br />
+  $EMAIL_TO_ADDRESS&nbsp;(TO: e-メールアドレス)<br />
+  $EMAIL_FROM_NAME<br />
+  $EMAIL_FROM_ADDRESS&nbsp;(FROM:  e-メールアドレス 初期状態では管理画面で定義されている EMAIL_FROMになります)<br />
+  $EMAIL_STORE_NAME&nbsp;(Admin | My Storeで定義されています)<br />
+  $EMAIL_STORE_OWNER&nbsp;(サイトオーナー名  -- 管理画面で定義されています)<br />
+  $EMAIL_STORE_URL&nbsp;(初期設定では設置したZen CartのURLになっています)<br />
+  $EMAIL_DATE_LONG&nbsp;(例: Monday June 14, 2004 11:28 am)<br />
+  $EMAIL_DATE_SHORT&nbsp;(例: 06/14/2004)<br />
+  $BASE_HREF&nbsp;(ショップのルートディレクトリ)<br />
+  $EXTRA_INFO&nbsp;(これは最下部の管理者あての&quot;office-use-only&quot;セクションです)<br />
+&nbsp;<br />
+以下の３つは&quot;languages/..../email_extras.php&quot;で定義されています:<br />
+$EMAIL_DISCLAIMER&nbsp;(否認者)<br />
+$EMAIL_SPAM_DISCLAIMER&nbsp;(spam用の否認者 --日本の法律に照らし合わせてカスタマイズするべきです!)<br />
+  $EMAIL_FOOTER_COPYRIGHT<br />
+&nbsp;<br />
+$EMAIL_MESSAGE_HTML&nbsp;(これは定型文になります)<br />
+&nbsp;<br />
+</p>
+<h2>管理画面側:</h2>
+
+<h3>クーポン</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME,<br />
+$EMAIL_MESSAGE_HTML&nbsp;(管理側で作成される定型文)<br />
+$COUPON_TEXT_TO_REDEEM&nbsp;(&quot;あなたはクーポンを受け取りました&quot;)<br />
+$COUPON_TEXT_VOUCHER_IS&nbsp;(クーポン番号は&quot;)<br />
+$COUPON_CODE&nbsp;(実際のクーポン番号)<br />
+$COUPON_DESCRIPTION&nbsp;(クーポンの説明)<br />
+$COUPON_TEXT_REMEMBER&nbsp;(&quot;この番号は大切に控えておいてください&quot;)<br />
+$COUPON_REDEEM_STORENAME_URL&nbsp;(&quot;有効にするにはサイトを訪れてください&quot;)<br />
+<h3>管理者からのGVメール</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME<br />
+$EMAIL_MESSAGE_HTML&nbsp;(管理者が作成する定型文)<br />
+$GV_WORTH&nbsp;(&quot; GVを受け取りました&quot; )<br />
+$GV_AMOUNT&nbsp;(GV の合計)<br />
+$GV_REDEEM&nbsp;(有効にするにはショップを訪れるか、ここをクリックしてください)<br />
+$GV_CODE_URL&nbsp;(GVを有効にするためのURL)<br />
+<h3>管理側のGV-Queue(スクリーニング後の購入したGVのリリース用)</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME<br />
+$GV_NOTICE_INTRO&nbsp;(あなたはGVを私達のショップから購入しました: URL)&nbsp;(optional)<br />
+$GV_NOTICE_AMOUNT_URL&nbsp;(あなたは$$$$相当のGVを私達のショップから購入しました: URL)<br />
+$GV_NOTICE_VALUE&nbsp;(購入したGVの合計金額 そして使用された金額)<br />
+$TEXT_REDEEM_COUPON_MESSAGE_BODY&nbsp;(言語ファイルを定義するまでは空白)<br />
+$TEXT_REDEEM_COUPON_MESSAGE_FOOTER&nbsp;(言語ファイルを定義するまでは空白)&nbsp;<br />
+<h3>ストック少</h3>
+- $EMAIL_SUBJECT<br />
+- $EMAIL_MESSAGE_HTML -- 精算プロセスで発生した、ストック少の詳細を含みます<br />
+
+<h3>メルマガ、新商品紹介、管理者メール</h3>
+Dear $EMAIL_FIRST_NAME $EMAIL_LAST_NAME,<br />
+$EMAIL_MESSAGE_HTML&nbsp;(管理者によって作成されます)<br />
+<h3>管理者からの注文ステータスアップデート</h3>
+$EMAIL_CUSTOMERS_NAME&nbsp;(注文テーブルから抽出されます)<br />
+$EMAIL_STORE_NAME<br />
+$EMAIL_TEXT_ORDER_NUMBER&nbsp;(データベース上の注文番号)<br />
+$EMAIL_TEXT_INVOICE_URL&nbsp;(マイアカウント履歴にアクセスするためのURL)<br />
+$EMAIL_TEXT_DATE_ORDERED&nbsp;(注文日)<br />
+$EMAIL_TEXT_STATUS_UPDATED&nbsp;(いつ更新されたか)<br />
+$EMAIL_TEXT_STATUS_LABEL&nbsp;(新しいステータス)<br />
+$EMAIL_TEXT_NEW_STATUS&nbsp;(概略とコメントの現状ステータス)<br />
+$EMAIL_TEXT_STATUS_PLEASE_REPLY&nbsp;(&quot;わからないことがある場合はこのアドレスにご返信ください&quot;)<br />
+<h3>パスワードを忘れた場合:</h3>
+$EMAIL_SUBJECT&nbsp;(&quot;パスワードのリセットが要求されました&quot;)<br />
+$CUSTOMERS_NAME&nbsp;(管理者もしくはお客さまの名前)<br />
+$EMAIL_MESSAGE_HTML&nbsp;(パスワードのリセットに関する情報actual pwd reset info)<br />
+&nbsp;<br />
+<h2>カタログエリア:</h2>
+<h3>お問い合わせ</h3>
+$CONTACT_US_OFFICE_FROM&nbsp;(会社用-e-メールアドレスと問い合わせ名を含みます)<br />
+$EMAIL_MESSAGE_HTML&nbsp;(お客さまもしくは管理者によって作成されたメッセージ)<br />
+<h3>Welcome Email</h3>
+$EMAIL_GREETING&nbsp;(Mr/Ms/Dear + first and/or last-names)<br />
+$EMAIL_WELCOME&nbsp;(&quot;Welcome to ....storename....&quot;)<br />
+&nbsp;<br />
+$COUPON_BLOCK ... this already CONTAINS the following, and is only displayed IF they have been set for new customers via the Admin | My Store | GV/Coupons.<br />
+.....$COUPON_TEXT_VOUCHER_IS<br />
+.....$COUPON_DESCRIPTION<br />
+.....$COUPON_TEXT_TO_REDEEM<br />
+.....$COUPON_CODE<br />
+$GV_BLOCK ... this already contains the following, and is only displayed if GV's have been set for new customers, see coupons above.<br />
+.....$GV_WORTH<br />
+.....$GV_REDEEM<br />
+.....$GV_CODE_URL<br />
+&nbsp;<br />
+$EMAIL_MESSAGE_HTML&nbsp;(the actual welcome message: defined by the &quot;EMAIL_TEXT&quot; constant)<br />
+$EMAIL_CONTACT_OWNER<br />
+$EMAIL_CLOSURE<br />
+<h3>GV Send to a friend, after purchased and applied to my account</h3>
+GV Pic is displayed, with these beside it:&nbsp;<br />
+......$EMAIL_GV_AMOUNT&nbsp;<br />
+......$GV_REDEEM_CODE<br />
+$EMAIL_STORE_NAME<br />
+$EMAIL_GV_TEXT_HEADER&nbsp;(I'm sending you a GV)<br />
+$EMAIL_GV_AMOUNT&nbsp;(Amount of)<br />
+$EMAIL_GV_FROM&nbsp;(From my name)<br />
+$EMAIL_GV_MESSAGE&nbsp;(&quot;With a message from me&quot;)<br />
+$EMAIL_GV_SEND_TO&nbsp;(Your name)<br />
+$EMAIL_MESSAGE_HTML&nbsp;(My message -- entered before sending)<br />
+$GV_REDEEM_HOW&nbsp;(How to redeem the GV)<br />
+$GV_REDEEM_URL&nbsp;(URL to redeem)<br />
+$EMAIL_GV_FIXED_FOOTER&nbsp;(If you're having problems redeeming, enter it during checkout, or contact storeowner)<br />
+$EMAIL_GV_SHOP_FOOTER&nbsp;(null at present)<br />
+<h3>Tell-A-Friend</h3>
+$EMAIL_TEXT_HEADER&nbsp;(&quot;Important Information&quot;)<br />
+$EMAIL_GREET&nbsp;(&quot;Hi _____&quot;)<br />
+$EMAIL_INTRO&nbsp;(&quot;Your friend thought you might like this. Here's their message:&quot;)<br />
+EMAIL_MESSAGE_HTML&nbsp;(Message composed by referrer)<br />
+$EMAIL_PRODUCT_LINK<br />
+$EMAIL_CONTACT_STORE<br />
+<h3>Order-Confirmation</h3>
+$EMAIL_TEXT_HEADER&nbsp;(&quot;Order Confirmation&quot;)<br />
+$INTRO_STORE_NAME<br />
+$INTRO_ORDER_NUM_TITLE&nbsp;(&quot;Order Number:&quot;)<br />
+$INTRO_ORDER_NUMBER&nbsp;(actual order number)<br />
+$INTRO_DATE_TITLE&nbsp;(&quot;Ordered on:&quot;)<br />
+$INTRO_DATE_ORDERED&nbsp;(Date ordered)<br />
+$INTRO_URL_TITLE&nbsp;(Description in A HREF to My Account)<br />
+$INTRO_URL_VALUE&nbsp;(A HREF to My Account)<br />
+$ORDER_COMMENTS&nbsp;(Customer's comments entered at order time)<br />
+$PRODUCTS_TITLE&nbsp;(&quot;Product Details:&quot;)<br />
+$PRODUCTS_LIST&nbsp;(Detailed list of products and attributes and prices)<br />
+$ORDER_TOTALS&nbsp;(Order totals)<br />
+$HEADING_ADDRESS_INFORMATION&nbsp;(&quot;Address Info:&quot;)<br />
+$ADDRESS_DELIVERY_TITLE&nbsp;(&quot;Delivery address:&quot;)<br />
+$ADDRESS_DELIVERY_ADDRESS&nbsp;(Actual delivery address on order)<br />
+$SHIPPING_METHOD_TEXT&nbsp;(&quot;Shipping Method&quot;)<br />
+$SHIPPING_METHOD_TITLE&nbsp;(Shipping method selected)<br />
+$ADDRESS_BILLING_TITLE&nbsp;(&quot;Billing address:&quot;)<br />
+$ADDRESS_BILLING_DETAIL&nbsp;(Billing address on order)<br />
+$PAYMENT_METHOD_TEXT&nbsp;(&quot;Payment Method:&quot;)<br />
+$PAYMENT_METHOD_TITLE&nbsp;(Payment method selected)<br />
+$PAYMENT_METHOD_FOOTER&nbsp;(Payment method footer, if any)<br />
+<h3><br />
+
+</h3>
+</div>
+</td>
+</tr>
+</table>
+<br /><br />
+<p align="center"><em>Zen Cart&trade; Copyright 2005</em></p>
+</body>
+</html>
