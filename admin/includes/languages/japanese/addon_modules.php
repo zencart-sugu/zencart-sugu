@@ -53,3 +53,5 @@ define('ERROE_MODULE_CLEANUP_FAILED', 'エラー: %s モジュールのデータ削除に失敗し
 
 define('SUCCESS_CREATE_TABLE', '%sテーブルをデータベースに作成しました。');
 define('SUCCESS_DROP_TABLE', '%sテーブルをデータベースから削除しました。');
+
+define('BUTTON_TEXT_MODULE_DOWNLOAD', 'モジュールのダウンロード');

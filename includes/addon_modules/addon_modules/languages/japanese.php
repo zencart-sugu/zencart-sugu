@@ -30,8 +30,6 @@ define('MODULE_ADDON_MODULES_DISTRIBUTION_URL_DESCRIPTION', 'addonモジュールパッ
 define('MODULE_ADDON_MODULES_SORT_ORDER_TITLE', '優先順');
 define('MODULE_ADDON_MODULES_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
-define('BUTTON_TEXT_MODULE_DOWNLOAD', 'モジュールのダウンロード');
-
 define('BOX_BLOCKS_MANAGER', 'ブロックの設定');
 
 define('MODULE_ADDON_MODULES_UNKNOWN_INSTALL_VERSION', '不明');

@@ -126,6 +126,9 @@
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
+          <?php
+          if (isset($GLOBALS['addon_modules'])) {
+          ?>
           <tr>
             <td>
               <?php echo zen_draw_form("download", FILENAME_ADDON_MODULES_ADMIN, "module=addon_modules/download", "post"); ?>
@@ -133,6 +136,9 @@
               </form>
             </td>
           </tr>
+          <?php
+          }
+          ?>
           <tr>
             <td class="smallText" colspan="2">
             <?php echo

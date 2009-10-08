@@ -45,22 +45,24 @@ for ($i=0; $i<count($distributes); $i++) {
     if ($contents !== false) {
       $contents = mb_convert_encoding($contents, CHARSET, "utf-8");
       $yaml     = $spyc->load($contents);
-      foreach($yaml['modules'] as $k => $v) {
-        // インストール状況確認
-        $installed_version = "-";
-        // ディレクトリが存在する場合はダウンロード済
-        if (file_exists(getcwd()."/../".MODULE_ADDON_MODULES_DOWNLOAD_DIRECTORY.$k))
-          $installed_version = MODULE_ADDON_MODULES_UNKNOWN_INSTALL_VERSION;
-        if (isset($GLOBALS[$k])) {
-          if (isset($GLOBALS[$k]->version))
-            $installed_version = $GLOBALS[$k]->version;
-          else
+      if (isset($yaml['modules'])) {
+        foreach($yaml['modules'] as $k => $v) {
+          // インストール状況確認
+          $installed_version = "-";
+          // ディレクトリが存在する場合はダウンロード済
+          if (file_exists(getcwd()."/../".MODULE_ADDON_MODULES_DOWNLOAD_DIRECTORY.$k))
             $installed_version = MODULE_ADDON_MODULES_UNKNOWN_INSTALL_VERSION;
+          if (isset($GLOBALS[$k])) {
+            if (isset($GLOBALS[$k]->version))
+              $installed_version = $GLOBALS[$k]->version;
+            else
+              $installed_version = MODULE_ADDON_MODULES_UNKNOWN_INSTALL_VERSION;
+          }
+          $v['filename']          = $k;
+          $v['distribute']        = trim($distributes[$i]);
+          $v['installed_version'] = $installed_version;
+          $modules[]              = $v;
         }
-        $v['filename']          = $k;
-        $v['distribute']        = trim($distributes[$i]);
-        $v['installed_version'] = $installed_version;
-        $modules[]       = $v;
       }
     }
   }
@@ -82,7 +84,9 @@ for ($i=0; $i<$n-1; $i++) {
 
 // 操作
 $action = $_REQUEST['action'];
-$row    = (int)$_REQUEST['row'];
+$row    = -1;
+if (isset($_REQUEST['row']))
+  $row  = (int)$_REQUEST['row'];
 
 if ($action == "download") {
   $filename   = $_REQUEST['filename'];
@@ -331,6 +335,9 @@ function version_check($oper, $current, $require) {
         </table>
       </td>
       <td width="25%" valign="top">
+        <?php
+        if ($row >= 0 && $row < count($modules)) {
+        ?>
         <table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr class="infoBoxHeading">
             <td class="infoBoxHeading"><b><?php echo HEADING_INFOBOX_TITLE; ?></b></td>
@@ -393,6 +400,9 @@ function version_check($oper, $current, $require) {
           </tr>
           <?php } ?>
         </table>
+        <?php
+        }
+        ?>
       </td>
     </tr>
 
