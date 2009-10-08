@@ -127,6 +127,13 @@
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
           <tr>
+            <td>
+              <?php echo zen_draw_form("download", FILENAME_ADDON_MODULES_ADMIN, "module=addon_modules/download", "post"); ?>
+                <input type="submit" value="<?php echo BUTTON_TEXT_MODULE_DOWNLOAD; ?>">
+              </form>
+            </td>
+          </tr>
+          <tr>
             <td class="smallText" colspan="2">
             <?php echo
               '<a href="' . zen_href_link(FILENAME_ADDON_MODULES, zen_get_all_get_params()) . '" class="menuBoxContentLink">' .

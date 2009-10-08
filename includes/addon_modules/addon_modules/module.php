@@ -33,6 +33,12 @@ if (!defined('IS_ADMIN_FLAG')) {
     var $description = MODULE_ADDON_MODULES_DESCRIPTION;
 
     /**
+     * Module version for addon module download manager.
+     * @var string
+     */
+    var $version = "1.0.0";
+
+    /**
      *
      * @var integer
      */
@@ -48,6 +54,14 @@ if (!defined('IS_ADMIN_FLAG')) {
             'configuration_description' => MODULE_ADDON_MODULES_STATUS_DESCRIPTION,
             'use_function' => 'null',
             'set_function' => 'zen_cfg_select_option(array(\'true\'), '
+          ),
+          array(
+            'configuration_title' => MODULE_ADDON_MODULES_DISTRIBUTION_URL_TITLE,
+            'configuration_key' => 'MODULE_ADDON_MODULES_DISTRIBUTION_URL',
+            'configuration_value' => MODULE_ADDON_MODULES_DISTRIBUTION_URL_DEFAULT,
+            'configuration_description' => MODULE_ADDON_MODULES_DISTRIBUTION_URL_DESCRIPTION,
+            'use_function' => 'null',
+            'set_function' => 'zen_cfg_textarea_small('
           ),
           array(
             'configuration_title' => MODULE_ADDON_MODULES_SORT_ORDER_TITLE,

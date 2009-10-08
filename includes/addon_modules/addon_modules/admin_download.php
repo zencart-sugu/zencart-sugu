@@ -155,7 +155,7 @@ if ($action == "download") {
   // エラーが無い場合のみダウンロード処理を行う
   if ($error_message == "") {
     // 一時ファイルに保存
-    $archive = @file_get_contents($distribute."/".$filename.".tgz");
+    $archive = @file_get_contents($distribute."/".$filename.".tar");
     if ($archive === false) {
       $error_message .= sprintf(ERROR_CANNOT_DOWNLOAD, $filename);
     }
@@ -171,10 +171,13 @@ if ($action == "download") {
     ini_set('include_path', DIR_FS_CATALOG.'includes/addon_modules/addon_modules/pear/'.':'.ini_get('include_path'));
     require_once('Tar.php');
     umask(0);
-    $tar    = new Archive_Tar($tempfile, "gz");
+    $tar    = new Archive_Tar($tempfile, "");
     $result = $tar->extract(getcwd()."/../".MODULE_ADDON_MODULES_DOWNLOAD_DIRECTORY);
-    if ($result)
-      $success_message = sprintf(SUCCESS_EXTRACT, $filename);
+    if ($result) {
+      $success_message                     = sprintf(SUCCESS_EXTRACT, $filename);
+      // ダウンロードしても、有効にしないとわからないので、とりあえず「不明」
+      $modules[$find]['installed_version'] = MODULE_ADDON_MODULES_UNKNOWN_INSTALL_VERSION;
+    }
     else
       $error_message = sprintf(ERROR_EXTRACT, $filename);
 
@@ -191,7 +194,7 @@ function version_check($oper, $current, $require) {
       return true;
   }
 
-  if ($oper == '>=' || $oper == '=>') {
+  else if ($oper == '>=' || $oper == '=>') {
     if ((int)$current[0] == (int)$require[0] &&
         (int)$current[1] == (int)$require[1] &&
         (int)$current[2] == (int)$require[2] &&
@@ -208,7 +211,7 @@ function version_check($oper, $current, $require) {
       return true;
   }
 
-  if ($oper == '<=' || $oper == '=<') {
+  else if ($oper == '<=' || $oper == '=<') {
     if ((int)$current[0] == (int)$require[0] &&
         (int)$current[1] == (int)$require[1] &&
         (int)$current[2] == (int)$require[2] &&
@@ -223,6 +226,11 @@ function version_check($oper, $current, $require) {
 
         (int)$current[0] <  (int)$require[0])
       return true;
+  }
+
+  // 比較無しは無条件ＯＫ
+  else {
+    return true;
   }
 
   return false;

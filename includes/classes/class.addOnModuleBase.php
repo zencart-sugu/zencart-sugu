@@ -18,6 +18,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   class addOnModuleBase extends base {
     var $code, $title, $description, $sort_order, $icon, $status, $enabled, $configuration_keys, $require_modules, $notifier;
     var $dir, $dir_templates, $dir_template, $dir_template_images, $dir_template_icons, $schema;
+    var $version;
 
 // class constructor
     function __construct() {

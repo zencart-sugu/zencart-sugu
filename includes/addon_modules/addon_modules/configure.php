@@ -14,3 +14,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 define('MODULE_ADDON_MODULES_STATUS_DEFAULT', 'true');
 define('MODULE_ADDON_MODULES_SORT_ORDER_DEFAULT', '');
+define('MODULE_ADDON_MODULES_DISTRIBUTION_URL_DEFAULT', 'http://sugu.e7.com');
+define('MODULE_ADDON_MODULES_MODULE_LIST_YML_NAME',     '/addon_module_list.yml');
+define('MODULE_ADDON_MODULES_DOWNLOAD_TEMP_DIRECTORY',  '/tmp/');
+define('MODULE_ADDON_MODULES_DOWNLOAD_DIRECTORY',       'includes/addon_modules/');
