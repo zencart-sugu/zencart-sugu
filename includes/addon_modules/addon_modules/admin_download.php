@@ -271,6 +271,13 @@ function version_check($oper, $current, $require) {
   <table border="0" width="100%" cellspacing="0" cellpadding="0">
     <tr>
       <td class="pageHeading"><br/><?php echo HEADING_TITLE; ?><br/><br/></td>
+      <td align="right">
+<?php
+        echo zen_draw_form('back', FILENAME_ADDON_MODULES, '', "post");
+        echo '<input type="submit" value="'.TEXT_BACK.'">'."\n";
+        echo '</form>'."\n";
+?>
+      </td>
     </tr>
 
     <tr>
