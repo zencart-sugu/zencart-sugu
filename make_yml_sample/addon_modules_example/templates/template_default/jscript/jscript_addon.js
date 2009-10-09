@@ -1,0 +1,1 @@
+alert('Load addon_modules_example JScript');
