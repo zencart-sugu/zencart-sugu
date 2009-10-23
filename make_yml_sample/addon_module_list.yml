@@ -1,0 +1,59 @@
+modules :
+  aboutbox :
+    author : sasaki@liquidst.jp
+    author_email : sasaki@liquidst.jp
+    name :
+      default : アバウトボックス
+      en : engアバウトボックス
+      ja : アバウトボックス
+    summary :
+      default : アバウトボックスブロック<br />アバウトボックスを表示するブロックを追加します。<br />有効化後に<a href="http://sugu.e7.com/index.php?main_page=FILENAME_BLOCKS">ブロックの設定</a>から表示設定をしてください。
+      en : engアバウトボックスブロック<br />アバウトボックスを表示するブロックを追加します。<br />有効化後に<a href='' . zen_href_link(FILENAME_BLOCKS) . ''>ブロックの設定</a>から表示設定をしてください。
+      ja : アバウトボックスブロック<br />アバウトボックスを表示するブロックを追加します。<br />有効化後に<a href="http://sugu.e7.com/index.php?main_page=FILENAME_BLOCKS">ブロックの設定</a>から表示設定をしてください。
+    version : 1.0.0
+    require_zen_cart_version : >= 1.3.0.2
+    require_addon_modules_version : >= 1.0
+    ******************************************
+
+  addon_modules_example :
+    author : sasaki@liquidst.jp
+    author_email : sasaki@liquidst.jp
+    name :
+      default : 追加モジュール Example
+      ja : 追加モジュール Example
+    summary :
+      default : 追加モジュール Example
+      ja : 追加モジュール Example
+    version : 1.0.0
+    require_zen_cart_version : >= 1.3.0.2
+    require_addon_modules_version : >= 1.0
+    ******************************************
+
+  addon_modules_help :
+    author : sasaki@liquidst.jp
+    author_email : sasaki@liquidst.jp
+    name :
+      default : 追加モジュールヘルプ
+      ja : 追加モジュールヘルプ
+    summary :
+      default : 追加モジュールヘルプ
+      ja : 追加モジュールヘルプ
+    version : 1.0.0
+    require_zen_cart_version : >= 1.3.0.2
+    require_addon_modules_version : >= 1.0
+    ******************************************
+
+  ajax_category_tree :
+    author : kohata@e7-ware.com
+    author_email : kohata@e7-ware.com
+    name :
+      default : 商品カテゴリ
+      ja : 商品カテゴリ
+    summary :
+      default : カテゴリをツリー表示にします
+      ja : カテゴリをツリー表示にします
+    version : 1.0.2
+    require_zen_cart_version : >= 1.3.0.2
+    require_addon_modules_version : >= 1.0
+    ******************************************
+
