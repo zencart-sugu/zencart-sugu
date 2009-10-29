@@ -70,9 +70,22 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 
 <!--bof-branding display-->
 <div id="logoWrapper">
+<?php
+  // 簡単デザイン設定
+  if (MODULE_EASY_DESIGN_STATUS == 'true') {
+?>
+    <div id="logo"><?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '"><img src="'.getLogoImage(getDefaultTemplate()).'" alt="'.TITLE.'" title="'.TITLE.'"/></a>'; ?></div>
+<?php } else { ?>
     <div id="logo"><?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '">' . zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT) . '</a>'; ?></div>
+<?php } ?>
     <div id="taglineWrapper">
 <?php
+  // 簡単デザイン設定
+  if (MODULE_EASY_DESIGN_STATUS == 'true') {
+?>
+      <div id="tagline"><?php echo EASY_DESIGN_TAGLINE;?></div>
+<?php
+  } else
               if (HEADER_SALES_TEXT != '') {
 ?>
       <div id="tagline"><?php echo HEADER_SALES_TEXT;?></div>

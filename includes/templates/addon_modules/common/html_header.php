@@ -49,6 +49,12 @@ require(DIR_WS_MODULES . zen_get_module_directory('meta_tags.php'));
   while(list ($key, $value) = each($directory_array)) {
     echo '<link rel="stylesheet" type="text/css" href="' . $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css') . '/' . $value . '" />'."\n";
   }
+
+  // 簡単デザイン設定
+  if (MODULE_EASY_DESIGN_STATUS == 'true') {
+    echo '<link rel="stylesheet" type="text/css" href="' . getEasyDesignCss() . '" />'."\n";
+  }
+
 /**
  * load stylesheets on a per-page/per-language/per-product/per-manufacturer/per-category basis. Concept by JuxiJoza.
  */
