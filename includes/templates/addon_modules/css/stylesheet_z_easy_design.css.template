@@ -1,0 +1,20 @@
+@charset "euc-jp";
+
+#productDescription h2,
+h2.headline,
+#productDescriptionBody h3,
+.transparent,
+#footer,
+.category #main h1{
+ background-color: #{maincolor};
+}
+
+.category #main #productGuide h1,
+#cookieusageBody #main h2,
+#productDescriptionBody h3{
+ border-left-color: #{maincolor};
+}
+
+#navSupp{
+	border-top-color: #{maincolor};
+}
