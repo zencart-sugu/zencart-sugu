@@ -1,0 +1,34 @@
+i@charset "euc-jp";
+
+.horizontal .content{
+	border: 1px solid #CCC;
+	width: 728px;
+	margin-top: 5px;
+	padding: 20px 0px 50px 0px;
+	text-align: left;	/*padding-bottom: 50px;*/
+	/*margin-bottom: 10px;*/
+}
+
+
+
+.horizontal .content .carouselUI{
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+}
+
+.horizontal .button{
+	position: relative;
+}
+
+.horizontal .prev a{
+	position: absolute;
+	left: 10px;
+}
+
+.horizontal .next a{
+	position: absolute;
+	right: 10px;
+}
+
