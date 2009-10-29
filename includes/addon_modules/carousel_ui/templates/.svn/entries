@@ -1,0 +1,31 @@
+8
+
+dir
+736
+svn+ssh://warranty@warranty.ark-web.jp/trunk/htdocs/includes/addon_modules/carousel_ui/templates
+svn+ssh://warranty@warranty.ark-web.jp
+
+
+
+2009-08-27T11:57:12.622731Z
+497
+s.kohata
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9779e217-cb64-48d6-b5dd-67b5ce6f422b
+
+template_default
+dir
+
