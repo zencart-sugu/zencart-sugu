@@ -68,7 +68,17 @@ if (SHOW_FOOTER_IP == '1') {
 <!--eof-banner #5 display -->
 
 <!--bof- site copyright display -->
+<?php
+// 簡単デザイン設定
+if (MODULE_EASY_DESIGN_STATUS == 'true') {
+?>
+<div id="siteinfoLegal" class="legalCopyright"><?php echo EASY_DESIGN_KEY_COPYLIGHT; ?></div>
+<?php
+}
+else {
+?>
 <div id="siteinfoLegal" class="legalCopyright"><?php echo FOOTER_TEXT_BODY; ?></div>
+<?php } ?>
 <!--eof- site copyright display -->
 
 <?php
