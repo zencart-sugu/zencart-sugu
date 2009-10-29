@@ -1,0 +1,96 @@
+.calendar {
+	margin-right:auto;
+	margin-left:auto;
+	text-align:center;
+}
+.calendar table{
+	border-collapse: collapse;
+	border: 1px solid #cccccc;
+	margin:0 auto 10px auto;
+	text-align:center;
+}
+.calendar td {
+	border: 1px solid #cccccc;
+	font-size:x-small;
+	padding:0.3em;
+	text-align:center;
+}
+
+span.today {
+	color:#ffe8e8;
+}
+
+span.rest {
+    color:#ff0000;
+}
+
+/* ½µ¥Ø¥Ã¥À¡¼ */
+.calendar td.w0 {
+	background-color:#ffc0cb;
+}
+.calendar td.w1 {
+	background-color:#dcdcdc;
+}
+.calendar td.w2 {
+	background-color:#dcdcdc;
+}
+.calendar td.w3 {
+	background-color:#dcdcdc;
+}
+.calendar td.w4 {
+	background-color:#dcdcdc;
+}
+.calendar td.w5 {
+	background-color:#dcdcdc;
+}
+.calendar td.w6 {
+	background-color:#afeeee;
+}
+
+/* Ê¿Æü */
+.calendar td.d0 {
+	background-color:#ffe8e8;
+}
+
+.calendar td.d6 {
+	background-color:#e0ffff;
+}
+
+.calendar td.today {
+	background-color:#ffff99;
+}
+
+/* µÙÆü */
+.calendar td.restd0 {
+	background-color:#ffe8e8;
+}
+
+.calendar td.restd1 {
+    color:#ff0000;
+}
+
+.calendar td.restd2 {
+    color:#ff0000;
+}
+
+.calendar td.restd3 {
+    color:#ff0000;
+}
+
+.calendar td.restd4 {
+    color:#ff0000;
+}
+
+.calendar td.restd5 {
+    color:#ff0000;
+}
+
+.calendar td.restd6 {
+    color:#ff0000;
+	background-color:#e0ffff;
+}
+
+.calendar td.resttoday {
+    color:#ff0000;
+	background-color:#ffff99;
+}
