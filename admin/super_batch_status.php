@@ -50,7 +50,7 @@
                      'text' => ' > ' . DROPDOWN_GREATER_THAN);
   $ot_sign[] = array('id' => '<=',
                      'text' => ' < ' . DROPDOWN_LESS_THAN);
-  $ot_sign[] = array('id' => '==',
+  $ot_sign[] = array('id' => '=',
                      'text' => ' = ' . DROPDOWN_EQUAL_TO);
 
   if ($_GET['action'] == 'batch_status') {
