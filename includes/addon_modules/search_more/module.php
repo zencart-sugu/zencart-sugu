@@ -19,9 +19,9 @@ class search_more extends addOnModuleBase {
 
     var $author                        = "Otsuji Takashi";
     var $author_email                  = "info@zencart-sugu.jp";
-    var $version                       = "0.1";
+    var $version                       = "0.1.1";
     var $require_zen_cart_version      = "1.3.0.2";
-    var $require_addon_modules_version = "0.1";
+    var $require_addon_modules_version = "0.1.1";
 
     var $title = MODULE_SEARCH_MORE_TITLE;
     var $description = MODULE_SEARCH_MORE_DESCRIPTION;
