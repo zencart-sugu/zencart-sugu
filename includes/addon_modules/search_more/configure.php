@@ -1,0 +1,9 @@
+<?php
+if (!defined('IS_ADMIN_FLAG')) {
+  die('Illegal Access');
+}
+define('MODULE_SEARCH_MORE_STATUS_DEFAULT', 'true');
+define('MODULE_SEARCH_MORE_SORT_ORDER_DEFAULT', '');
+define('MODULE_SEARCH_MORE_PAGE_MAX_LIST_NAME_DEFAULT', 'É½¼¨·ï¿ô');
+define('MODULE_SEARCH_MORE_PAGE_MAX_LIST_VALUE_DEFAULT', '10,25,50,100');
+define('MODULE_SEARCH_MORE_SORT_LIST_NAME_DEFAULT', 'ÊÂ¤ÓÂØ¤¨');
