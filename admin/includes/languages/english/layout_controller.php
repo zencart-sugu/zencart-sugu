@@ -82,4 +82,15 @@ define('TEXT_OFF',' OFF ');
 define('TEXT_LEFT',' LEFT ');
 define('TEXT_RIGHT',' RIGHT ');
 
+define('HEADING_TITLE_SELECT_TEMPLATE','Select Template:'); 
+
+define('HEADING_TITLE_SELECT_LAYOUT_PAGE','Select Layout Page:');
+
+define('LAYOUT_PAGE_TEXT_DEFAULT', 'Default');
+define('LAYOUT_PAGE_TEXT_INDEX', 'Top');
+define('LAYOUT_PAGE_TEXT_PRODUCT_LIST', 'Product List');
+define('LAYOUT_PAGE_TEXT_PRODUCT_INFO', 'Product Info');
+define('LAYOUT_PAGE_TEXT_SHOPPING_CART', 'Shopping Cart');
+define('LAYOUT_PAGE_TEXT_MYPAGE', 'Mypage');
+define('LAYOUT_PAGE_TEXT_ADD_NEW', 'Add New Layout Page...');
 ?>

@@ -82,4 +82,15 @@ define('TEXT_OFF',' OFF ');
 define('TEXT_LEFT',' 左 ');
 define('TEXT_RIGHT',' 右 ');
 
+define('HEADING_TITLE_SELECT_TEMPLATE','テンプレートを選択:'); 
+
+define('HEADING_TITLE_SELECT_LAYOUT_PAGE','ページを選択:'); 
+
+define('LAYOUT_PAGE_TEXT_DEFAULT', 'デフォルト');
+define('LAYOUT_PAGE_TEXT_INDEX', 'トップ');
+define('LAYOUT_PAGE_TEXT_PRODUCT_LIST', '商品一覧');
+define('LAYOUT_PAGE_TEXT_PRODUCT_INFO', '商品詳細');
+define('LAYOUT_PAGE_TEXT_SHOPPING_CART', 'カートの中身');
+define('LAYOUT_PAGE_TEXT_MYPAGE', 'マイページ');
+define('LAYOUT_PAGE_TEXT_ADD_NEW', '新しいページを追加...');
 ?>

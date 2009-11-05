@@ -92,6 +92,11 @@
     while (strstr($link, '&amp;&amp;')) $link = str_replace('&amp;&amp;', '&amp;', $link);
 
     $link = ereg_replace('&', '&amp;', $link);
+
+// for mobile
+    global $mobile;
+    $link = $mobile->convertToMobileLink($link);
+
     return $link;
   }
 
