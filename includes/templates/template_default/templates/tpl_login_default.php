@@ -50,6 +50,16 @@
 
 </fieldset>
 
-<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?></div>
+<div class="buttonRow forward"><?php
+echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT);
+
+if (MODULE_VISITORS_STATUS == "true") {
+  require_once('includes/classes/order.php');
+  $order = new order();
+  if (count($order->products)) {
+    echo '<a href="' . zen_href_link(FILENAME_ADDON, 'module=visitors/create_visitor', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_VISITOR, TEXT_VISITORS_ORDER, 'class="imgover"') . '</a>';
+  }
+}
+?></div>
 </form>
 </div>
