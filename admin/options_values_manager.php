@@ -531,6 +531,12 @@ function go_option() {
 <body onload="init()">
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_start();
+}
+?>
   <table border="0" width="75%" cellspacing="0" cellpadding="0" align="center">
       <tr>
         <td width="100%">
@@ -1038,6 +1044,12 @@ example: Copy Color Red to products with Size Small
 <!-- option value eof //-->
 
 <!-- body_text_eof //-->
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_end();
+}
+?>
 <!-- footer //-->
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 <!-- footer_eof //-->

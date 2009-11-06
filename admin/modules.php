@@ -140,6 +140,12 @@
 <!-- header_eof //-->
 
 <!-- body //-->
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_start();
+}
+?>
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
@@ -345,6 +351,12 @@
   </tr>
 </table>
 <!-- body_eof //-->
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_end();
+}
+?>
 <!-- footer //-->
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 <!-- footer_eof //-->

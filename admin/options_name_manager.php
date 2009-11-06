@@ -399,6 +399,12 @@ function go_option() {
 <!-- header_eof //-->
 
 <!-- body //-->
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_start();
+}
+?>
 <!-- body_text //-->
 
     <!-- options and values//-->
@@ -1023,6 +1029,12 @@ function go_option() {
 
 
 <!-- body_text_eof //-->
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_end();
+}
+?>
 <!-- footer //-->
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 <!-- footer_eof //-->
