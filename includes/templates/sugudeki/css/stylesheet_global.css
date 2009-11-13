@@ -1,0 +1,228 @@
+@charset "euc-jp";
+
+/*
+Site Name: 
+Description: gloval style
+*/
+
+/* universal reset
+----------------------------------------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{
+	padding: 0;
+	margin: 0;
+}
+
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,img{
+	border: 0;
+}
+
+ol,ul{
+	list-style: none;
+}
+
+address{
+	font-style: normal;
+}
+
+caption,th{
+	text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-size: 100%;
+	font-weight: normal;
+}
+ 
+
+/* body and base setting
+----------------------------------------- */
+body{
+	padding: 0px;
+	margin: 0px;
+	font-family: "£Í£Ó £Ð¥´¥·¥Ã¥¯", Osaka, "¥Ò¥é¥®¥Î³Ñ¥´ Pro W3";
+	color: #323232;
+	text-align: center;
+	background-color: #FFF;
+  font-size: 12px;
+	min-width: 940px;
+}
+
+html{
+}
+
+/* for IE6 */
+* html body{
+  font-size: 75%;
+}
+
+/* for IE7 */
+*:first-child+html body{
+  font-size: 75%;
+}
+
+
+/* general style
+----------------------------------------- */
+
+p{
+
+}
+
+
+img{
+	vertical-align: bottom;
+}
+
+select,input{
+  font-size: 100%;
+}
+
+/* link style
+----------------------------------------- */
+a:link{
+	color: #0065CD;
+	text-decoration: underline;
+}
+
+
+a:visited{
+	color: #0065CD;
+}
+
+
+a:hover{
+	color: #42A0FF;
+	text-decoration: none;
+}
+
+
+a:active{
+	color: #42A0FF;
+}
+
+
+/* layout parts
+----------------------------------------- */
+.clear{
+	clear: both;
+}
+
+
+.center{
+	text-align: center;
+}
+
+
+.right{
+	text-align: right;
+}
+
+
+.left{
+	text-align: left;
+}
+
+
+img.left{
+	float: left;
+	clear: both;
+	margin-right: 15px;
+}
+
+
+img.center{
+	clear: both;
+	margin-bottom: 15px;
+	display: block;
+	text-align: center;
+}
+
+
+img.right{
+	float: right;
+	clear: both;
+	margin-left: 15px;
+}
+
+/* global header
+----------------------------------------- */
+#global-header{
+	background-image: url(../images/global-header_bg.gif);
+	background-repeat: repeat-x;
+	overflow: hidden;
+	padding: 6px 10px 7px 10px;
+	text-align: left;
+}
+
+global-header-inner{
+}
+
+#global-header .logo{
+	float: left;
+}
+
+#global-header #greeting{
+	float: left;
+	padding-top: 3px;
+	padding-left: 20px;
+}
+
+#font-size{
+	float: right;
+	margin-left: 5px;
+	position: relative;
+	top: -1px;
+}
+
+#font-size dt{
+	float: left;
+	padding-top: 5px;
+}
+
+#font-size dd{
+	padding-left: 5em;
+}
+
+#font-size dd ul li{
+	float: left;
+	display: inline;
+	margin-left: 2px;
+	text-indent: -9999px;
+}
+
+#font-size dd ul li a{
+	display: block;
+	width: 19px;
+	height: 19px;
+}
+
+#font-size dd ul li.font-small a{
+	background-position: 100% 100%;
+}
+
+#font-size dd ul li.font-nomal a{
+	background-position: 50% 100%;
+}
+
+#global-header .nav{
+	float: right;
+	margin-top: 4px;
+}
+
+#global-header .nav li{
+	float: left;
+	margin-right: 10px;
+}
+
+#global-header .nav li a{
+	background-image: url(../images/list_04.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 50%;
+	padding-left: 8px;
+	text-decoration: none;
+}

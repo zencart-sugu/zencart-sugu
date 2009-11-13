@@ -1,0 +1,63 @@
+@charset "euc-jp";
+
+/*
+Site Name: 
+Description: IE6
+*/
+
+#contactUsNoticeContent,
+div.submit,
+.navSplit,
+#header,
+#content,
+#footer,
+#header-bar,
+#global-header,
+#indexDefaultMainBanner,
+.centerBoxWrapper,
+.home #indexDefaultSubContent,
+#cartSubTotal,
+#shoppingcart-buttons,
+#visitorBoxButtons,
+#checkoutshippingaddressBody .moduleRow,
+#checkoutshippingaddressBody .moduleRowSelected,
+.navSplitPages,
+#checkout-step,
+#block-footer-categories-block ul ul,
+#checkoutpaymentBody div.payment,
+#checkoutShipping div.methods,
+#centerColumnBody,
+#orderTotals{
+	zoom: 1;
+}
+
+
+#header-nav a span {
+	width: 35px;
+}
+
+#block-sideboxes-search{
+	padding-top: 0;
+}
+
+.onecolumn .box{
+	width: 728px;
+}
+
+#footer-about-body #block-calendar-block table{
+	width: 185px;
+}
+
+#productInfoLink a{
+	right: 20px;
+}
+
+#block-category_sitemap-block ul ul{
+	padding-bottom: 10px;
+}
+
+.sugudeki .sample-body .close a,
+.category #main #productGuide div.sugudeki .about a,
+.category #main #productGuide div.sugudeki .more a{
+	right: 10px;
+}

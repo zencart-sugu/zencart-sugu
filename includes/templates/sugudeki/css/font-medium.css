@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+/*
+Site Name:
+Description:
+*/
+
+/*M*/
+
+/*L*/
+
+/*S*/
+
+/*resize*/
+#font-size dd ul li.font-small a:link,
+#font-size dd ul li.font-small a:visited{
+	background-image: url(../images/font_small.gif);
+	background-repeat: no-repeat;
+}
+
+#font-size dd ul li.font-small a:hover{
+	background-image: url(../images/font_small-on.gif);
+	background-repeat: no-repeat;
+}
+
+#font-size dd ul li.font-nomal a:link,
+#font-size dd ul li.font-nomal a:visited{
+	background-image: url(../images/font_nomal-active.gif);
+	background-repeat: no-repeat;
+}
+
+#font-size dd ul li.font-nomal a:hover{
+	background-image: url(../images/font_nomal-on.gif);
+	background-repeat: no-repeat;
+}
+
+#font-size dd ul li.font-large a:link,
+#font-size dd ul li.font-large a:visited{
+	background-image: url(../images/font_large.gif);
+	background-repeat: no-repeat;
+}
+
+#font-size dd ul li.font-large a:hover{
+	background-image: url(../images/font_large-on.gif);
+	background-repeat: no-repeat;
+}
