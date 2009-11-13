@@ -8,6 +8,9 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: header_php.php 3657 2006-05-26 01:47:43Z ajeh $
  */
+// This should be first line of the script:
+  $zco_notifier->notify('NOTIFY_HEADER_START_CHECKOUT_SHIPPING');
+
   require(DIR_WS_CLASSES . 'http_client.php');
 
 // if there is nothing in the customers cart, redirect them to the shopping cart page
@@ -176,4 +179,7 @@
 
   $breadcrumb->add(NAVBAR_TITLE_1, zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
   $breadcrumb->add(NAVBAR_TITLE_2);
+
+// This should be last line of the script:
+  $zco_notifier->notify('NOTIFY_HEADER_END_CHECKOUT_SHIPPING');
 ?>
