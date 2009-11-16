@@ -44,7 +44,9 @@ if (!$flag_disable_footer) {
 <!-- /navigation display -->
 
 <!--  site copyright display -->
+<?php if (MODULE_EASY_DESIGN_STATUS == 'true') { ?>
 <p id="siteinfoLegal" class="legalCopyright"><?php echo EASY_DESIGN_KEY_COPYLIGHT;?></p>
+<?php } ?>
 <!-- / site copyright display -->
 
 </div>
