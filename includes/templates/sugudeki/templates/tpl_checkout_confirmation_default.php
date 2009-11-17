@@ -43,7 +43,7 @@
         <tr class="<?php echo $product['rowClass']; ?>">
           <td class="cartProductDisplay">
 <a href="<?php echo zen_href_link(zen_get_info_page($order->products[$i]['id']), 'products_id=' . $order->products[$i]['id']); ?>"><?php echo $order->products[$i]['name'];?></a>
-          <?php  echo $stock_check; ?>
+          <?php  echo $order->products[$i]['stock_check']; ?>
 
 <?php // if there are attributes, loop thru them and display one per line
     if (isset($order->products[$i]['attributes']) && sizeof($order->products[$i]['attributes']) > 0 ) {

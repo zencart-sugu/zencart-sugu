@@ -42,9 +42,27 @@
   if ( (STOCK_CHECK == 'true') && (STOCK_ALLOW_CHECKOUT != 'true') ) {
     $products = $_SESSION['cart']->get_products();
     for ($i=0, $n=sizeof($products); $i<$n; $i++) {
-      if (zen_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
-        zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
-        break;
+      if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS != 'true') {
+        if (zen_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
+          zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
+          break;
+        }
+      }
+      else {
+  			// Added to allow individual stock of different attributes
+  			unset($attributes);
+  			if(is_array($products[$i]['attributes'])){
+  				$attributes = $products[$i]['attributes'];
+  			} else {
+  				$attributes = '';
+  			}
+  			// End change
+
+  			$stock_check = zen_check_stock($products[$i]['id'], $products[$i]['quantity'], $attributes);
+  			if (zen_not_null($stock_check)) {
+          zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
+          break;
+        }
       }
     }
   }
