@@ -217,6 +217,13 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 ?>
 <!--eof Product date added/available -->
 
+<!-- BOF: Cross-Sell information -->
+<?php
+// THIS CODE WOULD BE ADDED INTO YOUR TPL_PRODUCT_INFO_DISPLAY.PHP WHEREVER YOU WANT TO DISPLAY THE CROSS_SELL BOX:
+  require($template->get_template_dir('tpl_modules_xsell_products.php', DIR_WS_TEMPLATE, $current_page_base,'templates'). '/' . 'tpl_modules_xsell_products.php');
+?>
+<!-- EOF: Cross-Sell information -->
+
 <!--bof Product URL -->
 <?php
   if (zen_not_null($products_url)) {
