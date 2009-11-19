@@ -15,10 +15,10 @@ if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
 if (strstr($_GET['main_page'], 'reviews_write')){
-    zen_redirect(zen_href_link(FILENAME_ADDON, 'module=reviews/product_reviews_write&' . zen_get_all_get_params(array('main_page', 'module'))));
+    zen_redirect(zen_href_link(FILENAME_ADDON, 'module=easy_reviews/product_reviews_write&' . zen_get_all_get_params(array('main_page', 'module'))));
 }
 if ($_GET['main_page']=='product_reviews'){
-    zen_redirect(zen_href_link(FILENAME_ADDON, 'module=reviews/product_reviews&' . zen_get_all_get_params(array('main_page', 'module'))));
+    zen_redirect(zen_href_link(FILENAME_ADDON, 'module=easy_reviews/product_reviews&' . zen_get_all_get_params(array('main_page', 'module'))));
 }
 
 

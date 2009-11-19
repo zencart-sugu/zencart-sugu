@@ -1,6 +1,6 @@
 <?php
 /**
- * reviews Module
+ * easy_reviews Module
  *
  * @package Viewed_products
  * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
@@ -15,43 +15,43 @@ if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
 
-  class reviews extends addonModuleBase {
-    var $title = MODULE_REVIEWS_TITLE;
-    var $description = MODULE_REVIEWS_DESCRIPTION;
-    var $sort_order = MODULE_REVIEWS_SORT_ORDER;
+  class easy_reviews extends addonModuleBase {
+    var $title = MODULE_EASY_REVIEWS_TITLE;
+    var $description = MODULE_EASY_REVIEWS_DESCRIPTION;
+    var $sort_order = MODULE_EASY_REVIEWS_SORT_ORDER;
     var $icon;
-    var $status = MODULE_REVIEWS_STATUS;
+    var $status = MODULE_EASY_REVIEWS_STATUS;
     var $enabled;
     var $configuration_keys = array(
           array(
-            'configuration_title' => MODULE_REVIEWS_STATUS_TITLE,
-            'configuration_key' => 'MODULE_REVIEWS_STATUS',
-            'configuration_value' => MODULE_REVIEWS_STATUS_DEFAULT,
-            'configuration_description' => MODULE_REVIEWS_STATUS_DESCRIPTION,
+            'configuration_title' => MODULE_EASY_REVIEWS_STATUS_TITLE,
+            'configuration_key' => 'MODULE_EASY_REVIEWS_STATUS',
+            'configuration_value' => MODULE_EASY_REVIEWS_STATUS_DEFAULT,
+            'configuration_description' => MODULE_EASY_REVIEWS_STATUS_DESCRIPTION,
             'use_function' => 'null',
             'set_function' => 'zen_cfg_select_option(array(\'true\', \'false\'), '
           ),
           array(
-            'configuration_title' => MODULE_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_TITLE,
-            'configuration_key' => 'MODULE_REVIEWS_MAX_DISPLAY_NEW_REVIEWS',
-            'configuration_value' => MODULE_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_DEFAULT,
-            'configuration_description' => MODULE_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_DESCRIPTION,
+            'configuration_title' => MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_TITLE,
+            'configuration_key' => 'MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS',
+            'configuration_value' => MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_DEFAULT,
+            'configuration_description' => MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_DESCRIPTION,
             'use_function' => 'null',
             'set_function' => 'null'
           ),
           array(
-            'configuration_title' => MODULE_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_TITLE,
-            'configuration_key' => 'MODULE_REVIEWS_LIST_DISPLAY_FORCE_LOGIN',
-            'configuration_value' => MODULE_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_DEFAULT,
-            'configuration_description' => MODULE_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_DESCRIPTION,
+            'configuration_title' => MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_TITLE,
+            'configuration_key' => 'MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN',
+            'configuration_value' => MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_DEFAULT,
+            'configuration_description' => MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_DESCRIPTION,
             'use_function' => 'null',
             'set_function' => 'zen_cfg_select_option(array(\'true\', \'false\'), '
           ),
           array(
-            'configuration_title' => MODULE_REVIEWS_SORT_ORDER_TITLE,
-            'configuration_key' => 'MODULE_REVIEWS_SORT_ORDER',
-            'configuration_value' => MODULE_REVIEWS_SORT_ORDER_DEFAULT,
-            'configuration_description' => MODULE_REVIEWS_SORT_ORDER_DESCRIPTION,
+            'configuration_title' => MODULE_EASY_REVIEWS_SORT_ORDER_TITLE,
+            'configuration_key' => 'MODULE_EASY_REVIEWS_SORT_ORDER',
+            'configuration_value' => MODULE_EASY_REVIEWS_SORT_ORDER_DEFAULT,
+            'configuration_description' => MODULE_EASY_REVIEWS_SORT_ORDER_DESCRIPTION,
             'use_function' => 'null',
             'set_function' => 'null'
           ),
@@ -60,7 +60,7 @@ if (!defined('IS_ADMIN_FLAG')) {
           );
 
     // class constructer for php4
-    function reviews() {
+    function easy_reviews() {
       $this->__construct();
     }
 
@@ -91,7 +91,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       $display_list = true;
       if (!$_SESSION['customer_id']) {
         $display_form = false;
-        if (MODULE_REVIEWS_LIST_DISPLAY_FORCE_LOGIN == 'true') {
+        if (MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN == 'true') {
           $display_list = false;
         }
       }
@@ -126,7 +126,7 @@ if (!defined('IS_ADMIN_FLAG')) {
           ;";
         $query = $db->bindVars($query, ':productsID', $_GET['products_id'], 'integer');
         $query = $db->bindVars($query, ':languagesID', $_SESSION['languages_id'], 'integer');
-        $query = $db->bindVars($query, ':limit', MODULE_REVIEWS_MAX_DISPLAY_NEW_REVIEWS, 'integer');
+        $query = $db->bindVars($query, ':limit', MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS, 'integer');
         $result = $db->Execute($query);
 
         while (!$result->EOF) {
@@ -142,7 +142,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
 
       if ($display_form || $display_list) {
-        $return['title'] = MODULE_REVIEWS_BLOCK_TITLE;
+        $return['title'] = MODULE_EASY_REVIEWS_BLOCK_TITLE;
         $return['display_form'] = $display_form;
         $return['display_list'] = $display_list;
         $return['messageStack'] = $messageStack;
@@ -224,7 +224,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 
       require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
-      $breadcrumb->add(MODULE_REVIEWS_NAVBAR_TITLE);
+      $breadcrumb->add(MODULE_EASY_REVIEWS_NAVBAR_TITLE);
 
     	$return = array();
       $return['title'] = 'aaa';
@@ -329,7 +329,7 @@ if (!defined('IS_ADMIN_FLAG')) {
           }
           // end send email
 
-          zen_redirect(zen_href_link(FILENAME_ADDON,'module=reviews/product_reviews_write_complete&products_id='.$_GET['products_id'] ));
+          zen_redirect(zen_href_link(FILENAME_ADDON,'module=easy_reviews/product_reviews_write_complete&products_id='.$_GET['products_id'] ));
 
         }
       }
@@ -352,7 +352,7 @@ if (!defined('IS_ADMIN_FLAG')) {
         $products_image = $product_info->fields['products_image'];
       }
 
-      $breadcrumb->add(MODULE_REVIEWS_NAVBAR_TITLE);
+      $breadcrumb->add(MODULE_EASY_REVIEWS_NAVBAR_TITLE);
 
       $return = array();
       return $return;
@@ -371,12 +371,12 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
     function _page_breadcrumb() {
       $return = array();
-      $return[] = array('title' => MODULE_REVIEWS_NAVBAR_TITLE, 'link' => null);
+      $return[] = array('title' => MODULE_EASY_REVIEWS_NAVBAR_TITLE, 'link' => null);
       return $return;
     }
     function _page_product_reviews_write_complete_breadcrumb() {
       $return = array();
-      $return[] = array('title' => MODULE_REVIEWS_NAVBAR_TITLE, 'link' => null);
+      $return[] = array('title' => MODULE_EASY_REVIEWS_NAVBAR_TITLE, 'link' => null);
       return $return;
     }
 
