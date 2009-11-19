@@ -40,6 +40,7 @@ define('TEXT_UPDATE_FAILURE_LOGO',           'ロゴ画像の変更が失敗しました');
 define('TEXT_UPDATE_FAILURE_LOGO_EXT',       'アップロードできるのは画像のみです(gif,jpg,bmp,tif,png)');
 define('TEXT_UPDATE_FAILURE_LOGO_UNLINK',    '既に存在するファイルの削除ができません');
 define('TEXT_UPDATE_FAILURE_LOGO_DIR',       'テンプレート内にimages/logoディレクトリが存在しません');
+define('TEXT_UPDATE_FAILURE_LOGO_PERMIT',    'テンプレート内のimages/logoディレクトリに書き込み権限がありません');
 
 define('TEXT_CONFIRM_COLOR_RECOVERY',        'カラーを初期状態に戻してもいいですか？');
 ?>

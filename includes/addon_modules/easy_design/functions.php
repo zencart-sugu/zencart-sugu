@@ -168,6 +168,10 @@
 
       // css保存
       $file = DIR_FS_CATALOG_TEMPLATES . $template . '/css/' . FILENAME_EASY_DESIGN_CSS;
+      clearstatcache();
+      if (!is_writable($file))
+        return false;
+
       umask(0);
       if (file_put_contents($file, $css) !== false)
         return true;
@@ -269,6 +273,11 @@
     $imagedir = DIR_FS_CATALOG_TEMPLATES.$template.'/images/logo/';
     if (!is_dir($imagedir))
       return "DIR";
+
+    // 書き込み権限の確認
+    clearstatcache();
+    if (!is_writable($imagedir))
+      return "PERMIT";
 
     $dir = @dir($imagedir);
     while ($file = $dir->read()) {

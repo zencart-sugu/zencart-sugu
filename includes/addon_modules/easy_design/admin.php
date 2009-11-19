@@ -217,6 +217,8 @@ else if ($action == "change_logo") {
       $error .= "<br/>".TEXT_UPDATE_FAILURE_LOGO_UNLINK;
     if ($result == "DIR")
       $error .= "<br/>".TEXT_UPDATE_FAILURE_LOGO_DIR;
+    if ($result == "PERMIT")
+      $error .= "<br/>".TEXT_UPDATE_FAILURE_LOGO_PERMIT;
   }
 }
 
