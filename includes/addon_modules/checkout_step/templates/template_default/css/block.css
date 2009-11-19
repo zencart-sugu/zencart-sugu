@@ -1,33 +1,13 @@
 
 
 ol#checkout-step{
-
-height:55px;
-
-margin:0 auto 37px auto;
-
-padding:0;
-
 list-style:none;
-
-text-align:center;
-
 }
+
 ol#checkout-step li{
-
 float:left;
-
-height:55px;
-
-width:100px;
-
-margin:0;
-
-padding:0;
-
 }
+
 ol#checkout-step li.current{
-
 font-weight:bold;
-
 }
