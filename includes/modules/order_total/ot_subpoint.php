@@ -197,12 +197,12 @@
 
     function user_has_subpoint_account($c_id) {
       if (MODULE_POINT_BASE_STATUS == 'true') {
-      require_once(DIR_FS_CATALOG . $GLOBALS['point_base']->dir . 'classes/class.point.php');
-      $point =& new point($c_id);
-      $subpoint = $point->getCustomersPoints();
-      if ($subpoint) {
-        return $subpoint['deposit'];
-      }
+        require_once(DIR_FS_CATALOG . $GLOBALS['point_base']->dir . 'classes/class.point.php');
+        $point =& new point($c_id);
+        $subpoint = $point->getCustomersPoints();
+        if ($subpoint) {
+          return $subpoint['deposit'];
+        }
       }
       return 0; // was preventing checkout_payment from continuing
     }
