@@ -8,6 +8,9 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: header_php.php 3657 2006-05-26 01:47:43Z ajeh $
  */
+// This should be first line of the script:
+  $zco_notifier->notify('NOTIFY_HEADER_START_CHECKOUT_SHIPPING');
+
   require(DIR_WS_CLASSES . 'http_client.php');
 
 // if there is nothing in the customers cart, redirect them to the shopping cart page
@@ -39,9 +42,27 @@
   if ( (STOCK_CHECK == 'true') && (STOCK_ALLOW_CHECKOUT != 'true') ) {
     $products = $_SESSION['cart']->get_products();
     for ($i=0, $n=sizeof($products); $i<$n; $i++) {
-      if (zen_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
-        zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
-        break;
+      if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS != 'true') {
+        if (zen_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
+          zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
+          break;
+        }
+      }
+      else {
+  			// Added to allow individual stock of different attributes
+  			unset($attributes);
+  			if(is_array($products[$i]['attributes'])){
+  				$attributes = $products[$i]['attributes'];
+  			} else {
+  				$attributes = '';
+  			}
+  			// End change
+
+  			$stock_check = zen_check_stock($products[$i]['id'], $products[$i]['quantity'], $attributes);
+  			if (zen_not_null($stock_check)) {
+          zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
+          break;
+        }
       }
     }
   }
@@ -176,4 +197,7 @@
 
   $breadcrumb->add(NAVBAR_TITLE_1, zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
   $breadcrumb->add(NAVBAR_TITLE_2);
+
+// This should be last line of the script:
+  $zco_notifier->notify('NOTIFY_HEADER_END_CHECKOUT_SHIPPING');
 ?>

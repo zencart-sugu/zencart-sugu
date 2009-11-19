@@ -22,7 +22,6 @@
   if ($products_all_split->number_of_rows > 0) {
     $products_all = $db->Execute($products_all_split->sql_query);
     while (!$products_all->EOF) {
-
       if (PRODUCT_ALL_LIST_IMAGE != '0') {
         $display_products_image = '<a href="' . zen_href_link(zen_get_info_page($products_all->fields['products_id']), 'products_id=' . $products_all->fields['products_id']) . '">' . zen_image(DIR_WS_IMAGES . $products_all->fields['products_image'], $products_all->fields['products_name'], IMAGE_PRODUCT_ALL_LISTING_WIDTH, IMAGE_PRODUCT_ALL_LISTING_HEIGHT) . '</a>' . str_repeat('<br clear="all" />', substr(PRODUCT_ALL_LIST_IMAGE, 3, 1));
       } else {
@@ -112,7 +111,7 @@
           <tr>
             <td width="<?php echo IMAGE_PRODUCT_ALL_LISTING_WIDTH + 10; ?>" valign="top" class="main" align="center">
               <?php
-                $disp_sort_order = $db->Execute("select configuration_key, configuration_value from " . TABLE_CONFIGURATION . " where configuration_group_id='" . $group_id . "' and (configuration_value >= 1000 and configuration_value <= 1999) order by LPAD(configuration_value,11,0)");
+                $disp_sort_order = $db->Execute(zen_get_sql_product_display($group_id,1)); 
                 while (!$disp_sort_order->EOF) {
                   if ($disp_sort_order->fields['configuration_key'] == 'PRODUCT_ALL_LIST_IMAGE') {
                     echo $display_products_image;
@@ -148,7 +147,8 @@
             </td>
             <td colspan="2" valign="top" class="main">
               <?php
-                $disp_sort_order = $db->Execute("select configuration_key, configuration_value from " . TABLE_CONFIGURATION . " where configuration_group_id='" . $group_id . "' and (configuration_value >= 2000 and configuration_value <= 2999) order by LPAD(configuration_value,11,0)");
+                $disp_sort_order = $db->Execute(zen_get_sql_product_display($group_id,2));
+              
                 while (!$disp_sort_order->EOF) {
                   if ($disp_sort_order->fields['configuration_key'] == 'PRODUCT_ALL_LIST_IMAGE') {
                     echo $display_products_image;

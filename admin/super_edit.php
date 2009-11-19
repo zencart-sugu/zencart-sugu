@@ -587,6 +587,12 @@
 <!-- header_eof //-->
 <body onload="self.focus()">
 <!-- body //-->
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_start();
+}
+?>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"><tr>
 <!-- body_text //-->
   <td align="center"><table border="0" cellspacing="0" cellpadding="2">
@@ -976,6 +982,12 @@
   </tr>
 </table>
 <!-- body_eof //-->
+<?php
+// easy admin simplify
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  easy_admin_simplify_end();
+}
+?>
 </body>
 </html>
 <?php

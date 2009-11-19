@@ -28,7 +28,7 @@ if ((basename($PHP_SELF) != FILENAME_DEFINE_LANGUAGE . '.php') and (basename($PH
         $languages_array[] = array('id' => $languages[$i]['code'],
                                  'text' => $languages[$i]['name']);
 //        if ($languages[$i]['directory'] == $language) {
-        if ($languages[$i]['directory'] == $_SESSION['language']) {
+        if ($languages[$i]['id'] == $_SESSION['languages_id']) {
           $languages_selected = $languages[$i]['code'];
         }
       } else {

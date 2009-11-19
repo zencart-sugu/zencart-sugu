@@ -1,0 +1,92 @@
+@charset "euc-jp";
+
+/*
+Site Name: 
+Description: layout
+*/
+
+/* base layout
+----------------------------------------- */
+#container{
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	/*min-width: 940px;*/
+}
+
+
+#header{
+	width: 940px;
+	padding-top: 20px;
+	margin: 0px auto;
+	text-align: left;
+}
+
+
+
+#content{
+	width: 940px;
+	margin: 0px auto;
+	overflow: hidden;
+	text-align: left;
+}
+
+
+
+#content{
+	clear: both;
+	padding-top: 20px;
+	overflow: hidden;
+}
+
+
+
+#footer{
+	margin-top: 10px;
+	clear: both;
+}
+
+
+
+#main{
+	float: right;
+	width: 730px;
+	overflow: hidden;
+}
+
+
+
+#sub-a{
+	float: left;
+	width: 200px;
+	overflow: hidden;
+}
+
+
+#sub-b{
+	float: right;
+	width: 200px;
+	overflow: hidden;
+}
+
+
+.home #indexDefaultSubContent{
+	float: left;
+	width: 520px;
+	margin-top: 10px;
+}
+
+
+.home #sub-b{
+	margin-top: 10px;
+}
+
+.onecolumn #main{
+	float: none;
+	margin: 0px auto;
+}
+
+.onecolumn #mainBody{
+	width: 730px;
+	margin: 0px auto;
+}

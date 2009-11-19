@@ -1,0 +1,31 @@
+@charset "euc-jp";
+
+/*
+Site Name: 
+Description: IE Only
+*/
+
+#header-bar{
+	padding: 6px 0;
+}
+
+#header-nav li{
+	font-size: 109%;
+}
+
+span.ui-dynatree-connector,
+span.ui-dynatree-expander,
+span.ui-dynatree-checkbox
+{
+	position: relative;
+	top: -1px;
+}
+
+#productDescription h2{
+	padding-top: 10px;
+}
+
+.category #main #productGuide span.price{
+	font-size: 160%;
+}
+

@@ -75,6 +75,8 @@ if (!defined('IS_ADMIN_FLAG')) {
     var $require_modules = array();
     var $notifier        = array(
                             'NOTIFY_CHECKOUT_PROCESS_AFTER_PAYMENT_MODULES_BEFOREPROCESS',
+                            'NOTIFY_HEADER_START_CHECKOUT_SHIPPING',
+                            'NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL',
                            );
 
     var $author                        = "kohata";
@@ -96,13 +98,23 @@ if (!defined('IS_ADMIN_FLAG')) {
       global $order;
 
       switch($notifier) {
+          case 'NOTIFY_HEADER_START_CHECKOUT_SHIPPING':
+           if (zen_not_null($_POST['calendar_hope_delivery_day']))
+             $_SESSION['calendar_hope_delivery_day'] = zen_db_prepare_input($_POST['calendar_hope_delivery_day']);
+
+           if (zen_not_null($_POST['calendar_hope_delivery_time']))
+             $_SESSION['calendar_hope_delivery_time'] = zen_db_prepare_input($_POST['calendar_hope_delivery_time']);
+            break;
+
           case 'NOTIFY_CHECKOUT_PROCESS_AFTER_PAYMENT_MODULES_BEFOREPROCESS':
             // 
             // 希望配送日時をコメントへ付加する
             $order->info['comments'] = MODULE_CALENDAR_HOPE_DELIVERY_DAY_HEADER.":".$_SESSION['calendar_hope_delivery_day']."\n"
                                      . MODULE_CALENDAR_HOPE_DELIVERY_TIME_HEADER.":".$_SESSION['calendar_hope_delivery_time']."\n"
                                      . $order->info['comments'];
+            break;
 
+          case 'NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL':
             $_SESSION['calendar_hope_delivery_day']  = '';
             $_SESSION['calendar_hope_delivery_time'] = '';
             unset($_SESSION['calendar_hope_delivery_day']);

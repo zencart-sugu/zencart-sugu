@@ -82,6 +82,8 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
 
     $db->Execute($sql);
 
+    
+    
     $insert_id = $db->Insert_ID();
 
     $sql = "INSERT INTO " . TABLE_REVIEWS_DESCRIPTION . " (reviews_id, languages_id, reviews_text)
@@ -92,7 +94,31 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
     $sql = $db->bindVars($sql, ':reviewText', $review_text, 'string');
 
     $db->Execute($sql);
-    // send review-notification email to admin
+    
+    $sql = "INSERT INTO " . TABLE_REVIEWS_DESCRIPTION . " (reviews_id, languages_id, reviews_text)
+            VALUES (:insertID, :languagesID, :reviewText)";
+    $sql = $db->bindVars($sql, ':insertID', $insert_id, 'integer');
+    $sql = $db->bindVars($sql, ':reviewText', $review_text, 'string');
+    
+    if(preg_match('/.*?'.MOBILE_LANGUAGE_CODE_SUFFIX.'/',$_SESSION['languages_code'])){
+        //mobile -> PC
+        $language = explode(MOBILE_LANGUAGE_CODE_SUFFIX,$_SESSION['languages_code']);
+        $language_id = $db->Execute("SELECT languages_id FROM " . TABLE_LANGUAGES . " WHERE code = '" . $language[0] . "'");
+        if($language_id->fields['languages_id']){
+            $sql = $db->bindVars($sql, ':languagesID', $language_id->fields['languages_id'], 'integer');
+            $db->Execute($sql); 
+        }
+    }else{
+        //pc -> mobile
+        $language_id = $db->Execute("SELECT languages_id FROM " . TABLE_LANGUAGES . " WHERE code = '" . $_SESSION['languages_code'].MOBILE_LANGUAGE_CODE_SUFFIX . "'");
+        if($language_id->fields['languages_id']){
+            $sql = $db->bindVars($sql, ':languagesID', $language_id->fields['languages_id'], 'integer');
+            $db->Execute($sql); 
+        }
+    }
+
+    
+       // send review-notification email to admin
     if (REVIEWS_APPROVAL == '1' && SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO_STATUS == '1' and defined('SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO') and SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO !='') {
       $email_text  = sprintf(EMAIL_PRODUCT_REVIEW_CONTENT_INTRO, $product_info->fields['products_name']) . "\n\n" ;
       $email_text .= sprintf(EMAIL_PRODUCT_REVIEW_CONTENT_DETAILS, $review_text)."\n\n";
