@@ -176,7 +176,7 @@
         $item = "products_name".$language_suffix;
         $pos  = strpos($html_body, $item);
         if ($pos !== false) {
-          if ($languages[$i]['code'] != 'ja') {
+          if (!_isVisibleLanguage($languages[$i]['code'])) {
             // 商品名の非表示化
             $tr = _find_tr($html_body, $pos);
             if ($tr !== FALSE)
@@ -193,7 +193,7 @@
         $item = "products_description".$language_suffix;
         $pos  = strpos($html_body, $item);
         if ($pos !== false) {
-          if ($languages[$i]['code'] != 'ja') {
+          if (!_isVisibleLanguage($languages[$i]['code'])) {
             // 商品名の非表示化
             $tr = _find_tr($html_body, $pos);
             if ($tr !== FALSE)
@@ -210,7 +210,7 @@
         $item = "products_url".$language_suffix;
         $pos  = strpos($html_body, $item);
         if ($pos !== false) {
-          if ($languages[$i]['code'] != 'ja') {
+          if (!_isVisibleLanguage($languages[$i]['code'])) {
             // 商品名の非表示化
             $tr = _find_tr($html_body, $pos);
             if ($tr !== FALSE)
@@ -306,7 +306,7 @@
       $languages = zen_get_languages();
       for ($i=0; $i<count($languages); $i++) {
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $image_src  = '"'.DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'].'"';
 
           $pos = strpos($html_body, $image_src);
@@ -336,7 +336,7 @@
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_LANGUAGE != 'true') {
       $languages = zen_get_languages();
       for ($i=0; $i<count($languages); $i++) {
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $image_src  = '"'.DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'].'"';
           $startpos   = 0;
           for (;;) {
@@ -377,7 +377,7 @@
       $languages = zen_get_languages();
       for ($i=0; $i<count($languages); $i++) {
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $image_src  = '"'.DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'].'"';
 
           $pos = strpos($html_body, $image_src);
@@ -476,7 +476,7 @@
       $languages = zen_get_languages();
       for ($i=0; $i<count($languages); $i++) {
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $language_suffix  = "[".$languages[$i]['id']."]";
           // カテゴリ名の非表示化
           $html_body = _change_input($html_body, "categories_name".$language_suffix);
@@ -500,7 +500,7 @@
       $languages = zen_get_languages();
       for ($i=0; $i<count($languages); $i++) {
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $language_suffix  = "[".$languages[$i]['id']."]";
           // タイトル名の非表示化
           $html_body = _change_input($html_body, "metatags_title".$language_suffix);
@@ -522,7 +522,7 @@
       $languages = zen_get_languages();
       for ($i=0; $i<count($languages); $i++) {
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $image_src = '"'.DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'].'"';
           // 注文文言無効化
           // <img...>****<br>
@@ -573,7 +573,7 @@
       $languages = zen_get_languages();
       for ($i=0; $i<count($languages); $i++) {
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $language_suffix  = "[".$languages[$i]['id']."]";
           // URL名の非表示化
           $html_body = _change_input($html_body, "manufacturers_url".$language_suffix);
@@ -813,7 +813,7 @@
           $html_body = substr_replace($html_body, "", $text, strlen($languages[$i]['code'].":"));
 
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $language_suffix  = "[".$languages[$i]['id']."]";
           $pos = strpos($html_body, "option_name".$language_suffix);
           if ($pos !== FALSE) {
@@ -868,7 +868,7 @@
           $html_body = substr_replace($html_body, "", $text, strlen($languages[$i]['code'].":"));
 
         // 処理対象は日本語以外
-        if ($languages[$i]['code'] != 'ja') {
+        if (!_isVisibleLanguage($languages[$i]['code'])) {
           $language_suffix  = "[".$languages[$i]['id']."]";
           $pos = strpos($html_body, "option_name".$language_suffix);
           if ($pos !== FALSE) {
@@ -1708,4 +1708,16 @@
 
     return $html;
   }
+
+  // 表示要素か確認
+  function _isVisibleLanguage($code) {
+    if ($code == 'ja' ||
+        $code == 'ja-mobile') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 ?>
