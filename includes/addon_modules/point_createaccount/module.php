@@ -18,6 +18,13 @@ if (!defined('IS_ADMIN_FLAG')) {
   class point_createaccount extends addOnModuleBase {
     var $title = MODULE_POINT_CREATEACCOUNT_TITLE;
     var $description = MODULE_POINT_CREATEACCOUNT_DESCRIPTION;
+
+    var $author                        = "Koji Sasaki";
+    var $author_email                  = "info@zencart-sugu.jp";
+    var $version                       = "0.1";
+    var $require_zen_cart_version      = "1.3.0.2";
+    var $require_addon_modules_version = "0.1";
+
     var $sort_order = MODULE_POINT_CREATEACCOUNT_SORT_ORDER;
     var $icon;
     var $status = MODULE_POINT_CREATEACCOUNT_STATUS;
