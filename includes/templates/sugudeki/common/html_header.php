@@ -175,13 +175,12 @@ if (file_exists(DIR_FS_CATALOG . $shop_editable_css_path)) {
   }
 	
 echo '
-<script type="text/javascript" src="'.$template->get_template_dir('jscript/',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'rollover.js"></script>
-
-<script type="text/javascript" src="'.$template->get_template_dir('jscript/',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'styleswitch.js"></script>
+<script type="text/javascript" src="'.$template->get_template_dir('rollover.js',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'rollover.js"></script>
+<script type="text/javascript" src="'.$template->get_template_dir('styleswitch.js',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'styleswitch.js"></script>
 
 <!--[if lt IE 7]>
-<script type="text/javascript" src="'.$template->get_template_dir('jscript/',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'DD_belatedPNG_0.0.7a.js"></script>
-<script type="text/javascript" src="'.$template->get_template_dir('jscript/',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'minmax.js"></script>
+<script type="text/javascript" src="'.$template->get_template_dir('DD_belatedPNG_0.0.7a.js',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'DD_belatedPNG_0.0.7a.js"></script>
+<script type="text/javascript" src="'.$template->get_template_dir('minmax.js',DIR_WS_TEMPLATE, $current_page_base,'jscript/').'minmax.js"></script>
 <script type="text/javascript">
 DD_belatedPNG.fix(\'.transparent,.category #main h1\');
 </script>
