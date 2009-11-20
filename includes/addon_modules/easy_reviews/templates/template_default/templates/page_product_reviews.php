@@ -93,7 +93,7 @@
 
     <div class="buttonRow forward">
 <?php
-      echo '<a href="' . zen_href_link(FILENAME_ADDON,'module=reviews/product_reviews_write&products_id='.$_GET['products_id']) . '">' . zen_image_button(BUTTON_IMAGE_WRITE_REVIEW, BUTTON_WRITE_REVIEW_ALT) . '</a>';
+      echo '<a href="' . zen_href_link(FILENAME_ADDON,'module=easy_reviews/product_reviews_write&products_id='.$_GET['products_id']) . '">' . zen_image_button(BUTTON_IMAGE_WRITE_REVIEW, BUTTON_WRITE_REVIEW_ALT) . '</a>';
 //    if ($_SESSION['customer_id']){
 //        echo '<a href="' . zen_href_link(FILENAME_PRODUCT_INFO,'products_id='.$_GET['products_id']) . '#product_reviews_form">' . zen_image_button(BUTTON_IMAGE_WRITE_REVIEW, BUTTON_WRITE_REVIEW_ALT) . '</a>';
 //    }else{

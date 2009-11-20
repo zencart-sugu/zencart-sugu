@@ -17,7 +17,7 @@ if ($display_form):
 <div class="centerColumn" id="reviewsWrite">
 <a name="product_reviews_form"></a>
 <?php //echo zen_draw_form('product_reviews_write', zen_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&products_id=' . $_GET['products_id'], 'SSL'), 'post', 'onsubmit="return checkForm(product_reviews_write);"'); ?>
-<?php echo zen_draw_form('product_reviews_write', zen_href_link(FILENAME_ADDON, 'module=reviews/product_reviews_write&action=process&products_id=' . $_GET['products_id'], 'SSL'), 'post', 'onsubmit="return checkForm(product_reviews_write);"'); ?>
+<?php echo zen_draw_form('product_reviews_write', zen_href_link(FILENAME_ADDON, 'module=easy_reviews/product_reviews_write&action=process&products_id=' . $_GET['products_id'], 'SSL'), 'post', 'onsubmit="return checkForm(product_reviews_write);"'); ?>
 
 <?php if ($messageStack->size('review_text') > 0) echo $messageStack->output('review_text'); ?>
 
@@ -74,7 +74,7 @@ if ($display_list):
 <br class="clearBoth" />
 <?php
     }
-    echo '<div class="view_all_reviws"><a href="'.zen_href_link($page='addon',$parameters='module=reviews/product_reviews&products_id='.(int)$_GET['products_id']).'">'.VIEW_ALL_REVIEWS.'</a></div>';
+    echo '<div class="view_all_reviws"><a href="'.zen_href_link($page='addon',$parameters='module=easy_reviews/product_reviews&products_id='.(int)$_GET['products_id']).'">'.VIEW_ALL_REVIEWS.'</a></div>';
 ?>
 <?php
   } else {

@@ -13,7 +13,7 @@
 
 ?>
 <div class="centerColumn" id="reviewsWrite">
-<?php echo zen_draw_form('product_reviews_write', zen_href_link(FILENAME_ADDON, 'module=reviews/product_reviews_write&action=process&products_id=' . $_GET['products_id'], 'SSL'), 'post', 'onsubmit="return checkForm(product_reviews_write);"'); ?>
+<?php echo zen_draw_form('product_reviews_write', zen_href_link(FILENAME_ADDON, 'module=easy_reviews/product_reviews_write&action=process&products_id=' . $_GET['products_id'], 'SSL'), 'post', 'onsubmit="return checkForm(product_reviews_write);"'); ?>
 <!--bof Main Product Image -->
       <?php
         if (zen_not_null($products_image)) {
