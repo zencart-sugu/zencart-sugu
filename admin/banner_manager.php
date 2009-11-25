@@ -24,10 +24,6 @@
 
   $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
-  if (isset($_REQUEST['banners_id'])) {
-    $_GET['bID'] = $_REQUEST['banners_id'];
-  }
-
   $banner_extension = zen_banner_image_extension();
 
   if (zen_not_null($action)) {
