@@ -755,7 +755,7 @@
              $colspan = 8;
            }
 ?>
-            <td align="right" colspan="<? echo $colspan; ?>"><table border="0" cellspacing="0" cellpadding="2">
+            <td align="right" colspan="<?php echo $colspan; ?>"><table border="0" cellspacing="0" cellpadding="2">
 <?php
     // Short shipping display
     // Formats shipping entry to remove the TEXT_WAY define
@@ -1167,7 +1167,7 @@
     if ($close_status) $class = "status-" . $close_status['type'];
     else $class = "dataTableContent";
 ?>
-                <td class="<? echo $class; ?>" align="left"><?php echo $orders->fields['orders_id'] . $show_difference; ?></td>
+                <td class="<?php echo $class; ?>" align="left"><?php echo $orders->fields['orders_id'] . $show_difference; ?></td>
                 <td class="dataTableContent"><?php
                   echo '<a href="' . zen_href_link(FILENAME_CUSTOMERS, 'cID=' . $orders->fields['customers_id'] . '&action=edit', 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_cust_info.gif', MINI_ICON_INFO) . '</a>&nbsp;';
                   echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'cID=' . $orders->fields['customers_id'], 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_cust_orders.gif', MINI_ICON_ORDERS) . '</a>&nbsp;';

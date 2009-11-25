@@ -256,7 +256,7 @@
   <tr>
     <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
   </tr>
-<? /*
+<?php /*
   <tr>
     <?php $so->get_admin_notes(); ?>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
