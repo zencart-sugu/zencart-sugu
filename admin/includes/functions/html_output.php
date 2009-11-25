@@ -202,13 +202,13 @@
       if ($usessl) {
         $form .= zen_href_link($action, $parameters, 'NONSSL');
       } else {
-        $form .= zen_href_link($action, $parameters, 'NONSSL');
+        $form .= zen_href_link($action, $parameters, 'SSL');
       }
     } else {
       if ($usessl) {
         $form .= zen_href_link($action, '', 'NONSSL');
       } else {
-        $form .= zen_href_link($action, '', 'NONSSL');
+        $form .= zen_href_link($action, '', 'SSL');
       }
     }
     $form .= '" method="' . zen_output_string($method) . '"';
