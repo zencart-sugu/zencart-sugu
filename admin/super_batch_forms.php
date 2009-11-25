@@ -218,6 +218,12 @@ if (isset($_GET['start_date']) ) {
     $orders_query_raw .= " AND o.order_total " . $_GET['ot_sign'] . " '" . (int)$_GET['order_total'] . "'";
   }
 
+  else if ($sd != '') {
+    $orders_query_raw .= " AND o.date_purchased >= '" . $sd . "'";
+  }
+  else if ($ed != '') {
+    $orders_query_raw .= " AND o.date_purchased <= DATE_ADD('" . $ed . "', INTERVAL 1 DAY)";
+  }
   $orders_query_raw .= " ORDER BY o.orders_id DESC";
 
   //DEBUG
