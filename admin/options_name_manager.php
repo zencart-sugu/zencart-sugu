@@ -431,6 +431,12 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
               </td>
               <td class="main" align="right" valign="bottom"><?php echo TEXT_PRODUCT_OPTIONS_INFO; ?></td>
             </tr>
+<?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_start();
+}
+?>
           </table>
         </td>
       </tr>
@@ -1041,3 +1047,9 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+<?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_end();
+}
+?>

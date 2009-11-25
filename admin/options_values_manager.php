@@ -532,6 +532,12 @@ function go_option() {
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_start();
+}
+?>
+<?php
 // easy admin simplify
 if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
@@ -1035,6 +1041,12 @@ example: Copy Color Red to products with Size Small
                   </form>
                 </tr>
               </table></td>
+<?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_end();
+}
+?>
             </tr>
 <!-- eof: copy all option values to another Option Name -->
 <?php } // show copier features ?>

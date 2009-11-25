@@ -285,6 +285,12 @@ function popupImageWindow(url) {
 <!-- body //-->
 <?php
 // easy admin simplify
+<?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_start();
+}
+?>
 if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
 }
@@ -636,6 +642,12 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <!-- body_eof //-->
 <?php
 // easy admin simplify
+<?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_end();
+}
+?>
 if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_end();
 }

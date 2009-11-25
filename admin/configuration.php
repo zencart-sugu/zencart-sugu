@@ -114,6 +114,12 @@ if ($gID == 7) {
 
 <!-- body //-->
 <?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_start();
+}
+?>
+<?php
 // easy admin simplify
 if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
@@ -233,6 +239,12 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   }
 ?>
           </tr>
+<?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_end();
+}
+?>
         </table></td>
       </tr>
     </table></td>
