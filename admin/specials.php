@@ -508,8 +508,8 @@ if (($_GET['page'] == '1' or $_GET['page'] == '') and $_GET['sID'] != '') {
         $contents[] = array('text' => '' . TEXT_INFO_NEW_PRICE . ' ' . $currencies->format($sInfo->specials_new_products_price));
         $contents[] = array('text' => '' . TEXT_INFO_DISPLAY_PRICE . ' ' . zen_get_products_display_price($sInfo->products_id));
 
-        $contents[] = array('text' => '<br>' . TEXT_INFO_AVAILABLE_DATE . ' <b>' . (($sInfo->specials_date_available != '0001-01-01' and $sInfo->specials_date_available !='') ? zen_date_short($sInfo->specials_date_available) : TEXT_NONE) . '</b>');
-        $contents[] = array('text' => '<br>' . TEXT_INFO_EXPIRES_DATE . ' <b>' . (($sInfo->expires_date != '0001-01-01' and $sInfo->expires_date !='') ? zen_date_short($sInfo->expires_date) : TEXT_NONE) . '</b>');
+        $contents[] = array('text' => '<br>' . TEXT_INFO_AVAILABLE_DATE . ' <b>' . (($specials->fields['specials_date_available'] != '0001-01-01' and $specials->fields['specials_date_available'] !='') ? zen_date_short($specials->fields['specials_date_available']) : TEXT_NONE) . '</b>');
+        $contents[] = array('text' => '<br>' . TEXT_INFO_EXPIRES_DATE . ' <b>' . (($specials->fields['expires_date'] != '0001-01-01' and $specials->fields['expires_date'] !='') ? zen_date_short($specials->fields['expires_date']) : TEXT_NONE) . '</b>');
         $contents[] = array('text' => '' . TEXT_INFO_STATUS_CHANGE . ' ' . zen_date_short($sInfo->date_status_change));
         $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_CATEGORIES, '&action=new_product' . '&cPath=' . zen_get_product_path($sInfo->products_id, 'override') . '&pID=' . $sInfo->products_id . '&product_type=' . zen_get_products_type($sInfo->products_id)) . '">' . zen_image_button('button_edit_product.gif', IMAGE_EDIT_PRODUCT) . '<br />' . TEXT_PRODUCT_EDIT . '</a>');
 
