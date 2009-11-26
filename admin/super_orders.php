@@ -100,7 +100,11 @@
       break;
       case 'update_order':
         $status = zen_db_scrub_in($_POST['status'], true);
-        $comments = zen_db_scrub_in($_POST['comments']);
+        $comments = $_POST['comments'];
+        $comments = stripslashes($comments);
+        $comments = trim($comments);
+        $comments = mysql_escape_string($comments);
+        $comments = htmlspecialchars($comments);
 
         $check_status = $db->Execute("select customers_name, customers_email_address, orders_status,
                                       date_purchased from " . TABLE_ORDERS . "
