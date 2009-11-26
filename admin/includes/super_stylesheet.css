@@ -123,6 +123,7 @@ font-weight:bold;
 .printTableContent{
 color:000000;
 font-size:12px;
+border-bottom:1px solid #50504e;
 }
 td.ot-subtotal-AmountPrint,td.ot-cod-fee-AmountPrint,td.ot-group-pricing-AmountPrint,td.ot-gv-AmountPrint,td.ot-loworderfee-AmountPrint,td.ot-shipping-AmountPrint,td.ot-subtotal-AmountPrint,td.ot-tax-AmountPrint,td.ot-coupon-AmountPrint{
 color:000000;
