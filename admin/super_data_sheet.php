@@ -57,7 +57,7 @@
   }
 </script>
 </head>
-<body onload="print();" marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
+<body onload="print();" marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
   <tr>
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -83,21 +83,13 @@
         <td class="printHeaderContent"><?php echo HEADER_ADDRESS_DATA; ?></td>
       </tr>
       <tr>
-        <td valign="top"><table border="0" cellspacing="0" cellpadding="2">
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
           <tr>
-            <td class="printMain" valign="top"><strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong></td>
+            <th class="printMain" valign="top"><strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong></th>
             <td class="printMain"><?php echo zen_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
-          </tr>
-        </table></td>
-        <td valign="top"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="printMain" valign="top"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></td>
+            <th class="printMain" valign="top"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></th>
             <td class="printMain"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
-          </tr>
-        </table></td>
-        <td valign="top"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="printMain" valign="top"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></td>
+            <th class="printMain" valign="top"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></th>
             <td class="printMain"><?php echo zen_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
           </tr>
         </table></td>
@@ -105,17 +97,17 @@
     </table></td>
   </tr>
   <tr>
-    <td><table border="0" cellspacing="0" cellpadding="2">
+    <td><table width="100%"  border="0" cellspacing="0" cellpadding="3" class="tableLayout1">
       <tr>
-        <td class="printMain"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></td>
+        <th class="printMain"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></th>
         <td class="printMain"><?php echo $order->customer['telephone']; ?></td>
       </tr>
       <tr>
-        <td class="printMain"><strong><?php echo ENTRY_EMAIL_ADDRESS; ?></strong></td>
+        <th class="printMain"><strong><?php echo ENTRY_EMAIL_ADDRESS; ?></strong></th>
         <td class="printMain"><?php echo $order->customer['email_address']; ?></td>
       </tr>
       <tr>
-        <td class="printMain"><strong><?php echo TEXT_INFO_IP_ADDRESS; ?></strong></td>
+        <th class="printMain"><strong><?php echo TEXT_INFO_IP_ADDRESS; ?></strong></th>
         <?php if ($order->info['ip_address'] != '') { ?>
         <td class="printMain"><?php echo $order->info['ip_address']; ?></td>
         <?php } else { ?>
@@ -123,14 +115,11 @@
         <?php } ?>
       </tr>
       <tr>
-        <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-      </tr>
-      <tr>
-        <td class="printMain"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></td>
+        <th class="printMain"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></th>
         <td class="printMain"><?php echo zen_date_long($order->info['date_purchased']); ?></td>
       </tr>
       <tr>
-        <td class="printMain"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></td>
+        <th class="printMain"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></th>
         <td class="printMain"><?php echo $order->info['payment_method']; ?></td>
       </tr>
     </table></td>
@@ -139,14 +128,14 @@
     <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
   </tr>
   <tr>
-    <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td><table width="100%"  border="0" cellspacing="0" cellpadding="3" class="tableLayout1">
       <tr class="dataTableHeadingRow">
-        <td class="printTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS; ?></td>
-        <td class="printTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS_MODEL; ?></td>
-        <td class="printTableHeadingContent" align="center"><?php echo TABLE_HEADING_QUANTITY; ?></td>
-        <td class="printTableHeadingContent" align="right"><?php echo TABLE_HEADING_TAX; ?></td>
-        <td class="printTableHeadingContent" align="right"><?php echo TABLE_HEADING_PRICE_EXCLUDING_TAX; ?></td>
-        <td class="printTableHeadingContent" align="right"><?php echo TABLE_HEADING_TOTAL_INCLUDING_TAX; ?></td>
+        <th class="printTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS; ?></th>
+        <th class="printTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS_MODEL; ?></th>
+        <th class="printTableHeadingContent" align="center"><?php echo TABLE_HEADING_QUANTITY; ?></th>
+        <th class="printTableHeadingContent" align="right"><?php echo TABLE_HEADING_TAX; ?></th>
+        <th class="printTableHeadingContent" align="right"><?php echo TABLE_HEADING_PRICE_EXCLUDING_TAX; ?></th>
+        <th class="printTableHeadingContent" align="right"><?php echo TABLE_HEADING_TOTAL_INCLUDING_TAX; ?></th>
       </tr>
 <?php
     for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {

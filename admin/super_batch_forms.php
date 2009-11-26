@@ -271,9 +271,9 @@ if (isset($_GET['start_date']) ) {
             <td class="main" valign="bottom"><?php
               echo TEXT_TOTAL_ORDERS . '<strong>' . $orders->RecordCount() . '</strong>' . '&nbsp;&nbsp;';
               if ($checked) {
-                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_UNCHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=0', 'NONSSL') . '\'">';
+                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_UNCHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=0', $request_type) . '\'">';
               } else {
-                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_CHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=1', 'NONSSL') . '\'">';
+                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_CHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=1', $request_type) . '\'">';
               }
             ?></td>
             <td class="smallText" align="right" valign="bottom"><?php echo zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '&nbsp;' . ICON_ORDER_DETAILS; ?></td>

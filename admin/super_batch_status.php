@@ -221,10 +221,6 @@ if (isset($_GET['start_date']) ) {
 
   if (isset($_GET['customers']) && zen_not_null($_GET['customers'])) {
     $orders_query_raw .= " AND o.customers_id = '" . $_GET['customers'] . "'";
-								</tr>
-								<tr>	
-									<th><?php echo HEADING_SEARCH_TEXT; ?></th>
-									<td colspan="2"><?php echo zen_draw_input_field('search', $_GET['search']); ?></td>
   }
 
   if (isset($_GET['payments']) && zen_not_null($_GET['payments'])) {
