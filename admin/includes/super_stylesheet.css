@@ -73,7 +73,7 @@ cursor:hand;
 background-color:#FF9999;
 }
 .warningText{
-font-size:10px;
+font-size:12px;
 font-weight:bold;
 border-color:#FF0000;
 border-style:solid;
@@ -83,7 +83,6 @@ border-width:3px;
 TD.ot-custom-Text {
 }
 TD.ot-custom-Amount{
-font-weight:bold;
 }
 
 td.balanceDueNone,td.status-completed{
@@ -95,7 +94,6 @@ font-weight:bold;
 color:FF0000;
 }
 td.balanceDueRem{
-font-weight:bold;
 color:0000FF;
 }
 td.balanceDueNull{
@@ -104,41 +102,42 @@ text-decoration: line-through;
 color:9F9F9F;
 }
 .printHeaderRow{
-color:666666;
+color:000000;
 }
 .printHeaderContent{
-color:666666;
-font-size:10px;
+color:000000;
+font-size:12px;
 font-weight:bold;
 }
 .printMain{
-color:666666;
-font-size:10px;
+color:000000;
+font-size:12px;
 }
 .printTableHeadingContent{
-border-bottom:1px solid #000000;
-color:666666;
-font-size:10px;
+color:FFFFFF;
+font-size:12px;
 font-weight:bold;
 }
 .printTableContent{
-color:666666;
-font-size:10px;
+color:000000;
+font-size:12px;
+border-bottom:1px solid #50504e;
 }
 td.ot-subtotal-AmountPrint,td.ot-cod-fee-AmountPrint,td.ot-group-pricing-AmountPrint,td.ot-gv-AmountPrint,td.ot-loworderfee-AmountPrint,td.ot-shipping-AmountPrint,td.ot-subtotal-AmountPrint,td.ot-tax-AmountPrint,td.ot-coupon-AmountPrint{
-color:666666;
-font-size:10px;
+color:000000;
+font-size:12px;
 }
 td.ot-subtotal-TextPrint,td.ot-cod-fee-TextPrint,td.ot-total-TextPrint,td.ot-group-pricing-TextPrint,td.ot-gv-TextPrint,td.ot-loworderfee-TextPrint,td.ot-shipping-TextPrint,td.ot-subtotal-TextPrint,td.ot-tax-TextPrint,td.ot-coupon-TextPrint{
-color:666666;
+color:000000;
+font-size:12px;
+}
+td.ot-subtotal-TextPrint,td.ot-total-TextPrint,td.ot-total-AmountPrint,td.ot-tax-TextPrint{
 font-weight:bold;
-font-size:10px;
 }
 td.ot-total-AmountPrint{
-color:666666;
+color:000000;
 border-top:1px solid #000000;
-font-size:10px;
-font-weight:bold;
+font-size:12px;
 }
 
 span.status-completed{

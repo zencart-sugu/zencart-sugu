@@ -43,11 +43,11 @@
 
   $ot_sign = array();
   $ot_sign[] = array('id' => '>=',
-                     'text' => ' > ' . DROPDOWN_GREATER_THAN);
+                     'text' => DROPDOWN_GREATER_THAN);
   $ot_sign[] = array('id' => '<=',
-                     'text' => ' < ' . DROPDOWN_LESS_THAN);
+                     'text' => DROPDOWN_LESS_THAN);
   $ot_sign[] = array('id' => '=',
-                     'text' => ' = ' . DROPDOWN_EQUAL_TO);
+                     'text' => DROPDOWN_EQUAL_TO);
 
   if ($_GET['action'] == 'batch_forms') {
     $target_file = $_POST['target_file'];
@@ -218,6 +218,12 @@ if (isset($_GET['start_date']) ) {
     $orders_query_raw .= " AND o.order_total " . $_GET['ot_sign'] . " '" . (int)$_GET['order_total'] . "'";
   }
 
+  else if ($sd != '') {
+    $orders_query_raw .= " AND o.date_purchased >= '" . $sd . "'";
+  }
+  else if ($ed != '') {
+    $orders_query_raw .= " AND o.date_purchased <= DATE_ADD('" . $ed . "', INTERVAL 1 DAY)";
+  }
   $orders_query_raw .= " ORDER BY o.orders_id DESC";
 
   //DEBUG
@@ -265,9 +271,9 @@ if (isset($_GET['start_date']) ) {
             <td class="main" valign="bottom"><?php
               echo TEXT_TOTAL_ORDERS . '<strong>' . $orders->RecordCount() . '</strong>' . '&nbsp;&nbsp;';
               if ($checked) {
-                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_UNCHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=0', 'NONSSL') . '\'">';
+                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_UNCHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=0', $request_type) . '\'">';
               } else {
-                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_CHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=1', 'NONSSL') . '\'">';
+                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_CHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=1', $request_type) . '\'">';
               }
             ?></td>
             <td class="smallText" align="right" valign="bottom"><?php echo zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '&nbsp;' . ICON_ORDER_DETAILS; ?></td>
@@ -300,7 +306,7 @@ if (isset($_GET['start_date']) ) {
                 <td class="dataTableContent" align="center"><?php echo zen_datetime_short($orders->fields['date_purchased']); ?></td>
                 <td class="dataTableContent" align="left"><?php echo $orders->fields['payment_method']; ?></td>
                 <td class="dataTableContent" align="left"><?php echo $orders->fields['orders_status_name']; ?></td>
-                <td class="dataTableContent" align="right"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp'; ?></td>
+                <td class="dataTableContent" align="right"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp'; ?></td>
               </tr>
 <?php
       $orders->MoveNext();

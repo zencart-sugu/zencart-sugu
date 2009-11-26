@@ -213,8 +213,8 @@
 <?php
     for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
       echo '      <tr class="dataTableRow">' . "\n" .
-           '        <td class="dataTableContent" valign="top" align="right">' . $order->products[$i]['qty'] . '&nbsp;x</td>' . "\n" .
-           '        <td class="dataTableContent" valign="top">' . $order->products[$i]['name'];
+           '        <td class="dataTableContent border50504e" valign="top" align="right">' . $order->products[$i]['qty'] . '&nbsp;x</td>' . "\n" .
+           '        <td class="dataTableContent border50504e" valign="top">' . $order->products[$i]['name'];
 
       if (isset($order->products[$i]['attributes']) && (($k = sizeof($order->products[$i]['attributes'])) > 0)) {
         for ($j = 0; $j < $k; $j++) {
@@ -226,21 +226,21 @@
       }
 
       echo '        </td>' . "\n" .
-           '        <td class="dataTableContent" valign="top">' . $order->products[$i]['model'] . '</td>' . "\n";
-      echo '        <td class="dataTableContent" align="right" valign="top">' . zen_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n" .
-           '        <td class="dataTableContent" align="right" valign="top"><b>' .
+           '        <td class="dataTableContent border50504e" valign="top">' . $order->products[$i]['model'] . '</td>' . "\n";
+      echo '        <td class="dataTableContent border50504e" align="right" valign="top">' . zen_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n" .
+           '        <td class="dataTableContent border50504e" align="right" valign="top"><b>' .
                       $currencies->format($order->products[$i]['final_price'], true, $order->info['currency'], $order->info['currency_value']) .
                       ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format($order->products[$i]['onetime_charges'], true, $order->info['currency'], $order->info['currency_value']) : '') .
                     '</b></td>' . "\n" .
-           '        <td class="dataTableContent" align="right" valign="top"><b>' .
+           '        <td class="dataTableContent border50504e" align="right" valign="top"><b>' .
                       $currencies->format(zen_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) .
                       ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format(zen_add_tax($order->products[$i]['onetime_charges'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) : '') .
                     '</b></td>' . "\n" .
-           '        <td class="dataTableContent" align="right" valign="top"><b>' .
+           '        <td class="dataTableContent border50504e" align="right" valign="top"><b>' .
                       $currencies->format($order->products[$i]['final_price'] * $order->products[$i]['qty'], true, $order->info['currency'], $order->info['currency_value']) .
                       ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format($order->products[$i]['onetime_charges'], true, $order->info['currency'], $order->info['currency_value']) : '') .
                     '</b></td>' . "\n" .
-           '        <td class="dataTableContent" align="right" valign="top"><b>' .
+           '        <td class="dataTableContent border50504e" align="right" valign="top"><b>' .
                       $currencies->format(zen_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax']) * $order->products[$i]['qty'], true, $order->info['currency'], $order->info['currency_value']) .
                       ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format(zen_add_tax($order->products[$i]['onetime_charges'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) : '') .
                     '</b></td>' . "\n";
@@ -273,8 +273,8 @@
          '          </tr>' . "\n";
 
     echo '          <tr>' . "\n" .
-         '            <td class="dataTableContent" align="right" valign="top"><strong>ÀÁµá³Û¹ç·×:</strong></td>' . "\n" .
-         '            <td class="dataTableContent" align="right" valign="top"><strong>' . $currencies->format($so->balance_due) . '</strong></td>' . "\n" .
+         '            <td class="dataTableContent txtL" align="right" valign="top"><strong>ÀÁµá³Û¹ç·×:</strong></td>' . "\n" .
+         '            <td class="dataTableContent txtL" align="right" valign="top"><strong>' . $currencies->format($so->balance_due) . '</strong></td>' . "\n" .
          '          </tr>' . "\n";
 ?>
         </table></td>

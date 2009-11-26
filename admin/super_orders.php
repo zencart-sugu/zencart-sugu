@@ -44,17 +44,17 @@
       case 'mark_completed':
         $so->mark_completed();
         $messageStack->add_session(sprintf(SUCCESS_MARK_COMPLETED, $oID), 'success');
-        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'action=edit&oID=' . $oID, 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'action=edit&oID=' . $oID, $request_type));
       break;
       case 'mark_cancelled':
         $so->mark_cancelled();
         $messageStack->add_session(sprintf(WARNING_MARK_CANCELLED, $oID), 'warning');
-        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'action=edit&oID=' . $oID, 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'action=edit&oID=' . $oID, $request_type));
       break;
       case 'reopen':
         $so->reopen();
         $messageStack->add_session(sprintf(WARNING_ORDER_REOPEN, $oID), 'warning');
-        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'action=edit&oID=' . $oID, 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'action=edit&oID=' . $oID, $request_type));
       break;
       case 'add_note':
         $oID = $_POST['oID'];
@@ -69,7 +69,7 @@
         zen_db_perform(TABLE_CUSTOMERS_ADMIN_NOTES, $new_admin_note);
 
         $messageStack->add_session(SUCCESS_NEW_ADMIN_NOTE, 'success');
-        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $oID . '&action=edit', 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $oID . '&action=edit', $request_type));
       break;
       case 'edit':
         // reset single download to on
@@ -85,7 +85,7 @@
           unset($_GET['download_reset_on']);
 
           $messageStack->add_session(SUCCESS_ORDER_UPDATED_DOWNLOAD_ON, 'success');
-          zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
+          zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', $request_type));
         }
         // reset single download to off
         if ($_GET['download_reset_off'] > 0) {
@@ -95,12 +95,16 @@
           $db->Execute($update_downloads_query);
 
           $messageStack->add_session(SUCCESS_ORDER_UPDATED_DOWNLOAD_OFF, 'success');
-          zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
+          zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', $request_type));
         }
       break;
       case 'update_order':
         $status = zen_db_scrub_in($_POST['status'], true);
-        $comments = zen_db_scrub_in($_POST['comments']);
+        $comments = $_POST['comments'];
+        $comments = stripslashes($comments);
+        $comments = trim($comments);
+        $comments = mysql_escape_string($comments);
+        $comments = htmlspecialchars($comments);
 
         $check_status = $db->Execute("select customers_name, customers_email_address, orders_status,
                                       date_purchased from " . TABLE_ORDERS . "
@@ -131,13 +135,13 @@
           $messageStack->add_session(WARNING_ORDER_NOT_UPDATED, 'warning');
         }
 
-        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', $request_type));
         break;
       case 'deleteconfirm':
         zen_remove_order($oID, $_POST['restock']);
         $so->delete_all_data();
 
-        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')), 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')), $request_type));
       break;
     }
   }
@@ -149,7 +153,7 @@
     if ($orders->RecordCount() <= 0) {
       $order_exists = false;
       $messageStack->add(sprintf(ERROR_ORDER_DOES_NOT_EXIST, $oID), 'error');
-      zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')), 'NONSSL'));
+      zen_redirect(zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')), $request_type));
     }
   }
 
@@ -223,7 +227,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <?php
   // show search reset
   if ((isset($_GET['search']) && zen_not_null($_GET['search'])) or $_GET['cID'] !='') {
-    echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, '', 'NONSSL') . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a><br />';
+    echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, '', $request_type) . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a><br />';
   }
   echo HEADING_TITLE_SEARCH_DETAIL . ' ' . zen_draw_input_field('search');
   if (isset($_GET['search']) && zen_not_null($_GET['search'])) {
@@ -301,9 +305,9 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
               </tr>
             </table></td>
             <td align="right"><?php
-              echo '<a href="' . zen_href_link(FILENAME_SUPER_DATA_SHEET, 'oID=' . $oID) . '" target="_blank">' . zen_image_button('btn_print.gif', ICON_ORDER_PRINT) . '</a>&nbsp;&nbsp;';
-              echo '<a href="' . zen_href_link(FILENAME_SUPER_INVOICE, 'oID=' . $oID) . '" target="_blank">' . zen_image_button('button_invoice.gif', ICON_ORDER_INVOICE) . '</a>&nbsp;&nbsp;';
-              echo '<a href="' . zen_href_link(FILENAME_SUPER_PACKINGSLIP, 'oID=' . $oID) . '" target="_blank">' . zen_image_button('button_packingslip.gif', ICON_ORDER_PACKINGSLIP) . '</a>&nbsp;&nbsp;';
+              echo '<a href="' . zen_href_link(FILENAME_SUPER_DATA_SHEET, 'oID=' . $oID, $request_type) . '" target="_blank">' . zen_image_button('btn_print.gif', ICON_ORDER_PRINT) . '</a>&nbsp;&nbsp;';
+              echo '<a href="' . zen_href_link(FILENAME_SUPER_INVOICE, 'oID=' . $oID, $request_type) . '" target="_blank">' . zen_image_button('button_invoice.gif', ICON_ORDER_INVOICE) . '</a>&nbsp;&nbsp;';
+              echo '<a href="' . zen_href_link(FILENAME_SUPER_PACKINGSLIP, 'oID=' . $oID, $request_type) . '" target="_blank">' . zen_image_button('button_packingslip.gif', ICON_ORDER_PACKINGSLIP) . '</a>&nbsp;&nbsp;';
               echo '<a href="javascript:history.back()">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>';
             ?></td>
           </tr>
@@ -321,7 +325,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
                   <strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong><?php
                     if (!$so->status) {
                       echo '<br /><a href="javascript:popupWindow(\'' .
-                      zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=contact', 'NONSSL') . '\', \'scrollbars=yes,resizable=yes,width=600,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
+                      zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=contact', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=600,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
                       zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_CONTACT) . ICON_EDIT_CONTACT . '</a>';
                     }
                 ?></td>
@@ -357,7 +361,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
               <tr>
                 <td class="main"><strong><?php echo ENTRY_EMAIL_ADDRESS; ?></strong></td>
                 <td class="main"><?php
-                  echo $order->customer['email_address'] . '&nbsp;[<a href="mailto:' . $order->customer['email_address'] . '">' . TEXT_MAILTO . '</a>]&nbsp;[<a href="' . zen_href_link(FILENAME_MAIL, 'origin=super_orders.php&mode=NONSSL&selected_box=customers&customer=' . $order->customer['email_address'], 'NONSSL') . '">' . TEXT_STORE_EMAIL . '</a>]';
+                  echo $order->customer['email_address'] . '&nbsp;[<a href="mailto:' . $order->customer['email_address'] . '">' . TEXT_MAILTO . '</a>]&nbsp;[<a href="' . zen_href_link(FILENAME_MAIL, 'origin=super_orders.php&mode=NONSSL&selected_box=customers&customer=' . $order->customer['email_address'], $request_type) . '">' . TEXT_STORE_EMAIL . '</a>]';
                 ?></td>
               </tr>
               <tr>
@@ -479,7 +483,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
 <?php
             }
 ?>
-          <tr class="paymentRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=payment&index=' . $so->payment[$a]['index'] . '&action=update', 'NONSSL') . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
+          <tr class="paymentRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=payment&index=' . $so->payment[$a]['index'] . '&action=update', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
             <td class="paymentContent" align="left"><?php echo $so->payment[$a]['number']; ?></td>
             <td class="paymentContent" align="left"><?php echo $so->payment[$a]['name']; ?></td>
             <td class="paymentContent" align="right"><strong><?php echo $currencies->format($so->payment[$a]['amount']); ?></strong></td>
@@ -493,7 +497,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
               for($b = 0; $b < sizeof($so->refund); $b++) {
                 if ($so->refund[$b]['payment'] == $so->payment[$a]['index']) {
 ?>
-          <tr class="refundRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=refund&index=' . $so->refund[$b]['index'] . '&action=update', 'NONSSL') . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
+          <tr class="refundRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=refund&index=' . $so->refund[$b]['index'] . '&action=update', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
             <td class="refundContent" align="left"><?php echo $so->refund[$b]['number']; ?></td>
             <td class="refundContent" align="left"><?php echo $so->refund[$b]['name']; ?></td>
             <td class="refundContent" align="right"><strong><?php echo '-' . $currencies->format($so->refund[$b]['amount']); ?></strong></td>
@@ -536,7 +540,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
 <?php
             }
 ?>
-          <tr class="purchaseOrderRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=purchase_order&index=' . $so->purchase_order[$c]['index'] . '&action=update', 'NONSSL') . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
+          <tr class="purchaseOrderRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=purchase_order&index=' . $so->purchase_order[$c]['index'] . '&action=update', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
             <td class="purchaseOrderContent" colspan="4" align="left"><strong><?php echo $so->purchase_order[$c]['number']; ?></strong></td>
             <td class="purchaseOrderContent" align="center"><?php echo zen_datetime_short($so->purchase_order[$c]['posted']); ?></td>
             <td class="purchaseOrderContent" align="center"><?php echo zen_datetime_short($so->purchase_order[$c]['modified']); ?></td>
@@ -554,7 +558,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
 <?php
                   }
 ?>
-          <tr class="paymentRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=payment&index=' . $so->po_payment[$d]['index'] . '&action=update', 'NONSSL') . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
+          <tr class="paymentRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=payment&index=' . $so->po_payment[$d]['index'] . '&action=update', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
             <td class="paymentContent" align="left"><?php echo $so->po_payment[$d]['number']; ?></td>
             <td class="paymentContent" align="left"><?php echo $so->po_payment[$d]['name']; ?></td>
             <td class="paymentContent" align="right"><strong><?php echo $currencies->format($so->po_payment[$d]['amount']); ?></strong></td>
@@ -568,7 +572,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
                     for($e = 0; $e < sizeof($so->refund); $e++) {
                       if ($so->refund[$e]['payment'] == $so->po_payment[$d]['index']) {
 ?>
-          <tr class="refundRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=refund&index=' . $so->refund[$e]['index'] . '&action=update', 'NONSSL') . '\')"'; ?>>
+          <tr class="refundRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" <?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=refund&index=' . $so->refund[$e]['index'] . '&action=update', $request_type) . '\')"'; ?>>
             <td class="refundContent" align="left"><?php echo $so->refund[$e]['number']; ?></td>
             <td class="refundContent" align="left"><?php echo $so->refund[$e]['name']; ?></td>
             <td class="refundContent" align="right"><strong><?php echo '-' . $currencies->format($so->refund[$e]['amount']); ?></strong></td>
@@ -619,7 +623,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
 <?php
               }
 ?>
-          <tr class="refundRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)"<?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=refund&index=' . $so->refund[$f]['index'] . '&action=update', 'NONSSL') . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
+          <tr class="refundRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)"<?php echo 'onclick="popupWindow(\'' . zen_href_link(FILENAME_SUPER_PAYMENTS, 'oID=' . $so->oID . '&payment_mode=refund&index=' . $so->refund[$f]['index'] . '&action=update', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=400,height=300,screenX=150,screenY=100,top=100,left=150\')"'; ?>>
             <td class="refundContent" align="left"><?php echo $so->refund[$f]['number']; ?></td>
             <td class="refundContent" align="left"><?php echo $so->refund[$f]['name']; ?></td>
             <td class="refundContent" align="right"><strong><?php echo '-' . $currencies->format($so->refund[$f]['amount']); ?></strong></td>
@@ -684,7 +688,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
       <?php if (!$so->status) { ?>
       <tr>
         <td class="main"><?php echo '<a href="javascript:popupWindow(\'' .
-          zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=product', 'NONSSL') . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
+          zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=product', $request_type) . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
           zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_PRODUCT) . ICON_EDIT_PRODUCT . '</a>';
         ?></td>
       </tr>
@@ -767,7 +771,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
              $colspan = 8;
            }
 ?>
-            <td align="right" colspan="<? echo $colspan; ?>"><table border="0" cellspacing="0" cellpadding="2">
+            <td align="right" colspan="<?php echo $colspan; ?>"><table border="0" cellspacing="0" cellpadding="2">
 <?php
     // Short shipping display
     // Formats shipping entry to remove the TEXT_WAY define
@@ -850,7 +854,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
               <?php if (!$so->status) { ?>
               <tr>
                 <td colspan="2" align="right"><?php echo '<a href="javascript:popupWindow(\'' .
-                   zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=total', 'NONSSL') . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
+                   zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=total', $request_type) . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
                    zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_TOTAL) . ICON_EDIT_TOTAL . '</a>';
                 ?></td>
               </tr>
@@ -905,7 +909,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
       <?php if (!$so->status) { ?>
       <tr>
         <td><?php echo '<a href="javascript:popupWindow(\'' .
-                   zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=history', 'NONSSL') . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
+                   zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=history', $request_type) . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
                    zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_HISTORY) . ICON_EDIT_HISTORY . '</a>';
         ?></td>
       </tr>
@@ -1160,9 +1164,9 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
     $shipping_method = $clean_shipping;
 
     if (isset($oInfo) && is_object($oInfo) && ($orders->fields['orders_id'] == $oInfo->orders_id)) {
-      echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', 'NONSSL') . '\'">' . "\n";
+      echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', $request_type) . '\'">' . "\n";
     } else {
-      echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders->fields['orders_id'], 'NONSSL') . '\'">' . "\n";
+      echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders->fields['orders_id'], $request_type) . '\'">' . "\n";
     }
     //_TODO add new warning to diff between =! name and =! address
     $show_difference = '';
@@ -1179,11 +1183,11 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
     if ($close_status) $class = "status-" . $close_status['type'];
     else $class = "dataTableContent";
 ?>
-                <td class="<? echo $class; ?>" align="left"><?php echo $orders->fields['orders_id'] . $show_difference; ?></td>
+                <td class="<?php echo $class; ?>" align="left"><?php echo $orders->fields['orders_id'] . $show_difference; ?></td>
                 <td class="dataTableContent"><?php
-                  echo '<a href="' . zen_href_link(FILENAME_CUSTOMERS, 'cID=' . $orders->fields['customers_id'] . '&action=edit', 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_cust_info.gif', MINI_ICON_INFO) . '</a>&nbsp;';
-                  echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'cID=' . $orders->fields['customers_id'], 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_cust_orders.gif', MINI_ICON_ORDERS) . '</a>&nbsp;';
-                  echo '<a href="' . zen_href_link(FILENAME_MAIL, 'origin=super_orders.php&mode=NONSSL&selected_box=tools&customer=' . $orders->fields['customers_email_address'] . '&cID=' . (int)$cID, 'NONSSL') . '">' . $orders->fields['customers_name'] . '</a>';
+                  echo '<a href="' . zen_href_link(FILENAME_CUSTOMERS, 'cID=' . $orders->fields['customers_id'] . '&action=edit', $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_cust_info.gif', MINI_ICON_INFO) . '</a>&nbsp;';
+                  echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'cID=' . $orders->fields['customers_id'], $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_cust_orders.gif', MINI_ICON_ORDERS) . '</a>&nbsp;';
+                  echo '<a href="' . zen_href_link(FILENAME_MAIL, 'origin=super_orders.php&mode=NONSSL&selected_box=tools&customer=' . $orders->fields['customers_email_address'] . '&cID=' . (int)$cID, $request_type) . '">' . $orders->fields['customers_name'] . '</a>';
                 ?></td>
                 <td class="dataTableContent" align="right"><?php echo strip_tags($orders->fields['order_total']); ?></td>
                 <td class="dataTableContent" align="center"><?php echo zen_datetime_short($orders->fields['date_purchased']); ?></td>
@@ -1193,13 +1197,13 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
                 <td class="dataTableContent" align="right"><?php
                   if (isset($oInfo) && is_object($oInfo) && ($orders->fields['orders_id'] == $oInfo->orders_id)) { echo zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', '');
                   } else {
-                    //echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID')) . 'oID=' . $orders->fields['orders_id'], 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>';
+                    //echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID')) . 'oID=' . $orders->fields['orders_id'], $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>';
                     echo '<a href="' . zen_href_link(FILENAME_SUPER_DATA_SHEET, 'oID=' . $orders->fields['orders_id']) . '" target="_blank">' . zen_image(DIR_WS_IMAGES . 'icon_print.gif', ICON_ORDER_PRINT) . '</a>&nbsp;';
-                    echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp';
+                    echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp';
                     echo '<a href="' . zen_href_link(FILENAME_SUPER_INVOICE, 'oID=' . $orders->fields['orders_id']) . '" TARGET="_blank">' . zen_image(DIR_WS_IMAGES . 'icon_invoice.gif', ICON_ORDER_INVOICE) . '</a>&nbsp;';
                     echo '<a href="' . zen_href_link(FILENAME_SUPER_PACKINGSLIP, 'oID=' . $orders->fields['orders_id']) . '" TARGET="_blank">' . zen_image(DIR_WS_IMAGES . 'icon_packingslip.gif', ICON_ORDER_PACKINGSLIP) . '</a>&nbsp;';
                     echo '<a href="' . zen_href_link(FILENAME_SUPER_SHIPPING_LABEL, 'oID=' . $orders->fields['orders_id']) . '" TARGET="_blank">' . zen_image(DIR_WS_IMAGES . 'icon_shipping_label.gif', ICON_ORDER_SHIPPING_LABEL) . '</a>&nbsp;';
-                    echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=delete', 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_delete2.gif', ICON_ORDER_DELETE) . '</a>';
+                    echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=delete', $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_delete2.gif', ICON_ORDER_DELETE) . '</a>';
                   }
                 ?>&nbsp;</td>
               </tr>
@@ -1219,7 +1223,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
                   <tr>
                     <td class="smallText" align="right" colspan="2">
                       <?php
-                        echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, '', 'NONSSL') . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a>';
+                        echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, '', $request_type) . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a>';
                         if (isset($_GET['search']) && zen_not_null($_GET['search'])) {
                           $keywords = zen_db_input(zen_db_prepare_input($_GET['search']));
                           echo '<br/ >' . TEXT_INFO_SEARCH_DETAIL_FILTER . $keywords;
@@ -1244,17 +1248,17 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
       $contents = array('form' => zen_draw_form('orders', FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=deleteconfirm', 'post', '', true));
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO . '<br /><br /><strong>' . ENTRY_ORDER_ID . $oInfo->orders_id . '<br />' . $oInfo->order_total . '<br />' . $oInfo->customers_name . '</strong>');
       $contents[] = array('text' => '<br />' . zen_draw_checkbox_field('restock') . ' ' . TEXT_INFO_RESTOCK_PRODUCT_QUANTITY);
-      $contents[] = array('align' => 'center', 'text' => '<br />' . zen_image_submit('button_delete.gif', IMAGE_DELETE) . ' <a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id, 'NONSSL') . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br />' . zen_image_submit('button_delete.gif', IMAGE_DELETE) . ' <a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id, $request_type) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
     default:
       if (isset($oInfo) && is_object($oInfo)) {
         $heading[] = array('text' => '<strong>[' . $oInfo->orders_id . ']&nbsp;&nbsp;' . zen_datetime_short($oInfo->date_purchased) . '</strong>');
-//        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', 'NONSSL') . '">' . zen_image_button('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=delete', 'NONSSL') . '">' . zen_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
+//        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', $request_type) . '">' . zen_image_button('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=delete', $request_type) . '">' . zen_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
 //        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $oInfo->orders_id) . '" TARGET="_blank">' . zen_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '</a> <a href="' . zen_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $oInfo->orders_id) . '" TARGET="_blank">' . zen_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '</a>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', 'NONSSL') . '">' . zen_image_button('button_details.gif', IMAGE_EDIT) . '</a>&nbsp;<a href="' . zen_href_link(FILENAME_SUPER_SHIPPING_LABEL, 'oID=' . $oInfo->orders_id) . '" TARGET="_blank">' . zen_image_button('button_shippinglabel.gif', IMAGE_SHIPPING_LABEL) . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', $request_type) . '">' . zen_image_button('button_details.gif', IMAGE_EDIT) . '</a>&nbsp;<a href="' . zen_href_link(FILENAME_SUPER_SHIPPING_LABEL, 'oID=' . $oInfo->orders_id) . '" TARGET="_blank">' . zen_image_button('button_shippinglabel.gif', IMAGE_SHIPPING_LABEL) . '</a>');
         $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_INVOICE, 'oID=' . $oInfo->orders_id) . '" TARGET="_blank">' . zen_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '</a> <a href="' . zen_href_link(FILENAME_SUPER_PACKINGSLIP, 'oID=' . $oInfo->orders_id) . '" TARGET="_blank">' . zen_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '</a>');
-        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_DATA_SHEET, 'oID=' . $oInfo->orders_id) . '" target="_blank">' . zen_image_button('btn_print.gif', ICON_ORDER_PRINT) . '</a>&nbsp;<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=delete', 'NONSSL') . '">' . zen_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_DATA_SHEET, 'oID=' . $oInfo->orders_id) . '" target="_blank">' . zen_image_button('btn_print.gif', ICON_ORDER_PRINT) . '</a>&nbsp;<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=delete', $request_type) . '">' . zen_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
         $contents[] = array('text' => '<br />' . TEXT_DATE_ORDER_CREATED . ' ' . zen_date_short($oInfo->date_purchased));
         if (zen_not_null($oInfo->last_modified)) $contents[] = array('text' => TEXT_DATE_ORDER_LAST_MODIFIED . ' ' . zen_date_short($oInfo->last_modified));
         $contents[] = array('text' => '<br />' . TEXT_INFO_PAYMENT_METHOD . ' '  . $oInfo->payment_method);
@@ -1296,7 +1300,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
       }
 
       if (sizeof($order->products) > 0) {
-        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', 'NONSSL') . '">' . zen_image_button('button_details.gif', IMAGE_EDIT) . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('oID', 'action')) . 'oID=' . $oInfo->orders_id . '&action=edit', $request_type) . '">' . zen_image_button('button_details.gif', IMAGE_EDIT) . '</a>');
       }
       break;
   }
@@ -1392,9 +1396,3 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
-<?php
-// easy admin products by sugudeki
-if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
-  easy_admin_simplify_end();
-}
-?>

@@ -597,7 +597,11 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <!-- body_text //-->
   <td align="center"><table border="0" cellspacing="0" cellpadding="2">
 <?php
-  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', true) . NL;
+  $usessl = ($request_type == 'SSL');
+  if($ussessl){
+     $usessl = (ENABLE_SSL_ADMIN == 'true');
+  }
+  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', $usessl) . NL;
   echo '      ' . zen_draw_hidden_field('target', $target) . NL;
   echo '      ' . zen_draw_hidden_field('process', 1) . NL;
   echo '      ' . zen_draw_hidden_field('oID', $oID) . NL;
@@ -972,8 +976,8 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
       </tr>
       <tr>
         <td class="main" colspan="3" align="right">
-          <input type="button" value="<?php echo BUTTON_CANCEL; ?>" onclick="closePopup()">
-          <input type="submit" value="<?php echo BUTTON_SUBMIT; ?>" onclick="document.edit.submit();this.disabled=true">
+        <?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE , 'onclick="return check_form()"'); ?>
+        <?php echo zen_image_submit('button_cancel.gif', IMAGE_CANCEL , 'onclick="closePopup()"'); ?>
         </td>
       </tr>
       </form>

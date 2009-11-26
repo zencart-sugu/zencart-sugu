@@ -47,9 +47,9 @@ define('ICON_ORDER_DETAILS', '注文の詳細を表示');
 define('DROPDOWN_ALL_PRODUCTS', '全ての製品');
 define('DROPDOWN_ALL_PAYMENTS', '全ての支払い方法');
 define('DROPDOWN_ALL_CUSTOMERS', '全ての顧客');
-define('DROPDOWN_GREATER_THAN', ' (以上)');
-define('DROPDOWN_LESS_THAN', ' (以下)');
-define('DROPDOWN_EQUAL_TO', ' (等しい)');
+define('DROPDOWN_GREATER_THAN', ' 以上');
+define('DROPDOWN_LESS_THAN', ' 以下');
+define('DROPDOWN_EQUAL_TO', ' 等しい');
 
 define('HEADING_SELECT_FORM', '印刷形式');
 define('HEADING_NUM_COPIES', '部数');

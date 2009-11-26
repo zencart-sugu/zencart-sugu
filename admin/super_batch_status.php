@@ -47,11 +47,11 @@
 
   $ot_sign = array();
   $ot_sign[] = array('id' => '>=',
-                     'text' => ' > ' . DROPDOWN_GREATER_THAN);
+                     'text' => DROPDOWN_GREATER_THAN);
   $ot_sign[] = array('id' => '<=',
-                     'text' => ' < ' . DROPDOWN_LESS_THAN);
+                     'text' => DROPDOWN_LESS_THAN);
   $ot_sign[] = array('id' => '=',
-                     'text' => ' = ' . DROPDOWN_EQUAL_TO);
+                     'text' => DROPDOWN_EQUAL_TO);
 
   if ($_GET['action'] == 'batch_status') {
     $selected_oids = $_POST['batch_order_numbers'];
@@ -62,14 +62,19 @@
     }
 
     $status = zen_db_scrub_in($_POST['assign_status'], true);
-    $comments = zen_db_scrub_in($_POST['comments'], true);
+    $comments = $_POST['comments'];
+    $comments = stripslashes($comments);
+    $comments = trim($comments);
+    $comments = mysql_escape_string($comments);
+    $comments = htmlspecialchars($comments);
+
     $notify = (int)$_POST['notify'];
     $notify_comments = $_POST['notify_comments'];
 
     foreach($selected_oids as $oID => $print_order) {
       batch_status($oID, $status, $comments, $notify, $notify_comments);
     }
-    zen_redirect(zen_href_link(FILENAME_SUPER_BATCH_STATUS, '', 'NONSSL'));
+    zen_redirect(zen_href_link(FILENAME_SUPER_BATCH_STATUS, '', $request_type));
   }
 
   else {
@@ -306,7 +311,7 @@ if (isset($_GET['start_date']) ) {
                     <td class="dataTableContent" align="center"><?php echo zen_datetime_short($orders->fields['date_purchased']); ?></td>
                     <td class="dataTableContent" align="left"><?php echo $orders->fields['payment_method']; ?></td>
                     <td class="dataTableContent" align="left"><?php echo $orders->fields['orders_status_name']; ?></td>
-                    <td class="dataTableContent" align="right"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp'; ?></td>
+                    <td class="dataTableContent" align="right"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp'; ?></td>
                   </tr>
 <?php
       $orders->MoveNext();

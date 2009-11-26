@@ -192,7 +192,8 @@
       for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
         echo '      <tr class="dataTableRow">' . "\n";
 
-        if ($display_images && isset($order->products[$i]['id']) ) {
+        if ($display_images) {
+          if(isset($order->products[$i]['id']) ) {
 
           $products = $db->Execute("SELECT products_image
                                     FROM " . TABLE_PRODUCTS . "
@@ -202,6 +203,9 @@
         }
 
         echo '        <td class="dataTableContent" valign="middle" align="center">';
+} else {
+echo '        <td class="dataTableContent" align="left"></td>';
+}
 
         if ($split) {
           if (isset($_GET['incl_product_' . $i])) {

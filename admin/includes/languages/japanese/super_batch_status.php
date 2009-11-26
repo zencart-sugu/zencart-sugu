@@ -51,9 +51,9 @@ define('ERROR_NO_ORDERS', 'Error: オーダーにチェックが入っていません！');
 define('DROPDOWN_ALL_PRODUCTS', '全ての製品');
 define('DROPDOWN_ALL_PAYMENTS', '全ての支払い方法');
 define('DROPDOWN_ALL_CUSTOMERS', '全ての顧客');
-define('DROPDOWN_GREATER_THAN', ' (以上)');
-define('DROPDOWN_LESS_THAN', ' (以下)');
-define('DROPDOWN_EQUAL_TO', ' (等しい)');
+define('DROPDOWN_GREATER_THAN', ' 以上');
+define('DROPDOWN_LESS_THAN', ' 以下');
+define('DROPDOWN_EQUAL_TO', ' 等しい');
 
 define('TABLE_HEADING_ORDERS_ID','オーダー ID');
 define('TABLE_HEADING_CUSTOMERS', '顧客');
