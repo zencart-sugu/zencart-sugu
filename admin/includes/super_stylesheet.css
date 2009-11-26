@@ -83,7 +83,6 @@ border-width:3px;
 TD.ot-custom-Text {
 }
 TD.ot-custom-Amount{
-font-weight:bold;
 }
 
 td.balanceDueNone,td.status-completed{
@@ -95,7 +94,6 @@ font-weight:bold;
 color:FF0000;
 }
 td.balanceDueRem{
-font-weight:bold;
 color:0000FF;
 }
 td.balanceDueNull{
@@ -131,14 +129,15 @@ font-size:12px;
 }
 td.ot-subtotal-TextPrint,td.ot-cod-fee-TextPrint,td.ot-total-TextPrint,td.ot-group-pricing-TextPrint,td.ot-gv-TextPrint,td.ot-loworderfee-TextPrint,td.ot-shipping-TextPrint,td.ot-subtotal-TextPrint,td.ot-tax-TextPrint,td.ot-coupon-TextPrint{
 color:000000;
-font-weight:bold;
 font-size:12px;
+}
+td.ot-subtotal-TextPrint,td.ot-total-TextPrint,td.ot-total-AmountPrint,td.ot-tax-TextPrint{
+font-weight:bold;
 }
 td.ot-total-AmountPrint{
 color:000000;
 border-top:1px solid #000000;
 font-size:12px;
-font-weight:bold;
 }
 
 span.status-completed{

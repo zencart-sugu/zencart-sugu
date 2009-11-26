@@ -970,8 +970,8 @@
       </tr>
       <tr>
         <td class="main" colspan="3" align="right">
-          <input type="button" value="<?php echo BUTTON_CANCEL; ?>" onclick="closePopup()">
-          <input type="submit" value="<?php echo BUTTON_SUBMIT; ?>" onclick="document.edit.submit();this.disabled=true">
+        <?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE , 'onclick="return check_form()"'); ?>
+        <?php echo zen_image_submit('button_cancel.gif', IMAGE_CANCEL , 'onclick="closePopup()"'); ?>
         </td>
       </tr>
       </form>
