@@ -62,7 +62,12 @@
     }
 
     $status = zen_db_scrub_in($_POST['assign_status'], true);
-    $comments = zen_db_scrub_in($_POST['comments'], true);
+    $comments = $_POST['comments'];
+    $comments = stripslashes($comments);
+    $comments = trim($comments);
+    $comments = mysql_escape_string($comments);
+    $comments = htmlspecialchars($comments);
+
     $notify = (int)$_POST['notify'];
     $notify_comments = $_POST['notify_comments'];
 
