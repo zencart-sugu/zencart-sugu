@@ -591,7 +591,11 @@
 <!-- body_text //-->
   <td align="center"><table border="0" cellspacing="0" cellpadding="2">
 <?php
-  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', true) . NL;
+  $usessl = ($request_type == 'SSL');
+  if($ussessl){
+     $usessl = (ENABLE_SSL_ADMIN == 'true');
+  }
+  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', i$usessl) . NL;
   echo '      ' . zen_draw_hidden_field('target', $target) . NL;
   echo '      ' . zen_draw_hidden_field('process', 1) . NL;
   echo '      ' . zen_draw_hidden_field('oID', $oID) . NL;
