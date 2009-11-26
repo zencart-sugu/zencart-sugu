@@ -595,7 +595,7 @@
   if($ussessl){
      $usessl = (ENABLE_SSL_ADMIN == 'true');
   }
-  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', i$usessl) . NL;
+  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', $usessl) . NL;
   echo '      ' . zen_draw_hidden_field('target', $target) . NL;
   echo '      ' . zen_draw_hidden_field('process', 1) . NL;
   echo '      ' . zen_draw_hidden_field('oID', $oID) . NL;
