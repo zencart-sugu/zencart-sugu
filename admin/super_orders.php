@@ -284,6 +284,10 @@
                   echo zen_draw_input_field('oID', '', 'size="6"');
                   echo zen_draw_hidden_field('action', 'edit');
                   echo '</form>';
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_start();
+}
                 ?></td>
                 <td class="main" align="center" valign="bottom"><?php echo $next_button; ?></td>
               </tr>
@@ -1374,3 +1378,9 @@
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+<?php
+// easy admin products by sugudeki
+if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
+  easy_admin_simplify_end();
+}
+?>
