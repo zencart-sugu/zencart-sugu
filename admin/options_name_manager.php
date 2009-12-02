@@ -402,8 +402,8 @@ function go_option() {
 <!-- body_text //-->
 
     <!-- options and values//-->
-	<table border="0" width="75%" cellspacing="0" cellpadding="0" align="center">
-      <tr>
+	<table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
+      <!--<tr>
         <td width="100%">
     	    <table width="100%" border="0" cellspacing="0" cellpadding="2">
     	      <tr>
@@ -427,6 +427,9 @@ function go_option() {
             </tr>
           </table>
         </td>
+      </tr>-->
+	  <tr>
+	  	<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
       </tr>
       <tr>
         <td valign="top" width="50%">
@@ -718,7 +721,7 @@ function go_option() {
                 <td class="smallText"><?php echo $inputs; ?></td>
                 <td class="smallText"><?php echo draw_optiontype_pulldown('option_type'); ?></td>
                 <td colspan="2" class="smallText">&nbsp;</td>
-                <td colspan="2" align="center" class="smallText">&nbsp;<?php echo zen_image_submit('button_insert.gif', IMAGE_INSERT); ?>&nbsp;</td>
+                <td colspan="2" align="center" class="smallText">&nbsp;<?php echo zen_image_submit('button_addition.gif', IMAGE_ADDITION); ?>&nbsp;</td>
 <?php
       echo '</form>';
 ?>

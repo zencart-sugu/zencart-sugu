@@ -555,7 +555,8 @@ function init()
 <!-- header_eof //-->
 
 <!-- body //-->
-<table border="0" width="100%" cellspacing="2" cellpadding="2">
+<div id="bodyWrapper">
+<table border="0" width="95%" cellspacing="0" cellpadding="0">
 <?php if ($action == '') { ?>
       <tr>
         <td><table border="0" cellspacing="0" cellpadding="0">
@@ -568,7 +569,7 @@ function init()
           </tr>
         </table></td>
       </tr>
-  <tr>
+  <!--<tr>
     <td class="smallText" width="100%" align="right">
       <?php
 
@@ -635,7 +636,7 @@ function init()
       '</form>';
       ?>
     </td>
-  </tr>
+  </tr>-->
 
 <?php } ?>
   <tr>
@@ -1008,3 +1009,4 @@ if ($products_query_numrows > 0) {
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+</div>

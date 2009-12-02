@@ -601,7 +601,7 @@ function popupWindow(url) {
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+    <td width="100%" valign="top" align="center"><table border="0" width="95%" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="smallText searchBox" align="right">
 <?php
@@ -623,14 +623,14 @@ function popupWindow(url) {
       <tr>
         <td width="100%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!-- products_attributes //-->
-      <tr>
+      <!--<tr>
         <td width="100%"><table border="0" cellspacing="2" cellpadding="2">
           <tr>
   	        <td height="40" valign="bottom"><a href="<?php echo  zen_href_link(FILENAME_OPTIONS_NAME_MANAGER, '', 'NONSSL') ?>"><?php echo zen_image_button('button_option_names.gif', IMAGE_OPTION_NAMES); ?></a></td>
   	        <td height="40" valign="bottom"><a href="<?php echo  zen_href_link(FILENAME_OPTIONS_VALUES_MANAGER, '', 'NONSSL') ?>"><?php echo zen_image_button('button_option_values.gif', IMAGE_OPTION_VALUES); ?></a></td>
           </tr>
         </table></td>
-      </tr>
+      </tr>-->
       <tr>
         <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -638,6 +638,9 @@ function popupWindow(url) {
           </tr>
         </table></td>
       </tr>
+<tr>
+<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+</tr>
 
 <?php
 if ($action == 'attributes_preview') {

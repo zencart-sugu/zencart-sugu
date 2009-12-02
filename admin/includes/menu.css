@@ -5,6 +5,35 @@ same in mozilla, ie and opera
 /* needed to keep IE from bubbling events
 from items that are not contained but only
 covered. */
+
+div#navbar:after {
+content:  ".";
+display:  block;
+height:  0px;
+clear:  both;
+visibility:  hidden;
+}
+div#navbar{
+display: inline-table;
+min-height: 1%;
+_height:  1%;
+_display:  block;
+background:#efedec;
+}
+/* Hides from IE-mac \*/
+* html div#navbar {height: 1%;}
+div#navbar {display: block;}
+/* End hide from IE-mac */
+div#navbar_right{
+float:right;
+width:10%;
+}
+div#navbar_drop{
+float:left;
+width:89%;
+}
+
+
 ul.nde-menu-system{
 background-color:#e3a679;
 background-color:#EFEDEC;

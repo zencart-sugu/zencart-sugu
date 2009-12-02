@@ -129,7 +129,7 @@
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top" align="center"><table border="0" width="95%" cellspacing="0" cellpadding="2">
 
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -151,9 +151,16 @@
             </td>
           </form></tr>
           <tr>
-            <td colspan="3" class="main"><?php echo TEXT_STATUS_WARNING; ?></td>
+      	<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+      </tr>
+
+          <tr>
+            <td colspan="3" class="main divLayout2"><?php echo TEXT_STATUS_WARNING; ?></td>
           </tr>
         </table></td>
+      </tr>
+	  <tr>
+      	<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
       </tr>
 
 <?php
@@ -207,17 +214,17 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "new_featured", "end", "btnDat
 </script>
 
       <tr><form name="new_featured" <?php echo 'action="' . zen_href_link(FILENAME_FEATURED, zen_get_all_get_params(array('action', 'info', 'fID')) . 'action=' . $form_action . '&go_back=' . $_GET['go_back'], 'NONSSL') . '"'; ?> method="post"><?php if ($form_action == 'update') echo zen_draw_hidden_field('featured_id', $_GET['fID']); ?>
-        <td><br><table border="0" cellspacing="0" cellpadding="2">
+        <td><br><table border="0" cellspacing="0" cellpadding="2" class="tableLayout1" width="100%">
           <tr>
-            <td class="main"><?php echo TEXT_FEATURED_PRODUCT; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_FEATURED_PRODUCT; ?>&nbsp;</th>
             <td class="main"><?php echo (isset($fInfo->products_name)) ? $fInfo->products_name . ' <small>(' . $currencies->format($fInfo->products_price) . ')</small>' : zen_draw_products_pull_down('products_id', 'size="5" style="font-size:10px"', $featured_array, true, $_GET['add_products_id'], true); echo zen_draw_hidden_field('products_price', (isset($fInfo->products_price) ? $fInfo->products_price : '')); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_FEATURED_AVAILABLE_DATE; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_FEATURED_AVAILABLE_DATE; ?>&nbsp;</th>
             <td class="main"><script language="javascript">StartDate.writeControl(); StartDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_FEATURED_EXPIRES_DATE; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_FEATURED_EXPIRES_DATE; ?>&nbsp;</th>
             <td class="main"><script language="javascript">EndDate.writeControl(); EndDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
         </table></td>
@@ -225,7 +232,7 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "new_featured", "end", "btnDat
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
-            <td colspan="2" class="main" align="right" valign="top"><br><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . (isset($_GET['fID']) ? '&fID=' . $_GET['fID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+            <td colspan="2" class="main" align="center" valign="top"><br><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . (isset($_GET['fID']) ? '&fID=' . $_GET['fID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
           </tr>
         </table></td>
       </form></tr>
@@ -302,7 +309,7 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "new_featured", "end", "btnDat
     }
 ?>
               <tr>
-                <td colspan="4"><table border="0" width="100%" cellpadding="0"cellspacing="2">
+                <td colspan="7"><table border="0" width="100%" cellpadding="0"cellspacing="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $featured_split->display_count($featured_query_numrows, MAX_DISPLAY_SEARCH_RESULTS_FEATURED_ADMIN, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_SPECIALS); ?></td>
                     <td class="smallText" align="right"><?php echo $featured_split->display_links($featured_query_numrows, MAX_DISPLAY_SEARCH_RESULTS_FEATURED_ADMIN, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
@@ -344,7 +351,7 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "new_featured", "end", "btnDat
 
         $contents[] = array('text' => '<br />' . TEXT_INFO_AVAILABLE_DATE . ' <b>' . (($fInfo->featured_date_available != '0001-01-01' and $fInfo->featured_date_available !='') ? zen_date_short($fInfo->featured_date_available) : TEXT_NONE) . '</b>');
         $contents[] = array('text' => TEXT_INFO_EXPIRES_DATE . ' <b>' . (($fInfo->expires_date != '0001-01-01' and $fInfo->expires_date !='') ? zen_date_short($fInfo->expires_date) : TEXT_NONE) . '</b>');
-        $contents[] = array('text' => '<br />' . TEXT_INFO_STATUS_CHANGE . ' ' . zen_date_short($fInfo->date_status_change));
+        //$contents[] = array('text' => '<br />' . TEXT_INFO_STATUS_CHANGE . ' ' . zen_date_short($fInfo->date_status_change));
         $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_CATEGORIES, '&action=new_product' . '&cPath=' . zen_get_product_path($fInfo->products_id, 'override') . '&pID=' . $fInfo->products_id . '&product_type=' . zen_get_products_type($fInfo->products_id)) . '">' . zen_image_button('button_edit_product.gif', IMAGE_EDIT_PRODUCT) . '<br />' . '</a>');
       }
       break;

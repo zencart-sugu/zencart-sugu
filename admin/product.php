@@ -140,7 +140,8 @@ if (typeof _editor_url == "string") HTMLArea.replaceAll();
 <!-- header_eof //-->
 
 <!-- body //-->
-<table border="0" width="100%" cellspacing="2" cellpadding="2">
+<div id="bodyWrapper">
+<table width="95%" border="0" cellpadding="2" cellspacing="2">
   <tr>
 <!-- body_text //-->
     <td width="100%" valign="top">
@@ -362,7 +363,7 @@ if ($products_query_numrows > 0) {
 // Split Page
 ?>
           </tr>
-        </table></td>
+</table></td>
       </tr>
     </table>
 <?php
@@ -378,6 +379,7 @@ if ($products_query_numrows > 0) {
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 <!-- footer_eof //-->
 <br />
+</div>
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>

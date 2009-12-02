@@ -43,7 +43,7 @@
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- body_text //-->
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="95%" cellspacing="0" cellpadding="2" align="center">
   <tr>
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
@@ -53,7 +53,7 @@
     </table></td>
   </tr>
   <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td colspan="2"><?php echo zen_draw_separator(); ?></td>
       </tr>
@@ -89,28 +89,15 @@
       </tr>
 <?php } ?>
       <tr>
-        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-         <tr>
-            <td class="main"><b><?php echo ENTRY_SOLD_TO; ?></b></td>
-          </tr>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tableLayout1">
           <tr>
-            <td class="main"><?php echo zen_address_format($order->customer['format_id'], $order->billing, 1, '', '<br>'); ?></td>
-          </tr>
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo $order->customer['telephone']; ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></td>
-          </tr>
-        </table></td>
-        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main"><b><?php echo ENTRY_SHIP_TO; ?></b></td>
-          </tr>
-          <tr>
+            <th class="main"><b><?php echo ENTRY_SOLD_TO; ?></b></th>
+			<td>
+			<p><?php echo zen_address_format($order->customer['format_id'], $order->billing, 1, '', '<br>'); ?></p>
+			<p><?php echo $order->customer['telephone']; ?></p>
+			<p><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></p>
+			</td>
+			<th><b><?php echo ENTRY_SHIP_TO; ?></b></th>
             <td class="main"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br>'); ?></td>
           </tr>
         </table></td>
@@ -121,16 +108,16 @@
     <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
   </tr>
   <tr>
-    <td class="main"><b><?php echo ENTRY_ORDER_ID . $oID; ?></b></td>
-  </tr>
+    <td><table border="0" cellspacing="0" cellpadding="0" class="tableLayout1" width="100%">
   <tr>
-    <td><table border="0" cellspacing="0" cellpadding="2">
+		<th class="main" colspan="2"><b><?php echo ENTRY_ORDER_ID . $oID; ?></b></th>
+	</tr>
       <tr>
-        <td class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></td>
+        <th class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></th>
         <td class="main"><?php echo zen_date_long($order->info['date_purchased']); ?></td>
       </tr>
       <tr>
-        <td class="main"><b><?php echo ENTRY_PAYMENT_METHOD; ?></b></td>
+        <th class="main"><b><?php echo ENTRY_PAYMENT_METHOD; ?></b></th>
         <td class="main"><?php echo $order->info['payment_method']; ?></td>
       </tr>
     </table></td>

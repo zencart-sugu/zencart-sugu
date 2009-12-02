@@ -49,7 +49,11 @@ text-align:center;
 #colone,#coltwo,#colthree{
 display:inline;
 float:left;
-margin-left:5px;
+margin-left:1%;
 padding-top:3em;
-width:30%;
+width:31%;
+}
+div.wrapperBox{
+width:95%;
+margin:0 auto;
 }

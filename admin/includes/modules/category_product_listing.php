@@ -43,9 +43,59 @@ if (!isset($_SESSION['display_categories_dropdown'])) {
               </tr>
               <tr>
                 <td class="smallText" align="right">
+				<?php
+      // check for which buttons to show for categories and products
+      $check_categories = zen_has_category_subcategories($current_category_id);
+      $check_products = zen_products_in_category_count($current_category_id, false, false, 1);
+
+      $zc_skip_products = false;
+      $zc_skip_categories = false;
+
+      if ($check_products == 0) {
+        $zc_skip_products = false;
+        $zc_skip_categories = false;
+      }
+      if ($check_categories == true) {
+        $zc_skip_products = true;
+        $zc_skip_categories = false;
+      }
+      if ($check_products > 0) {
+        $zc_skip_products = false;
+        $zc_skip_categories = true;
+      }
+
+      if ($zc_skip_products == true) {
+        // toggle switch for display sort order
+        $categories_products_sort_order_array = array(array('id' => '0', 'text' => TEXT_SORT_CATEGORIES_SORT_ORDER_PRODUCTS_NAME),
+        array('id' => '1', 'text' => TEXT_SORT_CATEGORIES_NAME)
+        );
+      } else {
+        // toggle switch for display sort order
+        $categories_products_sort_order_array = array(array('id' => '0', 'text' => TEXT_SORT_PRODUCTS_SORT_ORDER_PRODUCTS_NAME),
+        array('id' => '1', 'text' => TEXT_SORT_PRODUCTS_NAME),
+        array('id' => '2', 'text' => TEXT_SORT_PRODUCTS_MODEL),
+        array('id' => '3', 'text'=> TEXT_SORT_PRODUCTS_QUANTITY),
+        array('id' => '4', 'text'=> TEXT_SORT_PRODUCTS_QUANTITY_DESC),
+        array('id' => '5', 'text'=> TEXT_SORT_PRODUCTS_PRICE),
+        array('id' => '6', 'text'=> TEXT_SORT_PRODUCTS_PRICE_DESC)
+        );
+      }
+
+      echo TEXT_CATEGORIES_PRODUCTS_SORT_ORDER_INFO . zen_draw_form('set_categories_products_sort_order_form', FILENAME_CATEGORIES, '', 'get') . '&nbsp;&nbsp;' . zen_draw_pull_down_menu('reset_categories_products_sort_order', $categories_products_sort_order_array, $reset_categories_products_sort_order, 'onChange="this.form.submit();"') . zen_hide_session_id() .
+            zen_draw_hidden_field('cID', $cPath) .
+            zen_draw_hidden_field('cPath', $cPath) .
+            zen_draw_hidden_field('pID', $_GET['pID']) .
+            zen_draw_hidden_field('page', $_GET['page']) .
+            zen_draw_hidden_field('action', 'set_categories_products_sort_order') .
+      '</form>';
+      ?>
+				
+				
+				
+				
 <?php
   if ($_SESSION['display_categories_dropdown'] == 0) {
-    echo '<a href="' . zen_href_link(FILENAME_CATEGORIES, 'set_display_categories_dropdown=1&cID=' . $categories->fields['categories_id'] . '&cPath=' . $cPath . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '')) . '">' . zen_image(DIR_WS_ICONS . 'cross.gif', IMAGE_ICON_STATUS_OFF) . '</a>&nbsp;&nbsp;';
+    // echo '<a href="' . zen_href_link(FILENAME_CATEGORIES, 'set_display_categories_dropdown=1&cID=' . $categories->fields['categories_id'] . '&cPath=' . $cPath . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '')) . '">' . zen_image(DIR_WS_ICONS . 'cross.gif', IMAGE_ICON_STATUS_OFF) . '</a>&nbsp;&nbsp;';
     echo zen_draw_form('goto', FILENAME_CATEGORIES, '', 'get');
     echo zen_hide_session_id();
     echo HEADING_TITLE_GOTO . ' ' . zen_draw_pull_down_menu('cPath', zen_get_category_tree(), $current_category_id, 'onChange="this.form.submit();"');

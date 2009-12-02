@@ -297,6 +297,7 @@ define('ENTRY_NEWSLETTER_ERROR', '');
 
 // images
 define('IMAGE_ANI_SEND_EMAIL', 'メール送信');
+define('IMAGE_ADDITION', '追加');
 define('IMAGE_BACK', '戻る');
 define('IMAGE_BACKUP', 'バックアップ');
 define('IMAGE_CANCEL', 'キャンセル');
@@ -359,7 +360,7 @@ define('IMAGE_PRODUCTS_TO_CATEGORIES', '複数カテゴリのリンク管理');
 
 define('IMAGE_ICON_STATUS_ON', 'ステータス - オン');
 define('IMAGE_ICON_STATUS_OFF', 'ステータス - オフ');
-define('IMAGE_ICON_LINKED', 'Product is Linked');
+define('IMAGE_ICON_LINKED', 'リンク商品');
 
 define('IMAGE_REMOVE_SPECIAL','特別価格を削除する');
 define('IMAGE_REMOVE_FEATURED','おすすめ商品情報を削除する');

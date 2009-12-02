@@ -87,6 +87,7 @@
 
 
 ?>
+<div class="wrapperBox">
 <div id="colone">
 <div class="reportBox">
 <div class="header"><?php echo BOX_TITLE_STATISTICS; ?> </div>
@@ -171,6 +172,7 @@
     $orders->MoveNext();
   }
 ?>
+</div>
 </div>
 </div>
 <!-- The following copyright announcement is in compliance

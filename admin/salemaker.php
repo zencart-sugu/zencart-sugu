@@ -271,7 +271,7 @@ function SetCategories() {
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top" align="center"><table width="95%" border="0" cellpadding="2" cellspacing="0">
       <tr>
         <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -298,42 +298,48 @@ var StartDate = new ctlSpiffyCalendarBox("StartDate", "sale_form", "start", "btn
 var EndDate = new ctlSpiffyCalendarBox("EndDate", "sale_form", "end", "btnDate2","<?php echo (($sInfo->sale_date_end == '0001-01-01') ? '' : zen_date_short($sInfo->sale_date_end)); ?>",scBTNMODE_CUSTOMBLUE);
 </script>
       <tr><form name="sale_form" <?php echo 'action="' . zen_href_link(FILENAME_SALEMAKER, zen_get_all_get_params(array('action', 'info', 'sID')) . 'action=' . $form_action, 'NONSSL') . '"'; ?> method="post"><?php if ($form_action == 'update') echo zen_draw_hidden_field('sID', $_GET['sID']); ?>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <td>
+		<table border="0" width="100%" cellspacing="0" cellpadding="2" class="tableLayout2">
           <tr>
             <td class="main"><?php echo TEXT_SALEMAKER_POPUP; ?></td>
-            <td class="main" align="right" valign="top"><br><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_SALEMAKER, 'page=' . $_GET['page'] . ($_GET['sID'] > 0 ? '&sID=' . $_GET['sID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL); ?></td>
+        </table>
+		</td>
           </tr>
-        </table></td>
+	  <tr>
+                <td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
       </tr>
       <tr>
-        <td><table border="0" cellspacing="0" cellpadding="2">
+        <td><table border="0" cellspacing="0" cellpadding="0" class="tableLayout1" width="100%">
           <tr>
-            <td class="main"><?php echo TEXT_SALEMAKER_NAME; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SALEMAKER_NAME; ?>&nbsp;</th>
             <td class="main"><?php echo zen_draw_input_field('name', $sInfo->sale_name, 'size="37"'); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_SALEMAKER_DEDUCTION; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SALEMAKER_DEDUCTION; ?>&nbsp;</th>
             <td class="main"><?php echo zen_draw_input_field('deduction', $sInfo->sale_deduction_value, 'size="8"') . TEXT_SALEMAKER_DEDUCTION_TYPE . zen_draw_pull_down_menu('type', $deduction_type_array, $sInfo->sale_deduction_type); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_SALEMAKER_PRICERANGE_FROM; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SALEMAKER_PRICERANGE_FROM; ?>&nbsp;</th>
             <td class="main"><?php echo zen_draw_input_field('from', $sInfo->sale_pricerange_from, 'size="8"') . TEXT_SALEMAKER_PRICERANGE_TO . zen_draw_input_field('to', $sInfo->sale_pricerange_to, 'size="8"'); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_SALEMAKER_SPECIALS_CONDITION; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SALEMAKER_SPECIALS_CONDITION; ?>&nbsp;</th>
             <td class="main"><?php echo zen_draw_pull_down_menu('condition', $specials_condition_array, $sInfo->sale_specials_condition); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_SALEMAKER_DATE_START; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SALEMAKER_DATE_START; ?>&nbsp;</th>
             <td class="main"><script language="javascript">StartDate.writeControl(); StartDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_SALEMAKER_DATE_END; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SALEMAKER_DATE_END; ?>&nbsp;</th>
             <td class="main"><script language="javascript">EndDate.writeControl(); EndDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
         </table>
       </tr>
-<tr><table width="750" border="0" cellspacing="2" cellpadding="2">
+	  <tr>
+                <td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+      </tr>
+<tr><table width="95%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
 <?php
     $categories_array = zen_get_category_tree('0','&nbsp;&nbsp;','0');
     $n = sizeof($categories_array);
@@ -372,30 +378,26 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "sale_form", "end", "btnDate2"
 	  $prev_sales->MoveNext();
 	}
     echo "      <tr>\n";
-    echo '        <td valign="bottom" class="main">' . zen_draw_separator('pixel_trans.gif', '4', '1') . zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif') . "</td>\n";
-    echo '        <td class="main" colspan="2"><br>' . TEXT_SALEMAKER_ENTIRE_CATALOG . "</td>\n";
-    echo "      </tr>\n";
-	echo '      <tr onClick="RowClick(\'0\')">' . "\n";
-    echo '        <td width="10" class="main">' . zen_draw_checkbox_field('categories[]', '0', $selected) . "</td>\n";
-    echo '        <td class="main" colspan="2">' . TEXT_SALEMAKER_TOP . "</td>\n";
+    echo '        <th valign="bottom" class="main" width="30%">'  . zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif') . "\n";
+    echo '        ' . TEXT_SALEMAKER_ENTIRE_CATALOG . "</th>\n";
+    echo '        <td class="main"  onClick="RowClick(\'0\')">' . zen_draw_checkbox_field('categories[]', '0', $selected) . "\n";
+    echo '        ' . TEXT_SALEMAKER_TOP . "</td>\n";
     echo "      </tr>\n";
     echo "      <tr>\n";
-    echo '        <td valign="bottom" class="main">' . zen_draw_separator('pixel_trans.gif', '4', '1') . zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif') . "</td>\n";
-    echo '        <td class="main" colspan="2"><br>' . TEXT_SALEMAKER_CATEGORIES . "</td>\n";
-    echo "      </tr>\n";
-    echo "      </table></tr>\n";
-	echo '      <tr valign="top"><table width="80%" border ="0" cellspacing="2" cellpadding="2">' . "\n";
+    echo '        <th valign="bottom" class="main" width="30%">'  . zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif') . "\n";
+    echo '        ' . TEXT_SALEMAKER_CATEGORIES . "</th>\n";
+	echo '      <td class="paddingNone"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="borderNone">' . "\n";
     foreach($categories_array as $category) {
       if (zen_not_null($sInfo->sale_categories_selected)) {
         $selected = in_array($category['categories_id'], $categories_selected);
       } else {
         $selected = false;
       }
-    echo '        <tr valign="top"><td><table border="0" cellspacing="2" cellpadding="2">' . "\n";
+    echo '        <tr valign="top"><td class="paddingNone"><table border="0" cellspacing="0" cellpadding="0" width="100%" class="borderNone">' . "\n";
 	  echo '      <tr onClick="RowClick(\'' . $category['path'] . '\')">' . "\n";
-      echo '        <td width="10">' . zen_draw_checkbox_field('categories[]', $category['path'], $selected) . "</td>\n";
-      echo '        <td width="40%">' . $category['text']. "</td>\n";
-	  echo '<td width="70%">';
+      echo '        <td width="5%">' . zen_draw_checkbox_field('categories[]', $category['path'], $selected) . "</td>\n";
+      echo '        <td>' . $category['text']. "</td>\n";
+	  echo '<td>';
 	  if ($prev_categories_array[$category['categories_id']]) {
 	    echo '&nbsp;Warning : ' . $prev_categories_array[$category['categories_id']] . ' sales already include this category';
 	  }
@@ -403,7 +405,7 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "sale_form", "end", "btnDate2"
       echo '      </tr>' . "\n";
 
 	echo '        </table></td>' . "\n";
-    echo '        <td align="right"><table border="0" cellspacing="2" cellpadding="2">' . "\n";
+    echo '        <td align="left"><table border="0" cellspacing="0" cellpadding="0">' . "\n";
 	echo '        <tr>' . "\n";
 	  if ($prev_categories_array[$category['categories_id']]) {
       echo '        <td>' . "\n";
@@ -435,8 +437,20 @@ document.write('<?php echo '<a href="javascript:popupWindow(\\\'' . zen_href_lin
 echo '</table></tr>';
 */
 ?>
-        </table></td>
+        </table>
+		
+		<table border="0" width="95%" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="main" align="center" valign="top"><br><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_SALEMAKER, 'page=' . $_GET['page'] . ($_GET['sID'] > 0 ? '&sID=' . $_GET['sID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL); ?></td>
+          </tr>
+        </table>
+		</td>
       </form></tr>
+	  <tr>
+	  <td>
+	  
+	  </td>
+	  </tr>
 <?php
   } else {
 ?>
@@ -555,8 +569,17 @@ echo '</table></tr>';
 }
 ?>
           </tr>
-        </table></td>
+        </table>
+		</td>
       </tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td align="center">
+
+</td>
+</tr>
     </table></td>
 <!-- body_text_eof //-->
   </tr>
@@ -566,6 +589,8 @@ echo '</table></tr>';
 <!-- footer //-->
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 <!-- footer_eof //-->
+
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+

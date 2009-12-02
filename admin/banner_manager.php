@@ -286,7 +286,7 @@ function popupImageWindow(url) {
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top"><table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -380,95 +380,81 @@ function popupImageWindow(url) {
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr><?php echo zen_draw_form('new_banner', FILENAME_BANNER_MANAGER, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'action=' . $form_action, 'post', 'enctype="multipart/form-data"'); if ($form_action == 'update') echo zen_draw_hidden_field('banners_id', $bID); ?>
-        <td><table border="0" cellspacing="0" cellpadding="2">
+        <td><table border="0" cellspacing="0" cellpadding="0" class="tableLayout1" width="100%">
           <tr>
-            <td class="main"><?php echo TEXT_BANNERS_STATUS; ?></td>
+            <th class="main"><?php echo TEXT_BANNERS_STATUS; ?></th>
             <td class="main"><?php echo zen_draw_radio_field('status', '1', $is_status) . '&nbsp;' . TEXT_BANNERS_ACTIVE . '&nbsp;' . zen_draw_radio_field('status', '0', $not_status) . '&nbsp;' . TEXT_BANNERS_NOT_ACTIVE . '<br />' . TEXT_INFO_BANNER_STATUS; ?></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_BANNERS_OPEN_NEW_WINDOWS; ?></td>
+            <th class="main"><?php echo TEXT_BANNERS_OPEN_NEW_WINDOWS; ?></th>
             <td class="main"><?php echo zen_draw_radio_field('banners_open_new_windows', '1', $is_banners_open_new_windows) . '&nbsp;' . TEXT_YES . '&nbsp;' . zen_draw_radio_field('banners_open_new_windows', '0', $not_banners_open_new_windows) . '&nbsp;' . TEXT_NO . '<br />' . TEXT_INFO_BANNER_OPEN_NEW_WINDOWS; ?></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_BANNERS_ON_SSL; ?></td>
+            <th class="main"><?php echo TEXT_BANNERS_ON_SSL; ?></th>
             <td class="main"><?php echo zen_draw_radio_field('banners_on_ssl', '1', $is_banners_on_ssl) . '&nbsp;' . TEXT_YES . '&nbsp;' . zen_draw_radio_field('banners_on_ssl', '0', $not_banners_on_ssl) . '&nbsp;' . TEXT_NO . '<br />' . TEXT_INFO_BANNER_ON_SSL; ?></td>
           </tr>
+        
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_BANNERS_TITLE; ?></td>
+            <th class="main"><?php echo TEXT_BANNERS_TITLE; ?></th>
             <td class="main"><?php echo zen_draw_input_field('banners_title', $bInfo->banners_title, zen_set_field_length(TABLE_BANNERS, 'banners_title'), true); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_BANNERS_URL; ?></td>
+            <th class="main"><?php echo TEXT_BANNERS_URL; ?></th>
             <td class="main"><?php echo zen_draw_input_field('banners_url', $bInfo->banners_url, zen_set_field_length(TABLE_BANNERS, 'banners_url')); ?></td>
           </tr>
           <tr>
-            <td class="main" valign="top"><?php echo TEXT_BANNERS_GROUP; ?></td>
+            <th class="main" valign="top"><?php echo TEXT_BANNERS_GROUP; ?></th>
             <td class="main"><?php echo zen_draw_pull_down_menu('banners_group', $groups_array, $bInfo->banners_group) . TEXT_BANNERS_NEW_GROUP . '<br>' . zen_draw_input_field('new_banners_group', '', '', ((sizeof($groups_array) > 0) ? false : true)); ?></td>
           </tr>
+          
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main" valign="top"><?php echo TEXT_BANNERS_IMAGE; ?></td>
+            <th class="main" valign="top"><?php echo TEXT_BANNERS_IMAGE; ?></th>
             <td class="main"><?php echo zen_draw_file_field('banners_image') . ' ' . TEXT_BANNERS_IMAGE_LOCAL . '<br>' . DIR_FS_CATALOG_IMAGES . zen_draw_input_field('banners_image_local', (isset($bInfo->banners_image) ? $bInfo->banners_image : ''), zen_set_field_length(TABLE_BANNERS, 'banners_image')); ?></td>
           </tr>
+          
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_BANNERS_IMAGE_TARGET; ?></td>
+            <th class="main"><?php echo TEXT_BANNERS_IMAGE_TARGET; ?></th>
             <td class="main"><?php echo DIR_FS_CATALOG_IMAGES . zen_draw_input_field('banners_image_target'); ?></td>
           </tr>
+          <!--<tr>
+            <th class="main" colspan="2"><?php echo TEXT_BANNER_IMAGE_TARGET_INFO; ?></th>
+          </tr>-->
+          
           <tr>
-            <td class="main" colspan="2"><?php echo TEXT_BANNER_IMAGE_TARGET_INFO; ?></td>
-          </tr>
-          <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td valign="top" class="main"><?php echo TEXT_BANNERS_HTML_TEXT; ?></td>
+            <th valign="top" class="main"><?php echo TEXT_BANNERS_HTML_TEXT; ?></th>
             <td class="main"><?php echo TEXT_BANNERS_HTML_TEXT_INFO . '<br />' . zen_draw_textarea_field('banners_html_text', 'soft', '60', '5', $bInfo->banners_html_text); ?></td>
           </tr>
+         
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_BANNERS_ALL_SORT_ORDER; ?></td>
+            <th class="main"><?php echo TEXT_BANNERS_ALL_SORT_ORDER; ?></th>
             <td class="main"><?php echo TEXT_BANNERS_ALL_SORT_ORDER_INFO . '<br />' . zen_draw_input_field('banners_sort_order', $bInfo->banners_sort_order, zen_set_field_length(TABLE_BANNERS, 'banners_sort_order'), false); ?></td>
           </tr>
+       
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_BANNERS_SCHEDULED_AT; ?><br><small>(<?php echo DATE_FORMAT_SPIFFYCAL; ?>)</small></td>
+            <th class="main"><?php echo TEXT_BANNERS_SCHEDULED_AT; ?><br><small>(<?php echo DATE_FORMAT_SPIFFYCAL; ?>)</small></th>
             <td valign="top" class="main"><script language="javascript">dateScheduled.writeControl(); dateScheduled.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
+          
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td valign="top" class="main"><?php echo TEXT_BANNERS_EXPIRES_ON; ?><br><small>(<?php echo DATE_FORMAT_SPIFFYCAL; ?>)</small></td>
+            <th valign="top" class="main"><?php echo TEXT_BANNERS_EXPIRES_ON; ?><br><small>(<?php echo DATE_FORMAT_SPIFFYCAL; ?>)</small></th>
             <td class="main"><script language="javascript">dateExpires.writeControl(); dateExpires.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script><?php echo TEXT_BANNERS_OR_AT . '<br>' . zen_draw_input_field('expires_impressions', $bInfo->expires_impressions, 'maxlength="7" size="7"') . ' ' . TEXT_BANNERS_IMPRESSIONS; ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+	<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+	</tr>
+	<tr>
+		<td align="center"><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_BANNER_MANAGER, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . (isset($_GET['bID']) ? 'bID=' . $_GET['bID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+	</tr>
+	<tr>
+	<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 20); ?></td>
       </tr>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <td><table border="0" width="80%" cellspacing="0" cellpadding="0" class="tableLayout2" align="center">
           <tr>
             <td class="main"><?php echo TEXT_BANNERS_BANNER_NOTE . '<br>' . TEXT_BANNERS_INSERT_NOTE . '<br>' . TEXT_BANNERS_EXPIRCY_NOTE . '<br>' . TEXT_BANNERS_SCHEDULE_NOTE; ?></td>
-            <td class="main" align="right" valign="top" nowrap><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_BANNER_MANAGER, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . (isset($_GET['bID']) ? 'bID=' . $_GET['bID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+            <td class="main" align="right" valign="top" nowrap></td>
           </tr>
         </table></td>
       </form></tr>

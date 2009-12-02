@@ -9,14 +9,14 @@ Released under the GNU General Public License
 @import url("menu.css");/* including stylesheet for dhtml menu */
 @import url("index.css");/* including stylesheet for index.php */
 a{
-color:#ff4100;
+color:#DF882F;
 text-decoration:none;
 }
 a,body,html,table{
 font:normal normal 12px Verdana,sans-serif;
 }
 a:hover{
-color:#ff4100;
+color:#DF882F;
 text-decoration:underline;
 }
 a.headerLink:link{
@@ -40,56 +40,56 @@ font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxContentLink:link{
-color:#ff4100;
+color:#DF882F;
 text-decoration:none;
 }
 a.menuBoxContentLink:visited{
-color:#ff4100;
+color:#DF882F;
 text-decoration:none;
 }
 a.menuBoxContentLink:hover{
-color:#ff4100;
+color:#DF882F;
 text-decoration:underline;
 }
 a.menuBoxContentLink:active{
-color:#ff4100;
+color:#DF882F;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:link{
-color:#ff4100;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:visited{
-color:#ff4100;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:hover{
-color:#ff4100;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:active{
-color:#ff4100;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.splitPageLink:link{
-color:#ff4100;
+color:#DF882F;
 text-decoration:none;
 }
 a.splitPageLink:visited{
-color:#ff4100;
+color:#DF882F;
 text-decoration:none;
 }
 a.splitPageLink:hover{
 background-color:#ffff33;
-color:#ff4100;
+color:#DF882F;
 text-decoration:underline;
 }
 a.splitPageLink:active{
-color:#ff4100;
+color:#DF882F;
 text-decoration:none;
 }
 body{
@@ -231,7 +231,7 @@ color:#333333;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:link,.dataTableHeadingContentWhois a:visited{
-color:#ff4100;
+color:#DF882F;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:hover{
@@ -254,7 +254,6 @@ background-color:#facbfa;
 cursor:pointer;
 cursor:hand;
 background: #fce08c;
-background-color:#ffbf00;
 }
 .dataTableRowOverBot{
 background-color:#ffffff;
@@ -263,8 +262,7 @@ background-color:#ffffff;
 background-color:#ffffff;
 }
 .dataTableRowSelected{
-background-color:#ffbf00;
-background: #fce08c;
+background: #FCF3CE;
 }
 .dataTableRowSelectedBot{
 background-color:#ff93ff;
@@ -309,7 +307,7 @@ font-weight:bold;
 padding:2px;
 }
 .infoBoxContent{
-background: #fce08c;
+background: #FCF3CE;
 color:#333333;
 }
 .infoBoxHeading{
@@ -341,7 +339,7 @@ text-decoration:line-through;
 }
 .pageHeading{
 color:#c96e29; /*727272*/
-color:#ff4100;
+color:#DF882F;
 font-size:16px;
 font-variant:small-caps;
 font-weight:bold;
@@ -370,4 +368,79 @@ color:#ff6600;
 }
 .searchBox input{
 width:300px;
+}
+.tableLayout1{
+border-top:1px solid #50504E;
+border-left:1px solid #50504E;
+}
+.tableLayout1 th{
+padding:10px;
+background:#50504E;
+color:#FFFFFF;
+text-align:left;
+vertical-align:top;
+border-bottom:1px solid #999999;
+border-right:1px solid #999999;
+}
+.tableLayout1 td{
+padding:10px;
+border-right:1px solid #50504E;
+border-bottom:1px solid #50504E;
+vertical-align:top;
+}
+.tableLayout2{
+border:solid 1px #FF4100;
+background:#EFEDEC;
+}
+.tableLayout2 th,
+.tableLayout2 td{
+padding:20px;
+}
+.tableLayout2 th table td,
+.tableLayout2 td table td{
+padding:0px;
+}
+.tableLayout3{
+margin:0 0 20px 0;
+border-top:1px solid #E7E5da;
+border-left:1px solid #E7E5da;
+}
+.tableLayout3 th,
+.tableLayout3 td{
+padding:10px;
+border-right:1px solid #E7E5da;
+border-bottom:1px solid #E7E5da;
+}
+.tableLayout3 th{
+color:#50504E;
+background:#FCF3CE;
+text-align:left;
+}
+.divLayout2{
+padding:20px;
+border:solid 1px #FF4100;
+background:#EFEDEC;
+}
+#bodyWrapper{
+width:95%;
+margin:10px auto;
+}
+.paddingNone{
+padding:0!important;
+}
+.borderNone th,
+.borderNone td{
+border:none!important;
+}
+.borderBottomNone{
+border-bottom:none!important;
+}
+.borderRightNone{
+border-right:none!important;
+}
+td.tdHeader1{
+background:#50504e;
+color:#FFFFFF;
+font-weight:bold;
+border-bottom:1px solid #999999;
 }

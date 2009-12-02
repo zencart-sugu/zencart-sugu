@@ -228,16 +228,19 @@ echo zen_draw_form('new_product', $type_admin_handler , 'cPath=' . $cPath . (iss
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td class="main" align="right"><?php echo zen_draw_hidden_field('products_date_added', (zen_not_null($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d'))) . zen_image_submit('button_preview.gif', IMAGE_PREVIEW) . '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . (isset($_GET['pID']) ? '&pID=' . $_GET['pID'] : '') . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+        <td class="main" align="center"><?php echo zen_draw_hidden_field('products_date_added', (zen_not_null($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d'))) . zen_image_submit('button_preview.gif', IMAGE_PREVIEW) . '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . (isset($_GET['pID']) ? '&pID=' . $_GET['pID'] : '') . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
       </tr>
       <tr>
-        <td><table border="0" cellspacing="0" cellpadding="2">
+	  	<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+	  </tr>
+      <tr>
+        <td width="100%"><table border="0" cellspacing="0" cellpadding="0" class="tableLayout1" width="100%">
 <?php
 // show when product is linked
 if (zen_get_product_is_linked($_GET['pID']) == 'true' and $_GET['pID'] > 0) {
 ?>
           <tr>
-            <td class="main"><?php echo TEXT_MASTER_CATEGORIES_ID; ?></td>
+            <th class="main"><?php echo TEXT_MASTER_CATEGORIES_ID; ?></th>
             <td class="main">
               <?php
                 // echo zen_draw_pull_down_menu('products_tax_class_id', $tax_class_array, $pInfo->products_tax_class_id);
@@ -247,15 +250,12 @@ if (zen_get_product_is_linked($_GET['pID']) == 'true' and $_GET['pID'] > 0) {
           </tr>
 <?php } else { ?>
           <tr>
-            <td class="main"><?php echo TEXT_MASTER_CATEGORIES_ID; ?></td>
+            <th class="main"><?php echo TEXT_MASTER_CATEGORIES_ID; ?></th>
             <td class="main"><?php echo TEXT_INFO_ID . ($_GET['pID'] > 0 ? $pInfo->master_categories_id  . ' ' . zen_get_category_name($pInfo->master_categories_id, $_SESSION['languages_id']) : $current_category_id  . ' ' . zen_get_category_name($current_category_id, $_SESSION['languages_id'])); ?>
           </tr>
 <?php } ?>
           <tr>
-            <td colspan="2" class="main"><?php echo TEXT_INFO_MASTER_CATEGORIES_ID; ?></td>
-          </tr>
-          <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '100%', '2'); ?></td>
+            <td colspan="2" class="main borderNone"><div class=" divLayout2"><?php echo TEXT_INFO_MASTER_CATEGORIES_ID; ?></div></td>
           </tr>
 <?php
 // hidden fields not changeable on products page
@@ -268,120 +268,97 @@ echo zen_draw_hidden_field('products_price_sorter', $pInfo->products_price_sorte
             <td colspan="2" class="main" align="center"><?php echo (zen_get_categories_status($current_category_id) == '0' ? TEXT_CATEGORIES_STATUS_INFO_OFF : '') . ($out_status == true ? ' ' . TEXT_PRODUCTS_STATUS_INFO_OFF : ''); ?></td>
           <tr>
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_STATUS; ?></td>
+            <th class="main"><?php echo TEXT_PRODUCTS_STATUS; ?></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('products_status', '1', $in_status) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE . '&nbsp;' . zen_draw_radio_field('products_status', '0', $out_status) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE; ?></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_DATE_AVAILABLE; ?><br /><small>(YYYY-MM-DD)</small></td>
+            <th class="main"><?php echo TEXT_PRODUCTS_DATE_AVAILABLE; ?><br /><small>(YYYY-MM-DD)</small></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;'; ?><script language="javascript">dateAvailable.writeControl(); dateAvailable.dateFormat="yyyy-MM-dd";</script></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?></td>
+            <th class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_pull_down_menu('manufacturers_id', $manufacturers_array, $pInfo->manufacturers_id); ?></td>
-          </tr>
-          <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
           <tr>
-            <td class="main"><?php if ($i == 0) echo TEXT_PRODUCTS_NAME; ?></td>
+			<td colspan="2" class="paddingNone">
+			<table border="0" cellspacing="0" cellpadding="0"  width="100%"  bgcolor="#50504c" class="borderNone">
+			  <tr>
+				<td class="main tdHeader1"><strong><font color="#FFFFFF">
+<?php if ($i == 0) echo TEXT_PRODUCTS_NAME; ?>
+</font></strong></td>
             <td class="main"><?php echo zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('products_name[' . $languages[$i]['id'] . ']', (isset($products_name[$languages[$i]['id']]) ? stripslashes($products_name[$languages[$i]['id']]) : zen_get_products_name($pInfo->products_id, $languages[$i]['id'])), zen_set_field_length(TABLE_PRODUCTS_DESCRIPTION, 'products_name')); ?></td>
           </tr>
+		  </table>
+			</td>
+		</tr>
 <?php
     }
 ?>
 
-          <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
 
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCT_IS_FREE; ?></td>
+            <td class="main tdHeader1" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCT_IS_FREE; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('product_is_free', '1', ($in_product_is_free==1)) . '&nbsp;' . TEXT_YES . '&nbsp;&nbsp;' . zen_draw_radio_field('product_is_free', '0', ($in_product_is_free==0)) . '&nbsp;' . TEXT_NO . ' ' . ($pInfo->product_is_free == 1 ? '<span class="errorText">' . TEXT_PRODUCTS_IS_FREE_EDIT . '</span>' : ''); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCT_IS_CALL; ?></td>
+            <td class="main tdHeader1" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCT_IS_CALL; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('product_is_call', '1', ($in_product_is_call==1)) . '&nbsp;' . TEXT_YES . '&nbsp;&nbsp;' . zen_draw_radio_field('product_is_call', '0', ($in_product_is_call==0)) . '&nbsp;' . TEXT_NO . ' ' . ($pInfo->product_is_call == 1 ? '<span class="errorText">' . TEXT_PRODUCTS_IS_CALL_EDIT . '</span>' : ''); ?></td>
           </tr>
-
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_PRICED_BY_ATTRIBUTES; ?></td>
+            <th class="main"><?php echo TEXT_PRODUCTS_PRICED_BY_ATTRIBUTES; ?></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('products_priced_by_attribute', '1', $is_products_priced_by_attribute) . '&nbsp;' . TEXT_PRODUCT_IS_PRICED_BY_ATTRIBUTE . '&nbsp;&nbsp;' . zen_draw_radio_field('products_priced_by_attribute', '0', $not_products_priced_by_attribute) . '&nbsp;' . TEXT_PRODUCT_NOT_PRICED_BY_ATTRIBUTE . ' ' . ($pInfo->products_priced_by_attribute == 1 ? '<span class="errorText">' . TEXT_PRODUCTS_PRICED_BY_ATTRIBUTES_EDIT . '</span>' : ''); ?></td>
           </tr>
 
           <tr>
             <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
-          <tr bgcolor="#ebebff">
-            <td class="main"><?php echo TEXT_PRODUCTS_TAX_CLASS; ?></td>
+          <tr bgcolor="#fcf3ce">
+            <td class="main"><strong><?php echo TEXT_PRODUCTS_TAX_CLASS; ?></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_pull_down_menu('products_tax_class_id', $tax_class_array, $pInfo->products_tax_class_id, 'onchange="updateGross()"'); ?></td>
           </tr>
-          <tr bgcolor="#ebebff">
-            <td class="main"><?php echo TEXT_PRODUCTS_PRICE_NET; ?></td>
+          <tr bgcolor="#fcf3ce">
+            <td class="main"><strong><?php echo TEXT_PRODUCTS_PRICE_NET; ?></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_price', $pInfo->products_price, 'onKeyUp="updateGross()"'); ?></td>
           </tr>
-          <tr bgcolor="#ebebff">
-            <td class="main"><?php echo TEXT_PRODUCTS_PRICE_GROSS; ?></td>
+          <tr bgcolor="#fcf3ce">
+            <td class="main"><strong><?php echo TEXT_PRODUCTS_PRICE_GROSS; ?></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_price_gross', $pInfo->products_price, 'OnKeyUp="updateNet()"'); ?></td>
           </tr>
+
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_VIRTUAL; ?></td>
+            <td class="main tdHeader1" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_VIRTUAL; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('products_virtual', '1', $is_virtual) . '&nbsp;' . TEXT_PRODUCT_IS_VIRTUAL . '&nbsp;' . zen_draw_radio_field('products_virtual', '0', $not_virtual) . '&nbsp;' . TEXT_PRODUCT_NOT_VIRTUAL . ' ' . ($pInfo->products_virtual == 1 ? '<br /><span class="errorText">' . TEXT_VIRTUAL_EDIT . '</span>' : ''); ?></td>
           </tr>
-
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main" valign="top"><?php echo TEXT_PRODUCTS_IS_ALWAYS_FREE_SHIPPING; ?></td>
+            <td class="main tdHeader1" valign="top" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_IS_ALWAYS_FREE_SHIPPING; ?></font></strong></td>
             <td class="main" valign="top"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('product_is_always_free_shipping', '1', $is_product_is_always_free_shipping) . '&nbsp;' . TEXT_PRODUCT_IS_ALWAYS_FREE_SHIPPING . '&nbsp;' . zen_draw_radio_field('product_is_always_free_shipping', '0', $not_product_is_always_free_shipping) . '&nbsp;' . TEXT_PRODUCT_NOT_ALWAYS_FREE_SHIPPING  . '<br />' . zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('product_is_always_free_shipping', '2', $special_product_is_always_free_shipping) . '&nbsp;' . TEXT_PRODUCT_SPECIAL_ALWAYS_FREE_SHIPPING . ' ' . ($pInfo->product_is_always_free_shipping == 1 ? '<br /><span class="errorText">' . TEXT_FREE_SHIPPING_EDIT . '</span>' : ''); ?></td>
           </tr>
-
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_QTY_BOX_STATUS; ?></td>
+            <td class="main tdHeader1" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_QTY_BOX_STATUS; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('products_qty_box_status', '1', $is_products_qty_box_status) . '&nbsp;' . TEXT_PRODUCTS_QTY_BOX_STATUS_ON . '&nbsp;' . zen_draw_radio_field('products_qty_box_status', '0', $not_products_qty_box_status) . '&nbsp;' . TEXT_PRODUCTS_QTY_BOX_STATUS_OFF . ' ' . ($pInfo->products_qty_box_status == 0 ? '<br /><span class="errorText">' . TEXT_PRODUCTS_QTY_BOX_STATUS_EDIT . '</span>' : ''); ?></td>
           </tr>
 
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_QUANTITY_MIN_RETAIL; ?></td>
+            <td class="main tdHeader1" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_QUANTITY_MIN_RETAIL; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_quantity_order_min', ($pInfo->products_quantity_order_min == 0 ? 1 : $pInfo->products_quantity_order_min)); ?></td>
           </tr>
 
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_QUANTITY_MAX_RETAIL; ?></td>
+            <td class="main tdHeader1" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_QUANTITY_MAX_RETAIL; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_quantity_order_max', $pInfo->products_quantity_order_max); ?>&nbsp;&nbsp;<?php echo TEXT_PRODUCTS_QUANTITY_MAX_RETAIL_EDIT; ?></td>
           </tr>
 
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_QUANTITY_UNITS_RETAIL; ?></td>
+            <td class="main tdHeader1" bgcolor="#50504c"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_QUANTITY_UNITS_RETAIL; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_quantity_order_units', ($pInfo->products_quantity_order_units == 0 ? 1 : $pInfo->products_quantity_order_units)); ?></td>
           </tr>
 
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_MIXED; ?></td>
+            <td class="main tdHeader1"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_MIXED; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('products_quantity_mixed', '1', $in_products_quantity_mixed) . '&nbsp;' . TEXT_YES . '&nbsp;&nbsp;' . zen_draw_radio_field('products_quantity_mixed', '0', $out_products_quantity_mixed) . '&nbsp;' . TEXT_NO; ?></td>
-          </tr>
-
-          <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
 
 <script language="javascript"><!--
@@ -391,11 +368,9 @@ updateGross();
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
           <tr>
-            <td class="main" valign="top"><?php if ($i == 0) echo TEXT_PRODUCTS_DESCRIPTION; ?></td>
-            <td colspan="2"><table border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="main" width="25" valign="top"><?php echo zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
-                <td class="main" width="100%">
+		  	<td bgcolor="#50504c" colspan="2"><strong><font color="#FFFFFF"><?php if ($i == 0) echo TEXT_PRODUCTS_DESCRIPTION; ?></font></strong>
+            <?php echo zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;
+                
         <?php if (is_null($_SESSION['html_editor_preference_status'])) echo TEXT_HTML_EDITOR_NOT_DEFINED; ?>
         <?php if ($_SESSION['html_editor_preference_status']=="FCKEDITOR") {
 //          if ($_SESSION['html_editor_preference_status']=="FCKEDITOR") require(DIR_WS_INCLUDES.'fckeditor.php');
@@ -406,25 +381,18 @@ updateGross();
 
           echo zen_draw_textarea_field('products_description[' . $languages[$i]['id'] . ']', 'soft', '100%', '20', (isset($products_description[$languages[$i]['id']])) ? stripslashes($products_description[$languages[$i]['id']]) : zen_get_products_description($pInfo->products_id, $languages[$i]['id'])); //,'id="'.'products_description' . $languages[$i]['id'] . '"');
           } ?>
+       
         </td>
               </tr>
-            </table></td>
-          </tr>
 <?php
     }
 ?>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_QUANTITY; ?></td>
+            <td class="main tdHeader1"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_QUANTITY; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_quantity', $pInfo->products_quantity); ?></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_MODEL; ?></td>
+            <td class="main tdHeader1"><strong><font color="#FFFFFF"><?php echo TEXT_PRODUCTS_MODEL; ?></font></strong></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_model', $pInfo->products_model, zen_set_field_length(TABLE_PRODUCTS, 'products_model')); ?></td>
           </tr>
           <tr>
@@ -442,36 +410,36 @@ updateGross();
   $default_directory = substr( $pInfo->products_image, 0,strpos( $pInfo->products_image, '/')+1);
 ?>
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_IMAGE; ?></td>
+            <th class="main"><?php echo TEXT_PRODUCTS_IMAGE; ?></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_file_field('products_image') . '<br />' . zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . $pInfo->products_image . zen_draw_hidden_field('products_previous_image', $pInfo->products_image); ?></td>
-            <td valign = "center" class="main"><?php echo TEXT_PRODUCTS_IMAGE_DIR; ?>&nbsp;<?php echo zen_draw_pull_down_menu('img_dir', $dir_info, $default_directory); ?></td>
-            <td class="main" valign="top"><?php echo TEXT_IMAGES_OVERWRITE . '<br />' . zen_draw_radio_field('overwrite', '0', $off_overwrite) . '&nbsp;' . TABLE_HEADING_NO . ' ' . zen_draw_radio_field('overwrite', '1', $on_overwrite) . '&nbsp;' . TABLE_HEADING_YES; ?></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+            <th valign = "center" class="main"><?php echo TEXT_PRODUCTS_IMAGE_DIR; ?></th>
+			<td><?php echo zen_draw_pull_down_menu('img_dir', $dir_info, $default_directory); ?></td>
+		</tr>
+		<tr>
+            <th class="main" valign="top"><?php echo TEXT_IMAGES_OVERWRITE . '</th><td>' . zen_draw_radio_field('overwrite', '0', $off_overwrite) . '&nbsp;' . TABLE_HEADING_NO . ' ' . zen_draw_radio_field('overwrite', '1', $on_overwrite) . '&nbsp;' . TABLE_HEADING_YES; ?></td>
           </tr>
+		
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
           <tr>
-            <td class="main"><?php if ($i == 0) echo TEXT_PRODUCTS_URL . '<br /><small>' . TEXT_PRODUCTS_URL_WITHOUT_HTTP . '</small>'; ?></td>
-            <td class="main"><?php echo zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('products_url[' . $languages[$i]['id'] . ']', (isset($products_url[$languages[$i]['id']]) ? $products_url[$languages[$i]['id']] : zen_get_products_url($pInfo->products_id, $languages[$i]['id'])), zen_set_field_length(TABLE_PRODUCTS_DESCRIPTION, 'products_url')); ?></td>
+            <td class="main tdHeader1" colspan="2"><?php if ($i == 0) echo TEXT_PRODUCTS_URL . '<br /><small>' . TEXT_PRODUCTS_URL_WITHOUT_HTTP . '</small>'; ?><br />
+			<?php echo zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('products_url[' . $languages[$i]['id'] . ']', (isset($products_url[$languages[$i]['id']]) ? $products_url[$languages[$i]['id']] : zen_get_products_url($pInfo->products_id, $languages[$i]['id'])), zen_set_field_length(TABLE_PRODUCTS_DESCRIPTION, 'products_url')); ?></td>
           </tr>
 <?php
     }
 ?>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_WEIGHT; ?></td>
+            <td class="main tdHeader1"><?php echo TEXT_PRODUCTS_WEIGHT; ?></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_weight', $pInfo->products_weight); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_SORT_ORDER; ?></td>
+            <td class="main tdHeader1"><?php echo TEXT_PRODUCTS_SORT_ORDER; ?></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_input_field('products_sort_order', $pInfo->products_sort_order); ?></td>
           </tr>
         </table></td>
@@ -480,6 +448,6 @@ updateGross();
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td class="main" align="right"><?php echo zen_draw_hidden_field('products_date_added', (zen_not_null($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d'))) . zen_image_submit('button_preview.gif', IMAGE_PREVIEW) . '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . (isset($_GET['pID']) ? '&pID=' . $_GET['pID'] : '') . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+        <td class="main" align="center"><?php echo zen_draw_hidden_field('products_date_added', (zen_not_null($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d'))) . zen_image_submit('button_preview.gif', IMAGE_PREVIEW) . '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . (isset($_GET['pID']) ? '&pID=' . $_GET['pID'] : '') . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
       </tr>
     </table></form>
