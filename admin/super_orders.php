@@ -288,12 +288,6 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
             <td align="center"><table border="0" cellspacing="3" cellpadding="0">
               <tr>
                 <td class="main" align="center" valign="bottom"><?php echo $prev_button; ?></td>
-<?php
-// easy admin products by sugudeki
-if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
-  easy_admin_simplify_start();
-}
-?>
                 <td class="smallText" align="center" valign="bottom"><?php
                   echo SELECT_ORDER_LIST . '<br />';
                   echo zen_draw_form('input_oid', FILENAME_SUPER_ORDERS, '', 'get', '', true);
@@ -1394,5 +1388,5 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <!-- footer_eof //-->
 <br />
 </body>
-</html>
+<dmin/super_orders.php/html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>

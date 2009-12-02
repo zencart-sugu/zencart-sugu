@@ -544,12 +544,6 @@ function check_form() {
 <!-- body //-->
 <?php
 // easy admin simplify
-<?php
-// easy admin products by sugudeki
-if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
-  easy_admin_simplify_start();
-}
-?>
 if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
 }
@@ -1282,12 +1276,6 @@ if (($_GET['page'] == '' or $_GET['page'] == '1') and $_GET['cID'] != '') {
   }
 ?>
     </table></td>
-<?php
-// easy admin products by sugudeki
-if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
-  easy_admin_simplify_end();
-}
-?>
 <!-- body_text_eof //-->
   </tr>
 </table>
