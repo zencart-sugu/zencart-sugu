@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 osCommerce,Open Source E-Commerce Solutions
 http://www.oscommerce.com
@@ -443,4 +444,7 @@ background:#50504e;
 color:#FFFFFF;
 font-weight:bold;
 border-bottom:1px solid #999999;
+}
+.txtL{
+font-size:14px!important;
 }
