@@ -1388,5 +1388,5 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <!-- footer_eof //-->
 <br />
 </body>
-<dmin/super_orders.php/html>
+</html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
