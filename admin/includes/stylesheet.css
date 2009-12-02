@@ -9,14 +9,14 @@ Released under the GNU General Public License
 @import url("menu.css");/* including stylesheet for dhtml menu */
 @import url("index.css");/* including stylesheet for index.php */
 a{
-color:#0000ff;
+color:#00a144;
 text-decoration:none;
 }
 a,body,html,table{
-font:normal normal 11px Verdana,sans-serif;
+font:normal normal 12px Verdana,sans-serif;
 }
 a:hover{
-color:#0000ff;
+color:#00a144;
 text-decoration:underline;
 }
 a.headerLink:link{
@@ -40,61 +40,61 @@ font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxContentLink:link{
-color:#0000ff;
+color:#00a144;
 text-decoration:none;
 }
 a.menuBoxContentLink:visited{
-color:#0000ff;
+color:#00a144;
 text-decoration:none;
 }
 a.menuBoxContentLink:hover{
-color:#0000ff;
+color:#00a144;
 text-decoration:underline;
 }
 a.menuBoxContentLink:active{
-color:#0000ff;
+color:#00a144;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:link{
-color:#0000ff;
+color:#00a144;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:visited{
-color:#0000ff;
+color:#00a144;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:hover{
-color:#0000ff;
+color:#00a144;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:active{
-color:#0000ff;
+color:#00a144;
 font-weight:bold;
 text-decoration:none;
 }
 a.splitPageLink:link{
-color:#0000ff;
+color:#00a144;
 text-decoration:none;
 }
 a.splitPageLink:visited{
-color:#0000ff;
+color:#00a144;
 text-decoration:none;
 }
 a.splitPageLink:hover{
 background-color:#ffff33;
-color:#0000ff;
+color:#00a144;
 text-decoration:underline;
 }
 a.splitPageLink:active{
-color:#0000ff;
+color:#00a144;
 text-decoration:none;
 }
 body{
 background-color:#ffffff;
-color:#333333;
+color:#000000;
 margin:0;
 }
 .clearBoth {
@@ -126,6 +126,7 @@ width:400px;
 body#login legend{
 background:#ffffff;
 border:1px solid #c96e29;
+border:1px solid #004c49;
 color:#333333;
 font-size:90%;
 padding:0.2em 0.5em;
@@ -164,9 +165,14 @@ span.SortOrderHeader{
 color:#ff6600;
 font-weight:bold;
 }
-span.SortOrderHeaderLink{
-color:#0000ff;
+.dataTableHeadingContent a{
+color:#dfefe6;
 font-weight:bold;
+}
+.dataTableHeadingContent a:hover{
+color:#dfefe6;
+font-weight:bold;
+text-decoration:underline;
 }
 td.alert,span.alert{
 color:#ff0000;
@@ -197,7 +203,7 @@ color:#333333;
 background-color:#ffffff;
 }
 .attributes-odd{
-background-color:#f7f6ef;
+background-color:#F8F7EF;
 }
 .columnLeft{
 background-color:#f2f1ee;
@@ -208,6 +214,7 @@ padding:2px;
 }
 .dataTableContent{
 color:#333333;
+border-bottom:1px solid #e7e5da;
 }
 .dataTableContentBot{
 color:#333333;
@@ -216,7 +223,7 @@ color:#333333;
 color:#333333;
 }
 .dataTableHeadingContent{
-color:#333333;
+color:#FFFFFF;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois{
@@ -224,7 +231,7 @@ color:#333333;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:link,.dataTableHeadingContentWhois a:visited{
-color:#0000ff;
+color:#00a144;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:hover{
@@ -232,21 +239,22 @@ color:#ffffff;
 font-weight:bold;
 }
 .dataTableHeadingRow{
-background-color:#d7d6cc;
+background-color:#52877c;
 }
 .dataTableHeadingRowWhois{
-background-color:#d7d6cc;
+background-color:#22574C;
 }
 .dataTableRow{
-background-color:#f2f1ee;
+background-color:#fefdf7;
 }
 .dataTableRowBot{
 background-color:#facbfa;
 }
 .dataTableRowOver{
-background-color:#ffffff;
 cursor:pointer;
 cursor:hand;
+background: #C2E1D5;
+background-color:#dfefe6;
 }
 .dataTableRowOverBot{
 background-color:#ffffff;
@@ -255,7 +263,8 @@ background-color:#ffffff;
 background-color:#ffffff;
 }
 .dataTableRowSelected{
-background-color:#e7e6e0;
+background-color:#dfefe6;
+background: #C2E1D5;
 }
 .dataTableRowSelectedBot{
 background-color:#ff93ff;
@@ -264,7 +273,7 @@ background-color:#ff93ff;
 background-color:#dee4e8;
 }
 .dataTableRowSpacer,td.dataTableRowSpacer,TR.dataTableRowSpacer{
-background-color:#d7d6cc;
+background-color:#22574C;
 color:#ff6600;
 font-size:11px;
 font-weight:bold;
@@ -292,6 +301,7 @@ font-weight:bold;
 }
 .headerBar{
 background-color:#c96e29;
+background-color:#004c49;
 }
 .headerBarContent{
 color:#ffffff;
@@ -299,11 +309,11 @@ font-weight:bold;
 padding:2px;
 }
 .infoBoxContent{
-background-color:#e7e6e0;
+background: #C2E1D5;
 color:#333333;
 }
 .infoBoxHeading{
-background-color:#c96e29;
+background-color:#52877c;
 color:#ffffff;
 }
 .main{
@@ -331,6 +341,7 @@ text-decoration:line-through;
 }
 .pageHeading{
 color:#c96e29; /*727272*/
+color:#004C49;
 font-size:16px;
 font-variant:small-caps;
 font-weight:bold;
@@ -356,4 +367,7 @@ color:#ff6600;
 }
 .lookupAttention {
   color: #FF0000;
+}
+.searchBox input{
+width:300px;
 }

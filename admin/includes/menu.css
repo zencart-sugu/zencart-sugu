@@ -7,6 +7,7 @@ from items that are not contained but only
 covered. */
 ul.nde-menu-system{
 background-color:#e3a679;
+background-color:#dfefe6;
 display:block;
 margin:0;
 padding:4px 10px;
@@ -15,8 +16,9 @@ ul.nde-menu-system *{
 font-size:10px;
 }
 ul.nde-menu-system li{
-border-right:1px solid #c96e29;
+border-right:1px solid #39602d;
 color:#ffffff;
+color:#39602d;
 display:inline;
 font-weight:bold;
 margin:0;
@@ -25,11 +27,13 @@ position:relative;
 }
 ul.nde-menu-system li a{
 color:#ffffff;
+color:#39602d;
 font-weight:bold;
 }
 ul.nde-menu-system li a:hover{
 background-color:transparent;
 color:#ffffff;
+color:#39602d;
 text-decoration:underline;
 }
 ul.nde-menu-system li ul{
@@ -41,7 +45,7 @@ visibility:hidden;
 z-index:1000;
 }
 ul.nde-menu-system li ul li{
-background-color:#f7f7f7;
+background: #E9F0E8;
 border:#a8a8a8 1px solid;
 border-width:0 1px 1px;
 display:block;
@@ -51,21 +55,22 @@ padding:0;
 width:150px;
 }
 ul.nde-menu-system li ul li a{
-background-color:#f7e5d8;
 color:#333333;
 display:block;
 font-weight:normal;
 margin:0;
 padding:3px 5px;
 width:100%;
+background: #E9F0E8;
 }
 ul.nde-menu-system li ul li a:hover{
-background-color:#fbf2ec;
+background-color:#fefdf7;
 color:#333333;
 text-decoration:none;
 }
 ul.nde-menu-system ul{
 background-color:#e3a679;
+background-color:#608F85;
 display:block;
 margin:0;
 padding:4px 0 0;
