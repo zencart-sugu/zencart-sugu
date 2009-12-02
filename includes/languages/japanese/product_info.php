@@ -39,4 +39,6 @@ define('TEXT_ONETIME_CHARGE_SYMBOL', ' *');
 define('TEXT_ONETIME_CHARGE_DESCRIPTION', ' 基本料がかかります');
 define('TEXT_ATTRIBUTES_QTY_PRICE_HELP_LINK','数量値引があります');
 define('ATTRIBUTES_QTY_PRICE_SYMBOL', zen_image(DIR_WS_TEMPLATE_ICONS . 'icon_status_green.gif', TEXT_ATTRIBUTES_QTY_PRICE_HELP_LINK, 10, 10) . '&nbsp;');
+
+define('TEXT_XSELL_PRODUCTS', '関連商品');
 ?>
