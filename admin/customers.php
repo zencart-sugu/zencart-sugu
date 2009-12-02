@@ -1065,7 +1065,7 @@ if ($processed == true) {
               $disp_order = "ci.customers_info_date_account_created DESC";
           }
 ?>
-             <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+             <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="customersTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent" align="center" valign="top">
                   <?php echo TABLE_HEADING_ID; ?>

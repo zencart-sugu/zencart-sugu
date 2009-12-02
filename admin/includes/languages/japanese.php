@@ -640,7 +640,8 @@ define('ENTRY_NOTHING_TO_SEND','メッセージの入力内容がありません。');
 
   define('TABLE_HEADING_YES','はい');
   define('TABLE_HEADING_NO','いいえ');
-  define('TEXT_IMAGES_OVERWRITE', '既存のオプション画像を上書きしますか？<br/>上書きしたくない場合は[いいえ]を選択して、既存ファイルとは異なる名前のファイルを[オプション画像]に指定してください。');
+  define('TEXT_IMAGES_OVERWRITE', '既存のオプション画像を上書きしますか？');
+  define('TEXT_IMAGES_OVERWRITE2', '上書きしたくない場合は[いいえ]を選択して、既存ファイルとは異なる名前のファイルを[オプション画像]に指定してください。');
   define('TEXT_IMAGE_OVERWRITE_WARNING','警告: 属性見本画像をアップロードしましたが、上書きできませんでした。 ');
 
   define('ERROR_DEFINE_OPTION_NAMES', '警告: オプションネームの定義がされていません。');

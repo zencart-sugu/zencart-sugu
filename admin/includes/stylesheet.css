@@ -382,12 +382,14 @@ text-align:left;
 vertical-align:top;
 border-bottom:1px solid #999999;
 border-right:1px solid #999999;
+empty-cells:show;
 }
 .tableLayout1 td{
 padding:10px;
 border-right:1px solid #50504E;
 border-bottom:1px solid #50504E;
 vertical-align:top;
+empty-cells:show;
 }
 .tableLayout2{
 border:solid 1px #FF4100;
@@ -411,6 +413,7 @@ border-left:1px solid #E7E5da;
 padding:10px;
 border-right:1px solid #E7E5da;
 border-bottom:1px solid #E7E5da;
+empty-cells:show;
 }
 .tableLayout3 th{
 color:#50504E;
@@ -444,6 +447,10 @@ background:#50504e;
 color:#FFFFFF;
 font-weight:bold;
 border-bottom:1px solid #999999;
+empty-cells:show;
+}
+.customersTable{
+border-collapse:collapse;
 }
 .txtL{
 font-size:14px!important;

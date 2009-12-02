@@ -59,7 +59,7 @@
 <script language="javascript" src="includes/menu.js">
 </script>
 </head>
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" id="bodyWrapper">
+<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <?php
     $prev_oID = $oID - 1;
     $next_oID = $oID + 1;
@@ -75,7 +75,7 @@
     }
 ?>
 <!-- body_text //-->
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="95%" cellspacing="0" cellpadding="2" align="center">
   <tr>
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
