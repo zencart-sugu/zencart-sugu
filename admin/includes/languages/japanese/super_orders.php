@@ -21,7 +21,7 @@
 
 require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . 'order_status_email.php');
 
-define('HEADING_TITLE_ORDERS_LISTING', 'オーダーリスト');
+define('HEADING_TITLE_ORDERS_LISTING', '注文管理');
 define('HEADING_TITLE_ORDER_DETAILS', 'オーダー詳細 ID#');
 define('HEADING_TITLE_SEARCH', '注文ID:');
 define('HEADING_TITLE_STATUS', 'ステータス:');

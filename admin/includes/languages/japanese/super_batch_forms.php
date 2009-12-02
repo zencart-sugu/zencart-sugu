@@ -19,7 +19,7 @@
 
 define('TITLE_BATCH_OUTPUT', 'バッチ印刷出力');
 
-define('HEADING_TITLE', 'バッチ フォーム印刷');
+define('HEADING_TITLE', '注文一括印刷');
 
 define('HEADING_SEARCH_FILTER', '検索条件');
 define('HEADING_UPDATE_ORDERS', 'チェックを入れたオーダーを更新');
