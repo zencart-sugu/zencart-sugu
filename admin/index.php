@@ -166,9 +166,9 @@
   <?php  $orders = $db->Execute("select o.orders_id as orders_id, o.customers_name as customers_name, o.customers_id, o.date_purchased as date_purchased, o.currency, o.currency_value, ot.class, ot.text as order_total from " . TABLE_ORDERS . " o left join " . TABLE_ORDERS_TOTAL . " ot on (o.orders_id = ot.orders_id) where class = 'ot_total' order by orders_id DESC limit 5");
 
   while (!$orders->EOF) {
-    echo '<div class="row"><span class="left"><a href="' . zen_href_link(FILENAME_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&origin=' . FILENAME_DEFAULT, 'NONSSL') . '" class="contentlink"> ' . $orders->fields['customers_name'] . '</a></span><span class="center">' . $orders->fields['order_total'] . '</span><span class="rigth">' . "\n";
-    echo zen_datetime_short($orders->fields['date_purchased']);
-    echo '              </span></div>' . "\n";
+    echo '<div class="row"><span class="left">' . zen_datetime_short($orders->fields['date_purchased']);
+    echo '</span><span class="left"><a href="' . zen_href_link(FILENAME_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&origin=' . FILENAME_DEFAULT, 'NONSSL') . '" class="contentlink"> ' . $orders->fields['customers_name'] . '</a></span><span class="right2">' . $orders->fields['order_total'] . '</span>' . "\n";
+    echo '</div>' . "\n";
     $orders->MoveNext();
   }
 ?>
