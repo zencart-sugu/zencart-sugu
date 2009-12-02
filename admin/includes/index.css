@@ -16,13 +16,12 @@ font-weight:bold;
 padding:3px;
 }
 div.reportBox{
-background:#52877c;
+background:#50504E;
 border:1px solid #e7e5da;
 margin-top:1em;
 }
 div.row{
-background:#f8f7ef;
-background-color:#fefdf7;
+background-color:#F4F3F3;
 clear:both;
 margin-top:0px;
 border-top:1px solid #e7e5da;

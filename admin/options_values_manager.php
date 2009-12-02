@@ -614,7 +614,7 @@ function go_option() {
       while (!$products_values->EOF) {
         $rows++;
 ?>
-                  <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+                  <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
                     <td align="center" class="smallText">&nbsp;<?php echo $products_values->fields['products_id']; ?>&nbsp;</td>
                     <td class="smallText">&nbsp;<?php echo $products_values->fields['products_name']; ?>&nbsp;</td>
                     <td class="smallText" align="right">&nbsp;<?php echo $options_values->fields["products_options_sort_order"]; ?>&nbsp;</td>
@@ -731,7 +731,7 @@ function go_option() {
       $products_options_values_sort_order = $values_values->fields['products_options_values_sort_order'];
       $rows++;
 ?>
-              <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+              <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
 // FIX HERE
 // edit option values
@@ -810,7 +810,7 @@ function go_option() {
 <?php
     if ($action != 'update_option_value') {
 ?>
-              <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+              <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
       echo '<form name="values" action="' . zen_href_link(FILENAME_OPTIONS_VALUES_MANAGER, 'action=add_product_option_values' . (isset($_GET['option_page']) ? '&option_page=' . $_GET['option_page'] . '&' : '') . (isset($_GET['value_page']) ? '&value_page=' . $_GET['value_page'] . '&' : '') . (isset($_GET['attribute_page']) ? '&attribute_page=' . $_GET['attribute_page'] : '') ) . '" method="post">';
 ?>

@@ -221,7 +221,7 @@
          <tr><?php echo zen_draw_form('search', FILENAME_SPECIALS, '', 'get'); ?>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
-            <td class="smallText" align="right">
+            <td class="smallText searchBox" align="right">
 <?php
 // show reset search
   if (isset($_GET['search']) && zen_not_null($_GET['search'])) {

@@ -7,7 +7,7 @@ from items that are not contained but only
 covered. */
 ul.nde-menu-system{
 background-color:#e3a679;
-background-color:#dfefe6;
+background-color:#EFEDEC;
 display:block;
 margin:0;
 padding:4px 10px;
@@ -16,9 +16,9 @@ ul.nde-menu-system *{
 font-size:10px;
 }
 ul.nde-menu-system li{
-border-right:1px solid #39602d;
+border-right:1px solid #50504e;
 color:#ffffff;
-color:#39602d;
+color:#50504e;
 display:inline;
 font-weight:bold;
 margin:0;
@@ -27,13 +27,13 @@ position:relative;
 }
 ul.nde-menu-system li a{
 color:#ffffff;
-color:#39602d;
+color:#50504e;
 font-weight:bold;
 }
 ul.nde-menu-system li a:hover{
 background-color:transparent;
 color:#ffffff;
-color:#39602d;
+color:#50504e;
 text-decoration:underline;
 }
 ul.nde-menu-system li ul{
@@ -61,16 +61,16 @@ font-weight:normal;
 margin:0;
 padding:3px 5px;
 width:100%;
-background: #E9F0E8;
+background: #F6F5ED;
 }
 ul.nde-menu-system li ul li a:hover{
-background-color:#fefdf7;
+background-color:#fce08c;
 color:#333333;
 text-decoration:none;
 }
 ul.nde-menu-system ul{
 background-color:#e3a679;
-background-color:#608F85;
+background-color:#50504E;
 display:block;
 margin:0;
 padding:4px 0 0;

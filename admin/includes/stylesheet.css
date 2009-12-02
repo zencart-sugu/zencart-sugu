@@ -9,14 +9,14 @@ Released under the GNU General Public License
 @import url("menu.css");/* including stylesheet for dhtml menu */
 @import url("index.css");/* including stylesheet for index.php */
 a{
-color:#00a144;
+color:#ff4100;
 text-decoration:none;
 }
 a,body,html,table{
 font:normal normal 12px Verdana,sans-serif;
 }
 a:hover{
-color:#00a144;
+color:#ff4100;
 text-decoration:underline;
 }
 a.headerLink:link{
@@ -40,56 +40,56 @@ font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxContentLink:link{
-color:#00a144;
+color:#ff4100;
 text-decoration:none;
 }
 a.menuBoxContentLink:visited{
-color:#00a144;
+color:#ff4100;
 text-decoration:none;
 }
 a.menuBoxContentLink:hover{
-color:#00a144;
+color:#ff4100;
 text-decoration:underline;
 }
 a.menuBoxContentLink:active{
-color:#00a144;
+color:#ff4100;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:link{
-color:#00a144;
+color:#ff4100;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:visited{
-color:#00a144;
+color:#ff4100;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:hover{
-color:#00a144;
+color:#ff4100;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:active{
-color:#00a144;
+color:#ff4100;
 font-weight:bold;
 text-decoration:none;
 }
 a.splitPageLink:link{
-color:#00a144;
+color:#ff4100;
 text-decoration:none;
 }
 a.splitPageLink:visited{
-color:#00a144;
+color:#ff4100;
 text-decoration:none;
 }
 a.splitPageLink:hover{
 background-color:#ffff33;
-color:#00a144;
+color:#ff4100;
 text-decoration:underline;
 }
 a.splitPageLink:active{
-color:#00a144;
+color:#ff4100;
 text-decoration:none;
 }
 body{
@@ -126,7 +126,7 @@ width:400px;
 body#login legend{
 background:#ffffff;
 border:1px solid #c96e29;
-border:1px solid #004c49;
+border:1px solid #ff4100;
 color:#333333;
 font-size:90%;
 padding:0.2em 0.5em;
@@ -166,11 +166,11 @@ color:#ff6600;
 font-weight:bold;
 }
 .dataTableHeadingContent a{
-color:#dfefe6;
+color:#ffbf00;
 font-weight:bold;
 }
 .dataTableHeadingContent a:hover{
-color:#dfefe6;
+color:#ffbf00;
 font-weight:bold;
 text-decoration:underline;
 }
@@ -231,7 +231,7 @@ color:#333333;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:link,.dataTableHeadingContentWhois a:visited{
-color:#00a144;
+color:#ff4100;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:hover{
@@ -239,13 +239,13 @@ color:#ffffff;
 font-weight:bold;
 }
 .dataTableHeadingRow{
-background-color:#52877c;
+background-color:#50504E;
 }
 .dataTableHeadingRowWhois{
 background-color:#22574C;
 }
 .dataTableRow{
-background-color:#fefdf7;
+background-color:#F4F3F3;
 }
 .dataTableRowBot{
 background-color:#facbfa;
@@ -253,8 +253,8 @@ background-color:#facbfa;
 .dataTableRowOver{
 cursor:pointer;
 cursor:hand;
-background: #C2E1D5;
-background-color:#dfefe6;
+background: #fce08c;
+background-color:#ffbf00;
 }
 .dataTableRowOverBot{
 background-color:#ffffff;
@@ -263,8 +263,8 @@ background-color:#ffffff;
 background-color:#ffffff;
 }
 .dataTableRowSelected{
-background-color:#dfefe6;
-background: #C2E1D5;
+background-color:#ffbf00;
+background: #fce08c;
 }
 .dataTableRowSelectedBot{
 background-color:#ff93ff;
@@ -301,7 +301,7 @@ font-weight:bold;
 }
 .headerBar{
 background-color:#c96e29;
-background-color:#004c49;
+background-color:#ff4100;
 }
 .headerBarContent{
 color:#ffffff;
@@ -309,11 +309,11 @@ font-weight:bold;
 padding:2px;
 }
 .infoBoxContent{
-background: #C2E1D5;
+background: #fce08c;
 color:#333333;
 }
 .infoBoxHeading{
-background-color:#52877c;
+background-color:#50504E;
 color:#ffffff;
 }
 .main{
@@ -341,7 +341,7 @@ text-decoration:line-through;
 }
 .pageHeading{
 color:#c96e29; /*727272*/
-color:#004C49;
+color:#ff4100;
 font-size:16px;
 font-variant:small-caps;
 font-weight:bold;
@@ -360,7 +360,7 @@ cursor:pointer;
 cursor:hand;
 }
 .smallText{
-font-size:9px;
+font-size:11px;
 }
 .specialPrice{
 color:#ff6600;

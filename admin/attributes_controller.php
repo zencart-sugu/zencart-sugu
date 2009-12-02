@@ -603,7 +603,7 @@ function popupWindow(url) {
 <!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="smallText" align="right">
+                <td class="smallText searchBox" align="right">
 <?php
     echo zen_draw_form('search', FILENAME_CATEGORIES, '', 'get');
 // show reset search

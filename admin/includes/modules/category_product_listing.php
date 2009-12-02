@@ -25,7 +25,7 @@ if (!isset($_SESSION['display_categories_dropdown'])) {
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="smallText" align="right">
+                <td class="smallText searchBox" align="right">
 <?php
     echo zen_draw_form('search', FILENAME_CATEGORIES, '', 'get');
 // show reset search

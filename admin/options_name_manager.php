@@ -606,7 +606,7 @@ function go_option() {
     while (!$options_values->EOF) {
       $rows++;
 ?>
-              <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+              <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
 // edit option name
       if (($action == 'update_option') && ($_GET['option_id'] == $options_values->fields['products_options_id'])) {
@@ -638,15 +638,15 @@ function go_option() {
                 <td colspan="3" align="left" class="attributeBoxContent">&nbsp;</td>
                 <td colspan="1"  align="center" class="attributeBoxContent">&nbsp;<?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?>&nbsp;<?php echo '<a href="' . zen_href_link(FILENAME_OPTIONS_NAME_MANAGER, (isset($_GET['option_page']) ? '&option_page=' . $_GET['option_page'] . '&' : '') . (isset($_GET['value_page']) ? '&value_page=' . $_GET['value_page'] . '&' : '') . (isset($_GET['attribute_page']) ? '&attribute_page=' . $_GET['attribute_page'] : '') . '&option_order_by=' . $option_order_by ) . '">'; ?><?php echo zen_image_button('button_cancel.gif', IMAGE_CANCEL); ?></a>&nbsp;</td>
               </tr>
-      <tr>
+      <tr class="dataTableRow">
         <td colspan="7"><?php echo zen_draw_separator('pixel_black.gif', '100%', '2'); ?></td>
       </tr>
 
-              <tr class="attributeBoxContent">
+              <tr class="attributeBoxContent dataTableRow">
                 <td class="attributeBoxContent">&nbsp;</td>
                 <td colspan="6" class="attributeBoxContent"><?php echo TEXT_OPTION_ATTIBUTE_MAX_LENGTH . $inputs2; ?></td>
               </tr>
-              <tr class="attributeBoxContent">
+              <tr class="attributeBoxContent dataTableRow">
                 <td class="attributeBoxContent">&nbsp;</td>
                 <td colspan="6" class="attributeBoxContent">
               <?php echo '<br />' .
@@ -661,7 +661,7 @@ function go_option() {
                 </td>
 
       </tr>
-      <tr>
+      <tr class="dataTableRow">
         <td colspan="7"><?php echo zen_draw_separator('pixel_black.gif', '100%', '2'); ?></td>
 <?php
         echo '</form>' . "\n";
@@ -698,14 +698,14 @@ function go_option() {
       $options_values->MoveNext();
     }
 ?>
-              <tr>
+              <tr class="dataTableRow">
                 <td colspan="7"><?php echo zen_black_line(); ?></td>
               </tr>
 <?php
 // add option name
     if ($action != 'update_option') {
 ?>
-              <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+              <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
       echo '<form name="options" action="' . zen_href_link(FILENAME_OPTIONS_NAME_MANAGER, 'action=add_product_options' . (isset($_GET['option_page']) ? '&option_page=' . $_GET['option_page'] . '&' : '') . (isset($_GET['value_page']) ? '&value_page=' . $_GET['value_page'] . '&' : '') . (isset($_GET['attribute_page']) ? '&attribute_page=' . $_GET['attribute_page'] : '') . '&option_order_by=' . $option_order_by ) . '" method="post"><input type="hidden" name="products_options_id" value="' . $next_id . '">';
       $inputs = '';
@@ -723,7 +723,7 @@ function go_option() {
       echo '</form>';
 ?>
               </tr>
-              <tr>
+              <tr class="dataTableRow">
                 <td colspan="7"><?php echo zen_black_line(); ?></td>
               </tr>
 <?php
