@@ -1093,7 +1093,7 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2" id="superOrdersTable">
               <tr class="dataTableHeadingRow">
 <?php
 // Sort Listing
@@ -1170,10 +1170,10 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
     //_TODO add new warning to diff between =! name and =! address
     $show_difference = '';
     if (($orders->fields['delivery_name'] != $orders->fields['billing_name'] and $orders->fields['delivery_name'] != '')) {
-      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED_ORDERS_EXPORT, 10, 10);
     }
     if (($orders->fields['delivery_street_address'] != $orders->fields['billing_street_address'] and $orders->fields['delivery_street_address'] != '')) {
-      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED_ORDERS_EXPORT, 10, 10);
     }
     //$show_payment_type = $orders->fields['payment_module_code'] . '<br />' . $orders->fields['shipping_module_code'];
     //<td class="dataTableContent" align="left" width="50"><?php echo $show_payment_type; </td>

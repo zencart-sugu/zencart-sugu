@@ -312,6 +312,7 @@ define('IMAGE_FILE_MANAGER', 'ファイル管理');
 define('IMAGE_ICON_STATUS_GREEN', '有効');
 define('IMAGE_ICON_STATUS_GREEN_LIGHT', '有効にする');
 define('IMAGE_ICON_STATUS_RED', '無効');
+define('IMAGE_ICON_STATUS_RED_ORDERS_EXPORT', '請求先と配送先が違います');
 define('IMAGE_ICON_STATUS_RED_LIGHT', '無効にする');
 define('IMAGE_ICON_INFO', '情報');
 define('IMAGE_INSERT', '挿入');

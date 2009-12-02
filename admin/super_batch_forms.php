@@ -166,15 +166,11 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "order_search", "end_date", "b
 			</td>
           </tr>
           <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', 1, 20); ?></td>
+            <td><?php echo zen_draw_separator('pixel_trans.gif', 1, 5); ?></td>
           </tr>
           <tr>
             <td colspan="3">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableLayout2">
-				<tr>
-					<td align="center"><p><?php echo zen_image_submit('button_search.gif', IMAGE_SEARCH); ?></p></td>
-				</tr>
-				</table>
+				
 			</td>
           </tr></form>
 		   <tr>

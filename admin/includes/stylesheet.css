@@ -391,6 +391,38 @@ border-bottom:1px solid #50504E;
 vertical-align:top;
 empty-cells:show;
 }
+.tableLayout1None{
+margin:10px 0 0 0;
+border-top:1px solid #50504E;
+border-left:1px solid #50504E;
+border-bottom:1px solid #50504E;
+}
+.tableLayout1None th{
+border-right:1px solid #999999;
+}
+.tableLayout1None td{
+border-right:1px solid #50504E;
+}
+.tableLayout1None table th{
+height:45px;
+padding:10px;
+background:#50504E;
+color:#FFFFFF;
+text-align:left;
+border-right:1px solid #999999;
+border-bottom:1px solid #999999;
+vertical-align:top;
+empty-cells:show;
+}
+.tableLayout1None table td{
+height:45px;
+padding:10px;
+border:none;
+border-bottom:1px solid #50504E;
+vertical-align:top;
+empty-cells:show;
+}
+
 .tableLayout2{
 border:solid 1px #FF4100;
 background:#EFEDEC;
@@ -457,4 +489,25 @@ font-size:14px!important;
 }
 .alignR{
 text-align:right!important;
+}
+table#orders-list td{
+padding: 2px 5px;
+}
+table#orders-list td#shipping select{
+width:200px!important;
+}
+table#orders-list td#payment select{
+width:150px!important;
+}
+table#orders-list td#ctm input{
+width:100px!important;
+}
+table#orders-list td#orders_status select{
+width:130px!important;
+}
+table#superOrdersTable img{
+vertical-align:middle;
+}
+.marginBottomNone{
+margin-bottom:0!important;
 }

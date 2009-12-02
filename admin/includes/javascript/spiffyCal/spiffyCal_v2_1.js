@@ -926,7 +926,7 @@ function ctlSpiffyCalendarBox(strVarName, strFormName, strTextBoxName, strBtnNam
 			strTemp+=' onChange="calMgr.validateDate('+'document.'+this.formName+'.'+this.textBoxName+','+this.varName+'.required,'+this.varName+'.minDate,'+this.varName+'.maxDate);" onBlur="calMgr.formatDate(document.'+this.formName+'.'+this.textBoxName+','+this.varName+'.dateFormat);" ';
 		}
 
-		strHold='<input class="cal-TextBox" type="text" name="' + this.textBoxName + '"' + strTemp + 'size="12" value="' + this.getSelectedDate() + '">';
+		strHold='<input class="cal-TextBox" type="text" name="' + this.textBoxName + '"' + strTemp + 'size="10" value="' + this.getSelectedDate() + '">';
 		if (!scIE) {
 			strTemp=' href="javascript:calClick();return false;" ';
 		}

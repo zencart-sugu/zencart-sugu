@@ -40,7 +40,7 @@ define('TABLE_HEADING_STATUS', 'ステータス');
 define('TABLE_HEADING_TYPE', 'Order Type');
 define('TABLE_HEADING_ACTION', '操作');
 define('TABLE_HEADING_QUANTITY', '数量');
-define('TABLE_HEADING_PRODUCTS_MODEL', '商品番号');
+define('TABLE_HEADING_PRODUCTS_MODEL', '型番');
 define('TABLE_HEADING_PRODUCTS', '商品名');
 define('TABLE_HEADING_TAX', '税率');
 define('TABLE_HEADING_TOTAL', '合計');

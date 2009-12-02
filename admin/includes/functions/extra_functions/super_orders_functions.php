@@ -197,7 +197,7 @@ function all_products_array($first_option = false, $show_price = false, $show_mo
     $products_array[] = array('id' => '',
                               'text' => $first_option);
   }
-  $products = $db->Execute("select products_id, products_name from " . TABLE_PRODUCTS_DESCRIPTION . " order by products_name asc");
+  $products = $db->Execute("select products_id, products_name from " . TABLE_PRODUCTS_DESCRIPTION . "  where language_id = 2 order by products_name asc");
   while (!$products->EOF) {
     $display_price = zen_get_products_base_price($products->fields['products_id']);
     $products_array[] = array('id' => $products->fields['products_id'],
