@@ -375,14 +375,13 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
               </tr>
               <tr>
                 <td class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></td>
-                <td class="main"><?php echo $order->info['payment_method']; ?>
+                <td class="main"><?php echo $order->info['payment_method']; ?></td>
+              </tr>
 <?php
     if (MODULE_NETMOVE_STATUS == 'true') {
       netmove_cv_display_order_id($oID);
     }
 ?>
-</td>
-              </tr>
             </table></td>
 <?php
     $notes = $db->Execute("select * from " . TABLE_CUSTOMERS_ADMIN_NOTES . " where customers_id = '" . $order->customer['id'] . "'");
