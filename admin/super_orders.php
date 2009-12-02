@@ -207,6 +207,12 @@
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
 <!-- body //-->
+<?php
+// easy admin products by warranty
+if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  warranty_admin_simplify_start();
+}
+?>
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
@@ -369,7 +375,13 @@
               </tr>
               <tr>
                 <td class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></td>
-                <td class="main"><?php echo $order->info['payment_method']; ?></td>
+                <td class="main"><?php echo $order->info['payment_method']; ?>
+<?php
+    if (MODULE_NETMOVE_STATUS == 'true') {
+      netmove_cv_display_order_id($oID);
+    }
+?>
+</td>
               </tr>
             </table></td>
 <?php
@@ -1369,6 +1381,12 @@
 <!-- body_text_eof //-->
   </tr>
 </table>
+<?php
+// easy admin products by warranty
+if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  warranty_admin_simplify_end();
+}
+?>
 <!-- body_eof //-->
 
 <!-- footer //-->
