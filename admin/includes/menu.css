@@ -6,14 +6,14 @@ same in mozilla, ie and opera
 from items that are not contained but only
 covered. */
 
-div#navbar:after {
+div.navbar:after {
 content:  ".";
 display:  block;
 height:  0px;
 clear:  both;
 visibility:  hidden;
 }
-div#navbar{
+div.navbar{
 display: inline-table;
 min-height: 1%;
 _height:  1%;
@@ -21,16 +21,16 @@ _display:  block;
 background:#efedec;
 }
 /* Hides from IE-mac \*/
-* html div#navbar {height: 1%;}
-div#navbar {display: block;}
+* html div.navbar {height: 1%;}
+div.navbar {display: block;}
 /* End hide from IE-mac */
 div#navbar_right{
 float:right;
-width:10%;
+width:29%;
 }
 div#navbar_drop{
 float:left;
-width:89%;
+width:70%;
 }
 
 

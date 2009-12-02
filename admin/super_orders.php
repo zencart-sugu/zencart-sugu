@@ -319,7 +319,7 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
                   <strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong><?php
                     if (!$so->status) {
                       echo '<br /><a href="javascript:popupWindow(\'' .
-                      zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=contact', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=600,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
+                      zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=contact', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=750,height=650,screenX=150,screenY=100,top=100,left=150\')">' .
                       zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_CONTACT) . ICON_EDIT_CONTACT . '</a>';
                     }
                 ?></td>

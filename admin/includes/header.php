@@ -208,4 +208,5 @@ if ((basename($PHP_SELF) != FILENAME_DEFINE_LANGUAGE . '.php') and (basename($PH
 </table>
 <?php require(DIR_WS_INCLUDES . 'header_navigation.php'); ?>
 <div id="navbar">
+<div id="navbar">
 </div>

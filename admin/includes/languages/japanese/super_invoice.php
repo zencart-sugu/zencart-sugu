@@ -35,7 +35,7 @@ define('HEADER_PO_TERMS', '用語:');
 define('HEADER_PO_TERMS_LENGTH', '30日');
 
 define('TABLE_HEADING_COMMENTS', 'コメント');
-define('TABLE_HEADING_PRODUCTS_MODEL', '商品番号');
+define('TABLE_HEADING_PRODUCTS_MODEL', '型番');
 define('TABLE_HEADING_PRODUCTS', '商品名');
 define('TABLE_HEADING_TAX', '税率');
 define('TABLE_HEADING_TOTAL', '合計');

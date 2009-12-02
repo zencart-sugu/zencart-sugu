@@ -26,7 +26,7 @@ define('HEADER_PHONE', '電話:');
 define('HEADER_FAX', 'FAX:');
 define('TABLE_HEADING_IMAGE', 'イメージ');
 define('TABLE_HEADING_COMMENTS', 'コメント');
-define('TABLE_HEADING_PRODUCTS_MODEL', '商品番号');
+define('TABLE_HEADING_PRODUCTS_MODEL', '型番');
 define('TABLE_HEADING_QTY', '数量');
 define('TABLE_HEADING_PRODUCTS', '商品');
 define('HEADER_CUSTOMER_NOTES', 'お客様コメント:');
