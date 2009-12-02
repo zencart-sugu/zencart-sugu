@@ -20,7 +20,10 @@
 // $Id: super_packingslip.php 25 2006-02-03 18:55:56Z BlindSide $
 */
 
+define('HEADER_PACKINGSLIP', '配送表-注文番号 #');
 define('TEXT_PACKING_SLIP', '梱包メモ');
+define('HEADER_PHONE', '電話:');
+define('HEADER_FAX', 'FAX:');
 define('TABLE_HEADING_IMAGE', 'イメージ');
 define('TABLE_HEADING_COMMENTS', 'コメント');
 define('TABLE_HEADING_PRODUCTS_MODEL', '商品番号');

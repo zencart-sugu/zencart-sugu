@@ -279,6 +279,7 @@ echo zen_draw_hidden_field('products_price_sorter', $pInfo->products_price_sorte
             <th class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_pull_down_menu('manufacturers_id', $manufacturers_array, $pInfo->manufacturers_id); ?></td>
           </tr>
+		  
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
@@ -368,7 +369,8 @@ updateGross();
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
           <tr>
-		  	<td bgcolor="#50504c" colspan="2"><strong><font color="#FFFFFF"><?php if ($i == 0) echo TEXT_PRODUCTS_DESCRIPTION; ?></font></strong>
+		  	<th><?php if ($i == 0) echo TEXT_PRODUCTS_DESCRIPTION; ?></th>
+			<td>
             <?php echo zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;
                 
         <?php if (is_null($_SESSION['html_editor_preference_status'])) echo TEXT_HTML_EDITOR_NOT_DEFINED; ?>
@@ -418,14 +420,15 @@ updateGross();
 			<td><?php echo zen_draw_pull_down_menu('img_dir', $dir_info, $default_directory); ?></td>
 		</tr>
 		<tr>
-            <th class="main" valign="top"><?php echo TEXT_IMAGES_OVERWRITE . '</th><td>' . zen_draw_radio_field('overwrite', '0', $off_overwrite) . '&nbsp;' . TABLE_HEADING_NO . ' ' . zen_draw_radio_field('overwrite', '1', $on_overwrite) . '&nbsp;' . TABLE_HEADING_YES; ?></td>
+            <th class="main" valign="top"><?php echo TEXT_IMAGES_OVERWRITE . '</th><td>'. TEXT_IMAGES_OVERWRITE2 .'<br />' . zen_draw_radio_field('overwrite', '0', $off_overwrite) . '&nbsp;' . TABLE_HEADING_NO . ' ' . zen_draw_radio_field('overwrite', '1', $on_overwrite) . '&nbsp;' . TABLE_HEADING_YES; ?></td>
           </tr>
 		
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
           <tr>
-            <td class="main tdHeader1" colspan="2"><?php if ($i == 0) echo TEXT_PRODUCTS_URL . '<br /><small>' . TEXT_PRODUCTS_URL_WITHOUT_HTTP . '</small>'; ?><br />
+            <th class="main tdHeader1"><?php if ($i == 0) echo TEXT_PRODUCTS_URL . '<br /><small>' . TEXT_PRODUCTS_URL_WITHOUT_HTTP . '</small>'; ?></th>
+			<td>
 			<?php echo zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('products_url[' . $languages[$i]['id'] . ']', (isset($products_url[$languages[$i]['id']]) ? $products_url[$languages[$i]['id']] : zen_get_products_url($pInfo->products_id, $languages[$i]['id'])), zen_set_field_length(TABLE_PRODUCTS_DESCRIPTION, 'products_url')); ?></td>
           </tr>
 <?php

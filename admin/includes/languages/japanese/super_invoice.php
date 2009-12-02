@@ -24,7 +24,7 @@
 // Don't forget to configure the new Phone and Fax numbers in the Admin!
 // Configuration > My Store > Store Phone/Store Fax
 
-define('HEADER_INVOICE', '請求書-注文番号 #');
+define('HEADER_INVOICE', '納品書-注文番号 #');
 define('HEADER_TAX_ID', 'Fed Tax ID #');
 define('HEADER_PHONE', '電話:');
 define('HEADER_FAX', 'FAX:');

@@ -79,27 +79,25 @@
   <tr>
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
-        <td valign="top" class="invoiceHeading"><?php
-          echo nl2br(STORE_NAME_ADDRESS);
-         ?></td>
+        <td class="pageHeading"><?php echo nl2br(STORE_NAME_ADDRESS); ?></td>
         <td><?php echo zen_draw_separator('pixel_trans.gif', '20', '1'); ?></td>
         <td valign="top"><table border="0" cellspacing="2" cellpadding="0">
           <tr>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo HEADER_PHONE; ?></td>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo STORE_PHONE; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_PHONE; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_PHONE; ?></td>
           </tr>
           <tr>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo HEADER_FAX; ?></td>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo STORE_FAX; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_FAX; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_FAX; ?></td>
           </tr>
           <tr>
             <td class="invoiceHeading" align="left" valign="bottom"><?php echo $prev_button; ?></td>
             <td class="invoiceHeading" align="right" valign="bottom"><?php echo $next_button; ?></td>
           </tr>
         </table></td>
-        <td class="invoiceHeading" align="right"><?php
-          echo zen_image(DIR_WS_IMAGES . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT) . '<br />';
-        ?></td>
+        <td class="invoiceHeading" align="right">
+          <img src="<?php echo getLogoImage("", true); ?>">
+        </td>
       </tr>
     </table></td>
   </tr>
@@ -116,7 +114,6 @@
 					<th valign="top"><strong><?php echo ENTRY_BILL_TO; ?></strong></th>
 					<td valign="top">
 					<p><?php echo zen_address_format($order->customer['format_id'], $order->billing, 1, '', '<br />'); ?></p>
-					<p><?php echo $order->customer['telephone']; ?></p>
 					<p><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></p>
 					</td>
 					<th valign="top"><strong><?php echo ENTRY_SHIP_TO; ?></strong></th>
@@ -266,7 +263,7 @@
 				<th><strong><?php echo HEADER_CUSTOMER_NOTES; ?></strong></th>
   </tr>
   <tr>
-				<td><?php echo $customer_notes; ?></td>
+			<td><?php echo nl2br($customer_notes); ?></td>
 			</tr>
 		</table>
 	</td>

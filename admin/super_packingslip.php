@@ -70,7 +70,7 @@
 <html <?php echo HTML_PARAMS; ?>>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
-<title><?php echo TITLE; ?></title>
+<title><?php echo HEADER_PACKINGSLIP . (int)$oID; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script language="javascript" src="includes/menu.js">
 </script>
@@ -83,7 +83,26 @@
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td class="pageHeading"><?php echo nl2br(STORE_NAME_ADDRESS); ?></td>
-        <td class="pageHeading" align="right"><a href="<?php echo FILENAME_SUPER_PACKINGSLIP . '?' . zen_get_all_get_params(); ?>"><?php echo zen_image(DIR_WS_IMAGES . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT)?></a></td>
+        <td><?php echo zen_draw_separator('pixel_trans.gif', '20', '1'); ?></td>
+        <td valign="top"><table border="0" cellspacing="2" cellpadding="0">
+          <tr>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_PHONE; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_PHONE; ?></td>
+          </tr>
+          <tr>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_FAX; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_FAX; ?></td>
+          </tr>
+          <tr>
+            <td class="invoiceHeading" align="left" valign="bottom"><?php echo $prev_button; ?></td>
+            <td class="invoiceHeading" align="right" valign="bottom"><?php echo $next_button; ?></td>
+          </tr>
+        </table></td>
+        <td class="pageHeading" align="right">
+<?php if(MODULE_EASY_DESIGN_STATUS == 'True'){ ?>
+          <img src="<?php echo getLogoImage("", true); ?>">
+<?php } ?>
+        </td>
       </tr>
     </table></td>
   </tr>
@@ -112,7 +131,6 @@
 					<th><strong><?php echo ENTRY_SHIP_TO; ?></strong></th>
 					<td>
 					<p><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></p>
-					<p><?php echo $order->customer['telephone']; ?></p>
 					<p><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></p>
 					</td>
 					<th><strong><?php echo ENTRY_SOLD_TO; ?></strong></th>
@@ -241,7 +259,7 @@ echo '        <td class="dataTableContent" align="left"></td>';
 				<th><strong><?php echo HEADER_CUSTOMER_NOTES; ?></strong></th>
   </tr>
   <tr>
-				<td><?php echo $customer_notes; ?></td>
+				<td><?php echo nl2br($customer_notes); ?></td>
 			</tr>
 		</table>
 	</td>
