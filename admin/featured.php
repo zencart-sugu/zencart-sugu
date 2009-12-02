@@ -127,12 +127,6 @@
 
 <!-- body //-->
 <?php
-// easy admin products by sugudeki
-if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
-  easy_admin_simplify_start();
-}
-?>
-<?php
 // easy admin simplify
 if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
@@ -372,12 +366,6 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "new_featured", "end", "btnDat
 }
 ?>
           </tr>
-<?php
-// easy admin products by sugudeki
-if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DEFAULT == 'true') {
-  easy_admin_simplify_end();
-}
-?>
         </table></td>
       </tr>
     </table></td>
