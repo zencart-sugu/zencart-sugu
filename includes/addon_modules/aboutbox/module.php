@@ -67,7 +67,7 @@ if (!defined('IS_ADMIN_FLAG')) {
             'configuration_value' => MODULE_ABOUTBOX_GREETING_TEXT_DEFAULT,
             'configuration_description' => MODULE_ABOUTBOX_GREETING_TEXT_DESCRIPTION,
             'use_function' => 'null',
-            'set_function' => 'zen_cfg_textarea_small('
+            'set_function' => 'zen_cfg_textarea_aboutbox('
           ),
           array(
             'configuration_title' => MODULE_ABOUTBOX_IMAGEPATH_TITLE,
