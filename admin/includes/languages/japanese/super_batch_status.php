@@ -17,7 +17,7 @@
 // $Id: super_batch_status.php 25 2006-02-03 18:55:56Z BlindSide $
 */
 
-define('HEADING_TITLE', 'バッチ ステータス変更');
+define('HEADING_TITLE', '注文ステータス一括変更');
 
 define('HEADING_SEARCH_FILTER', '検索条件');
 define('HEADING_UPDATE_ORDERS', 'チェックを入れたオーダーのステータスを変更');

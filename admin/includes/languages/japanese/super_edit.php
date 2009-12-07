@@ -27,6 +27,8 @@ define('HEADER_EDIT_TOTAL', '注文合計の値');
 define('HEADER_EDIT_CONTACT', '連絡データ');
 define('HEADER_EDIT_HISTORY', '注文履歴');
 
+define('HEADER_EXPLAIN', '注文金額に、項目の追加や編集ができます。<br />追加したい場合は空欄に項目名と金額を入力してください。');
+
 define('TABLE_HEADING_DELETE_COMMENTS', '削除');
 define('ENTRY_NAME', '名前:');
 define('ENTRY_ADDRESS', '住所:');
@@ -41,5 +43,7 @@ define('COMMENTS_SPLIT_OLD', 'オーダーは分けられました。  新しいオーダー: ');
 define('COMMENTS_SPLIT_NEW', '注文は分割されました。元の注文は: ');
 
 define('NL', "\n");
+
+
 
 ?>

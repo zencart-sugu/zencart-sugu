@@ -75,92 +75,57 @@
     }
 ?>
 <!-- body_text //-->
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="95%" cellspacing="0" cellpadding="2" align="center">
   <tr>
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
-        <td valign="top" class="invoiceHeading"><?php
-          echo nl2br(STORE_NAME_ADDRESS);
-         ?></td>
+        <td class="pageHeading"><?php echo nl2br(STORE_NAME_ADDRESS); ?></td>
         <td><?php echo zen_draw_separator('pixel_trans.gif', '20', '1'); ?></td>
         <td valign="top"><table border="0" cellspacing="2" cellpadding="0">
           <tr>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo HEADER_PHONE; ?></td>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo STORE_PHONE; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_PHONE; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_PHONE; ?></td>
           </tr>
           <tr>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo HEADER_FAX; ?></td>
-            <td class="invoiceHeading" align="left" valign="top"><?php echo STORE_FAX; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_FAX; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_FAX; ?></td>
           </tr>
           <tr>
             <td class="invoiceHeading" align="left" valign="bottom"><?php echo $prev_button; ?></td>
             <td class="invoiceHeading" align="right" valign="bottom"><?php echo $next_button; ?></td>
           </tr>
         </table></td>
-        <td class="invoiceHeading" align="right"><?php
-          echo zen_image(DIR_WS_IMAGES . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT) . '<br />';
-        ?></td>
+        <td class="invoiceHeading" align="right">
+          <img src="<?php echo getLogoImage("", true); ?>">
+        </td>
       </tr>
     </table></td>
   </tr>
   <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
+    <td>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td colspan="6"><?php echo zen_draw_separator(); ?></td>
       </tr>
       <tr>
-        <td><?php echo zen_draw_separator('pixel_trans.gif', '23', '1'); ?></td>
-        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
+	  	<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
           <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>        
-          <tr>
-            <td class="main"><strong><?php echo ENTRY_BILL_TO; ?></strong></td>
-          </tr>
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo zen_address_format($order->customer['format_id'], $order->billing, 1, '', '<br />'); ?></td>
-          </tr>
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo $order->customer['telephone']; ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></td>
-          </tr>
-        </table></td>
-        <td><?php echo zen_draw_separator('pixel_trans.gif', '60', '1'); ?></td>
-        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><strong><?php echo ENTRY_SHIP_TO; ?></strong></td>
-          </tr>
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
-          </tr>
-        </table></td>
-<?php
+					<th valign="top"><strong><?php echo ENTRY_BILL_TO; ?></strong></th>
+					<td valign="top">
+					<p><?php echo zen_address_format($order->customer['format_id'], $order->billing, 1, '', '<br />'); ?></p>
+					<p><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></p>
+					</td>
+					<th valign="top"><strong><?php echo ENTRY_SHIP_TO; ?></strong></th>
+					<td valign="top">
+					<p><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></p>
+					</td>
+					<?php
         if ($so->purchase_order) {
-?>
-        <td align="right" valign="top"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
-          <tr>
-            <td class="main" colspan="2"><strong><?php echo ENTRY_PO_INFO; ?></strong></td>
-          </tr>
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
+					?>
+					<th><strong><?php echo ENTRY_PO_INFO; ?></strong></th>
+					<td>
+						<table>
           <tr>
             <td class="main" align="left"><?php echo HEADER_PO_NUMBER; ?></td>
             <td class="main" align="right"><?php echo $so->purchase_order[0]['number']; ?></td>
@@ -173,26 +138,32 @@
             <td class="main" align="left"><?php echo HEADER_PO_TERMS; ?></td>
             <td class="main" align="right"><?php echo HEADER_PO_TERMS_LENGTH; ?></td>
           </tr>
-        </table></td>
-<?php } ?>
+						</table>
+					</td>
+					<?php } ?>
       </tr>
-    </table></td>
+			</table>
+		</td>
   </tr>
   <tr>
     <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
   </tr>
   <tr>
-    <td><table border="0" cellspacing="0" cellpadding="2">
+	  	<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
       <tr>
-        <td class="main"><strong><?php echo ENTRY_ORDER_ID . $oID; ?></strong></td>
+					<th colspan="2"><strong><?php echo ENTRY_ORDER_ID . $oID; ?></strong></th>
       </tr>
       <tr>
-        <td class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></td>
-        <td class="main"><?php echo zen_date_long($order->info['date_purchased']); ?></td>
+					<th><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></th>
+					<td><?php echo zen_date_long($order->info['date_purchased']); ?></td>
       </tr>
       <tr>
-        <td class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></td>
-        <td class="main"><?php echo $order->info['payment_method']; ?></td>
+					<th><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></th>
+					<td><?php echo $order->info['payment_method']; ?></td>
+				</tr>
+			</table>
+		</td>
       </tr>
     </table></td>
   </tr>
@@ -282,11 +253,20 @@
     </table></td>
   </tr>
 <?php if ($display_notes == 1) { ?>
+<tr>
+<td class="main" colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+</tr>
   <tr>
-    <td class="main" colspan="2"><strong><?php echo HEADER_CUSTOMER_NOTES; ?></strong></td>
+    <td class="main" colspan="2">
+		<table class="tableLayout3" border="0" width="100%" cellspacing="0" cellpadding="0">
+			<tr>
+				<th><strong><?php echo HEADER_CUSTOMER_NOTES; ?></strong></th>
   </tr>
   <tr>
-    <td class="main" colspan="2"><?php echo $customer_notes; ?></td>
+			<td><?php echo nl2br($customer_notes); ?></td>
+			</tr>
+		</table>
+	</td>
   </tr>
 <?php } ?>  
 </table>

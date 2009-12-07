@@ -220,14 +220,14 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top" align="center"><table border="0" width="95%" cellspacing="0" cellpadding="2">
 
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
          <tr><?php echo zen_draw_form('search', FILENAME_SPECIALS, '', 'get'); ?>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
-            <td class="smallText" align="right">
+            <td class="smallText searchBox" align="right">
 <?php
 // show reset search
   if (isset($_GET['search']) && zen_not_null($_GET['search'])) {
@@ -242,7 +242,10 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
             </td>
           </form></tr>
           <tr>
-            <td colspan="3" class="main"><?php echo TEXT_STATUS_WARNING; ?></td>
+            <td colspan="3"><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="main divLayout2"><?php echo TEXT_STATUS_WARNING; ?></td>
           </tr>
         </table></td>
       </tr>
@@ -316,34 +319,38 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "new_special", "end", "btnDate
 </script>
 
       <tr><form name="new_special" <?php echo 'action="' . zen_href_link(FILENAME_SPECIALS, zen_get_all_get_params(array('action', 'info', 'sID')) . 'action=' . $form_action . '&go_back=' . $_GET['go_back'], 'NONSSL') . '"'; ?> method="post"><?php if ($form_action == 'update') echo zen_draw_hidden_field('specials_id', $_GET['sID']); ?>
-        <td><br><table border="0" cellspacing="0" cellpadding="2">
+        <td><br><table border="0" cellspacing="0" cellpadding="2" class="tableLayout1" width="100%">
           <tr>
-            <td class="main"><?php echo TEXT_SPECIALS_PRODUCT; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SPECIALS_PRODUCT; ?>&nbsp;</th>
             <td class="main"><?php echo (isset($sInfo->products_name)) ? $sInfo->products_name . ' <small>(' . $currencies->format($sInfo->products_price) . ')</small>' : zen_draw_products_pull_down('products_id', 'size="5" style="font-size:10px"', $specials_array, true, $_GET['add_products_id'], true); echo zen_draw_hidden_field('products_price', (isset($sInfo->products_price) ? $sInfo->products_price : '')); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_SPECIALS_SPECIAL_PRICE; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SPECIALS_SPECIAL_PRICE; ?>&nbsp;</th>
             <td class="main"><?php echo zen_draw_input_field('specials_price', (isset($sInfo->specials_new_products_price) ? $sInfo->specials_new_products_price : '')); echo zen_draw_hidden_field('products_priced_by_attribute', $sInfo->products_priced_by_attribute); echo zen_draw_hidden_field('update_products_id', $sInfo->products_id); ?></td>
           </tr>
 
           <tr>
-            <td class="main"><?php echo TEXT_SPECIALS_AVAILABLE_DATE; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SPECIALS_AVAILABLE_DATE; ?>&nbsp;</th>
             <td class="main"><script language="javascript">StartDate.writeControl(); StartDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_SPECIALS_EXPIRES_DATE; ?>&nbsp;</td>
+            <th class="main"><?php echo TEXT_SPECIALS_EXPIRES_DATE; ?>&nbsp;</th>
             <td class="main"><script language="javascript">EndDate.writeControl(); EndDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
 
         </table></td>
       </tr>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main"><br><?php echo TEXT_SPECIALS_PRICE_TIP; ?></td>
-            <td class="main" align="right" valign="top"><br><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)) . '&nbsp;&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . ((isset($_GET['sID']) and $_GET['sID'] != '') ? '&sID=' . $_GET['sID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+            <td colspan="3"><?php echo zen_draw_separator('pixel_trans.gif', 1, 5); ?></td>
           </tr>
-        </table></td>
+          <tr>
+	  	<td align="center"><?php echo (($form_action == 'insert') ? zen_image_submit('button_insert.gif', IMAGE_INSERT) : zen_image_submit('button_update.gif', IMAGE_UPDATE)) . '&nbsp;&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . ((isset($_GET['sID']) and $_GET['sID'] != '') ? '&sID=' . $_GET['sID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+          </tr>
+	  <tr>
+            <td colspan="3"><?php echo zen_draw_separator('pixel_trans.gif', 1, 20); ?></td>
+          </tr>
+      <tr>
+        <td class="divLayout2"><br><?php echo TEXT_SPECIALS_PRICE_TIP; ?></td>
       </form></tr>
 <?php
   } else {
@@ -452,7 +459,7 @@ if (($_GET['page'] == '1' or $_GET['page'] == '') and $_GET['sID'] != '') {
     }
 ?>
               <tr>
-                <td colspan="4"><table border="0" width="100%" cellpadding="0"cellspacing="2">
+                <td colspan="9"><table border="0" width="100%" cellpadding="0"cellspacing="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $specials_split->display_count($specials_query_numrows, MAX_DISPLAY_SEARCH_RESULTS, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_SPECIALS); ?></td>
                     <td class="smallText" align="right"><?php echo $specials_split->display_links($specials_query_numrows, MAX_DISPLAY_SEARCH_RESULTS, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
@@ -508,9 +515,9 @@ if (($_GET['page'] == '1' or $_GET['page'] == '') and $_GET['sID'] != '') {
         $contents[] = array('text' => '' . TEXT_INFO_NEW_PRICE . ' ' . $currencies->format($sInfo->specials_new_products_price));
         $contents[] = array('text' => '' . TEXT_INFO_DISPLAY_PRICE . ' ' . zen_get_products_display_price($sInfo->products_id));
 
-        $contents[] = array('text' => '<br>' . TEXT_INFO_AVAILABLE_DATE . ' <b>' . (($sInfo->specials_date_available != '0001-01-01' and $sInfo->specials_date_available !='') ? zen_date_short($sInfo->specials_date_available) : TEXT_NONE) . '</b>');
-        $contents[] = array('text' => '<br>' . TEXT_INFO_EXPIRES_DATE . ' <b>' . (($sInfo->expires_date != '0001-01-01' and $sInfo->expires_date !='') ? zen_date_short($sInfo->expires_date) : TEXT_NONE) . '</b>');
-        $contents[] = array('text' => '' . TEXT_INFO_STATUS_CHANGE . ' ' . zen_date_short($sInfo->date_status_change));
+        $contents[] = array('text' => '<br>' . TEXT_INFO_AVAILABLE_DATE . ' <b>' . (($specials->fields['specials_date_available'] != '0001-01-01' and $specials->fields['specials_date_available'] !='') ? zen_date_short($specials->fields['specials_date_available']) : TEXT_NONE) . '</b>');
+        $contents[] = array('text' => '<br>' . TEXT_INFO_EXPIRES_DATE . ' <b>' . (($specials->fields['expires_date'] != '0001-01-01' and $specials->fields['expires_date'] !='') ? zen_date_short($specials->fields['expires_date']) : TEXT_NONE) . '</b>');
+       // $contents[] = array('text' => '' . TEXT_INFO_STATUS_CHANGE . ' ' . zen_date_short($sInfo->date_status_change));
         $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_CATEGORIES, '&action=new_product' . '&cPath=' . zen_get_product_path($sInfo->products_id, 'override') . '&pID=' . $sInfo->products_id . '&product_type=' . zen_get_products_type($sInfo->products_id)) . '">' . zen_image_button('button_edit_product.gif', IMAGE_EDIT_PRODUCT) . '<br />' . TEXT_PRODUCT_EDIT . '</a>');
 
         $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_SPECIALS, 'action=pre_add') . '">' . zen_image_button('button_select.gif', IMAGE_SELECT) . '<br />' . TEXT_INFO_MANUAL . '</a><br /><br />');

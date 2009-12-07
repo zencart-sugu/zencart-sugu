@@ -561,7 +561,8 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
 }
 ?>
-<table border="0" width="100%" cellspacing="2" cellpadding="2">
+<div id="bodyWrapper">
+<table border="0" width="95%" cellspacing="0" cellpadding="0">
 <?php if ($action == '') { ?>
       <tr>
         <td><table border="0" cellspacing="0" cellpadding="0">
@@ -574,7 +575,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
           </tr>
         </table></td>
       </tr>
-  <tr>
+  <!--<tr>
     <td class="smallText" width="100%" align="right">
       <?php
 
@@ -641,7 +642,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
       '</form>';
       ?>
     </td>
-  </tr>
+  </tr>-->
 
 <?php } ?>
   <tr>
@@ -1020,3 +1021,4 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+</div>

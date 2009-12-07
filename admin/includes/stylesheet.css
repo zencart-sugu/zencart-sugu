@@ -8,15 +8,16 @@ Released under the GNU General Public License
 */
 @import url("menu.css");/* including stylesheet for dhtml menu */
 @import url("index.css");/* including stylesheet for index.php */
+@import url("stock_attributes.css");/* including stylesheet for products with stock attributes */
 a{
-color:#0000ff;
+color:#DF882F;
 text-decoration:none;
 }
 a,body,html,table{
-font:normal normal 11px Verdana,sans-serif;
+font:normal normal 12px Verdana,sans-serif;
 }
 a:hover{
-color:#0000ff;
+color:#DF882F;
 text-decoration:underline;
 }
 a.headerLink:link{
@@ -40,61 +41,61 @@ font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxContentLink:link{
-color:#0000ff;
+color:#DF882F;
 text-decoration:none;
 }
 a.menuBoxContentLink:visited{
-color:#0000ff;
+color:#DF882F;
 text-decoration:none;
 }
 a.menuBoxContentLink:hover{
-color:#0000ff;
+color:#DF882F;
 text-decoration:underline;
 }
 a.menuBoxContentLink:active{
-color:#0000ff;
+color:#DF882F;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:link{
-color:#0000ff;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:visited{
-color:#0000ff;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:hover{
-color:#0000ff;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.menuBoxHeadingLink:active{
-color:#0000ff;
+color:#DF882F;
 font-weight:bold;
 text-decoration:none;
 }
 a.splitPageLink:link{
-color:#0000ff;
+color:#DF882F;
 text-decoration:none;
 }
 a.splitPageLink:visited{
-color:#0000ff;
+color:#DF882F;
 text-decoration:none;
 }
 a.splitPageLink:hover{
 background-color:#ffff33;
-color:#0000ff;
+color:#DF882F;
 text-decoration:underline;
 }
 a.splitPageLink:active{
-color:#0000ff;
+color:#DF882F;
 text-decoration:none;
 }
 body{
 background-color:#ffffff;
-color:#333333;
+color:#000000;
 margin:0;
 }
 .clearBoth {
@@ -126,6 +127,7 @@ width:400px;
 body#login legend{
 background:#ffffff;
 border:1px solid #c96e29;
+border:1px solid #ff4100;
 color:#333333;
 font-size:90%;
 padding:0.2em 0.5em;
@@ -164,9 +166,14 @@ span.SortOrderHeader{
 color:#ff6600;
 font-weight:bold;
 }
-span.SortOrderHeaderLink{
-color:#0000ff;
+.dataTableHeadingContent a{
+color:#ffbf00;
 font-weight:bold;
+}
+.dataTableHeadingContent a:hover{
+color:#ffbf00;
+font-weight:bold;
+text-decoration:underline;
 }
 td.alert,span.alert{
 color:#ff0000;
@@ -178,12 +185,11 @@ color:#333333;
 }
 td.ot-subtotal-Amount,td.ot-cod-fee-Amount,td.ot-group-pricing-Amount,td.ot-gv-Amount,td.ot-loworderfee-Amount,td.ot-shipping-Amount,td.ot-subtotal-Amount,td.ot-tax-Amount,td.ot-coupon-Amount{
 }
-td.ot-subtotal-Text,td.ot-cod-fee-Text,td.ot-total-Text,td.ot-group-pricing-Text,td.ot-gv-Text,td.ot-loworderfee-Text,td.ot-shipping-Text,td.ot-subtotal-Text,td.ot-tax-Text,td.ot-coupon-Text{
+td.ot-subtotal-Text,td.ot-total-Text,td.ot-total-Amount,td.ot-tax-Text,td.ot-tax-Text,td.balanceDueRem{
 font-weight:bold;
 }
 td.ot-total-Amount{
 border-top:1px solid #9a9a9a;
-font-weight:bold;
 }
 tr.attributeBoxContent{
 background-color:#dcdbd1;
@@ -197,7 +203,7 @@ color:#333333;
 background-color:#ffffff;
 }
 .attributes-odd{
-background-color:#f7f6ef;
+background-color:#F8F7EF;
 }
 .columnLeft{
 background-color:#f2f1ee;
@@ -208,6 +214,7 @@ padding:2px;
 }
 .dataTableContent{
 color:#333333;
+border-bottom:1px solid #e7e5da;
 }
 .dataTableContentBot{
 color:#333333;
@@ -216,7 +223,7 @@ color:#333333;
 color:#333333;
 }
 .dataTableHeadingContent{
-color:#333333;
+color:#FFFFFF;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois{
@@ -224,7 +231,7 @@ color:#333333;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:link,.dataTableHeadingContentWhois a:visited{
-color:#0000ff;
+color:#DF882F;
 font-weight:bold;
 }
 .dataTableHeadingContentWhois a:hover{
@@ -232,21 +239,21 @@ color:#ffffff;
 font-weight:bold;
 }
 .dataTableHeadingRow{
-background-color:#d7d6cc;
+background-color:#50504E;
 }
 .dataTableHeadingRowWhois{
-background-color:#d7d6cc;
+background-color:#22574C;
 }
 .dataTableRow{
-background-color:#f2f1ee;
+background-color:#F4F3F3;
 }
 .dataTableRowBot{
 background-color:#facbfa;
 }
 .dataTableRowOver{
-background-color:#ffffff;
 cursor:pointer;
 cursor:hand;
+background: #fce08c;
 }
 .dataTableRowOverBot{
 background-color:#ffffff;
@@ -255,7 +262,7 @@ background-color:#ffffff;
 background-color:#ffffff;
 }
 .dataTableRowSelected{
-background-color:#e7e6e0;
+background: #FCF3CE;
 }
 .dataTableRowSelectedBot{
 background-color:#ff93ff;
@@ -264,7 +271,7 @@ background-color:#ff93ff;
 background-color:#dee4e8;
 }
 .dataTableRowSpacer,td.dataTableRowSpacer,TR.dataTableRowSpacer{
-background-color:#d7d6cc;
+background-color:#22574C;
 color:#ff6600;
 font-size:11px;
 font-weight:bold;
@@ -292,6 +299,7 @@ font-weight:bold;
 }
 .headerBar{
 background-color:#c96e29;
+background-color:#ff4100;
 }
 .headerBarContent{
 color:#ffffff;
@@ -299,11 +307,11 @@ font-weight:bold;
 padding:2px;
 }
 .infoBoxContent{
-background-color:#e7e6e0;
+background: #FCF3CE;
 color:#333333;
 }
 .infoBoxHeading{
-background-color:#c96e29;
+background-color:#50504E;
 color:#ffffff;
 }
 .main{
@@ -331,6 +339,7 @@ text-decoration:line-through;
 }
 .pageHeading{
 color:#c96e29; /*727272*/
+color:#DF882F;
 font-size:16px;
 font-variant:small-caps;
 font-weight:bold;
@@ -349,7 +358,7 @@ cursor:pointer;
 cursor:hand;
 }
 .smallText{
-font-size:9px;
+font-size:11px;
 }
 .specialPrice{
 color:#ff6600;
@@ -357,6 +366,155 @@ color:#ff6600;
 .lookupAttention {
   color: #FF0000;
 }
+.searchBox input{
+width:300px;
+}
+.tableLayout1{
+border-top:1px solid #50504E;
+border-left:1px solid #50504E;
+}
+.tableLayout1 th{
+padding:10px;
+background:#50504E;
+color:#FFFFFF;
+text-align:left;
+vertical-align:top;
+border-bottom:1px solid #999999;
+border-right:1px solid #999999;
+empty-cells:show;
+}
+.tableLayout1 td{
+padding:10px;
+border-right:1px solid #50504E;
+border-bottom:1px solid #50504E;
+vertical-align:top;
+empty-cells:show;
+}
+.tableLayout1None{
+margin:10px 0 0 0;
+border-top:1px solid #50504E;
+border-left:1px solid #50504E;
+border-bottom:1px solid #50504E;
+}
+.tableLayout1None th{
+border-right:1px solid #999999;
+}
+.tableLayout1None td{
+border-right:1px solid #50504E;
+}
+.tableLayout1None table th{
+height:45px;
+padding:10px;
+background:#50504E;
+color:#FFFFFF;
+text-align:left;
+border-right:1px solid #999999;
+border-bottom:1px solid #999999;
+vertical-align:top;
+empty-cells:show;
+}
+.tableLayout1None table td{
+height:45px;
+padding:10px;
+border:none;
+border-bottom:1px solid #50504E;
+vertical-align:top;
+empty-cells:show;
+}
+
+.tableLayout2{
+border:solid 1px #FF4100;
+background:#EFEDEC;
+}
+.tableLayout2 th,
+.tableLayout2 td{
+padding:20px;
+}
+.tableLayout2 th table td,
+.tableLayout2 td table td{
+padding:0px;
+}
+.tableLayout3{
+margin:0 0 20px 0;
+border-top:1px solid #E7E5da;
+border-left:1px solid #E7E5da;
+}
+.tableLayout3 th,
+.tableLayout3 td{
+padding:10px;
+border-right:1px solid #E7E5da;
+border-bottom:1px solid #E7E5da;
+empty-cells:show;
+}
+.tableLayout3 th{
+color:#50504E;
+background:#FCF3CE;
+text-align:left;
+}
+.divLayout2{
+padding:20px;
+border:solid 1px #FF4100;
+background:#EFEDEC;
+}
+#bodyWrapper{
+width:95%;
+margin:10px auto;
+}
+.paddingNone{
+padding:0!important;
+}
+.borderNone th,
+.borderNone td{
+border:none!important;
+}
+.borderBottomNone{
+border-bottom:none!important;
+}
+.borderRightNone{
+border-right:none!important;
+}
+td.tdHeader1{
+background:#50504e;
+color:#FFFFFF;
+font-weight:bold;
+border-bottom:1px solid #999999;
+empty-cells:show;
+}
+.customersTable{
+border-collapse:collapse;
+}
+.alignR{
+text-align:right!important;
+}
+LABEL.inputLabel {
+	font-size: 0.95em;
+	width: 20em;
+	float: left;
+	}
+table#orders-list td{
+padding: 2px 5px;
+}
+table#orders-list td#shipping select{
+width:200px!important;
+}
+table#orders-list td#payment select{
+width:150px!important;
+}
+table#orders-list td#ctm input{
+width:100px!important;
+}
+table#orders-list td#orders_status select{
+width:130px!important;
+}
+table#superOrdersTable img{
+vertical-align:middle;
+}
+.marginBottomNone{
+margin-bottom:0!important;
+}
 .txtL{
 font-size:14px!important;
+}
+.border50504e{
+border-bottom:1px solid #50504e!important;
 }

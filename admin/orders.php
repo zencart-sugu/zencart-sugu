@@ -254,7 +254,7 @@ function couponpopupWindow(url) {
 
 <?php if (empty($action)) { ?>
 <!-- search -->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top"><table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
          <tr><?php echo zen_draw_form('search', FILENAME_ORDERS, '', 'get', '', true); ?>
@@ -294,32 +294,33 @@ function couponpopupWindow(url) {
     }
 ?>
       <tr>
-        <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td width="100%"><table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
-            <td class="pageHeading" align="right"><?php echo '<a href="javascript:history.back()">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
+          </tr>
+		  <tr>
+		  	<td class="pageHeading" align="cleft" colspan="2"><?php echo '<a href="javascript:history.back()">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
+			<td align="right" class="noprint"><?php echo '<a href="' . zen_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . zen_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '</a> <a href="' . zen_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . zen_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '</a> <a href="' . zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action'))) . '">' . zen_image_button('button_orders.gif', IMAGE_ORDERS) . '</a>'; ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
+        <td><table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
           <tr>
-            <td colspan="3"><?php echo zen_draw_separator(); ?></td>
-          </tr>
+            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tableLayout1">
           <tr>
-            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-              <tr>
-                <td class="main" valign="top"><strong><?php echo ENTRY_CUSTOMER; ?></strong></td>
+                <th class="main" valign="top"><strong><?php echo ENTRY_CUSTOMER; ?></strong></th>
                 <td class="main"><?php echo zen_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
-              </tr>
-              <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
+				<th class="main" valign="top"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></th>
+                <td class="main"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
+				<th class="main" valign="top"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></th>
+                <td class="main"><?php echo zen_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
               </tr>
 <!--
               <tr>
-                <td class="main"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></td>
-                <td class="main"><?php echo $order->customer['telephone']; ?></td>
+                <th class="main"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></th>
+                <td class="main" colspan="5"><?php echo $order->customer['telephone']; ?></td>
               </tr>
 -->
               <tr>
@@ -409,7 +410,10 @@ function couponpopupWindow(url) {
 }
 ?>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '20'); ?></td>
+      </tr>
+      <tr>
+        <td><table border="0" width="95%" cellspacing="0" cellpadding="2" align="center">
           <tr class="dataTableHeadingRow">
             <td class="dataTableHeadingContent" colspan="2"><?php echo TABLE_HEADING_PRODUCTS; ?></td>
             <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS_MODEL; ?></td>
@@ -482,12 +486,12 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td class="main"><table border="1" cellspacing="0" cellpadding="5">
+        <td class="main"><table border="0" cellspacing="0" cellpadding="0" width="95%" align="center" class="tableLayout1">
           <tr>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_DATE_ADDED; ?></strong></td>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_CUSTOMER_NOTIFIED; ?></strong></td>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_STATUS; ?></strong></td>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_COMMENTS; ?></strong></td>
+            <th align="center"><strong><?php echo TABLE_HEADING_DATE_ADDED; ?></strong></th>
+            <th align="center"><strong><?php echo TABLE_HEADING_CUSTOMER_NOTIFIED; ?></strong></th>
+            <th align="center"><strong><?php echo TABLE_HEADING_STATUS; ?></strong></th>
+            <th align="center"><strong><?php echo TABLE_HEADING_COMMENTS; ?></strong></th>
           </tr>
 <?php
     $orders_history = $db->Execute("select orders_status_id, date_added, customer_notified, comments
@@ -579,7 +583,7 @@ if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
   } else {
 ?>
       <tr>
-        <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td width="100%"><table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>

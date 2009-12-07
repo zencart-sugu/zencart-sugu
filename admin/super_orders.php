@@ -319,7 +319,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                   <strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong><?php
                     if (!$so->status) {
                       echo '<br /><a href="javascript:popupWindow(\'' .
-                      zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=contact', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=600,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
+                      zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=contact', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=750,height=650,screenX=150,screenY=100,top=100,left=150\')">' .
                       zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_CONTACT) . ICON_EDIT_CONTACT . '</a>';
                     }
                 ?></td>
@@ -377,6 +377,11 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 <td class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></td>
                 <td class="main"><?php echo $order->info['payment_method']; ?></td>
               </tr>
+<?php
+    if (MODULE_NETMOVE_STATUS == 'true') {
+      netmove_cv_display_order_id($oID);
+    }
+?>
             </table></td>
 <?php
     $notes = $db->Execute("select * from " . TABLE_CUSTOMERS_ADMIN_NOTES . " where customers_id = '" . $order->customer['id'] . "'");
@@ -1088,7 +1093,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2" id="superOrdersTable">
               <tr class="dataTableHeadingRow">
 <?php
 // Sort Listing
@@ -1165,10 +1170,10 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
     //_TODO add new warning to diff between =! name and =! address
     $show_difference = '';
     if (($orders->fields['delivery_name'] != $orders->fields['billing_name'] and $orders->fields['delivery_name'] != '')) {
-      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED_ORDERS_EXPORT, 10, 10);
     }
     if (($orders->fields['delivery_street_address'] != $orders->fields['billing_street_address'] and $orders->fields['delivery_street_address'] != '')) {
-      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+      $show_difference = '&nbsp;' . zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED_ORDERS_EXPORT, 10, 10);
     }
     //$show_payment_type = $orders->fields['payment_module_code'] . '<br />' . $orders->fields['shipping_module_code'];
     //<td class="dataTableContent" align="left" width="50"><?php echo $show_payment_type; </td>
@@ -1375,6 +1380,12 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <!-- body_text_eof //-->
   </tr>
 </table>
+<?php
+// easy admin products by warranty
+if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
+  warranty_admin_simplify_end();
+}
+?>
 <!-- body_eof //-->
 <?php
 // easy admin simplify

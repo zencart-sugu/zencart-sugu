@@ -214,7 +214,7 @@ check_select('audience_selected','',"<?php echo ERROR_PLEASE_SELECT_AUDIENCE; ?>
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+    <td width="100%" valign="top"><table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
       <tr>
         <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -281,23 +281,17 @@ check_select('audience_selected','',"<?php echo ERROR_PLEASE_SELECT_AUDIENCE; ?>
       </tr>
       <tr><?php echo zen_draw_form('newsletter', FILENAME_NEWSLETTERS, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'action=' . $form_action,'post', 'onsubmit="return check_form(newsletter);"'); if ($form_action == 'update') echo zen_draw_hidden_field('newsletter_id', $nID); ?>
 
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <td><table border="0" width="100%" cellspacing="0" cellpadding="0" class="tableLayout1">
           <tr>
-            <td class="main"><?php echo TEXT_NEWSLETTER_MODULE; ?></td>
+            <th class="main"><?php echo TEXT_NEWSLETTER_MODULE; ?></th>
             <td class="main"><?php echo zen_draw_pull_down_menu('module', $modules_array, $nInfo->module); ?></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_NEWSLETTER_TITLE; ?></td>
+            <th class="main"><?php echo TEXT_NEWSLETTER_TITLE; ?></th>
             <td class="main"><?php echo zen_draw_input_field('title', $nInfo->title, 'size="50"', true); ?></td>
           </tr>
           <tr>
-            <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main" valign="top"><?php echo TEXT_NEWSLETTER_CONTENT_HTML; ?></td>
+            <th class="main" valign="top"><?php echo TEXT_NEWSLETTER_CONTENT_HTML; ?></th>
             <td class="main">
         <?php if (is_null($_SESSION['html_editor_preference_status'])) echo TEXT_HTML_EDITOR_NOT_DEFINED; ?>
         <?php if ($_SESSION['html_editor_preference_status']=="FCKEDITOR") {
@@ -310,7 +304,7 @@ check_select('audience_selected','',"<?php echo ERROR_PLEASE_SELECT_AUDIENCE; ?>
           </td>
           </tr>
           <tr>
-            <td class="main" valign="top"><?php echo TEXT_NEWSLETTER_CONTENT; ?></td>
+            <th class="main" valign="top"><?php echo TEXT_NEWSLETTER_CONTENT; ?></th>
             <td class="main"><?php echo zen_draw_textarea_field('content', 'soft', '100%', '20', $nInfo->content); ?></td>
           </tr>
         </table></td>
@@ -321,7 +315,7 @@ check_select('audience_selected','',"<?php echo ERROR_PLEASE_SELECT_AUDIENCE; ?>
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
-            <td class="main" align="right"><?php echo (($form_action == 'insert') ? zen_image_submit('button_save.gif', IMAGE_SAVE) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_NEWSLETTERS, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . (isset($_GET['nID']) ? 'nID=' . $_GET['nID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+            <td class="main" align="center"><?php echo (($form_action == 'insert') ? zen_image_submit('button_save.gif', IMAGE_SAVE) : zen_image_submit('button_update.gif', IMAGE_UPDATE)). '&nbsp;&nbsp;<a href="' . zen_href_link(FILENAME_NEWSLETTERS, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . (isset($_GET['nID']) ? 'nID=' . $_GET['nID'] : '')) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
           </tr>
         </table></td>
       </form></tr>
@@ -336,16 +330,30 @@ check_select('audience_selected','',"<?php echo ERROR_PLEASE_SELECT_AUDIENCE; ?>
     $nInfo = new objectInfo($newsletter->fields);
 ?>
       <tr>
-        <td align="right"><?php echo '<a href="' . zen_href_link(FILENAME_NEWSLETTERS, 'page=' . $_GET['page'] . '&nID=' . $_GET['nID']) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
+        <td align="center"><?php echo '<a href="' . zen_href_link(FILENAME_NEWSLETTERS, 'page=' . $_GET['page'] . '&nID=' . $_GET['nID']) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
+      </tr>
+	<tr>
+		<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
       </tr>
       <tr>
-        <td width="500"><hr /><strong><?php echo strip_tags(TEXT_NEWSLETTER_CONTENT_HTML); ?></strong><br /><?php echo nl2br($nInfo->content_html); ?></td>
+        <td width="500">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0" class="tableLayout1">
+				<tr>
+					<th width="30%"><strong><?php echo strip_tags(TEXT_NEWSLETTER_CONTENT_HTML); ?></strong></th>
+					<td><?php echo nl2br($nInfo->content_html); ?></td>
       </tr>
       <tr>
-        <td width="500"><hr /><strong><?php echo strip_tags(TEXT_NEWSLETTER_CONTENT); ?></strong><br /><tt><?php echo nl2br($nInfo->content); ?></tt><hr /></td>
+					<th width="30%"><strong><?php echo strip_tags(TEXT_NEWSLETTER_CONTENT); ?></strong></th>
+					<td><tt><?php echo nl2br($nInfo->content); ?></tt></td>
+				</tr>
+			</table>
+		</td>
       </tr>
       <tr>
-        <td align="right"><?php echo '<a href="' . zen_href_link(FILENAME_NEWSLETTERS, 'page=' . $_GET['page'] . '&nID=' . $_GET['nID']) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
+		<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+	</tr>
+      <tr>
+        <td align="center"><?php echo '<a href="' . zen_href_link(FILENAME_NEWSLETTERS, 'page=' . $_GET['page'] . '&nID=' . $_GET['nID']) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
       </tr>
 <?php
   } elseif ($action == 'send') {

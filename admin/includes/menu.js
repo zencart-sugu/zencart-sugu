@@ -325,7 +325,9 @@ function cssjsmenu(menuid)
   }
 
   var menudiv = document.getElementById(menuid);
-
+  if (menudiv == null) {
+      return false;
+  }
   // ul
   var ul = new Array();
 

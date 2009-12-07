@@ -70,28 +70,44 @@
 <html <?php echo HTML_PARAMS; ?>>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
-<title><?php echo TITLE; ?></title>
+<title><?php echo HEADER_PACKINGSLIP . (int)$oID; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script language="javascript" src="includes/menu.js">
 </script>
 </head>
 
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
+<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" id="bodyWrapper">
 <!-- body_text //-->
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td class="pageHeading"><?php echo nl2br(STORE_NAME_ADDRESS); ?></td>
-        <td class="pageHeading" align="right"><a href="<?php echo FILENAME_SUPER_PACKINGSLIP . '?' . zen_get_all_get_params(); ?>"><?php echo zen_image(DIR_WS_IMAGES . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT)?></a></td>
+        <td><?php echo zen_draw_separator('pixel_trans.gif', '20', '1'); ?></td>
+        <td valign="top"><table border="0" cellspacing="2" cellpadding="0">
+          <tr>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_PHONE; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_PHONE; ?></td>
+          </tr>
+          <tr>
+            <td class="pageHeading" align="left" valign="top"><?php echo HEADER_FAX; ?></td>
+            <td class="pageHeading" align="left" valign="top"><?php echo STORE_FAX; ?></td>
+          </tr>
+          <tr>
+            <td class="invoiceHeading" align="left" valign="bottom"><?php echo $prev_button; ?></td>
+            <td class="invoiceHeading" align="right" valign="bottom"><?php echo $next_button; ?></td>
+          </tr>
+        </table></td>
+        <td class="pageHeading" align="right">
+<?php if(MODULE_EASY_DESIGN_STATUS == 'True'){ ?>
+          <img src="<?php echo getLogoImage("", true); ?>">
+<?php } ?>
+        </td>
       </tr>
     </table></td>
   </tr>
   <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
-      <tr>
-        <td colspan="4"><?php echo zen_draw_separator(); ?></td>
-      </tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 <?php
       $order_check = $db->Execute("SELECT cc_cvv, customers_name, customers_company, customers_street_address,
@@ -109,33 +125,21 @@
                                     WHERE orders_id = '" . (int)$oID . "'");
 ?>
       <tr>
-        <td><?php echo zen_draw_separator('pixel_trans.gif', '25', '1'); ?></td>
-        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
+			<td colspan="4">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
           <tr>
-            <td class="main"><strong><?php echo ENTRY_SHIP_TO; ?></strong></td>
+					<th><strong><?php echo ENTRY_SHIP_TO; ?></strong></th>
+					<td>
+					<p><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></p>
+					<p><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></p>
+					</td>
+					<th><strong><?php echo ENTRY_SOLD_TO; ?></strong></th>
+					<td>
+					<p><?php echo zen_address_format($order->customer['format_id'], $order->billing, 1, '', '<br />'); ?></p>
+					</td>
           </tr>
-          <tr>
-            <td class="main"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
-          </tr>
-          <tr>
-            <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo $order->customer['telephone']; ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo '<a href="mailto:' . $order->customer['email_address'] . '">' . $order->customer['email_address'] . '</a>'; ?></td>
-          </tr>
-        </table></td>
-        <td><?php echo zen_draw_separator('pixel_trans.gif', '175', '1'); ?></td>
-        <td valign="top" align="right"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main"><strong><?php echo ENTRY_SOLD_TO; ?></strong></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo zen_address_format($order->customer['format_id'], $order->billing, 1, '', '<br />'); ?></td>
-          </tr>
-        </table></td>
+			</table>
+			</td>
       </tr>
     </table></td>
   </tr>
@@ -153,20 +157,20 @@
   }
 ?>
   <tr>
-    <td><table border="0" cellspacing="0" cellpadding="2">
+    <td><table border="0" cellspacing="0" cellpadding="2" class="tableLayout1" width="100%">
       <tr>
-        <td class="main"><strong><?php echo ENTRY_ORDER_ID . $oID; ?></strong></td>
+        <th class="main" colspan="2"><strong><?php echo ENTRY_ORDER_ID . $oID; ?></strong></th>
       </tr>
       <tr>
-        <td class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></td>
+        <th class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></th>
         <td class="main"><?php echo zen_date_long($order->info['date_purchased']); ?></td>
       </tr>
       <tr>
-        <td class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></td>
+        <th class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></th>
         <td class="main"><?php echo $order->info['payment_method']; ?></td>
       </tr>
       <tr>
-        <td class="main"><strong><?php echo ENTRY_SHIPPING_METHOD; ?></strong></td>
+        <th class="main"><strong><?php echo ENTRY_SHIPPING_METHOD; ?></strong></th>
         <td class="main"><?php echo $shipping_method; ?></td>
       </tr>
     </table></td>
@@ -246,13 +250,19 @@ echo '        <td class="dataTableContent" align="left"></td>';
   </tr>
 <?php if ($customer_notes) { ?>
   <tr>
-    <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
+    <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '15'); ?></td>
   </tr>
   <tr>
-    <td class="main" colspan="2"><strong><?php echo HEADER_CUSTOMER_NOTES; ?></strong></td>
+    <td class="main" colspan="2">
+		<table border="0" cellspacing="0" cellpadding="0" class="tableLayout3" width="100%">
+			<tr>
+				<th><strong><?php echo HEADER_CUSTOMER_NOTES; ?></strong></th>
   </tr>
   <tr>
-    <td class="main" colspan="2"><?php echo $customer_notes; ?></td>
+				<td><?php echo nl2br($customer_notes); ?></td>
+			</tr>
+		</table>
+	</td>
   </tr>
 <?php } ?>
 <?php if ($_GET['split']) { ?>

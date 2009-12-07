@@ -537,8 +537,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
 }
 ?>
-  <table border="0" width="75%" cellspacing="0" cellpadding="0" align="center">
-      <tr>
+  <table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
         <td width="100%">
            <table width="100%" border="0" cellspacing="0" cellpadding="2">
              <tr>
@@ -562,6 +561,9 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
              </tr>
           </table>
        </td>
+     </tr>
+	<tr>
+		<td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
      </tr>
      <tr>
         <td valign="top" width="50%">
@@ -620,7 +622,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
       while (!$products_values->EOF) {
         $rows++;
 ?>
-                  <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+                  <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
                     <td align="center" class="smallText">&nbsp;<?php echo $products_values->fields['products_id']; ?>&nbsp;</td>
                     <td class="smallText">&nbsp;<?php echo $products_values->fields['products_name']; ?>&nbsp;</td>
                     <td class="smallText" align="right">&nbsp;<?php echo $options_values->fields["products_options_sort_order"]; ?>&nbsp;</td>
@@ -737,7 +739,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
       $products_options_values_sort_order = $values_values->fields['products_options_values_sort_order'];
       $rows++;
 ?>
-              <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+              <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
 // FIX HERE
 // edit option values
@@ -816,7 +818,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <?php
     if ($action != 'update_option_value') {
 ?>
-              <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
+              <tr class="dataTableRow <?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
       echo '<form name="values" action="' . zen_href_link(FILENAME_OPTIONS_VALUES_MANAGER, 'action=add_product_option_values' . (isset($_GET['option_page']) ? '&option_page=' . $_GET['option_page'] . '&' : '') . (isset($_GET['value_page']) ? '&value_page=' . $_GET['value_page'] . '&' : '') . (isset($_GET['attribute_page']) ? '&attribute_page=' . $_GET['attribute_page'] : '') ) . '" method="post">';
 ?>
@@ -843,7 +845,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 </select>&nbsp;</td>
                 <td class="smallText"><input type="hidden" name="value_id" value="<?php echo $next_id; ?>"><?php echo $inputs; ?></td>
                 <td colspan="1" class="smallText"><input type="hidden" name="value_id" value="<?php echo $next_id; ?>"><?php echo $inputs2; ?></td>
-                <td align="center" class="smallText">&nbsp;<?php echo zen_image_submit('button_insert.gif', IMAGE_INSERT); ?>&nbsp;</td>
+                <td align="center" class="smallText">&nbsp;<?php echo zen_image_submit('button_addition.gif', IMAGE_ADDITION); ?>&nbsp;</td>
 <?php
       echo '</form>';
 ?>

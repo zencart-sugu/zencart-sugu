@@ -1,6 +1,6 @@
 /*
  * Bazillyo's Spiffy DHTML Popup Calendar Control - version 2.1
- * ©2001 S. Ousta 
+ * ©²001 S. Ousta 
  * see the included readme.htm file for license information and release notes.
  * 
  * For more information see:
@@ -563,7 +563,7 @@ var calMgr = new spiffyCalManager();
 
 function ctlSpiffyCalendarBox(strVarName, strFormName, strTextBoxName, strBtnName, strDefaultValue, intBtnMode) {
 
-	var msNames     = new makeArray0('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+	var msNames     = new makeArray0('1·î','2·î','3·î','4·î','5·î','6·î','7·î','8·î','9·î','10·î','11·î','12·î');
 	var msDays      = new makeArray0(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 	var msDOW       = new makeArray0('S','M','T','W','T','F','S');
 
@@ -926,7 +926,7 @@ function ctlSpiffyCalendarBox(strVarName, strFormName, strTextBoxName, strBtnNam
 			strTemp+=' onChange="calMgr.validateDate('+'document.'+this.formName+'.'+this.textBoxName+','+this.varName+'.required,'+this.varName+'.minDate,'+this.varName+'.maxDate);" onBlur="calMgr.formatDate(document.'+this.formName+'.'+this.textBoxName+','+this.varName+'.dateFormat);" ';
 		}
 
-		strHold='<input class="cal-TextBox" type="text" name="' + this.textBoxName + '"' + strTemp + 'size="12" value="' + this.getSelectedDate() + '">';
+		strHold='<input class="cal-TextBox" type="text" name="' + this.textBoxName + '"' + strTemp + 'size="10" value="' + this.getSelectedDate() + '">';
 		if (!scIE) {
 			strTemp=' href="javascript:calClick();return false;" ';
 		}
