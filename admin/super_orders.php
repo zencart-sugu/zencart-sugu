@@ -100,13 +100,14 @@
       break;
       case 'update_order':
         $status = zen_db_scrub_in($_POST['status'], true);
+//        $comments = zen_db_scrub_in($_POST['comments']);
         $comments = $_POST['comments'];
         $comments = stripslashes($comments);
         $comments = trim($comments);
         $comments = mysql_escape_string($comments);
         $comments = htmlspecialchars($comments);
 
-        $check_status = $db->Execute("select customers_name, customers_email_address, orders_status,
+        $check_status = $db->Execute("select customers_id, customers_name, customers_email_address, orders_status,
                                       date_purchased from " . TABLE_ORDERS . "
                                       where orders_id = '" . (int)$oID . "'");
 
@@ -184,6 +185,7 @@
 <link rel="stylesheet" type="text/css" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
+<script language="javascript" src="includes/javascript/jquery.js"></script>
 <script type="text/javascript">
   <!--
   function init()
@@ -218,12 +220,12 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <!-- body_text //-->
 <?php if (empty($action)) {?>
 <!-- search -->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top" align="center"><table border="0" width="95%" cellspacing="0" cellpadding="2">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
          <tr><?php echo zen_draw_form('search', FILENAME_SUPER_ORDERS, '', 'get', '', true); ?>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
-            <td colspan="2" class="smallText" align="right">
+            <td colspan="2" class="smallText searchBox" align="right">
 <?php
   // show search reset
   if ((isset($_GET['search']) && zen_not_null($_GET['search'])) or $_GET['cID'] !='') {
@@ -299,57 +301,41 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
               </tr>
             </table></td>
             <td align="right"><?php
-              echo '<a href="' . zen_href_link(FILENAME_SUPER_DATA_SHEET, 'oID=' . $oID, $request_type) . '" target="_blank">' . zen_image_button('btn_print.gif', ICON_ORDER_PRINT) . '</a>&nbsp;&nbsp;';
-              echo '<a href="' . zen_href_link(FILENAME_SUPER_INVOICE, 'oID=' . $oID, $request_type) . '" target="_blank">' . zen_image_button('button_invoice.gif', ICON_ORDER_INVOICE) . '</a>&nbsp;&nbsp;';
-              echo '<a href="' . zen_href_link(FILENAME_SUPER_PACKINGSLIP, 'oID=' . $oID, $request_type) . '" target="_blank">' . zen_image_button('button_packingslip.gif', ICON_ORDER_PACKINGSLIP) . '</a>&nbsp;&nbsp;';
+              echo '<a href="' . zen_href_link(FILENAME_SUPER_DATA_SHEET, 'oID=' . $oID) . '" target="_blank">' . zen_image_button('btn_print.gif', ICON_ORDER_PRINT) . '</a>&nbsp;&nbsp;';
+              echo '<a href="' . zen_href_link(FILENAME_SUPER_INVOICE, 'oID=' . $oID) . '" target="_blank">' . zen_image_button('button_invoice.gif', ICON_ORDER_INVOICE) . '</a>&nbsp;&nbsp;';
+              echo '<a href="' . zen_href_link(FILENAME_SUPER_PACKINGSLIP, 'oID=' . $oID) . '" target="_blank">' . zen_image_button('button_packingslip.gif', ICON_ORDER_PACKINGSLIP) . '</a>&nbsp;&nbsp;';
               echo '<a href="javascript:history.back()">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>';
             ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td colspan="3"><?php echo zen_draw_separator(); ?></td>
-          </tr>
-          <tr>
-            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
+        <td align="center"><table width="95%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
               <tr>
-                <td class="main" valign="top">
+                <th class="main" valign="top">
                   <strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong><?php
                     if (!$so->status) {
                       echo '<br /><a href="javascript:popupWindow(\'' .
                       zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=contact', $request_type) . '\', \'scrollbars=yes,resizable=yes,width=750,height=650,screenX=150,screenY=100,top=100,left=150\')">' .
                       zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_CONTACT) . ICON_EDIT_CONTACT . '</a>';
                     }
-                ?></td>
+                ?></th>
                 <td class="main"><?php echo zen_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
-              </tr>
-            </table></td>
-            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-              <tr>
-                <td class="main" valign="top"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></td>
+             
+                <th class="main" valign="top"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></th>
                 <td class="main"><?php echo zen_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
-              </tr>
-            </table></td>
-            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-              <tr>
-                <td class="main" valign="top"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></td>
+              
+                <th class="main" valign="top"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></th>
                 <td class="main"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
               </tr>
             </table></td>
           </tr>
-        </table></td>
-      </tr>
       <tr>
-        <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-      </tr>
-      <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td align="center"><table border="0" width="95%" cellspacing="0" cellpadding="0">
           <tr>
-            <td><table border="0" cellspacing="0" cellpadding="2">
+            <td><table border="0" width="100%" cellspacing="0" cellpadding="0" class="tableLayout1">
               <tr>
-                <td class="main"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></td>
+                <th class="main"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></th>
                 <td class="main"><?php echo $order->customer['telephone']; ?></td>
               </tr>
               <tr>
@@ -359,22 +345,20 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 ?></td>
               </tr>
               <tr>
-                <td class="main"><strong><?php echo TEXT_INFO_IP_ADDRESS; ?></strong></td>
+                <th class="main"><strong><?php echo TEXT_INFO_IP_ADDRESS; ?></strong></th>
                 <?php if ($order->info['ip_address'] != '') { ?>
                 <td class="main"><?php echo $order->info['ip_address'] . '&nbsp;[<a target="_blank" href="http://www.dnsstuff.com/tools/whois.ch?ip=' . $order->info['ip_address'] . '">' . TEXT_WHOIS_LOOKUP . '</a>]'; ?></td>
                 <?php } else { ?>
                 <td class="main"><?php echo TEXT_NONE; ?></td>
                 <?php } ?>
               </tr>
+              
               <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
+                <th class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></th>
+                <td class="main"><?php echo strftime(DATE_FORMAT_LONG, strtotime($order->info['date_purchased'])); ?></td>
               </tr>
               <tr>
-                <td class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></td>
-                <td class="main"><?php echo zen_datetime_long($order->info['date_purchased']); ?></td>
-              </tr>
-              <tr>
-                <td class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></td>
+                <th class="main"><strong><?php echo ENTRY_PAYMENT_METHOD; ?></strong></th>
                 <td class="main"><?php echo $order->info['payment_method']; ?></td>
               </tr>
 <?php
@@ -404,31 +388,29 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <?php
     } // END if ($notes->RecordCount() > 0)
 ?>
-            <td align="right"><table border="0" cellspacing="0" cellpadding="2">
+            <td align="right" align="center"><table width="95%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
 <?php
     if (zen_not_null($order->info['cc_type']) || zen_not_null($order->info['cc_owner']) || zen_not_null($order->info['cc_number'])) {
 ?>
+              
               <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-              </tr>
-              <tr>
-                <td class="main"><?php echo ENTRY_CREDIT_CARD_TYPE; ?></td>
+                <th class="main"><?php echo ENTRY_CREDIT_CARD_TYPE; ?></th>
                 <td class="main"><?php echo $order->info['cc_type']; ?></td>
               </tr>
               <tr>
-                <td class="main"><?php echo ENTRY_CREDIT_CARD_OWNER; ?></td>
+                <th class="main"><?php echo ENTRY_CREDIT_CARD_OWNER; ?></th>
                 <td class="main"><?php echo $order->info['cc_owner']; ?></td>
               </tr>
               <tr>
-                <td class="main"><?php echo ENTRY_CREDIT_CARD_NUMBER; ?></td>
+                <th class="main"><?php echo ENTRY_CREDIT_CARD_NUMBER; ?></th>
                 <td class="main"><?php echo $order->info['cc_number']; ?></td>
               </tr>
               <tr>
-                <td class="main"><?php echo ENTRY_CREDIT_CARD_CVV; ?></td>
+                <th class="main"><?php echo ENTRY_CREDIT_CARD_CVV; ?></th>
                 <td class="main"><?php echo $order->info['cc_cvv']; ?></td>
               </tr>
               <tr>
-                <td class="main"><?php echo ENTRY_CREDIT_CARD_EXPIRES; ?></td>
+                <th class="main"><?php echo ENTRY_CREDIT_CARD_EXPIRES; ?></th>
                 <td class="main"><?php echo $order->info['cc_expires']; ?></td>
               </tr>
 <?php
@@ -445,9 +427,9 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
       if (!$so->payment && !$so->refund && !$so->purchase_order && !$so->po_payment) {
 ?>
       <tr>
-        <td><table border="0" cellspacing="0" cellpadding="2">
+        <td align="center"><table border="0" width="95%" cellspacing="0" cellpadding="2" class="tableLayout2">
           <tr>
-            <td class="main"><strong><?php echo TEXT_NO_PAYMENT_DATA; ?></strong></td>
+            <th class="main"><strong><?php echo TEXT_NO_PAYMENT_DATA; ?></strong></th>
             <td class="main"><?php $so->button_add('payment'); $so->button_add('purchase_order'); $so->button_add('refund'); ?></td>
           </tr>
         </table></td>
@@ -457,9 +439,9 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
       else {
 ?>
       <tr>
-        <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
+        <td align="center"><table width="95%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
           <tr>
-            <td class="main"><strong><?php echo TEXT_PAYMENT_DATA; ?></strong></td>
+            <th class="main"><strong><?php echo TEXT_PAYMENT_DATA; ?></strong></th>
             <td align="right" colspan="6"><?php $so->button_add('payment'); $so->button_add('purchase_order'); $so->button_add('refund'); ?></td>
           </tr>
           <tr class="dataTableHeadingRow">
@@ -686,24 +668,32 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
       </tr>
       <?php if (!$so->status) { ?>
       <tr>
-        <td class="main"><?php echo '<a href="javascript:popupWindow(\'' .
+        <td class="main" align="center">
+		<table width="95%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td>
+		<?php echo '<a href="javascript:popupWindow(\'' .
           zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=product', $request_type) . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
           zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_PRODUCT) . ICON_EDIT_PRODUCT . '</a>';
-        ?></td>
+        ?>
+		</td>
+		</tr>
+		</table>
+		</td>
       </tr>
       <?php } ?>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <td align="center"><table border="0" width="95%" cellspacing="0" cellpadding="2">
           <tr class="dataTableHeadingRow">
             <?php if (sizeof($order->products) > 1) { ?>
             <td class="dataTableHeadingContent">&nbsp;</td>
             <?php } ?>
             <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS; ?></td>
             <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS_MODEL; ?></td>
-            <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_TAX; ?></td>
+<!--            <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_TAX; ?></td>
             <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_PRICE_EXCLUDING_TAX; ?></td>
             <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_PRICE_INCLUDING_TAX; ?></td>
-            <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_TOTAL_EXCLUDING_TAX; ?></td>
+            <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_TOTAL_EXCLUDING_TAX; ?></td>-->
             <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_TOTAL_INCLUDING_TAX; ?></td>
           </tr>
 <?php
@@ -731,19 +721,19 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
 
       echo '            </td>' . "\n" .
            '            <td class="dataTableContent" valign="middle">' . $order->products[$i]['model'] . '</td>' . "\n" .
-           '            <td class="dataTableContent" align="right" valign="middle">' . zen_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n" .
-           '            <td class="dataTableContent" align="right" valign="middle"><strong>' .
-                          $currencies->format($order->products[$i]['final_price'], true, $order->info['currency'], $order->info['currency_value']) .
-                          ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format($order->products[$i]['onetime_charges'], true, $order->info['currency'], $order->info['currency_value']) : '') .
-                        '</strong></td>' . "\n" .
-           '            <td class="dataTableContent" align="right" valign="middle"><strong>' .
-                          $currencies->format(zen_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) .
-                          ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format(zen_add_tax($order->products[$i]['onetime_charges'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) : '') .
-                        '</strong></td>' . "\n" .
-           '            <td class="dataTableContent" align="right" valign="middle"><strong>' .
-                          $currencies->format($order->products[$i]['final_price'] * $order->products[$i]['qty'], true, $order->info['currency'], $order->info['currency_value']) .
-                          ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format($order->products[$i]['onetime_charges'], true, $order->info['currency'], $order->info['currency_value']) : '') .
-                        '</strong></td>' . "\n" .
+//           '            <td class="dataTableContent" align="right" valign="middle">' . zen_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n" .
+//           '            <td class="dataTableContent" align="right" valign="middle"><strong>' .
+//                          $currencies->format($order->products[$i]['final_price'], true, $order->info['currency'], $order->info['currency_value']) .
+//                          ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format($order->products[$i]['onetime_charges'], true, $order->info['currency'], $order->info['currency_value']) : '') .
+//                        '</strong></td>' . "\n" .
+//           '            <td class="dataTableContent" align="right" valign="middle"><strong>' .
+//                          $currencies->format(zen_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) .
+//                          ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format(zen_add_tax($order->products[$i]['onetime_charges'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) : '') .
+//                        '</strong></td>' . "\n" .
+//           '            <td class="dataTableContent" align="right" valign="middle"><strong>' .
+//                          $currencies->format($order->products[$i]['final_price'] * $order->products[$i]['qty'], true, $order->info['currency'], $order->info['currency_value']) .
+//                          ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format($order->products[$i]['onetime_charges'], true, $order->info['currency'], $order->info['currency_value']) : '') .
+//                        '</strong></td>' . "\n" .
            '            <td class="dataTableContent" align="right" valign="middle"><strong>' .
                           $currencies->format(zen_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax']) * $order->products[$i]['qty'], true, $order->info['currency'], $order->info['currency_value']) .
                           ($order->products[$i]['onetime_charges'] != 0 ? '<br />' . $currencies->format(zen_add_tax($order->products[$i]['onetime_charges'], $order->products[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) : '') .
@@ -770,7 +760,15 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
              $colspan = 8;
            }
 ?>
-            <td align="right" colspan="<?php echo $colspan; ?>"><table border="0" cellspacing="0" cellpadding="2">
+            <td align="right" colspan="<?php echo $colspan; ?>">
+			</td>
+          </tr>
+        </table>
+		<table width="95%">
+		<tr>
+		<td align="right">
+		
+		<table border="0" cellspacing="0" cellpadding="2">
 <?php
     // Short shipping display
     // Formats shipping entry to remove the TEXT_WAY define
@@ -847,8 +845,8 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 <td align="right" class="ot-tax-Amount"><?php echo $amount_applied; ?></td>
               </tr>
               <tr>
-                <td align="right" class="ot-tax-Text"><?php echo ENTRY_BALANCE_DUE; ?></td>
-                <td align="right" <?php echo 'class="' . $class . '">' . $balance_due; ?></td>
+                <td align="right" class="ot-tax-Text txtL"><?php echo ENTRY_BALANCE_DUE; ?></td>
+                <td align="right" <?php echo 'class=" ' .txtL. ' ' . $class .  '">' . $balance_due ; ?></td>
               </tr>
               <?php if (!$so->status) { ?>
               <tr>
@@ -858,23 +856,35 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 ?></td>
               </tr>
               <?php } ?>
-            </table></td>
+            </table>
+			
+			</td>
           </tr>
-        </table></td>
+		</table>
+		
+		</td>
       </tr>
       <tr>
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td class="main"><strong><?php echo TABLE_HEADING_STATUS_HISTORY; ?></strong></td>
+        <td class="main" align="center">
+			<table width="95%">
+			<tr>
+			<td><strong><?php echo TABLE_HEADING_STATUS_HISTORY; ?></strong></td>
+			</tr>
+			</table>
+		
+		
+		</td>
       </tr>
       <tr>
-        <td valign="top" class="main"><table border="1" cellspacing="0" cellpadding="5">
+        <td valign="top" class="main" align="center"><table border="0" cellspacing="0" cellpadding="5" width="95%" class="tableLayout1">
           <tr>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_DATE_ADDED; ?></strong></td>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_CUSTOMER_NOTIFIED; ?></strong></td>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_STATUS; ?></strong></td>
-            <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_COMMENTS; ?></strong></td>
+            <th align="center"><strong><?php echo TABLE_HEADING_DATE_ADDED; ?></strong></th>
+            <th align="center"><strong><?php echo TABLE_HEADING_CUSTOMER_NOTIFIED; ?></strong></th>
+            <th align="center"><strong><?php echo TABLE_HEADING_STATUS; ?></strong></th>
+            <th align="center"><strong><?php echo TABLE_HEADING_COMMENTS; ?></strong></th>
           </tr>
 <?php
     $orders_history = $db->Execute("select orders_status_id, date_added, customer_notified, comments
@@ -907,10 +917,16 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
       </tr>
       <?php if (!$so->status) { ?>
       <tr>
+        <td align="center">
+			<table width="95%">
+			<tr>
         <td><?php echo '<a href="javascript:popupWindow(\'' .
                    zen_href_link(FILENAME_SUPER_EDIT, 'oID=' . $oID . '&target=history', $request_type) . '\', \'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=650,height=450,screenX=150,screenY=100,top=100,left=150\')">' .
                    zen_image(DIR_WS_IMAGES . 'icon_edit3.gif', ICON_EDIT_HISTORY) . ICON_EDIT_HISTORY . '</a>';
         ?></td>
+      </tr>
+			</table>
+		</td>
       </tr>
       <?php } ?>
 <?php
@@ -959,7 +975,14 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
             <tr>
               <td align="center"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_cancelled&oID=' . $oID) . '">' . zen_image_button('btn_cancelled.gif', ICON_MARK_CANCELLED) . '</a>'; ?></td>
             </tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+            </form></tr>
           </table></td>
+          
 <?php } ?>
         </tr></table></td>
       </tr>
@@ -1071,18 +1094,19 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
       <tr>
         <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
+		  	<!--
             <td class="pageHeading"><?php echo HEADING_TITLE_ORDERS_LISTING . '&nbsp;&nbsp;' .
               '<INPUT TYPE="BUTTON" VALUE="' . BOX_CUSTOMERS_SUPER_BATCH_STATUS . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_STATUS, '') . '\'">' .
               '&nbsp;&nbsp;' .
               '<INPUT TYPE="BUTTON" VALUE="' . BOX_CUSTOMERS_SUPER_BATCH_FORMS . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, '') . '\'">';
-            ?></td>
+            ?></td>-->
+			<td class="pageHeading"><?php echo HEADING_TITLE_ORDERS_LISTING ;?></td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
-            <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+            <td align="right"><table border="0" cellspacing="0" cellpadding="0">
               <tr><?php echo zen_draw_form('orders', FILENAME_SUPER_ORDERS, '', 'get', '', true); ?>
                 <td class="smallText" align="right"><?php echo HEADING_TITLE_SEARCH . ' ' . zen_draw_input_field('oID', '', 'size="12"') . zen_draw_hidden_field('action', 'edit'); ?></td>
-              </form></tr>
-              <tr><?php echo zen_draw_form('status', FILENAME_SUPER_ORDERS, '', 'get', '', true); ?>
-                <td class="smallText" align="right"><?php
+              </form><?php echo zen_draw_form('status', FILENAME_SUPER_ORDERS, '', 'get', '', true); ?>
+                <td class="smallText" align="right">&nbsp;<?php
                   echo HEADING_TITLE_STATUS . ' ' . zen_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status'], 'onChange="this.form.submit();"');
                 ?></td>
               </form></tr>
@@ -1139,7 +1163,7 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
     $keywords = zen_db_input(zen_db_prepare_input($_GET['search']));
     $search = " and (o.customers_city like '%" . $keywords . "%' or o.customers_postcode like '%" . $keywords . "%' or o.date_purchased like '%" . $keywords . "%' or o.billing_name like '%" . $keywords . "%' or o.billing_company like '%" . $keywords . "%' or o.billing_street_address like '%" . $keywords . "%' or o.delivery_city like '%" . $keywords . "%' or o.delivery_postcode like '%" . $keywords . "%' or o.delivery_name like '%" . $keywords . "%' or o.delivery_company like '%" . $keywords . "%' or o.delivery_street_address like '%" . $keywords . "%' or o.billing_city like '%" . $keywords . "%' or o.billing_postcode like '%" . $keywords . "%' or o.customers_email_address like '%" . $keywords . "%' or o.customers_name like '%" . $keywords . "%' or o.customers_company like '%" . $keywords . "%' or o.customers_street_address  like '%" . $keywords . "%' or o.customers_telephone like '%" . $keywords . "%' or o.ip_address  like '%" . $keywords . "%')";
   }
-  $new_fields = ", o.customers_street_address, o.delivery_name, o.delivery_street_address, o.billing_name, o.billing_street_address, o.payment_module_code, o.shipping_module_code, o.ip_address ";
+  $new_fields = ", o.customers_street_address, o.delivery_name, o.delivery_street_address, o.billing_name, o.billing_street_address, o.payment_module_code, o.shipping_module_code, o.ip_address, o.delivery_email_address ";
   if (isset($_GET['cID'])) {
     $cID = zen_db_prepare_input($_GET['cID']);
     $orders_query_raw = "select o.orders_id, o.customers_id, o.customers_name, o.customers_id, o.payment_method, o.shipping_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total" . $new_fields . " from " . TABLE_ORDERS . " o left join " . TABLE_ORDERS_TOTAL . " ot on (o.orders_id = ot.orders_id), " . TABLE_ORDERS_STATUS . " s where o.customers_id = '" . (int)$cID . "' and o.orders_status = s.orders_status_id and s.language_id = '" . (int)$_SESSION['languages_id'] . "' and ot.class = 'ot_total' order by orders_id DESC";
@@ -1262,7 +1286,7 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
         if (zen_not_null($oInfo->last_modified)) $contents[] = array('text' => TEXT_DATE_ORDER_LAST_MODIFIED . ' ' . zen_date_short($oInfo->last_modified));
         $contents[] = array('text' => '<br />' . TEXT_INFO_PAYMENT_METHOD . ' '  . $oInfo->payment_method);
         $contents[] = array('text' => TEXT_INFO_SHIPPING_METHOD . ' '  . $shipping_method);
-        $contents[] = array('text' => TEXT_INFO_IP_ADDRESS . ' ' . $oInfo->ip_address);
+        //　$contents[] = array('text' => TEXT_INFO_IP_ADDRESS . ' ' . $oInfo->ip_address);
 
 // check if order has open gv
         $gv_check = $db->Execute("select order_id, unique_id
@@ -1283,9 +1307,9 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
 
       $contents[] = array('text' => '<br />' . zen_image(DIR_WS_IMAGES . 'pixel_black.gif','','100%','3'));
       $order = new order($oInfo->orders_id);
-      $contents[] = array('text' => 'Products Ordered: ' . sizeof($order->products) );
+      $contents[] = array('text' => '商品点数: ' . sizeof($order->products) );
       for ($i=0; $i<sizeof($order->products); $i++) {
-        $contents[] = array('text' => $order->products[$i]['qty'] . '&nbsp;x&nbsp;' . $order->products[$i]['name']);
+        $contents[] = array('text' =>  $order->products[$i]['name'] . '&nbsp;x&nbsp;' . $order->products[$i]['qty'] );
 
         if (sizeof($order->products[$i]['attributes']) > 0) {
           for ($j=0; $j<sizeof($order->products[$i]['attributes']); $j++) {
