@@ -9,12 +9,11 @@
  * @version $Id: tpl_modules_product_listing.php 3241 2006-03-22 04:27:27Z ajeh $
  * UPDATED TO WORK WITH COLUMNAR PRODUCT LISTING 04/04/2006
  */
+ if(MODULE_SEARCH_MORE_STATUS == 'true') {
+   echo $GLOBALS['search_more']->getBlock('block_search_form',$current_page_base);
+ }
+
  include(DIR_WS_MODULES . zen_get_module_directory(FILENAME_PRODUCT_LISTING));
-?>
-<?php
-if(MODULE_SEARCH_MORE_STATUS == 'true') {
-  echo $GLOBALS['search_more']->getBlock('block_search_form',$current_page_base);
-}
 ?>
 <div id="productListing">
 
