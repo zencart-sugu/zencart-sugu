@@ -11,7 +11,7 @@ for ($i=0; $i<count($menus); $i++) {
     // ページは許可されているか？
     $page = $menus[$i]['menu'][$j]['url'];
     $page = str_replace(DIR_WS_ADMIN, "", $page);
-    if (page_allowed($page) != 'true')
+    if (function_exists("page_allowed") && page_allowed($page) != 'true')
       continue;
 
     echo '<li>';

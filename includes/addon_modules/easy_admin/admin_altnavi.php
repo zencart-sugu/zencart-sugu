@@ -59,7 +59,7 @@ $sub_menus = getSubMenus($pid);
     // ページは許可されているか？
     $page = $sub_menus[$i]['url'];
     $page = str_replace(DIR_WS_ADMIN, "", $page);
-    if (page_allowed($page) != 'true')
+    if (function_exists("page_allowed") && page_allowed($page) != 'true')
       continue;
 ?>
   <li><a href="<?php echo $sub_menus[$i]['url']; ?>"><?php echo $sub_menus[$i]['name']; ?></a></li>
