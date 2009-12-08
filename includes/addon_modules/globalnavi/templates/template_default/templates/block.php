@@ -13,7 +13,7 @@
 
 
 ?>
-<ul id="footer-nav">
+<ul id="jsddm">
 <?php foreach($categories as $val): ?>
   <li>
     <a href="<?php echo zen_href_link(FILENAME_DEFAULT, 'cPath='.$val['id'], 'SSL'); ?>"><?php echo $val['text']; ?></a>
