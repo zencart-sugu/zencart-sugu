@@ -15,24 +15,6 @@
 ?>
 <div class="centerColumn" id="indexDefault">
 
-<?php if (MODULE_MT_PAGES_STATUS == 'true' and !empty($mt_page_top_main_top_message)) { ?>
-<?php
-/**
- * get the Define Main Page Text
- */
-?>
-<div id="indexDefaultMainContent">
-<?php if (!empty($mt_page_top_main_top_title)) { ?>
-<h2><?php echo $mt_page_top_main_top_title; ?></h2>
-<?php } else { ?>
-<?php echo HEADLINE_INFORMATION ; ?>
-<?php } ?>
-<div id="indexDefaultMainContentBody">
-<?php echo $mt_page_top_main_top_message; ?>
-</div>
-</div>
-<?php } ?>
-
 <div id="indexDefaultSubContent">
 <?php
   $show_display_category = $db->Execute(SQL_SHOW_PRODUCT_INFO_MAIN);
