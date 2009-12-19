@@ -8,6 +8,8 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: header_php.php 3777 2006-06-15 07:03:03Z drbyte $
  */
+$zco_notifier->notify('NOTIFY_HEADER_START_ADDRESS_BOOK_PROCESS');
+
 if (!$_SESSION['customer_id']) {
   $_SESSION['navigation']->set_snapshot();
   zen_redirect(zen_href_link(FILENAME_LOGIN, '', 'SSL'));

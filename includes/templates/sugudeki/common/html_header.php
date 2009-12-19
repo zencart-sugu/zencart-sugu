@@ -42,19 +42,6 @@ print $xml."\n";
 <?php } //endif FAVICON ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_CATALOG : HTTP_SERVER . DIR_WS_CATALOG ); ?>" />
 <?php
-############################################################################
-// Modified for Ajax住所入力モジュール v2.0.1 by zen-dera project 2008 BOF
-// Ajax住所自動入力用javascriptを読み込み
-############################################################################
-?>
-<!-- <script src="ajaxzip2/jquery.js"></script> -->
-<script type="text/javascript" src="ajaxzip2/ajaxzip2.js" charset="UTF-8"></script>
-<?php
-############################################################################
-// Modified for Ajax住所入力モジュール v2.0.1 by zen-dera project 2008 EOF
-############################################################################
-?>
-<?php
 
   // addon_moodules specify css
   echo $styles;
