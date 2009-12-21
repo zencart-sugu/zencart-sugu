@@ -11,4 +11,5 @@ define('NAVBAR_TITLE', 'レビュー');
 define('TEXT_OF_5_STARS', '');
 define('TEXT_PRODUCT_INFO', '商品情報');
 define('TEXT_READ_REVIEW', 'レビューを読む');
+define('TEXT_REVIEWS_LOGIN_REQUIRED', 'レビューを読むにはログインが必要です');
 ?>
