@@ -73,6 +73,11 @@
     }
 ?>
 <?php
+  } elseif(MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN == 'true' && (empty($_SESSION['customer_id']) || !empty($_SESSION['visitors_id']))) {
+?>
+<div id="productReviewsDefaultNoReviews" class="content"><?php echo TEXT_REVIEWS_LOGIN_REQUIRED; ?></div>
+<br class="clearBoth" />
+<?php
   } else {
 ?>
 <hr />
