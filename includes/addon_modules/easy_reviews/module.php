@@ -89,7 +89,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       $display_form = true;
       $display_list = true;
-      if (!$_SESSION['customer_id']) {
+      if (!$_SESSION['customer_id'] || !empty($_SESSION['visitors_id'])) {
         $display_form = false;
         if (MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN == 'true') {
           $display_list = false;
@@ -197,6 +197,12 @@ if (!defined('IS_ADMIN_FLAG')) {
         $products_image = $review->fields['products_image'];
       }
 
+      $reviews_available = true;
+      if (MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN == 'true' && (empty($_SESSION['customer_id']) || !empty($_SESSION['visitors_id'])) ) {
+        $reviews_available = false;
+      }
+
+      if ($reviews_available) {
       $review_status = " and r.status = 1";
 
       $reviews_query_raw = "SELECT r.reviews_id, reviews_text, r.reviews_rating, r.date_added, r.customers_name
@@ -219,7 +225,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       	                        'reviewsRating'=>$reviews->fields['reviews_rating']);
         $reviews->MoveNext();
       }
-
+      }
 
 
 
@@ -237,7 +243,7 @@ if (!defined('IS_ADMIN_FLAG')) {
     function page_product_reviews_write() {
       global $db,$template,$breadcrumb,$products_image,$current_page_base,$customer,$products_name,$products_model,$products_price,$messageStack;
 
-      if (!$_SESSION['customer_id']) {
+      if (!$_SESSION['customer_id'] || !empty($_SESSION['visitors_id'])) {
         $_SESSION['navigation']->set_snapshot();
         zen_redirect(zen_href_link(FILENAME_LOGIN, '', 'SSL'));
       }
