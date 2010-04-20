@@ -116,12 +116,6 @@ if (!isset($flag_disable_right) || !$flag_disable_right) {
 <?php } ?>
 
 <?php
-//注文ステップの表示位置を変更するため
-if((preg_match("/addon/", $_GET['main_page']) == 0)){
-if((preg_match("/checkout/", $_GET['main_page']) == 0)){
-?>
-
-<?php
   // displays addon_modules layout blocks
   if ($main_top) {
 ?>
@@ -133,8 +127,6 @@ if((preg_match("/checkout/", $_GET['main_page']) == 0)){
 <?php
   }
 ?>
-
-<?php } }?>
 
 <?php
  /**
