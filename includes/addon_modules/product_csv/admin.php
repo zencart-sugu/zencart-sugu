@@ -124,6 +124,7 @@ if ($action == 'import') {
     // get products_id
     $categories_products_id_list = array();
     $products_ids = zen_get_categories_products_list($_POST['category_id'], true, true);
+    $products_ids = array_unique($products_ids);
     // write line
     foreach ($products_ids as $val) {
       $data = $ProductCSV->getExportDataProduct($val, $format);
@@ -165,6 +166,7 @@ if ($action == 'import') {
     // get products_id
     $categories_products_id_list = array();
     $products_ids = zen_get_categories_products_list($_POST['category_id'], true, true);
+    $products_ids = array_unique($products_ids);
     // write line
     foreach ($products_ids as $val) {
       $attributes_ids = zen_get_attributes($val);
