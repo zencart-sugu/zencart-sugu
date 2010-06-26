@@ -80,12 +80,12 @@
 <?php
     if ($process == true || $entry_state_has_zones == true ) {
       if ($entry_state_has_zones == true) {
-        echo zen_draw_pull_down_menu('state', $zones_array, $zone_name, 'id="state"');
+        echo zen_draw_pull_down_menu('state', $zones_array, zen_convert_to_zone_name_m17n($zone_name), 'id="state"');
       } else {
         echo zen_draw_input_field('state', '', 'id="state"');
       }
     } else {
-      echo zen_draw_input_field('state', zen_get_zone_name($entry->fields['entry_country_id'], $entry->fields['entry_zone_id'], $entry->fields['entry_state']), 'id="state"');
+      echo zen_draw_input_field('state', zen_convert_to_zone_name_m17n(zen_get_zone_name($entry->fields['entry_country_id'], $entry->fields['entry_zone_id'], $entry->fields['entry_state'])), 'id="state"');
     }
 
     if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert">' . ENTRY_STATE_TEXT . '</span>';

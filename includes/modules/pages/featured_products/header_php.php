@@ -17,9 +17,10 @@ require(DIR_WS_MODULES . zen_get_module_directory(FILENAME_LISTING_DISPLAY_ORDER
 
 $featured_products_array = array();
 
-$featured_products_query_raw = "SELECT p.products_id, p.products_type, pd.products_name, p.products_image, p.products_price, p.products_tax_class_id, p.products_date_added, m.manufacturers_name, p.products_model, p.products_quantity, p.products_weight, p.product_is_call
-                                  FROM (" . TABLE_PRODUCTS . " p 
-                                  LEFT JOIN " . TABLE_MANUFACTURERS . " m on (p.manufacturers_id = m.manufacturers_id), " . 
+$featured_products_query_raw = "SELECT p.products_id, p.products_type, pd.products_name, p.products_image, p.products_price, p.products_tax_class_id, p.products_date_added, mi.manufacturers_name, p.products_model, p.products_quantity, p.products_weight, p.product_is_call 
+                                FROM (" . TABLE_PRODUCTS . " p 
+                                LEFT JOIN " . TABLE_MANUFACTURERS . " m on (p.manufacturers_id = m.manufacturers_id) 
+                                LEFT JOIN " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "', " . 
 TABLE_PRODUCTS_DESCRIPTION . " pd
                                   LEFT JOIN " . TABLE_FEATURED . " f on pd.products_id = f.products_id )
                                   WHERE p.products_status = 1 and p.products_id = f.products_id and f.status = 1

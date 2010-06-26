@@ -13,6 +13,7 @@
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
+if (!is_array($exclude_db_configuretion_keys)) $exclude_db_configuretion_keys = array();
 $use_cache = (isset($_GET['nocache']) ? false : true ) ;
 $configuration = $db->Execute('SELECT cfg_t.configuration_key AS cfgkey, cfg_t.configuration_value AS cfgvalue 
                                FROM '.TABLE_CONFIGURATION.' as cfg_t  LEFT JOIN '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.' as cfg_ft 
@@ -20,21 +21,21 @@ $configuration = $db->Execute('SELECT cfg_t.configuration_key AS cfgkey, cfg_t.c
                                WHERE cfg_ft.configuration_key IS NULL','',$use_cache,150);
 db_define($configuration);
 
-//$configuration = $db->Execute('select configuration_key as cfgkey, configuration_value as cfgvalue
-//                               from '.TABLE_CONFIGURATION ." WHERE ");
-//db_define($configuration);
-
 $configuration = $db->Execute('select configuration_key as cfgkey, configuration_value as cfgvalue
                           from ' . TABLE_PRODUCT_TYPE_LAYOUT);
 db_define($configuration);
 function db_define($configuration){
+  global $exclude_db_configuretion_keys;
   if(isset($configuration)){
     while (!$configuration->EOF) {
      /**
     * dynamic define based on info read from DB
     * @ignore
     */
-      define(strtoupper($configuration->fields['cfgkey']), $configuration->fields['cfgvalue']); 
+      $db_configuration_key = strtoupper($configuration->fields['cfgkey']);
+      if (!in_array($db_configuration_key, $exclude_db_configuretion_keys)) {
+        define($db_configuration_key, $configuration->fields['cfgvalue']);
+      }
       $configuration->MoveNext();
     }
   }
@@ -43,9 +44,8 @@ function db_define($configuration){
 if (file_exists(DIR_WS_CLASSES . 'db/' . DB_TYPE . '/define_queries_configuration_foreach_template.php')) {
   /**
  * Load the database dependant query defines
+<<<<<<< HEAD:includes/init_includes/overrides/init_db_config_read.php
  */ 
   include(DIR_WS_CLASSES . 'db/' . DB_TYPE . '/define_queries_configuration_foreach_template.php');
 }
-
-
 ?>

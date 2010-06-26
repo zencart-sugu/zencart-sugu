@@ -25,7 +25,8 @@ if (!defined('IS_ADMIN_FLAG')) {
       $listing_sql = "select " . $select_column_list . " p.products_id, p.products_type, p.manufacturers_id, p.products_price, p.products_tax_class_id, pd.products_description, if(s.status = 1, s.specials_new_products_price, NULL) AS specials_new_products_price, IF(s.status = 1, s.specials_new_products_price, p.products_price) as final_price, p.products_sort_order, p.product_is_call, p.product_is_always_free_shipping
        from " . TABLE_PRODUCTS . " p left join " . TABLE_SPECIALS . " s on p.products_id = s.products_id , " .
        TABLE_PRODUCTS_DESCRIPTION . " pd, " .
-       TABLE_MANUFACTURERS . " m, " .
+       TABLE_MANUFACTURERS . " m
+       left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "', " . 
        TABLE_PRODUCTS_TO_CATEGORIES . " p2c
        where p.products_status = 1
          and p.manufacturers_id = m.manufacturers_id
@@ -40,6 +41,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       from " . TABLE_PRODUCTS . " p left join " . TABLE_SPECIALS . " s on p.products_id = s.products_id, " .
       TABLE_PRODUCTS_DESCRIPTION . " pd, " .
       TABLE_MANUFACTURERS . " m
+      left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' 
       where p.products_status = 1
         and pd.products_id = p.products_id
         and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
@@ -54,7 +56,8 @@ if (!defined('IS_ADMIN_FLAG')) {
       $listing_sql = "select " . $select_column_list . " p.products_id, p.products_type, p.manufacturers_id, p.products_price, p.products_tax_class_id, pd.products_description, IF(s.status = 1, s.specials_new_products_price, NULL) as specials_new_products_price, IF(s.status = 1, s.specials_new_products_price, p.products_price) as final_price, p.products_sort_order, p.product_is_call, p.product_is_always_free_shipping
       from " . TABLE_PRODUCTS . " p left join " . TABLE_SPECIALS . " s on p.products_id = s.products_id, " .
       TABLE_PRODUCTS_DESCRIPTION . " pd, " .
-      TABLE_MANUFACTURERS . " m, " .
+      TABLE_MANUFACTURERS . " m,
+      left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "', " . 
       TABLE_PRODUCTS_TO_CATEGORIES . " p2c
       where p.products_status = 1
         and p.manufacturers_id = m.manufacturers_id
@@ -67,7 +70,8 @@ if (!defined('IS_ADMIN_FLAG')) {
 // We show them all
       $listing_sql = "select " . $select_column_list . " p.products_id, p.products_type, p.manufacturers_id, p.products_price, p.products_tax_class_id, pd.products_description, IF(s.status = 1, s.specials_new_products_price, NULL) as specials_new_products_price, IF(s.status =1, s.specials_new_products_price, p.products_price) as final_price, p.products_sort_order, p.product_is_call, p.product_is_always_free_shipping
        from " . TABLE_PRODUCTS_DESCRIPTION . " pd, " .
-       TABLE_PRODUCTS . " p left join " . TABLE_MANUFACTURERS . " m on p.manufacturers_id = m.manufacturers_id, " .
+       TABLE_PRODUCTS . " p left join " . TABLE_MANUFACTURERS . " m on p.manufacturers_id = m.manufacturers_id 
+       left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "', " . 
        TABLE_PRODUCTS_TO_CATEGORIES . " p2c left join " . TABLE_SPECIALS . " s on p2c.products_id = s.products_id
        where p.products_status = 1
          and p.products_id = p2c.products_id
@@ -117,7 +121,7 @@ if (!defined('IS_ADMIN_FLAG')) {
           $listing_sql .= "pd.products_name " . ($sort_order == 'd' ? 'desc' : '');
           break;
         case 'PRODUCT_LIST_MANUFACTURER':
-          $listing_sql .= "m.manufacturers_name " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
+          $listing_sql .= "mi.manufacturers_name " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
           break;
         case 'PRODUCT_LIST_QUANTITY':
           $listing_sql .= "p.products_quantity " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
@@ -153,15 +157,16 @@ if (!defined('IS_ADMIN_FLAG')) {
         and p.manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "'
       order by cd.categories_name";
     } else {
-      $filterlist_sql= "select distinct m.manufacturers_id as id, m.manufacturers_name as name
+      $filterlist_sql= "select distinct m.manufacturers_id as id, mi.manufacturers_name as name
       from " . TABLE_PRODUCTS . " p, " .
       TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " .
       TABLE_MANUFACTURERS . " m
+      left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' 
       where p.products_status = 1
         and p.manufacturers_id = m.manufacturers_id
         and p.products_id = p2c.products_id
         and p2c.categories_id = '" . (int)$current_category_id . "'
-      order by m.manufacturers_name";
+        order by mi.manufacturers_name";
     }
     $do_filter_list = false;
     $filterlist = $db->Execute($filterlist_sql);

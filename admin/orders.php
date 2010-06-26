@@ -23,7 +23,8 @@
   require('includes/application_top.php');
 
   require(DIR_WS_CLASSES . 'currencies.php');
-  $currencies = new currencies();
+  require(DIR_WS_CLASSES . 'currencies_m17n.php');
+  $currencies = new currenciesM17n();
 
   $orders_statuses = array();
   $orders_status_array = array();
@@ -57,6 +58,7 @@
           unset($_GET['download_reset_on']);
 
           $messageStack->add_session(SUCCESS_ORDER_UPDATED_DOWNLOAD_ON, 'success');
+          zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         }
       // reset single download to off
@@ -67,6 +69,7 @@
           $db->Execute($update_downloads_query);
 
           $messageStack->add_session(SUCCESS_ORDER_UPDATED_DOWNLOAD_OFF, 'success');
+          zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         }
       break;
@@ -80,6 +83,14 @@
         $oID = zen_db_prepare_input($_GET['oID']);
         $status = zen_db_prepare_input($_POST['status']);
         $comments = zen_db_prepare_input($_POST['comments']);
+
+        // ステータス変更メールをカスタマイズできるようにする
+        // ここでコメントへ書き込む
+        if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+          require_once("../includes/addon_modules/email_templates/classes/CustomMail.php");
+          $CustomMail = new CustomMail();
+          $comments = $CustomMail->replace_status_email($oID, $comments);
+        }
 
         $order_updated = false;
         $check_status = $db->Execute("select customers_name, customers_email_address, orders_status,
@@ -151,6 +162,7 @@
           $messageStack->add_session(WARNING_ORDER_NOT_UPDATED, 'warning');
         }
 
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
       case 'deleteconfirm':
@@ -158,16 +170,19 @@
         if (zen_admin_demo()) {
           $_GET['action']= '';
           $messageStack->add_session(ERROR_ADMIN_DEMO, 'caution');
+          zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('oID', 'action')), 'NONSSL'));
         }
         $oID = zen_db_prepare_input($_GET['oID']);
 
         zen_remove_order($oID, $_POST['restock']);
 
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('oID', 'action')), 'NONSSL'));
         break;
       case 'delete_cvv':
         $delete_cvv = $db->Execute("update " . TABLE_ORDERS . " set cc_cvv = '" . TEXT_DELETE_CVV_REPLACEMENT . "' where orders_id = '" . (int)$_GET['oID'] . "'");
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
       case 'mask_cc':
@@ -175,6 +190,7 @@
         $old_num = $result->fields['cc_number'];
         $new_num = substr($old_num, 0, 4) . str_repeat('*', (strlen($old_num) - 8)) . substr($old_num, -4);
         $mask_cc = $db->Execute("update " . TABLE_ORDERS . " set cc_number = '" . $new_num . "' where orders_id = '" . (int)$_GET['oID'] . "'");
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
     }
@@ -205,6 +221,12 @@
 <link rel="stylesheet" type="text/css" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
+<?php
+// ステータス変更メールをカスタマイズできるようにする
+if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+?>
+<script language="javascript" src="../includes/addon_modules/jquery/templates/template_default/jscript/jquery.js"></script>
+<?php } ?>
 <script type="text/javascript">
   <!--
   function init()
@@ -511,7 +533,7 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
         <td class="noprint"><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
       </tr>
       <tr><?php echo zen_draw_form('status', FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=update_order', 'post', '', true); ?>
-        <td class="main noprint"><?php echo zen_draw_textarea_field('comments', 'soft', '60', '5'); ?></td>
+        <td class="main noprint"><?php echo zen_draw_textarea_field('comments', 'soft', '60', '20', '', 'id="comments"'); ?></td>
       </tr>
       <tr>
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -524,8 +546,20 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
                 <td class="main"><strong><?php echo ENTRY_STATUS; ?></strong> <?php echo zen_draw_pull_down_menu('status', $orders_statuses, $order->info['orders_status']); ?></td>
               </tr>
               <tr>
+<?php
+// ステータス変更メールをカスタマイズできるようにする
+if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+                echo ENTRY_NOTIFY_CUSTOMER;
+                echo zen_get_email_group_for_status();
+                echo zen_draw_hidden_field('notify',          '', 'id="notify"');
+                echo zen_draw_hidden_field('notify_comments', '', 'id="notify_comments"');
+} else {
+?>
                 <td class="main"><strong><?php echo ENTRY_NOTIFY_CUSTOMER; ?></strong> <?php echo zen_draw_checkbox_field('notify', '', true); ?></td>
                 <td class="main"><strong><?php echo ENTRY_NOTIFY_COMMENTS; ?></strong> <?php echo zen_draw_checkbox_field('notify_comments', '', true); ?></td>
+<?php
+}
+?>
               </tr>
             </table></td>
             <td valign="top"><?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>

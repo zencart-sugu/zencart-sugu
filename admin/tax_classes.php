@@ -35,6 +35,19 @@
                             '" . zen_db_input($tax_class_description) . "',
                             now())");
 
+        $tax_class_id = zen_db_insert_id();
+        $tax_class_title_m17n = zen_db_prepare_input($_POST['tax_class_title_m17n']);
+        $tax_class_description_m17n = zen_db_prepare_input($_POST['tax_class_description_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $db->Execute("insert into " . TABLE_TAX_CLASS_M17N . "
+                        (tax_class_id, language_id, tax_class_title, tax_class_description)
+                        values ('" . (int)$tax_class_id . "',
+                        '" . (int)$languages[$i]['id'] . "',
+                        '" . zen_db_input($tax_class_title_m17n[$languages[$i]['id']]) . "',
+                        '" . zen_db_input($tax_class_description_m17n[$languages[$i]['id']]) . "')");
+        }
+
         zen_redirect(zen_href_link(FILENAME_TAX_CLASSES));
         break;
       case 'save':
@@ -49,6 +62,17 @@
                           last_modified = now()
                       where tax_class_id = '" . (int)$tax_class_id . "'");
 
+        $tax_class_title_m17n = zen_db_prepare_input($_POST['tax_class_title_m17n']);
+        $tax_class_description_m17n = zen_db_prepare_input($_POST['tax_class_description_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $db->Execute("update " . TABLE_TAX_CLASS_M17N . "
+                        set tax_class_title = '" . zen_db_input($tax_class_title_m17n[$languages[$i]['id']]) . "',
+                            tax_class_description = '" . zen_db_input($tax_class_description_m17n[$languages[$i]['id']]) . "'
+                        where tax_class_id = '" . (int)$tax_class_id . "'
+                        and language_id = '" . (int)$languages[$i]['id'] . "'");
+        }
+
         zen_redirect(zen_href_link(FILENAME_TAX_CLASSES, 'page=' . $_GET['page'] . '&tID=' . $tax_class_id));
         break;
       case 'deleteconfirm':
@@ -61,6 +85,8 @@
         $tax_class_id = zen_db_prepare_input($_GET['tID']);
 
         $db->Execute("delete from " . TABLE_TAX_CLASS . "
+                      where tax_class_id = '" . (int)$tax_class_id . "'");
+        $db->Execute("delete from " . TABLE_TAX_CLASS_M17N . "
                       where tax_class_id = '" . (int)$tax_class_id . "'");
 
         zen_redirect(zen_href_link(FILENAME_TAX_CLASSES, 'page=' . $_GET['page']));
@@ -170,7 +196,23 @@
       $contents = array('form' => zen_draw_form('classes', FILENAME_TAX_CLASSES, 'page=' . $_GET['page'] . '&action=insert'));
       $contents[] = array('text' => TEXT_INFO_INSERT_INTRO);
       $contents[] = array('text' => '<br>' . TEXT_INFO_CLASS_TITLE . '<br>' . zen_draw_input_field('tax_class_title', '', zen_set_field_length(TABLE_TAX_CLASS, 'tax_class_title')));
+
+      $tax_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $tax_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('tax_class_title_m17n[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_TAX_CLASS_M17N, 'tax_class_title'));
+      }
+      $contents[] = array('text' => '<br>' . $tax_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_CLASS_DESCRIPTION . '<br>' . zen_draw_input_field('tax_class_description', '', zen_set_field_length(TABLE_TAX_CLASS, 'tax_class_description')));
+
+      $tax_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $tax_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('tax_class_description_m17n[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_TAX_CLASS_M17N, 'tax_class_description'));
+      }
+      $contents[] = array('text' => '<br>' . $tax_inputs_string);
+
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_insert.gif', IMAGE_INSERT) . '&nbsp;<a href="' . zen_href_link(FILENAME_TAX_CLASSES, 'page=' . $_GET['page']) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
     case 'edit':
@@ -179,7 +221,23 @@
       $contents = array('form' => zen_draw_form('classes', FILENAME_TAX_CLASSES, 'page=' . $_GET['page'] . '&tID=' . $tcInfo->tax_class_id . '&action=save'));
       $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
       $contents[] = array('text' => '<br>' . TEXT_INFO_CLASS_TITLE . '<br>' . zen_draw_input_field('tax_class_title', $tcInfo->tax_class_title, zen_set_field_length(TABLE_TAX_CLASS, 'tax_class_title')));
+
+      $tax_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $tax_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('tax_class_title_m17n[' . $languages[$i]['id'] . ']', zen_get_tax_class_title_m17n($tcInfo->tax_class_id, $languages[$i]['id']), zen_set_field_length(TABLE_TAX_CLASS_M17N, 'tax_class_title'));
+      }
+      $contents[] = array('text' => '<br>' . $tax_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_CLASS_DESCRIPTION . '<br>' . zen_draw_input_field('tax_class_description', $tcInfo->tax_class_description, zen_set_field_length(TABLE_TAX_CLASS, 'tax_class_description')));
+
+      $tax_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $tax_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('tax_class_description_m17n[' . $languages[$i]['id'] . ']', zen_get_tax_class_description_m17n($tcInfo->tax_class_id, $languages[$i]['id']), zen_set_field_length(TABLE_TAX_CLASS_M17N, 'tax_class_description'));
+      }
+      $contents[] = array('text' => '<br>' . $tax_inputs_string);
+
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_update.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . zen_href_link(FILENAME_TAX_CLASSES, 'page=' . $_GET['page'] . '&tID=' . $tcInfo->tax_class_id) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
     case 'delete':

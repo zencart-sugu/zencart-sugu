@@ -41,6 +41,17 @@
                             '" . zen_db_input($tax_priority) . "',
                             now())");
 
+        $tax_rates_id = zen_db_insert_id();
+        $tax_description_m17n = zen_db_prepare_input($_POST['tax_description_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $db->Execute("insert into " . TABLE_TAX_RATES_M17N . "
+                        (tax_rates_id, language_id, tax_description)
+                        values ('" . (int)$tax_rates_id . "',
+                        '" . (int)$languages[$i]['id'] . "',
+                        '" . zen_db_input($tax_description_m17n[$languages[$i]['id']]) . "')");
+        }
+        
         zen_redirect(zen_href_link(FILENAME_TAX_RATES));
         break;
       case 'save':
@@ -59,6 +70,15 @@
                           tax_description = '" . zen_db_input($tax_description) . "',
                           tax_priority = '" . zen_db_input($tax_priority) . "',
                           last_modified = now() where tax_rates_id = '" . (int)$tax_rates_id . "'");
+
+        $tax_description_m17n = zen_db_prepare_input($_POST['tax_description_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $db->Execute("update " . TABLE_TAX_RATES_M17N . "
+                        set tax_description = '" . zen_db_input($tax_description_m17n[$languages[$i]['id']]) . "'
+                        where tax_rates_id = '" . (int)$tax_rates_id . "'
+                        and language_id = '" . (int)$languages[$i]['id'] . "'");
+        }
 
         zen_redirect(zen_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page'] . '&tID=' . $tax_rates_id));
         break;
@@ -188,6 +208,14 @@
       $contents[] = array('text' => '<br>' . TEXT_INFO_ZONE_NAME . '<br>' . zen_geo_zones_pull_down('name="tax_zone_id" style="font-size:10px"'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_TAX_RATE . '<br>' . zen_draw_input_field('tax_rate'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_RATE_DESCRIPTION . '<br>' . zen_draw_input_field('tax_description'));
+
+      $tax_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $tax_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('tax_description_m17n[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_TAX_RATES_M17N, 'tax_description'));
+      }
+      $contents[] = array('text' => '<br>' . $tax_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_TAX_RATE_PRIORITY . '<br>' . zen_draw_input_field('tax_priority'));
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_insert.gif', IMAGE_INSERT) . '&nbsp;<a href="' . zen_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page']) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
@@ -200,6 +228,14 @@
       $contents[] = array('text' => '<br>' . TEXT_INFO_ZONE_NAME . '<br>' . zen_geo_zones_pull_down('name="tax_zone_id" style="font-size:10px"', $trInfo->geo_zone_id));
       $contents[] = array('text' => '<br>' . TEXT_INFO_TAX_RATE . '<br>' . zen_draw_input_field('tax_rate', $trInfo->tax_rate));
       $contents[] = array('text' => '<br>' . TEXT_INFO_RATE_DESCRIPTION . '<br>' . zen_draw_input_field('tax_description', $trInfo->tax_description));
+
+      $tax_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $tax_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('tax_description_m17n[' . $languages[$i]['id'] . ']', zen_get_tax_description_m17n($trInfo->tax_rates_id, $languages[$i]['id']), zen_set_field_length(TABLE_TAX_RATES_M17N, 'tax_description'));
+      }
+      $contents[] = array('text' => '<br>' . $tax_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_TAX_RATE_PRIORITY . '<br>' . zen_draw_input_field('tax_priority', $trInfo->tax_priority));
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_update.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . zen_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page'] . '&tID=' . $trInfo->tax_rates_id) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
