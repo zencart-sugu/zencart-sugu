@@ -23,7 +23,8 @@
   require('includes/application_top.php');
 
   require(DIR_WS_CLASSES . 'currencies.php');
-  $currencies = new currencies();
+  require(DIR_WS_CLASSES . 'currencies_m17n.php');
+  $currencies = new currenciesM17n();
 
   $oID = zen_db_prepare_input($_GET['oID']);
   $orders = $db->Execute("select orders_id

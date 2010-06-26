@@ -68,7 +68,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['acti
     } else {
       $zone_id = false;
     }
-    $state = zen_db_prepare_input($_POST['state']);
+    $state = zen_convert_to_zone_name(zen_db_prepare_input($_POST['state']));
   }
   $telephone = zen_db_prepare_input($_POST['telephone']);
   $fax = zen_db_prepare_input($_POST['fax']);
@@ -158,7 +158,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['acti
                                    order by zone_id");
 
       while (!$zones_values->EOF) {
-        $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+        $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
         $zones_values->MoveNext();
       }
       $zone_query = "SELECT DISTINCT zone_id
@@ -385,7 +385,7 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
                                    where zone_country_id = '" . (int)$entry->fields['entry_country_id'] . "'
                                    order by zone_id");
       while (!$zones_values->EOF) {
-        $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+        $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
         $zones_values->MoveNext();
       }
     }

@@ -97,7 +97,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   if (!isset($_GET['sort']) and PRODUCT_LISTING_DEFAULT_SORT_ORDER != '') {
     $_GET['sort'] = PRODUCT_LISTING_DEFAULT_SORT_ORDER;
   }
-  $listing_sql = str_replace('m.manufacturers_name', 'm.music_genre_name as manufacturers_name', $listing_sql);
+  $listing_sql = str_replace('mi.manufacturers_name', 'm.music_genre_name as manufacturers_name', $listing_sql); 
 
   if (isset($column_list)) {
     if ( (!isset($_GET['sort'])) || (!ereg('[1-8][ad]', $_GET['sort'])) || (substr($_GET['sort'], 0, 1) > sizeof($column_list)) )

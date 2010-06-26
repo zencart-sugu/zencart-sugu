@@ -36,6 +36,17 @@
                             '" . zen_db_input($zone_code) . "',
                             '" . zen_db_input($zone_name) . "')");
 
+        $zone_id = zen_db_insert_id();
+        $zone_name_m17n = zen_db_prepare_input($_POST['zone_name_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $db->Execute("insert into " . TABLE_ZONES_M17N . "
+                        (zone_id, language_id, zone_name_m17n)
+                        values ('" . (int)$zone_id . "',
+                        '" . (int)$languages[$i]['id'] . "',
+                        '" . zen_db_input($zone_name_m17n[$languages[$i]['id']]) . "')");
+        }
+
         zen_redirect(zen_href_link(FILENAME_ZONES));
         break;
       case 'save':
@@ -50,6 +61,15 @@
                           zone_name = '" . zen_db_input($zone_name) . "'
                       where zone_id = '" . (int)$zone_id . "'");
 
+        $zone_name_m17n = zen_db_prepare_input($_POST['zone_name_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $db->Execute("update " . TABLE_ZONES_M17N . "
+                        set zone_name_m17n = '" . zen_db_input($zone_name_m17n[$languages[$i]['id']]) . "'
+                        where zone_id = '" . (int)$zone_id . "'
+                        and language_id = '" . (int)$languages[$i]['id'] . "'");
+        }
+
         zen_redirect(zen_href_link(FILENAME_ZONES, 'page=' . $_GET['page'] . '&cID=' . $zone_id));
         break;
       case 'deleteconfirm':
@@ -61,6 +81,7 @@
         }
         $zone_id = zen_db_prepare_input($_GET['cID']);
 
+        $db->Execute("delete from " . TABLE_ZONES_M17N . " where zone_id = '" . (int)$zone_id . "'");
         $db->Execute("delete from " . TABLE_ZONES . " where zone_id = '" . (int)$zone_id . "'");
 
         zen_redirect(zen_href_link(FILENAME_ZONES, 'page=' . $_GET['page']));
@@ -173,6 +194,14 @@
       $contents = array('form' => zen_draw_form('zones', FILENAME_ZONES, 'page=' . $_GET['page'] . '&action=insert'));
       $contents[] = array('text' => TEXT_INFO_INSERT_INTRO);
       $contents[] = array('text' => '<br>' . TEXT_INFO_ZONES_NAME . '<br>' . zen_draw_input_field('zone_name'));
+
+      $zone_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $zone_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('zone_name_m17n[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_ZONES_M17N, 'zone_name_m17n'));
+      }
+      $contents[] = array('text' => '<br>' . $zone_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_ZONES_CODE . '<br>' . zen_draw_input_field('zone_code'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_COUNTRY_NAME . '<br>' . zen_draw_pull_down_menu('zone_country_id', zen_get_countries()));
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_insert.gif', IMAGE_INSERT) . '&nbsp;<a href="' . zen_href_link(FILENAME_ZONES, 'page=' . $_GET['page']) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
@@ -183,6 +212,14 @@
       $contents = array('form' => zen_draw_form('zones', FILENAME_ZONES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->zone_id . '&action=save'));
       $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
       $contents[] = array('text' => '<br>' . TEXT_INFO_ZONES_NAME . '<br>' . zen_draw_input_field('zone_name', $cInfo->zone_name));
+
+      $zone_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $zone_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('zone_name_m17n[' . $languages[$i]['id'] . ']', zen_get_zone_name_m17n($cInfo->zone_id, $languages[$i]['id']), zen_set_field_length(TABLE_ZONES_M17N, 'zone_name_m17n'));
+      }
+      $contents[] = array('text' => '<br>' . $zone_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_ZONES_CODE . '<br>' . zen_draw_input_field('zone_code', $cInfo->zone_code));
       $contents[] = array('text' => '<br>' . TEXT_INFO_COUNTRY_NAME . '<br>' . zen_draw_pull_down_menu('zone_country_id', zen_get_countries(), $cInfo->countries_id));
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_update.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . zen_href_link(FILENAME_ZONES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->zone_id) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');

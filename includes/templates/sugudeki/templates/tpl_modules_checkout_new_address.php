@@ -50,9 +50,9 @@
 <table class="border fit account" id="address">
 <tr class="post">
 <th scope="row"><span class="required"><?php echo TEXT_REQUIRED ?></span><label><?php echo ENTRY_POST_CODE; ?></label></th>
-<td><p><?php echo ENTRY_SAMPLE_08 ; ?></p><?php 
+<td><p><?php echo ENTRY_SAMPLE_08 ; ?></p><?php
 	// Modified for Ajax住所+国名非表示 by zen-dera project 2007 BOF
-	echo zen_draw_input_field('postcode', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_postcode', '40') . 'onKeyUp="AjaxZip2.zip2addr(this,\'state\',\'city\',null,\'addr\',\'street_address\');"' . ' id="postcode"'); 
+	echo zen_draw_input_field('postcode', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_postcode', '40') . 'onKeyUp="AjaxZip2.zip2addr(this,\'state\',\'city\',null,\'addr\',\'street_address\');"' . ' id="postcode"');
 	// Modified for Ajax住所+国名非表示 by zen-dera project 2007 EOF
 ?><span><?php echo ENTRY_SAMPLE_00 ; ?></span></td>
 </tr>
@@ -64,7 +64,7 @@
 <td><?php
     if ($process == true || $entry_state_has_zones == true ) {
       if ($entry_state_has_zones == true) {
-        echo zen_draw_pull_down_menu('state', $zones_array, $zone_name, ' id="state"');
+        echo zen_draw_pull_down_menu('state', $zones_array, zen_convert_to_zone_name_m17n($zone_name), ' id="state"');
       } else {
         echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40'), ' id="state"');
       }

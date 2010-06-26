@@ -40,18 +40,19 @@ if (EMAIL_ATTACHMENT_UPLOADS_ENABLED=='EMAIL_ATTACHMENT_UPLOADS_ENABLED') define
   }
 
   if ( ($action == 'send_email_to_user') && isset($_POST['customers_email_address']) && !isset($_POST['back_x']) ) {
-	$audience_select = get_audience_sql_query($_POST['customers_email_address'], 'email');
-        $mail = $db->Execute($audience_select['query_string']);
-        $mail_sent_to = $audience_select['query_name'];
-      if ($_POST['email_to']) {
-        $mail_sent_to = $_POST['email_to'];
+    $audience_select = get_audience_sql_query_with_language($_POST['customers_email_address'], 'email'); 
+    $mail = $db->Execute($audience_select['query_string']); 
+    $mail_sent_to = $audience_select['query_name']; 
+    if ($_POST['email_to']) { 
+      $mail_sent_to = $_POST['email_to']; 
     }
 
 // error message if no email address
     if (empty($mail_sent_to)) {
       $messageStack->add_session(ERROR_NO_CUSTOMER_SELECTED, 'error');
       $_GET['action']='';
-      zen_redirect(zen_href_link(FILENAME_MAIL));
+      zen_restore_language($_POST['admin_language']);
+      zen_redirect(zen_href_link(FILENAME_MAIL)); 
     }
 
     $from = zen_db_prepare_input($_POST['from']);
@@ -65,6 +66,7 @@ if (EMAIL_ATTACHMENT_UPLOADS_ENABLED=='EMAIL_ATTACHMENT_UPLOADS_ENABLED') define
     if (zen_admin_demo()) {
       $_GET['action']= '';
       $messageStack->add_session(ERROR_ADMIN_DEMO, 'caution');
+      zen_restore_language($_POST['admin_language']);
       zen_redirect(zen_href_link(FILENAME_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to)));
     }
 
@@ -80,7 +82,8 @@ if (EMAIL_ATTACHMENT_UPLOADS_ENABLED=='EMAIL_ATTACHMENT_UPLOADS_ENABLED') define
       $mail->MoveNext();
     }
 
-    zen_redirect(zen_href_link(FILENAME_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to) . '&recip_count='. $recip_count ));
+    zen_restore_language($_POST['admin_language']); 
+    zen_redirect(zen_href_link(FILENAME_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to) . '&recip_count='. $recip_count));
   }
 
   if ( EMAIL_ATTACHMENTS_ENABLED && $action == 'preview') {
@@ -245,8 +248,9 @@ function check_form(form_name) {
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
 <?php
   if ( ($action == 'preview') && isset($_POST['customers_email_address']) ) {
-	$audience_select = get_audience_sql_query($_POST['customers_email_address']);
+    $audience_select = get_audience_sql_query_with_language($_POST['customers_email_address']);
     $mail_sent_to = $audience_select['query_name'];
+    $customers_languages_id = $audience_select['customers_languages_id'];
 ?>
           <tr>
             <td><table border="0" width="100%" cellpadding="0" cellspacing="2">
@@ -303,6 +307,8 @@ function check_form(form_name) {
       echo zen_draw_hidden_field('upload_file', stripslashes($upload_file_name));
       echo zen_draw_hidden_field('attachment_file', $attachment_file);
       echo zen_draw_hidden_field('attachment_filetype', $attachment_filetype);
+      echo zen_draw_hidden_field('customer_language', zen_get_language_code($customers_languages_id)); 
+      echo zen_draw_hidden_field('admin_language', zen_get_language_code($_SESSION['languages_id'])); 
 ?>
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
@@ -320,7 +326,7 @@ function check_form(form_name) {
             <td><table border="0" cellpadding="0" cellspacing="0" class="tableLayout1" width="100%">
            
 <?php
-    $customers = get_audiences_list('email');
+    $customers = get_audiences_list_with_language('email'); 
 ?>
               <tr>
                 <th class="main"><?php echo TEXT_CUSTOMER; ?></th>

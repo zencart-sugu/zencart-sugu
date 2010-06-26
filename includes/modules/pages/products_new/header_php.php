@@ -18,14 +18,15 @@
 // display limits
   $display_limit = zen_get_products_new_timelimit();
 
-  $products_new_query_raw = "SELECT p.products_id, p.products_type, pd.products_name, p.products_image, p.products_price, 
-                                    p.products_tax_class_id, p.products_date_added, m.manufacturers_name, p.products_model, 
+  $products_new_query_raw = "SELECT p.products_id, p.products_type, pd.products_name, pd.products_short_desc, p.products_image, p.products_price, 
+                                    p.products_tax_class_id, p.products_date_added, mi.manufacturers_name, p.products_model, 
                                     p.products_quantity, p.products_weight, p.product_is_call 
                              FROM " . TABLE_PRODUCTS . " p 
                              LEFT JOIN " . TABLE_MANUFACTURERS . " m 
-                             ON (p.manufacturers_id = m.manufacturers_id), " . TABLE_PRODUCTS_DESCRIPTION . " pd 
+                             ON (p.manufacturers_id = m.manufacturers_id) 
+                             LEFT JOIN " . TABLE_MANUFACTURERS_INFO . " mi ON m.manufacturers_id = mi.manufacturers_id AND mi.languages_id = '" . (int)$_SESSION['languages_id'] . "', " . TABLE_PRODUCTS_DESCRIPTION . " pd 
                              WHERE p.products_status = 1 
-                             AND p.products_id = pd.products_id 
+                             AND p.products_id = pd.products_id
                              AND pd.language_id = :languageID " . $display_limit . $order_by;
 
   $products_new_query_raw = $db->bindVars($products_new_query_raw, ':languageID', $_SESSION['languages_id'], 'integer');

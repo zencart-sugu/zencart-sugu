@@ -46,7 +46,24 @@
     }
     return $directory_array;
   }
-
+  
+  $select_lang_array = array();
+  $languages = zen_get_languages();
+  if (sizeof($languages) > 1) {
+    for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
+      $test_directory= DIR_WS_LANGUAGES . $languages[$i]['directory'];
+      $test_file= DIR_WS_LANGUAGES . $languages[$i]['directory'] . '.php';
+      if ( file_exists($test_file) and file_exists($test_directory) ) {
+        $select_lang_array[] = array('id' => $languages[$i]['code'],
+                                 'text' => $languages[$i]['name']);
+      }
+    }
+  }
+  
+  $selected_lang = (isset($_GET['selected_lang']) ? $_GET['selected_lang'] : zen_get_language_code($_SESSION['languages_id']));
+  $selected_lang_id = zen_get_languages_id_by_code($selected_lang);
+  $edit_language = (isset($selected_lang_id) ? zen_get_language_name($selected_lang_id) : $_SESSION['language']);
+  
   $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
   $za_who = $_GET['za_lookup'];
@@ -55,7 +72,7 @@
     $page = $_GET['define_it'];
 
     $check_directory = array();
-    $check_directory[] = DIR_FS_CATALOG . DIR_WS_LANGUAGES . $_SESSION['language'] . '/html_includes/';
+    $check_directory[] = DIR_FS_CATALOG . DIR_WS_LANGUAGES . $edit_language . '/html_includes/';
     $directory_files = zen_display_files();
 
     $za_lookup = array();
@@ -69,7 +86,7 @@
   }
 
 // define template specific file name defines
-  $file = zen_get_file_directory(DIR_FS_CATALOG_LANGUAGES . $_SESSION['language'] . '/html_includes/', $_GET['filename'], 'false');
+  $file = zen_get_file_directory(DIR_FS_CATALOG_LANGUAGES . $edit_language . '/html_includes/', $_GET['filename'], 'false');
 ?>
 <?php
   switch ($_GET['action']) {
@@ -80,7 +97,7 @@
           $_SESSION['html_editor_preference_status'] = 'HTMLAREA';
         }
         $action='';
-        zen_redirect(zen_href_link(FILENAME_DEFINE_PAGES_EDITOR));
+        zen_redirect(zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'selected_lang=' . $selected_lang));
         break;
     case 'save':
       if ( ($_GET['lngdir']) && ($_GET['filename']) ) {
@@ -94,23 +111,23 @@
           fwrite($new_file, $file_contents, strlen($file_contents));
           fclose($new_file);
         }
-        zen_redirect(zen_href_link(FILENAME_DEFINE_PAGES_EDITOR));
+        zen_redirect(zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'selected_lang=' . $selected_lang));
       }
       break;
   }
 
-  if (!$_SESSION['language']) $_SESSION['language'] = $language;
+  if (!$edit_language) $edit_language = $language;
 
   $languages_array = array();
   $languages = zen_get_languages();
   $lng_exists = false;
   for ($i=0; $i<sizeof($languages); $i++) {
-    if ($languages[$i]['directory'] == $_SESSION['language']) $lng_exists = true;
+    if ($languages[$i]['directory'] == $edit_language) $lng_exists = true;
 
     $languages_array[] = array('id' => $languages[$i]['directory'],
                                'text' => $languages[$i]['name']);
   }
-  if (!$lng_exists) $_SESSION['language'] = $language;
+  if (!$lng_exists) $edit_language = $language;
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -150,10 +167,16 @@
 <!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
-        <td class="pageHeading"><?php echo HEADING_TITLE . '&nbsp;' . $_SESSION['language']; ?> &nbsp;&nbsp;
+        <td class="pageHeading"><?php echo HEADING_TITLE . '&nbsp;'; ?> 
+<?php
+  echo zen_draw_form('languages', FILENAME_DEFINE_PAGES_EDITOR, '', 'get');
+  echo (sizeof($languages) > 1 ? zen_draw_pull_down_menu('selected_lang', $select_lang_array, $selected_lang, 'onChange="this.form.submit();"') : '');
+  echo zen_draw_hidden_field('action', $action) . zen_draw_hidden_field('define_it', $page) . zen_hide_session_id();
+  echo '</form>';
+?>&nbsp;&nbsp;
           <?php
             $check_directory = array();
-            $check_directory[] = DIR_FS_CATALOG . DIR_WS_LANGUAGES . $_SESSION['language'] . '/html_includes/';
+            $check_directory[] = DIR_FS_CATALOG . DIR_WS_LANGUAGES . $edit_language . '/html_includes/';
             $directory_files = zen_display_files();
 
             $za_lookup = array();
@@ -165,7 +188,7 @@
 
             echo zen_draw_form('new_page', FILENAME_DEFINE_PAGES_EDITOR, '', 'get') . '&nbsp;&nbsp;' . zen_draw_pull_down_menu('define_it', $za_lookup, '-1', 'onChange="this.form.submit();"') .
             zen_hide_session_id() . 
-            zen_draw_hidden_field('action', 'new_page') . '&nbsp;&nbsp;</form>';
+            zen_draw_hidden_field('action', 'new_page') . zen_draw_hidden_field('selected_lang', $selected_lang) . '&nbsp;&nbsp;</form>';
           ?>
 <?php
 // toggle switch for editor
@@ -173,7 +196,7 @@
                               array('id' => '1', 'text' => TEXT_HTML_AREA));
         echo TEXT_EDITOR_INFO . zen_draw_form('set_editor_form', FILENAME_DEFINE_PAGES_EDITOR, '', 'get') . '&nbsp;&nbsp;' . zen_draw_pull_down_menu('reset_editor', $editor_array, ($_SESSION['html_editor_preference_status'] == 'HTMLAREA' ? '1' : '0'), 'onChange="this.form.submit();"') .
         zen_hide_session_id() . 
-        zen_draw_hidden_field('action', 'set_editor') .
+        zen_draw_hidden_field('action', 'set_editor') . zen_draw_hidden_field('selected_lang', $selected_lang) .
         '</form>';
 ?>
         </td>
@@ -185,7 +208,7 @@ if (isset($_GET['filename'])) {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php
-  if ( ($_SESSION['language']) && ($_GET['filename']) ) {
+  if ( ($edit_language) && ($_GET['filename']) ) {
     if (file_exists($file)) {
       $file_array = @file($file);
       $file_contents = @implode('', $file_array);
@@ -202,7 +225,7 @@ if (isset($_GET['filename'])) {
               <tr>
             <td class="main"><b><?php echo TEXT_INFO_CAUTION . '<br /><br />' . TEXT_INFO_EDITING . '<br />' . $file . '<br />'; ?></b></td>
               </tr>
-          <tr><?php echo zen_draw_form('language', FILENAME_DEFINE_PAGES_EDITOR, 'lngdir=' . $_SESSION['language'] . '&filename=' . $_GET['filename'] . '&action=save'); ?>
+          <tr><?php echo zen_draw_form('language', FILENAME_DEFINE_PAGES_EDITOR, 'lngdir=' . $edit_language . '&filename=' . $_GET['filename'] . '&action=save' . '&selected_lang=' . $selected_lang); ?>
             <td><table border="0" cellspacing="0" cellpadding="2">
               <tr>
                 <td class="main">
@@ -220,7 +243,7 @@ if (isset($_GET['filename'])) {
                 <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
-                <td align="right"><?php if ($file_writeable) { echo zen_image_submit('button_save.gif', IMAGE_SAVE) . '&nbsp;<a href="' . zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'define_it=' .$_GET['define_it'] . '&action=new_page') . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a>' . '&nbsp;' . '<a href="' . zen_href_link(FILENAME_DEFINE_PAGES_EDITOR . '.php') . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; } else { echo '<a href="' . zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'lngdir=' . $_SESSION['language']) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; } ?></td>
+                <td align="right"><?php if ($file_writeable) { echo zen_image_submit('button_save.gif', IMAGE_SAVE) . '&nbsp;<a href="' . zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'define_it=' .$_GET['define_it'] . '&action=new_page' . '&selected_lang=' . $selected_lang) . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a>' . '&nbsp;' . '<a href="' . zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'selected_lang=' . $selected_lang) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; } else { echo '<a href="' . zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'lngdir=' . $edit_language . '&selected_lang=' . $selected_lang) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; } ?></td>
               </tr>
             </table></td>
           </form></tr>
@@ -234,25 +257,25 @@ if (isset($_GET['filename'])) {
             <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
           <tr>
-            <td><?php echo '<a href="' . zen_href_link($_GET['filename'], 'lngdir=' . $_SESSION['language']) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
+            <td><?php echo '<a href="' . zen_href_link($_GET['filename'], 'lngdir=' . $edit_language) . '">' . zen_image_button('button_back.gif', IMAGE_BACK) . '</a>'; ?></td>
           </tr>
 <?php
     }
   } else {
-    $filename = $_SESSION['language'] . '.php';
+    $filename = $edit_language . '.php';
 ?>
           <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="smallText"><a href="<?php echo zen_href_link($_GET['filename'], 'lngdir=' . $_SESSION['language'] . '&filename=' . $filename); ?>"><b><?php echo $filename; ?></b></a></td>
+                <td class="smallText"><a href="<?php echo zen_href_link($_GET['filename'], 'lngdir=' . $edit_language . '&filename=' . $filename); ?>"><b><?php echo $filename; ?></b></a></td>
 <?php
-    $dir = dir(DIR_FS_CATALOG_LANGUAGES . $_SESSION['language']);
+    $dir = dir(DIR_FS_CATALOG_LANGUAGES . $edit_language);
     $left = false;
     if ($dir) {
       $file_extension = substr($PHP_SELF, strrpos($PHP_SELF, '.'));
       while ($file = $dir->read()) {
         if (substr($file, strrpos($file, '.')) == $file_extension) {
-          echo '                <td class="smallText"><a href="' . zen_href_link($_GET['filename'], 'lngdir=' . $_SESSION['language'] . '&filename=' . $file) . '">' . $file . '</a></td>' . "\n";
+          echo '                <td class="smallText"><a href="' . zen_href_link($_GET['filename'], 'lngdir=' . $edit_language . '&filename=' . $file) . '">' . $file . '</a></td>' . "\n";
           if (!$left) {
             echo '              </tr>' . "\n" .
                  '              <tr>' . "\n";

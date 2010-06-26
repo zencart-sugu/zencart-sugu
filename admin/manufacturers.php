@@ -29,9 +29,12 @@
       case 'insert':
       case 'save':
         if (isset($_GET['mID'])) $manufacturers_id = zen_db_prepare_input($_GET['mID']);
-        $manufacturers_name = zen_db_prepare_input(mb_strimwidth($_POST['manufacturers_name'], 0, zen_field_length(TABLE_MANUFACTURERS, 'manufacturers_name')));
+          $manufacturers_name_array = array(); 
+          foreach ($_POST['manufacturers_name'] as $key => $value) { 
+            $manufacturers_name_array[$key] = zen_db_prepare_input(mb_strimwidth($value, 0, zen_field_length(TABLE_MANUFACTURERS, 'manufacturers_name'))); 
+          } 
 
-        $sql_data_array = array('manufacturers_name' => $manufacturers_name);
+        $sql_data_array = array('manufacturers_name' => $manufacturers_name_array[(int)$_SESSION['languages_id']]); 
 
         if ($action == 'insert') {
           $insert_sql_data = array('date_added' => 'now()');
@@ -69,7 +72,8 @@
           $language_id = $languages[$i]['id'];
 
           $sql_data_array = array('manufacturers_url' => zen_db_prepare_input($manufacturers_url_array[$language_id]));
-
+          $sql_data_array['manufacturers_name'] = $manufacturers_name_array[$language_id]; 
+          
           if ($action == 'insert') {
             $insert_sql_data = array('manufacturers_id' => $manufacturers_id,
                                      'languages_id' => $language_id);
@@ -187,7 +191,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+  $manufacturers_query_raw = "select m.manufacturers_id, mi.manufacturers_name, m.manufacturers_image, m.date_added, m.last_modified from " . TABLE_MANUFACTURERS . " m left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' order by mi.manufacturers_name";
   $manufacturers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, $manufacturers_query_raw, $manufacturers_query_numrows);
   $manufacturers = $db->Execute($manufacturers_query_raw);
   while (!$manufacturers->EOF) {
@@ -245,7 +249,12 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 
       $contents = array('form' => zen_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'action=insert', 'post', 'enctype="multipart/form-data"'));
       $contents[] = array('text' => TEXT_NEW_INTRO);
-      $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_NAME . '<br>' . zen_draw_input_field('manufacturers_name', '', zen_set_field_length(TABLE_MANUFACTURERS, 'manufacturers_name')));
+       $manufacturer_inputs_string = ''; 
+       $languages = zen_get_languages(); 
+       for ($i=0, $n=sizeof($languages); $i<$n; $i++) { 
+         $manufacturer_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('manufacturers_name[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_MANUFACTURERS_INFO, 'manufacturers_name')); 
+       } 
+       $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_NAME . $manufacturer_inputs_string); 
       $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_IMAGE . '<br>' . zen_draw_file_field('manufacturers_image'));
       $dir = @dir(DIR_FS_CATALOG_IMAGES);
       $dir_info[] = array('id' => '', 'text' => "Main Directory");
@@ -273,7 +282,12 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 
       $contents = array('form' => zen_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=save', 'post', 'enctype="multipart/form-data"'));
       $contents[] = array('text' => TEXT_EDIT_INTRO);
-      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_NAME . '<br>' . zen_draw_input_field('manufacturers_name', $mInfo->manufacturers_name, zen_set_field_length(TABLE_MANUFACTURERS, 'manufacturers_name')));
+       $manufacturer_inputs_string = ''; 
+       $languages = zen_get_languages(); 
+       for ($i=0, $n=sizeof($languages); $i<$n; $i++) { 
+         $manufacturer_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('manufacturers_name[' . $languages[$i]['id'] . ']', zen_get_manufacturers_name($mInfo->manufacturers_id, $languages[$i]['id']), zen_set_field_length(TABLE_MANUFACTURERS_INFO, 'manufacturers_name')); 
+       } 
+       $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_NAME . $manufacturer_inputs_string); 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_IMAGE . '<br>' . zen_draw_file_field('manufacturers_image') . '<br />' . $mInfo->manufacturers_image);
       $dir = @dir(DIR_FS_CATALOG_IMAGES);
       $dir_info[] = array('id' => '', 'text' => "Main Directory");
