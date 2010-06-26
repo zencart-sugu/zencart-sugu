@@ -154,7 +154,7 @@ if ($category_depth == 'nested')
       $select_column_list .= 'pd.products_name, ';
       break;
       case 'PRODUCT_LIST_MANUFACTURER':
-      $select_column_list .= 'm.manufacturers_name, ';
+      $select_column_list .= 'mi.manufacturers_name, ';
       break;
       case 'PRODUCT_LIST_QUANTITY':
       $select_column_list .= 'p.products_quantity, ';

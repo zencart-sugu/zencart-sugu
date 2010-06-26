@@ -10,7 +10,7 @@
  */
 
   if (isset($_GET['products_id'])) {
-    $manufacturer_info_sidebox_query = "select m.manufacturers_id, m.manufacturers_name, m.manufacturers_image,
+    $manufacturer_info_sidebox_query = "select m.manufacturers_id, mi.manufacturers_name, m.manufacturers_image,
                                   mi.manufacturers_url
                            from " . TABLE_MANUFACTURERS . " m
                            left join " . TABLE_MANUFACTURERS_INFO . " mi

@@ -63,6 +63,27 @@
                         where configuration_key = 'DEFAULT_CURRENCY'");
         }
 
+        $symbol_left_m17n = zen_db_prepare_input($_POST['symbol_left_m17n']);
+        $symbol_right_m17n = zen_db_prepare_input($_POST['symbol_right_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $language_id = $languages[$i]['id'];
+
+          $sql_data_array = array('symbol_left' => zen_db_prepare_input($symbol_left_m17n[$language_id]),
+                                  'symbol_right' => zen_db_prepare_input($symbol_right_m17n[$language_id]));
+
+          if ($action == 'insert') {
+            $insert_sql_data = array('currencies_id' => $currency_id,
+                                     'language_id' => $language_id);
+
+            $sql_data_array = array_merge($sql_data_array, $insert_sql_data);
+
+            zen_db_perform(TABLE_CURRENCIES_M17N, $sql_data_array);
+          } elseif ($action == 'save') {
+            zen_db_perform(TABLE_CURRENCIES_M17N, $sql_data_array, 'update', "currencies_id = '" . (int)$currency_id . "' and language_id = '" . (int)$language_id . "'");
+          }
+        }
+        
         zen_redirect(zen_href_link(FILENAME_CURRENCIES, 'page=' . $_GET['page'] . '&cID=' . $currency_id));
         break;
       case 'deleteconfirm':
@@ -86,6 +107,8 @@
         }
 
         $db->Execute("delete from " . TABLE_CURRENCIES . "
+                      where currencies_id = '" . (int)$currencies_id . "'");
+        $db->Execute("delete from " . TABLE_CURRENCIES_M17N . "
                       where currencies_id = '" . (int)$currencies_id . "'");
 
         zen_redirect(zen_href_link(FILENAME_CURRENCIES, 'page=' . $_GET['page']));
@@ -255,7 +278,23 @@
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_TITLE . '<br>' . zen_draw_input_field('title'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_CODE . '<br>' . zen_draw_input_field('code'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_SYMBOL_LEFT . '<br>' . zen_draw_input_field('symbol_left'));
+
+      $currencies_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $currencies_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('symbol_left_m17n[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_CURRENCIES_M17N, 'symbol_left'));
+      }
+      $contents[] = array('text' => '<br>' . $currencies_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_SYMBOL_RIGHT . '<br>' . zen_draw_input_field('symbol_right'));
+
+      $currencies_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $currencies_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('symbol_right_m17n[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_CURRENCIES_M17N, 'symbol_right'));
+      }
+      $contents[] = array('text' => '<br>' . $currencies_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_DECIMAL_POINT . '<br>' . zen_draw_input_field('decimal_point'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_THOUSANDS_POINT . '<br>' . zen_draw_input_field('thousands_point'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_DECIMAL_PLACES . '<br>' . zen_draw_input_field('decimal_places'));
@@ -271,14 +310,31 @@
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_TITLE . '<br>' . zen_draw_input_field('title', $cInfo->title));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_CODE . '<br>' . zen_draw_input_field('code', $cInfo->code));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_SYMBOL_LEFT . '<br>' . zen_draw_input_field('symbol_left', htmlspecialchars($cInfo->symbol_left)));
+
+      $currencies_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $currencies_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('symbol_left_m17n[' . $languages[$i]['id'] . ']', zen_get_symbol_left_m17n($cInfo->currencies_id, $languages[$i]['id']), zen_set_field_length(TABLE_CURRENCIES_M17N, 'symbol_left'));
+      }
+      $contents[] = array('text' => '<br>' . $currencies_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_SYMBOL_RIGHT . '<br>' . zen_draw_input_field('symbol_right', htmlspecialchars($cInfo->symbol_right)));
+
+      $currencies_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $currencies_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('symbol_right_m17n[' . $languages[$i]['id'] . ']', zen_get_symbol_right_m17n($cInfo->currencies_id, $languages[$i]['id']), zen_set_field_length(TABLE_CURRENCIES_M17N, 'symbol_right'));
+      }
+      $contents[] = array('text' => '<br>' . $currencies_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_DECIMAL_POINT . '<br>' . zen_draw_input_field('decimal_point', $cInfo->decimal_point));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_THOUSANDS_POINT . '<br>' . zen_draw_input_field('thousands_point', $cInfo->thousands_point));
       $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_DECIMAL_PLACES . '<br>' . zen_draw_input_field('decimal_places', $cInfo->decimal_places));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_VALUE . '<br>' . zen_draw_input_field('value', $cInfo->value));
+      $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENCY_VALUE . '<br>' . zen_draw_input_field('value', $cInfo->value, '', false, 'text', false));
       if (DEFAULT_CURRENCY != $cInfo->code) $contents[] = array('text' => '<br>' . zen_draw_checkbox_field('default') . ' ' . TEXT_INFO_SET_AS_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_update.gif', IMAGE_UPDATE) . ' <a href="' . zen_href_link(FILENAME_CURRENCIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->currencies_id) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
+    
     case 'delete':
       $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_DELETE_CURRENCY . '</b>');
 

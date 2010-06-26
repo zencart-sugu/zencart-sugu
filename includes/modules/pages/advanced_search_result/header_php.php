@@ -162,7 +162,7 @@ for ($col=0, $n=sizeof($column_list); $col<$n; $col++) {
     $select_column_list .= 'p.products_model';
     break;
     case 'PRODUCT_LIST_MANUFACTURER':
-    $select_column_list .= 'm.manufacturers_name';
+    $select_column_list .= 'mi.manufacturers_name';
     break;
     case 'PRODUCT_LIST_QUANTITY':
     $select_column_list .= 'p.products_quantity';
@@ -213,8 +213,11 @@ $zco_notifier->notify('NOTIFY_SEARCH_SELECT_STRING');
 
 //  $from_str = "from " . TABLE_PRODUCTS . " p left join " . TABLE_MANUFACTURERS . " m using(manufacturers_id), " . TABLE_PRODUCTS_DESCRIPTION . " pd left join " . TABLE_SPECIALS . " s on p.products_id = s.products_id, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c";
 $from_str = "FROM (" . TABLE_PRODUCTS . " p
-             LEFT JOIN " . TABLE_MANUFACTURERS . " m
-             USING(manufacturers_id), " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c
+             LEFT JOIN " . TABLE_MANUFACTURERS . " m USING(manufacturers_id)
+             LEFT JOIN " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "'
++            TABLE_PRODUCTS_DESCRIPTION . " pd, " .
+             TABLE_CATEGORIES . " c, " . 
+             TABLE_PRODUCTS_TO_CATEGORIES . " p2c
              LEFT JOIN " . TABLE_META_TAGS_PRODUCTS_DESCRIPTION . " mtpd
              ON mtpd.products_id= p2c.products_id
              AND mtpd.language_id = :languagesID )";
@@ -294,7 +297,7 @@ if (isset($keywords) && zen_not_null($keywords)) {
         $where_str .= "(pd.products_name LIKE '%:keywords%'
                                          OR p.products_model
                                          LIKE '%:keywords%'
-                                         OR m.manufacturers_name
+                                         OR mi.manufacturers_name
                                          LIKE '%:keywords%'";
 
         $where_str = $db->bindVars($where_str, ':keywords', $search_keywords[$i], 'noquotestring');
@@ -405,7 +408,7 @@ if ((!isset($_GET['sort'])) || (!ereg('[1-8][ad]', $_GET['sort'])) || (substr($_
     $order_str .= "pd.products_name " . ($sort_order == 'd' ? "desc" : "");
     break;
     case 'PRODUCT_LIST_MANUFACTURER':
-    $order_str .= "m.manufacturers_name " . ($sort_order == 'd' ? "desc" : "") . ", pd.products_name";
+    $order_str .= "mi.manufacturers_name " . ($sort_order == 'd' ? "desc" : "") . ", pd.products_name";
     break;
     case 'PRODUCT_LIST_QUANTITY':
     $order_str .= "p.products_quantity " . ($sort_order == 'd' ? "desc" : "") . ", pd.products_name";

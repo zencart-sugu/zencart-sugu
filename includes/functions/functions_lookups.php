@@ -200,8 +200,10 @@
     global $db;
     if (!is_array($manufacturers_array)) $manufacturers_array = array();
 
-    $manufacturers_query = "select manufacturers_id, manufacturers_name
-                            from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+     $manufacturers_query = "select m.manufacturers_id, mi.manufacturers_name 
+                             from " . TABLE_MANUFACTURERS . " m 
+                             left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' 
+                             order by mi.manufacturers_name"; 
 
     $manufacturers = $db->Execute($manufacturers_query);
 
@@ -335,9 +337,10 @@
   function zen_get_products_manufacturers_name($product_id) {
     global $db;
 
-    $product_query = "select m.manufacturers_name
+    $product_query = "select mi.manufacturers_name
                       from " . TABLE_PRODUCTS . " p, " .
                             TABLE_MANUFACTURERS . " m
+                      left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' 
                       where p.products_id = '" . (int)$product_id . "'
                       and p.manufacturers_id = m.manufacturers_id";
 

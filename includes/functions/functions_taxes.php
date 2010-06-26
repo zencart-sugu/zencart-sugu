@@ -61,11 +61,14 @@
 // TABLES: tax_rates;
   function zen_get_tax_description($class_id, $country_id, $zone_id) {
     global $db;
-    $tax_query = "select tax_description
-                  from (" . TABLE_TAX_RATES . " tr
+    $tax_query = "select trm17n.tax_description
+                  from ((" . TABLE_TAX_RATES . " tr
+                  , " . TABLE_TAX_RATES_M17N . " trm17n)
                   left join " . TABLE_ZONES_TO_GEO_ZONES . " za on (tr.tax_zone_id = za.geo_zone_id)
                   left join " . TABLE_GEO_ZONES . " tz on (tz.geo_zone_id = tr.tax_zone_id) )
-                  where (za.zone_country_id is null or za.zone_country_id = 0
+                  where tr.tax_rates_id = trm17n.tax_rates_id
+                  and trm17n.language_id = '" . (int)$_SESSION['languages_id'] . "'
+                  and (za.zone_country_id is null or za.zone_country_id = 0
                   or za.zone_country_id = '" . (int)$country_id . "')
                   and (za.zone_id is null
                   or za.zone_id = 0

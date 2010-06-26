@@ -45,6 +45,26 @@
             zen_db_perform(TABLE_GROUP_PRICING, $sql_data_array, 'update', "group_id = '" . (int)$group_id . "'");
           }
         }
+
+        $group_name_m17n = zen_db_prepare_input($_POST['group_name_m17n']);
+        $languages = zen_get_languages();
+        for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+          $language_id = $languages[$i]['id'];
+
+          $sql_data_array = array('group_name' => zen_db_prepare_input($group_name_m17n[$language_id]));
+
+          if ($action == 'insert') {
+            $insert_sql_data = array('group_id' => $group_id,
+                                     'language_id' => $language_id);
+
+            $sql_data_array = array_merge($sql_data_array, $insert_sql_data);
+
+            zen_db_perform(TABLE_GROUP_PRICING_M17N, $sql_data_array);
+          } elseif ($action == 'save') {
+            zen_db_perform(TABLE_GROUP_PRICING_M17N, $sql_data_array, 'update', "group_id = '" . (int)$group_id . "' and language_id = '" . (int)$language_id . "'");
+          }
+        }
+
         zen_redirect(zen_href_link(FILENAME_GROUP_PRICING, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'gID=' . $group_id));
       break;
       case 'deleteconfirm':
@@ -66,6 +86,7 @@
           $messageStack->add_session(ERROR_GROUP_PRICING_CUSTOMERS_EXIST,'error');
         } elseif($customers_query->RecordCount() == 0) {
           $db->Execute("delete from " . TABLE_GROUP_PRICING . " where group_id = '" . (int)$group_id . "'");
+          $db->Execute("delete from " . TABLE_GROUP_PRICING_M17N . " where group_id = '" . (int)$group_id . "'");
         }
         zen_redirect(zen_href_link(FILENAME_GROUP_PRICING, 'page=' . $_GET['page']));
       break;
@@ -189,6 +210,14 @@
       $contents = array('form' => zen_draw_form('group_pricing', FILENAME_GROUP_PRICING, 'action=insert', 'post'));
       $contents[] = array('text' => TEXT_NEW_INTRO);
       $contents[] = array('text' => '<br>' . TEXT_GROUP_PRICING_NAME . '<br>' . zen_draw_input_field('group_name', '', zen_set_field_length(TABLE_GROUP_PRICING, 'group_name')));
+
+      $group_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $group_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('group_name_m17n[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_GROUP_PRICING_M17N, 'group_name'));
+      }
+      $contents[] = array('text' => '<br>' . $group_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_GROUP_PRICING_AMOUNT . '<br>' . zen_draw_input_field('group_percentage', ''));
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_save.gif', IMAGE_SAVE) . ' <a href="' . zen_href_link(FILENAME_GROUP_PRICING, 'page=' . $_GET['page'] . '&gID=' . $_GET['gID']) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
@@ -198,6 +227,14 @@
       $contents = array('form' => zen_draw_form('group_pricing', FILENAME_GROUP_PRICING, 'page=' . $_GET['page'] . '&gID=' . $gInfo->group_id . '&action=save', 'post'));
       $contents[] = array('text' => TEXT_EDIT_INTRO);
       $contents[] = array('text' => '<br />' . TEXT_GROUP_PRICING_NAME . '<br>' . zen_draw_input_field('group_name', $gInfo->group_name, zen_set_field_length(TABLE_GROUP_PRICING, 'group_name')));
+
+      $group_inputs_string = '';
+      $languages = zen_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $group_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('group_name_m17n[' . $languages[$i]['id'] . ']', zen_get_group_name_m17n($gInfo->group_id, $languages[$i]['id']), zen_set_field_length(TABLE_GROUP_PRICING_M17N, 'group_name'));
+      }
+      $contents[] = array('text' => '<br>' . $group_inputs_string);
+
       $contents[] = array('text' => '<br>' . TEXT_GROUP_PRICING_AMOUNT . '<br>' . zen_draw_input_field('group_percentage', $gInfo->group_percentage));
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_save.gif', IMAGE_SAVE) . ' <a href="' . zen_href_link(FILENAME_GROUP_PRICING, 'page=' . $_GET['page'] . '&gID=' . $gInfo->group_id) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
