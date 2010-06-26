@@ -9,6 +9,9 @@
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
+
+require(DIR_WS_INCLUDES . 'application_bottom_m17n.php'); 
+
 // close session (store variables)
   zen_session_close();
 

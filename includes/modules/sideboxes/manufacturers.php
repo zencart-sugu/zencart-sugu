@@ -25,15 +25,17 @@ if ($show_manufacturers) {
 
 // only check products if requested - this may slow down the processing of the manufacturers sidebox
   if (PRODUCTS_MANUFACTURERS_STATUS == '1') {
-    $manufacturer_sidebox_query = "select distinct m.manufacturers_id, m.manufacturers_name
+    $manufacturer_sidebox_query = "select distinct m.manufacturers_id, mi.manufacturers_name
                             from " . TABLE_MANUFACTURERS . " m
+                            left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "'
                             left join " . TABLE_PRODUCTS . " p on m.manufacturers_id = p.manufacturers_id
                             where m.manufacturers_id = p.manufacturers_id and p.products_status= 1
-                            order by manufacturers_name";
+                            order by mi.manufacturers_name";
   } else {
-    $manufacturer_sidebox_query = "select m.manufacturers_id, m.manufacturers_name
+    $manufacturer_sidebox_query = "select m.manufacturers_id, mi.manufacturers_name
                             from " . TABLE_MANUFACTURERS . " m
-                            order by manufacturers_name";
+                            left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' 
+                            order by mi.manufacturers_name";
   }
 
   $manufacturer_sidebox = $db->Execute($manufacturer_sidebox_query);

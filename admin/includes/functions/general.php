@@ -585,6 +585,7 @@
 
     $statecomma = '';
     $streets = $street;
+    $state = zen_convert_to_zone_name_m17n($state) . ' ';
     if ($suburb != '') $streets = $street . $cr . $suburb;
     if ($country == '') $country = zen_output_string_protected($address['country']);
     if ($state != '') $statecomma = $state . ', ';

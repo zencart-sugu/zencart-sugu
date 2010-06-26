@@ -113,7 +113,10 @@ switch ($_GET['main_page']) {
       } // EOF
     } elseif ($category_depth == 'products') {
       if (isset($_GET['manufacturers_id'])) {
-        $sql = "select manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "'";
+        $sql = "select mi.manufacturers_name 
+                from " . TABLE_MANUFACTURERS . " m 
+                left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' 
+                where m.manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "'"; 
         $manufacturer_metatags = $db->Execute($sql);
         if ($manufacturer_metatags->EOF) {
           $meta_tags_over_ride = true;

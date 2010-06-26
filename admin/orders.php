@@ -23,7 +23,8 @@
   require('includes/application_top.php');
 
   require(DIR_WS_CLASSES . 'currencies.php');
-  $currencies = new currencies();
+  require(DIR_WS_CLASSES . 'currencies_m17n.php');
+  $currencies = new currenciesM17n();
 
   $orders_statuses = array();
   $orders_status_array = array();
@@ -57,6 +58,7 @@
           unset($_GET['download_reset_on']);
 
           $messageStack->add_session(SUCCESS_ORDER_UPDATED_DOWNLOAD_ON, 'success');
+          zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         }
       // reset single download to off
@@ -67,6 +69,7 @@
           $db->Execute($update_downloads_query);
 
           $messageStack->add_session(SUCCESS_ORDER_UPDATED_DOWNLOAD_OFF, 'success');
+          zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         }
       break;
@@ -151,6 +154,7 @@
           $messageStack->add_session(WARNING_ORDER_NOT_UPDATED, 'warning');
         }
 
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
       case 'deleteconfirm':
@@ -158,16 +162,19 @@
         if (zen_admin_demo()) {
           $_GET['action']= '';
           $messageStack->add_session(ERROR_ADMIN_DEMO, 'caution');
+          zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('oID', 'action')), 'NONSSL'));
         }
         $oID = zen_db_prepare_input($_GET['oID']);
 
         zen_remove_order($oID, $_POST['restock']);
 
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('oID', 'action')), 'NONSSL'));
         break;
       case 'delete_cvv':
         $delete_cvv = $db->Execute("update " . TABLE_ORDERS . " set cc_cvv = '" . TEXT_DELETE_CVV_REPLACEMENT . "' where orders_id = '" . (int)$_GET['oID'] . "'");
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
       case 'mask_cc':
@@ -175,6 +182,7 @@
         $old_num = $result->fields['cc_number'];
         $new_num = substr($old_num, 0, 4) . str_repeat('*', (strlen($old_num) - 8)) . substr($old_num, -4);
         $mask_cc = $db->Execute("update " . TABLE_ORDERS . " set cc_number = '" . $new_num . "' where orders_id = '" . (int)$_GET['oID'] . "'");
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
     }

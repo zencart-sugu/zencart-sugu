@@ -40,6 +40,7 @@
         }
         $db->Execute($sql);
         $action = '';
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_CUSTOMERS, 'cID=' . $_GET['cID'] . '&page=' . $_GET['page'], 'NONSSL'));
         break;
       case 'update':
@@ -80,7 +81,7 @@
         $entry_country_id = zen_db_prepare_input($_POST['entry_country_id']);
 
         $entry_company = zen_db_prepare_input($_POST['entry_company']);
-        $entry_state = zen_db_prepare_input($_POST['entry_state']);
+        $entry_state = zen_convert_to_zone_name(zen_db_prepare_input($_POST['entry_state']));
         if (isset($_POST['entry_zone_id'])) $entry_zone_id = zen_db_prepare_input($_POST['entry_zone_id']);
 
         if (strlen($customers_firstname) < ENTRY_FIRST_NAME_MIN_LENGTH) {
@@ -294,7 +295,8 @@
 
         zen_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array, 'update', "customers_id = '" . (int)$customers_id . "' and address_book_id = '" . (int)$default_address_id . "'");
 
-        zen_redirect(zen_href_link(FILENAME_CUSTOMERS, zen_get_all_get_params(array('cID', 'action')) . 'cID=' . $customers_id, 'NONSSL'));
+        zen_restore_language($admin_language);
+        zen_redirect(zen_href_link(FILENAME_CUSTOMERS, zen_get_all_get_params(array('cID', 'action', 'language')) . 'cID=' . $customers_id, 'NONSSL'));
 
         } else if ($error == true) {
           $cInfo = new objectInfo($_POST);
@@ -307,6 +309,7 @@
         if (zen_admin_demo()) {
           $_GET['action']= '';
           $messageStack->add_session(ERROR_ADMIN_DEMO, 'caution');
+          zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_CUSTOMERS, zen_get_all_get_params(array('cID', 'action')), 'NONSSL'));
         }
         $customers_id = zen_db_prepare_input($_GET['cID']);
@@ -348,7 +351,7 @@
         $db->Execute("delete from " . TABLE_WHOS_ONLINE . "
                       where customer_id = '" . (int)$customers_id . "'");
 
-
+        zen_restore_language($admin_language);
         zen_redirect(zen_href_link(FILENAME_CUSTOMERS, zen_get_all_get_params(array('cID', 'action')), 'NONSSL'));
         break;
       default:
@@ -562,7 +565,7 @@ function check_form() {
       <tr>
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
-      <tr><?php echo zen_draw_form('customers', FILENAME_CUSTOMERS, zen_get_all_get_params(array('action')) . 'action=update', 'post', 'onsubmit="return check_form(customers);"', true) . zen_draw_hidden_field('default_address_id', $cInfo->customers_default_address_id); ?>
+      <tr><?php echo zen_draw_form('customers', FILENAME_CUSTOMERS, zen_get_all_get_params(array('action', 'language')) . 'action=update', 'post', 'onsubmit="return check_form(customers);"', true) . zen_draw_hidden_field('default_address_id', $cInfo->customers_default_address_id); ?>
         <td class="formAreaTitle"><?php echo CATEGORY_PERSONAL; ?></td>
       </tr>
       <tr>
@@ -791,7 +794,7 @@ function check_form() {
             <td class="main"><?php echo ENTRY_STATE; ?></td>
             <td class="main">
 <?php
-    $entry_state = zen_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state);
+    $entry_state = zen_convert_to_zone_name_m17n(zen_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state));
     if ($error == true) {
       if ($entry_state_error == true) {
         if ($entry_state_has_zones == true) {
@@ -802,18 +805,18 @@ function check_form() {
                                         order by zone_id");
 
           while (!$zones_values->EOF) {
-            $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+            $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
             $zones_values->MoveNext();
           }
           echo zen_draw_pull_down_menu('entry_state', $zones_array) . '&nbsp;' . ENTRY_STATE_ERROR;
         } else {
-          echo zen_draw_input_field('entry_state', zen_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state)) . '&nbsp;' . ENTRY_STATE_ERROR;
+          echo zen_draw_input_field('entry_state', zen_convert_to_zone_name_m17n(zen_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state))) . '&nbsp;' . ENTRY_STATE_ERROR;
         }
       } else {
         echo $entry_state . zen_draw_hidden_field('entry_zone_id') . zen_draw_hidden_field('entry_state');
       }
     } else {
-      echo zen_draw_input_field('entry_state', zen_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state));
+      echo zen_draw_input_field('entry_state', zen_convert_to_zone_name_m17n(zen_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state)));
     }
 
 ?></td>
@@ -990,7 +993,7 @@ if ($processed == true) {
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td align="right" class="main"><?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE) . ' <a href="' . zen_href_link(FILENAME_CUSTOMERS, zen_get_all_get_params(array('action')), 'NONSSL') .'">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
+    <td align="right" class="main"><?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE) . ' <a href="' . zen_href_link(FILENAME_CUSTOMERS, zen_get_all_get_params(array('action', 'language')), 'NONSSL') .'">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
       </tr></form>
 <?php
   } else {
