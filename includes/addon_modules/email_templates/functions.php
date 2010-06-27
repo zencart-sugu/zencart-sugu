@@ -160,7 +160,7 @@
 		return $out;
 	}
 
-	function zen_get_email_group_for_status() {
+	function zen_get_email_group_for_status($order_id) {
     global $db;
 
     $arr   = array();
@@ -205,7 +205,8 @@
                   url:  "'.zen_href_link("../index.php?main_page=addon").'",
                   data: {
                     module: "email_templates",
-                    id:   grp.value
+                    id:   grp.value,
+                    order_id: ' . $order_id . '
                   },
                   success: function(msg) {
                     var comments = document.getElementById("comments");
