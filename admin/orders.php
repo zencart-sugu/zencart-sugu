@@ -554,7 +554,7 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
 // ステータス変更メールをカスタマイズできるようにする
 if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
                 echo ENTRY_NOTIFY_CUSTOMER;
-                echo zen_get_email_group_for_status();
+                echo zen_get_email_group_for_status($oID);
                 echo zen_draw_hidden_field('notify',          '', 'id="notify"');
                 echo zen_draw_hidden_field('notify_comments', '', 'id="notify_comments"');
 } else {

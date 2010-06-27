@@ -220,12 +220,24 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       if (isset($_GET['id'])) {
       	$id  = $_GET['id'];
+	$language_id = $_SESSION['languages_id'];
+	if (isset($_GET['order_id'])) {
+	  $query          = "SELECT c.customers_languages_id 
+                               FROM " . TABLE_CUSTOMERS . " c
+                              INNER JOIN " . TABLE_ORDERS . " o ON c.customers_id=o.customers_id
+                            WHERE o.orders_id= :order_id";
+	  $query = $db->bindVars($query, ':order_id', $_GET['order_id'], 'integer');
+	  $result = $db->Execute($query);
+	  if ($result->fields['customers_languages_id'] > 0) {
+	    $language_id = $result->fields['customers_languages_id'];
+	  }
+	}
         $query          = "SELECT * 
                              FROM " . TABLE_EMAIL_TEMPLATES . " et
                              INNER JOIN " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd ON et.id=etd.email_templates_id AND etd.language_id= :language_id
                             WHERE id= :id";
 	$query = $db->bindVars($query, ':id', $_GET['id'], 'integer');
-	$query = $db->bindVars($query, ':language_id', $_SESSION['languages_id'], 'integer');
+	$query = $db->bindVars($query, ':language_id', $language_id, 'integer');
         $email_template = $db->Execute($query);
         echo $email_template->fields['contents'];
       	exit;
