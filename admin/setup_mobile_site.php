@@ -316,8 +316,9 @@
 
           while (!$manufacturers->EOF) {
             $db->Execute("insert into " . TABLE_MANUFACTURERS_INFO . "
-                         (manufacturers_id, languages_id, manufacturers_url)
+                         (manufacturers_id, languages_id, manufacturers_name, manufacturers_url)
                           values ('" . $manufacturers->fields['manufacturers_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($manufacturers->fields['manufacturers_name']) . "',
                                   '" . zen_db_input($manufacturers->fields['manufacturers_url']) . "')");
 
             $manufacturers->MoveNext();
@@ -335,6 +336,78 @@
                                   '" . (int)$insert_id . "',
                                   '" . zen_db_input($orders_status->fields['orders_status_name']) . "')");
             $orders_status->MoveNext();
+          }
+
+
+          $tax_class_m17n = $db->Execute("select tax_class_id, language_id, tax_class_title, tax_class_description
+                                         from " . TABLE_TAX_CLASS_M17N . "
+                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$tax_class_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_TAX_CLASS_M17N . "
+                          (tax_class_id, language_id, tax_class_title, tax_class_description)
+                          values ('" . (int)$tax_class_m17n->fields['tax_class_id'] . "',
+                                  '" . (int)$insert_id . "',
+                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_title']) . "',
+                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_description']) . "')");
+            $tax_class_m17n->MoveNext();
+          }
+
+
+          $tax_rates_m17n = $db->Execute("select tax_rates_id, language_id, tax_description
+                                         from " . TABLE_TAX_RATES_M17N . "
+                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$tax_rates_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_TAX_RATES_M17N . "
+                          (tax_rates_id, language_id, tax_description)
+                          values ('" . (int)$tax_rates_m17n->fields['tax_rates_id'] . "',
+                                  '" . (int)$insert_id . "',
+                                  '" . zen_db_input($tax_rates_m17n->fields['tax_description']) . "')");
+            $tax_rates_m17n->MoveNext();
+          }
+
+
+          $currencies_m17n = $db->Execute("select currencies_id, language_id, symbol_left, symbol_right
+                                         from " . TABLE_CURRENCIES_M17N . "
+                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$currencies_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_CURRENCIES_M17N . "
+                          (currencies_id, language_id, symbol_left, symbol_right)
+                          values ('" . (int)$currencies_m17n->fields['currencies_id'] . "',
+                                  '" . (int)$insert_id . "',
+                                  '" . zen_db_input($currencies_m17n->fields['symbol_left']) . "',
+                                  '" . zen_db_input($currencies_m17n->fields['symbol_right']) . "')");
+            $currencies_m17n->MoveNext();
+          }
+
+
+          $group_pricing_m17n = $db->Execute("select group_id, language_id, group_name
+                                         from " . TABLE_GROUP_PRICING_M17N . "
+                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$group_pricing_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_GROUP_PRICING_M17N . "
+                          (group_id, language_id, group_name)
+                          values ('" . (int)$group_pricing_m17n->fields['group_id'] . "',
+                                  '" . (int)$insert_id . "',
+                                  '" . zen_db_input($group_pricing_m17n->fields['group_name']) . "')");
+            $group_pricing_m17n->MoveNext();
+          }
+
+
+          $zones_m17n = $db->Execute("select zone_id, language_id, zone_name_m17n
+                                         from " . TABLE_ZONES_M17N . "
+                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$zones_m17n->EOF) {
+	    $db->Execute("insert into " . TABLE_ZONES_M17N . "
+                          (zone_id, language_id, zone_name_m17n)
+                          values ('" . (int)$zones_m17n->fields['zone_id'] . "',
+                                  '" . (int)$insert_id . "',
+                                  '" . zen_db_input($zones_m17n->fields['zone_name_m17n']) . "')");
+            $zones_m17n->MoveNext();
           }
 
           // create additional coupons_description records
