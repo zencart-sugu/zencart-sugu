@@ -410,6 +410,25 @@
             $zones_m17n->MoveNext();
           }
 
+
+	  if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+	    $email_templates_description = 
+	      $db->Execute("select email_templates_id, language_id, subject, contents
+                              from " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
+                             where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+	    while (!$email_templates_description->EOF) {
+	      $db->Execute("insert into " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
+                            (email_templates_id, language_id, subject, contents)
+                            values ('" . (int)$email_templates_description->fields['email_templates_id'] . "',
+                                    '" . (int)$insert_id . "',
+                                    '" . zen_db_input($email_templates_description->fields['subject']) . "',
+                                    '" . zen_db_input($email_templates_description->fields['contents']) . "')");
+	      $email_templates_description->MoveNext();
+	    }
+	  }
+
+
           // create additional coupons_description records
           $coupons = $db->Execute("select c.coupon_id, cd.coupon_name, cd.coupon_description
                                     from " . TABLE_COUPONS . " c
