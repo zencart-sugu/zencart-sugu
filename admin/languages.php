@@ -279,6 +279,27 @@
 
             $group_pricing_m17n->MoveNext();
           }
+
+
+          // create additional email_templates records
+          if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+	    $email_templates_description = $db->Execute(
+					     "select email_templates_id, language_id, subject, contents
+                                                from " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
+                                               where language_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+	    while (!$email_templates_description->EOF) {
+	      $db->Execute("insert into " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
+                            (email_templates_id, language_id, subject, contents)
+                            values ('" . (int)$email_templates_description->fields['email_templates_id'] . "',
+                                    '" . (int)$insert_id . "',
+                                    '" . zen_db_input($email_templates_description->fields['subject']) . "',
+                                    '" . zen_db_input($email_templates_description->fields['contents']) . "')");
+	      $email_templates_description->MoveNext();
+	    }
+	  }
+
+	  
           
           zen_redirect(zen_href_link(FILENAME_LANGUAGES, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'lID=' . $insert_id));
         }
@@ -350,6 +371,10 @@
         $db->Execute("delete from " . TABLE_TAX_RATES_M17N . " where language_id = '" . (int)$lID . "'");
         $db->Execute("delete from " . TABLE_CURRENCIES_M17N . " where language_id = '" . (int)$lID . "'");
         $db->Execute("delete from " . TABLE_GROUP_PRICING_M17N . " where language_id = '" . (int)$lID . "'");
+        if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+	  $db->Execute("delete from " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " where language_id = '" . (int)$lID . "
+'");
+	}
         zen_redirect(zen_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page']));
         break;
       case 'delete':
