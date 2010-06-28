@@ -21,7 +21,6 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-//蜂谷
 define('MODULE_EMAIL_TEMPLATES_TITLE', 'メールテンプレート');
 define('MODULE_EMAIL_TEMPLATES_DESCRIPTION', 'メールテンプレート機能を提供します。');
 define('MODULE_EMAIL_TEMPLATES_STATUS_TITLE', 'メールテンプレートの有効化');
