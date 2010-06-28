@@ -4,7 +4,7 @@ class CustomMail {
   function CustomMail(){
   }
 
-  //注文時
+  //注文時の処理
   function send_order_email( $zf_insert_id, $zf_mode ){
 
     global $db, $currencies, $order_totals, $order_back, $template;
