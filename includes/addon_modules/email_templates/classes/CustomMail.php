@@ -366,7 +366,6 @@ class CustomMail {
 			'order_status_extra'
 		);
     }
-    print "test";
   }
 
 
