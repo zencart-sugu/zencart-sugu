@@ -62,15 +62,15 @@ class CustomMail {
 	$query = "select "
 					. "* "
 			. "from "
-					. "email_templates "
+					. TABLE_EMAIL_TEMPLATES . " et "
 			. "left join "
-					. "email_templates_description "
+					. TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd "
 			. "on "
-					. "email_templates.id = email_templates_description.email_templates_id "
+					. "et.id = etd.email_templates_id "
 			. "where "
-					. "email_templates.id = " . $email_template_id . " "
+					. "et.id = " . $email_template_id . " "
 			. "and "
-					. "email_templates_description.language_id = " . $_SESSION['languages_id'];
+					. "etd.language_id = " . $_SESSION['languages_id'];
 
 	$email_template = $db->Execute($query);
  	//=========================================
