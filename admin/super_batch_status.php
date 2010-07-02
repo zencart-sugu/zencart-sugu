@@ -264,13 +264,31 @@ if (isset($_GET['start_date']) ) {
               <tr>
                 <td class="main" colspan="2"><strong><?php echo HEADING_UPDATE_ORDERS; ?></strong></td>
               </tr>
+
               <tr>
                 <td class="main"><strong><?php echo HEADING_SELECT_STATUS; ?></strong></td>
                 <td class="smallText" colspan="2"><?php echo zen_draw_pull_down_menu('assign_status', $orders_statuses, $_GET['assign_status'], ''); ?></td>
               </tr>
+
+              <tr>
+<?php
+if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+                echo ENTRY_NOTIFY_CUSTOMER;
+                echo zen_get_email_group_for_status($oID);
+                echo zen_draw_hidden_field('notify',          '', 'id="notify"');
+                echo zen_draw_hidden_field('notify_comments', '', 'id="notify_comments"');
+} else {
+?>
+                <td class="main"><strong><?php echo ENTRY_NOTIFY_CUSTOMER; ?></strong> <?php echo zen_draw_checkbox_field('notify', '', true); ?></td>
+                <td class="main"><strong><?php echo ENTRY_NOTIFY_COMMENTS; ?></strong> <?php echo zen_draw_checkbox_field('notify_comments', '', true); ?></td>
+<?php
+}
+?>
+              </tr>
+
               <tr>
                 <td class="main" valign="top"><strong><?php echo HEADING_ADD_COMMENTS; ?></strong></td>
-                <td width="400" class="smallText"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4'); ?></td>
+                <td width="400" class="smallText"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4', '', 'id="comments"'); ?></td>
                 <td class="main" valign="center"><strong><?php
                   echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br/>';
                   echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS; ?></strong>
