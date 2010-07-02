@@ -28,9 +28,13 @@ $configuration = $db->Execute('SELECT configuration_key AS cfgkey, configuration
                               .TABLE_CONFIGURATION_FOREACH_TEMPLATE.' WHERE template_dir = "'.$template_dir.'"', '', $use_cache, 150);
 db_define($configuration);
 
-$configuration = $db->Execute('SELECT DISTINCT cfg_t.configuration_key AS cfgkey,cfg_t.configuration_value AS cfgvalue 
-                               FROM '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.' AS cfg_ft ,'.TABLE_CONFIGURATION.' AS cfg_t 
-                               WHERE cfg_ft.template_dir<>"'.$template_dir.'"');
+$configuration = $db->Execute('SELECT DISTINCT cfg_t.configuration_key AS cfgkey,
+                                               cfg_t.configuration_value AS cfgvalue 
+                               FROM ' . TABLE_CONFIGURATION.' AS cfg_t 
+                               LEFT JOIN ' . TABLE_CONFIGURATION_FOREACH_TEMPLATE .' AS cfg_ft 
+                                 ON cfg_t.configuration_key=cfg_ft.configuration_key 
+                               WHERE cfg_ft.configuration_key IS NOT NULL 
+                                 AND cfg_ft.template_dir<>"'.$template_dir.'"');
 db_define($configuration);
 
 /*
