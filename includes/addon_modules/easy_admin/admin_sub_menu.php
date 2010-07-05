@@ -125,6 +125,7 @@ if ($action == "sub-update" ||
     $action == "sub-insert") {
   $sub_menu_name  = $_REQUEST['sub_menu_name'];
   $sub_menu_url   = $_REQUEST['sub_menu_url'];
+
   $sub_menu_order = $_REQUEST['sub_menu_order'];
 
   // データのチェック

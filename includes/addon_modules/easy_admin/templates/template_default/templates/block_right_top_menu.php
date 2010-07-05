@@ -8,7 +8,7 @@ for ($i=0; $i<count($menus); $i++) {
   echo '  <ul>'."\n";
 
 //  for ($j=0; $j<count($menus[$i]['menu']); $j++) {
-    // ページは許可されているか？
+    // ･ﾚ｡ｼ･ｸ､ﾏｵﾄ､ｵ､�､ﾆ､､､�､ｫ｡ｩ
 //    $page = $menus[$i]['menu'][$j]['url'];
 //    $page = str_replace(DIR_WS_ADMIN, "", $page);
 //    if (page_allowed($page) != 'true')
