@@ -21,9 +21,7 @@
 //////////////////////////////////////////////////////////
 // $Id: super_batch_status.php 25 2006-02-03 18:55:56Z BlindSide $
 */
-
 //_TODO Row-clicking abilities similar to phpMyAdmin
-
   require('includes/application_top.php');
   require(DIR_WS_CLASSES . 'currencies.php');
   $currencies = new currencies();
@@ -44,6 +42,7 @@
   $products = all_products_array(DROPDOWN_ALL_PRODUCTS, true, false, true);
   $payments = all_payments_array(DROPDOWN_ALL_PAYMENTS, true);
   $customers = all_customers_array(DROPDOWN_ALL_CUSTOMERS, true, false);
+ 	$sbs_languages = all_languages_array(DROPDOWN_ALL_LANGUAGES, true, false);
 
   $ot_sign = array();
   $ot_sign[] = array('id' => '>=',
@@ -90,6 +89,11 @@
 <script language="JavaScript" src="includes/javascript/spiffyCal/spiffyCal_v2_1.js"></script>
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
+<?php
+if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+?>
+<script language="javascript" src="../includes/addon_modules/jquery/templates/template_default/jscript/jquery.js"></script>
+<?php } ?>
 <script type="text/javascript">
 <!--
   function init() {
@@ -159,13 +163,17 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "order_search", "end_date", "b
 									<th><?php echo HEADING_SEARCH_CUSTOMERS; ?></th>
 									<td><?php echo zen_draw_pull_down_menu('customers', $customers, $_GET['customers'], ''); ?></td>
               </tr>
+              <tr>
+									<th><?php echo HEADING_SEARCH_LANGUAGES; ?></th>
+									<td><?php echo zen_draw_pull_down_menu('languages', $sbs_languages, $_GET['languages'], ''); ?></td>
+              </tr>
 							</table>
 						</td>
 						<td valign="top">
 							<table border="0" cellspacing="0" cellpadding="0" class="tableLayout3 borderBottomNone">
               <tr>
 									<th><?php echo HEADING_SEARCH_PAYMENT_METHOD; ?></th>
-									<td colspan="2"><?php echo zen_draw_pull_down_menu('payments', $payments, $_GET['payments'], ''); ?></th>
+									<td colspan="2"><?php echo zen_draw_pull_down_menu('payments', $payments, $_GET['payments'], ''); ?></td>
               </tr>
               <tr>
 									<th><?php echo HEADING_SEARCH_ORDER_TOTAL; ?></th>
@@ -176,6 +184,11 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "order_search", "end_date", "b
 									<th><?php echo HEADING_SEARCH_TEXT; ?></th>
 									<td colspan="2"><?php echo zen_draw_input_field('search', $_GET['search']); ?></td>
               </tr>
+							</table>
+							<table>
+								<tr>
+									<td><input type="submit" value="¸¡º÷" /></td>
+								</tr>
 							</table>
 						</td>
               </tr>
@@ -211,6 +224,10 @@ if (isset($_GET['start_date']) ) {
     $orders_query_raw .= " LEFT JOIN " . TABLE_ORDERS_PRODUCTS . " op ON o.orders_id = op.orders_id";
   }
 
+  if (isset($_GET['languages']) && zen_not_null($_GET['languages'])) {
+    $orders_query_raw .= " LEFT JOIN " . TABLE_CUSTOMERS . " c ON o.customers_id = c.customers_id";
+  }
+
   $orders_query_raw .= " WHERE s.language_id = '" . (int)$_SESSION['languages_id'] . "'";
 
   $search = '';
@@ -240,6 +257,10 @@ if (isset($_GET['start_date']) ) {
     $orders_query_raw .= " AND o.customers_id = '" . $_GET['customers'] . "'";
   }
 
+  if (isset($_GET['languages']) && zen_not_null($_GET['languages'])) {
+    $orders_query_raw .= " AND c.customers_languages_id = '" . $_GET['languages'] . "'";
+  }
+
   if (isset($_GET['payments']) && zen_not_null($_GET['payments'])) {
     $orders_query_raw .= " AND o.payment_module_code = '" . $_GET['payments'] . "'";
   }
@@ -262,30 +283,12 @@ if (isset($_GET['start_date']) ) {
           <tr>
             <td align="left" colspan="2"><table border="0" cellspacing="2" cellpadding="0">
               <tr>
-                <td class="main" colspan="2"><strong><?php echo HEADING_UPDATE_ORDERS; ?></strong></td>
+                <td class="main" colspan="3"><strong><?php echo HEADING_UPDATE_ORDERS; ?></strong></td>
               </tr>
-
               <tr>
                 <td class="main"><strong><?php echo HEADING_SELECT_STATUS; ?></strong></td>
                 <td class="smallText" colspan="2"><?php echo zen_draw_pull_down_menu('assign_status', $orders_statuses, $_GET['assign_status'], ''); ?></td>
               </tr>
-
-              <tr>
-<?php
-if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-                echo ENTRY_NOTIFY_CUSTOMER;
-                echo zen_get_email_group_for_status($oID);
-                echo zen_draw_hidden_field('notify',          '', 'id="notify"');
-                echo zen_draw_hidden_field('notify_comments', '', 'id="notify_comments"');
-} else {
-?>
-                <td class="main"><strong><?php echo ENTRY_NOTIFY_CUSTOMER; ?></strong> <?php echo zen_draw_checkbox_field('notify', '', true); ?></td>
-                <td class="main"><strong><?php echo ENTRY_NOTIFY_COMMENTS; ?></strong> <?php echo zen_draw_checkbox_field('notify_comments', '', true); ?></td>
-<?php
-}
-?>
-              </tr>
-
               <tr>
                 <td class="main" valign="top"><strong><?php echo HEADING_ADD_COMMENTS; ?></strong></td>
                 <td width="400" class="smallText"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4', '', 'id="comments"'); ?></td>
@@ -295,6 +298,9 @@ if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
                   <br /><br />
                   &nbsp;<?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>
               </tr>
+							<tr>
+								<td colspan=3><?php echo zen_get_email_template_for_status(); ?></td>
+							</tr>
             </table></td>
               </tr>
               <tr>
@@ -378,7 +384,8 @@ if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
 <?php }
 function batch_status($oID, $status, $comments, $notify = 0, $notify_comments = 0) {
-  global $db, $messageStack;
+
+	global $db, $messageStack;
   require(DIR_WS_LANGUAGES . 'english/super_orders.php');
 
   $order_updated = false;
@@ -395,7 +402,7 @@ function batch_status($oID, $status, $comments, $notify = 0, $notify_comments = 
   update_status($oID, $status, $customer_notified, $comments);
 
   if ($customer_notified == '1') {
-    email_latest_status($oID);
+    email_latest_status($oID, $notify_comments);
   }
 
     $messageStack->add_session(SUCCESS_ORDER_UPDATED, 'success');
