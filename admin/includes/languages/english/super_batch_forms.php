@@ -12,7 +12,7 @@
 //  available at www.zen-cart.com/license/2_0.txt       //
 //  or see "license.txt" in the downloaded zip          //
 //////////////////////////////////////////////////////////
-//  DESCRIPTION:   
+//  DESCRIPTION:
 //////////////////////////////////////////////////////////
 // $Id: super_batch_forms.php 25 2006-02-03 18:55:56Z BlindSide $
 */
@@ -29,6 +29,7 @@ define('HEADING_END_DATE', 'End Date (inclusive)');
 define('HEADING_SEARCH_STATUS', 'Current Status:');
 define('HEADING_SEARCH_PRODUCTS', 'Ordered Product:');
 define('HEADING_SEARCH_CUSTOMERS', 'Customer:');
+define('HEADING_SEARCH_LANGUAGES', 'Language:');
 define('HEADING_SEARCH_PAYMENT_METHOD', 'Payment Method:');
 define('HEADING_SEARCH_TEXT', 'Text Search:');
 define('HEADING_SEARCH_ORDER_TOTAL', 'Order Total:');
@@ -47,6 +48,7 @@ define('ICON_ORDER_DETAILS', 'Display Order Details');
 define('DROPDOWN_ALL_PRODUCTS', 'All Products');
 define('DROPDOWN_ALL_PAYMENTS', 'All Payments');
 define('DROPDOWN_ALL_CUSTOMERS', 'All Customers');
+define('DROPDOWN_ALL_LANGUAGES', 'All Languages');
 define('DROPDOWN_GREATER_THAN', ' (greater than)');
 define('DROPDOWN_LESS_THAN', ' (less than)');
 define('DROPDOWN_EQUAL_TO', ' (equals)');

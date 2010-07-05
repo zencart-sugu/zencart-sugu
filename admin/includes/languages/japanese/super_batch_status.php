@@ -27,6 +27,7 @@ define('HEADING_END_DATE', '何日まで');
 define('HEADING_SEARCH_STATUS', 'ステータス');
 define('HEADING_SEARCH_PRODUCTS', '商品');
 define('HEADING_SEARCH_CUSTOMERS', '顧客');
+define('HEADING_SEARCH_LANGUAGES', '言語');
 define('HEADING_SEARCH_PAYMENT_METHOD', '支払い方法');
 define('HEADING_SEARCH_TEXT', 'テキスト検索');
 define('HEADING_SEARCH_ORDER_TOTAL', '注文合計');
@@ -51,6 +52,7 @@ define('ERROR_NO_ORDERS', 'Error: オーダーにチェックが入っていません！');
 define('DROPDOWN_ALL_PRODUCTS', '全ての製品');
 define('DROPDOWN_ALL_PAYMENTS', '全ての支払い方法');
 define('DROPDOWN_ALL_CUSTOMERS', '全ての顧客');
+define('DROPDOWN_ALL_LANGUAGES', '全ての言語');
 define('DROPDOWN_GREATER_THAN', ' 以上');
 define('DROPDOWN_LESS_THAN', ' 以下');
 define('DROPDOWN_EQUAL_TO', ' 等しい');
@@ -64,4 +66,9 @@ define('TABLE_HEADING_PAYMENT_METHOD', '支払い方法');
 
 define('SUCCESS_ORDER_UPDATED', 'ステータスの更新は成功しました！');
 define('WARNING_ORDER_NOT_UPDATED', '警告：更新は失敗しました');
+
+define('TEXT_SELECT_EMAIL_TEMPLATES', 'メールテンプレート');
+define('TEXT_SELECT_LANGUAGES', '言語');
+
+define('BUTTON_READ_EMAIL_TEMPLATE', '読込');
 ?>

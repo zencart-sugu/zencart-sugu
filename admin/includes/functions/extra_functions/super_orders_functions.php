@@ -265,6 +265,33 @@ function all_customers_array($first_option = false, $show_email = false, $show_i
   return $customers_array;
 }
 
+/////////////////
+// Function    : all_customers_array
+// Arguments   : none
+// Return      : languages array
+// Description : builds an array of *all* customers for a dropdown menu.
+//               WARNING: Should not be used for e-mails, as it ignores newsletter preferences!
+/////////////////
+function all_languages_array($first_option = false, $show_email = false, $show_id = false) {
+  global $db;
+  $languages_array = array();
+  if ($first_option) {
+    $languages_array[] = array('id' => '',
+                               'text' => $first_option);
+  }
+  $languages_sql = "select languages_id, name
+                    from " . TABLE_LANGUAGES . "
+                    order by sort_order ASC";
+  $languages = $db->Execute($languages_sql);
+  while (!$languages->EOF) {
+    $languages_array[] = array('id' => $languages->fields['languages_id'],
+                               'text' => $languages->fields['name']);
+    $languages->MoveNext();
+  }
+
+  return $languages_array;
+}
+
 
 /////////////////
 // Function    : zen_datetime_long
@@ -418,7 +445,7 @@ function update_status($oID, $new_status, $notified = 0, $comments = '') {
 // Return      : NONE
 // Description : Sends email to customer notifying of the latest status assigned to given order
 /////////////////
-function email_latest_status($oID) {
+function email_latest_status($oID, $notify_comments_flag) {
   require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . 'order_status_email.php');
   global $db;
   $orders_status_array = array();
@@ -440,8 +467,11 @@ function email_latest_status($oID) {
                                ORDER BY date_added Desc limit 1");
 
   $status = $status_info->fields['orders_status_id'];
-  if (zen_not_null($status_info->fields['comments']) && $status_info->fields['comments'] != '') {
-    $notify_comments = EMAIL_TEXT_COMMENTS_UPDATE . $status_info->fields['comments'] . "\n\n";
+
+  if(!empty($notify_comments_flag)) {
+	  if (zen_not_null($status_info->fields['comments']) && $status_info->fields['comments'] != '') {
+	    $notify_comments = EMAIL_TEXT_COMMENTS_UPDATE . $status_info->fields['comments'] . "\n\n";
+	  }
   }
 
   // send email to customer
