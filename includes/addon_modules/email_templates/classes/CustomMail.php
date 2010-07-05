@@ -178,15 +178,15 @@ class CustomMail {
 	$query = "select "
 					. "* "
 			. "from "
-					. "email_templates "
+					. TABLE_EMAIL_TEMPLATES . " et "
 			. "left join "
-					. "email_templates_description "
+					. TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd "
 			. "on "
-					. "email_templates.id = email_templates_description.email_templates_id "
+					. "et.id = etd.email_templates_id "
 			. "where "
-					. "email_templates.id = " . $email_template_id . " "
+					. "et.id = " . $email_template_id . " "
 			. "and "
-					. "email_templates_description.language_id = " . $_SESSION['languages_id'];
+					. "etd.language_id = " . $_SESSION['languages_id'];
 
     $email_template    = $db->Execute($query);
 
@@ -315,18 +315,18 @@ class CustomMail {
     global $db;
 
 	$sql = "select "
-				. TABLE_EMAIL_TEMPLATES_DESCRIPTION . ".subject, "
-				. TABLE_EMAIL_TEMPLATES_DESCRIPTION . ".contents "
+				. "et.subject, "
+				. "et.contents "
 		. "from "
-				. TABLE_EMAIL_TEMPLATES . " "
+				. TABLE_EMAIL_TEMPLATES . " et "
 		. "inner join "
-				. TABLE_EMAIL_TEMPLATES_DESCRIPTION . " "
+				. TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd "
 		. "on "
-				. TABLE_EMAIL_TEMPLATES . ".id = " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . ".email_templates_id "
+				. "et.id = etd.email_templates_id "
 		. "where "
-				. TABLE_EMAIL_TEMPLATES . ".id = " . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID . " "
+				. "et.id = " . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID . " "
 		. "and "
-				. TABLE_EMAIL_TEMPLATES_DESCRIPTION . ".language_id = " . $language_id;
+				. "etd.language_id = " . $language_id;
 
 	$get_template = $db->Execute($sql);
 

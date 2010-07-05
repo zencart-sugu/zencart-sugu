@@ -30,9 +30,9 @@
  	$is_html = false;
  	$languages = zen_get_languages();
 
- 	//編集ボタンが押されたら処理に入る
-	if(isset($_GET['action']) && $_GET['action'] == 'update1'){
-		if(zen_not_null($_POST['Submit_Action'])){
+  //編集ボタンが押されたら処理に入る
+  if(isset($_GET['action']) && $_GET['action'] == 'update1'){
+    if(zen_not_null($_POST['Submit_Action'])){
 			$id = zen_db_prepare_input($_POST['id']);
 			$delete = zen_db_prepare_input($_POST['delete']);
 			$title = zen_db_prepare_input($_POST['title']);
@@ -48,7 +48,7 @@
         		$messageStack->add_session(TEXT_EMAIL_TEMPLATE_GROUP_EMPTY, 'error');
         		zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, zen_get_all_get_params(array('action', 'id')).'module=' . FILENAME_EMAIL_TEMPLATES . '&action=update1&id=' . $id, 'NONSSL'));
 			}
-			
+
 			if (($id == 0 || $id > 3) &&
 				($group_template == MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_GRP ||
 				$group_template == MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_GRP)) {
@@ -149,13 +149,13 @@
 			$sql = "select "
 						. "* "
 					. "from "
-						. TABLE_EMAIL_TEMPLATES
+						. TABLE_EMAIL_TEMPLATES . " et "
 					. " inner join "
-						. TABLE_EMAIL_TEMPLATES_DESCRIPTION
+						. TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd "
 					. " on "
-						. "email_templates.id = email_templates_description.email_templates_id "
+						. "et.id = etd.email_templates_id "
 					. "where "
-						. "email_templates.id = '" . (int)$id . "'";
+						. "et.id = '" . (int)$id . "'";
 
 			$result = $db->Execute($sql);
 
@@ -385,9 +385,9 @@
 	  }
 	}
 ?>
-		  </tr>
-		</table>
-	</td>
+      </tr>
+    </table>
+  </td>
 <!-- body_text_eof //-->
   </tr>
 </table>
