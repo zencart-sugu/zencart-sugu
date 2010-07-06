@@ -146,6 +146,7 @@
 		$id = 0;
 		if(zen_not_null($_POST['id']) || zen_not_null($_GET['id'])){
 			$id  = (zen_not_null($_POST['id'])) ? $_POST['id'] : $_GET['id'];
+
 			$sql = "select "
 						. "* "
 					. "from "
@@ -155,11 +156,10 @@
 					. " on "
 						. "et.id = etd.email_templates_id "
 					. "where "
-						. "et.id = '" . (int)$id . "'";
+						. "et.id = :ID";
 
-			$result = $db->Execute($sql);
-
-			//$result = $db->Execute("select * from " . TABLE_EMAIL_TEMPLATES . " where id = '" . (int)$id . "'");
+			$query = $db->bindVars($sql, ':ID', (int)$id, 'integer');
+			$result = $db->Execute($query);
 
 			if($result->RecordCount() > 0){
 				$hidden_field = zen_draw_hidden_field('id', $id) . zen_draw_hidden_field('Submit_Action', '1');
