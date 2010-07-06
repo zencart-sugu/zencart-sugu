@@ -162,24 +162,8 @@
 
 	function zen_get_email_group_for_status($order_id) {
 
-		//ここはget_email_templatesに置き換え
-    global $db;
-
-    $arr   = array();
-    $arr[] = array('id'   => '',
-                   'text' => MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY);
-    $result = $db->Execute("select distinct id, grp, title from " . TABLE_EMAIL_TEMPLATES . " where id>3 order by 1 asc");
-
-		if($result->RecordCount() > 0){
-		  while (!$result->EOF) {
-		  	$line = $result->fields;
-				$arr[] = array('id'   => $line['id'],
-				               'text' => $line['grp'] . ' => ' . $line['title']);
-				$result->MoveNext();
-			}
-		}
-
-  	$out  = zen_draw_pull_down_menu('grp', $arr, $grp, 'id="grp" onChange="changeEmailTemplate()"');
+		$templates = get_email_templates();
+  	$out .= zen_draw_pull_down_menu('grp', $templates, $grp, 'id="grp" onChange="changeEmailTemplate()"');
 		return '<script type="text/javascript">
             <!--
             function changeEmailTemplate()
@@ -284,8 +268,8 @@
 		global $db;
 
     $arr   = array();
-    //$arr[] = array('id'   => '',
-                   //'text' => MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY);
+    $arr[] = array('id'   => '',
+                   'text' => MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY);
     $result = $db->Execute("select distinct id, grp, title from " . TABLE_EMAIL_TEMPLATES . " where id>3 order by 1 asc");
 
 		if($result->RecordCount() > 0){
