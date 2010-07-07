@@ -12,7 +12,7 @@
 //  available at www.zen-cart.com/license/2_0.txt       //
 //  or see "license.txt" in the downloaded zip          //
 //////////////////////////////////////////////////////////
-//  DESCRIPTION:   
+//  DESCRIPTION:
 //////////////////////////////////////////////////////////
 // $Id: super_batch_forms.php 25 2006-02-03 18:55:56Z BlindSide $
 */
@@ -29,6 +29,7 @@ define('HEADING_END_DATE', '何日まで');
 define('HEADING_SEARCH_STATUS', 'ステータス');
 define('HEADING_SEARCH_PRODUCTS', '商品');
 define('HEADING_SEARCH_CUSTOMERS', '顧客');
+define('HEADING_SEARCH_LANGUAGES', '言語');
 define('HEADING_SEARCH_PAYMENT_METHOD', '支払い方法');
 define('HEADING_SEARCH_TEXT', 'テキスト検索');
 define('HEADING_SEARCH_ORDER_TOTAL', '注文合計');
@@ -47,6 +48,7 @@ define('ICON_ORDER_DETAILS', '注文の詳細を表示');
 define('DROPDOWN_ALL_PRODUCTS', '全ての製品');
 define('DROPDOWN_ALL_PAYMENTS', '全ての支払い方法');
 define('DROPDOWN_ALL_CUSTOMERS', '全ての顧客');
+define('DROPDOWN_ALL_LANGUAGES', '全ての言語');
 define('DROPDOWN_GREATER_THAN', ' 以上');
 define('DROPDOWN_LESS_THAN', ' 以下');
 define('DROPDOWN_EQUAL_TO', ' 等しい');

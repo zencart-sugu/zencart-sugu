@@ -165,6 +165,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       return array();
     }
 
+    //右メニューを取得
     function block_right_top_menu() {
       $return          = array();
       $return['title'] = '';
@@ -173,6 +174,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
+    //トップメニューとサブメニューを取得
     function block_dropdown_menu() {
       $return          = array();
       $return['title'] = '';
@@ -181,10 +183,31 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
+    function block_acl_setup() {
+    	$return = array();
+    	$return['test'] = 'abcdefghijklmn';
+		return $return;
+    }
+
     // override getBlock method
+    // admin/includes/header.phpからの呼び出し
     function getBlock($block, $page) {
+
+		if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) > 0) {
+			preg_match("/\/([^\/\?]*\??[^\?]*)$/", $_SERVER["REQUEST_URI"], $matches);
+		}else{
+			preg_match("/\/([^\/]*)$/", $_SERVER["REQUEST_URI"], $matches);
+		}
+
+		if(check_page($matches[1])) {
+
+			if(!@header("location: denied.php")) die("<p style='line-height:1.4em; text-align:center; padding-top:10px;'>ここは許可なく入れません！<br />侵入禁止区域です</p>");
+		}
+
       global $template;
       $return = false;
+
+      //クラスメソッドが存在する場合処理（クラス, メソッド）
       if (method_exists($this, $block)) {
         $module = $this->code;
 

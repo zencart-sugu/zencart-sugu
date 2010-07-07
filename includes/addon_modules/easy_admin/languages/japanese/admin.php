@@ -24,7 +24,7 @@ define('HEADING_TITLE',                      '管理メニューの設定');
 
 define('TEXT_HEADER_TOP_MENU',               'トップレベルメニュー一覧');
 define('TEXT_HEADER_TOP_MENU_NAME',          'メニュー名');
-define('TEXT_HEADER_TOP_MENU_TYPE',          '表示位置');
+define('TEXT_HEADER_TOP_MENU_TYPE',          '表ｦ位置');
 define('TEXT_HEADER_TOP_MENU_ORDER',         '並び順');
 define('TEXT_HEADER_TOP_MENU_ACTION',        'アクション');
 
@@ -39,11 +39,11 @@ define('TEXT_ACTION_SUBMENU',                'サブメニュー管理');
 
 define('TEXT_INPUT_ADD',                     '[追加]');
 define('TEXT_INPUT_NAME',                    'メニュー名');
-define('TEXT_INPUT_TYPE',                    'メニュー表示位置');
+define('TEXT_INPUT_TYPE',                    'メニュー表ｦ位置');
 define('TEXT_INPUT_ORDER',                   '並び順');
 
 define('TEXT_ERROR_MENU_NAME',               'メニュー名を入力してください');
-define('TEXT_ERROR_MENU_DROPDOWN',           'メニュー表示位置を選択してください');
+define('TEXT_ERROR_MENU_DROPDOWN',           'メニュー表ｦ位置を選択してください');
 define('TEXT_ERROR_MENU_ORDER',              '並び順を入力してください');
 define('TEXT_INSERT_SUCCESS_TOPMENU',        'トップメニューの追加を行いました');
 define('TEXT_UPDATE_SUCCESS_TOPMENU',        'トップメニューの変更を行いました');

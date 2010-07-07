@@ -119,7 +119,7 @@
           update_status($oID, $status, $customer_notified, $comments);
 
           if ($customer_notified == '1') {
-            email_latest_status($oID);
+            email_latest_status($oID, $customer_notified);
           }
 
           if ($status == DOWNLOADS_ORDERS_STATUS_UPDATED_VALUE) {
@@ -185,6 +185,8 @@
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
 <script language="javascript" src="includes/javascript/jquery.js"></script>
+<script language="javascript" src="../includes/addon_modules/jquery/templates/template_default/jscript/jquery.js"></script>
+
 <script type="text/javascript">
   <!--
   function init()
@@ -320,10 +322,10 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                     }
                 ?></th>
                 <td class="main"><?php echo zen_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
-             
+
                 <th class="main" valign="top"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></th>
                 <td class="main"><?php echo zen_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
-              
+
                 <th class="main" valign="top"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></th>
                 <td class="main"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
               </tr>
@@ -351,7 +353,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 <td class="main"><?php echo TEXT_NONE; ?></td>
                 <?php } ?>
               </tr>
-              
+
               <tr>
                 <th class="main"><strong><?php echo ENTRY_DATE_PURCHASED; ?></strong></th>
                 <td class="main"><?php echo strftime(DATE_FORMAT_LONG, strtotime($order->info['date_purchased'])); ?></td>
@@ -391,7 +393,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <?php
     if (zen_not_null($order->info['cc_type']) || zen_not_null($order->info['cc_owner']) || zen_not_null($order->info['cc_number'])) {
 ?>
-              
+
               <tr>
                 <th class="main"><?php echo ENTRY_CREDIT_CARD_TYPE; ?></th>
                 <td class="main"><?php echo $order->info['cc_type']; ?></td>
@@ -766,7 +768,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 		<table width="95%">
 		<tr>
 		<td align="right">
-		
+
 		<table border="0" cellspacing="0" cellpadding="2">
 <?php
     // Short shipping display
@@ -856,11 +858,11 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
               </tr>
               <?php } ?>
             </table>
-			
+
 			</td>
           </tr>
 		</table>
-		
+
 		</td>
       </tr>
       <tr>
@@ -873,8 +875,8 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 			<td><strong><?php echo TABLE_HEADING_STATUS_HISTORY; ?></strong></td>
 			</tr>
 			</table>
-		
-		
+
+
 		</td>
       </tr>
       <tr>
@@ -948,15 +950,25 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
             <tr><?php echo zen_draw_form('status', FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=update_order', 'post', '', true); ?>
               <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
                 <tr>
-                  <td class="main"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4'); ?></td>
+                  <td class="main"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4', '', 'id="comments"'); ?></td>
                   <td class="main" valign="center"><strong><?php
-                    echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br />';
-                    echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS;
+                    //echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br />';
+                    //echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS;
                   ?></strong></td>
                 </tr>
                 <tr>
                   <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
                 </tr>
+								<tr>
+									<td>
+<?php
+                echo ENTRY_NOTIFY_CUSTOMER;
+                echo zen_get_email_group_for_status($oID);
+                echo zen_draw_hidden_field('notify',          '', 'id="notify"');
+                echo zen_draw_hidden_field('notify_comments', '', 'id="notify_comments"');
+?>
+									</td>
+								</tr>
                 <tr>
                   <td class="main"><strong><?php echo ENTRY_STATUS; ?></strong> <?php echo zen_draw_pull_down_menu('status', $orders_statuses, $order->info['orders_status']); ?></td>
                   <td valign="top" align="right">&nbsp;<?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>

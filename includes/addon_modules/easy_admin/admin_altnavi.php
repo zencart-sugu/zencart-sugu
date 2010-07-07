@@ -51,7 +51,7 @@ $sub_menus = getSubMenus($pid);
 </tr>
 <tr>
 <td>
-  <a class="pageHeading" target="_top" href="<?php echo zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module='.FILENAME_EASY_ADMIN.'/altnavi').'&id='.$top_menu[0]['id']; ?>"><?php echo $top_menu[0]['name']; ?></a></h1
+  <a class="pageHeading" target="_top" href="<?php echo zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module='.FILENAME_EASY_ADMIN.'/altnavi').'&id='.$top_menu[0]['id']; ?>"><?php echo $top_menu[0]['name']; ?></a>
   <ul class="submenu ">
 
 <?php

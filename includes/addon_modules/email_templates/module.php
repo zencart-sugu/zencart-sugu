@@ -220,9 +220,17 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       if (isset($_GET['id'])) {
       	$id  = $_GET['id'];
-	$language_id = $_SESSION['languages_id'];
+      	if(isset($_GET['language_id'])) {
+
+      		$language_id = $_GET['language_id'];
+
+      	}elseif(isset($_SESSION['languages_id'])){
+
+      		$language_id = $_SESSION['languages_id'];
+      	}
+	//$language_id = $_SESSION['languages_id'];
 	if (isset($_GET['order_id'])) {
-	  $query          = "SELECT c.customers_languages_id 
+	  $query          = "SELECT c.customers_languages_id
                                FROM " . TABLE_CUSTOMERS . " c
                               INNER JOIN " . TABLE_ORDERS . " o ON c.customers_id=o.customers_id
                             WHERE o.orders_id= :order_id";
@@ -232,7 +240,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 	    $language_id = $result->fields['customers_languages_id'];
 	  }
 	}
-        $query          = "SELECT * 
+        $query          = "SELECT *
                              FROM " . TABLE_EMAIL_TEMPLATES . " et
                              INNER JOIN " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd ON et.id=etd.email_templates_id AND etd.language_id= :language_id
                             WHERE id= :id";
