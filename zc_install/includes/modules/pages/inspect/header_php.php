@@ -458,7 +458,8 @@ if (false) { // DISABLED THIS CODEBLOCK FOR NOW....
                  'media'=>'777 read/write/execute',
                  'pub'=>'777 read/write/execute',
                  'admin/backups'=>'777 read/write',
-                 'admin/images/graphs'=>'777 read/write/execute'
+                 'admin/images/graphs'=>'777 read/write/execute',
+				 'includes/addon_modules'=>'777 read/write/execute'
                  ) as $folder=>$chmod) {
     $folder_status[]=array('folder'=>$folder, 'writable'=>(@is_writable('../'.$folder)) ? OK : UNWRITABLE, 'class'=> (@is_writable('../'.$folder)) ? 'OK' : 'WARN', 'chmod'=>$chmod);
   }
