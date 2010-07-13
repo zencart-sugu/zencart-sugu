@@ -201,7 +201,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 		if(check_page($matches[1])) {
 
-			if(!@header("location: denied.php")) die("<p style='line-height:1.4em; text-align:center; padding-top:10px;'>ここは許可なく入れません！<br />侵入禁止区域です</p>");
+			if(!@header("location: denied.php")) die("<p style='line-height:1.4em; text-align:center; padding-top:10px;'>このページを閲覧するための権限がありません。<br /><a href=" . zen_href_link(FILENAME_DEFAULT, '', 'NONSSL') . ">管理画面トップ</a>に戻って下さい。</p>");
 		}
 
       global $template;

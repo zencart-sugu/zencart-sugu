@@ -226,7 +226,7 @@
 		$out .= zen_draw_pull_down_menu('lang_id', $languages, '', 'id="lang_id"');
 
 		//zencartのformヘルパーに変更する
-		$out  .= "<br /><input type='button' value='読込' 'onClick=\"readEmailTemplate();\"' />";
+		$out .= '<br /><INPUT TYPE="BUTTON" VALUE="' . BUTTON_READ_EMAIL_TEMPLATE . '" ONCLICK="readEmailTemplate();">';
 
 		return '<script type="text/javascript">
 	        <!--
