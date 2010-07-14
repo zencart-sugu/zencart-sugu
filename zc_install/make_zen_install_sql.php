@@ -12,11 +12,15 @@
 		$line_upper = strtoupper($line);
 
 		if(substr($line_upper, 0, 12) == 'INSERT INTO '){
-		//if(preg_match("/INSERT INTO /", $line_upper)){
-			//if(!preg_match("/(`media_types`)|(`paypal_payment_status`)|(`template_select`)|(`address_format`)|(`admin`)|(`banners`)|(`configuration`)|(`configuration_group`)|(`countries`)|(`currencies`)|(`languages`)|(`layout_boxes`)|(`orders_status`)|(`product_types`)|(`products_options_types`)|(`products_options_values`)|(`zones`)|(`product_type_layout`)|(`query_builder`)|(`get_terms_to_filter`)|(`project_version`)|(`project_version_history`)|(`tax_rates`)|(`geo_zones`)|(`zones_to_geo_zones`)|(`tax_class`)/", $line)) {
-			//if(!preg_match("/(media_types)|(paypal_payment_status)|(template_select)|(address_format)|(admin)|(blocks)|(banners)|(configuration)|(configuration_group)|(email_templates)|(email_templates_description)|(countries)|(currencies)|(languages)|(layout_boxes)|(orders_status)|(product_types)|(products_options_types)|(products_options_values)|(zones)|(product_type_layout)|(query_builder)|(get_terms_to_filter)|(project_version)|(project_version_history)|(tax_rates)|(geo_zones)|(zones_to_geo_zones)|(tax_class)/", $line)) {
 			if(!preg_match("/(`media_types`)|(`paypal_payment_status`)|(`template_select`)|(`address_format`)|(`admin`)|(`blocks`)|(`banners`)|(`configuration`)|(`configuration_group`)|(`email_templates`)|(`email_templates_description`)|(`countries`)|(`currencies`)|(`languages`)|(`layout_boxes`)|(`orders_status`)|(`product_types`)|(`products_options_types`)|(`zones`)|(`product_type_layout`)|(`query_builder`)|(`get_terms_to_filter`)|(`project_version`)|(`project_version_history`)|(`tax_rates`)|(`geo_zones`)|(`zones_to_geo_zones`)|(`tax_class`)/", $line)) {
-				$insert .= $line."\n";
+
+				if(preg_match("/`products_options_values`/", $line)) {
+					if(preg_match("/'TEXT'/", $line)) {
+						$other .= $line."\n";
+					}
+				}else{
+					$insert .= $line."\n";
+				}
 			}else{
 				$other .= $line."\n";
 			}
