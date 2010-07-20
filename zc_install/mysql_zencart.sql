@@ -38,7 +38,7 @@ entry_firstname_kana varchar(32) NOT NULL default '',
 entry_lastname_kana varchar(32) NOT NULL default '',
 PRIMARY KEY  (address_book_id),
 KEY idx_address_book_customers_id_zen (customers_id)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table address_book
@@ -87,7 +87,7 @@ KEY idx_admin_name_zen (admin_name)
 -- Dumping data for table admin
 --
 
-INSERT INTO admin VALUES (1,'admin','ohtsuji@ark-web.jp','a191c752052af1ef6e405beb89e63567:dd',1);
+INSERT INTO admin VALUES (1,'admin','hachiya@ark-web.jp','d367f03201e84bb4cfd137da723fc4a0:ae',1);
 
 --
 -- Table structure for table admin_acl
@@ -123,7 +123,7 @@ PRIMARY KEY  (log_id),
 KEY idx_page_accessed_zen (page_accessed),
 KEY idx_access_date_zen (access_date),
 KEY idx_ip_zen (ip_address)
-) ENGINE=MyISAM AUTO_INCREMENT=2346 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=2410 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table admin_activity_log
@@ -206,7 +206,7 @@ banners_clicked int(5) NOT NULL default '0',
 banners_history_date datetime NOT NULL default '0001-01-01 00:00:00',
 PRIMARY KEY  (banners_history_id),
 KEY idx_banners_id_zen (banners_id)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table banners_history
@@ -471,8 +471,8 @@ KEY idx_cfg_grp_id_zen (configuration_group_id)
 -- Dumping data for table configuration
 --
 
-INSERT INTO configuration VALUES (1,'¥·¥ç¥Ã¥×Ì¾','STORE_NAME','¤¹¤°¤Ç¤­¡Ê¤ë¡Ë¥Ñ¥Ã¥¯ ¥Ç¥â¥·¥ç¥Ã¥×','¥·¥ç¥Ã¥×Ì¾¤òÀßÄê¤·¤Þ¤¹¡£',1,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (2,'¥·¥ç¥Ã¥×¥ª¡¼¥Ê¡¼Ì¾','STORE_OWNER','¤¹¤°¤Ç¤­¡Ê¤ë¡Ë¥Ñ¥Ã¥¯ ³«È¯¥Á¡¼¥à','¥·¥ç¥Ã¥×¥ª¡¼¥Ê¡¼Ì¾(¤Þ¤¿¤Ï±¿±Ä´ÉÍý¼ÔÌ¾)¤òÀßÄê¤·¤Þ¤¹¡£',1,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (1,'¥·¥ç¥Ã¥×Ì¾','STORE_NAME','Zen¾¦Å¹','¥·¥ç¥Ã¥×Ì¾¤òÀßÄê¤·¤Þ¤¹¡£',1,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (2,'¥·¥ç¥Ã¥×¥ª¡¼¥Ê¡¼Ì¾','STORE_OWNER','Á±ÂÀÏº','¥·¥ç¥Ã¥×¥ª¡¼¥Ê¡¼Ì¾(¤Þ¤¿¤Ï±¿±Ä´ÉÍý¼ÔÌ¾)¤òÀßÄê¤·¤Þ¤¹¡£',1,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (3,'¹ñ','STORE_COUNTRY','107','Å¹ÊÞ¤¬Â¸ºß¤¹¤ë¹ñÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£<strong>Ãí°Õ¡§ÊÑ¹¹¤·¤¿¤éÅ¹ÊÞ¤Î¥¾¡¼¥ó¤Î¹¹¿·¤òËº¤ì¤º¤Ë¹Ô¤Ã¤Æ¤¯¤À¤µ¤¤¡£</strong>',1,6,NULL,'2009-11-19 12:39:39','zen_get_country_name','zen_cfg_pull_down_country_list(');
 INSERT INTO configuration VALUES (4,'ÃÏ°è','STORE_ZONE','194','¥·¥ç¥Ã¥×¤Î½êºßÃÏ°è(¸©Ì¾)¤òÀßÄê¤·¤Þ¤¹¡£',1,7,NULL,'2009-11-19 12:39:39','zen_cfg_get_zone_name','zen_cfg_pull_down_zone_list(');
 INSERT INTO configuration VALUES (5,'Æþ²ÙÍ½Äê¾¦ÉÊ¤Î¥½¡¼¥È½ç','EXPECTED_PRODUCTS_SORT','desc','Æþ²ÙÍ½Äê¾¦ÉÊ¤Î¥½¡¼¥È½ç¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n¡¦asc(¾º½ç)<br />\r\n¡¦desc(¹ß½ç)',1,8,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'asc\', \'desc\'), ');
@@ -482,7 +482,7 @@ INSERT INTO configuration VALUES (8,'É½¼¨¸À¸ì¤ÎÁªÂò','LANGUAGE_DEFAULT_SELECTOR'
 INSERT INTO configuration VALUES (9,'¥µ¡¼¥Á¥¨¥ó¥¸¥ó¥Õ¥ì¥ó¥É¥ê¡¼¤ÊURLÉ½µ­(³«È¯Ãæ)','SEARCH_ENGINE_FRIENDLY_URLS','false','¥µ¡¼¥Á¥¨¥ó¥¸¥ó¤Ë½¦¤ï¤ì¤ä¤¹¤¤¡¢ÀÅÅªHTML¤Î¤è¤¦¤ÊURLÉ½µ­¤ò¹Ô¤¦¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />Ãí°Õ¡§Google¤Ç¤ÏÆ°ÅªURL¤Î¥¯¥í¡¼¥ë¤¬¶¯²½¤µ¤ì¤¿¤¿¤á¡¢¤¢¤Þ¤ê°ÕÌ£¤Ï¤Ê¤¤¤è¤¦¤Ç¤¹¡£',6,12,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration VALUES (10,'¾¦ÉÊ¤ÎÄÉ²Ã¸å¤Ë¥«¡¼¥È¤òÉ½¼¨','DISPLAY_CART','true','¾¦ÉÊ¤ò¥«¡¼¥È¤ËÄÉ²Ã¤·¤¿Ä¾¸å¤Ë¥«¡¼¥È¤ÎÆâÍÆ¤òÉ½¼¨¤¹¤ë¤«¡¢¤Þ¤¿¤Ï¸µ¥Ú¡¼¥¸¤Ë¤¹¤°Ìá¤ë¤«¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n¡¦true (É½¼¨)<br />\r\n¡¦false (ÈóÉ½¼¨)',1,14,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration VALUES (11,'¥Ç¥Õ¥©¥ë¥È¤Î¸¡º÷±é»»»Ò','ADVANCED_SEARCH_DEFAULT_OPERATOR','and','¥Ç¥Õ¥©¥ë¥È¤Î¸¡º÷±é»»»Ò¤òÀßÄê¤·¤Þ¤¹¡£',1,17,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'and\', \'or\'), ');
-INSERT INTO configuration VALUES (12,'¥·¥ç¥Ã¥×¤Î½»½ê¤ÈÅÅÏÃÈÖ¹æ','STORE_NAME_ADDRESS','Å¹ÊÞÌ¾:¤¹¤°¤Ç¤­¡Ê¤ë¡Ë¥Ñ¥Ã¥¯ ¥Ç¥â¥·¥ç¥Ã¥×\r\n ½»½ê:ÅìµþÅÔÃæ±û¶è¶äºÂ\r\n ÅÅÏÃÈÖ¹æ:03-XXXX-XXXX','¥·¥ç¥Ã¥×Ì¾¡¢¹ñÌ¾¡¢½»½ê¡¢ÅÅÏÃÈÖ¹æ¤òÀßÄê¤·¤Þ¤¹¡£',1,18,'2010-06-18 11:34:11','2009-11-19 12:39:39',NULL,'zen_cfg_textarea(');
+INSERT INTO configuration VALUES (12,'¥·¥ç¥Ã¥×¤Î½»½ê¤ÈÅÅÏÃÈÖ¹æ','STORE_NAME_ADDRESS','Zen¾¦Å¹\r\nÅìµþÅÔÃæ±û¶è¶äºÂ1-1-1\r\n03-0000-0000','¥·¥ç¥Ã¥×Ì¾¡¢¹ñÌ¾¡¢½»½ê¡¢ÅÅÏÃÈÖ¹æ¤òÀßÄê¤·¤Þ¤¹¡£',1,18,'2010-06-18 11:34:11','2009-11-19 12:39:39',NULL,'zen_cfg_textarea(');
 INSERT INTO configuration VALUES (13,'¥«¥Æ¥´¥êÆâ¤Î¾¦ÉÊ¿ô¤òÉ½¼¨','SHOW_COUNTS','true','¥«¥Æ¥´¥êÆâ¤Î¾¦ÉÊ¿ô¤ò²¼°Ì¥«¥Æ¥´¥ê¤â´Þ¤á¤Æ¥«¥¦¥ó¥ÈÉ½¼¨¤¹¤ë¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n¡¦true (¤¹¤ë)<br />\r\n¡¦false (¤·¤Ê¤¤)',1,19,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration VALUES (14,'ÀÇ³Û¤Î¾®¿ôÅÀ°ÌÃÖ','TAX_DECIMAL_PLACES','0','ÀÇ³Û¤Î¾®¿ôÅÀ°Ê²¼¤Î·å¿ô¤òÀßÄê¤·¤Þ¤¹¡£',1,20,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (15,'²Á³Ê¤òÀÇ¹þ¤ß¤ÇÉ½¼¨','DISPLAY_PRICE_WITH_TAX','true','²Á³Ê¤òÀÇ¹þ¤ß¤ÇÉ½¼¨¤¹¤ë¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n¡¦true = ²Á³Ê¤òÀÇ¹þ¤ß¤ÇÉ½¼¨<br />\r\n¡¦false = ÀÇ³Û¤ò¤Þ¤È¤á¤ÆÉ½¼¨',1,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
@@ -688,30 +688,30 @@ INSERT INTO configuration VALUES (214,'¥á¡¼¥ë¥¢¥É¥ì¥¹¤òDNS¤Ç³ÎÇ§','ENTRY_EMAIL_A
 INSERT INTO configuration VALUES (215,'¥á¡¼¥ë¤òÁ÷¿®','SEND_EMAILS','true','E-Mail¤ò³°Éô¤ËÁ÷¿®¤¹¤ë¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£',12,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration VALUES (216,'¥á¡¼¥ëÊÝÂ¸¤ÎÀßÄê','EMAIL_ARCHIVE','false','Á÷¿®ºÑ¤ß¤Î¥á¡¼¥ë¤òÊÝÂ¸¤·¤Æ¤ª¤¯¾ì¹ç¤Ïtrue¤òÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£',12,6,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration VALUES (217,'¥á¡¼¥ëÁ÷¿®¥¨¥é¡¼¤ÎÉ½¼¨','EMAIL_FRIENDLY_ERRORS','false','¥á¡¼¥ëÁ÷¿®¤¬¼ºÇÔ¤·¤¿ºÝ¡¢¿ÍÌÜ¤Ç¤ï¤«¤ë¥¨¥é¡¼¤òÉ½¼¨¤·¤Þ¤¹¤«? ±¿±ÄÃæ¤Î¥·¥ç¥Ã¥×¤Ç¤Ïtrue¤ËÀßÄê¤¹¤ë¤³¤È¤ò´«¤á¤Þ¤¹¡£false¤ËÀßÄê¤¹¤ë¤ÈPHP¤Î¥¨¥é¡¼¥á¥Ã¥»¡¼¥¸¤òÉ½¼¨¤µ¤ì¤ë¤Î¤Ç¡¢¥È¥é¥Ö¥ë²ò·è¤Î¥Ò¥ó¥È¤Ë¤Ê¤ê¤Þ¤¹¡£',12,7,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (218,'¥á¡¼¥ë¥¢¥É¥ì¥¹ (¥·¥ç¥Ã¥×¤ËÉ½¼¨¤¹¤ëÌä¤¤¹ç¤ï¤»Àè)','STORE_OWNER_EMAIL_ADDRESS','ohtsuji@ark-web.jp','¥·¥ç¥Ã¥×¥ª¡¼¥Ê¡¼¤Î¥á¡¼¥ë¥¢¥É¥ì¥¹¤È¤·¤Æ¥µ¥¤¥È¾å¤ÇÉ½¼¨¤µ¤ì¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£',12,10,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (219,'¥á¡¼¥ë¥¢¥É¥ì¥¹ (¸ÜµÒ¤Ø¤ÎÁ÷¿®¸µ)','EMAIL_FROM','ohtsuji@ark-web.jp','¸ÜµÒ¤ËÁ÷¿®¤µ¤ì¤ë¥á¡¼¥ë¤Î¥Ç¥Õ¥©¥ë¥È¤ÎÁ÷¿®¸µ¤È¤·¤ÆÉ½¼¨¤µ¤ì¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br />\r\n´ÉÍý²èÌÌ¤Ç¥á¡¼¥ë¤òºîÀ®¤ò¤¹¤ëÅÔÅÙ¡¢½ñ¤­´¹¤¨¤ë¤³¤È¤â¤Ç¤­¤Þ¤¹¡£',12,11,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (218,'¥á¡¼¥ë¥¢¥É¥ì¥¹ (¥·¥ç¥Ã¥×¤ËÉ½¼¨¤¹¤ëÌä¤¤¹ç¤ï¤»Àè)','STORE_OWNER_EMAIL_ADDRESS','hachiya@ark-web.jp','¥·¥ç¥Ã¥×¥ª¡¼¥Ê¡¼¤Î¥á¡¼¥ë¥¢¥É¥ì¥¹¤È¤·¤Æ¥µ¥¤¥È¾å¤ÇÉ½¼¨¤µ¤ì¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£',12,10,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (219,'¥á¡¼¥ë¥¢¥É¥ì¥¹ (¸ÜµÒ¤Ø¤ÎÁ÷¿®¸µ)','EMAIL_FROM','hachiya@ark-web.jp','¸ÜµÒ¤ËÁ÷¿®¤µ¤ì¤ë¥á¡¼¥ë¤Î¥Ç¥Õ¥©¥ë¥È¤ÎÁ÷¿®¸µ¤È¤·¤ÆÉ½¼¨¤µ¤ì¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br />\r\n´ÉÍý²èÌÌ¤Ç¥á¡¼¥ë¤òºîÀ®¤ò¤¹¤ëÅÔÅÙ¡¢½ñ¤­´¹¤¨¤ë¤³¤È¤â¤Ç¤­¤Þ¤¹¡£',12,11,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (220,'Á÷¿®¥á¡¼¥ë¤ÎÁ÷¿®¸µ¥¢¥É¥ì¥¹¤Î¼ÂºßÀ­','EMAIL_SEND_MUST_BE_STORE','No','¤ª»È¤¤¤Î¥á¡¼¥ë¥µ¡¼¥Ð¤Ç¤Ï¡¢Á÷¿®¤¹¤ë¥á¡¼¥ë¤ÎÁ÷¿®¸µ(From)¥¢¥É¥ì¥¹¤¬Web¥µ¡¼¥Ð¾å¤Ë¼Âºß¤¹¤ë¤³¤È¤¬É¬¿Ü¤Ç¤¹¤«?<br /><br />spamÁ÷¿®¤òËÉ»ß¤¹¤ë¤Ê¤É¤Î¤¿¤á¤Ë¤³¤Î¤è¤¦¤ËÀßÄê¤µ¤ì¤Æ¤¤¤ë¤³¤È¤¬¤¢¤ê¤Þ¤¹¡£Yes¤ËÀßÄê¤¹¤ë¤È¡¢Á÷¿®¸µ¥¢¥É¥ì¥¹¤È¥á¡¼¥ëÆâ¤ÎFrom¥¢¥É¥ì¥¹¤¬°ìÃ×¤·¤Æ¤¤¤ë¤³¤È¤¬µá¤á¤é¤ì¤Þ¤¹¡£',12,11,NULL,'0001-01-01 00:00:00',NULL,'zen_cfg_select_option(array(\'No\', \'Yes\'), ');
 INSERT INTO configuration VALUES (221,'´ÉÍý¼Ô¤¬Á÷¿®¤¹¤ë¥á¡¼¥ë¥Õ¥©¡¼¥Þ¥Ã¥È','ADMIN_EXTRA_EMAIL_FORMAT','TEXT','´ÉÍý¼Ô¤¬Á÷ÉÕ¤¹¤ë¥á¡¼¥ë¥Õ¥©¡¼¥Þ¥Ã¥È¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n¡¦TEXT =¥Æ¥­¥¹¥È·Á¼°<br />\r\n¡¦HTML =HTML·Á¼°',12,12,NULL,'0001-01-01 00:00:00',NULL,'zen_cfg_select_option(array(\'TEXT\', \'HTML\'), ');
-INSERT INTO configuration VALUES (222,'ÃíÊ¸³ÎÇ§¥á¡¼¥ë(¥³¥Ô¡¼)Á÷¿®Àè','SEND_EXTRA_ORDER_EMAILS_TO','ohtsuji@ark-web.jp','¸ÜµÒ¤ËÁ÷¿®¤µ¤ì¤ëÃíÊ¸³ÎÇ§¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷ÉÕ¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br />µ­ÆþÎã: Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (222,'ÃíÊ¸³ÎÇ§¥á¡¼¥ë(¥³¥Ô¡¼)Á÷¿®Àè','SEND_EXTRA_ORDER_EMAILS_TO','hachiya@ark-web.jp','¸ÜµÒ¤ËÁ÷¿®¤µ¤ì¤ëÃíÊ¸³ÎÇ§¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷ÉÕ¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br />µ­ÆþÎã: Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (223,'¥¢¥«¥¦¥ó¥ÈºîÀ®´°Î»¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®','SEND_EXTRA_CREATE_ACCOUNT_EMAILS_TO_STATUS','0','¥¢¥«¥¦¥ó¥ÈºîÀ®´°Î»¥á¡¼¥ë¤Î¥³¥Ô¡¼¤ò»ØÄê¤Î¥á¡¼¥ë¥¢¥É¥ì¥¹¤ËÁ÷¿®¤·¤Þ¤¹¤«?<br /><br />\r\n¡¦0= off<br />\r\n¡¦1= on',12,13,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (224,'¥¢¥«¥¦¥ó¥ÈºîÀ®´°Î»¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_CREATE_ACCOUNT_EMAILS_TO','ohtsuji@ark-web.jp','¥¢¥«¥¦¥ó¥ÈºîÀ®´°Î»¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,14,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (224,'¥¢¥«¥¦¥ó¥ÈºîÀ®´°Î»¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_CREATE_ACCOUNT_EMAILS_TO','hachiya@ark-web.jp','¥¢¥«¥¦¥ó¥ÈºîÀ®´°Î»¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,14,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (225,'¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®','SEND_EXTRA_TELL_A_FRIEND_EMAILS_TO_STATUS','0','¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤·¤Þ¤¹¤«?<br />0= off 1= on',12,15,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (226,'¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_TELL_A_FRIEND_EMAILS_TO','ohtsuji@ark-web.jp','¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£µ­ÆþÎã: Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,16,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (226,'¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_TELL_A_FRIEND_EMAILS_TO','hachiya@ark-web.jp','¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£µ­ÆþÎã: Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,16,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (227,'¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®','SEND_EXTRA_GV_CUSTOMER_EMAILS_TO_STATUS','0','¸ÜµÒ¤¬Á÷ÉÕ¤¹¤ë¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤·¤Þ¤¹¤«?<br /><br />\r\n¡¦0= off<br />\r\n¡¦1= on',12,17,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (228,'¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_GV_CUSTOMER_EMAILS_TO','ohtsuji@ark-web.jp','¸ÜµÒ¤¬Á÷ÉÕ¤¹¤ë¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />µ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2&lt;email@address2&gt;',12,18,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (228,'¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_GV_CUSTOMER_EMAILS_TO','hachiya@ark-web.jp','¸ÜµÒ¤¬Á÷ÉÕ¤¹¤ë¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />µ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2&lt;email@address2&gt;',12,18,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (229,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®','SEND_EXTRA_GV_ADMIN_EMAILS_TO_STATUS','0','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤·¤Þ¤¹¤«?<br /><br />\r\n¡¦0= off<br />\r\n¡¦1= on',12,19,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (230,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_GV_ADMIN_EMAILS_TO','ohtsuji@ark-web.jp','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,20,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (230,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_GV_ADMIN_EMAILS_TO','hachiya@ark-web.jp','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥®¥Õ¥È·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,20,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (231,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥¯¡¼¥Ý¥ó·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®','SEND_EXTRA_DISCOUNT_COUPON_ADMIN_EMAILS_TO_STATUS','0','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥¯¡¼¥Ý¥ó·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤·¤Þ¤¹¤«?<br />0= off 1= on',12,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (232,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥¯¡¼¥Ý¥ó·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_DISCOUNT_COUPON_ADMIN_EMAILS_TO','ohtsuji@ark-web.jp','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥¯¡¼¥Ý¥ó·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,22,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (232,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥¯¡¼¥Ý¥ó·ôÁ÷ÉÕ¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_DISCOUNT_COUPON_ADMIN_EMAILS_TO','hachiya@ark-web.jp','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤«¤é¤Î¥¯¡¼¥Ý¥ó·ôÁ÷ÉÕ¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,22,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (233,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤ÎÃíÊ¸¥¹¥Æ¡¼¥¿¥¹¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®','SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_STATUS','0','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤ÎÃíÊ¸¥¹¥Æ¡¼¥¿¥¹¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤·¤Þ¤¹¤«?<br /><br />\r\n¡¦0= off<br />\r\n¡¦1= on',12,23,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (234,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤ÎÃíÊ¸¥¹¥Æ¡¼¥¿¥¹¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO','ohtsuji@ark-web.jp','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤ÎÃíÊ¸¥¹¥Æ¡¼¥¿¥¹¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,24,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (234,'¥·¥ç¥Ã¥×±¿±Ä¼Ô¤ÎÃíÊ¸¥¹¥Æ¡¼¥¿¥¹¥á¡¼¥ë(¥³¥Ô¡¼)¤ÎÁ÷¿®Àè','SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO','hachiya@ark-web.jp','¥·¥ç¥Ã¥×±¿±Ä¼Ô¤ÎÃíÊ¸¥¹¥Æ¡¼¥¿¥¹¥á¡¼¥ë¤Î¥³¥Ô¡¼¤òÁ÷¿®¤¹¤ë¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\nµ­ÆþÎã¡§ Ì¾Á°1 &lt;email@address1&gt;, Ì¾Á°2 &lt;email@address2&gt;',12,24,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (235,'·ÇºÜÂÔ¤Á¥ì¥Ó¥å¡¼¤Ë¤Ä¤¤¤Æ¥á¡¼¥ëÁ÷¿®','SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO_STATUS','0','·ÇºÜÂÔ¤Á¤Î¥ì¥Ó¥å¡¼¤Ë¤Ä¤¤¤Æ¥á¡¼¥ë¤òÁ÷¿®¤·¤Þ¤¹¤«?<br />0= off 1= on',12,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (236,'·ÇºÜÂÔ¤Á¥ì¥Ó¥å¡¼¤Ë¤Ä¤¤¤Æ¤Î¥á¡¼¥ëÁ÷¿®Àè','SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO','ohtsuji@ark-web.jp','·ÇºÜÂÔ¤Á¤Î¥ì¥Ó¥å¡¼¤Ë¤Ä¤¤¤Æ¤Î¥á¡¼¥ë¤òÁ÷¿®¤¹¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br />¥Õ¥©¡¼¥Þ¥Ã¥È¡§Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,26,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (236,'·ÇºÜÂÔ¤Á¥ì¥Ó¥å¡¼¤Ë¤Ä¤¤¤Æ¤Î¥á¡¼¥ëÁ÷¿®Àè','SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO','hachiya@ark-web.jp','·ÇºÜÂÔ¤Á¤Î¥ì¥Ó¥å¡¼¤Ë¤Ä¤¤¤Æ¤Î¥á¡¼¥ë¤òÁ÷¿®¤¹¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£<br />¥Õ¥©¡¼¥Þ¥Ã¥È¡§Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,26,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (237,'¡Ö¤ªÌä¤¤¹ç¤ï¤»¡×¥á¡¼¥ë¤Î¥É¥í¥Ã¥×¥À¥¦¥óÀßÄê','CONTACT_US_LIST','','¡Ö¤ªÌä¤¤¹ç¤ï¤»¡×¥Ú¡¼¥¸¤Ç¡¢¥á¡¼¥ë¥¢¥É¥ì¥¹¤Î¥ê¥¹¥È¤òÀßÄê¤·¡¢¥É¥í¥Ã¥×¥À¥¦¥ó¥ê¥¹¥È¤È¤·¤ÆÉ½¼¨¤Ç¤­¤Þ¤¹¡£<br />\r\n¥Õ¥©¡¼¥Þ¥Ã¥È¡§Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,40,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea(');
 INSERT INTO configuration VALUES (238,'¥²¥¹¥È¤Ë¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×µ¡Ç½¤òµö²Ä','ALLOW_GUEST_TO_TELL_A_FRIEND','false','¥²¥¹¥È(Ì¤ÅÐÏ¿¥æ¡¼¥¶)¤Ë¡ÖÍ§Ã£¤ËÃÎ¤é¤»¤ë¡×µ¡Ç½¤òµö²Ä¤¹¤ë¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£ <br />[false]¤ËÀßÄê¤¹¤ë¤È¡¢¤³¤Îµ¡Ç½¤òÍøÍÑ¤·¤è¤¦¤È¤·¤¿ºÝ¤Ë¥í¥°¥¤¥ó¤òÂ¥¤·¤Þ¤¹¡£',12,50,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration VALUES (239,'¡Ö¤ªÌä¤¤¹ç¤ï¤»¡×¤Ë¥·¥ç¥Ã¥×Ì¾¤È½»½ê¤òÉ½µ­','CONTACT_US_STORE_NAME_ADDRESS','1','¡Ö¤ªÌä¤¤¹ç¤ï¤»¡×²èÌÌ¤Ë¥·¥ç¥Ã¥×Ì¾¤È½»½ê¤òÉ½µ­¤¹¤ë¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n¡¦0= off<br />\r\n¡¦1= on',12,50,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
 INSERT INTO configuration VALUES (240,'ºß¸Ë¤ï¤º¤«¤Ë¤Ê¤Ã¤¿¤é¥á¡¼¥ëÁ÷¿®','SEND_LOWSTOCK_EMAIL','0','¾¦ÉÊ¤Îºß¸Ë¤¬¿å½à¤ò²¼²ó¤Ã¤¿ºÝ¤Ë¥á¡¼¥ë¤òÁ÷¿®¤¹¤ë¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£<br />\r\n¡¦0= off<br />\r\n¡¦1= on',12,60,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (241,'ºß¸Ë¤ï¤º¤«¤Ë¤Ê¤Ã¤¿ºÝ¤Î¥á¡¼¥ëÁ÷¿®Àè','SEND_EXTRA_LOW_STOCK_EMAILS_TO','ohtsuji@ark-web.jp','¾¦ÉÊ¤Îºß¸Ë¤¬¿å½à¤ò²¼²ó¤Ã¤¿ºÝ¤Ë¥á¡¼¥ë¤òÁ÷¿®¤¹¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£Ê£¿ôÀßÄê¤¹¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£<br />\r\n¥Õ¥©¡¼¥Þ¥Ã¥È¡§Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,61,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (241,'ºß¸Ë¤ï¤º¤«¤Ë¤Ê¤Ã¤¿ºÝ¤Î¥á¡¼¥ëÁ÷¿®Àè','SEND_EXTRA_LOW_STOCK_EMAILS_TO','hachiya@ark-web.jp','¾¦ÉÊ¤Îºß¸Ë¤¬¿å½à¤ò²¼²ó¤Ã¤¿ºÝ¤Ë¥á¡¼¥ë¤òÁ÷¿®¤¹¤ë¥¢¥É¥ì¥¹¤òÀßÄê¤·¤Þ¤¹¡£Ê£¿ôÀßÄê¤¹¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£<br />\r\n¥Õ¥©¡¼¥Þ¥Ã¥È¡§Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,61,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (242,'¡Ö¥á¡¼¥ë¥Þ¥¬¥¸¥ó¤Î¹ØÆÉ²ò½ü¡×¥ê¥ó¥¯¤ÎÉ½¼¨','SHOW_NEWSLETTER_UNSUBSCRIBE_LINK','true','¡Ö¥á¡¼¥ë¥Þ¥¬¥¸¥ó¤Î¹ØÆÉ²ò½ü¡×¥ê¥ó¥¯¤ò¥¤¥ó¥Õ¥©¥á¡¼¥·¥ç¥ó¥µ¥¤¥É¥Ü¥Ã¥¯¥¹¤ËÉ½¼¨¤·¤Þ¤¹¤«?',12,70,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration VALUES (243,'¥ª¥ó¥é¥¤¥ó¥æ¡¼¥¶¡¼¿ô¤ÎÉ½¼¨ÀßÄê','AUDIENCE_SELECT_DISPLAY_COUNTS','true','¥ª¥ó¥é¥¤¥ó¤Î¥æ¡¼¥¶(audiences/recipients)¤òÉ½¼¨¤¹¤ëºÝ¡¢recipients¤ò´Þ¤á¤Þ¤¹¤«?<br /><br />\r\n¡ÚÃí°Õ¡Û¤³¤ÎÀßÄê¤òtrue¤Ë¤¹¤ë¤È¡¢Âô»³¤Î¸ÜµÒ¤¬¤¤¤ë¾ì¹ç¤Ê¤É¤ËÉ½¼¨¤¬ÃÙ¤¯¤Ê¤ë¾ì¹ç¤¬¤¢¤ê¤Þ¤¹¡£',12,90,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration VALUES (244,'¥À¥¦¥ó¥í¡¼¥É¤òÍ­¸ú¤Ë¤¹¤ë','DOWNLOAD_ENABLED','true','¾¦ÉÊ¤Î¥À¥¦¥ó¥í¡¼¥Éµ¡Ç½¤òÀßÄê¤·¤Þ¤¹¡£',13,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
@@ -729,7 +729,7 @@ INSERT INTO configuration VALUES (255,'(¸ÀÍÕ¡¦Ê¸»ú¤Ë¤è¤ë)¥Æ¥­¥¹¥È¤Ë¤è¤ë²Á³ÊÀßÄê¤
 INSERT INTO configuration VALUES (256,'¥Æ¥­¥¹¥È¤Ë¤è¤ë²Á³ÊÀßÄê - ¶õÍó¤Î¾ì¹ç¤ÏÌµÎÁ','TEXT_SPACES_FREE','1','¥Æ¥­¥¹¥È¤Ë¤è¤ë²Á³ÊÀßÄê¤Î¾ì¹ç¡¢¶õÍó¤Î¤Þ¤Þ¤Ê¤éÌµÎÁ¤Ë¤¹¤ë¤«¤É¤¦¤«¤òÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n¡¦0= off<br />\r\n¡¦1= on',13,36,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
 INSERT INTO configuration VALUES (257,'Read OnlyÂ°À­¤Î¾¦ÉÊ -¡Ö¥«¡¼¥È¤ËÆþ¤ì¤ë¡×¥Ü¥¿¥ó¤ÎÉ½¼¨','PRODUCTS_OPTIONS_TYPE_READONLY_IGNORED','1','READONLYÂ°À­¤À¤±¤¬ÀßÄê¤µ¤ì¤¿¾¦ÉÊ¤Ë¡Ö¥«¡¼¥È¤ËÆþ¤ì¤ë¡×¥Ü¥¿¥ó¤òÉ½¼¨¤·¤Þ¤¹¤«?<br />0= OFF<br />1= ON',13,37,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
 INSERT INTO configuration VALUES (258,'GZip°µ½Ì¤ò»ÈÍÑ¤¹¤ë','GZIP_LEVEL','0','HTTPÄÌ¿®¤ËGZip°µ½Ì¤ò»ÈÍÑ¤·¤Æ¥Ú¡¼¥¸¤òÅ¾Á÷¤·¤Þ¤¹¤«?<br /><br />\r\n¡¦0= off<br />\r\n¡¦1= on',14,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (259,'¥»¥Ã¥·¥ç¥ó¾ðÊóÊÝÂ¸¥Ç¥£¥ì¥¯¥È¥ê','SESSION_WRITE_DIRECTORY','/var/www/projects/z/zen-cart/htdocs/ohtsuji/zencart-sugu/cache','¥»¥Ã¥·¥ç¥ó´ÉÍý¤¬¥Õ¥¡¥¤¥ë¥Ù¡¼¥¹¤Î¾ì¹ç¤ËÊÝÂ¸¤¹¤ë¥Ç¥£¥ì¥¯¥È¥ê¤òÀßÄê¤·¤Þ¤¹¡£',15,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
+INSERT INTO configuration VALUES (259,'¥»¥Ã¥·¥ç¥ó¾ðÊóÊÝÂ¸¥Ç¥£¥ì¥¯¥È¥ê','SESSION_WRITE_DIRECTORY','/var/www/projects/z/zen-cart/htdocs/hachiya/zencart-sugu/cache','¥»¥Ã¥·¥ç¥ó´ÉÍý¤¬¥Õ¥¡¥¤¥ë¥Ù¡¼¥¹¤Î¾ì¹ç¤ËÊÝÂ¸¤¹¤ë¥Ç¥£¥ì¥¯¥È¥ê¤òÀßÄê¤·¤Þ¤¹¡£',15,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
 INSERT INTO configuration VALUES (260,'¥¯¥Ã¥­¡¼¤ËÊÝÂ¸¤¹¤ë¥É¥á¥¤¥óÌ¾¤ÎÀßÄê','SESSION_USE_FQDN','True','¥¯¥Ã¥­¡¼¤ËÊÝÂ¸¤¹¤ë¥É¥á¥¤¥óÌ¾¤Ë¤Ä¤¤¤ÆÀßÄê¤·¤Þ¤¹¡£<br /><br />\r\n\r\n¡¦True = ¥É¥á¥¤¥ó¥Í¡¼¥àÁ´ÂÎ¤ò¥¯¥Ã¥­¡¼¤ËÊÝÂ¸(Îã¡§www.mydomain.com)<br />\r\n¡¦False = ¥É¥á¥¤¥ó¥Í¡¼¥à¤Î°ìÉô¤òÊÝÂ¸(Îã¡§mydomain.com)¡£<br />\r\n¤è¤¯¤ï¤«¤é¤Ê¤¤¾ì¹ç¤Ï¤³¤ÎÀßÄê¤ÏTrue¤Ë¤·¤Æ¤ª¤¤¤Æ¤¯¤À¤µ¤¤¡£',15,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
 INSERT INTO configuration VALUES (261,'¥¯¥Ã¥­¡¼ÍøÍÑ¤òÉ¬¿Ü¤Ë¤¹¤ë','SESSION_FORCE_COOKIE_USE','True','¥»¥Ã¥·¥ç¥ó¤ËÉ¬¤º¥¯¥Ã¥­¡¼¤òÍøÍÑ¤·¤Þ¤¹¡£True»ØÄê¤¹¤ë¤È¥Ö¥é¥¦¥¶¤Î¥¯¥Ã¥­¡¼¤¬¥ª¥Õ¤Ë¤Ê¤Ã¤Æ¤¤¤ë¾ì¹ç¤Ï¥»¥Ã¥·¥ç¥ó¤ò³«»Ï¤·¤Þ¤»¤ó¡£¥»¥­¥å¥ê¥Æ¥£¾å¤ÎÍýÍ³¤«¤éÍ¾Äø¤ÎÍýÍ³¤Î¤Ê¤¤¸Â¤ê¤ÏTrue»ØÄê¤Î¤Þ¤Þ¤È¤¹¤ë¤³¤È¤ò¶¯¤¯¿ä¾©¤·¤Þ¤¹¡£',15,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
 INSERT INTO configuration VALUES (262,'SSL¥»¥Ã¥·¥ç¥óID¥Á¥§¥Ã¥¯','SESSION_CHECK_SSL_SESSION_ID','False','Á´¤Æ¤ÎHTTPS¥ê¥¯¥¨¥¹¥È¤ÇSSL¥»¥Ã¥·¥ç¥óID¤ò¥Á¥§¥Ã¥¯¤·¤Þ¤¹¤«?',15,3,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
@@ -1956,7 +1956,7 @@ KEY idx_referral_zen (customers_referral(10)),
 KEY idx_grp_pricing_zen (customers_group_pricing),
 KEY idx_nick_zen (customers_nick),
 KEY idx_newsletter_zen (customers_newsletter)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table customers
@@ -1998,7 +1998,7 @@ final_price decimal(15,4) NOT NULL default '0.0000',
 customers_basket_date_added varchar(8) default NULL,
 PRIMARY KEY  (customers_basket_id),
 KEY idx_customers_id_zen (customers_id)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table customers_basket
@@ -2264,17 +2264,17 @@ PRIMARY KEY  (email_templates_id,language_id)
 --
 
 INSERT INTO email_templates_description VALUES (1,2,'¥æ¡¼¥¶¡¼ÅÐÏ¿¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹','¥æ¡¼¥¶¡¼ÅÐÏ¿¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹\r\n\r\n¤³¤ì¤«¤é¤â¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£','2010-06-27 12:52:56');
-INSERT INTO email_templates_description VALUES (1,0,'MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_SUBJECT_EN','MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_BODY_EN','2010-06-27 04:29:58');
+INSERT INTO email_templates_description VALUES (1,1,'Thank you for membership registration','Thank you for membership registration','2010-06-27 04:29:58');
 INSERT INTO email_templates_description VALUES (2,2,'¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[²ñ°÷ÍÑ]','ÃíÊ¸³ÎÇ§½ñ from XXXXXXXX\r\n\r\n[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£\r\n------------------------------------------------------\r\n¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]\r\n¤´ÃíÊ¸Æü: [DATE_ORDERED]\r\nÀÁµáÌÀºÙ½ñ:\r\n[INVOICE_URL]\r\n\r\n[COMMENT]\r\n\r\n¾¦ÉÊ\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\n¤ªÆÏ¤±Àè\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nÀÁµáÀè½»½ê\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\n¤ª»ÙÊ§¤¤ÊýË¡\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 12:52:25');
-INSERT INTO email_templates_description VALUES (2,0,'MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_SUBJECT_EN','MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_BODY_EN','2010-06-27 04:29:58');
+INSERT INTO email_templates_description VALUES (2,1,'Thank you for the order[member]','OrderConfirmation from XXXXXXXX\r\n\r\n[CUSTOMER_NAME]\r\n\r\nOrderNumber: [ORDER_ID]\r\nOrderDate: [DATE_ORDERED]\r\nInvoice:\r\n[INVOICE_URL]\r\n\r\n[COMMENT]\r\n\r\nProducts\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nShipping\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nInvoiceAddress\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nPayment\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
 INSERT INTO email_templates_description VALUES (3,2,'¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[¥²¥¹¥ÈÍÑ]','ÃíÊ¸³ÎÇ§½ñ from XXXXXXXX\r\n\r\n[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£\r\n------------------------------------------------------\r\n¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]\r\n¤´ÃíÊ¸Æü: [DATE_ORDERED]\r\n\r\n[COMMENT]\r\n\r\n¾¦ÉÊ\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\n¤ªÆÏ¤±Àè\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nÀÁµáÀè½»½ê\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\n¤ª»ÙÊ§¤¤ÊýË¡\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:31:58');
-INSERT INTO email_templates_description VALUES (3,0,'MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_SUBJECT_EN','MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_BODY_EN','2010-06-27 04:29:58');
-INSERT INTO email_templates_description VALUES (4,2,'¤´ÃíÊ¸¼õÉÕ¾õ¶·¤Î¤ªÃÎ¤é¤»','[CUSTOMER_NAME]ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 12:53:48');
-INSERT INTO email_templates_description VALUES (4,0,'MODULE_EMAIL_TEMPLATE_STATUS_MAIL_SUBJECT_EN','MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY_EN','2010-06-27 04:29:58');
+INSERT INTO email_templates_description VALUES (3,1,'Thank you for the order[guest]','OrderConfirmation from XXXXXXXX\r\n\r\n[CUSTOMER_NAME]\r\n\r\nOrderNumber: [ORDER_ID]\r\nOrderDate: [DATE_ORDERED]\r\nInvoice:\r\n[INVOICE_URL]\r\n\r\n[COMMENT]\r\n\r\nProducts\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nShipping\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nInvoiceAddress\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nPayment\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
+INSERT INTO email_templates_description VALUES (4,2,'¤´ÃíÊ¸¼õÉÕ¾õ¶·¤Î¤ªÃÎ¤é¤»','[CUSTOMER_NAME]ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-07-20 16:35:51');
+INSERT INTO email_templates_description VALUES (4,1,'Information of order situation','MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY_EN\', \'\r\n[CUSTOMER_NAME]ÍÍ\r\n\r\nThank you for use\r\n[DATE_ORDERED]\r\nOrder receipt number¡§[ORDER_ID]\r\n\r\nYou can see ordering information\r\n[INVOICE_URL]\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
 INSERT INTO email_templates_description VALUES (1,9,'[·ÈÂÓÈÇ]¥æ¡¼¥¶¡¼ÅÐÏ¿´°Î»','¥æ¡¼¥¶¡¼ÅÐÏ¿¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£','2010-06-27 12:52:56');
 INSERT INTO email_templates_description VALUES (2,9,'[·ÈÂÓ]ÃíÊ¸´°Î»','[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£\r\n\r\n¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]\r\n¤´ÃíÊ¸Æü: [DATE_ORDERED]\r\n\r\n¾Ü¤·¤¯¤Ï¤³¤Á¤é¡£\r\n[INVOICE_URL]','2010-06-27 12:52:25');
 INSERT INTO email_templates_description VALUES (3,9,'¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[¥²¥¹¥ÈÍÑ]','ÃíÊ¸³ÎÇ§½ñ from XXXXXXXX\r\n\r\n[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£\r\n------------------------------------------------------\r\n¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]\r\n¤´ÃíÊ¸Æü: [DATE_ORDERED]\r\n\r\n[COMMENT]\r\n\r\n¾¦ÉÊ\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\n¤ªÆÏ¤±Àè\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nÀÁµáÀè½»½ê\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\n¤ª»ÙÊ§¤¤ÊýË¡\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','0000-00-00 00:00:00');
-INSERT INTO email_templates_description VALUES (4,9,'[·ÈÂÓÈÇ]¤´ÃíÊ¸¼õÉÕ¾õ¶·¹¹¿·','[CUSTOMER_NAME]ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£','2010-06-27 12:53:48');
+INSERT INTO email_templates_description VALUES (4,9,'[·ÈÂÓÈÇ]¤´ÃíÊ¸¼õÉÕ¾õ¶·¹¹¿·','[CUSTOMER_NAME]ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£','2010-07-20 16:35:51');
 
 --
 -- Table structure for table ezpages
@@ -3088,7 +3088,7 @@ date_cancelled datetime default NULL,
 balance_due decimal(14,2) default NULL,
 PRIMARY KEY  (orders_id),
 KEY idx_status_orders_cust_zen (orders_status,orders_id,customers_id)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table orders
@@ -3118,7 +3118,7 @@ products_discount_type_from tinyint(1) NOT NULL default '0',
 products_prid tinytext NOT NULL,
 PRIMARY KEY  (orders_products_id),
 KEY idx_orders_id_prod_id_zen (orders_id,products_id)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table orders_products
@@ -3233,7 +3233,7 @@ customer_notified int(1) default '0',
 comments text,
 PRIMARY KEY  (orders_status_history_id),
 KEY idx_orders_id_status_id_zen (orders_id,orders_status_id)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table orders_status_history
@@ -3256,7 +3256,7 @@ sort_order int(11) NOT NULL default '0',
 PRIMARY KEY  (orders_total_id),
 KEY idx_ot_orders_id_zen (orders_id),
 KEY idx_ot_class_zen (class)
-) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table orders_total
@@ -3947,7 +3947,7 @@ products_options_values_to_products_options_id int(11) NOT NULL auto_increment,
 products_options_id int(11) NOT NULL default '0',
 products_options_values_id int(11) NOT NULL default '0',
 PRIMARY KEY  (products_options_values_to_products_options_id)
-) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table products_options_values_to_products_options
@@ -4509,12 +4509,6 @@ PRIMARY KEY  (upgrade_exception_id)
 -- Dumping data for table upgrade_exceptions
 --
 
-INSERT INTO upgrade_exceptions VALUES (1,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'Á´¸ÜµÒ\' WHERE query_id =1 LIMIT 1;');
-INSERT INTO upgrade_exceptions VALUES (2,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'¥á¡¼¥ë¥Þ¥¬¥¸¥ó´õË¾¼Ô\' WHERE query_id =2 LIMIT 1;');
-INSERT INTO upgrade_exceptions VALUES (3,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'µÙÌ²¸ÜµÒ¡Ê²áµî»°¥ö·î´Ö¡¢ÇÛ¿®´õË¾¼Ô¤Î¤ß¡Ë\' WHERE query_id =3 LIMIT 1;');
-INSERT INTO upgrade_exceptions VALUES (4,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'²ÔÆ°¸ÜµÒ¡Ê²áµî»°¥ö·î´Ö¡¢ÇÛ¿®´õË¾¼Ô¤Î¤ß¡Ë\' WHERE query_id =4 LIMIT 1;');
-INSERT INTO upgrade_exceptions VALUES (5,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'²ÔÆ°¸ÜµÒ¡Ê²áµî»°¥ö·î´Ö¡Ë\' WHERE query_id =5 LIMIT 1;');
-INSERT INTO upgrade_exceptions VALUES (6,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'´ÉÍý¼Ô\' WHERE query_id =6 LIMIT 1;');
 
 --
 -- Table structure for table visitors
