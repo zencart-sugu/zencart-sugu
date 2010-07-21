@@ -112,7 +112,7 @@ Copyright (c) XXXXXXXX Inc. All Rights Reserved
 //define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID_EN', '4');
 define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_SUBJECT_EN', 'Information of order situation');
 define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY_EN', '
-[CUSTOMER_NAME]ออ
+[CUSTOMER_NAME]
 
 Thank you for use
 [DATE_ORDERED]
