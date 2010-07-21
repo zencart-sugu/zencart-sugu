@@ -87,7 +87,7 @@ KEY idx_admin_name_zen (admin_name)
 -- Dumping data for table admin
 --
 
-INSERT INTO admin VALUES (1,'admin','hachiya@ark-web.jp','d367f03201e84bb4cfd137da723fc4a0:ae',1);
+INSERT INTO admin VALUES (1,'admin','hachiya@ark-web.jp','7e03013a85704ec8e867025932ee69cb:d6',1);
 
 --
 -- Table structure for table admin_acl
@@ -123,7 +123,7 @@ PRIMARY KEY  (log_id),
 KEY idx_page_accessed_zen (page_accessed),
 KEY idx_access_date_zen (access_date),
 KEY idx_ip_zen (ip_address)
-) ENGINE=MyISAM AUTO_INCREMENT=2410 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=2445 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table admin_activity_log
@@ -206,7 +206,7 @@ banners_clicked int(5) NOT NULL default '0',
 banners_history_date datetime NOT NULL default '0001-01-01 00:00:00',
 PRIMARY KEY  (banners_history_id),
 KEY idx_banners_id_zen (banners_id)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table banners_history
@@ -2269,12 +2269,12 @@ INSERT INTO email_templates_description VALUES (2,2,'ご注文ありがとうございます[
 INSERT INTO email_templates_description VALUES (2,1,'Thank you for the order[member]','OrderConfirmation from XXXXXXXX\r\n\r\n[CUSTOMER_NAME]\r\n\r\nOrderNumber: [ORDER_ID]\r\nOrderDate: [DATE_ORDERED]\r\nInvoice:\r\n[INVOICE_URL]\r\n\r\n[COMMENT]\r\n\r\nProducts\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nShipping\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nInvoiceAddress\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nPayment\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
 INSERT INTO email_templates_description VALUES (3,2,'ご注文ありがとうございます[ゲスト用]','注文確認書 from XXXXXXXX\r\n\r\n[CUSTOMER_NAME] 様\r\n\r\nご利用ありがとうございます。\r\nご注文内容は以下の通りです。\r\n------------------------------------------------------\r\nご注文番号: [ORDER_ID]\r\nご注文日: [DATE_ORDERED]\r\n\r\n[COMMENT]\r\n\r\n商品\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nお届け先\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\n請求先住所\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nお支払い方法\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nこのメールは当ショップに登録されたお客様に対してお送りしています。\r\nお心当たりが無いようでしたら大変お手数ですがメールにて\r\nxxxxxxx@example.org までご連絡ください。\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:31:58');
 INSERT INTO email_templates_description VALUES (3,1,'Thank you for the order[guest]','OrderConfirmation from XXXXXXXX\r\n\r\n[CUSTOMER_NAME]\r\n\r\nOrderNumber: [ORDER_ID]\r\nOrderDate: [DATE_ORDERED]\r\nInvoice:\r\n[INVOICE_URL]\r\n\r\n[COMMENT]\r\n\r\nProducts\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nShipping\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nInvoiceAddress\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nPayment\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
-INSERT INTO email_templates_description VALUES (4,2,'ご注文受付状況のお知らせ','[CUSTOMER_NAME]様\r\n\r\nご利用ありがとうございます。\r\n[DATE_ORDERED]にご利用いただいた\r\nご注文受付番号：[ORDER_ID]の状況が変更されましたのでお知らせします。\r\n\r\nご注文についての情報は下記URLでご覧いただけます。\r\n[INVOICE_URL]\r\n\r\nよろしくお願いします。\r\n\r\n-----\r\nこのメールは当ショップに登録されたお客様に対してお送りしています。\r\nお心当たりが無いようでしたら大変お手数ですがメールにて\r\nxxxxxxx@example.org までご連絡ください。\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-07-20 16:35:51');
-INSERT INTO email_templates_description VALUES (4,1,'Information of order situation','MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY_EN\', \'\r\n[CUSTOMER_NAME]様\r\n\r\nThank you for use\r\n[DATE_ORDERED]\r\nOrder receipt number：[ORDER_ID]\r\n\r\nYou can see ordering information\r\n[INVOICE_URL]\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
+INSERT INTO email_templates_description VALUES (4,2,'ご注文受付状況のお知らせ','[CUSTOMER_NAME] 様\r\n\r\nご利用ありがとうございます。\r\n[DATE_ORDERED]にご利用いただいた\r\nご注文受付番号：[ORDER_ID]の状況が変更されましたのでお知らせします。\r\n\r\nご注文についての情報は下記URLでご覧いただけます。\r\n[INVOICE_URL]\r\n\r\nよろしくお願いします。\r\n\r\n-----\r\nこのメールは当ショップに登録されたお客様に対してお送りしています。\r\nお心当たりが無いようでしたら大変お手数ですがメールにて\r\nxxxxxxx@example.org までご連絡ください。\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-07-20 17:45:11');
+INSERT INTO email_templates_description VALUES (4,1,'Information of order situation','[CUSTOMER_NAME]\r\n\r\nThank you for use\r\n[DATE_ORDERED]\r\nOrder receipt number：[ORDER_ID]\r\n\r\nYou can see ordering information\r\n[INVOICE_URL]\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-07-20 17:45:11');
 INSERT INTO email_templates_description VALUES (1,9,'[携帯版]ユーザー登録完了','ユーザー登録ありがとうございます。','2010-06-27 12:52:56');
 INSERT INTO email_templates_description VALUES (2,9,'[携帯]注文完了','[CUSTOMER_NAME] 様\r\n\r\nご利用ありがとうございます。\r\nご注文内容は以下の通りです。\r\n\r\nご注文番号: [ORDER_ID]\r\nご注文日: [DATE_ORDERED]\r\n\r\n詳しくはこちら。\r\n[INVOICE_URL]','2010-06-27 12:52:25');
 INSERT INTO email_templates_description VALUES (3,9,'ご注文ありがとうございます[ゲスト用]','注文確認書 from XXXXXXXX\r\n\r\n[CUSTOMER_NAME] 様\r\n\r\nご利用ありがとうございます。\r\nご注文内容は以下の通りです。\r\n------------------------------------------------------\r\nご注文番号: [ORDER_ID]\r\nご注文日: [DATE_ORDERED]\r\n\r\n[COMMENT]\r\n\r\n商品\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nお届け先\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\n請求先住所\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nお支払い方法\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nこのメールは当ショップに登録されたお客様に対してお送りしています。\r\nお心当たりが無いようでしたら大変お手数ですがメールにて\r\nxxxxxxx@example.org までご連絡ください。\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','0000-00-00 00:00:00');
-INSERT INTO email_templates_description VALUES (4,9,'[携帯版]ご注文受付状況更新','[CUSTOMER_NAME]様\r\n\r\nご利用ありがとうございます。\r\n[DATE_ORDERED]にご利用いただいた\r\nご注文受付番号：[ORDER_ID]の状況が変更されましたのでお知らせします。\r\n\r\nご注文についての情報は下記URLでご覧いただけます。\r\n[INVOICE_URL]\r\n\r\nよろしくお願いします。','2010-07-20 16:35:51');
+INSERT INTO email_templates_description VALUES (4,9,'[携帯版]ご注文受付状況更新','[CUSTOMER_NAME] 様\r\n\r\nご利用ありがとうございます。\r\n[DATE_ORDERED]にご利用いただいた\r\nご注文受付番号：[ORDER_ID]の状況が変更されましたのでお知らせします。\r\n\r\nご注文についての情報は下記URLでご覧いただけます。\r\n[INVOICE_URL]\r\n\r\nよろしくお願いします。','2010-07-20 17:45:11');
 
 --
 -- Table structure for table ezpages

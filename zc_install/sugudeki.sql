@@ -98,7 +98,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'admin','hachiya@ark-web.jp','d367f03201e84bb4cfd137da723fc4a0:ae',1);
+INSERT INTO `admin` VALUES (1,'admin','hachiya@ark-web.jp','7e03013a85704ec8e867025932ee69cb:d6',1);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +140,7 @@ CREATE TABLE `admin_activity_log` (
   KEY `idx_page_accessed_zen` (`page_accessed`),
   KEY `idx_access_date_zen` (`access_date`),
   KEY `idx_ip_zen` (`ip_address`)
-) ENGINE=MyISAM AUTO_INCREMENT=2410 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=2445 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table `admin_activity_log`
@@ -1724,6 +1724,41 @@ INSERT INTO `admin_activity_log` VALUES (2406,'2010-07-20 16:35:47',1,'addon_mod
 INSERT INTO `admin_activity_log` VALUES (2407,'2010-07-20 16:35:51',1,'addon_modules_admin.php','action=update1&module=email_templates&','192.168.0.104');
 INSERT INTO `admin_activity_log` VALUES (2408,'2010-07-20 16:35:51',1,'addon_modules_admin.php','id=4&module=email_templates&','192.168.0.104');
 INSERT INTO `admin_activity_log` VALUES (2409,'2010-07-20 16:35:53',1,'addon_modules_admin.php','action=update1&id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2410,'2010-07-20 17:12:09',1,'addon_modules.php','','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2411,'2010-07-20 17:12:14',1,'addon_modules_admin.php','module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2412,'2010-07-20 17:13:28',1,'addon_modules_admin.php','id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2413,'2010-07-20 17:13:28',1,'addon_modules_admin.php','id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2414,'2010-07-20 17:13:29',1,'addon_modules_admin.php','action=update1&id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2415,'2010-07-20 17:25:32',1,'super_orders.php','','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2416,'2010-07-20 17:25:34',1,'super_orders.php','page=1&oID=27&action=edit&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2417,'2010-07-20 17:25:34',1,'mail.php','origin=super_orders.php&mode=NONSSL&selected_box=tools&customer=&cID=0&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2418,'2010-07-20 17:25:39',1,'super_orders.php','','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2419,'2010-07-20 17:25:41',1,'super_orders.php','page=1&oID=27&action=edit&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2420,'2010-07-20 17:25:58',1,'super_orders.php','page=1&oID=27&action=edit&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2421,'2010-07-20 17:25:58',1,'super_orders.php','page=1&oID=27&action=edit&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2422,'2010-07-20 17:25:58',1,'super_orders.php','page=1&oID=27&action=edit&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2423,'2010-07-20 17:26:00',1,'super_orders.php','','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2424,'2010-07-20 17:26:02',1,'super_orders.php','page=1&oID=27&action=edit&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2425,'2010-07-20 17:26:02',1,'mail.php','origin=super_orders.php&mode=NONSSL&selected_box=tools&customer=&cID=0&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2426,'2010-07-20 17:26:06',1,'super_orders.php','','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2427,'2010-07-20 17:26:08',1,'super_orders.php','page=1&oID=27&action=edit&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2428,'2010-07-20 17:26:16',1,'super_batch_status.php','','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2429,'2010-07-20 17:26:19',1,'super_batch_status.php','securityToken=87db7fecd097b323e534c3d7056fc559&start_date=&end_date=&status=&products=&customers=&languages=2&payments=&ot_sign=>=&order_total=&search','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2430,'2010-07-20 17:26:22',1,'super_batch_status.php','securityToken=87db7fecd097b323e534c3d7056fc559&start_date=&end_date=&status=&products=&customers=&languages=1&payments=&ot_sign=>=&order_total=&search','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2431,'2010-07-20 17:26:25',1,'super_batch_status.php','securityToken=87db7fecd097b323e534c3d7056fc559&start_date=&end_date=&status=&products=&customers=&languages=9&payments=&ot_sign=>=&order_total=&search','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2432,'2010-07-20 17:26:27',1,'super_batch_status.php','securityToken=87db7fecd097b323e534c3d7056fc559&start_date=&end_date=&status=&products=&customers=&languages=2&payments=&ot_sign=>=&order_total=&search','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2433,'2010-07-20 17:44:41',1,'addon_modules_admin.php','module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2434,'2010-07-20 17:44:43',1,'addon_modules_admin.php','action=update1&id=1&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2435,'2010-07-20 17:44:49',1,'addon_modules_admin.php','action=update1&id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2436,'2010-07-20 17:44:54',1,'addon_modules_admin.php','action=update1&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2437,'2010-07-20 17:44:54',1,'addon_modules_admin.php','id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2438,'2010-07-20 17:44:56',1,'addon_modules_admin.php','action=update1&id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2439,'2010-07-20 17:45:05',1,'addon_modules_admin.php','action=update1&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2440,'2010-07-20 17:45:05',1,'addon_modules_admin.php','id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2441,'2010-07-20 17:45:06',1,'addon_modules_admin.php','action=update1&id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2442,'2010-07-20 17:45:11',1,'addon_modules_admin.php','action=update1&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2443,'2010-07-20 17:45:11',1,'addon_modules_admin.php','id=4&module=email_templates&','192.168.0.104');
+INSERT INTO `admin_activity_log` VALUES (2444,'2010-07-20 17:45:13',1,'addon_modules_admin.php','action=update1&id=4&module=email_templates&','192.168.0.104');
 /*!40000 ALTER TABLE `admin_activity_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1811,7 +1846,7 @@ CREATE TABLE `banners_history` (
   `banners_history_date` datetime NOT NULL default '0001-01-01 00:00:00',
   PRIMARY KEY  (`banners_history_id`),
   KEY `idx_banners_id_zen` (`banners_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=ujis;
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=ujis;
 
 --
 -- Dumping data for table `banners_history`
@@ -1881,8 +1916,10 @@ INSERT INTO `banners_history` VALUES (59,5,19,0,'2010-06-27 01:34:54');
 INSERT INTO `banners_history` VALUES (60,7,15,0,'2010-06-27 02:59:17');
 INSERT INTO `banners_history` VALUES (61,6,163,0,'2010-07-16 16:01:49');
 INSERT INTO `banners_history` VALUES (62,5,163,0,'2010-07-16 16:01:49');
-INSERT INTO `banners_history` VALUES (63,6,108,0,'2010-07-20 14:09:34');
-INSERT INTO `banners_history` VALUES (64,5,108,0,'2010-07-20 14:09:34');
+INSERT INTO `banners_history` VALUES (63,6,116,0,'2010-07-20 14:09:34');
+INSERT INTO `banners_history` VALUES (64,5,116,0,'2010-07-20 14:09:34');
+INSERT INTO `banners_history` VALUES (65,6,2,0,'2010-07-21 09:36:19');
+INSERT INTO `banners_history` VALUES (66,5,2,0,'2010-07-21 09:36:19');
 /*!40000 ALTER TABLE `banners_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3579,7 +3616,7 @@ CREATE TABLE `counter` (
 
 LOCK TABLES `counter` WRITE;
 /*!40000 ALTER TABLE `counter` DISABLE KEYS */;
-INSERT INTO `counter` VALUES ('20091119',1888);
+INSERT INTO `counter` VALUES ('20091119',1898);
 /*!40000 ALTER TABLE `counter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3628,7 +3665,8 @@ INSERT INTO `counter_history` VALUES ('20100623',23,2);
 INSERT INTO `counter_history` VALUES ('20100625',98,2);
 INSERT INTO `counter_history` VALUES ('20100627',233,19);
 INSERT INTO `counter_history` VALUES ('20100716',243,12);
-INSERT INTO `counter_history` VALUES ('20100720',150,3);
+INSERT INTO `counter_history` VALUES ('20100720',158,5);
+INSERT INTO `counter_history` VALUES ('20100721',2,1);
 /*!40000 ALTER TABLE `counter_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4878,12 +4916,12 @@ INSERT INTO `email_templates_description` VALUES (2,2,'¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤
 INSERT INTO `email_templates_description` VALUES (2,1,'Thank you for the order[member]','OrderConfirmation from XXXXXXXX\r\n\r\n[CUSTOMER_NAME]\r\n\r\nOrderNumber: [ORDER_ID]\r\nOrderDate: [DATE_ORDERED]\r\nInvoice:\r\n[INVOICE_URL]\r\n\r\n[COMMENT]\r\n\r\nProducts\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nShipping\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nInvoiceAddress\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nPayment\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
 INSERT INTO `email_templates_description` VALUES (3,2,'¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[¥²¥¹¥ÈÍÑ]','ÃíÊ¸³ÎÇ§½ñ from XXXXXXXX\r\n\r\n[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£\r\n------------------------------------------------------\r\n¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]\r\n¤´ÃíÊ¸Æü: [DATE_ORDERED]\r\n\r\n[COMMENT]\r\n\r\n¾¦ÉÊ\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\n¤ªÆÏ¤±Àè\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nÀÁµáÀè½»½ê\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\n¤ª»ÙÊ§¤¤ÊýË¡\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:31:58');
 INSERT INTO `email_templates_description` VALUES (3,1,'Thank you for the order[guest]','OrderConfirmation from XXXXXXXX\r\n\r\n[CUSTOMER_NAME]\r\n\r\nOrderNumber: [ORDER_ID]\r\nOrderDate: [DATE_ORDERED]\r\nInvoice:\r\n[INVOICE_URL]\r\n\r\n[COMMENT]\r\n\r\nProducts\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\nShipping\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nInvoiceAddress\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\nPayment\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
-INSERT INTO `email_templates_description` VALUES (4,2,'¤´ÃíÊ¸¼õÉÕ¾õ¶·¤Î¤ªÃÎ¤é¤»','[CUSTOMER_NAME]ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-07-20 16:35:51');
-INSERT INTO `email_templates_description` VALUES (4,1,'Information of order situation','MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY_EN\', \'\r\n[CUSTOMER_NAME]ÍÍ\r\n\r\nThank you for use\r\n[DATE_ORDERED]\r\nOrder receipt number¡§[ORDER_ID]\r\n\r\nYou can see ordering information\r\n[INVOICE_URL]\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-06-27 04:29:58');
+INSERT INTO `email_templates_description` VALUES (4,2,'¤´ÃíÊ¸¼õÉÕ¾õ¶·¤Î¤ªÃÎ¤é¤»','[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-07-20 17:45:11');
+INSERT INTO `email_templates_description` VALUES (4,1,'Information of order situation','[CUSTOMER_NAME]\r\n\r\nThank you for use\r\n[DATE_ORDERED]\r\nOrder receipt number¡§[ORDER_ID]\r\n\r\nYou can see ordering information\r\n[INVOICE_URL]\r\n\r\n-----\r\nThis E-mail is sent to the customer registered in this shop.\r\nVery sorry to trouble you, but with mail when there is no mind hit\r\nxxxxxxx@example.org\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','2010-07-20 17:45:11');
 INSERT INTO `email_templates_description` VALUES (1,9,'[·ÈÂÓÈÇ]¥æ¡¼¥¶¡¼ÅÐÏ¿´°Î»','¥æ¡¼¥¶¡¼ÅÐÏ¿¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£','2010-06-27 12:52:56');
 INSERT INTO `email_templates_description` VALUES (2,9,'[·ÈÂÓ]ÃíÊ¸´°Î»','[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£\r\n\r\n¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]\r\n¤´ÃíÊ¸Æü: [DATE_ORDERED]\r\n\r\n¾Ü¤·¤¯¤Ï¤³¤Á¤é¡£\r\n[INVOICE_URL]','2010-06-27 12:52:25');
 INSERT INTO `email_templates_description` VALUES (3,9,'¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[¥²¥¹¥ÈÍÑ]','ÃíÊ¸³ÎÇ§½ñ from XXXXXXXX\r\n\r\n[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£\r\n------------------------------------------------------\r\n¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]\r\n¤´ÃíÊ¸Æü: [DATE_ORDERED]\r\n\r\n[COMMENT]\r\n\r\n¾¦ÉÊ\r\n------------------------------------------------------\r\n[PRODUCTS_ORDERED]\r\n------------------------------------------------------\r\n[TOTALS]\r\n\r\n¤ªÆÏ¤±Àè\r\n------------------------------------------------------\r\n[DELIVERY_ADDRESS]\r\n\r\nÀÁµáÀè½»½ê\r\n------------------------------------------------------\r\n[BILLING_ADDRESS]\r\n\r\n¤ª»ÙÊ§¤¤ÊýË¡\r\n------------------------------------------------------\r\n[PAYMENT_METHOD]\r\n\r\n\r\n-----\r\n¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£\r\n¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ\r\nxxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£\r\n\r\n-----\r\nCopyright (c) XXXXXXXX Inc. All Rights Reserved','0000-00-00 00:00:00');
-INSERT INTO `email_templates_description` VALUES (4,9,'[·ÈÂÓÈÇ]¤´ÃíÊ¸¼õÉÕ¾õ¶·¹¹¿·','[CUSTOMER_NAME]ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£','2010-07-20 16:35:51');
+INSERT INTO `email_templates_description` VALUES (4,9,'[·ÈÂÓÈÇ]¤´ÃíÊ¸¼õÉÕ¾õ¶·¹¹¿·','[CUSTOMER_NAME] ÍÍ\r\n\r\n¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£\r\n[DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿\r\n¤´ÃíÊ¸¼õÉÕÈÖ¹æ¡§[ORDER_ID]¤Î¾õ¶·¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿¤Î¤Ç¤ªÃÎ¤é¤»¤·¤Þ¤¹¡£\r\n\r\n¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£\r\n[INVOICE_URL]\r\n\r\n¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£','2010-07-20 17:45:11');
 /*!40000 ALTER TABLE `email_templates_description` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5880,7 +5918,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (27,16,'É©ÅÄ ¹¥Èþ','É©ÅÄ¾¦»ö','²ÖÀîÆî°ì¾ò4-900','','ÀÐ¼í»Ô','061-3201','ËÌ³¤Æ»','Japan','0133-66-9874','hishida@ark-web.jp',6,'É©ÅÄ ¹¥Èþ','É©ÅÄ¾¦»ö','²ÖÀîÆî°ì¾ò4-900','','ÀÐ¼í»Ô','061-3201','ËÌ³¤Æ»','Japan',6,'É©ÅÄ ¹¥Èþ','É©ÅÄ¾¦»ö','²ÖÀîÆî°ì¾ò4-900','','ÀÐ¼í»Ô','061-3201','ËÌ³¤Æ»','Japan',6,'¥¯¥ì¥¸¥Ã¥È¥«¡¼¥É','cc','¥ä¥Þ¥È±¿Í¢(ÂðµÞÊØ) (1 x 4.25kg) (ÂðµÞÊØ)','yamato','','Visa','Yoshimi Hishida','','1113',NULL,NULL,'2010-07-16 16:45:10',1,NULL,'JPY','1.000000','16095.00','225.00',0,'192.168.0.109 - 192.168.0.109','0133-66-9874','0133-66-9874','0133-66-9874','0133-66-9874','0133-66-9874','¤Ò¤·¤À ¤è¤·¤ß','¤Ò¤·¤À ¤è¤·¤ß','¤Ò¤·¤À ¤è¤·¤ß',NULL,NULL,NULL);
+INSERT INTO `orders` VALUES (27,16,'É©ÅÄ ¹¥Èþ','É©ÅÄ¾¦»ö','²ÖÀîÆî°ì¾ò4-900','','ÀÐ¼í»Ô','061-3201','ËÌ³¤Æ»','Japan','0133-66-9874','hishida@ark-web.jp',6,'É©ÅÄ ¹¥Èþ','É©ÅÄ¾¦»ö','²ÖÀîÆî°ì¾ò4-900','','ÀÐ¼í»Ô','061-3201','ËÌ³¤Æ»','Japan',6,'É©ÅÄ ¹¥Èþ','É©ÅÄ¾¦»ö','²ÖÀîÆî°ì¾ò4-900','','ÀÐ¼í»Ô','061-3201','ËÌ³¤Æ»','Japan',6,'¥¯¥ì¥¸¥Ã¥È¥«¡¼¥É','cc','¥ä¥Þ¥È±¿Í¢(ÂðµÞÊØ) (1 x 4.25kg) (ÂðµÞÊØ)','yamato','','Visa','Yoshimi Hishida','','1113',NULL,NULL,'2010-07-16 16:45:10',1,NULL,'JPY','1.000000','16095.00','225.00',0,'192.168.0.109 - 192.168.0.109','0133-66-9874','0133-66-9874','0133-66-9874','0133-66-9874','0133-66-9874','¤Ò¤·¤À ¤è¤·¤ß','¤Ò¤·¤À ¤è¤·¤ß','¤Ò¤·¤À ¤è¤·¤ß',NULL,NULL,'16095.00');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -8791,7 +8829,10 @@ INSERT INTO `sessions` VALUES ('qp0uvdufa6fnt2csedof9djhj2',1279611563,'initiate
 INSERT INTO `sessions` VALUES ('villsmp4emu9l6fmnva5utbou3',1279604845,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:17:\"number_of_uploads\";s:1:\"0\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";valid_to_checkout|b:1;cart_errors|s:0:\"\";');
 INSERT INTO `sessions` VALUES ('mrjie5t6lhpcn3fhqp9394urp5',1279607743,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:89;a:1:{s:3:\"qty\";s:1:\"1\";}}s:5:\"total\";d:210;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"26608\";s:12:\"content_type\";s:5:\"mixed\";s:18:\"free_shipping_item\";i:1;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";d:210;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";addon_search_more_par_page|s:2:\"10\";addon_search_more_sort|s:3:\"20a\";new_products_id_in_cart|s:2:\"19\";valid_to_checkout|b:1;cart_errors|s:0:\"\";payment|N;customer_id|s:2:\"16\";customer_default_address_id|s:2:\"17\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"É©ÅÄ\";customer_last_name|s:4:\"¹¥Èþ\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"182\";sendto|s:2:\"17\";shipping|a:4:{s:2:\"id\";s:23:\"freeshipper_freeshipper\";s:5:\"title\";s:13:\"ÇÛÁ÷ÎÁÌµÎÁ ()\";s:4:\"cost\";i:0;s:6:\"module\";s:11:\"freeshipper\";}');
 INSERT INTO `sessions` VALUES ('1k0j0s5t37p44q1v39ljbdt8h3',1279612748,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":8:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
-INSERT INTO `sessions` VALUES ('03hcbr7sv6prh1qua9vdbm51o3',1279615853,'initiated|b:1;securityToken|s:32:\"87db7fecd097b323e534c3d7056fc559\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";messageToStack|s:0:\"\";');
+INSERT INTO `sessions` VALUES ('03hcbr7sv6prh1qua9vdbm51o3',1279620013,'initiated|b:1;securityToken|s:32:\"87db7fecd097b323e534c3d7056fc559\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:5:\"tools\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";messageToStack|s:0:\"\";');
+INSERT INTO `sessions` VALUES ('27arla5buurof9t7jm1i7rosd0',1279615838,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"addon\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:6:\"module\";s:15:\"email_templates\";s:2:\"id\";s:1:\"4\";s:11:\"language_id\";s:1:\"2\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
+INSERT INTO `sessions` VALUES ('qhevhu02q88ks5e96ugbk086s1',1279624699,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
+INSERT INTO `sessions` VALUES ('sl4inlcdm066vemlv3eeft60j2',1279674118,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -9193,7 +9234,7 @@ CREATE TABLE `whos_online` (
 
 LOCK TABLES `whos_online` WRITE;
 /*!40000 ALTER TABLE `whos_online` DISABLE KEYS */;
-INSERT INTO `whos_online` VALUES (0,'&yen;Guest','1k0j0s5t37p44q1v39ljbdt8h3','192.168.0.104','1279611306','1279611306','/hachiya/zencart-sugu/','pc104.local','Mozilla/5.0 (Windows; U; Windows NT 5.1; ja; rv:1.9.2.6) Gecko/20100625 Firefox/3.6.6 ( .NET CLR 3.5.30729)');
+INSERT INTO `whos_online` VALUES (0,'&yen;Guest','sl4inlcdm066vemlv3eeft60j2','192.168.0.104','1279672578','1279672677','/hachiya/zencart-sugu/','pc104.local','Mozilla/5.0 (Windows; U; Windows NT 5.1; ja; rv:1.9.2.6) Gecko/20100625 Firefox/3.6.6 ( .NET CLR 3.5.30729)');
 /*!40000 ALTER TABLE `whos_online` ENABLE KEYS */;
 UNLOCK TABLES;
 
