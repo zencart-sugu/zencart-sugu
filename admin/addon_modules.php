@@ -250,6 +250,7 @@
       $db->Execute("update " . TABLE_CONFIGURATION . "
                     set configuration_value = '" . implode(';', $installed_modules) . "', last_modified = now()
                     where configuration_key = '" . $module_key . "'");
+      zen_addOnModules_save_installed_modules_to_cache($installed_modules);
     }
   } else {
     $db->Execute("insert into " . TABLE_CONFIGURATION . "
@@ -257,6 +258,7 @@
                    configuration_description, configuration_group_id, sort_order, date_added)
                  values ('Installed Modules', '" . $module_key . "', '" . implode(';', $installed_modules) . "',
                          'This is automatically updated. No need to edit.', '6', '0', now())");
+    zen_addOnModules_save_installed_modules_to_cache($installed_modules);
   }
 ?>
               <tr>
