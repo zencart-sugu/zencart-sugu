@@ -33,6 +33,14 @@
                   'set_function'              => 'zen_cfg_select_option(array(\'true\', \'false\'),'
                 ),
                 array(
+                  'configuration_title'       => MODULE_ZEN_TWEET_SHOWLIST_TITLE,
+                  'configuration_key'         => 'MODULE_ZEN_TWEET_SHOWLIST',
+                  'configuration_value'       => MODULE_ZEN_TWEET_SHOW_LIST_DEFAULT,
+                  'configuration_description' => MODULE_ZEN_TWEET_SHOWLIST_DESCRIPTION,
+                  'use_function'              => 'null',
+                  'set_function'              => 'zen_cfg_select_option(array(\'true\', \'false\'),'
+                ),
+                array(
                   'configuration_title'       => MODULE_ZEN_TWEET_SHOWNUM_TITLE,
                   'configuration_key'         => 'MODULE_ZEN_TWEET_SHOWNUM',
                   'configuration_value'       => MODULE_ZEN_TWEET_SHOWNUM_DEFAULT,
@@ -50,7 +58,7 @@
                 ),
                 array(
                   'configuration_title'       => MODULE_ZEN_TWEET_THRESHOLD_TITLE,
-                  'configuration_key'         => 'MODULE_ZEN_TWEET_THRESHOLD_DEFAULT',
+                  'configuration_key'         => 'MODULE_ZEN_TWEET_THRESHOLD',
                   'configuration_value'       => MODULE_ZEN_TWEET_THRESHOLD_DEFAULT,
                   'configuration_description' => MODULE_ZEN_TWEET_TWITTER_THRESHOLD_DESCRIPTION,
                   'use_function'              => 'null',
@@ -58,7 +66,7 @@
                 ),
                 array(
                   'configuration_title'       => MODULE_ZEN_TWEET_RECOMMEND_TITLE,
-                  'configuration_key'         => 'MODULE_ZEN_TWEET_RECOMMEND_DEFAULT',
+                  'configuration_key'         => 'MODULE_ZEN_TWEET_RECOMMEND',
                   'configuration_value'       => MODULE_ZEN_TWEET_RECOMMEND_DEFAULT,
                   'configuration_description' => MODULE_ZEN_TWEET_RECOMMEND_DESCRIPTION,
                   'use_function'              => 'null',
@@ -173,33 +181,39 @@
 	     * ・No  → 現在の表示のまま
 	     */
 	    function block() {
-	    	global $db;
 
-			$sql = "select "
-						. "* "
-					. "from "
-						. TABLE_ADDON_MODULES_ZEN_TWEET . " "
-					. "order by date_added desc";
+	    	echo build_tweet_button();
 
-			$result = $db->execute($sql);
-			$return = array();
+	    	if(MODULE_ZEN_TWEET_SHOWLIST == "true") {
 
-			//経過時間をチェック
-			$get_exec = check_time($result);
+		    	global $db;
 
-			//1時間経過してたら
-			if($get_exec) {
-				//print "<br />GETします";
-				//ツイートの取得
-				$feeds = tweet_get_feeds("http://twitter.com/statuses/user_timeline/" . MODULE_ZEN_TWEET_ACCOUNT_ID . ".xml?count=" . MODULE_ZEN_TWEET_SHOWNUM);
-				//テーブルの書き換え
-				ins_table($feeds);
-			}
+				$sql = "select "
+							. "* "
+						. "from "
+							. TABLE_ADDON_MODULES_ZEN_TWEET . " "
+						. "order by date_added desc";
 
-			//テーブルの中身を取得
-			$return['tweet'] = get_zen_tweet();
+				$result = $db->execute($sql);
+				$return = array();
 
-			return $return;
+				//経過時間をチェック
+				$get_exec = check_time($result);
+
+				//1時間経過してたら
+				if($get_exec) {
+					//print "<br />GETします";
+					//ツイートの取得
+					$feeds = tweet_get_feeds("http://twitter.com/statuses/user_timeline/" . MODULE_ZEN_TWEET_ACCOUNT_ID . ".xml?count=" . MODULE_ZEN_TWEET_SHOWNUM);
+					//テーブルの書き換え
+					ins_table($feeds);
+				}
+
+				//テーブルの中身を取得
+				$return['tweet'] = get_zen_tweet();
+
+				return $return;
+	    	}
 
 	    }
 

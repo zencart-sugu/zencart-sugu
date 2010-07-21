@@ -36,10 +36,10 @@ class zenTweet extends base {
             $featured = $this->queryGetFeatured($p_id);
 
             //おすすめ商品のつぶやきを有効にしている場合
-            if(MODULE_ZEN_TWEET_THRESHOLD_DEFAULT > 0 && MODULE_ZEN_TWEET_RECOMMEND_DEFAULT == "true") {
+            if(MODULE_ZEN_TWEET_THRESHOLD > 0 && MODULE_ZEN_TWEET_RECOMMEND == "true") {
 
             	//在庫数がしきい値に達しおすすめ商品だったらつぶやきを作成する
-	            if(MODULE_ZEN_TWEET_THRESHOLD_DEFAULT >= $products_quantity && $featured == 1) {
+	            if(MODULE_ZEN_TWEET_THRESHOLD >= $products_quantity && $featured == 1) {
 		            $url = zen_href_link(FILENAME_PRODUCT_INFO, "&products_id=" . $p_id, 'NONSSL');
 
 		            //bit.ly呼び出し
@@ -49,10 +49,10 @@ class zenTweet extends base {
 	            }
 
 	        //おすすめ商品のつぶやきを無効にしている場合
-            }elseif(MODULE_ZEN_TWEET_THRESHOLD_DEFAULT > 0 && MODULE_ZEN_TWEET_RECOMMEND_DEFAULT == "false") {
+            }elseif(MODULE_ZEN_TWEET_THRESHOLD > 0 && MODULE_ZEN_TWEET_RECOMMEND == "false") {
 
             	//在庫数がしきい値に達したらつぶやきを作成する
-				if(MODULE_ZEN_TWEET_THRESHOLD_DEFAULT >= $products_quantity) {
+				if(MODULE_ZEN_TWEET_THRESHOLD >= $products_quantity) {
 		            $url = zen_href_link(FILENAME_PRODUCT_INFO, "&products_id=" . $p_id, 'NONSSL');
 
 		            //bit.ly呼び出し

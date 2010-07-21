@@ -5,6 +5,9 @@
     define('MODULE_ZEN_TWEET_STATUS_TITLE',                          'ゼンツイートの有効化');
     define('MODULE_ZEN_TWEET_STATUS_DESCRIPTION',                    'ゼンツイートを有効にしますか？ <br />true: 有効<br />false: 無効');
 
+    define('MODULE_ZEN_TWEET_SHOWLIST_TITLE',                        'つぶやき一覧の表示');
+    define('MODULE_ZEN_TWEET_SHOWLIST_DESCRIPTION',                  'つぶやき一覧を表示させますか？ <br />true: 有効<br />false: 無効');
+
     define('MODULE_ZEN_TWEET_SHOWNUM_TITLE',                         'つぶやきの表示件数');
     define('MODULE_ZEN_TWEET_SHOWNUM_DESCRIPTION',                   '表示させる件数を指定します');
 

@@ -7,6 +7,7 @@
 	}
 
     define('MODULE_ZEN_TWEET_STATUS_DEFAULT', 	 'true');
+	define('MODULE_ZEN_TWEET_SHOW_LIST_DEFAULT', 'true');
     define('MODULE_ZEN_TWEET_SHOWNUM_DEFAULT',	 5);
     define('MODULE_ZEN_TWEET_WORD', 	 		 'が売れました♪');
     define('MODULE_ZEN_TWEET_THRESHOLD_DEFAULT', 5);
