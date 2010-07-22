@@ -46,4 +46,7 @@
 
     //ブロック管理用
 	define('MODULE_ZEN_TWEET_BLOCK_TITLE', 'ゼンツイート');
+
+	define('BUTTON_IMAGE_PRODUCT_TWEET', 'product_button_tweet.gif');
+	define('BUTTON_IMAGE_PRODUCT_TWEET_ALT', 'つぶやく');
 ?>
