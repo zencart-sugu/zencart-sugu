@@ -182,38 +182,36 @@
 	     */
 	    function block() {
 
-	    	echo build_tweet_button();
+	    	global $db;
 
-	    	if(MODULE_ZEN_TWEET_SHOWLIST == "true") {
+			$sql = "select "
+						. "* "
+					. "from "
+						. TABLE_ADDON_MODULES_ZEN_TWEET . " "
+					. "order by date_added desc";
 
-		    	global $db;
+			$result = $db->execute($sql);
+			$return = array();
 
-				$sql = "select "
-							. "* "
-						. "from "
-							. TABLE_ADDON_MODULES_ZEN_TWEET . " "
-						. "order by date_added desc";
+			//経過時間をチェック
+			$get_exec = check_time($result);
 
-				$result = $db->execute($sql);
-				$return = array();
+			//1時間経過してたら
+			if($get_exec) {
+				//print "<br />GETします";
+				//ツイートの取得
+				$feeds = tweet_get_feeds("http://twitter.com/statuses/user_timeline/" . MODULE_ZEN_TWEET_ACCOUNT_ID . ".xml?count=" . MODULE_ZEN_TWEET_SHOWNUM);
+				//テーブルの書き換え
+				ins_table($feeds);
+			}
 
-				//経過時間をチェック
-				$get_exec = check_time($result);
-
-				//1時間経過してたら
-				if($get_exec) {
-					//print "<br />GETします";
-					//ツイートの取得
-					$feeds = tweet_get_feeds("http://twitter.com/statuses/user_timeline/" . MODULE_ZEN_TWEET_ACCOUNT_ID . ".xml?count=" . MODULE_ZEN_TWEET_SHOWNUM);
-					//テーブルの書き換え
-					ins_table($feeds);
-				}
-
-				//テーブルの中身を取得
+			//テーブルの中身を取得
+			if(MODULE_ZEN_TWEET_SHOWLIST == "true") {
 				$return['tweet'] = get_zen_tweet();
+			}
 
-				return $return;
-	    	}
+			return $return;
+
 
 	    }
 
