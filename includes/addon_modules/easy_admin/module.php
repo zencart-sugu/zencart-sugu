@@ -141,6 +141,16 @@ if (!defined('IS_ADMIN_FLAG')) {
         }
         $topmenu++;
       }
+
+		$sql = "create table if not exists ".TABLE_ADMIN_ACL." "
+			. "(acl_id int(11) auto_increment,"
+			. "admin_id int(11),"
+			. "easy_admin_top_menu_id int(11),"
+			. "easy_admin_sub_menu_id int(11),"
+			. "primary key (acl_id)"
+			. ")";
+		$db->execute($sql);
+
     }
 
     function _update() {
@@ -155,6 +165,10 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       // サブメニューテーブルの削除
       $sql = "drop table if exists ".TABLE_EASY_ADMIN_SUB_MENUS;
+      $db->execute($sql);
+
+      // 権限テーブルの削除
+      $sql = "drop table if exists ".TABLE_ADMIN_ACL;
       $db->execute($sql);
     }
 
