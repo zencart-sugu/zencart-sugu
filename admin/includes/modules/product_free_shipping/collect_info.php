@@ -72,8 +72,10 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     $manufacturers_array = array(array('id' => '', 'text' => TEXT_NONE));
-    $manufacturers = $db->Execute("select manufacturers_id, manufacturers_name
-                                   from " . TABLE_MANUFACTURERS . " order by manufacturers_name");
+    $manufacturers = $db->Execute("select m.manufacturers_id, mi.manufacturers_name 
+                                   from " . TABLE_MANUFACTURERS . " m 
+                                   left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "' 
+                                   order by mi.manufacturers_name"); 
     while (!$manufacturers->EOF) {
       $manufacturers_array[] = array('id' => $manufacturers->fields['manufacturers_id'],
                                      'text' => $manufacturers->fields['manufacturers_name']);

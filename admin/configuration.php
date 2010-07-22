@@ -119,7 +119,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
   easy_admin_simplify_start();
 }
 ?>
-<table border="0" width="100%" cellspacing="2" cellpadding="2">
+<table border="0" width="95%" cellspacing="2" cellpadding="2" align="center">
   <tr>
 <!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">

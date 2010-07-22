@@ -26,21 +26,21 @@
 
   Modified by Kazuya Nouchi for Zen Cart Japanese Project
 */
-	
+
 	function zen_email_templates_getdata(&$db, $form_name, $form_subject_field_name, $form_message_field_name, $template_id='', $group=''){
-		
+
 		$sql  = "select * from " . TABLE_EMAIL_TEMPLATES . " where 1 ";
 		if((int)$template_id > 0){
 			$sql .= " and id='{$template_id}' ";
 		}elseif(zen_not_null($group)){
 			$sql .= " and grp='{$group}' ";
 		}
-		$sql .= " order by grp asc ";	
-		$result = $db->Execute($sql); 
+		$sql .= " order by grp asc ";
+		$result = $db->Execute($sql);
 		$total_templates = $result->RecordCount();
 		if((int)$template_id > 0){
 		  $line = $result->fields;
-			$out  = stripslashes($line['title']);	
+			$out  = stripslashes($line['title']);
 		}elseif((int)$total_templates > 0) {
 			$i = 0; $grp_text = '';
 			while (!$result->EOF) {
@@ -51,7 +51,7 @@
 				}
 				$arr[] = array('id' => $line['id'], 'text' => '&nbsp;&nbsp;->&nbsp;&nbsp;' . stripslashes($line['title']));
 				$hidden .= "\n" . zen_draw_hidden_field('subject_' . $line['id'], htmlspecialchars(stripslashes($line['subject']),ENT_QUOTES)) . "\n";
-	
+
 				if(EMAIL_USE_HTML == 'true'){
 					$hidden .= "\n" . zen_draw_hidden_field('contents_' . $line['id'], htmlspecialchars(stripslashes($line['contents']),ENT_QUOTES)) . "\n";
 				}else{
@@ -64,16 +64,16 @@
 						function stripTags(oldString) {\n
 							return oldString.replace(/(<([^>]+)>)/ig,'');\n
 						}\n
-	
+
 						function change_email_template(id){\n
 							var txtObjContents = document.{$form_name}.{$form_message_field_name};\n
 							if (id == \"\") return;
 						";
-			if(zen_not_null($form_subject_field_name)){			
-				$out .= "var txtObjSubject  = document.{$form_name}.{$form_subject_field_name};\n 
+			if(zen_not_null($form_subject_field_name)){
+				$out .= "var txtObjSubject  = document.{$form_name}.{$form_subject_field_name};\n
 								 txtObjSubject.value = eval('document.{$form_name}.subject_' + id + '.value');\n
 						";
-			}			
+			}
 			if (EMAIL_USE_HTML == 'true'){
 				$out .= "txtObjContents.value = eval('document.{$form_name}.contents_' + id + '.value');\n";
 				if (HTML_EDITOR_PREFERENCE == "HTMLAREA") {
@@ -83,20 +83,20 @@
 				}
 			}else{
 				$out .= "txtObjContents.value = stripTags(eval('document.{$form_name}.contents_' + id + '.value'));\n";
-			}	
-				
-			$out .= "	
+			}
+
+			$out .= "
 						}\n
 						</script>\n\n";
-	
+
 			$out .= zen_draw_pull_down_menu('grp', $arr, $template_id, 'onchange="javascript:change_email_template(this.value);"') . "\n";
 			$out .= '&nbsp;[<a href="' . zen_href_link(FILENAME_ADMIN_EMAIL_TEMPLATES, '', 'NONSSL') . '">' . TEXT_EMAIL_TEMPLATE_SETUP_PAGE . '</a>]' . "\n";
 			$out .= $hidden . "\n";
 		}else{
 			$out  = TEXT_EMAIL_TEMPLATE_EMPTY . "\n";
 			$out .= '&nbsp;[<a href="' . zen_href_link(FILENAME_ADMIN_EMAIL_TEMPLATES, '', 'NONSSL') . '">' . TEXT_EMAIL_TEMPLATE_SETUP_PAGE . '</a>]' . "\n";
-		}	
-		return $out;	
+		}
+		return $out;
 	}
 
 	function zen_email_templates_replace_keywords(&$db, $email_contents, &$customers_email, $customers_id){
@@ -105,7 +105,7 @@
   	}elseif(zen_not_null($customers_email)){
       $customers_query = $db->Execute("select * from " . TABLE_CUSTOMERS . " where customers_email_address = '" . $customers_email . "'");
 		}
-		  
+
 		if($customers_query->RecordCount() > 0 && zen_not_null($email_contents)){
 			$customers = $customers_query->fields;
 			$out = $email_contents;
@@ -137,7 +137,7 @@
 		}
 		return true;
 	}
-	
+
 	function zen_get_email_group(&$db, $grp = '', $id) {
     if ((int)$id >=1 && (int)$id <= 3)
   		$result = $db->Execute("select distinct grp as 'grp' from " . TABLE_EMAIL_TEMPLATES . " where id=".(int)$id." order by 1 asc");
@@ -155,28 +155,15 @@
       if ((int)$id == 0 || (int)$id > 3)
 			  $out .= TEXT_EMAIL_TEMPLATE_NEW_GROUP . zen_draw_input_field('grp_new', '', zen_set_field_length(TABLE_EMAIL_TEMPLATES, 'grp', 25));
 		}else{
-			$out  = zen_draw_input_field('grp_new', '', zen_set_field_length(TABLE_EMAIL_TEMPLATES, 'grp', 25)) . TEXT_EMAIL_TEMPLATE_NO_GROUP;	
+			$out  = zen_draw_input_field('grp_new', '', zen_set_field_length(TABLE_EMAIL_TEMPLATES, 'grp', 25)) . TEXT_EMAIL_TEMPLATE_NO_GROUP;
 		}
 		return $out;
 	}
 
-	function zen_get_email_group_for_status() {
-    global $db;
+	function zen_get_email_group_for_status($order_id) {
 
-    $arr   = array();
-    $arr[] = array('id'   => '',
-                   'text' => MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY);
-    $result = $db->Execute("select distinct id, grp, title from " . TABLE_EMAIL_TEMPLATES . " where id>3 order by 1 asc");
-		if($result->RecordCount() > 0){
-		  while (!$result->EOF) {
-		  	$line = $result->fields;
-				$arr[] = array('id'   => $line['id'],
-				               'text' => $line['grp'] . ' => ' . $line['title']);
-				$result->MoveNext();
-			}
-		}
-
-  	$out  = zen_draw_pull_down_menu('grp', $arr, $grp, 'id="grp" onChange="changeEmailTemplate()"');
+		$templates = get_email_templates();
+  	$out .= zen_draw_pull_down_menu('grp', $templates, $grp, 'id="grp" onChange="changeEmailTemplate()"');
 		return '<script type="text/javascript">
             <!--
             function changeEmailTemplate()
@@ -205,7 +192,8 @@
                   url:  "'.zen_href_link("../index.php?main_page=addon").'",
                   data: {
                     module: "email_templates",
-                    id:   grp.value
+                    id:   grp.value,
+                    order_id: ' . $order_id . '
                   },
                   success: function(msg) {
                     var comments = document.getElementById("comments");
@@ -225,5 +213,87 @@
             </script>
 		       ' . $out .
 		       zen_draw_hidden_field('email_template_id', '', 'id="email_template_id"');
+	}
+
+	function zen_get_email_template_for_status() {
+
+		$templates = get_email_templates();
+		$out = "<strong>" . TEXT_SELECT_EMAIL_TEMPLATES . "</strong>";
+		$out .= zen_draw_pull_down_menu('et_id', $templates, $grp, 'id="et_id"');
+
+		$languages = get_languages();
+		$out .= "　　<strong>" . TEXT_SELECT_LANGUAGES . "</strong>";
+		$out .= zen_draw_pull_down_menu('lang_id', $languages, '', 'id="lang_id"');
+
+		//zencartのformヘルパーに変更する
+		$out .= '<br /><INPUT TYPE="BUTTON" VALUE="' . BUTTON_READ_EMAIL_TEMPLATE . '" ONCLICK="readEmailTemplate();">';
+
+		return '<script type="text/javascript">
+	        <!--
+	        function readEmailTemplate()
+	        {
+						var comments          = document.getElementById("comments");
+						var notify            = document.getElementById("notify");
+						var notify_comments   = document.getElementById("notify_comments");
+						var email_template_id = document.getElementById("et_id");
+						var language_id = document.getElementById("lang_id");
+
+						$.ajax({
+						  type: "GET",
+						  url:  "'.zen_href_link("../index.php?main_page=addon").'",
+						  data: {
+						    module: "email_templates",
+						    id:   email_template_id.value,
+						    language_id: language_id.value
+						  },
+						  success: function(msg) {
+						    var comments = document.getElementById("comments");
+						    if (comments)
+						      comments.value = msg;
+						  }
+						});
+						if (notify)
+								notify.value = "on";
+						if (notify_comments)
+								notify_comments.value = "on";
+	        }
+	        // -->
+	        </script>
+		       ' . $out .
+		       zen_draw_hidden_field('email_template_id', '', 'id="email_template_id"');
+
+	}
+
+	function get_email_templates() {
+		global $db;
+
+    $arr   = array();
+    $arr[] = array('id'   => '',
+                   'text' => MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY);
+    $result = $db->Execute("select distinct id, grp, title from " . TABLE_EMAIL_TEMPLATES . " where id>3 order by 1 asc");
+
+		if($result->RecordCount() > 0){
+			while (!$result->EOF) {
+				$line = $result->fields;
+				$arr[] = array('id'   => $line['id'],
+				               'text' => $line['grp'] . "=>" . $line['title']);
+				$result->MoveNext();
+			}
+		}
+
+		return $arr;
+	}
+
+	function get_languages() {
+		global $db;
+
+		$languages = array();
+		$language = $db->Execute("select languages_id, name from " . TABLE_LANGUAGES);
+		while (!$language->EOF) {
+			$languages[] = array('id' => $language->fields['languages_id'], 'text' => $language->fields['name']);
+			$language->MoveNext();
+		}
+
+		return $languages;
 	}
 ?>

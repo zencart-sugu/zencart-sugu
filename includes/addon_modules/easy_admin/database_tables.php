@@ -19,4 +19,5 @@ if (!defined('IS_ADMIN_FLAG')) {
  */
 define('TABLE_EASY_ADMIN_TOP_MENUS', DB_PREFIX . 'easy_admin_top_menus');
 define('TABLE_EASY_ADMIN_SUB_MENUS', DB_PREFIX . 'easy_admin_sub_menus');
+define('TABLE_ADMIN_ACL', DB_PREFIX . 'admin_acl');
 ?>

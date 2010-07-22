@@ -206,4 +206,13 @@ if ((basename($PHP_SELF) != FILENAME_DEFINE_LANGUAGE . '.php') and (basename($PH
     <td class="headerBarContent" align="right"><?php echo '<a href="' . zen_href_link(FILENAME_DEFAULT, '', 'NONSSL') . '" class="headerLink">' . HEADER_TITLE_TOP . '</a>&nbsp;|&nbsp;<a href="' . zen_catalog_href_link() . '" class="headerLink" target="_blank">' . HEADER_TITLE_ONLINE_CATALOG . '</a>&nbsp;|&nbsp;<a href="http://www.zen-cart.com/" class="headerLink" target="_blank">' . HEADER_TITLE_SUPPORT_SITE . '</a>&nbsp;|&nbsp;<a href="http://www.zen-cart.jp/" class="headerLink">' . HEADER_TITLE_SUPPORT_SITE_JP . '</a>&nbsp;|&nbsp;<a href="' . zen_href_link(FILENAME_SERVER_INFO) . '" class="headerLink">' . HEADER_TITLE_VERSION . '</a>&nbsp;|&nbsp;<a href="' . zen_href_link(FILENAME_LOGOFF) . '" class="headerLink">' . HEADER_TITLE_LOGOFF . '</a>&nbsp;'; ?></td>
   </tr>
 </table>
-<?php require(DIR_WS_INCLUDES . 'header_navigation.php'); ?>
+<div class="navbar">
+<?php
+  if (MODULE_EASY_ADMIN_STATUS == 'true' && isset($GLOBALS['easy_admin'])) {
+    echo $GLOBALS['easy_admin']->getBlock('block_right_top_menu', $current_page_base);
+    echo $GLOBALS['easy_admin']->getBlock('block_dropdown_menu',  $current_page_base);
+  }
+  else
+   require(DIR_WS_INCLUDES . 'header_navigation.php');
+?>
+</div>

@@ -8,6 +8,8 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: header_php.php 3777 2006-06-15 07:03:03Z drbyte $
  */
+$zco_notifier->notify('NOTIFY_HEADER_START_ADDRESS_BOOK_PROCESS');
+
 if (!$_SESSION['customer_id']) {
   $_SESSION['navigation']->set_snapshot();
   zen_redirect(zen_href_link(FILENAME_LOGIN, '', 'SSL'));
@@ -66,7 +68,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['acti
     } else {
       $zone_id = false;
     }
-    $state = zen_db_prepare_input($_POST['state']);
+    $state = zen_convert_to_zone_name(zen_db_prepare_input($_POST['state']));
   }
   $telephone = zen_db_prepare_input($_POST['telephone']);
   $fax = zen_db_prepare_input($_POST['fax']);
@@ -156,7 +158,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['acti
                                    order by zone_id");
 
       while (!$zones_values->EOF) {
-        $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+        $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
         $zones_values->MoveNext();
       }
       $zone_query = "SELECT DISTINCT zone_id
@@ -383,7 +385,7 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
                                    where zone_country_id = '" . (int)$entry->fields['entry_country_id'] . "'
                                    order by zone_id");
       while (!$zones_values->EOF) {
-        $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+        $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
         $zones_values->MoveNext();
       }
     }

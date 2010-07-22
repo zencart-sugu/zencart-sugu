@@ -21,8 +21,12 @@ function SetFocus() {
 
 function rowOverEffect(object) {
   if (object.className == 'dataTableRow') object.className = 'dataTableRowOver';
+  if (object.className == 'totalRow') object.className = 'totalRowOver';
+  if (object.className == 'lineItemRow') object.className = 'lineItemRowOver';
 }
 
 function rowOutEffect(object) {
   if (object.className == 'dataTableRowOver') object.className = 'dataTableRow';
+  if (object.className == 'totalRowOver') object.className = 'totalRow';
+  if (object.className == 'lineItemRowOver') object.className = 'lineItemRow';
 }

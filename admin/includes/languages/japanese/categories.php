@@ -25,7 +25,7 @@ define('HEADING_TITLE_GOTO', 'ジャンプ:');
 
 define('TABLE_HEADING_ID', 'ID');
 define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'カテゴリ / 商品');
-define('TABLE_HEADING_CATEGORIES_SORT_ORDER', 'Sort');
+define('TABLE_HEADING_CATEGORIES_SORT_ORDER', 'ソート順');
 
 define('TABLE_HEADING_PRICE','価格/特価/セール');
 define('TABLE_HEADING_QUANTITY','数量');

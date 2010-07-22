@@ -357,12 +357,6 @@ $return_button = '<td class="pageHeading" align="center">'.$return_button.'</td>
 <!-- header_eof //-->
 
 <!-- body //-->
-<?php
-// easy admin products by warranty
-if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
-  warranty_admin_simplify_start();
-}
-?>
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <!-- body_text //-->
@@ -392,11 +386,6 @@ if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <!-- body_text_eof //-->
   </tr>
 </table>
-<?php
-// easy admin products by warranty
-if (MODULE_WARRANTY_ADMIN_SIMPLIFY_STATUS == 'true') {
-  warranty_admin_simplify_end();
-}
 ?>
 <!-- body_eof //-->
 

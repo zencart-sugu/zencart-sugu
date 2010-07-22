@@ -20,4 +20,10 @@ function aboutbox_get_payment_enabled($text = 'TEXT_') {
     return $modules;
   }
 }
+
+function zen_cfg_textarea_aboutbox($text, $key = '') {
+  $name = (($key) ? 'configuration[' . $key . ']' : 'configuration_value');
+  return zen_draw_textarea_field($name, false, 60, 10, $text);
+}
+
 ?>

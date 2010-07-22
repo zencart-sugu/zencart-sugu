@@ -595,9 +595,13 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 ?>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"><tr>
 <!-- body_text //-->
-  <td align="center"><table border="0" cellspacing="0" cellpadding="2">
+  <td align="center"><table border="0" cellspacing="0" cellpadding="0">
 <?php
-  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', true) . NL;
+  $usessl = ($request_type == 'SSL');
+  if($ussessl){
+     $usessl = (ENABLE_SSL_ADMIN == 'true');
+  }
+  echo '    ' . zen_draw_form('edit', FILENAME_SUPER_EDIT, '', 'post', '', $usessl) . NL;
   echo '      ' . zen_draw_hidden_field('target', $target) . NL;
   echo '      ' . zen_draw_hidden_field('process', 1) . NL;
   echo '      ' . zen_draw_hidden_field('oID', $oID) . NL;
@@ -627,95 +631,51 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
     </tr>
 <!-- Begin Contact Block -->
     <tr>
-      <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+      <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0" class="tableLayout1">
         <tr>
-          <td class="main">&nbsp;</td>
-          <td class="main"><strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong></td>
+          <th class="main" colspan="2"><strong><?php echo ENTRY_CUSTOMER_ADDRESS; ?></strong></th>
+		  <th class="main"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></th>
+		  <th class="main"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></th>
         </tr>
         <tr>
-          <td class="main"><?php echo ENTRY_NAME; ?></td>
+          <th class="main"><?php echo ENTRY_NAME; ?></th>
           <td class="main"><input name="customers_name" size="25" value="<?php echo zen_db_scrub_out($order->customer['name'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><?php echo ENTRY_COMPANY; ?></td>
-          <td class="main"><input name="customers_company" size="25" value="<?php echo zen_db_scrub_out($order->customer['company'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><?php echo ENTRY_ADDRESS; ?></td>
-          <td class="main"><input name="customers_street_address" size="25" value="<?php echo zen_db_scrub_out($order->customer['street_address'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><?php echo ENTRY_SUBURB; ?></td>
-          <td class="main"><input name="customers_suburb" size="25" value="<?php echo zen_db_scrub_out($order->customer['suburb'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><?php echo ENTRY_CITY; ?></td>
-          <td class="main"><input name="customers_city" size="25" value="<?php echo zen_db_scrub_out($order->customer['city'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><?php echo ENTRY_STATE; ?></td>
-          <td class="main"><input name="customers_state" size="25" value="<?php echo zen_db_scrub_out($order->customer['state'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><?php echo ENTRY_POSTCODE; ?></td>
-          <td class="main"><input name="customers_postcode" size="25" value="<?php echo zen_db_scrub_out($order->customer['postcode'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
-          <td class="main"><input name="customers_country" size="25" value="<?php echo zen_db_scrub_out($order->customer['country'], true); ?>"></td>
-        </tr>
-      </table></td>
-      <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
-        <tr>
-          <td class="main"><strong><?php echo ENTRY_BILLING_ADDRESS; ?></strong></td>
-        </tr>
-        <tr>
           <td class="main"><input name="billing_name" size="25" value="<?php echo zen_db_scrub_out($order->billing['name'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><input name="billing_company" size="25" value="<?php echo zen_db_scrub_out($order->billing['company'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><input name="billing_street_address" size="25" value="<?php echo zen_db_scrub_out($order->billing['street_address'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><input name="billing_suburb" size="25" value="<?php echo zen_db_scrub_out($order->billing['suburb'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><input name="billing_city" size="25" value="<?php echo zen_db_scrub_out($order->billing['city'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><input name="billing_state" size="25" value="<?php echo zen_db_scrub_out($order->billing['state'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><input name="billing_postcode" size="25" value="<?php echo zen_db_scrub_out($order->billing['postcode'], true); ?>"></td>
-        </tr>
-        <tr>
-          <td class="main"><input name="billing_country" size="25" value="<?php echo zen_db_scrub_out($order->billing['country'], true); ?>"></td>
-        </tr>
-      </table></td>
-      <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
-        <tr>
-          <td class="main"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></td>
-        </tr>
-        <tr>
           <td class="main"><input name="delivery_name" size="25" value="<?php echo zen_db_scrub_out($order->delivery['name'], true); ?>"></td>
         </tr>
         <tr>
+          <th class="main"><?php echo ENTRY_COMPANY; ?></th>
+          <td class="main"><input name="customers_company" size="25" value="<?php echo zen_db_scrub_out($order->customer['company'], true); ?>"></td>
+		  <td class="main"><input name="billing_company" size="25" value="<?php echo zen_db_scrub_out($order->billing['company'], true); ?>"></td>
           <td class="main"><input name="delivery_company" size="25" value="<?php echo zen_db_scrub_out($order->delivery['company'], true); ?>"></td>
         </tr>
+          <th class="main"><?php echo ENTRY_SUBURB; ?></th>
+          <td class="main"><input name="customers_suburb" size="25" value="<?php echo zen_db_scrub_out($order->customer['suburb'], true); ?>"></td>
+		  <td class="main"><input name="billing_suburb" size="25" value="<?php echo zen_db_scrub_out($order->billing['suburb'], true); ?>"></td>
         <tr>
           <td class="main"><input name="delivery_street_address" size="25" value="<?php echo zen_db_scrub_out($order->delivery['street_address'], true); ?>"></td>
         </tr>
+          <th class="main"><?php echo ENTRY_CITY; ?></th>
+          <td class="main"><input name="customers_city" size="25" value="<?php echo zen_db_scrub_out($order->customer['city'], true); ?>"></td>
+		  <td class="main"><input name="billing_city" size="25" value="<?php echo zen_db_scrub_out($order->billing['city'], true); ?>"></td>
         <tr>
           <td class="main"><input name="delivery_suburb" size="25" value="<?php echo zen_db_scrub_out($order->delivery['suburb'], true); ?>"></td>
         </tr>
+          <th class="main"><?php echo ENTRY_STATE; ?></th>
+          <td class="main"><input name="customers_state" size="25" value="<?php echo zen_db_scrub_out($order->customer['state'], true); ?>"></td>
+		  <td class="main"><input name="billing_state" size="25" value="<?php echo zen_db_scrub_out($order->billing['state'], true); ?>"></td>
         <tr>
           <td class="main"><input name="delivery_city" size="25" value="<?php echo zen_db_scrub_out($order->delivery['city'], true); ?>"></td>
         </tr>
+          <th class="main"><?php echo ENTRY_POSTCODE; ?></th>
+          <td class="main"><input name="customers_postcode" size="25" value="<?php echo zen_db_scrub_out($order->customer['postcode'], true); ?>"></td>
+		  <td class="main"><input name="billing_postcode" size="25" value="<?php echo zen_db_scrub_out($order->billing['postcode'], true); ?>"></td>
         <tr>
           <td class="main"><input name="delivery_state" size="25" value="<?php echo zen_db_scrub_out($order->delivery['state'], true); ?>"></td>
         </tr>
+          <th class="main"><?php echo ENTRY_COUNTRY; ?></th>
+          <td class="main"><input name="customers_country" size="25" value="<?php echo zen_db_scrub_out($order->customer['country'], true); ?>"></td>
+		  <td class="main"><input name="billing_country" size="25" value="<?php echo zen_db_scrub_out($order->billing['country'], true); ?>"></td>
         <tr>
           <td class="main"><input name="delivery_postcode" size="25" value="<?php echo zen_db_scrub_out($order->delivery['postcode'], true); ?>"></td>
         </tr>
@@ -728,23 +688,17 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
       <td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
     </tr>
     <tr>
-      <td colspan="3"><table border="0" cellspacing="0" cellpadding="2">
+      <td colspan="3"><table border="0" cellspacing="0" cellpadding="2" class="tableLayout1" width="100%">
         <tr>
-          <td class="main"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></td>
+          <th class="main"><strong><?php echo ENTRY_TELEPHONE_NUMBER; ?></strong></th>
           <td class="main"><input name='customers_telephone' size="15" value="<?php echo $order->customer['telephone']; ?>"></td>
         </tr>
         <tr>
-          <td class="main"><strong><?php echo ENTRY_EMAIL_ADDRESS; ?></strong></td>
+          <th class="main"><strong><?php echo ENTRY_EMAIL_ADDRESS; ?></strong></th>
           <td class="main"><input name='customers_email_address' size="35" value="<?php echo $order->customer['email_address']; ?>"></td>
         </tr>
-      </table</td>
-    </tr>
-    <tr>
-      <td colspan="3"><table border="0" cellspacing="0" cellpadding="2">
         <tr>
-          <td class="main"><strong><?php echo zen_draw_checkbox_field('change_customer', 'on', false) . ENTRY_CHANGE_CUSTOMER; ?></strong></td>
-        </tr>
-        <tr>
+		  <th class="main"><strong><?php echo zen_draw_checkbox_field('change_customer', 'on', false) . ENTRY_CHANGE_CUSTOMER; ?></strong></th>
           <td class="main"><?php echo zen_draw_pull_down_menu('customers_id', $customers, $order->customer['id']); ?></td>
         </tr>
       </table></td>
@@ -852,12 +806,12 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
     </tr>
 <!-- Begin Order Status History -->
     <tr>
-      <td align="center"><table border="1" cellspacing="0" cellpadding="5">
+      <td align="center"><table border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
         <tr>
-          <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_DATE_ADDED; ?></strong></td>
-          <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_STATUS; ?></strong></td>
-          <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_COMMENTS; ?></strong></td>
-          <td class="smallText" align="center"><strong><?php echo TABLE_HEADING_DELETE_COMMENTS; ?></strong></td>
+          <th class="smallText" align="center"><strong><?php echo TABLE_HEADING_DATE_ADDED; ?></strong></th>
+          <th class="smallText" align="center"><strong><?php echo TABLE_HEADING_STATUS; ?></strong></th>
+          <th class="smallText" align="center"><strong><?php echo TABLE_HEADING_COMMENTS; ?></strong></th>
+          <th class="smallText" align="center"><strong><?php echo TABLE_HEADING_DELETE_COMMENTS; ?></strong></th>
         </tr>
 <?php
     $orders_history = $db->Execute("select * from " . TABLE_ORDERS_STATUS_HISTORY . "
@@ -907,7 +861,15 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
     <tr>
       <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
     </tr>
+	<tr>
+      <td colspan="2" align="left" class="divLayout2"><?php echo HEADER_EXPLAIN; ?></td>
+    </tr>
+    <tr>
+      <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+    </tr>
 <!-- Begin Order Total Block -->
+	<tr>
+	<td colspan="2"><table cellpadding="0" cellspacing="0" class="tableLayout1" width="100%">
 <?php
       $TotalArray = array();
       $totals_query = $db->Execute("select * from " . TABLE_ORDERS_TOTAL . "
@@ -936,8 +898,8 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
           echo '    ' . zen_draw_hidden_field('update_totals[' . $TotalIndex . '][total_id]', $TotalData["TotalID"]) . NL;
 ?>
     <tr>
-      <td class="main" align="right"><strong><?php echo $TotalData["Name"]; ?></strong></td>
-      <td class="main" align="right"><strong><?php echo $currencies->format($TotalData["Price"]); ?></strong></td>
+      <th class="main" align="right"><strong><?php echo $TotalData["Name"]; ?></strong></th>
+      <th class="main alignR" align="right"><strong><?php echo $currencies->format($TotalData["Price"]); ?></strong></th>
     </tr>
 <?php
         }
@@ -954,13 +916,15 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
           echo '    ' . zen_draw_hidden_field('update_totals[' . $TotalIndex . '][total_id]', $TotalData["TotalID"]) . NL;
 ?>
     <tr>
-      <td align="right" class="main"><?php echo zen_draw_input_field('update_totals[' . $TotalIndex . '][title]', trim($display_title)); ?></td>
-      <td align="right" class="main"><?php echo zen_draw_input_field('update_totals[' . $TotalIndex . '][value]', $TotalData["Price"], 'style="text-align:right"'); ?></td>
+      <td align="right" class="main"><?php echo zen_draw_input_field('update_totals[' . $TotalIndex . '][title]', trim($display_title), 'style="width:100%;"'); ?></td>
+      <td align="right" class="main"><?php echo zen_draw_input_field('update_totals[' . $TotalIndex . '][value]', $TotalData["Price"], 'style="text-align:right; width:100%;"'); ?></td>
     </tr>
 <?php
         }
       }  // END foreach
 ?>
+	</table></td>
+	</tr>
 <!-- End Order Total Block -->
 <?php
     break;
@@ -971,9 +935,9 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '15'); ?></td>
       </tr>
       <tr>
-        <td class="main" colspan="3" align="right">
-          <input type="button" value="<?php echo BUTTON_CANCEL; ?>" onclick="closePopup()">
-          <input type="submit" value="<?php echo BUTTON_SUBMIT; ?>" onclick="document.edit.submit();this.disabled=true">
+        <td class="main" colspan="3" align="center">
+        <?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE , 'onclick="return check_form()"'); ?>
+        <?php echo zen_image_submit('button_cancel.gif', IMAGE_CANCEL , 'onclick="closePopup()"'); ?>
         </td>
       </tr>
       </form>

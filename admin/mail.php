@@ -40,18 +40,19 @@ if (EMAIL_ATTACHMENT_UPLOADS_ENABLED=='EMAIL_ATTACHMENT_UPLOADS_ENABLED') define
   }
 
   if ( ($action == 'send_email_to_user') && isset($_POST['customers_email_address']) && !isset($_POST['back_x']) ) {
-	$audience_select = get_audience_sql_query($_POST['customers_email_address'], 'email');
-        $mail = $db->Execute($audience_select['query_string']);
-        $mail_sent_to = $audience_select['query_name'];
-      if ($_POST['email_to']) {
-        $mail_sent_to = $_POST['email_to'];
+    $audience_select = get_audience_sql_query_with_language($_POST['customers_email_address'], 'email'); 
+    $mail = $db->Execute($audience_select['query_string']); 
+    $mail_sent_to = $audience_select['query_name']; 
+    if ($_POST['email_to']) { 
+      $mail_sent_to = $_POST['email_to']; 
     }
 
 // error message if no email address
     if (empty($mail_sent_to)) {
       $messageStack->add_session(ERROR_NO_CUSTOMER_SELECTED, 'error');
       $_GET['action']='';
-      zen_redirect(zen_href_link(FILENAME_MAIL));
+      zen_restore_language($_POST['admin_language']);
+      zen_redirect(zen_href_link(FILENAME_MAIL)); 
     }
 
     $from = zen_db_prepare_input($_POST['from']);
@@ -65,6 +66,7 @@ if (EMAIL_ATTACHMENT_UPLOADS_ENABLED=='EMAIL_ATTACHMENT_UPLOADS_ENABLED') define
     if (zen_admin_demo()) {
       $_GET['action']= '';
       $messageStack->add_session(ERROR_ADMIN_DEMO, 'caution');
+      zen_restore_language($_POST['admin_language']);
       zen_redirect(zen_href_link(FILENAME_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to)));
     }
 
@@ -80,7 +82,8 @@ if (EMAIL_ATTACHMENT_UPLOADS_ENABLED=='EMAIL_ATTACHMENT_UPLOADS_ENABLED') define
       $mail->MoveNext();
     }
 
-    zen_redirect(zen_href_link(FILENAME_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to) . '&recip_count='. $recip_count ));
+    zen_restore_language($_POST['admin_language']); 
+    zen_redirect(zen_href_link(FILENAME_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to) . '&recip_count='. $recip_count));
   }
 
   if ( EMAIL_ATTACHMENTS_ENABLED && $action == 'preview') {
@@ -218,7 +221,7 @@ function check_form(form_name) {
 <!-- header_eof //-->
 
 <!-- body //-->
-<table border="0" width="100%" cellspacing="2" cellpadding="2">
+<table border="0" width="95%" cellspacing="0" cellpadding="0" align="center">
   <tr>
 <!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -242,11 +245,12 @@ function check_form(form_name) {
         </table></td>
       </tr>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
 <?php
   if ( ($action == 'preview') && isset($_POST['customers_email_address']) ) {
-	$audience_select = get_audience_sql_query($_POST['customers_email_address']);
+    $audience_select = get_audience_sql_query_with_language($_POST['customers_email_address']);
     $mail_sent_to = $audience_select['query_name'];
+    $customers_languages_id = $audience_select['customers_languages_id'];
 ?>
           <tr>
             <td><table border="0" width="100%" cellpadding="0" cellspacing="2">
@@ -303,6 +307,8 @@ function check_form(form_name) {
       echo zen_draw_hidden_field('upload_file', stripslashes($upload_file_name));
       echo zen_draw_hidden_field('attachment_file', $attachment_file);
       echo zen_draw_hidden_field('attachment_filetype', $attachment_filetype);
+      echo zen_draw_hidden_field('customer_language', zen_get_language_code($customers_languages_id)); 
+      echo zen_draw_hidden_field('admin_language', zen_get_language_code($_SESSION['languages_id'])); 
 ?>
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
@@ -317,36 +323,28 @@ function check_form(form_name) {
   } else {
 ?>
           <tr><?php echo zen_draw_form('mail', FILENAME_MAIL,'action=preview','post', 'onsubmit="return check_form(mail);" enctype="multipart/form-data"'); ?>
-            <td><table border="0" cellpadding="0" cellspacing="2">
-              <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-              </tr>
+            <td><table border="0" cellpadding="0" cellspacing="0" class="tableLayout1" width="100%">
+           
 <?php
-    $customers = get_audiences_list('email');
+    $customers = get_audiences_list_with_language('email'); 
 ?>
               <tr>
-                <td class="main"><?php echo TEXT_CUSTOMER; ?></td>
+                <th class="main"><?php echo TEXT_CUSTOMER; ?></th>
                 <td><?php echo zen_draw_pull_down_menu('customers_email_address', $customers, (isset($_GET['customer']) ? $_GET['customer'] : ''));  //, 'multiple' ?></td>
               </tr>
+              
               <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-              </tr>
-              <tr>
-                <td class="main"><?php echo TEXT_FROM; ?></td>
+                <th class="main"><?php echo TEXT_FROM; ?></th>
                 <td><?php echo zen_draw_input_field('from', EMAIL_FROM, 'size="50"'); ?></td>
               </tr>
+              
               <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-              </tr>
-              <tr>
-                <td class="main"><?php echo TEXT_SUBJECT; ?></td>
+                <th class="main"><?php echo TEXT_SUBJECT; ?></th>
                 <td><?php echo zen_draw_input_field('subject', $_POST['subject'], 'size="50"'); ?></td>
               </tr>
+              
               <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-              </tr>
-              <tr>
-                <td valign="top" class="main"><?php echo TEXT_MESSAGE_HTML; //HTML version?></td>
+                <th valign="top" class="main"><?php echo TEXT_MESSAGE_HTML; //HTML version?></th>
                 <td class="main" width="750">
 				<?php if (is_null($_SESSION['html_editor_preference_status'])) echo TEXT_HTML_EDITOR_NOT_DEFINED; ?>
 				<?php if (EMAIL_USE_HTML != 'true') echo TEXT_WARNING_HTML_DISABLED; ?>
@@ -362,18 +360,14 @@ function check_form(form_name) {
 					} ?>
 				</td>
               </tr>
+              
               <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-              </tr>
-              <tr>
-                <td valign="top" class="main"><?php echo TEXT_MESSAGE; ?></td>
+                <th valign="top" class="main"><?php echo TEXT_MESSAGE; ?></th>
                 <td><?php echo zen_draw_textarea_field('message', 'soft', '100%', '15', $_POST['message']); ?></td>
               </tr>
 
 <?php if (EMAIL_ATTACHMENTS_ENABLED) { ?>
-		  <tr>
-			<td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-		  </tr>
+		  
 		  <?php if (EMAIL_ATTACHMENT_UPLOADS_ENABLED) { ?>
 				<?php
 				  $dir = @dir(DIR_WS_ADMIN_ATTACHMENTS);
@@ -385,13 +379,11 @@ function check_form(form_name) {
 				  }
 				?>
 			  <tr>
-				<td class="main" valign="top"><?php echo TEXT_SELECT_ATTACHMENT_TO_UPLOAD; ?></td>
+				<th class="main" valign="top"><?php echo TEXT_SELECT_ATTACHMENT_TO_UPLOAD; ?></th>
 				<td class="main"><?php echo zen_draw_file_field('upload_file') . '<br />' . stripslashes($_POST['upload_file']) . zen_draw_hidden_field('prev_upload_file', stripslashes( $_POST['upload_file']) ); ?><br />
 				<?php echo TEXT_ATTACHMENTS_DIR; ?>&nbsp;<?php echo zen_draw_pull_down_menu('attach_dir', $dir_info); ?></td>
 			  </tr>
-			  <tr>
-				<td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-			  </tr>
+			 
 		 <?php  } // end upload dialog ?>
 		<?php
 		  $dir = @dir(DIR_WS_ADMIN_ATTACHMENTS);
@@ -403,12 +395,14 @@ function check_form(form_name) {
 		  }
 		?>
           <tr>
-            <td class="main" valign="top"><?php echo TEXT_SELECT_ATTACHMENT; ?></td>
+            <th class="main" valign="top"><?php echo TEXT_SELECT_ATTACHMENT; ?></th>
             <td class="main"><?php echo zen_draw_pull_down_menu('attachment_file', $file_list, $_POST['attachment_file']); ?></td>
               </tr>
 <?php } // end attachments fields ?>
+			</table>
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2" class="borderNone"><?php echo zen_draw_separator('pixel_trans.gif', '1', '20'); ?></td>
               </tr>
 <?php
   if (isset($_GET['origin'])) {
@@ -423,7 +417,7 @@ function check_form(form_name) {
   }
  ?>
               <tr>
-                <td colspan="2" align="right"><?php echo zen_image_submit('button_preview.gif', IMAGE_PREVIEW) . '&nbsp;' .
+                <td colspan="2" align="center"><?php echo zen_image_submit('button_preview.gif', IMAGE_PREVIEW) . '&nbsp;' .
                 '<a href="' . zen_href_link($origin, 'cID=' . zen_db_prepare_input($_GET['cID']), $mode) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>'; ?></td>
               </tr>
             </table></td>

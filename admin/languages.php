@@ -161,7 +161,7 @@
           }
 
 // create additional manufacturers_info records
-          $manufacturers = $db->Execute("select m.manufacturers_id, mi.manufacturers_url
+          $manufacturers = $db->Execute("select m.manufacturers_id, mi.manufacturers_url, mi.manufacturers_name
                                        from " . TABLE_MANUFACTURERS . " m
                            left join " . TABLE_MANUFACTURERS_INFO . " mi
                            on m.manufacturers_id = mi.manufacturers_id
@@ -169,9 +169,10 @@
 
           while (!$manufacturers->EOF) {
             $db->Execute("insert into " . TABLE_MANUFACTURERS_INFO . "
-                         (manufacturers_id, languages_id, manufacturers_url)
+                         (manufacturers_id, languages_id, manufacturers_url, manufacturers_name)
                           values ('" . $manufacturers->fields['manufacturers_id'] . "', '" . (int)$insert_id . "',
-                                  '" . zen_db_input($manufacturers->fields['manufacturers_url']) . "')");
+                                  '" . zen_db_input($manufacturers->fields['manufacturers_url']) . "',
+                                  '" . zen_db_input($manufacturers->fields['manufacturers_name']) . "')"); 
 
             $manufacturers->MoveNext();
           }
@@ -207,6 +208,99 @@
             $coupons->MoveNext();
           }
 
+          // create additional zones_m17n records
+          $zones_m17n = $db->Execute("select zone_id, zone_name_m17n
+                                      from " . TABLE_ZONES_M17N . "
+                                      where language_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+          while (!$zones_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_ZONES_M17N . "
+                         (zone_id, language_id, zone_name_m17n)
+                          values ('" . $zones_m17n->fields['zone_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($zones_m17n->fields['zone_name_m17n']) . "')");
+
+            $zones_m17n->MoveNext();
+          }
+
+          // create additional tax_class_m17n records
+          $tax_class_m17n = $db->Execute("select tax_class_id, tax_class_title, tax_class_description
+                                          from " . TABLE_TAX_CLASS_M17N . "
+                                          where language_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+          while (!$tax_class_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_TAX_CLASS_M17N . "
+                         (tax_class_id, language_id, tax_class_title, tax_class_description)
+                          values ('" . $tax_class_m17n->fields['tax_class_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_title']) . "',
+                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_description']) . "')");
+
+            $tax_class_m17n->MoveNext();
+          }
+
+          // create additional tax_rates_m17n records
+          $tax_rates_m17n = $db->Execute("select tax_rates_id, tax_description
+                                         from " . TABLE_TAX_RATES_M17N . "
+                                         where language_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+          while (!$tax_class_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_TAX_RATES_M17N . "
+                         (tax_rates_id, language_id, tax_description)
+                          values ('" . $tax_rates_m17n->fields['tax_rates_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($tax_rates_m17n->fields['tax_description']) . "')");
+
+            $tax_rates_m17n->MoveNext();
+          }
+
+          // create additional currencies_m17n records
+          $currencies_m17n = $db->Execute("select currencies_id, symbol_left, symbol_right
+                                         from " . TABLE_CURRENCIES_M17N . "
+                                         where language_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+          while (!$currencies_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_CURRENCIES_M17N . "
+                         (currencies_id, language_id, symbol_left, symbol_right)
+                          values ('" . $currencies_m17n->fields['currencies_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($currencies_m17n->fields['symbol_left']) . "',
+                                  '" . zen_db_input($currencies_m17n->fields['symbol_right']) . "')");
+
+            $currencies_m17n->MoveNext();
+          }
+
+          // create additional group_pricing_m17n records
+          $group_pricing_m17n = $db->Execute("select group_id, group_name
+                                              from " . TABLE_GROUP_PRICING_M17N . "
+                                              where language_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+          while (!$group_pricing_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_GROUP_PRICING_M17N . "
+                         (group_id, language_id, group_name)
+                          values ('" . $group_pricing_m17n->fields['group_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($group_pricing_m17n->fields['group_name']) . "')");
+
+            $group_pricing_m17n->MoveNext();
+          }
+
+
+          // create additional email_templates records
+          if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+	    $email_templates_description = $db->Execute(
+					     "select email_templates_id, language_id, subject, contents
+                                                from " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
+                                               where language_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+	    while (!$email_templates_description->EOF) {
+	      $db->Execute("insert into " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
+                            (email_templates_id, language_id, subject, contents)
+                            values ('" . (int)$email_templates_description->fields['email_templates_id'] . "',
+                                    '" . (int)$insert_id . "',
+                                    '" . zen_db_input($email_templates_description->fields['subject']) . "',
+                                    '" . zen_db_input($email_templates_description->fields['contents']) . "')");
+	      $email_templates_description->MoveNext();
+	    }
+	  }
+
+	  
+          
           zen_redirect(zen_href_link(FILENAME_LANGUAGES, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'lID=' . $insert_id));
         }
 
@@ -272,6 +366,15 @@
         $db->Execute("delete from " . TABLE_COUPONS_DESCRIPTION . " where language_id = '" . (int)$lID . "'");
         $db->Execute("delete from " . TABLE_META_TAGS_PRODUCTS_DESCRIPTION . " where language_id = '" . (int)$lID . "'");
         $db->Execute("delete from " . TABLE_METATAGS_CATEGORIES_DESCRIPTION . " where language_id = '" . (int)$lID . "'");
+        $db->Execute("delete from " . TABLE_ZONES_M17N . " where language_id = '" . (int)$lID . "'");
+        $db->Execute("delete from " . TABLE_TAX_CLASS_M17N . " where language_id = '" . (int)$lID . "'");
+        $db->Execute("delete from " . TABLE_TAX_RATES_M17N . " where language_id = '" . (int)$lID . "'");
+        $db->Execute("delete from " . TABLE_CURRENCIES_M17N . " where language_id = '" . (int)$lID . "'");
+        $db->Execute("delete from " . TABLE_GROUP_PRICING_M17N . " where language_id = '" . (int)$lID . "'");
+        if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
+	  $db->Execute("delete from " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " where language_id = '" . (int)$lID . "
+'");
+	}
         zen_redirect(zen_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page']));
         break;
       case 'delete':

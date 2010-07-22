@@ -52,6 +52,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
     // class constructer for php4
     function email_templates() {
+      require_once($this->dir . 'classes/CustomMail.php');
       $this->__construct();
     }
 
@@ -60,68 +61,142 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       switch( $notifier ){
       case 'NOTIFY_CHECKOUT_PROCESS_AFTER_ORDER_CREATE_ADD_PRODUCTS':
-	require_once($this->dir . 'classes/CustomMail.php');
 	$order_back = $order;
 	$order = new CustomMail();
 	break;
       case 'NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL':
 	$order = $order_back;
 	break;
-      }      
+      }
     }
 
     function _install() {
       global $db;
+
+      //============= 配信メールの種別(グループ)を格納
       $sql = "CREATE TABLE " . TABLE_EMAIL_TEMPLATES . " (
                 id smallint(6) NOT NULL auto_increment,
                 grp varchar(50) NOT NULL default '',
                 title varchar(255) NOT NULL default '',
-                subject varchar(255) NOT NULL default '',
-                contents text NOT NULL,
-                updated datetime NOT NULL default '0000-00-00 00:00:00',
                 PRIMARY KEY  (id))";
 
       $db->execute($sql);
 
-      $sql = "INSERT INTO email_templates (id, grp, title,subject,contents,updated) VALUES (" . 
-	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_ID . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_GRP . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_TITLE . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_SUBJECT . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_BODY . "'," . 
+      $sql = "INSERT INTO email_templates (id, grp, title) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_GRP . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_TITLE . "')";
+
+      $db->execute($sql);
+
+      $sql = "INSERT INTO email_templates (id, grp, title) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_GRP . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_TITLE . "')";
+
+      $db->execute($sql);
+
+      $sql = "INSERT INTO email_templates (id, grp, title) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_GRP . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_TITLE . "')";
+
+      $db->execute($sql);
+
+      $sql = "INSERT INTO email_templates (id, grp, title) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_GRP . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_TITLE . "')";
+
+      $db->execute($sql);
+
+      //============= メール内容を格納
+      $sql = "CREATE TABLE " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (
+      			email_templates_id smallint(6) NOT NULL,
+      			language_id int(11) NOT NULL,
+                subject varchar(255) NOT NULL default '',
+                contents text NOT NULL,
+                updated datetime NOT NULL default '0000-00-00 00:00:00',
+                PRIMARY KEY  (email_templates_id, language_id))";
+
+      $db->execute($sql);
+
+	//----- ユーザー登録
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_SUBJECT . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_BODY . "'," .
 	"now())";
 
       $db->execute($sql);
 
-      $sql = "INSERT INTO email_templates (id, grp, title,subject,contents,updated) VALUES (" . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_GRP . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_TITLE . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_SUBJECT . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_BODY . "'," . 
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_SUBJECT_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_BODY_EN . "'," .
 	"now())";
 
       $db->execute($sql);
 
-      $sql = "INSERT INTO email_templates (id, grp, title,subject,contents,updated) VALUES (" . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_GRP . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_TITLE . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_SUBJECT . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_BODY . "'," . 
+      //----- 会員用
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_SUBJECT . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_BODY . "'," .
 	"now())";
 
       $db->execute($sql);
 
-      $sql = "INSERT INTO email_templates (id, grp, title,subject,contents,updated) VALUES (" . 
-	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_GRP . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_TITLE . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_SUBJECT . "'," . 
-	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY . "'," . 
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_SUBJECT_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_BODY_EN . "'," .
 	"now())";
 
       $db->execute($sql);
+
+      //----- ゲスト用
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_SUBJECT . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_BODY . "'," .
+	"now())";
+
+      $db->execute($sql);
+
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_SUBJECT_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_BODY_EN . "'," .
+	"now())";
+
+      $db->execute($sql);
+
+      //----- ステータス
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_SUBJECT . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY . "'," .
+	"now())";
+
+      $db->execute($sql);
+
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_SUBJECT_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY_EN . "'," .
+	"now())";
+
+      $db->execute($sql);
+
     }
 
     function _update() {
@@ -131,6 +206,9 @@ if (!defined('IS_ADMIN_FLAG')) {
       global $db;
 
       $sql = "drop table if exists ". TABLE_EMAIL_TEMPLATES;
+      $db->execute($sql);
+
+      $sql = "drop table if exists ". TABLE_EMAIL_TEMPLATES_DESCRIPTION;
       $db->execute($sql);
     }
 
@@ -142,7 +220,32 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       if (isset($_GET['id'])) {
       	$id  = $_GET['id'];
-        $query          = "SELECT * FROM " . TABLE_EMAIL_TEMPLATES . " WHERE id='". $id . "'";
+      	if(isset($_GET['language_id'])) {
+
+      		$language_id = $_GET['language_id'];
+
+      	}elseif(isset($_SESSION['languages_id'])){
+
+      		$language_id = $_SESSION['languages_id'];
+      	}
+	//$language_id = $_SESSION['languages_id'];
+	if (isset($_GET['order_id'])) {
+	  $query          = "SELECT c.customers_languages_id
+                               FROM " . TABLE_CUSTOMERS . " c
+                              INNER JOIN " . TABLE_ORDERS . " o ON c.customers_id=o.customers_id
+                            WHERE o.orders_id= :order_id";
+	  $query = $db->bindVars($query, ':order_id', $_GET['order_id'], 'integer');
+	  $result = $db->Execute($query);
+	  if ($result->fields['customers_languages_id'] > 0) {
+	    $language_id = $result->fields['customers_languages_id'];
+	  }
+	}
+        $query          = "SELECT *
+                             FROM " . TABLE_EMAIL_TEMPLATES . " et
+                             INNER JOIN " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd ON et.id=etd.email_templates_id AND etd.language_id= :language_id
+                            WHERE id= :id";
+	$query = $db->bindVars($query, ':id', $_GET['id'], 'integer');
+	$query = $db->bindVars($query, ':language_id', $language_id, 'integer');
         $email_template = $db->Execute($query);
         echo $email_template->fields['contents'];
       	exit;

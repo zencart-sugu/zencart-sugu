@@ -19,7 +19,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   class easy_admin extends addOnModuleBase {
     var $author = "kohata";
     var $author_email = "info@zencart-sugu.jp";
-    var $version = "0.1.1";
+    var $version = "0.1.2";
     var $require_zen_cart_version = "1.3.0.2";
     var $require_addon_modules_version = "0.1.1";
 
@@ -165,6 +165,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       return array();
     }
 
+    //右メニューを取得
     function block_right_top_menu() {
       $return          = array();
       $return['title'] = '';
@@ -173,6 +174,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
+    //トップメニューとサブメニューを取得
     function block_dropdown_menu() {
       $return          = array();
       $return['title'] = '';
@@ -181,10 +183,31 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
+    function block_acl_setup() {
+    	$return = array();
+    	$return['test'] = 'abcdefghijklmn';
+		return $return;
+    }
+
     // override getBlock method
+    // admin/includes/header.phpからの呼び出し
     function getBlock($block, $page) {
+
+		if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) > 0) {
+			preg_match("/\/([^\/\?]*\??[^\?]*)$/", $_SERVER["REQUEST_URI"], $matches);
+		}else{
+			preg_match("/\/([^\/]*)$/", $_SERVER["REQUEST_URI"], $matches);
+		}
+
+		if(check_page($matches[1])) {
+
+			if(!@header("location: denied.php")) die("<p style='line-height:1.4em; text-align:center; padding-top:10px;'>このページを閲覧するための権限がありません。<br /><a href=" . zen_href_link(FILENAME_DEFAULT, '', 'NONSSL') . ">管理画面トップ</a>に戻って下さい。</p>");
+		}
+
       global $template;
       $return = false;
+
+      //クラスメソッドが存在する場合処理（クラス, メソッド）
       if (method_exists($this, $block)) {
         $module = $this->code;
 

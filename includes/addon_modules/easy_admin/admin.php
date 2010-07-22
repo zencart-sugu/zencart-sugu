@@ -168,6 +168,7 @@ else if ($action == "top-delete") {
 <?php
               // トップメニュー
               $top_menus = getTopMenus();
+
               for ($i=0; $i<count($top_menus); $i++) {
                 $top_menu_id         = $top_menus[$i]['id'];
                 $top_menu_name       = $top_menus[$i]['name'];

@@ -19,4 +19,6 @@ if (!defined('IS_ADMIN_FLAG')) {
  */
 
 define('TABLE_EMAIL_TEMPLATES', DB_PREFIX . 'email_templates');
+define('TABLE_EMAIL_TEMPLATES_DESCRIPTION', DB_PREFIX . 'email_templates_description');
+
 ?>

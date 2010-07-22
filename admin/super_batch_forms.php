@@ -43,11 +43,11 @@
 
   $ot_sign = array();
   $ot_sign[] = array('id' => '>=',
-                     'text' => ' > ' . DROPDOWN_GREATER_THAN);
+                     'text' => DROPDOWN_GREATER_THAN);
   $ot_sign[] = array('id' => '<=',
-                     'text' => ' < ' . DROPDOWN_LESS_THAN);
+                     'text' => DROPDOWN_LESS_THAN);
   $ot_sign[] = array('id' => '=',
-                     'text' => ' = ' . DROPDOWN_EQUAL_TO);
+                     'text' => DROPDOWN_EQUAL_TO);
 
   if ($_GET['action'] == 'batch_forms') {
     $target_file = $_POST['target_file'];
@@ -96,77 +96,93 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "order_search", "end_date", "b
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
   <!-- search -->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top" align="center"><table width="95%" border="0" cellpadding="2" cellspacing="0">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td colspan="2" class="pageHeading"><?php echo
+		  	 <td  colspan="3"><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
+		  </tr>
+          <tr>
+            <!--<td colspan="2" class="pageHeading"><?php echo
               HEADING_TITLE . '&nbsp;&nbsp;' .
               '<INPUT TYPE="BUTTON" VALUE="' . BOX_CUSTOMERS_SUPER_BATCH_STATUS . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_STATUS, '') . '\'">' .
               '&nbsp;&nbsp;' .
               '<INPUT TYPE="BUTTON" VALUE="' . BOX_CUSTOMERS_SUPER_ORDERS . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_ORDERS, '') . '\'">';
-            ?></td>
+            ?></td>-->
+			<td colspan="2" class="pageHeading"><?php echo HEADING_TITLE ;?></td>
           </tr>
           <tr>
             <td><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
           </tr>
           <tr>
-            <td class="main" colspan="3"><strong><?php echo HEADING_SEARCH_FILTER; ?></strong></td>
-          </tr>
-          <?php echo zen_draw_form('order_search', FILENAME_SUPER_BATCH_FORMS, '', 'get', '', true); ?>
-          <tr>
-            <td valign="top"><table border="0" cellspacing="3" cellpadding="0">
+            <td class="main" colspan="3">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableLayout1">
               <tr>
-                <td class="smallText" align="left"><?php echo HEADING_START_DATE; ?><br /><script language="javascript">
-                  StartDate.writeControl(); StartDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script>
+						<th colspan="3"><strong><?php echo HEADING_SEARCH_FILTER; ?></strong></th>
+              </tr>
+					<?php echo zen_draw_form('order_search', FILENAME_SUPER_BATCH_FORMS, '', 'get', '', true); ?>
+              <tr>
+						<td valign="top" class="borderRightNone">
+							<p><?php echo HEADING_START_DATE; ?><br /><script language="javascript">
+							StartDate.writeControl(); StartDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></p>
+							<p><?php echo HEADING_END_DATE; ?><br /><script language="javascript">
+							EndDate.writeControl(); EndDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></p>
                 </td>
+						<td valign="top" class="borderRightNone">
+							<table border="0" cellspacing="0" cellpadding="0" class="tableLayout3 borderBottomNone">
+              <tr>
+									<th><?php echo HEADING_SEARCH_STATUS; ?></th>
+									<td><?php echo zen_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status'], ''); ?></td>
               </tr>
               <tr>
-                <td class="smallText" align="left"><?php echo HEADING_END_DATE; ?><br /><script language="javascript">
-                  EndDate.writeControl(); EndDate.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script>
-                </td>
-              </tr>
-            </table></td>
-            <td valign="top"><table border="0" cellspacing="3" cellpadding="0">
-              <tr>
-                <td class="smallText"><?php echo HEADING_SEARCH_STATUS; ?></td>
-                <td class="smallText"><?php echo zen_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status'], ''); ?></td>
-              </tr>
-              <tr>
-                <td class="smallText"><?php echo HEADING_SEARCH_PRODUCTS; ?></td>
+							<th><?php echo HEADING_SEARCH_PRODUCTS; ?></th>
                 <td class="smallText"><?php echo zen_draw_pull_down_menu('products', $products, $_GET['products'], ''); ?></td>
               </tr>
               <tr>
-                <td class="smallText"><?php echo HEADING_SEARCH_CUSTOMERS; ?></td>
-                <td class="smallText"><?php echo zen_draw_pull_down_menu('customers', $customers, $_GET['customers'], ''); ?></td>
+							<th><?php echo HEADING_SEARCH_CUSTOMERS; ?></th>
+							<td><?php echo zen_draw_pull_down_menu('customers', $customers, $_GET['customers'], ''); ?></td>
               </tr>
-            </table></td>
-            <td valign="top"><table border="0" cellspacing="3" cellpadding="0">
+							</table>
+						</td>
+						<td valign="top">
+							<table border="0" cellspacing="0" cellpadding="0" class="tableLayout3 borderBottomNone">
               <tr>
-                <td class="smallText"><?php echo HEADING_SEARCH_PAYMENT_METHOD; ?></td>
-                <td class="smallText" colspan="3"><?php echo zen_draw_pull_down_menu('payments', $payments, $_GET['payments'], ''); ?></td>
-              </tr>
-              <tr>
-                <td class="smallText"><?php echo HEADING_SEARCH_ORDER_TOTAL; ?></td>
-                <td class="smallText"><?php echo zen_draw_pull_down_menu('ot_sign', $ot_sign, $_GET['ot_sign'], ''); ?></td>
-                <td class="smallText"><?php echo zen_draw_input_field('order_total', '', 'size="8"') . TEXT_ORDER_VALUE; ?></td>
+							<th><?php echo HEADING_SEARCH_PAYMENT_METHOD; ?></th>
+							<td colspan="2"><?php echo zen_draw_pull_down_menu('payments', $payments, $_GET['payments'], ''); ?></td>
               </tr>
               <tr>
-                <td class="smallText"><?php echo HEADING_SEARCH_TEXT; ?></td>
-                <td class="smallText" colspan="2"><?php echo zen_draw_input_field('search', $_GET['search']); ?></td>
+							<th><?php echo HEADING_SEARCH_ORDER_TOTAL; ?></th>
+							<td><?php echo zen_draw_pull_down_menu('ot_sign', $ot_sign, $_GET['ot_sign'], ''); ?></td>
+							<td><?php echo zen_draw_input_field('order_total', '', 'size="8"') . TEXT_ORDER_VALUE; ?></td>
               </tr>
-            </table></td>
+              <tr>
+							<th><?php echo HEADING_SEARCH_TEXT; ?></th>
+							<td colspan="2"><?php echo zen_draw_input_field('search', $_GET['search']); ?></td>
+              </tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
           </tr>
           <tr>
             <td><?php echo zen_draw_separator('pixel_trans.gif', 1, 5); ?></td>
           </tr>
           <tr>
-            <td class="smallText" colspan="3" align="right" valign="bottom"><input type="submit" value="<?php echo BUTTON_SEARCH; ?>"></td>
+            <td colspan="3">
+				
+			</td>
           </tr></form>
+		   <tr>
+            <td  colspan="3"><?php echo zen_draw_separator('pixel_trans.gif', 1, 20); ?></td>
+          </tr>
         </table></td>
       </tr>
       <tr>
-        <td colspan="2"><?php echo zen_draw_separator(); ?></td>
+        <td colspan="3"><?php echo zen_draw_separator(); ?></td>
+      </tr>
+	  <tr>
+            <td  colspan="3"><?php echo zen_draw_separator('pixel_trans.gif', 1, 10); ?></td>
       </tr>
 <!-- end search -->
 <?php
@@ -218,6 +234,12 @@ if (isset($_GET['start_date']) ) {
     $orders_query_raw .= " AND o.order_total " . $_GET['ot_sign'] . " '" . (int)$_GET['order_total'] . "'";
   }
 
+  else if ($sd != '') {
+    $orders_query_raw .= " AND o.date_purchased >= '" . $sd . "'";
+  }
+  else if ($ed != '') {
+    $orders_query_raw .= " AND o.date_purchased <= DATE_ADD('" . $ed . "', INTERVAL 1 DAY)";
+  }
   $orders_query_raw .= " ORDER BY o.orders_id DESC";
 
   //DEBUG
@@ -265,9 +287,9 @@ if (isset($_GET['start_date']) ) {
             <td class="main" valign="bottom"><?php
               echo TEXT_TOTAL_ORDERS . '<strong>' . $orders->RecordCount() . '</strong>' . '&nbsp;&nbsp;';
               if ($checked) {
-                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_UNCHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=0', 'NONSSL') . '\'">';
+                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_UNCHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=0', $request_type) . '\'">';
               } else {
-                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_CHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=1', 'NONSSL') . '\'">';
+                echo '<INPUT TYPE="BUTTON" VALUE="' . BUTTON_CHECK_ALL . '" ONCLICK="window.location.href=\'' . zen_href_link(FILENAME_SUPER_BATCH_FORMS, zen_get_all_get_params(array('checked')) . 'checked=1', $request_type) . '\'">';
               }
             ?></td>
             <td class="smallText" align="right" valign="bottom"><?php echo zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '&nbsp;' . ICON_ORDER_DETAILS; ?></td>
@@ -300,7 +322,7 @@ if (isset($_GET['start_date']) ) {
                 <td class="dataTableContent" align="center"><?php echo zen_datetime_short($orders->fields['date_purchased']); ?></td>
                 <td class="dataTableContent" align="left"><?php echo $orders->fields['payment_method']; ?></td>
                 <td class="dataTableContent" align="left"><?php echo $orders->fields['orders_status_name']; ?></td>
-                <td class="dataTableContent" align="right"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', 'NONSSL') . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp'; ?></td>
+                <td class="dataTableContent" align="right"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit', $request_type) . '">' . zen_image(DIR_WS_IMAGES . 'icon_details.gif', ICON_ORDER_DETAILS) . '</a>&nbsp'; ?></td>
               </tr>
 <?php
       $orders->MoveNext();
@@ -315,12 +337,18 @@ if (isset($_GET['start_date']) ) {
               </tr>
             </table></td>
           </tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
         </table></td>
       </tr>
 <?php } else { ?>
-      <tr>
+      <!--<tr>
         <td colspan="2"><?php echo TEXT_ENTER_SEARCH; ?></td>
-      </tr>
+      </tr>-->
 <?php } ?>
     </table></td>
   </tr>
