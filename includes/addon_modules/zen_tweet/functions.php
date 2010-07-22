@@ -194,8 +194,7 @@
 
 		//TwitterURLのstatusパラメータにつぶやきを渡す
 		$twitter_url .= $complete;
-
-		$img_tag = "<img src='" . DIR_WS_TEMPLATE . "buttons/japanese/product_button_tweet.gif' width='80' height='20' class='imgover'>";
+		$img_tag = zen_image_button(BUTTON_IMAGE_PRODUCT_TWEET, BUTTON_IMAGE_PRODUCT_TWEET_ALT, 'class="imgover"');
 		$a_tag = "<a href='". $twitter_url ."' target='_blank'>";
 		$tweet_btn = $a_tag . $img_tag . "</a>";
 
