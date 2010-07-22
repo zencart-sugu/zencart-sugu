@@ -331,4 +331,14 @@ function zen_addOnModules_persePageModule($str = null) {
 
   return array('class' => $class, 'method' => $method);
 }
+
+function zen_addOnModules_get_block($module_name, $block_name = 'block') {
+  global $current_page_base;
+  if (is_object($GLOBALS[$module_name]) && $GLOBALS[$module_name]->enabled) {
+    return  $GLOBALS[$module_name]->getBlock($block_name, $current_page_base);
+  }
+  else {
+    return '';
+  }
+}
 ?>
