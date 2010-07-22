@@ -26,12 +26,12 @@ if (!defined('IS_ADMIN_FLAG')) {
   $autoLoadConfig[1000][] = array('autoType'=>'init_script',
                                   'loadFile'=>'init_addOnModules.php');
 
-  $installed_addon_modules_text_file = DIR_FS_SQL_CACHE . "/installed_addon_modules.txt";
-  if (is_readable($installed_addon_modules_text_file)) {
-    $installed_modules_str = file_get_contents($installed_addon_modules_text_file);
-    $installed_modules = preg_split("/;/", $installed_modules_str);
-    foreach ($installed_modules as $installed_module) {
-      $auto_load_config = DIR_FS_CATALOG_ADDON_MODULES . $installed_module . "/auto_loaders/config.php";
+  $enabled_addon_modules_text_file = DIR_FS_SQL_CACHE . "/enabled_addon_modules.txt";
+  if (is_readable($enabled_addon_modules_text_file)) {
+    $enabled_modules_str = file_get_contents($enabled_addon_modules_text_file);
+    $enabled_modules = preg_split("/;/", $enabled_modules_str);
+    foreach ($enabled_modules as $enabled_module) {
+      $auto_load_config = DIR_FS_CATALOG_ADDON_MODULES . $enabled_module . "/auto_loaders/config.php";
       if (is_readable($auto_load_config)) {
 	require_once($auto_load_config);
       }

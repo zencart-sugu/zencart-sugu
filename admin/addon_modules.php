@@ -43,7 +43,7 @@
         if ($module->status != 'true' && $module->_dependModules()) {
           $messageStack->add_session(sprintf(WARNING_DEPEND_MODULE_INACTIVE, $module->code), 'warning');
         }
-        zen_redirect(zen_href_link(FILENAME_ADDON_MODULES, ($_GET['module'] != '' ? 'module=' . $_GET['module'] : ''), 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_ADDON_MODULES, 'action=save_enabled_to_cache&' . ($_GET['module'] != '' ? 'module=' . $_GET['module'] : ''), 'NONSSL'));
         break;
       case 'install':
       /**
@@ -83,6 +83,10 @@
         } else {
           zen_redirect(zen_href_link(FILENAME_ADDON_MODULES, 'module=' . $class, 'NONSSL'));
         }
+        break;
+      case 'save_enabled_to_cache':
+        zen_addOnModules_save_enabled_modules_to_cache();
+        zen_redirect(zen_href_link(FILENAME_ADDON_MODULES, ($_GET['module'] != '' ? 'module=' . $_GET['module'] : '') . ($_GET['edit'] == 1 ? '&action=edit' : ''), 'NONSSL'));
         break;
     }
   }
@@ -241,6 +245,12 @@
     }
   }
   ksort($installed_modules);
+  $installed_modules_keys = array_keys($installed_modules);
+  sort($installed_modules_keys);
+  $installed_addon_modules = array();
+  foreach ($installed_modules_keys as $installed_modules_key) {
+    array_push($installed_addon_modules, $installed_modules[$installed_modules_key]);
+  } 
   $check = $db->Execute("select configuration_value
                          from " . TABLE_CONFIGURATION . "
                          where configuration_key = '" . $module_key . "'");
@@ -250,7 +260,7 @@
       $db->Execute("update " . TABLE_CONFIGURATION . "
                     set configuration_value = '" . implode(';', $installed_modules) . "', last_modified = now()
                     where configuration_key = '" . $module_key . "'");
-      zen_addOnModules_save_installed_modules_to_cache($installed_modules);
+      zen_addOnModules_save_enabled_modules_to_cache();
     }
   } else {
     $db->Execute("insert into " . TABLE_CONFIGURATION . "
@@ -258,7 +268,7 @@
                    configuration_description, configuration_group_id, sort_order, date_added)
                  values ('Installed Modules', '" . $module_key . "', '" . implode(';', $installed_modules) . "',
                          'This is automatically updated. No need to edit.', '6', '0', now())");
-    zen_addOnModules_save_installed_modules_to_cache($installed_modules);
+    zen_addOnModules_save_enabled_modules_to_cache();
   }
 ?>
               <tr>
