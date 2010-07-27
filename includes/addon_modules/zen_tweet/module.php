@@ -33,14 +33,6 @@
                   'set_function'              => 'zen_cfg_select_option(array(\'true\', \'false\'),'
                 ),
                 array(
-                  'configuration_title'       => MODULE_ZEN_TWEET_SHOWLIST_TITLE,
-                  'configuration_key'         => 'MODULE_ZEN_TWEET_SHOWLIST',
-                  'configuration_value'       => MODULE_ZEN_TWEET_SHOW_LIST_DEFAULT,
-                  'configuration_description' => MODULE_ZEN_TWEET_SHOWLIST_DESCRIPTION,
-                  'use_function'              => 'null',
-                  'set_function'              => 'zen_cfg_select_option(array(\'true\', \'false\'),'
-                ),
-                array(
                   'configuration_title'       => MODULE_ZEN_TWEET_SHOWNUM_TITLE,
                   'configuration_key'         => 'MODULE_ZEN_TWEET_SHOWNUM',
                   'configuration_value'       => MODULE_ZEN_TWEET_SHOWNUM_DEFAULT,
@@ -205,14 +197,18 @@
 				ins_table($feeds);
 			}
 
-			//テーブルの中身を取得
-			if(MODULE_ZEN_TWEET_SHOWLIST == "true") {
-				$return['tweet'] = get_zen_tweet();
-			}
+			$return['tweet'] = get_zen_tweet();
 
 			return $return;
 
+	    }
 
+	    function block_tweet_button() {
+
+			//つぶやくボタンを取得
+			$return['tweet_button'] = build_tweet_button();
+
+			return $return;
 	    }
 
 	    function block_tweet_button() {

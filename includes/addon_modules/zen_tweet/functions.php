@@ -33,7 +33,6 @@
 			//print "1時間経過";
 			$get_flag = true;
 		}else{
-			//print "まだとってきちゃだめよー";
 			$get_flag = false;
 		}
 
