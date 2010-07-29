@@ -29,7 +29,7 @@ class currenciesM17n extends currencies {
                          from " . TABLE_CURRENCIES . " c
                              , " . TABLE_CURRENCIES_M17N . " cm17n
                          where c.currencies_id = cm17n.currencies_id
-                         and cm17n.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+                         and cm17n.language_id = '" . (int)$this->_getLanguagesID() . "'";
 
     $currencies = $db->Execute($currencies_query);
 
@@ -48,6 +48,19 @@ class currenciesM17n extends currencies {
 
   function currencies() {
     $this->currenciesM17n();
+  }
+
+  function _getLanguagesID() {
+    if (!isset($_SESSION['language']) || isset($_GET['language'])) {
+      $loadFile = 'init_languages.php';
+      $baseDir = DIR_WS_INCLUDES . 'init_includes/';
+      if (file_exists(DIR_WS_INCLUDES . 'init_includes/overrides/' . $loadFile)) {
+        $baseDir = DIR_WS_INCLUDES . 'init_includes/overrides/';
+      }
+      include($baseDir . $loadFile);
+	}
+
+	return $_SESSION['languages_id'];
   }
 }
 ?>
