@@ -211,13 +211,5 @@
 			return $return;
 	    }
 
-	    function block_tweet_button() {
-
-			//つぶやくボタンを取得
-			$return['tweet_button'] = build_tweet_button();
-
-			return $return;
-	    }
-
 	}
 ?>
