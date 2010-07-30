@@ -93,13 +93,13 @@
           if (file_exists(DIR_FS_CATALOG.DIR_WS_CLASSES.'ZenCart/configuration_for_zen_mobile.csv')){
             $fp = fopen(DIR_FS_CATALOG.DIR_WS_CLASSES.'ZenCart/configuration_for_zen_mobile.csv','r');
             if($fp){
-              while (($data = fgetcsv($fp, 1000, ',')) !== FALSE) { 
+              while (($data = fgetcsv($fp, 1000, ',')) !== FALSE) {
                 if(!empty($data[0])){
                   $cfg = $db->Execute('SELECT * FROM '.TABLE_CONFIGURATION.' WHERE configuration_key="'.$data[0].'"');
-                  $check_cfg_ft = $db->Execute('SELECT configuration_key FROM '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.' 
+                  $check_cfg_ft = $db->Execute('SELECT configuration_key FROM '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.'
                                       WHERE configuration_key="'.$data[0].'" AND template_dir="'.MOBILE_TEMPLATE_DIR.'"');
                   if(empty($check_cfg_ft->fields['configuration_key'])){
-                    $insertquery = 'INSERT INTO '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.' 
+                    $insertquery = 'INSERT INTO '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.'
                                    (configuration_id,configuration_title,configuration_key,
                                    configuration_value,configuration_description,configuration_group_id,
                                    template_dir,sort_order,last_modified,date_added,use_function,set_function)
@@ -128,9 +128,9 @@
             $fp = fopen(DIR_FS_CATALOG.DIR_WS_CLASSES.'ZenCart/layout_boxes_for_zen_mobile.csv','r');
             if($fp){
               $db->Execute('delete from '.TABLE_LAYOUT_BOXES.' where layout_template="'.MOBILE_TEMPLATE_DIR.'"');
-              while (($data = fgetcsv($fp, 1000, ',')) !== FALSE) { 
+              while (($data = fgetcsv($fp, 1000, ',')) !== FALSE) {
                 if(!empty($data[0])){
-                $insertquery = 'INSERT INTO '.TABLE_LAYOUT_BOXES.' 
+                $insertquery = 'INSERT INTO '.TABLE_LAYOUT_BOXES.'
                       (layout_id,
                        layout_template,
                        layout_box_name,
@@ -139,7 +139,7 @@
                        layout_box_sort_order,
                        layout_box_sort_order_single,
                        layout_box_status_single,
-                       layout_page) 
+                       layout_page)
                  VALUES(null,
                        "'.MOBILE_TEMPLATE_DIR.'",
                        "'.zen_db_input($data[0]).'"'.
@@ -308,7 +308,7 @@
           }
 
 // create additional manufacturers_info records
-          $manufacturers = $db->Execute("select m.manufacturers_id, mi.manufacturers_url
+          $manufacturers = $db->Execute("select m.manufacturers_id, mi.manufacturers_url, mi.manufacturers_name
                                        from " . TABLE_MANUFACTURERS . " m
                            left join " . TABLE_MANUFACTURERS_INFO . " mi
                            on m.manufacturers_id = mi.manufacturers_id
@@ -316,10 +316,10 @@
 
           while (!$manufacturers->EOF) {
             $db->Execute("insert into " . TABLE_MANUFACTURERS_INFO . "
-                         (manufacturers_id, languages_id, manufacturers_name, manufacturers_url)
+                         (manufacturers_id, languages_id, manufacturers_url, manufacturers_name)
                           values ('" . $manufacturers->fields['manufacturers_id'] . "', '" . (int)$insert_id . "',
-                                  '" . zen_db_input($manufacturers->fields['manufacturers_name']) . "',
-                                  '" . zen_db_input($manufacturers->fields['manufacturers_url']) . "')");
+                                  '" . zen_db_input($manufacturers->fields['manufacturers_url']) . "',
+                                  '" . zen_db_input($manufacturers->fields['manufacturers_name']) . "')");
 
             $manufacturers->MoveNext();
           }
@@ -338,97 +338,6 @@
             $orders_status->MoveNext();
           }
 
-
-          $tax_class_m17n = $db->Execute("select tax_class_id, language_id, tax_class_title, tax_class_description
-                                         from " . TABLE_TAX_CLASS_M17N . "
-                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
-
-          while (!$tax_class_m17n->EOF) {
-            $db->Execute("insert into " . TABLE_TAX_CLASS_M17N . "
-                          (tax_class_id, language_id, tax_class_title, tax_class_description)
-                          values ('" . (int)$tax_class_m17n->fields['tax_class_id'] . "',
-                                  '" . (int)$insert_id . "',
-                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_title']) . "',
-                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_description']) . "')");
-            $tax_class_m17n->MoveNext();
-          }
-
-
-          $tax_rates_m17n = $db->Execute("select tax_rates_id, language_id, tax_description
-                                         from " . TABLE_TAX_RATES_M17N . "
-                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
-
-          while (!$tax_rates_m17n->EOF) {
-            $db->Execute("insert into " . TABLE_TAX_RATES_M17N . "
-                          (tax_rates_id, language_id, tax_description)
-                          values ('" . (int)$tax_rates_m17n->fields['tax_rates_id'] . "',
-                                  '" . (int)$insert_id . "',
-                                  '" . zen_db_input($tax_rates_m17n->fields['tax_description']) . "')");
-            $tax_rates_m17n->MoveNext();
-          }
-
-
-          $currencies_m17n = $db->Execute("select currencies_id, language_id, symbol_left, symbol_right
-                                         from " . TABLE_CURRENCIES_M17N . "
-                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
-
-          while (!$currencies_m17n->EOF) {
-            $db->Execute("insert into " . TABLE_CURRENCIES_M17N . "
-                          (currencies_id, language_id, symbol_left, symbol_right)
-                          values ('" . (int)$currencies_m17n->fields['currencies_id'] . "',
-                                  '" . (int)$insert_id . "',
-                                  '" . zen_db_input($currencies_m17n->fields['symbol_left']) . "',
-                                  '" . zen_db_input($currencies_m17n->fields['symbol_right']) . "')");
-            $currencies_m17n->MoveNext();
-          }
-
-
-          $group_pricing_m17n = $db->Execute("select group_id, language_id, group_name
-                                         from " . TABLE_GROUP_PRICING_M17N . "
-                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
-
-          while (!$group_pricing_m17n->EOF) {
-            $db->Execute("insert into " . TABLE_GROUP_PRICING_M17N . "
-                          (group_id, language_id, group_name)
-                          values ('" . (int)$group_pricing_m17n->fields['group_id'] . "',
-                                  '" . (int)$insert_id . "',
-                                  '" . zen_db_input($group_pricing_m17n->fields['group_name']) . "')");
-            $group_pricing_m17n->MoveNext();
-          }
-
-
-          $zones_m17n = $db->Execute("select zone_id, language_id, zone_name_m17n
-                                         from " . TABLE_ZONES_M17N . "
-                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
-
-          while (!$zones_m17n->EOF) {
-	    $db->Execute("insert into " . TABLE_ZONES_M17N . "
-                          (zone_id, language_id, zone_name_m17n)
-                          values ('" . (int)$zones_m17n->fields['zone_id'] . "',
-                                  '" . (int)$insert_id . "',
-                                  '" . zen_db_input($zones_m17n->fields['zone_name_m17n']) . "')");
-            $zones_m17n->MoveNext();
-          }
-
-
-	  if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-	    $email_templates_description = 
-	      $db->Execute("select email_templates_id, language_id, subject, contents
-                              from " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
-                             where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
-
-	    while (!$email_templates_description->EOF) {
-	      $db->Execute("insert into " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . "
-                            (email_templates_id, language_id, subject, contents)
-                            values ('" . (int)$email_templates_description->fields['email_templates_id'] . "',
-                                    '" . (int)$insert_id . "',
-                                    '" . zen_db_input($email_templates_description->fields['subject']) . "',
-                                    '" . zen_db_input($email_templates_description->fields['contents']) . "')");
-	      $email_templates_description->MoveNext();
-	    }
-	  }
-
-
           // create additional coupons_description records
           $coupons = $db->Execute("select c.coupon_id, cd.coupon_name, cd.coupon_description
                                     from " . TABLE_COUPONS . " c
@@ -444,6 +353,77 @@
                                    '" . zen_db_input($coupons->fields['coupon_name']) . "',
                                    '" . zen_db_input($coupons->fields['coupon_description']) . "')");
             $coupons->MoveNext();
+          }
+          // create additional zones_m17n records
+          $zones_m17n = $db->Execute("select zone_id, zone_name_m17n
+                                      from " . TABLE_ZONES_M17N . "
+                                      where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$zones_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_ZONES_M17N . "
+                         (zone_id, language_id, zone_name_m17n)
+                          values ('" . $zones_m17n->fields['zone_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($zones_m17n->fields['zone_name_m17n']) . "')");
+
+            $zones_m17n->MoveNext();
+          }
+
+          // create additional tax_class_m17n records
+          $tax_class_m17n = $db->Execute("select tax_class_id, tax_class_title, tax_class_description
+                                          from " . TABLE_TAX_CLASS_M17N . "
+                                          where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$tax_class_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_TAX_CLASS_M17N . "
+                         (tax_class_id, language_id, tax_class_title, tax_class_description)
+                          values ('" . $tax_class_m17n->fields['tax_class_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_title']) . "',
+                                  '" . zen_db_input($tax_class_m17n->fields['tax_class_description']) . "')");
+
+            $tax_class_m17n->MoveNext();
+          }
+
+          // create additional tax_rates_m17n records
+          $tax_rates_m17n = $db->Execute("select tax_rates_id, tax_description
+                                         from " . TABLE_TAX_RATES_M17N . "
+                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$tax_class_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_TAX_RATES_M17N . "
+                         (tax_rates_id, language_id, tax_description)
+                          values ('" . $tax_rates_m17n->fields['tax_rates_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($tax_rates_m17n->fields['tax_description']) . "')");
+
+            $tax_rates_m17n->MoveNext();
+          }
+
+          // create additional currencies_m17n records
+          $currencies_m17n = $db->Execute("select currencies_id, symbol_left, symbol_right
+                                         from " . TABLE_CURRENCIES_M17N . "
+                                         where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$currencies_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_CURRENCIES_M17N . "
+                         (currencies_id, language_id, symbol_left, symbol_right)
+                          values ('" . $currencies_m17n->fields['currencies_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($currencies_m17n->fields['symbol_left']) . "',
+                                  '" . zen_db_input($currencies_m17n->fields['symbol_right']) . "')");
+
+            $currencies_m17n->MoveNext();
+          }
+
+          // create additional group_pricing_m17n records
+          $group_pricing_m17n = $db->Execute("select group_id, group_name
+                                              from " . TABLE_GROUP_PRICING_M17N . "
+                                              where language_id = '" . (int)$org_language->fields['languages_id'] . "'");
+
+          while (!$group_pricing_m17n->EOF) {
+            $db->Execute("insert into " . TABLE_GROUP_PRICING_M17N . "
+                         (group_id, language_id, group_name)
+                          values ('" . $group_pricing_m17n->fields['group_id'] . "', '" . (int)$insert_id . "',
+                                  '" . zen_db_input($group_pricing_m17n->fields['group_name']) . "')");
+
+            $group_pricing_m17n->MoveNext();
           }
 /*
 	  // create carrier table
@@ -487,12 +467,12 @@
 	    if ($carrier_name->EOF) {
 	      $db->Execute("insert into " . TABLE_CARRIER . "
                             (carrier_code, carrier_name)
-                             values ('" . $carrier_name_code["carrier_code"] . "', 
+                             values ('" . $carrier_name_code["carrier_code"] . "',
                                      '" . $carrier_name_code["carrier_name"] . "')");
 	    }
 	  }
-*/	  
-	  // add layout_page column intolayout_boxes 
+*/
+	  // add layout_page column intolayout_boxes
 	  $layout_page_exists = false;
 	  $result = $db->Execute("show fields from " . TABLE_LAYOUT_BOXES);
 	  while (!$result->EOF) {
