@@ -125,10 +125,6 @@ KEY idx_access_date_zen (access_date),
 KEY idx_ip_zen (ip_address)
 ) ENGINE=MyISAM AUTO_INCREMENT=2445 DEFAULT CHARSET=ujis;
 
---
--- Dumping data for table admin_activity_log
---
-
 
 --
 -- Table structure for table authorizenet
@@ -207,11 +203,6 @@ banners_history_date datetime NOT NULL default '0001-01-01 00:00:00',
 PRIMARY KEY  (banners_history_id),
 KEY idx_banners_id_zen (banners_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table banners_history
---
-
 
 --
 -- Table structure for table blocks
@@ -471,818 +462,6 @@ KEY idx_cfg_grp_id_zen (configuration_group_id)
 -- Dumping data for table configuration
 --
 
-INSERT INTO configuration VALUES (1,'ショップ名','STORE_NAME','Zen商店','ショップ名を設定します。',1,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (2,'ショップオーナー名','STORE_OWNER','善太郎','ショップオーナー名(または運営管理者名)を設定します。',1,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (3,'国','STORE_COUNTRY','107','店舗が存在する国名を入力してください。<strong>注意：変更したら店舗のゾーンの更新を忘れずに行ってください。</strong>',1,6,NULL,'2009-11-19 12:39:39','zen_get_country_name','zen_cfg_pull_down_country_list(');
-INSERT INTO configuration VALUES (4,'地域','STORE_ZONE','194','ショップの所在地域(県名)を設定します。',1,7,NULL,'2009-11-19 12:39:39','zen_cfg_get_zone_name','zen_cfg_pull_down_zone_list(');
-INSERT INTO configuration VALUES (5,'入荷予定商品のソート順','EXPECTED_PRODUCTS_SORT','desc','入荷予定商品のソート順を設定します。<br /><br />\r\n・asc(昇順)<br />\r\n・desc(降順)',1,8,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'asc\', \'desc\'), ');
-INSERT INTO configuration VALUES (6,'入荷予定商品のソート順に用いるフィールド','EXPECTED_PRODUCTS_FIELD','date_expected','入荷予定商品のソート順に使用するフィールドを設定します。<BR>・products_name:品名<BR>・date_expected:予定日',1,9,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'products_name\', \'date_expected\'), ');
-INSERT INTO configuration VALUES (7,'表示言語と通貨の連動','USE_DEFAULT_LANGUAGE_CURRENCY','false','表示言語と通貨の変更を連動させるかどうか設定します。<br /><br />true(連動)<br />false(非連動)',1,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (8,'表示言語の選択','LANGUAGE_DEFAULT_SELECTOR','Default','ショップのデフォルトの表示言語はショップの初期設定またはユーザーのブラウザ設定のどちらに基づくかを設定します。<br /><br />デフォルト：ショップの初期設定',1,11,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'Default\', \'Browser\'), ');
-INSERT INTO configuration VALUES (9,'サーチエンジンフレンドリーなURL表記(開発中)','SEARCH_ENGINE_FRIENDLY_URLS','false','サーチエンジンに拾われやすい、静的HTMLのようなURL表記を行うかどうかを設定します。<br /><br />注意：Googleでは動的URLのクロールが強化されたため、あまり意味はないようです。',6,12,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (10,'商品の追加後にカートを表示','DISPLAY_CART','true','商品をカートに追加した直後にカートの内容を表示するか、または元ページにすぐ戻るかを設定します。<br /><br />\r\n・true (表示)<br />\r\n・false (非表示)',1,14,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (11,'デフォルトの検索演算子','ADVANCED_SEARCH_DEFAULT_OPERATOR','and','デフォルトの検索演算子を設定します。',1,17,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'and\', \'or\'), ');
-INSERT INTO configuration VALUES (12,'ショップの住所と電話番号','STORE_NAME_ADDRESS','Zen商店\r\n東京都中央区銀座1-1-1\r\n03-0000-0000','ショップ名、国名、住所、電話番号を設定します。',1,18,'2010-06-18 11:34:11','2009-11-19 12:39:39',NULL,'zen_cfg_textarea(');
-INSERT INTO configuration VALUES (13,'カテゴリ内の商品数を表示','SHOW_COUNTS','true','カテゴリ内の商品数を下位カテゴリも含めてカウント表示するかどうかを設定します。<br /><br />\r\n・true (する)<br />\r\n・false (しない)',1,19,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (14,'税額の小数点位置','TAX_DECIMAL_PLACES','0','税額の小数点以下の桁数を設定します。',1,20,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (15,'価格を税込みで表示','DISPLAY_PRICE_WITH_TAX','true','価格を税込みで表示するかどうかを設定します。<br /><br />\r\n・true = 価格を税込みで表示<br />\r\n・false = 税額をまとめて表示',1,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (16,'価格を税込みで表示 - 管理画面','DISPLAY_PRICE_WITH_TAX_ADMIN','true','管理画面で価格を税込みで表示するかどうかを設定します。<br /><br />\r\n・true = 価格を税込みで表示<br />\r\n・false = 最後に税額を表示',1,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (17,'商品にかかる税額の算定基準','STORE_PRODUCT_TAX_BASIS','Shipping','商品にかかる税額を算出する際の基準を設定します。<br /><br />\r\n・Shipping …顧客(商品送付先)の住所<br />\r\n・Billing …顧客の請求先の住所<br />\r\n・Store …ショップの所在地による(送付先・請求先ともショップの所在地域である場合に有効)\r\n',1,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'Shipping\', \'Billing\', \'Store\'), ');
-INSERT INTO configuration VALUES (18,'送料にかかる税額の算定基準','STORE_SHIPPING_TAX_BASIS','Shipping','送料にかかる税金を算出する際の基準を設定します。<br /><br />\r\n・Shipping …顧客(商品送付先)の住所<br />\r\n・Billing …顧客の請求先の住所<br />\r\n・Store …ショップの所在地による(送付先・請求先ともショップの所在地域である場合に有効)<br />\r\n注意：この設定は配送モジュールによってオーバーライド(上書き設定)が可能です。',1,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'Shipping\', \'Billing\', \'Store\'), ');
-INSERT INTO configuration VALUES (19,'税金の表示','STORE_TAX_DISPLAY_STATUS','0','合計額が0円でも税金を表示しますか?<br />0= Off<br />1= On',1,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (20,'管理画面のタイムアウト設定(秒数)','SESSION_TIMEOUT_ADMIN','3600','管理画面がタイムアウトするまでの秒数を設定します。デフォルトは3600秒＝1時間です。<br />あまり短めに設定すると商品登録中などにタイムアウトしてしまいますので注意。<br />900秒未満を設定すると900秒に自動的に設定されます。',1,40,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (21,'管理画面のプログラム処理の上限時間設定(秒)\r\n','GLOBAL_SET_TIME_LIMIT','60','管理画面においてなんらかの操作を行った場合の、プログラム処理の強制終了時間を設定します。デフォルトは60秒＝1分。この設定は、プログラム処理時間に問題がある場合などにだけ変更してください。\r\n',1,42,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (22,'Zen Cart新バージョンの自動チェック(ヘッダで告知するか否か)','SHOW_VERSION_UPDATE_IN_HEADER','true','Zen Cartの新バージョンがリリースされた場合、ヘッダに情報を表示しますか?<br /><br />\r\n注意：この設定をオンにすると、管理者ページの表示が遅くなる場合があります。インターネットに繋がっていないテスト環境などではfalseにしてください。\r\n',1,44,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (23,'ショップのステータス','STORE_STATUS','0','ショップの状態を設定します。<br /><br />\r\n・0＝通常のショップ<br />\r\n・1＝価格表示なしのデモショップ<br />\r\n・2＝価格表示付きのデモショップ\r\n',1,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (24,'サーバの稼動時間(アップタイム)','DISPLAY_SERVER_UPTIME','true','サーバの稼働時間を表示するかどうかを設定します。この情報はいくつかのサーバでエラーログとして残ることがあります。<br /><br />true＝表示<br /><br />false＝非表示',1,46,'2003-11-08 20:24:47','0001-01-01 00:00:00','','zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (25,'リンク切れページのチェック','MISSING_PAGE_CHECK','On','Zen Cartがリンク切れページを検知した際に自動的にトップページに転送しますか?<br /><br />\r\n・On = オン<br />\r\n・Off = オフ<br />\r\n・Page Not Found = ページが見つかりません画面へ遷移する<br />\r\n<br />\r\n注意：デバックの際などにはこの機能をオフにするとよいでしょう。',1,48,'2003-11-08 20:24:47','0001-01-01 00:00:00','','zen_cfg_select_option(array(\'On\', \'Off\', \'Page Not Found\'),');
-INSERT INTO configuration VALUES (26,'HTMLエディタ','HTML_EDITOR_PREFERENCE','NONE','メールマガジンや商品説明などで用いるHTML/リッチテキスト用のソフトウェアを設定します。',1,110,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'HTMLAREA\', \'NONE\'),');
-INSERT INTO configuration VALUES (27,'phpBBへのリンクを表示','PHPBB_LINKS_ENABLED','false','Zen Cart上に(インストール済みの)phpBBのフォーラムへのリンクを表示するかどうかを設定します。\r\n',1,120,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (28,'カテゴリ内の商品数を表示 - 管理画面','SHOW_COUNTS_ADMIN','true','カテゴリ内の商品数を下位カテゴリも含めてカウント表示しますか?<br /><br />\r\n・true (する)<br />\r\n・false (しない)',1,130,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (29,'名前の最小文字数','ENTRY_FIRST_NAME_MIN_LENGTH','1','名前の文字数の最小値を設定します。',2,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (30,'姓の最小文字数','ENTRY_LAST_NAME_MIN_LENGTH','1','姓の文字数の最小値を設定します。',2,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (31,'生年月日の最小文字数','ENTRY_DOB_MIN_LENGTH','10','生年月日の文字数の最小値を設定します。',2,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (32,'メールアドレスの最小文字数','ENTRY_EMAIL_ADDRESS_MIN_LENGTH','6','メールアドレスの文字数の最小値を設定します。',2,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (33,'住所の最小文字数','ENTRY_STREET_ADDRESS_MIN_LENGTH','1','番地・マンション・アパート名の最小文字数を設定します。',2,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (34,'会社名の最小文字数','ENTRY_COMPANY_MIN_LENGTH','2','会社名の文字数の最小値を設定します。',2,6,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (35,'郵便番号の最小文字数','ENTRY_POSTCODE_MIN_LENGTH','4','郵便番号の文字数の最小値を設定します。',2,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (36,'市区町村の最小文字数','ENTRY_CITY_MIN_LENGTH','2','市区町村の文字数の最小値を設定します。',2,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (37,'都道府県名の最小文字数','ENTRY_STATE_MIN_LENGTH','2','都道府県の文字数の最小値を設定します。',2,9,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (38,'電話番号の最小文字数','ENTRY_TELEPHONE_MIN_LENGTH','3','電話番号の文字数の最小値を設定します。',2,10,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (39,'パスワードの最小文字数','ENTRY_PASSWORD_MIN_LENGTH','5','パスワードの文字数の最小値を設定します。',2,11,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (40,'クレジットカード名義の最小文字数','CC_OWNER_MIN_LENGTH','3','クレジットカード所有者名の文字数の最小値を設定します。',2,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (41,'クレジットカード番号の最小文字数','CC_NUMBER_MIN_LENGTH','10','クレジットカード番号の文字数の最小値を設定します。',2,13,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (42,'クレジットカードCVV番号の最小文字数','CC_CVV_MIN_LENGTH','3','クレジットカードCVV番号の文字数の最小値を設定します。',2,13,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (43,'レビューの文章の最小文字数','REVIEW_TEXT_MIN_LENGTH','50','レビューの文章の文字数の最小値を設定します。',2,14,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (44,'ベストセラーの最小表示件数','MIN_DISPLAY_BESTSELLERS','1','ベストセラーとして表示する商品の最小値を設定します。',2,15,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (45,'「こんな商品も購入しています」の最小表示数','MIN_DISPLAY_ALSO_PURCHASED','1','「この商品を購入した人はこんな商品も購入しています」で表示する商品数の最小値を設定します。',2,16,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (46,'ニックネームの最小文字数','ENTRY_NICK_MIN_LENGTH','3','ニックネームの文字数の最小値を設定します。',2,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (47,'アドレス帳の最大登録数','MAX_ADDRESS_BOOK_ENTRIES','5','顧客が登録できるアドレス帳の登録数の最大値を設定します。',3,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (48,'管理画面 - 1ページに表示する検索結果の最大数','MAX_DISPLAY_SEARCH_RESULTS','20','管理画面の1ページに表示する検索結果の数の最大値を設定します。',3,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (49,'ページ・リンク数の最大表示数','MAX_DISPLAY_PAGE_LINKS','5','商品リストや購入履歴の一覧表示でページの下などに表示されるページ数・リンク数の最大値を設定します。',3,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (50,'特価商品の最大表示数','MAX_DISPLAY_SPECIAL_PRODUCTS','9','特価商品として表示する商品数の最大値を設定します。',3,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (51,'今月の新着商品の最大表示数','MAX_DISPLAY_NEW_PRODUCTS','9','今月の新着商品数の最大値を設定します。',3,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (52,'入荷予定商品の最大表示数','MAX_DISPLAY_UPCOMING_PRODUCTS','10','入荷予定商品として表示する商品数の最大値を設定します。',3,6,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (53,'メーカーリスト - スクロールボックスのサイズ/スタイル','MAX_MANUFACTURERS_LIST','3','スクロールボックスに表示されるメーカー数は ?<br />1か0に設定するとドロップダウンリストになります。',3,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (54,'メーカーリスト - 商品の存在を確認','PRODUCTS_MANUFACTURERS_STATUS','1','各メーカーについて、1点以上の商品があり、かつ閲覧可能であるかどうかを確認しますか?<br /><br />注意：この機能がONの場合、商品数やメーカーの数が多いと表示が遅くなります。<br />0= off 1= on',3,7,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (55,'音楽ジャンルリスト - スクロールボックスのサイズ/スタイル','MAX_MUSIC_GENRES_LIST','3','スクロールボックスに表示される音楽ジャンルリストの数を設定します。1か0に設定すると、ドロップダウンリストになります。\r\n',3,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (56,'レコード会社リスト - スクロールボックスのサイズ/スタイル','MAX_RECORD_COMPANY_LIST','3','スクロールボックスに表示されるレコード会社リストの数です。1か0に設定すると、ドロップダウンリストになります。\r\n',3,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (57,'レコード会社名表示の長さ','MAX_DISPLAY_RECORD_COMPANY_NAME_LEN','15','レコード会社名ボックスで表示される名前の長さを設定します。設定より長い名前は省略表示されます。\r\n',3,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (58,'音楽ジャンル名の文字数の長さ','MAX_DISPLAY_MUSIC_GENRES_NAME_LEN','15','音楽ジャンルボックスで表示される名前の長さを設定します。設定より長い名前は省略表示されます。\r\n',3,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (59,'メーカー名の長さ','MAX_DISPLAY_MANUFACTURER_NAME_LEN','15','メーカーリストで表示されるメーカー名の文字数の最大値を設定します。',3,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (60,'新しいレビューの表示数最大値','MAX_DISPLAY_NEW_REVIEWS','6','新しいレビューとして表示される数の最大値を設定します。',3,9,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (61,'レビューのランダム表示数','MAX_RANDOM_SELECT_REVIEWS','10','ランダムに表示するレビュー数の最大値を設定します。<br /><br />注意：この設定値をXとすると、ランダム表示の対象になるのは、もっとも古いアクティブなレビューから数えてX番目に登録されたアクティブなレビューまでになります。',3,10,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (62,'新着商品のランダム表示数','MAX_RANDOM_SELECT_NEW','10','ランダムに表示する新着商品数の最大値を設定します。<br /><br />注意：この設定値をXとすると、ランダム表示の対象になるのは、もっとも古いアクティブな新着商品から数えてX番目に登録されたアクティブな新着商品までになります。',3,11,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (63,'特価商品のランダム表示数','MAX_RANDOM_SELECT_SPECIALS','10','ランダムに表示する特価商品数の最大値を設定します。<br /><br />注意：この設定値をXとすると、ランダム表示の対象になるのは、もっとも古いアクティブな特価商品から数えてX番目に登録されたアクティブな特価商品までになります。',3,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (64,'一行に表示するカテゴリ数','MAX_DISPLAY_CATEGORIES_PER_ROW','3','一行に表示するカテゴリ数を設定します。',3,13,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (65,'新着商品一覧表示数','MAX_DISPLAY_PRODUCTS_NEW','10','新着商品ページ１ページに表示する商品数の最大値を設定します。',3,14,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (66,'ベストセラーの最大表示件数','MAX_DISPLAY_BESTSELLERS','10','ベストセラーページ１ページに表示するベストセラー商品数の最大値を設定します。',3,15,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (67,'「こんな商品も買っています」の最大表示件数','MAX_DISPLAY_ALSO_PURCHASED','6','「こんな商品も買っています」欄に表示する商品数の最大値を設定します。',3,16,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (68,'顧客の注文履歴ボックスの最大表示数','MAX_DISPLAY_PRODUCTS_IN_ORDER_HISTORY_BOX','6','顧客の注文履歴ボックスに表示する商品数の最大値を設定します。',3,17,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (69,'注文履歴ページの最大表示件数','MAX_DISPLAY_ORDER_HISTORY','10','顧客の注文履歴ページ１ページに表示する商品数の最大値を設定します。',3,18,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (70,'顧客管理ページで表示する顧客数の最大値','MAX_DISPLAY_SEARCH_RESULTS_CUSTOMER','20','',3,19,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (71,'注文管理ページで表示する注文数の最大値','MAX_DISPLAY_SEARCH_RESULTS_ORDERS','20','',3,20,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (72,'レポートページで表示する商品数の最大値','MAX_DISPLAY_SEARCH_RESULTS_REPORTS','20','',3,21,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (73,'カテゴリ/商品ページで表示するリスト数','MAX_DISPLAY_RESULTS_CATEGORIES','10','１ページに表示する商品数の最大値を設定します。',3,22,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (74,'商品リスト - ページあたり最大表示数','MAX_DISPLAY_PRODUCTS_LISTING','10','トップページの商品リスト表示での最大表示数を設定します。',3,30,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (75,'商品オプション - オプション名とオプション値の表示','MAX_ROW_LISTS_OPTIONS','10','商品オプションページで表示するオプション名/オプション値の最大値を設定します。',3,24,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (76,'商品オプション - オプション管理画面','MAX_ROW_LISTS_ATTRIBUTES_CONTROLLER','30','オプション管理画面で表示するオプション数の最大値を設定します。',3,25,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (77,'商品属性- ダウンロード管理ページの表示','MAX_DISPLAY_SEARCH_RESULTS_DOWNLOADS_MANAGER','30','ダウンロード管理画面で、ダウンロード商品の属性の最大表示数を設定します。',3,26,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (78,'おすすめ商品 - 管理画面でのページあたり表示最大数','MAX_DISPLAY_SEARCH_RESULTS_FEATURED_ADMIN','10','管理画面において、ページあたりのおすすめ商品を最大表示件数を設定します。',3,27,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (79,'おすすめ商品 - トップページでの最大表示数','MAX_DISPLAY_SEARCH_RESULTS_FEATURED','9','トップページでおすすめ商品を最大何点表示するかを設定します。',3,28,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (80,'おすすめ商品 - 商品リストでの最大表示数','MAX_DISPLAY_PRODUCTS_FEATURED_PRODUCTS','10','商品リストでおすすめ商品をページあたり最大何点表示するかを設定します。',3,29,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (81,'おすすめ商品のランダム表示ボックス - 最大表示数','MAX_RANDOM_SELECT_FEATURED_PRODUCTS','10','おすすめ商品のランダム表示ボックスにおいて、最大何点表示するかを設定します。',3,30,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (82,'特価商品 - トップページでの最大表示点数','MAX_DISPLAY_SPECIAL_PRODUCTS_INDEX','9','トップページで、特価商品を最大何点表示するかを設定します。',3,31,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (83,'新着商品 - 表示期限','SHOW_NEW_PRODUCTS_LIMIT','0','新着商品の表示期限を設定します。<br />\r\n<br />\r\n・0=全て・降順<br />\r\n・1=当月登録分のみ<br />\r\n・30=登録から30日間<br />\r\n・60=登録から60日間(ほか90、120の設定が可能)',3,40,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'7\', \'14\', \'30\', \'60\', \'90\', \'120\'), ');
-INSERT INTO configuration VALUES (84,'商品一覧ページ - ページあたり表示点数','MAX_DISPLAY_PRODUCTS_ALL','10','商品一覧において、ページあたりの最大表示点数を設定します。',3,45,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (85,'言語サイドボックス -　フラッグ最大表示数','MAX_LANGUAGE_FLAGS_COLUMNS','3','言語サイドボックスにおいて、列あたりのフラッグの最大表示点数を設定します。',3,50,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (86,'ファイルのアップロードサイズ - 上限','MAX_FILE_UPLOAD_SIZE','2048000','ファイルアップロードの際の上限サイズを設定します。デフォルトは2MB(2,048,000バイト)です。',3,60,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (87,'アップロードファイルに許可するファイルタイプ','UPLOAD_FILENAME_EXTENSIONS','jpg,jpeg,gif,png,eps,cdr,ai,pdf,tif,tiff,bmp,zip','ユーザーがアップロードするファイルに対して許可するファイルタイプの拡張子を設定します。複数の場合はカンマ(,)で区切り、コロン(.)は含めないでください。<br /><br />設定例: \"jpg,jpeg,gif,png,eps,cdr,ai,pdf,tif,tiff,bmp,zip\"',3,61,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea(');
-INSERT INTO configuration VALUES (88,'管理画面の注文リストで表示する注文詳細の最大件数','MAX_DISPLAY_RESULTS_ORDERS_DETAILS_LISTING','0','管理画面の注文リストでの注文詳細の最大表示件数は?<br />0 = 無制限',3,65,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (89,'管理画面のリストで表示するPayPal IPNの最大件数','MAX_DISPLAY_SEARCH_RESULTS_PAYPAL_IPN','20','管理画面のリストでのPayPal IPNの表示件数は?<br />デフォルトは20です。',3,66,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (90,'マルチカテゴリマネージャで商品を表示するカラムの最大数','MAX_DISPLAY_PRODUCTS_TO_CATEGORIES_COLUMNS','3','マルチカテゴリマネージャ(Multiple Categories Manager)で商品を表示するカラムの最大数は?<br />3 = デフォルト',3,70,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (91,'EZページの表示の最大件数','MAX_DISPLAY_SEARCH_RESULTS_EZPAGE','20','EZページの表示の最大件数は?<br />20 = デフォルト',3,71,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (92,'商品画像(小)の横幅','SMALL_IMAGE_WIDTH','100','小さな画像の横幅(ピクセル)を設定します。',4,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (93,'商品画像(小)の高さ','SMALL_IMAGE_HEIGHT','80','小さな画像の高さ(ピクセル)を設定します。',4,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (94,'ヘッダ画像の横幅 - 管理画面','HEADING_IMAGE_WIDTH','57','管理画面でのヘッダ画像の横幅を設定します。',4,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (95,'ヘッダ画像の高さ - 管理画面','HEADING_IMAGE_HEIGHT','40','管理画面でのヘッダ画像の高さを設定します。',4,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (96,'サブカテゴリ画像の横幅','SUBCATEGORY_IMAGE_WIDTH','100','サブカテゴリ画像の横幅をピクセル数で設定します。',4,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (97,'サブカテゴリ画像の高さ','SUBCATEGORY_IMAGE_HEIGHT','57','サブカテゴリ画像の高さをピクセル数で設定します。',4,6,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (98,'画像サイズを計算','CONFIG_CALCULATE_IMAGE_SIZE','true','画像サイズを自動的に計算するかどうかを設定します。',4,7,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (99,'画像を必須とする','IMAGE_REQUIRED','true','画像がないことを表示します。(カタログの作成時に有効)',4,8,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (100,'ショッピングカートの中身 - 商品画像の表示オン・オフ','IMAGE_SHOPPING_CART_STATUS','1','ショッピングカートの中身に入っている商品の画像を表示するかどうかを設定します。<br /><br />\r\n・0= off<br />\r\n・1= on',4,9,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (101,'ショッピングカートの中身の画像の横幅','IMAGE_SHOPPING_CART_WIDTH','50','デフォルト = 50',4,10,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (102,'ショッピングカートの中身の画像の高さ','IMAGE_SHOPPING_CART_HEIGHT','40','デフォルト = 40',4,11,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (103,'商品情報 - カテゴリアイコン画像の横幅','CATEGORY_ICON_IMAGE_WIDTH','57','商品情報ページでのカテゴリアイコンの横幅(ピクセル数)は?',4,13,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (104,'商品情報 - カテゴリアイコン画像の高さ','CATEGORY_ICON_IMAGE_HEIGHT','40','商品情報ページでのカテゴリアイコンの高さ(ピクセル数)は?',4,14,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (105,'商品情報 - 画像の横幅','MEDIUM_IMAGE_WIDTH','150','商品画像の横幅を設定します。',4,20,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (106,'商品情報 - 画像の高さ','MEDIUM_IMAGE_HEIGHT','120','商品画像の高さを設定します。',4,21,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (107,'商品情報 - 画像(中)のファイル接尾辞(Suffix)','IMAGE_SUFFIX_MEDIUM','_MED','商品画像のファイル接尾辞を設定します。<br /><br />・デフォルト = _MED',4,22,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (108,'商品情報 - 画像(大)のファイル接尾辞(Suffix)','IMAGE_SUFFIX_LARGE','_LRG','商品画像のファイル接尾辞を設定します。<br /><br />\r\n・デフォルト = _LRG',4,23,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (109,'商品情報 - １行に表示する追加画像数','IMAGES_AUTO_ADDED','3','商品情報で１行に表示する追加画像数を設定します。<br /><br />\r\n・デフォルト = 3',4,30,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (110,'商品リスト - 画像の横幅','IMAGE_PRODUCT_LISTING_WIDTH','100','デフォルト = 100',4,40,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (111,'商品リスト - 画像の高さ','IMAGE_PRODUCT_LISTING_HEIGHT','80','デフォルト = 80',4,41,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (112,'新商品リスト - 画像の横幅','IMAGE_PRODUCT_NEW_LISTING_WIDTH','100','デフォルト = 100',4,42,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (113,'新商品リスト - 画像の高さ','IMAGE_PRODUCT_NEW_LISTING_HEIGHT','80','デフォルト = 80',4,43,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (114,'新商品 - 画像の横幅','IMAGE_PRODUCT_NEW_WIDTH','100','デフォルト = 100',4,44,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (115,'新商品 - 画像の高さ','IMAGE_PRODUCT_NEW_HEIGHT','80','デフォルト = 80',4,45,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (116,'おすすめ商品 -画像の幅','IMAGE_FEATURED_PRODUCTS_LISTING_WIDTH','100','デフォルト = 100',4,46,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (117,'おすすめ商品 - 画像の高さ','IMAGE_FEATURED_PRODUCTS_LISTING_HEIGHT','80','デフォルト = 80',4,47,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (118,'全商品一覧 - 画像の幅','IMAGE_PRODUCT_ALL_LISTING_WIDTH','100','デフォルト = 100',4,48,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (119,'全商品一覧 - 画像の高さ','IMAGE_PRODUCT_ALL_LISTING_HEIGHT','80','デフォルト = 80',4,49,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (120,'商品画像 - 画像がない場合のNo Image画像','PRODUCTS_IMAGE_NO_IMAGE_STATUS','1','「No Image」画像を自動的に表示するかどうかを設定します。<br /><br />\r\n・0= off<br />\r\n・1= On<br />',4,60,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (121,'商品画像 - No Image画像の指定','PRODUCTS_IMAGE_NO_IMAGE','no_picture.gif','商品画像がない場合に表示するNo Image画像を設定します。<br /><br />Default = no_picture.gif',4,61,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (122,'商品画像 - 商品・カテゴリでプロポーショナルな画像を使う','PROPORTIONAL_IMAGES_STATUS','1','商品情報・カテゴリでプロポーショナルな画像を使いますか?<br /><br />注意：プロポーショナル画像には高さ・横幅とも\"0\"(ピクセル)を指定しないでください。<br />0= off 1= on',4,75,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (123,'(メール用)敬称表示(Mr. or Ms)','ACCOUNT_GENDER','true','顧客のアカウント作成の際、メール用の敬称(Mr. or Ms) を表示するかどうかを設定します。',5,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (124,'生年月日','ACCOUNT_DOB','true','顧客のアカウント作成の際、「生年月日」の欄を表示するかどうかを設定します。<br />注意: 不要な場合はfalseに、必要な場合はtrueを指定してください。',5,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (125,'会社名','ACCOUNT_COMPANY','true','顧客のアカウント作成の際、「会社名」を表示するかどうかを設定します。',5,3,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (126,'住所2','ACCOUNT_SUBURB','false','顧客のアカウント作成の際、「住所2」を表示するかどうかを設定します。',5,4,'2010-06-16 16:55:31','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (127,'都道府県名','ACCOUNT_STATE','true','顧客のアカウント作成の際、「都道府県名」を表示するかどうかを設定します。',5,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (128,'都道府県名 - ドロップダウンで表示','ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN','false','「都道府県名」は常にドロップダウン形式で表示しますか?',5,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (129,'アカウントのデフォルト国別IDの作成','SHOW_CREATE_ACCOUNT_DEFAULT_COUNTRY','107','アカウントのデフォルト国別IDを設定します。<br />デフォルトは223です。',5,6,NULL,'2009-11-19 12:39:39','zen_get_country_name','zen_cfg_pull_down_country_list_none(');
-INSERT INTO configuration VALUES (130,'Fax番号','ACCOUNT_FAX_NUMBER','true','顧客のアカウント作成の際、「Fax番号」を表示するかどうかを設定します。',5,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (131,'メールマガジンのチェックボックスの表示','ACCOUNT_NEWSLETTER_STATUS','1','メールマガジンのチェックボックスの表示設定をします。<br />0= 表示オフ<br />1= ボックス表示・チェックなし状態<br />2= ボックス表示・チェックあり状態<br />【注意】デフォルトで「チェックあり」の状態にしておくと、各国のスパム規制法規に抵触する恐れがあります。',5,45,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (132,'デフォルトのメール形式の設定','ACCOUNT_EMAIL_PREFERENCE','0','顧客のデフォルトのメール形式を設定します。<br />0= テキスト形式<br />1= HTML形式',5,46,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (133,'顧客への商品の通知 - ステータス','CUSTOMERS_PRODUCTS_NOTIFICATION_STATUS','1','顧客がチェックアウト後に、商品の通知(product notifications)について尋ねるかどうかを設定します。<br /><br />\r\n・0= 尋ねない<br />\r\n・1= 尋ねる(サイト全体に対して設定されていない場合)<br />\r\n【注意】サイドボックスはこの設定とは別にオフにする必要があります。',5,50,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (134,'商品・価格の閲覧制限','CUSTOMERS_APPROVAL','0','顧客がショップ内で商品や価格を閲覧するのを制限するかどうかを設定します。<br />0= 要ログインなどの制限なし<br />1= ブラウスにはログインが必須<br />2= ログインなしでブラウズ可能だが価格は非表示<br />3= 商品閲覧のみ<br /><br />【注意】オプション「2」は、サーチエンジンのロボットに収集されたくない場合や、ログイン済みの顧客にのみ価格を開示したい場合に有効です。',5,55,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (135,'顧客の購入オーソライズ','CUSTOMERS_APPROVAL_AUTHORIZATION','0','ショップでの購入に際して、顧客はショップ側に審査・許可される必要があるかどうかを設定します。<br />0= 不要<br />1= 商品の閲覧にも許可が必要<br />2= 商品の閲覧は自由だが価格の閲覧は許可された顧客のみ<br />【注意】オプション「2」はサーチエンジンのロボット除けに用いることもできます。',5,65,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (136,'顧客のオーソライズ(閲覧制限) - ファイル名','CUSTOMERS_AUTHORIZATION_FILENAME','customers_authorization','顧客のオーソライズ(閲覧制限)に使うファイル名を設定します。拡張子なしで表記してください。<br />デフォルトは\r\n\"customers_authorization\"',5,66,NULL,'2009-11-19 12:39:39',NULL,'');
-INSERT INTO configuration VALUES (137,'顧客のオーソライズ(閲覧制限) - ヘッダを隠す','CUSTOMERS_AUTHORIZATION_HEADER_OFF','false','顧客のオーソライズ(閲覧制限) でヘッダを表示するかどうかを設定します。<br /><br />\r\n・true=hide<br />\r\n・false=show',5,67,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (138,'顧客のオーソライズ(閲覧制限) - 左カラムを隠す','CUSTOMERS_AUTHORIZATION_COLUMN_LEFT_OFF','false','顧客のオーソライズ(閲覧制限) で、左カラムを表示するかどうかを設定します。<br /><br />\r\n・true=hide<br />\r\n・false=show',5,68,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (139,'顧客のオーソライズ(閲覧制限) - 右カラムを隠す','CUSTOMERS_AUTHORIZATION_COLUMN_RIGHT_OFF','false','顧客のオーソライズ(閲覧制限)で、右カラムを表示するかどうかを設定します。<br /><br />\r\n・true=hide<br />\r\n・false=show',5,69,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (140,'顧客のオーソライズ(閲覧制限) - フッタを隠す','CUSTOMERS_AUTHORIZATION_FOOTER_OFF','false','顧客のオーソライズ(閲覧制限) で、フッタを表示するかどうかを設定します。<br /><br />\r\n・true=hide<br />\r\n・false=show',5,70,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (141,'顧客のオーソライズ(閲覧制限) - 価格の非表示','CUSTOMERS_AUTHORIZATION_PRICES_OFF','false','顧客のオーソライズで、価格を表示するかどうかを設定します。<br /><br />\r\n・true=hide<br />\r\n・false=show',5,71,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (142,'顧客の紹介(Customers Referral)ステータス','CUSTOMERS_REFERRAL_STATUS','0','顧客の紹介コードについて設定します。<br />0= Off<br />1= 1st Discount Coupon Code used最初のディスカウントクーポンを使用済み<br />2= アカウント作成の際、顧客自身が追加・編集可能<br /><br />注意：顧客の紹介コードがセットされると、管理画面からだけ変更することができます。',5,80,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (143,'インストール済みの支払いモジュール','MODULE_PAYMENT_INSTALLED','cc.php;cod.php;moneyorder.php;purchaseorder.php','インストールされている支払いモジュールのファイル名のリスト( セミコロン(;)区切り )です。この情報は自動的に更新されますので編集の必要はありません。',6,0,'2010-06-04 14:41:51','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (144,'インストール済み注文合計モジュール','MODULE_ORDER_TOTAL_INSTALLED','ot_subtotal.php;ot_shipping.php;ot_coupon.php;ot_group_pricing.php;ot_tax.php;ot_gv.php;ot_cod_fee.php;ot_total.php','インストールされている注文合計モジュールのファイル名のリスト(セミコロン(;)区切り)です。\r\n<br /><br />\r\n【注意】この情報は自動的に更新されますので編集の必要はありません。',6,0,'2010-06-27 04:42:19','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (145,'インストール済み配送モジュール','MODULE_SHIPPING_INSTALLED','flat.php;freeshipper.php;yamato.php','インストールされている配送モジュールのファイル名のリスト(セミコロン(;)区切り)です。この情報は自動的に更新されますので編集の必要はありません。',6,0,'2010-06-04 14:29:45','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (146,'代金引換モジュールを有効にする','MODULE_PAYMENT_COD_STATUS','True','代金引換モジュールを有効にするかどうかを設定します。',6,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (147,'支払い地域','MODULE_PAYMENT_COD_ZONE','0','地域を選択した場合、選択された地域に対してのみ支払い方法が適用されます。',6,2,NULL,'2009-11-19 12:39:39','zen_get_zone_class_title','zen_cfg_pull_down_zone_classes(');
-INSERT INTO configuration VALUES (148,'表示の整列順','MODULE_PAYMENT_COD_SORT_ORDER','0','表示の整列順を設定します。数字が小さいほど上位に表示されます。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (149,'注文ステータスの設定','MODULE_PAYMENT_COD_ORDER_STATUS_ID','0','この支払い方法の場合の注文ステータスを設定します。',6,0,NULL,'2009-11-19 12:39:39','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (150,'クレジットカードモジュールを有効にする','MODULE_PAYMENT_CC_STATUS','True','クレジットカードによる支払いを有効にするかどうかを設定します。',6,0,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (151,'クレジットカード番号を分割する','MODULE_PAYMENT_CC_EMAIL','','メールアドレスが入力された場合、クレジットカードの中間の数字をそのアドレスに送信し、残りの外側の番号をデータベースに保存します。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (152,'CVV番号を保存する','MODULE_PAYMENT_CC_COLLECT_CVV','false','CVV番号を収集/保存しますか? 注意：有効にすると、CVV番号はエンコードされた状態でデータベースに保存されます。',6,0,NULL,'2004-01-11 22:55:51',NULL,'zen_cfg_select_option(array(\'True\', \'False\'),');
-INSERT INTO configuration VALUES (153,'クレジットカードナンバーを収集・保存する','MODULE_PAYMENT_CC_STORE_NUMBER','False','クレジットカード番号を収集・保存するかどうかを設定します。<br /><br />\r\n【注意】クレジットカード番号は暗号化なしに保存されます。セキュリティ上の問題に十分注意してください。',6,0,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'),');
-INSERT INTO configuration VALUES (154,'表示の整列順','MODULE_PAYMENT_CC_SORT_ORDER','0','表示の整列順を設定します. 数字が小さいほど上位に表示されます。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (155,'支払い地域','MODULE_PAYMENT_CC_ZONE','0','地域を選択した場合、選択された地域にたいしてのみ支払い方法が適用されます。',6,2,NULL,'2009-11-19 12:39:39','zen_get_zone_class_title','zen_cfg_pull_down_zone_classes(');
-INSERT INTO configuration VALUES (156,'注文ステータス','MODULE_PAYMENT_CC_ORDER_STATUS_ID','0','この支払い方法の場合の注文ステータスを設定します。',6,0,NULL,'2009-11-19 12:39:39','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (157,'定額料金','MODULE_SHIPPING_FLAT_STATUS','True','定額料金による配送を提供するかどうかを設定します。',6,0,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (158,'配送料金','MODULE_SHIPPING_FLAT_COST','5.00','すべての注文に対して適用される配送料金を設定します。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (159,'税種別','MODULE_SHIPPING_FLAT_TAX_CLASS','0','定額料金に適用される税種別を選択します。',6,0,NULL,'2009-11-19 12:39:39','zen_get_tax_class_title','zen_cfg_pull_down_tax_classes(');
-INSERT INTO configuration VALUES (160,'税率の計算ベース','MODULE_SHIPPING_FLAT_TAX_BASIS','Shipping','配送料にかかる税金オプションの設定します。<br /><br />\r\n・Shipping - 顧客の送付先住所に基づく<br />\r\n・Billing - 顧客の請求先住所に基づく<br />\r\n・Store - ショップの所在住所に基づく(送付先/請求先がショップ所在地と同じ地域の場合に有効)',6,0,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'Shipping\', \'Billing\', \'Store\'), ');
-INSERT INTO configuration VALUES (161,'配送地域','MODULE_SHIPPING_FLAT_ZONE','0','配送地域を選択すると選択された地域のみで利用可能になります。',6,0,NULL,'2009-11-19 12:39:39','zen_get_zone_class_title','zen_cfg_pull_down_zone_classes(');
-INSERT INTO configuration VALUES (162,'表示の整列順','MODULE_SHIPPING_FLAT_SORT_ORDER','0','表示の整列順を設定できます。数字が小さいほど上位に表示されます。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (163,'デフォルトの通貨','DEFAULT_CURRENCY','JPY','デフォルトの通貨を設定します。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (164,'デフォルトの言語','DEFAULT_LANGUAGE','ja','デフォルトの言語を設定します。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (165,'新規注文のデフォルトステータス','DEFAULT_ORDERS_STATUS_ID','1','新規の注文を受け付けたときのデフォルトステータスを設定します。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (166,'管理画面で設定キー(configuration_key)を表示','ADMIN_CONFIGURATION_KEY_ON','0','管理画面で設定キー(configuration_key)を表示しますか?<br />\r\n表示したい場合は1に設定してください。',6,0,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (167,'出荷国名','SHIPPING_ORIGIN_COUNTRY','107','配送料の計算に利用するための国名を選択します。',7,1,NULL,'2009-11-19 12:39:39','zen_get_country_name','zen_cfg_pull_down_country_list(');
-INSERT INTO configuration VALUES (168,'ショップの郵便番号','SHIPPING_ORIGIN_ZIP','100-0000','ショップの郵便番号を入力します。',7,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (169,'一回の配送で配送可能な最大重量(kg)','SHIPPING_MAX_WEIGHT','50','一回の配送で可能な重量(kg)の最大値を設定します。例えば10kgに設定した状態でカートに30kgの商品があった場合、10kg × 3回の配送という形で処理されます。',7,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (170,'小・中パッケージの風袋 - 比率・重量','SHIPPING_BOX_WEIGHT','0:3','典型的な小・中パッケージの風袋(ふうたい：大きさと重量)を設定します。<br />\r\n例：10% + 1lb 10:1<br />\r\n10% + 0lbs 10:0<br />\r\n0% + 5lbs 0:5<br />\r\n0% + 0lbs 0:0',7,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (171,'大型パッケージの風袋 - 大きさ・重量','SHIPPING_BOX_PADDING','10:0','大きなパッケージの風袋風袋(ふうたい：大きさと重量)を設定します。<br />\r\n例：10% + 1lb 10:1<br />\r\n10% + 0lbs 10:0<br />\r\n0% + 5lbs 0:5<br />\r\n0% + 0lbs 0:0',7,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (172,'個数と重量の表示','SHIPPING_BOX_WEIGHT_DISPLAY','3','配送する荷物の個数と重量を表示するかどうかを設定します。<br /><br />\r\n・0= off<br />\r\n・1= 個数のみ表示<br />\r\n・2= 重量のみ表示<br />\r\n・3= 両方表示',7,15,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (173,'送料概算表示の表示・非表示','SHOW_SHIPPING_ESTIMATOR_BUTTON','1','送料概算ボタンの表示するかどうかを設定します。<br />\r\n・0= Off<br />\r\n・1= ショッピングカート上にボタンとして表示',7,20,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (174,'注文の重量が0なら送料無料に','ORDER_WEIGHT_ZERO_STATUS','1','注文の重量が0の場合、送料無料にしますか?\r\n<br />\r\n・0= いいえ<br />\r\n・1= はい<br />\r\n注意：「送料無料」表記をしたい場合には送料無料モジュールを使うことをお勧めします。このオプションは実際に送料無料のときに表示されるだけです。',7,15,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (175,'商品イメージの表示','PRODUCT_LIST_IMAGE','1','商品一覧中の商品画像の表示・非表示/ソート順を設定します。<br /><br />\r\n・数値が小さいほど先に表示<br />\r\n・0 = 非表示',8,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (176,'商品メーカーの表示','PRODUCT_LIST_MANUFACTURER','0','商品のメーカー名を表示するかどうかを設定します。<br /><br />\r\n・数値が小さいほど先に表示<br />\r\n・0 = 非表示',8,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (177,'商品型番の表示','PRODUCT_LIST_MODEL','0','商品一覧中の商品型番の表示・非表示/ソート順を設定します。数値が小さいほど先に表示されます。(0 = 非表示)',8,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (178,'商品名','PRODUCT_LIST_NAME','2','商品一覧中の商品名の表示・非表示/ソート順を設定します。<br /><br />\r\n・数値が小さいほど先に表示<br />\r\n・0 = 非表示',8,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (179,'商品価格・「カートに入れる」を表示','PRODUCT_LIST_PRICE','3','商品価格・「カートに入れる」ボタンを表示するかどうかを設定します。<br />\r\n<br />\r\n・数値が小さいほど先に表示<br />\r\n・0 = 非表示',8,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (180,'商品数量の表示','PRODUCT_LIST_QUANTITY','0','商品一覧中の商品数量の表示・非表示/ソート順を設定します。<br /><br />\r\n・数値が小さいほど先に表示<br />\r\n・0 = 非表示',8,6,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (181,'商品重量の表示','PRODUCT_LIST_WEIGHT','0','商品一覧中の商品重量の表示・非表示/ソート順を設定します。数値が小さいほど先に表示されます。(0 = 非表示)',8,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (182,'商品価格・「カートに入れる」カラムの幅','PRODUCTS_LIST_PRICE_WIDTH','125','商品価格・「カートに入れる」ボタンを表示するカラムの幅(ピクセル数)を設定します。<br />\r\n・Default= 125',8,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (183,'カテゴリ/メーカーの絞り込みの表示','PRODUCT_LIST_FILTER','1','カテゴリ一覧ページで [絞り込み] を表示するかどうかを設定します。<br />\r\n・0=非表示<br />\r\n・1=表示',8,9,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (184,'[前ページ] [次ページ] の表示位置','PREV_NEXT_BAR_LOCATION','3','[前ページ] [次ページ] の表示位置を設定します。<br /><br />\r\n・1 = 上<br />\r\n・2 = 下<br />\r\n・3 = 両方',8,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (185,'商品リストのデフォルトソート順','PRODUCT_LISTING_DEFAULT_SORT_ORDER','','商品リストのデフォルトのソート順を設定します。\r\n<br />\r\n注意：商品でソートする場合は空欄に。\r\nSort the Product Listing in the order you wish for the default display to start in to get the sort order setting. Example: 2a',8,15,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (186,'「カートに入れる」ボタンの表示','PRODUCT_LIST_PRICE_BUY_NOW','1','「カートに入れる」ボタンを表示するかどうかを設定します。<br /><br />\r\n・0= off<br />\r\n・1= on',8,20,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (187,'複数商品の数量欄の有無・表示位置','PRODUCT_LISTING_MULTIPLE_ADD_TO_CART','3','複数商品をカートに入れる数量欄の表示するかどうかと、表示位置を設定します。<br />0= off<br />1= 上部<br />2= 下部<br />3= 両方',8,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (188,'商品説明の表示','PRODUCT_LIST_DESCRIPTION','150','商品説明を表示するかどうかを設定します。<br /><br />0= OFF<br />150= 推奨する長さ。または自由に表示する商品説明の最大文字数を設定してください。',8,30,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (189,'商品リストの昇順を表示する記号','PRODUCT_LIST_SORT_ORDER_ASCENDING','+','商品リストの昇順を示す記号は?<br />デフォルト = +',8,40,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (190,'商品リストの降順を表示する記号','PRODUCT_LIST_SORT_ORDER_DESCENDING','-','商品リストの降順を示す記号は?<br />デフォルト = -',8,41,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (191,'在庫水準のチェック','STOCK_CHECK','true','十分な在庫があるかチェックするかどうかを設定します。',9,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (192,'在庫数からマイナス','STOCK_LIMITED','true','受注時点で各在庫数から注文数をマイナスしますか?',9,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (193,'チェックアウトを許可','STOCK_ALLOW_CHECKOUT','true','在庫が不足している場合にチェックアウトを許可しますか?',9,3,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (194,'在庫切れ商品のサイン','STOCK_MARK_PRODUCT_OUT_OF_STOCK','在庫切れです','注文時点で商品が在庫切れの場合に顧客へ表示するサインを設定します。',9,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (195,'在庫の再注文水準','STOCK_REORDER_LEVEL','5','在庫の再注文が必要になる商品数を設定します。',9,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (196,'在庫切れ商品のステータス変更','SHOW_PRODUCTS_SOLD_OUT','0','商品の在庫がない場合のステータス表示を設定します。<br /><br />0= 商品ステータスをOFFに<br />1= 商品ステータスはONのまま',9,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (197,'在庫切れ商品に「売り切れ」画像表示','SHOW_PRODUCTS_SOLD_OUT_IMAGE','1','在庫がなくなった商品の場合に「カートへ入れる」ボタンの代わりに「売り切れ」画像を表示しますか?<br /><br />\r\n・0= 表示しない<br />\r\n・1= 表示する',9,11,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (198,'商品数量に指定できる小数点の桁数','QUANTITY_DECIMALS','0','商品の数量に小数点の利用を許可する桁数を設定します。<br /><br />\r\n・0= off',9,15,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (199,'ショッピングカート - 「削除」チェックボックス/ボタン','SHOW_SHOPPING_CART_DELETE','3','「削除」チェックボックス/ボタンの表示について設定します。<br /><br />1= ボタンのみ<br />2= チェックボックスのみ<br />3= ボタン/チェックボックス両方',9,20,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (200,'ショッピングカート -「カートの中身を更新」ボタンの位置','SHOW_SHOPPING_CART_UPDATE','3','「カートの中身を更新」ボタンの位置を設定します。<br /><br />1=「注文数」欄の横<br />2= 商品リストの下<br />3=「注文数」欄の横と商品リストの下<br /><br />注意：この設定は3つの\"tpl_shopping_cart_default\"ファイルが呼ばれる部分を設定します。',9,22,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (201,'ページのパースに要した時間をログに記録するかどうかを設定します。','STORE_PAGE_PARSE_TIME','false','ページのパースに要した時間をログに記録するかどうかを設定します。',10,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (202,'ページのパースログを保存するディレクトリとファイル名を設定します。','STORE_PAGE_PARSE_TIME_LOG','/var/log/www/zen/page_parse_time.log','ページのパースログを保存するディレクトリとファイル名を設定します。',10,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (203,'ログに記録する日付形式を設定します。','STORE_PARSE_DATE_TIME_FORMAT','%d/%m/%Y %H:%M:%S','ログに記録する日付形式を設定します。',10,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (204,'各ページの下にパース時間を表示するかどうかを設定します。<br />「ページのパース時間を記録」を true にしておく必要はありません。','DISPLAY_PAGE_PARSE_TIME','false','各ページの下にパース時間を表示するかどうかを設定します。<br />「ページのパース時間を記録」を true にしておく必要はありません。',10,4,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (205,'ログにデータベースクエリーを記録しておくかどうか設定します。(PHP4の場合のみ)','STORE_DB_TRANSACTIONS','false','ログにデータベースクエリーを記録しておくかどうか設定します。(PHP4の場合のみ)',10,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (206,'メール送信 - 接続方法','EMAIL_TRANSPORT','sendmail','メール送信にsendmailへのローカル接続を使用するかTCP/IP経由のSMTP接続を使用するかを設定します。サーバのOSがWindowsやMacOSの場合はSMTPに設定してください。<br /><br />SMTPAUTHは、サーバーがメール送信の際にSMTP authorizationを求める場合にのみ使ってください。その場合、管理画面でSMTPAUTH設定を行う必要があります。<br /><br />\"Sendmail -f\"は、-fパラメータが必要なサーバ向けの設定で、スプーフィングを防ぐために用いられることが多いセキュリティ上の設定です。メールサーバーのホスト側で使用可能な設定になっていない場合、エラーになることがあります。',12,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'sendmail\', \'sendmail-f\', \'smtp\', \'smtpauth\'),');
-INSERT INTO configuration VALUES (207,'SMTP認証 - メールアカウント','EMAIL_SMTPAUTH_MAILBOX','YourEmailAccountNameHere','あなたのホスティングサービスが提供しているメールアカウント(例：me@mydomain.com)を入力してください。これはSMTP認証に必要な情報です。<br />メールにSMTP認証を使っている場合にのみ必要です。',12,101,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (208,'SMTP認証 - パスワード','EMAIL_SMTPAUTH_PASSWORD','YourPasswordHere','SMTPメールボックスのパスワードを入力してください。<br />メールにSMTP認証を使っている場合にのみ必要です。',12,101,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (209,'SMTP認証 - DNS名','EMAIL_SMTPAUTH_MAIL_SERVER','mail.EnterYourDomain.com','SMTPメールサーバのDNS名を入力してください。<br />例：mail.mydomain.com or 55.66.77.88<br />メールにSMTP認証を使っている場合にのみ必要です。',12,101,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (210,'SMTP認証 - IPポート番号','EMAIL_SMTPAUTH_MAIL_SERVER_PORT','25','SMTPメールサーバが運用されているIPポート番号を入力してください。<br />メールにSMTP認証を使っている場合にのみ必要です。',12,101,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (211,'テキストメールでの貨幣の変換','CURRENCIES_TRANSLATIONS','&amp;pound;,£:&amp;euro;,EUR','テキスト形式のメールに、どんな貨幣の変換が必要ですか?<br />Default = &amp;pound;,£:&amp;euro;,EUR',12,120,NULL,'2003-11-21 00:00:00',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (212,'メールの改行コード','EMAIL_LINEFEED','LF','メールヘッダを区切るのに使用する改行コードを指定します。',12,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'LF\', \'CRLF\'),');
-INSERT INTO configuration VALUES (213,'メール送信にMIME HTMLを使用','EMAIL_USE_HTML','false','メールをHTML形式で送信するかどうかを設定します。',12,3,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (214,'メールアドレスをDNSで確認','ENTRY_EMAIL_ADDRESS_CHECK','false','メールアドレスをDNSサーバに問い合わせ確認するかどうかを設定します。',12,4,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (215,'メールを送信','SEND_EMAILS','true','E-Mailを外部に送信するかどうかを設定します。',12,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (216,'メール保存の設定','EMAIL_ARCHIVE','false','送信済みのメールを保存しておく場合はtrueを設定してください。',12,6,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (217,'メール送信エラーの表示','EMAIL_FRIENDLY_ERRORS','false','メール送信が失敗した際、人目でわかるエラーを表示しますか? 運営中のショップではtrueに設定することを勧めます。falseに設定するとPHPのエラーメッセージを表示されるので、トラブル解決のヒントになります。',12,7,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (218,'メールアドレス (ショップに表示する問い合わせ先)','STORE_OWNER_EMAIL_ADDRESS','hachiya@ark-web.jp','ショップオーナーのメールアドレスとしてサイト上で表示されるアドレスを設定します。',12,10,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (219,'メールアドレス (顧客への送信元)','EMAIL_FROM','hachiya@ark-web.jp','顧客に送信されるメールのデフォルトの送信元として表示されるアドレスを設定します。<br />\r\n管理画面でメールを作成をする都度、書き換えることもできます。',12,11,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (220,'送信メールの送信元アドレスの実在性','EMAIL_SEND_MUST_BE_STORE','No','お使いのメールサーバでは、送信するメールの送信元(From)アドレスがWebサーバ上に実在することが必須ですか?<br /><br />spam送信を防止するなどのためにこのように設定されていることがあります。Yesに設定すると、送信元アドレスとメール内のFromアドレスが一致していることが求められます。',12,11,NULL,'0001-01-01 00:00:00',NULL,'zen_cfg_select_option(array(\'No\', \'Yes\'), ');
-INSERT INTO configuration VALUES (221,'管理者が送信するメールフォーマット','ADMIN_EXTRA_EMAIL_FORMAT','TEXT','管理者が送付するメールフォーマットを設定します。<br /><br />\r\n・TEXT =テキスト形式<br />\r\n・HTML =HTML形式',12,12,NULL,'0001-01-01 00:00:00',NULL,'zen_cfg_select_option(array(\'TEXT\', \'HTML\'), ');
-INSERT INTO configuration VALUES (222,'注文確認メール(コピー)送信先','SEND_EXTRA_ORDER_EMAILS_TO','hachiya@ark-web.jp','顧客に送信される注文確認メールのコピーを送付するメールアドレスを設定します。<br />記入例: 名前1 &lt;email@address1&gt;, 名前2 &lt;email@address2&gt;',12,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (223,'アカウント作成完了メール(コピー)の送信','SEND_EXTRA_CREATE_ACCOUNT_EMAILS_TO_STATUS','0','アカウント作成完了メールのコピーを指定のメールアドレスに送信しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',12,13,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (224,'アカウント作成完了メール(コピー)の送信先','SEND_EXTRA_CREATE_ACCOUNT_EMAILS_TO','hachiya@ark-web.jp','アカウント作成完了メールのコピーを送信するメールアドレスを設定します。<br /><br />\r\n記入例： 名前1 &lt;email@address1&gt;, 名前2 &lt;email@address2&gt;',12,14,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (225,'「友達に知らせる」メール(コピー)の送信','SEND_EXTRA_TELL_A_FRIEND_EMAILS_TO_STATUS','0','「友達に知らせる」メールのコピーを送信しますか?<br />0= off 1= on',12,15,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (226,'「友達に知らせる」メール(コピー)の送信先','SEND_EXTRA_TELL_A_FRIEND_EMAILS_TO','hachiya@ark-web.jp','「友達に知らせる」メールのコピーを送信するメールアドレスを設定します。記入例: 名前1 &lt;email@address1&gt;, 名前2 &lt;email@address2&gt;',12,16,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (227,'ギフト券送付メール(コピー)の送信','SEND_EXTRA_GV_CUSTOMER_EMAILS_TO_STATUS','0','顧客が送付するギフト券送付メールのコピーを送信しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',12,17,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (228,'ギフト券送付メール(コピー)の送信先','SEND_EXTRA_GV_CUSTOMER_EMAILS_TO','hachiya@ark-web.jp','顧客が送付するギフト券送付メールのコピーを送信するメールアドレスを設定します。<br /><br />記入例： 名前1 &lt;email@address1&gt;, 名前2&lt;email@address2&gt;',12,18,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (229,'ショップ運営者からのギフト券送付メール(コピー)の送信','SEND_EXTRA_GV_ADMIN_EMAILS_TO_STATUS','0','ショップ運営者からのギフト券送付メールのコピーを送信しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',12,19,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (230,'ショップ運営者からのギフト券送付メール(コピー)の送信先','SEND_EXTRA_GV_ADMIN_EMAILS_TO','hachiya@ark-web.jp','ショップ運営者からのギフト券送付メールのコピーを送信するメールアドレスを設定します。<br /><br />\r\n記入例：名前1 &lt;email@address1&gt;, 名前2 &lt;email@address2&gt;',12,20,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (231,'ショップ運営者からのクーポン券送付メール(コピー)の送信','SEND_EXTRA_DISCOUNT_COUPON_ADMIN_EMAILS_TO_STATUS','0','ショップ運営者からのクーポン券送付メールのコピーを送信しますか?<br />0= off 1= on',12,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (232,'ショップ運営者からのクーポン券送付メール(コピー)の送信先','SEND_EXTRA_DISCOUNT_COUPON_ADMIN_EMAILS_TO','hachiya@ark-web.jp','ショップ運営者からのクーポン券送付メールのコピーを送信するメールアドレスを設定します。<br /><br />\r\n記入例： 名前1 &lt;email@address1&gt;, 名前2 &lt;email@address2&gt;',12,22,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (233,'ショップ運営者の注文ステータスメール(コピー)の送信','SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_STATUS','0','ショップ運営者の注文ステータスメールのコピーを送信しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',12,23,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (234,'ショップ運営者の注文ステータスメール(コピー)の送信先','SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO','hachiya@ark-web.jp','ショップ運営者の注文ステータスメールのコピーを送信するメールアドレスを設定します。<br /><br />\r\n記入例： 名前1 &lt;email@address1&gt;, 名前2 &lt;email@address2&gt;',12,24,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (235,'掲載待ちレビューについてメール送信','SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO_STATUS','0','掲載待ちのレビューについてメールを送信しますか?<br />0= off 1= on',12,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (236,'掲載待ちレビューについてのメール送信先','SEND_EXTRA_REVIEW_NOTIFICATION_EMAILS_TO','hachiya@ark-web.jp','掲載待ちのレビューについてのメールを送信するアドレスを設定します。<br />フォーマット：Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,26,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (237,'「お問い合わせ」メールのドロップダウン設定','CONTACT_US_LIST','','「お問い合わせ」ページで、メールアドレスのリストを設定し、ドロップダウンリストとして表示できます。<br />\r\nフォーマット：Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,40,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea(');
-INSERT INTO configuration VALUES (238,'ゲストに「友達に知らせる」機能を許可','ALLOW_GUEST_TO_TELL_A_FRIEND','false','ゲスト(未登録ユーザ)に「友達に知らせる」機能を許可するかどうかを設定します。 <br />[false]に設定すると、この機能を利用しようとした際にログインを促します。',12,50,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (239,'「お問い合わせ」にショップ名と住所を表記','CONTACT_US_STORE_NAME_ADDRESS','1','「お問い合わせ」画面にショップ名と住所を表記するかどうかを設定します。<br /><br />\r\n・0= off<br />\r\n・1= on',12,50,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (240,'在庫わずかになったらメール送信','SEND_LOWSTOCK_EMAIL','0','商品の在庫が水準を下回った際にメールを送信するかどうかを設定します。<br />\r\n・0= off<br />\r\n・1= on',12,60,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (241,'在庫わずかになった際のメール送信先','SEND_EXTRA_LOW_STOCK_EMAILS_TO','hachiya@ark-web.jp','商品の在庫が水準を下回った際にメールを送信するアドレスを設定します。複数設定することができます。<br />\r\nフォーマット：Name 1 &lt;email@address1&gt;, Name 2 &lt;email@address2&gt;',12,61,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (242,'「メールマガジンの購読解除」リンクの表示','SHOW_NEWSLETTER_UNSUBSCRIBE_LINK','true','「メールマガジンの購読解除」リンクをインフォメーションサイドボックスに表示しますか?',12,70,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (243,'オンラインユーザー数の表示設定','AUDIENCE_SELECT_DISPLAY_COUNTS','true','オンラインのユーザ(audiences/recipients)を表示する際、recipientsを含めますか?<br /><br />\r\n【注意】この設定をtrueにすると、沢山の顧客がいる場合などに表示が遅くなる場合があります。',12,90,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (244,'ダウンロードを有効にする','DOWNLOAD_ENABLED','true','商品のダウンロード機能を設定します。',13,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (245,'リダイレクトでダウンロード画面へ','DOWNLOAD_BY_REDIRECT','true','ダウンロードの際にブラウザによるリダイレクト(転送)を可能にするかどうかを設定します。<br />\r\nUNIX系でないサーバではオフにしてください。\r\n<br />注意：この設定をオンにしたら、/pub ディレクトリのパーミッションを777にしてください。',13,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (246,'ストリーミングによるダウンロード','DOWNLOAD_IN_CHUNKS','false','「リダイレクトでダウンロード」がオフで、かつPHP memory_limit設定が8MB以下の場合、この設定をオンにしてください。ストリーミングで、より小さな単位でのファイル転送を行うためです。<br /><br />「リダイレクトでダウンロード」がオンの場合、効果はありません。',13,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (247,'ダウンロードの有効期限(日数)','DOWNLOAD_MAX_DAYS','7','ダウンロードリンクの有効期間の日数を設定します。<br /><br />\r\n・0 = 無期限',13,3,NULL,'2009-11-19 12:39:39',NULL,'');
-INSERT INTO configuration VALUES (248,'ダウンロード可能回数(商品ごと)','DOWNLOAD_MAX_COUNT','5','ダウンロードできる回数の最大値を設定します。<br /><br />\r\n・0 = ダウンロード不可',13,4,NULL,'2009-11-19 12:39:39',NULL,'');
-INSERT INTO configuration VALUES (249,'ダウンロード設定 - 注文状況による更新','DOWNLOADS_ORDERS_STATUS_UPDATED_VALUE','4','orders_statusによるダウンロードの有効期限・可能回数のリセットについて設定します。<br />デフォルト = 4',13,10,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (250,'ダウンロード可能となる注文ステータスのID - デフォルト >= 2','DOWNLOADS_CONTROLLER_ORDERS_STATUS','2','ダウンロード可能となる注文ステータスのID - デフォルト >= 2<br /><br />注文ステータスのIDがこの値より高い注文はダウンロード可能になります。購入完了時の注文ステータスは支払いモジュールに毎に設定されます。',13,12,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (251,'ダウンロード終了となる注文ステータスのID','DOWNLOADS_CONTROLLER_ORDERS_STATUS_END','4','ダウンロード終了となる注文ステータスのID - デフォルト >= 4<br /><br />注文ステータスがこの値より高い注文はダウンロードが終了となります。',13,13,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (252,'Price Factor属性を可能にする','ATTRIBUTES_ENABLED_PRICE_FACTOR','true','Price Factor属性を可能にするかどうかを設定します。',13,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (253,'Qty Price Discount属性のオン/オフ','ATTRIBUTES_ENABLED_QTY_PRICES','true','「大量購入による値引き」属性のオン/オフを設定します。',13,26,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (254,'イメージ属性のオン/オフ','ATTRIBUTES_ENABLED_IMAGES','true','イメージ属性のオン/オフを設定します。',13,28,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (255,'(言葉・文字による)テキストによる価格設定のオン/オフ','ATTRIBUTES_ENABLED_TEXT_PRICES','true','テキストによる価格設定の属性のオン/オフを設定します。',13,35,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (256,'テキストによる価格設定 - 空欄の場合は無料','TEXT_SPACES_FREE','1','テキストによる価格設定の場合、空欄のままなら無料にするかどうかを設定します。<br /><br />\r\n・0= off<br />\r\n・1= on',13,36,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (257,'Read Only属性の商品 -「カートに入れる」ボタンの表示','PRODUCTS_OPTIONS_TYPE_READONLY_IGNORED','1','READONLY属性だけが設定された商品に「カートに入れる」ボタンを表示しますか?<br />0= OFF<br />1= ON',13,37,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (258,'GZip圧縮を使用する','GZIP_LEVEL','0','HTTP通信にGZip圧縮を使用してページを転送しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',14,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (259,'セッション情報保存ディレクトリ','SESSION_WRITE_DIRECTORY','/var/www/projects/z/zen-cart/htdocs/hachiya/zencart-sugu/cache','セッション管理がファイルベースの場合に保存するディレクトリを設定します。',15,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (260,'クッキーに保存するドメイン名の設定','SESSION_USE_FQDN','True','クッキーに保存するドメイン名について設定します。<br /><br />\r\n\r\n・True = ドメインネーム全体をクッキーに保存(例：www.mydomain.com)<br />\r\n・False = ドメインネームの一部を保存(例：mydomain.com)。<br />\r\nよくわからない場合はこの設定はTrueにしておいてください。',15,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (261,'クッキー利用を必須にする','SESSION_FORCE_COOKIE_USE','True','セッションに必ずクッキーを利用します。True指定するとブラウザのクッキーがオフになっている場合はセッションを開始しません。セキュリティ上の理由から余程の理由のない限りはTrue指定のままとすることを強く推奨します。',15,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (262,'SSLセッションIDチェック','SESSION_CHECK_SSL_SESSION_ID','False','全てのHTTPSリクエストでSSLセッションIDをチェックしますか?',15,3,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (263,'User Agentチェック','SESSION_CHECK_USER_AGENT','False','全てのリクエスト時にUser Agentのチェックを行いますか?',15,4,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (264,'IPアドレスチェック','SESSION_CHECK_IP_ADDRESS','False','全てのリクエスト時にIPアドレスをチェックしますか?',15,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (265,'ロボット(スパイダー)のセッションを防止','SESSION_BLOCK_SPIDERS','True','既知のロボット(スパイダー)がセッションを開始することを防止しますか?',15,6,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (266,'セッション再発行','SESSION_RECREATE','True','ユーザーがログオンまたはアカウントを作成した場合にセッションを再発行しますか?<br />(PHP4.1以上が必要)',15,7,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (267,'IPアドレス変換の設定','SESSION_IP_TO_HOST_ADDRESS','true','IPアドレスをホストアドレスに変換しますか?<br /><br />注意：サーバによっては、この設定でメール送信のスタート・終了が遅くなることがあります。',15,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (268,'ギフト/クーポン券コードの長さ','SECURITY_CODE_LENGTH','10','ギフト/クーポン券コードの長さを設定します。<br /><br />\r\n注意：コードが長いほど安全です。',16,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (269,'差引残高0の場合の注文ステータス','DEFAULT_ZERO_BALANCE_ORDERS_STATUS_ID','2','注文の差引残高が0の場合に適用される注文ステータスを設定します。',16,0,NULL,'2009-11-19 12:39:39','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (270,'ウェルカムクーポン券','NEW_SIGNUP_DISCOUNT_COUPON','','会員登録時にその会員にウェルカムクーポン券として自動発行するクーポン券を選択してください。',16,75,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_coupon_id(');
-INSERT INTO configuration VALUES (271,'新しいギフト券の登録額','NEW_SIGNUP_GIFT_VOUCHER_AMOUNT','','新しいギフト券の登録額を設定します。<br /><br />\r\n・空白 = なし<br />\r\n・1000 = 1000円',16,76,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (272,'クーポン券のページあたり最大表示件数','MAX_DISPLAY_SEARCH_RESULTS_DISCOUNT_COUPONS','20','クーポン券の1ページあたりの表示件数を設定します。',16,81,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (273,'クーポン券レポートのページあたり最大表示件数','MAX_DISPLAY_SEARCH_RESULTS_DISCOUNT_COUPONS_REPORTS','20','クーポン券のレポートページでの表示件数を設定します。',16,81,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (274,'ギフト券残高の最大値数','MAX_GIFT_AMOUNT','100000','ギフト券残高の最大値を設定します。ギフト券引き換え結果がこの値を超える場合は引き換え処理ができません。値は100000以下を指定してください。',16,82,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (275,'クレジットカード利用の可否 - VISA','CC_ENABLED_VISA','1','VISAを有効にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on',17,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (276,'クレジットカード利用の可否 - MasterCard','CC_ENABLED_MC','1','MasterCardを有効にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on',17,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (277,'クレジットカード利用の可否 - AmericanExpress','CC_ENABLED_AMEX','0','AmericanExpressを有効にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on',17,3,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (278,'クレジットカード利用の可否 - Diners Club','CC_ENABLED_DINERS_CLUB','0','Diners Clubを有効にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on',17,4,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (279,'クレジットカード利用の可否 - Discover Card','CC_ENABLED_DISCOVER','0','Discover Cardを有効にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on',17,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (280,'クレジットカード利用の可否 - JCB','CC_ENABLED_JCB','0','JCBを有効にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on',17,6,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (281,'クレジットカード利用の可否 - AUSTRALIAN BANKCARD','CC_ENABLED_AUSTRALIAN_BANKCARD','0','AUSTRALIAN BANKCARDを有効にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on',17,7,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (282,'利用可能なクレジットカード - 支払いページに表示','SHOW_ACCEPTED_CREDIT_CARDS','0','利用可能なクレジットカードを支払いページに表示しますか?<br /><br />\r\n・0= off<br />\r\n・1= テキストを表示<br />\r\n・2= 画像を表示<br />\r\n【注意】クレジットカードの画像とテキストは、データベースとランゲージファイル内で定義されている必要があります。',17,50,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (283,'ギフト券の表示','MODULE_ORDER_TOTAL_GV_STATUS','true','',6,1,NULL,'2003-10-30 22:16:40',NULL,'zen_cfg_select_option(array(\'true\'),');
-INSERT INTO configuration VALUES (284,'表示の整列順','MODULE_ORDER_TOTAL_GV_SORT_ORDER','840','表示の整列順を設定します。<br />数字が小さいほど上位に表示されます。',6,2,NULL,'2003-10-30 22:16:40',NULL,NULL);
-INSERT INTO configuration VALUES (285,'購入を承認待ちに','MODULE_ORDER_TOTAL_GV_QUEUE','true','ギフト券購入を承認待ちリストに追加しますか?',6,3,NULL,'2003-10-30 22:16:40',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (286,'送料を含める','MODULE_ORDER_TOTAL_GV_INC_SHIPPING','true','合計計算に送料を含めますか?',6,5,NULL,'2003-10-30 22:16:40',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (287,'税金を含める','MODULE_ORDER_TOTAL_GV_INC_TAX','true','計算時に税金を含めるかどうかを設定します。',6,6,NULL,'2003-10-30 22:16:40',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (288,'税金を再計算','MODULE_ORDER_TOTAL_GV_CALC_TAX','None','税金を再計算しますか?',6,7,NULL,'2003-10-30 22:16:40',NULL,'zen_cfg_select_option(array(\'None\', \'Standard\', \'Credit Note\'),');
-INSERT INTO configuration VALUES (289,'税種別','MODULE_ORDER_TOTAL_GV_TAX_CLASS','0','ギフト券に適用される税種別を設定します。',6,0,NULL,'2003-10-30 22:16:40','zen_get_tax_class_title','zen_cfg_pull_down_tax_classes(');
-INSERT INTO configuration VALUES (290,'税金を付加する','MODULE_ORDER_TOTAL_GV_CREDIT_TAX','false','ギフト券を計算する際に税金を付加しますか?',6,8,NULL,'2003-10-30 22:16:40',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (1524,'テキストメールでの貨幣の変換','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_211','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1525,'配送モジュール','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_MODULES_OT_SHIPPING','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1526,'小計モジュール','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_MODULES_OT_SUBTOTAL','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1532,'小数点','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SUPER_ORDERS_NUMBER_UNIT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1533,'小数点','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SALEMAKER_NUMBER_UNIT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (958,'優先順','MODULE_EASY_ADMIN_SIMPLIFY_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2010-06-07 16:43:06',NULL,NULL);
-INSERT INTO configuration VALUES (300,'送料の表示','MODULE_ORDER_TOTAL_SHIPPING_STATUS','true','',6,1,NULL,'2003-10-30 22:16:46',NULL,'zen_cfg_select_option(array(\'true\'),');
-INSERT INTO configuration VALUES (301,'表示の整列順','MODULE_ORDER_TOTAL_SHIPPING_SORT_ORDER','200','表示の整列順を設定します。<br />\r\n数字が小さいほど上位に表示されます。',6,2,NULL,'2003-10-30 22:16:46',NULL,NULL);
-INSERT INTO configuration VALUES (302,'送料無料設定','MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING','false','送料無料設定を有効にしますか?',6,3,NULL,'2003-10-30 22:16:46',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (303,'送料無料にする購入金額設定','MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER','50','設定金額以上のご購入の場合は送料を無料にします。',6,4,NULL,'2003-10-30 22:16:46','currencies->format',NULL);
-INSERT INTO configuration VALUES (304,'送料無料にする地域の設定','MODULE_ORDER_TOTAL_SHIPPING_DESTINATION','national','設定した地域に対して送料無料を適用します。',6,5,NULL,'2003-10-30 22:16:46',NULL,'zen_cfg_select_option(array(\'national\', \'international\', \'both\'),');
-INSERT INTO configuration VALUES (305,'小計の表示','MODULE_ORDER_TOTAL_SUBTOTAL_STATUS','true','',6,1,NULL,'2003-10-30 22:16:49',NULL,'zen_cfg_select_option(array(\'true\'),');
-INSERT INTO configuration VALUES (306,'表示の整列順','MODULE_ORDER_TOTAL_SUBTOTAL_SORT_ORDER','100','表示の整列順を設定します。<br />\r\n数字が小さいほど上位に表示されます。',6,2,NULL,'2003-10-30 22:16:49',NULL,NULL);
-INSERT INTO configuration VALUES (307,'税金の表示','MODULE_ORDER_TOTAL_TAX_STATUS','true','',6,1,NULL,'2003-10-30 22:16:52',NULL,'zen_cfg_select_option(array(\'true\'),');
-INSERT INTO configuration VALUES (308,'表示の整列順','MODULE_ORDER_TOTAL_TAX_SORT_ORDER','300','表示の整列順を設定できます. 数字が小さいほど上位に表示されます。',6,2,NULL,'2003-10-30 22:16:52',NULL,NULL);
-INSERT INTO configuration VALUES (309,'合計の表示','MODULE_ORDER_TOTAL_TOTAL_STATUS','true','',6,1,NULL,'2003-10-30 22:16:55',NULL,'zen_cfg_select_option(array(\'true\'),');
-INSERT INTO configuration VALUES (310,'表示の整列順','MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER','999','表示の整列順を設定できます。<br />\r\n数字が小さいほど上位に表示されます。',6,2,NULL,'2003-10-30 22:16:55',NULL,NULL);
-INSERT INTO configuration VALUES (311,'税種別','MODULE_ORDER_TOTAL_COUPON_TAX_CLASS','0','クーポン券に適用される税種別を設定します。',6,0,NULL,'2003-10-30 22:16:36','zen_get_tax_class_title','zen_cfg_pull_down_tax_classes(');
-INSERT INTO configuration VALUES (312,'税金を含める - オン/オフ','MODULE_ORDER_TOTAL_COUPON_INC_TAX','true','代金計算に税金を含めるかどうかを設定します。',6,6,NULL,'2003-10-30 22:16:36',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (313,'表示の整列順','MODULE_ORDER_TOTAL_COUPON_SORT_ORDER','280','表示の整列順を設定します。',6,2,NULL,'2003-10-30 22:16:36',NULL,NULL);
-INSERT INTO configuration VALUES (314,'送料を含める','MODULE_ORDER_TOTAL_COUPON_INC_SHIPPING','false','送料を計算に含めるかどうかを設定します。',6,5,NULL,'2003-10-30 22:16:36',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (315,'クーポン券の表示','MODULE_ORDER_TOTAL_COUPON_STATUS','true','',6,1,NULL,'2003-10-30 22:16:36',NULL,'zen_cfg_select_option(array(\'true\'),');
-INSERT INTO configuration VALUES (316,'税金を再計算','MODULE_ORDER_TOTAL_COUPON_CALC_TAX','Standard','税金を再計算しますか?',6,7,NULL,'2003-10-30 22:16:36',NULL,'zen_cfg_select_option(array(\'None\', \'Standard\', \'Credit Note\'),');
-INSERT INTO configuration VALUES (317,'管理者デモ -オン/オフ','ADMIN_DEMO','0','管理者デモを有効にするかどうかを設定します。<br /><br />\r\n・0= off<br />\r\n・1= on',6,0,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (318,'商品オプション - セレクトボックス型','PRODUCTS_OPTIONS_TYPE_SELECT','0','セレクトボックス型の商品オプションの数値は?',0,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (319,'商品オプション - テキスト型','PRODUCTS_OPTIONS_TYPE_TEXT','1','テキスト型の商品オプションの数値は?',6,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (320,'商品オプション - ラジオボタン型','PRODUCTS_OPTIONS_TYPE_RADIO','2','ラジオボタン型の商品オプションの数値は?',6,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (321,'商品オプション - チェックボックス型','PRODUCTS_OPTIONS_TYPE_CHECKBOX','3','チェックボックス型の商品オプションの数値は?',6,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (322,'商品オプション - ファイル型','PRODUCTS_OPTIONS_TYPE_FILE','4','ファイル型の商品オプションの数値は?',6,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (323,'ID for text and file products options values','PRODUCTS_OPTIONS_VALUES_TEXT_ID','0','テキスト型・ファイル型属性のproducts_options_values_idで使われる数値は?',6,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (324,'アップロードオプションの接頭辞(Prefix)','UPLOAD_PREFIX','upload_','アップロードオプションを他のオプションと区別するために使う接頭辞(Prefix)は?',0,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (325,'テキストの接頭辞(Prefix)','TEXT_PREFIX','txt_','テキストオプションを他のオプションと区別するために使う接頭辞(Prefix)は?',0,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (326,'商品オプション - READ ONLY型','PRODUCTS_OPTIONS_TYPE_READONLY','5','READ ONLY型の商品オプションの数値は?',6,NULL,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (327,'商品情報 - 商品オプションのソート順','PRODUCTS_OPTIONS_SORT_ORDER','0','商品情報におけるオプション名のソート順を設定します。<br />\r\n<br />\r\n・0= ソート順、オプション名<br />\r\n・1= オプション名',18,35,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (328,'商品情報 - 商品オプション値のソート順','PRODUCTS_OPTIONS_SORT_BY_PRICE','1','商品説明での商品オプション値のソート順を設定します。<br />\r\n<br />\r\n・0= ソート順、価格<br />\r\n・1= ソート順、オプション値の名称',18,36,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (329,'商品の属性画像の下に表示するオプション値','PRODUCT_IMAGES_ATTRIBUTES_NAMES','1','商品の属性画像の下にオプション名を表示しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',18,41,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (330,'商品情報 - セール割引表示','SHOW_SALE_DISCOUNT_STATUS','1','セール割引分を表示しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',18,45,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (331,'商品情報 - セール割引の表示方法(割引額・パーセント)','SHOW_SALE_DISCOUNT','1','セール割引の表示方法を設定します。<br /><br />\r\n・1= 割引率(%) でのoff<br />\r\n・2= 割引金額 でのoff',18,46,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\'), ');
-INSERT INTO configuration VALUES (332,'商品情報 - 割引率表示の小数点','SHOW_SALE_DISCOUNT_DECIMALS','0','割引率表示のパーセントの小数点位置を設定します。<br /><br />\r\n・デフォルト= 0',18,47,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (333,'商品情報- 無料商品の画像・テキストのステータス','OTHER_IMAGE_PRICE_IS_FREE_ON','1','商品情報での無料商品の画像・イメージの表示を設定します。<br />\r\n<br />\r\n・0= Text<br />\r\n・1= Image',18,50,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (334,'商品情報 - お問い合わせ商品表示設定','PRODUCTS_PRICE_IS_CALL_IMAGE_ON','1','お問い合わせ商品であることを表示する画像またはテキストについて設定します。<br /><br />\r\n・0= テキスト<br />\r\n・1= 画像',18,51,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (335,'商品の数量欄 - 新しく商品を追加する際に','PRODUCTS_QTY_BOX_STATUS','1','新しく商品を登録する際、商品の数量欄のデフォルト設定をどうしますか?<br /><br />\r\n・0= off<br />\r\n・1= on<br />\r\n注意：onにすると数量欄を表示し、「カートに加える」もonになります。(This will show a Qty Box when ON and default the Add to Cart to 1)',18,55,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (336,'商品レビュー - 承認の要否','REVIEWS_APPROVAL','1','商品レビューの表示には承認が必要にしますか?<br /><br />\r\n・0= off<br />\r\n・1= on<br />\r\n注意：レビューが非表示設定になっている場合は無視されます。',18,62,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (337,'METAタグ - TITLEタグへの商品価格表示','META_TAG_INCLUDE_PRICE','1','TITLEタグに商品価格を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1= on',18,70,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (338,'METAタグ - Meta Descriptionの長さ','MAX_META_TAG_DESCRIPTION_LENGTH','50','Meta Descriptionの最大の長さを設定してください。<br />デフォルトの最大値(ワード数)：50',18,71,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (339,'「こんな商品も購入しています」 - 横列あたりの表示点数','SHOW_PRODUCT_INFO_COLUMNS_ALSO_PURCHASED_PRODUCTS','3','「こんな商品も買っています」の横列(Row)あたりの表示点数を設定します。<br />0= off またはソート順を設定',18,72,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\', \'5\', \'6\', \'7\', \'8\', \'9\', \'10\', \'11\', \'12\'), ');
-INSERT INTO configuration VALUES (340,'[前へ] [次へ] - ナビゲーションバーの位置','PRODUCT_INFO_PREVIOUS_NEXT','1','[前へ] [次へ] ナビゲーションバーの位置を設定します。<br /><br />\r\n・0= off<br />\r\n・1= ページ上部<br />\r\n・2= ページ下部<br />\r\n・3= ページ上部・下部',18,21,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_drop_down(array(array(\'id\'=>\'0\', \'text\'=>\'Off\'), array(\'id\'=>\'1\', \'text\'=>\'Top of Page\'), array(\'id\'=>\'2\', \'text\'=>\'Bottom of Page\'), array(\'id\'=>\'3\', \'text\'=>\'Both Top & Bottom of Page\')),');
-INSERT INTO configuration VALUES (341,'[前へ] [次へ] - ソート順','PRODUCT_INFO_PREVIOUS_NEXT_SORT','1','商品のソート順を設定します。\r\n<br /><br />\r\n・0= 商品ID<br />\r\n・1= 商品名<br />\r\n・2= 型番<br />\r\n・3= 価格、商品名<br />\r\n・4= 価格、型番<br />\r\n・5= 商品名, 型番',18,22,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_drop_down(array(array(\'id\'=>\'0\', \'text\'=>\'Product ID\'), array(\'id\'=>\'1\', \'text\'=>\'Name\'), array(\'id\'=>\'2\', \'text\'=>\'Product Model\'), array(\'id\'=>\'3\', \'text\'=>\'Product Price - Name\'), array(\'id\'=>\'4\', \'text\'=>\'Product Price - Model\'), array(\'id\'=>\'5\', \'text\'=>\'Product Name - Model\'), array(\'id\'=>\'6\', \'text\'=>\'Product Sort Order\')),');
-INSERT INTO configuration VALUES (342,'[前へ] [次へ] - ボタンと画像のステータス','SHOW_PREVIOUS_NEXT_STATUS','0','ボタンと画像のステータスを設定します。<br /><br />\r\n・0= Off<br />\r\n・1= On',18,20,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_drop_down(array(array(\'id\'=>\'0\', \'text\'=>\'Off\'), array(\'id\'=>\'1\', \'text\'=>\'On\')),');
-INSERT INTO configuration VALUES (343,'[前へ] [次へ] - ボタンと画像の表示設定','SHOW_PREVIOUS_NEXT_IMAGES','0','[前へ] [次へ] のボタンと画像の表示を設定します。<br /><br />\r\n・0= ボタンのみ<br />\r\n・1= ボタン・商品画像<br />\r\n・2= 商品画像のみ',18,21,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_drop_down(array(array(\'id\'=>\'0\', \'text\'=>\'Button Only\'), array(\'id\'=>\'1\', \'text\'=>\'Button and Product Image\'), array(\'id\'=>\'2\', \'text\'=>\'Product Image Only\')),');
-INSERT INTO configuration VALUES (344,'[前へ] [次へ] - 画像の横幅','PREVIOUS_NEXT_IMAGE_WIDTH','50','[前へ] [次へ] 画像の横幅の横幅は?',18,22,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (345,'[前へ] [次へ] - 画像の高さ','PREVIOUS_NEXT_IMAGE_HEIGHT','40','[前へ] [次へ] 画像の横幅の高さは?',18,23,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (346,'[前へ] [次へ] - カテゴリ名と画像の配置','PRODUCT_INFO_CATEGORIES','1','[前へ] [次へ] のカテゴリの画像と名称の配置は?<br /><br />\r\n・0= off<br />\r\n・1= 左に配置<br />\r\n・2= 中央に配置<br />\r\n・3= 右に配置',18,20,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_drop_down(array(array(\'id\'=>\'0\', \'text\'=>\'Off\'), array(\'id\'=>\'1\', \'text\'=>\'Align Left\'), array(\'id\'=>\'2\', \'text\'=>\'Align Center\'), array(\'id\'=>\'3\', \'text\'=>\'Align Right\')),');
-INSERT INTO configuration VALUES (347,'左側サイドボックスの横幅','BOX_WIDTH_LEFT','150px','左側に表示されるサイドボックスの横幅を設定します。pxを含めて入力できます。\r\n<br /><br />\r\n・デフォルト = 150px',19,1,NULL,'2003-11-21 22:16:36',NULL,NULL);
-INSERT INTO configuration VALUES (348,'右側サイドボックスの横幅','BOX_WIDTH_RIGHT','150px','右側に表示されるサイドボックスの横幅を設定します。pxを含めて入力できます。<br /><br />\r\n・Default = 150px',19,2,NULL,'2003-11-21 22:16:36',NULL,NULL);
-INSERT INTO configuration VALUES (349,'パン屑リストの区切り文字','BREAD_CRUMBS_SEPARATOR','&nbsp;::&nbsp;','パン屑リストの区切り文字を設定します。<br /><br />\r\n【注意】空白を含む場合は&amp;nbsp;を使用することができます。<br />\r\n・デフォルト = &amp;nbsp;::&amp;nbsp;',19,3,NULL,'2003-11-21 22:16:36',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (350,'パン屑リストの設定','DEFINE_BREADCRUMB_STATUS','1','パン屑リストのリンクを有効にしますか?<br />0= OFF<br />1= ON',19,4,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (351,'ベストセラー - 桁数合わせ文字','BEST_SELLERS_FILLER','&nbsp;','桁数を合わせるために挿入する文字を設定します。<br />デフォルト = &amp;nbsp;(空白)',19,5,NULL,'2003-11-21 22:16:36',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (352,'ベストセラー - 表示文字数','BEST_SELLERS_TRUNCATE','35','ベストセラーのサイドボックスで表示する商品名の長さを設定します。<br />デフォルト = 35',19,6,NULL,'2003-11-21 22:16:36',NULL,NULL);
-INSERT INTO configuration VALUES (353,'ベストセラー - 表示文字数を超えた場合に「...」を表示','BEST_SELLERS_TRUNCATE_MORE','true','商品名が途中で切れた場合に「...」を表示します。<br />デフォルト = true',19,7,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (354,'カテゴリボックス - 特価商品のリンク表示','SHOW_CATEGORIES_BOX_SPECIALS','true','カテゴリボックスに特価商品のリンクを表示します。',19,8,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (355,'カテゴリボックス - 新着商品のリンク表示','SHOW_CATEGORIES_BOX_PRODUCTS_NEW','true','カテゴリボックスに新着商品へのリンクを表示します。',19,9,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (356,'ショッピングカートボックスの表示','SHOW_SHOPPING_CART_BOX_STATUS','1','ショッピングカートの表示を設定します。<br />\r\n<br />\r\n・0= 常に表示<br />\r\n・1= 商品が入っているときだけ表示<br />\r\n・2= 商品が入っているときに表示するが、ショッピングカートページでは表示しない',19,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (357,'カテゴリボックス - おすすめ商品へのリンクを表示','SHOW_CATEGORIES_BOX_FEATURED_PRODUCTS','true','カテゴリボックスにおすすめ商品へのリンクを表示しますか?',19,11,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (358,'カテゴリボックス - 全商品リストへのリンクを表示','SHOW_CATEGORIES_BOX_PRODUCTS_ALL','true','カテゴリボックスに全商品リストへのリンクを表示しますか?',19,12,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (359,'左側カラムの表示','COLUMN_LEFT_STATUS','1','左側カラムを表示しますか? (ページをオーバーライドするものがない場合)<br /><br />\r\n・0= 常に非表示<br />\r\n1= オーバーライドがなければ表示',19,15,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (360,'右側カラムの表示','COLUMN_RIGHT_STATUS','1','右側カラムを表示しますか? (ページをオーバーライドするものがない場合)<br /><br />\r\n・0= 常に非表示<br />\r\n・1= オーバーライドがなければ表示',19,16,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (361,'左側カラムの横幅','COLUMN_WIDTH_LEFT','150px','左側カラムの横幅を設定します。pxを含めて指定可能。<br /><br />\r\nデフォルト = 150px',19,20,NULL,'2003-11-21 22:16:36',NULL,NULL);
-INSERT INTO configuration VALUES (362,'右側カラムの横幅','COLUMN_WIDTH_RIGHT','150px','右側カラムの横幅を設定します。pxを含めて指定可能。<br /><br />\r\nデフォルト = 150px',19,21,NULL,'2003-11-21 22:16:36',NULL,NULL);
-INSERT INTO configuration VALUES (363,'カテゴリ名・リンク間の区切り','SHOW_CATEGORIES_SEPARATOR_LINK','1','カテゴリ名とリンク（「おすすめ商品」など）の間にセパレータ(区切り)を表示しますか?<br /><br />\r\n・0= off<br />\r\n・1= on',19,24,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (364,'カテゴリの区切り - カテゴリ名・商品数','CATEGORIES_SEPARATOR','-&gt;','カテゴリ名と(カテゴリ内の)商品数の間のセパレータ(区切り)は何にしますか?<br /><br />\r\nデフォルト = -&amp;gt;',19,25,NULL,'2003-11-21 22:16:36',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (365,'カテゴリの区切り - カテゴリ名とサブカテゴリ名の間','CATEGORIES_SEPARATOR_SUBS','|_&nbsp;','カテゴリ名・サブカテゴリ名の間のセパレータ(区切り)は何にしますか?<br />\r\n<br />\r\nデフォルト = |_&amp;nbsp;',19,26,NULL,'2004-03-25 22:16:36',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (366,'カテゴリ内商品数の接頭辞(Prefix)','CATEGORIES_COUNT_PREFIX','&nbsp;(','カテゴリ内の商品数表示の接頭辞(Prefix)は?\r\n<br /><br />\r\n・デフォルト= (',19,27,NULL,'2003-01-21 22:16:36',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (367,'カテゴリ内商品数の接尾辞(Suffix)','CATEGORIES_COUNT_SUFFIX',')','カテゴリ内の商品数表示の接尾辞(Suffix)は?\r\n<br /><br />\r\n・デフォルト= )',19,28,NULL,'2003-01-21 22:16:36',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (368,'カテゴリ・サブカテゴリのインデント','CATEGORIES_SUBCATEGORIES_INDENT','&nbsp;&nbsp;','サブカテゴリをインデント(字下げ)表示する際の文字・記号は?<br /><br />\r\n・デフォルト = &nbsp;&nbsp;',19,29,NULL,'2004-06-24 22:16:36',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (369,'商品登録0のカテゴリ - 表示・非表示','CATEGORIES_COUNT_ZERO','0','商品数が0のカテゴリを表示しますか?<br />\r\n<br />\r\n・0 = off<br />\r\n・1 = on',19,30,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (370,'カテゴリボックスのスプリット(分割)表示','CATEGORIES_SPLIT_DISPLAY','True','商品タイプによってカテゴリボックスをスプリット(分割)表示するかどうかを設定します。',19,31,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (371,'ショッピングカート - 合計を表示','SHOW_TOTALS_IN_CART','1','合計額をショッピングカートの上に表示しますか?<br />・0= off<br />・1= on: 商品の数量、重量合計<br />・2= on: 商品の数量、重量合計(0のときには非表示)<br />・3= on: 商品の数量合計',19,31,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (372,'顧客への挨拶 - トップページに表示','SHOW_CUSTOMER_GREETING','1','顧客への歓迎メッセージを常にトップページに表示しますか?<br />0= off<br />1= on',19,40,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (373,'カテゴリ - トップページに表示','SHOW_CATEGORIES_ALWAYS','0','カテゴリを常にトップページに表示しますか?<br />\r\n・0= off<br />\r\n・1= on<br />\r\n・Default category can be set to Top Level or a Specific Top Level',19,45,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (374,'カテゴリ - トップページ での開閉','CATEGORIES_START_MAIN','0','トップページにおけるカテゴリの開閉状態を設定します。<br />\r\n・0= トップレベル(親)カテゴリのみ<br />\r\n・特定のカテゴリを開くにはカテゴリIDで指定。サブカテゴリも指定可能。<br />\r\n【例】3_10 (カテゴリID:3、サブカテゴリID:10)',19,46,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (375,'カテゴリ - サブカテゴリを常に開いておく','SHOW_CATEGORIES_SUBCATEGORIES_ALWAYS','1','カテゴリとサブカテゴリは常に表示しますか?<br />0= OFF 親カテゴリのみ<br />1= ON カテゴリ・サブカテゴリは選択されたら常に表示',19,47,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (376,'バナー表示グループ - ヘッダポジション1','SHOW_BANNERS_GROUP_SET1','','どのバナーグループをヘッダポジション1に使用しますか? 使わない場合は未記入にします。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,55,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (377,'バナー表示グループ - ヘッダポジション2','SHOW_BANNERS_GROUP_SET2','','どのバナーグループをヘッダポジション2に使用しますか? 使わない場合は未記入にします。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,56,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (378,'バナー表示グループ - ヘッダポジション3','SHOW_BANNERS_GROUP_SET3','','どのバナーグループをヘッダポジション3に使用しますか? 使わない場合は未記入にします。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,57,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (379,'バナー表示グループ - フッタポジション1','SHOW_BANNERS_GROUP_SET4','','どのバナーグループをフッタポジション1に使用しますか? 使わない場合は未記入にします。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,65,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (380,'バナー表示グループ - フッタポジション2','SHOW_BANNERS_GROUP_SET5','','どのバナーグループをフッタポジション2に使用しますか? 使わない場合は未記入にします。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,66,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (381,'バナー表示グループ - フッタポジション3','SHOW_BANNERS_GROUP_SET6','Wide-Banners','どのバナーグループをフッタポジション3に使用しますか? 使わない場合は未記入にします。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,67,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (382,'バナー表示グループ - サイドボックス内バナーボックス','SHOW_BANNERS_GROUP_SET7','SideBox-Banners','どのバナーグループをサイドボックス内バナーボックス2に使用しますか? 使わない場合は未記入にします。<br />\r\nデフォルトのグループはSideBox-Bannersです。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,70,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (383,'バナー表示グループ - サイドボックス内バナーボックス2','SHOW_BANNERS_GROUP_SET8','SideBox-Banners','どのバナーグループをサイドボックス内バナーボックス2に使用しますか? 使わない場合は未記入にします。<br />\r\nデフォルトのグループはSideBox-Bannersです。<br />\r\n<br />\r\nバナー表示グループは1つ(1バナーグループ)または複数(マルチバナーグループ)にすることもできます。マルチバナーグループを表示するためにはグループ名をコロン(<strong>:</strong>)で区切って入力します。<br />\r\n例：Wide-Banners:SideBox-Banners',19,71,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (384,'バナー表示グループ - サイドボックス内バナーボックス全て','SHOW_BANNERS_GROUP_SET_ALL','BannersAll','サイドボックス内バナーボックス全て(Banner All sidebox)で表示するバナー表示グループは、1つです。デフォルトのグループはBannersAllです。どのバナーグループをサイドボックスのbanner_box_allに表示しますか?<br />表示しない場合は空欄にしてください。',19,72,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (385,'フッタ - IPアドレスの表示・非表示','SHOW_FOOTER_IP','1','顧客のIPアドレスをフッタに表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1= on<br />',19,80,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (386,'数量割引 - 追加割引レベル数','DISCOUNT_QTY_ADD','5','数量割引の割引レベルの追加数を指定します。一つの割引レベルに一つの割引設定を行うことができます。',19,90,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (387,'数量割引 - 一行あたりの表示数','DISCOUNT_QUANTITY_PRICES_COLUMN','5','商品情報ページで表示する数量割引設定の一行あたり表示数を指定します。割引設定数（割引レベル数）が一行あたりの表示数を超えた場合は、複数行で表示されます。',19,95,NULL,'2009-11-19 12:39:39','','');
-INSERT INTO configuration VALUES (388,'カテゴリ/商品のソート順','CATEGORIES_PRODUCTS_SORT_ORDER','0','カテゴリ/商品のソート順を設定します。<br />0= カテゴリ/商品 ソート順/名前<br />1= カテゴリ/商品 名前<br />2= 商品モデル<br />3= 商品数量+, 商品名<br />4= 商品数量-, 商品名<br />5= 商品価格+, 商品名<br />6= 商品価格+, 商品名',19,100,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\', \'5\', \'6\'), ');
-INSERT INTO configuration VALUES (389,'オプション名/オプション値の追加・コピー・削除','OPTION_NAMES_VALUES_GLOBAL_STATUS','1','オプション名/オプション値の追加・コピー・削除の機能についてのグローバルな設定を行います。<br />0= 機能を隠す<br />1= 機能を表示する<br />2= 商品モデル',19,110,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (390,'カテゴリ - タブメニュー','CATEGORIES_TABS_STATUS','1','カテゴリ - タブをオンにするとショップ画面のヘッダ部分にカテゴリが表示されます。さまざまな応用ができるでしょう。<br />0= カテゴリのタブを隠す<br />1= カテゴリのタブを表示',19,112,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (391,'サイトマップ - Myページの表示','SHOW_ACCOUNT_LINKS_ON_SITE_MAP','No','Myページのリンクをサイトマップに表示しますか?<br />注意：サーチエンジンのクローラーがこのページをインデックスしようとしてログインページに誘導されてしまう可能性があり、お勧めしません。<br /><br />デフォルト：false (表示しない)',19,115,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'Yes\', \'No\'), ');
-INSERT INTO configuration VALUES (392,'1商品だけのカテゴリの表示をスキップ','SKIP_SINGLE_PRODUCT_CATEGORIES','False','商品が1つだけのカテゴリの表示をスキップしますか?<br />このオプションがTrueの場合、ユーザーが商品が1つだけのカテゴリをクリックすると、Zen Cartは直接商品ページを表示するようになります。<br />デフォルト：True',19,120,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (393,'CSSボタン','IMAGE_USE_CSS_BUTTONS','No','CSS画像(gif/jpg)の代わりにボタンを表示しますか?<br />ONにした場合、ボタンのスタイルはスタイルシートで定義してください。',19,147,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'No\', \'Yes\'), ');
-INSERT INTO configuration VALUES (394,'<strong>「メンテナンス中」 オン/オフ</strong>','DOWN_FOR_MAINTENANCE','false','「メンテナンス中」の表示について設定します。<br />\r\n<br />\r\n・true=on\r\n・false=off',20,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (395,'「メンテナンス中」- 表示するファイル','DOWN_FOR_MAINTENANCE_FILENAME','down_for_maintenance','メンテナンス中に表示するファイルのファイル名を設定します。デフォルトは\"down_for_maintenance\"です。<br /><br />\r\n【注意】拡張子は付けないでください。',20,2,NULL,'2009-11-19 12:39:39',NULL,'');
-INSERT INTO configuration VALUES (396,'「メンテナンス中」- ヘッダを隠す','DOWN_FOR_MAINTENANCE_HEADER_OFF','false','「メンテナンス中」表示モードの際、ヘッダを隠しますか?<br /><br />\r\n・true=hide<br />\r\n・false=show',20,3,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (397,'「メンテナンス中」- 左カラムを隠す','DOWN_FOR_MAINTENANCE_COLUMN_LEFT_OFF','false','「メンテナンス中」表示モードの際、左カラムを隠しますか?<br /><br />\r\n・true=hide<br />\r\n・false=show',20,4,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (398,'「メンテナンス中」- 右カラムを隠す','DOWN_FOR_MAINTENANCE_COLUMN_RIGHT_OFF','false','「メンテナンス中」表示モードの際、右カラムを隠しますか?<br /><br />\r\n・true=hide<br />\r\n・false=show',20,5,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (399,'「メンテナンス中」- フッタを隠す','DOWN_FOR_MAINTENANCE_FOOTER_OFF','false','「メンテナンス中」表示モードの際、フッタを隠しますか?<br /><br />\r\n・true=hide<br />\r\n・false=show',20,6,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (400,'「メンテナンス中」- 価格を表示しない','DOWN_FOR_MAINTENANCE_PRICES_OFF','false','「メンテナンス中」表示モードの際、商品価格を隠しますか?<br /><br />\r\n・true=hide<br />\r\n・false=show',20,7,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (401,'「メンテナンス中」- 設定したIPアドレスを除く','EXCLUDE_ADMIN_IP_FOR_MAINTENANCE','your IP (ADMIN)','ショップ管理者用などに、「メンテナンス中」表示モードの際でもアクセス可能なIPアドレスを設定しますか?<br /><br />\r\n複数のIPアドレスを指定するにはカンマ(,)で区切ります。また、あなたのアクセス元のIPアドレスがわからない場合は、ショップのフッタに表示されるIPアドレスをチェックしてください。',20,8,'2003-03-21 13:43:22','2003-03-21 21:20:07',NULL,NULL);
-INSERT INTO configuration VALUES (402,'「メンテナンス予告(NOTICE PUBLIC)」-  オン/オフ','WARN_BEFORE_DOWN_FOR_MAINTENANCE','false','ショップの「メンテナンス中」表示を出す前に告知を出しますか?<br /><br />\r\n・true=on<br />\r\n・false=off<br />\r\n注意：「メンテナンス中」表示が有効になると、この設定は自動的にfalseに書き換えられます。',20,9,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (403,'「メンテナンス予告」- メッセージに表示する日時','PERIOD_BEFORE_DOWN_FOR_MAINTENANCE','15/05/2003  2-3 PM','ヘッダに表示するメンテナンス予告メッセージの開始日と時間を設定します。',20,10,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,NULL);
-INSERT INTO configuration VALUES (404,'「メンテナンス中」- メンテナンスを開始した日時(when webmaster has enabled maintenance)を表示','DISPLAY_MAINTENANCE_TIME','false','ショップ管理者がいつ「メンテナンス中」表示をオンにしたか表示しますか?<br /><br />\r\n・true=on<br />\r\n・false=off',20,11,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (405,'「メンテナンス中」- メンテナンス期間を表示','DISPLAY_MAINTENANCE_PERIOD','false','メンテナンスの期間を表示しますか?<br /><br />\r\n・true=on<br />\r\n・false=off',20,12,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (406,'メンテナンス期間','TEXT_MAINTENANCE_PERIOD_TIME','2h00','メンテナンス期間を設定します。<br />\r\n書式：(hh:mm)<br />h = 時間　m = 分',20,13,'2003-03-21 13:08:25','2003-03-21 11:42:47',NULL,NULL);
-INSERT INTO configuration VALUES (407,'チェックアウト時に「ご利用規約」確認画面を表示','DISPLAY_CONDITIONS_ON_CHECKOUT','false','チェックアウトの際に「ご利用規約」の画面を表示しますか?',11,1,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (408,'アカウント作成時に個人情報保護方針確認画面を表示','DISPLAY_PRIVACY_CONDITIONS','true','アカウント作成の際、個人情報保護方針への同意画面を表示しますか?<br /><div style=\"color: red;\">注意：「個人情報保護法」では、個人情報保護方針を開示することが求められています。</div>',11,2,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (409,'商品画像を表示','PRODUCT_NEW_LIST_IMAGE','1102','商品画像を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (410,'商品の数量を表示','PRODUCT_NEW_LIST_QUANTITY','1202','商品数量を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (411,'「今すぐ買う」ボタンの表示','PRODUCT_NEW_BUY_NOW','1300','「今すぐ買う」ボタンを表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (412,'商品名の表示','PRODUCT_NEW_LIST_NAME','2101','商品名を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (413,'商品型番の表示','PRODUCT_NEW_LIST_MODEL','2201','商品型番を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (414,'商品メーカーの表示','PRODUCT_NEW_LIST_MANUFACTURER','2302','商品メーカーを表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,6,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (415,'商品価格の表示','PRODUCT_NEW_LIST_PRICE','2402','商品価格を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (416,'商品重量の表示','PRODUCT_NEW_LIST_WEIGHT','2502','商品の重量を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (417,'商品登録日の表示','PRODUCT_NEW_LIST_DATE_ADDED','2601','商品登録日を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',21,9,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (418,'商品説明の表示','PRODUCT_NEW_LIST_DESCRIPTION','1','商品説明(最初の150文字)を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1= on',21,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (419,'商品の表示 - デフォルトのソート順','PRODUCT_NEW_LIST_SORT_DEFAULT','6','新着商品リストの表示のデフォルトのソート順は? デフォルト値は6です。<br /><br />\r\n・1= 商品名<br />\r\n・2= 商品名(降順)<br />\r\n・3= 価格が安いものから商品名<br />\r\n・4= 価格が高いものから商品名<br />\r\n・5= 型番<br />\r\n・6= 商品登録日(降順)<br />\r\n・7= 商品登録日<br />\r\n・8= 商品順(Product Sort)\r\n',21,11,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\', \'4\', \'5\', \'6\', \'7\', \'8\'), ');
-INSERT INTO configuration VALUES (420,'新着商品 - デフォルトのグループID','PRODUCT_NEW_LIST_GROUP_ID','21','新着商品リストの設定グループID(configuration_group_id)は何ですか?<br />\r\n<br />\r\n注意：全商品リストのグループIDがデフォルトの21から変更されたときだけ設定してください。',21,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (421,'複数商品の数量欄の有無・表示位置','PRODUCT_NEW_LISTING_MULTIPLE_ADD_TO_CART','3','複数商品の数量欄の表示の有無と表示位置について設定します。<br />0= off<br />1= 上部<br />2= 下部<br />3= 両方',21,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (422,'商品画像の表示','PRODUCT_FEATURED_LIST_IMAGE','1102','商品画像を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />\r\n',22,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (423,'商品数量の表示','PRODUCT_FEATURED_LIST_QUANTITY','1202','商品数量を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />\r\n',22,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (424,'「今すぐ買う」ボタンの表示','PRODUCT_FEATURED_BUY_NOW','1300','「今すぐ買う」ボタンを表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',22,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (425,'商品名の表示','PRODUCT_FEATURED_LIST_NAME','2101','商品名を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',22,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (426,'商品型番の表示','PRODUCT_FEATURED_LIST_MODEL','2201','商品型番を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',22,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (427,'商品メーカーの表示','PRODUCT_FEATURED_LIST_MANUFACTURER','2302','商品メーカーを表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',22,6,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (428,'商品価格の表示','PRODUCT_FEATURED_LIST_PRICE','2402','商品価格を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',22,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (429,'商品重量の表示','PRODUCT_FEATURED_LIST_WEIGHT','2502','商品重量を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',22,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (430,'商品登録日の表示','PRODUCT_FEATURED_LIST_DATE_ADDED','2601','商品登録日を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',22,9,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (431,'商品説明の表示','PRODUCT_FEATURED_LIST_DESCRIPTION','1','商品説明(最初の150文字)を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1= on',22,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (432,'商品表示 - デフォルトのソート順','PRODUCT_FEATURED_LIST_SORT_DEFAULT','1','おすすめ商品リストの表示のデフォルトのソート順は? デフォルト値は1です。<br />\r\n<br />\r\n・1= 商品名<br />\r\n・2= 商品名(降順)<br />\r\n・3= 価格が安いものから、商品名<br />\r\n・4= 価格が高いものから、商品名<br />\r\n・5= 型番<br />\r\n・6= 商品登録日(降順)<br />\r\n・7= 商品登録日<br />\r\n・8= 商品順(Product Sort)',22,11,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\', \'4\', \'5\', \'6\', \'7\', \'8\'), ');
-INSERT INTO configuration VALUES (433,'おすすめ商品 - デフォルトのグループID','PRODUCT_FEATURED_LIST_GROUP_ID','22','おすすめ商品リストの設定グループID(configuration_group_id)は何ですか?<br />\r\n<br />\r\n注意：おすすめ商品リストのグループIDがデフォルトの22から変更されたときだけ設定してください。\r\n',22,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (434,'複数商品の数量欄の有無・表示位置','PRODUCT_FEATURED_LISTING_MULTIPLE_ADD_TO_CART','3','複数商品の数量欄の表示の有無と表示位置について設定します。<br />0= off<br />1= 上部<br />2= 下部<br />3= 両方',22,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (435,'商品画像の表示','PRODUCT_ALL_LIST_IMAGE','1102','商品画像を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,1,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (436,'商品数量の表示','PRODUCT_ALL_LIST_QUANTITY','1202','商品数量を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,2,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (437,'「今すぐ買う」ボタンの表示','PRODUCT_ALL_BUY_NOW','1300','「今すぐ買う」ボタンを表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,3,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (438,'商品価格の表示','PRODUCT_ALL_LIST_NAME','2101','商品価格を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,4,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (439,'商品型番の表示','PRODUCT_ALL_LIST_MODEL','2201','商品型番を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,5,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (440,'商品メーカーの表示','PRODUCT_ALL_LIST_MANUFACTURER','2302','商品メーカーを表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,6,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (441,'商品価格の表示','PRODUCT_ALL_LIST_PRICE','2402','商品価格を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,7,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (442,'商品重量の表示','PRODUCT_ALL_LIST_WEIGHT','2502','商品重量を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,8,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (443,'商品登録日の表示','PRODUCT_ALL_LIST_DATE_ADDED','2601','商品登録日を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1桁目：左か右か<br />\r\n・2・3桁目：(他の表示項目との)ソート順<br />\r\n・4桁目：表示後の改行(br)数<br />',23,9,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (444,'商品説明の表示','PRODUCT_ALL_LIST_DESCRIPTION','1','商品説明(最初の150文字)を表示しますか?<br />\r\n<br />\r\n・0= off<br />\r\n・1= on',23,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (445,'商品表示 - デフォルトのソート順','PRODUCT_ALL_LIST_SORT_DEFAULT','1','全商品リストの表示のデフォルトのソート順は? デフォルト値は1です。<br />\r\n<br />\r\n・1= 商品名<br />\r\n・2= 商品名(降順)<br />\r\n・3= 価格が安いものから、商品名<br />\r\n・4= 価格が高いものから、商品名<br />\r\n・5= 型番<br />\r\n・6= 商品登録日(降順)<br />\r\n・7= 商品登録日<br />\r\n・8= 商品順(Product Sort)',23,11,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\', \'4\', \'5\', \'6\', \'7\', \'8\'), ');
-INSERT INTO configuration VALUES (446,'全商品リスト - デフォルトのグループID','PRODUCT_ALL_LIST_GROUP_ID','23','全商品リストの設定グループID(configuration_group_id)は?<br />\r\n<br />\r\n注意：全商品リストのグループIDがデフォルトの23から変更されたときだけ設定してください。\r\n',23,12,NULL,'2009-11-19 12:39:39',NULL,NULL);
-INSERT INTO configuration VALUES (447,'複数商品の数量欄の有無・表示位置','PRODUCT_ALL_LISTING_MULTIPLE_ADD_TO_CART','3','複数商品の数量欄の表示の有無と表示位置について設定します。<br />0= off<br />1= 上部<br />2= 下部<br />3= 両方',23,25,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'), ');
-INSERT INTO configuration VALUES (448,'新着商品をトップページに表示する','SHOW_PRODUCT_INFO_MAIN_NEW_PRODUCTS','1','新着商品をトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,65,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (449,'おすすめ商品をトップページに表示する','SHOW_PRODUCT_INFO_MAIN_FEATURED_PRODUCTS','2','おすすめ商品をトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,66,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (450,'特価商品をトップページに表示する','SHOW_PRODUCT_INFO_MAIN_SPECIALS_PRODUCTS','3','特価商品をトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,67,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (451,'入荷予定商品をトップページに表示する','SHOW_PRODUCT_INFO_MAIN_UPCOMING','4','入荷予定商品をトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,68,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (452,'新着商品をトップページに表示する - カテゴリ・サブカテゴリ共に\r\n','SHOW_PRODUCT_INFO_CATEGORY_NEW_PRODUCTS','1','新着商品を(トップレベル)カテゴリ・サブカテゴリ共にトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,70,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (453,'おすすめ商品をトップページに表示する - カテゴリ・サブカテゴリ共に','SHOW_PRODUCT_INFO_CATEGORY_FEATURED_PRODUCTS','2','おすすめ商品を(トップレベル)カテゴリ・サブカテゴリ共にトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,71,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (454,'特価商品をトップページに表示する - カテゴリ・サブカテゴリ共に','SHOW_PRODUCT_INFO_CATEGORY_SPECIALS_PRODUCTS','3','特価商品を(トップレベル)カテゴリ・サブカテゴリ共にトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,72,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (455,'入荷予定商品をトップページに表示する - カテゴリ・サブカテゴリ共に','SHOW_PRODUCT_INFO_CATEGORY_UPCOMING','4','入荷予定商品を(トップレベル)カテゴリ・サブカテゴリ共にトップページに表示 しますか?\r\n<br />\r\n0= off<br />\r\nまたは表示順を数値(104)で設定してください。\r\n',24,73,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (456,'新着商品をトップページに表示する - エラーとリンク切れ商品ページ','SHOW_PRODUCT_INFO_MISSING_NEW_PRODUCTS','1','新着予定商品をトップページに表示 しますか?\r\n(エラーとリンク切れ商品ページ・/* 訳注・意味不明 */)<br />\r\n0= off<br />\r\nまたは順番を数値(104)で設定してください。',24,75,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (457,'おすすめ商品をトップページに表示する - エラーとリンク切れ商品ページ','SHOW_PRODUCT_INFO_MISSING_FEATURED_PRODUCTS','2','おすすめ商品をトップページに表示 しますか?\r\n(エラーとリンク切れ商品ページ・/* 訳注・意味不明 */)<br />\r\n0= off<br />\r\nまたは順番を数値(104)で設定してください。',24,76,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (458,'特価商品をトップページに表示する - エラーとリンク切れ商品ページ','SHOW_PRODUCT_INFO_MISSING_SPECIALS_PRODUCTS','3','特価商品をトップページに表示 しますか?\r\n(エラーとリンク切れ商品ページ・/* 訳注・意味不明 */)<br />\r\n0= off<br />\r\nまたは順番を数値(104)で設定してください。',24,77,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (459,'入荷予定商品をトップページに表示する - エラーとリンク切れ商品ページ','SHOW_PRODUCT_INFO_MISSING_UPCOMING','4','入荷予定商品をトップページに表示 しますか?\r\n(エラーとリンク切れ商品ページ・/* 訳注・意味不明 */)<br />\r\n0= off<br />\r\nまたは順番を数値(104)で設定してください。',24,78,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (460,'新着商品を表示する - 商品リストの下部に','SHOW_PRODUCT_INFO_LISTING_BELOW_NEW_PRODUCTS','1','商品リストの下に新着商品を表示しますか?\r\n<br />0= off <br />\r\nまたは配置順を数値(104)で設定してください。',24,85,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (461,'おすすめ商品を表示する - 商品リストの下部に','SHOW_PRODUCT_INFO_LISTING_BELOW_FEATURED_PRODUCTS','2','商品リストの下におすすめ商品を表示しますか?\r\n<br />0= off <br />\r\nまたは配置順を数値(104)で設定してください。',24,86,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (462,'特価商品を表示する - 商品リストの下部に','SHOW_PRODUCT_INFO_LISTING_BELOW_SPECIALS_PRODUCTS','3','商品リストの下に特価商品を表示しますか?\r\n<br />0= off <br />\r\nまたは配置順を数値(104)で設定してください。',24,87,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (463,'入荷予定商品を表示する - 商品リストの下部に','SHOW_PRODUCT_INFO_LISTING_BELOW_UPCOMING','4','商品リストの下に入荷予定商品を表示しますか?\r\n<br />0= off <br />\r\nまたは配置順を数値(104)で設定してください。',24,88,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\', \'4\'), ');
-INSERT INTO configuration VALUES (464,'新着商品 - 横列あたりの表示点数','SHOW_PRODUCT_INFO_COLUMNS_NEW_PRODUCTS','3','新着商品の列(Row)あたりの配置点数を設定します。',24,95,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\', \'4\', \'5\', \'6\', \'7\', \'8\', \'9\', \'10\', \'11\', \'12\'), ');
-INSERT INTO configuration VALUES (465,'おすすめ商品 - 横列あたりの表示点数','SHOW_PRODUCT_INFO_COLUMNS_FEATURED_PRODUCTS','3','おすすめ商品の列(Row)あたりの配置点数を設定します。',24,96,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\', \'4\', \'5\', \'6\', \'7\', \'8\', \'9\', \'10\', \'11\', \'12\'), ');
-INSERT INTO configuration VALUES (466,'特価商品 - 横列あたりの表示点数','SHOW_PRODUCT_INFO_COLUMNS_SPECIALS_PRODUCTS','3','特価商品の列(Row)あたりの配置点数を設定します。',24,97,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'1\', \'2\', \'3\', \'4\', \'5\', \'6\', \'7\', \'8\', \'9\', \'10\', \'11\', \'12\'), ');
-INSERT INTO configuration VALUES (467,'トップレベル(親)カテゴリの商品リスト表示 - フィルタ表示・全商品表示','SHOW_PRODUCT_INFO_ALL_PRODUCTS','1','現在のメインカテゴリに商品リストが適用された際、商品をフィルタ表示しますか? それとも全カテゴリから商品を表示しますか?<br />\r\n・0= Filter\r\n・Off 1=Filter On',24,100,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'), ');
-INSERT INTO configuration VALUES (468,'トップページの定義領域 - ステータス','DEFINE_MAIN_PAGE_STATUS','1','編集された領域の表示を行いますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,60,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (469,'「お問い合わせ」ページの表示 - ステータス','DEFINE_CONTACT_US_STATUS','1','編集された「お問い合わせ」テキストを表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,61,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (470,'「個人情報保護方針」表示 - ステータス','DEFINE_PRIVACY_STATUS','1','編集された「個人情報保護方針」を表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,62,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (471,'「配送・送料について」 ページ - ステータス','DEFINE_SHIPPINGINFO_STATUS','1','編集された「配送・送料について」テキストを表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,63,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (472,'「ご利用規約」ページ - ステータス','DEFINE_CONDITIONS_STATUS','1','編集された「ご利用規約」ページを表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,64,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (473,'「ご注文が完了しました」ページ - ステータス','DEFINE_CHECKOUT_SUCCESS_STATUS','1','編集された「ご注文が完了しました」テキストを表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,65,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (474,'「クーポン券」ページ - ステータス','DEFINE_DISCOUNT_COUPON_STATUS','1','編集された「クーポン券」テキストを表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,66,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (475,'「サイトマップ」ページ - ステータス','DEFINE_SITE_MAP_STATUS','1','編集された「クーポン券」テキストを表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,67,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (476,'自由編集ページ(Define Page) 2','DEFINE_PAGE_2_STATUS','1','自由編集ページ2を表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,82,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (477,'自由編集ページ(Define Page) 3','DEFINE_PAGE_3_STATUS','1','自由編集ページ3 を表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,83,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (478,'自由編集ページ(Define Page) 4','DEFINE_PAGE_4_STATUS','1','自由編集ページ(Define Page) 4を表示しますか?<br />0= リンク:表示　　編集領域:非表示<br />1= リンク:表示　　編集領域:表示<br />2= リンク:非表示　編集領域:表示<br />3= リンク:非表示　編集領域:非表示',25,84,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\', \'3\'),');
-INSERT INTO configuration VALUES (479,'EZページの表示 - ページヘッダ','EZPAGES_STATUS_HEADER','1','EZページのコンテンツをページヘッダに表示するかどうかをグローバル(サイト全体)に設定します。<br />0 = Off<br />1 = On<br />2= サイトメンテナンスの際に管理者のIPアドレスでアクセスした場合のみ表示<br />注意：ワーニングは公開されず管理者にだけ表示されます。',30,10,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (480,'EZページの表示 - ページフッタ','EZPAGES_STATUS_FOOTER','1','EZページのコンテンツをページフッタに表示するかどうかをグローバル(サイト全体)に設定します。<br />0 = Off<br />1 = On<br />2= サイトメンテナンスの際に管理者のIPアドレスでアクセスした場合のみ表示<br />注意：ワーニングは公開されず管理者にだけ表示されます。',30,11,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (481,'EZページの表示 - サイドボックス','EZPAGES_STATUS_SIDEBOX','1','EZページのコンテンツをサイドボックスに表示するかどうかをグローバル(サイト全体)に設定します。<br />0 = Off<br />1 = On<br />2= サイトメンテナンスの際に管理者のIPアドレスでアクセスした場合のみ表示<br />注意：ワーニングは公開されず管理者にだけ表示されます。',30,12,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (482,'EZページ のヘッダ - リンクのセパレータ(区切り記号)','EZPAGES_SEPARATOR_HEADER','','EＺページのヘッダのリンク表示のセパレータ(区切り文字)は?<br />デフォルト = &amp;nbsp;::&amp;nbsp;',30,20,'2009-11-19 13:10:25','2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (483,'EZページ のフッタ - リンクのセパレータ(区切り記号)','EZPAGES_SEPARATOR_FOOTER','&nbsp;::&nbsp;','EＺページのフッタのリンク表示のセパレータ(区切り文字)は?<br />デフォルト = &amp;nbsp;::&amp;nbsp;',30,21,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (484,'EZページ - [次へ][前へ]ボタン','EZPAGES_SHOW_PREV_NEXT_BUTTONS','2','EZページのコンテンツ内[前へ][続ける][次へ]ボタンを表示しますか?<br />0=OFF (ボタンなし)<br />1=「続ける」を表示<br />2=「前へ」「続ける」「次へ」を表示<br /><br />デフォルト：2',30,30,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (485,'EZページ - 目次の表示','EZPAGES_SHOW_TABLE_CONTENTS','1','EZページの目次を表示しますか?<br />0= OFF<br />1= ON',30,35,'2009-11-19 12:39:39','2009-11-19 12:39:39',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (486,'EZ-ページ - ヘッダで表示しないページ','EZPAGES_DISABLE_HEADER_DISPLAY_LIST','','EZページのうち通常のページヘッダに表示しないページは?<br />表示しないページのページIDをカンマ(,)区切りで記述してください。ページIDは管理画面の[追加設定・ツール]のEZページ設定画面で確認できます。<br />例：1,5,2<br />ない場合は空欄のまま',30,40,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (487,'EZ-ページ - フッタで表示しないページ','EZPAGES_DISABLE_FOOTER_DISPLAY_LIST','','EZページのうち通常のページフッタに表示しないページは?<br />表示しないページのページIDをカンマ(,)区切りで記述してください。ページIDは管理画面の[追加設定・ツール]のEZページ設定画面で確認できます。<br />例：3,7<br />ない場合は空欄のまま',30,41,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (488,'EZ-ページ - 左カラムで表示しないページ','EZPAGES_DISABLE_LEFTCOLUMN_DISPLAY_LIST','','EZページのうち通常の左カラムに表示しないページは?<br />表示しないページのページIDをカンマ(,)区切りで記述してください。ページIDは管理画面の[追加設定・ツール]のEZページ設定画面で確認できます。<br />例：6,17<br />ない場合は空欄のまま',30,42,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (489,'EZ-ページ - 右カラムで表示しないページ','EZPAGES_DISABLE_RIGHTCOLUMN_DISPLAY_LIST','','EZページのうち通常の右カラムに表示しないページは?<br />表示しないページのページIDをカンマ(,)区切りで記述してください。ページIDは管理画面の[追加設定・ツール]のEZページ設定画面で確認できます。<br />例：5,23,47<br />ない場合は空欄のまま',30,43,NULL,'2009-11-19 12:39:39',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (490,'お問い合わせ時の個人情報確認画面表示','DISPLAY_CONTACT_US_PRIVACY_CONDITIONS','true','お問い合わせする画面で個人情報の確認画面を表示します。<div style=\"color: red;\">2005年4月1日に施行された「個人情報保護法」では、個人情報保護方針を開示することが求められています。</div>',11,3,NULL,'2009-11-19 12:39:40',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (491,'ふりがなが必要な国','FURIKANA_NECESSARY_COUNTRIES','Japanese','ふりがなが必要な国名をカンマで区切って入力してください',5,100,NULL,'2009-11-19 12:39:40',NULL,'');
-INSERT INTO configuration VALUES (492,'Product Listing - Layout Style','PRODUCT_LISTING_LAYOUT_STYLE','rows','Select the layout style:<br />Each product can be listed in its own row (rows option) or products can be listed in multiple columns per row (columns option)',8,40,'2010-05-28 11:45:17','2009-11-19 12:39:41',NULL,'zen_cfg_select_option(array(\"rows\", \"columns\"),');
-INSERT INTO configuration VALUES (493,'Product Listing - Columns Per Row','PRODUCT_LISTING_COLUMNS_PER_ROW','3','Select the number of columns of products to show in each row in the product listing. The default setting is 3.',8,41,NULL,'2009-11-19 12:39:41',NULL,NULL);
-INSERT INTO configuration VALUES (494,'Display Cross-Sell Products','MIN_DISPLAY_XSELL','1','This is the minimum number of configured Cross-Sell products required in order to cause the Cross Sell information to be displayed.<br />Default: 1',2,17,NULL,'2009-11-19 12:39:41',NULL,NULL);
-INSERT INTO configuration VALUES (495,'Display Cross-Sell Products','MAX_DISPLAY_XSELL','6','This is the maximum number of configured Cross-Sell products to be displayed.<br />Default: 6',3,66,NULL,'2009-11-19 12:39:41',NULL,NULL);
-INSERT INTO configuration VALUES (496,'Cross-Sell Products Columns per Row','SHOW_PRODUCT_INFO_COLUMNS_XSELL_PRODUCTS','3','Cross-Sell Products Columns to display per Row<br />0= off or set the sort order.<br />Default: 3',18,72,NULL,'2009-11-19 12:39:41',NULL,'zen_cfg_select_option(array(0, 1, 2, 3, 4), ');
-INSERT INTO configuration VALUES (497,'Cross-Sell - Display prices?','XSELL_DISPLAY_PRICE','false','Cross-Sell -- Do you want to display the product prices too?<br />Default: false',18,72,NULL,'2009-11-19 12:39:41',NULL,'zen_cfg_select_option(array(\'true\',\'false\'), ');
-INSERT INTO configuration VALUES (498,'無料配送','MODULE_SHIPPING_FREESHIPPER_STATUS','True','無料配送を提供しますか？',6,0,NULL,'2009-11-19 12:41:06',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (499,'無料配送コスト','MODULE_SHIPPING_FREESHIPPER_COST','0','無料配送にかかるコスト',6,6,NULL,'2009-11-19 12:41:06',NULL,NULL);
-INSERT INTO configuration VALUES (500,'手数料','MODULE_SHIPPING_FREESHIPPER_HANDLING','0','無料配送にかかる手数料.',6,0,NULL,'2009-11-19 12:41:06',NULL,NULL);
-INSERT INTO configuration VALUES (501,'税種別','MODULE_SHIPPING_FREESHIPPER_TAX_CLASS','0','定額料金に適用される税種別を選択してください。',6,0,NULL,'2009-11-19 12:41:06','zen_get_tax_class_title','zen_cfg_pull_down_tax_classes(');
-INSERT INTO configuration VALUES (502,'配送地域','MODULE_SHIPPING_FREESHIPPER_ZONE','0','配送地域を選択すると選択された地域のみで利用可能になります。.',6,0,NULL,'2009-11-19 12:41:06','zen_get_zone_class_title','zen_cfg_pull_down_zone_classes(');
-INSERT INTO configuration VALUES (503,'表示の整列順','MODULE_SHIPPING_FREESHIPPER_SORT_ORDER','0','表示の整列順を設定できます。数字が小さいほど上位に表示されます。',6,0,NULL,'2009-11-19 12:41:06',NULL,NULL);
-INSERT INTO configuration VALUES (504,'佐川急便の配送を有効にする','MODULE_SHIPPING_YAMATO_STATUS','True','ヤマト運輸(宅急便)の配送を提供しますか?',6,0,NULL,'2009-11-19 12:41:06',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (505,'取扱い手数料','MODULE_SHIPPING_YAMATO_HANDLING','0','送料に適用する取扱手数料を設定できます.',6,1,NULL,'2009-11-19 12:41:06',NULL,NULL);
-INSERT INTO configuration VALUES (506,'送料無料設定','MODULE_SHIPPING_YAMATO_FREE_SHIPPING','False','送料無料設定を有効にしますか? [合計モジュール]-[送料]-[送料無料設定]を優先する場合は False を選んでください.',6,2,NULL,'2009-11-19 12:41:06',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (507,'送料を無料にする購入金額設定','MODULE_SHIPPING_YAMATO_OVER','5000','設定金額以上をご購入の場合は送料を無料にします.',6,3,NULL,'2009-11-19 12:41:06',NULL,NULL);
-INSERT INTO configuration VALUES (508,'送料の値引率','MODULE_SHIPPING_YAMATO_DISCOUNT','0','送料の値引率を指定します.(％)',6,4,NULL,'2009-11-19 12:41:06',NULL,NULL);
-INSERT INTO configuration VALUES (509,'配送地域','MODULE_SHIPPING_YAMATO_ZONE','0','配送地域を選択すると選択された地域のみで利用可能となります.',6,5,NULL,'2009-11-19 12:41:06','zen_get_zone_class_title','zen_cfg_pull_down_zone_classes(');
-INSERT INTO configuration VALUES (510,'表示の整列順','MODULE_SHIPPING_YAMATO_SORT_ORDER','0','表示の整列順を設定できます. 数字が小さいほど上位に表示されます.',6,6,NULL,'2009-11-19 12:41:06',NULL,NULL);
-INSERT INTO configuration VALUES (511,'Installed Modules','ADDON_MODULE_INSTALLED','aboutbox;addon_modules;feature_area;carousel_ui;am_ajax_address;ajax_category_tree;blog;calendar;category_sitemap;checkout_step;easy_admin;easy_admin_simplify;easy_design;easy_reviews;email_templates;globalnavi;jquery;multiple_image_view;point_base;point_createaccount;point_customersrate;point_grouprate;point_productsrate;product_csv;products_with_attributes_stock;search_more;shopping_cart_summary;sitemapXML','This is automatically updated. No need to edit.',6,0,'2010-06-27 05:17:44','2009-11-19 12:42:23',NULL,NULL);
-INSERT INTO configuration VALUES (512,'コアモジュールの有効化','MODULE_ADDON_MODULES_STATUS','true','無効にすることは出来ません。',6,0,NULL,'2009-11-19 12:42:37',NULL,'zen_cfg_select_option(array(\'true\'), ');
-INSERT INTO configuration VALUES (513,'配布元URLリスト','MODULE_ADDON_MODULES_DISTRIBUTION_URL','http://zen-cart.ark-web.jp/shida/zencart-sugu/','addonモジュールパッケージを取得するサイトのURLを指定してください。<br/>複数指定する場合は改行して入力してください。',6,1,NULL,'2009-11-19 12:42:37',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (514,'優先順','MODULE_ADDON_MODULES_SORT_ORDER','0','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,2,NULL,'2009-11-19 12:42:37',NULL,NULL);
-INSERT INTO configuration VALUES (515,'パケット料金節約の設定','MOBILE_SLIM_SIZE','1','パケット料金の節約に関する設定をします<BR />この設定はHTML中の改行やスペースを取り除きファイルサイズを小さくします。この設定でパケット料金を節約する事が出来ます<br />0=OFF<br />1=ON<br />',100,2,NULL,'0001-01-01 00:00:00',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (516,'携帯サイトテーマカラーの設定','MOBILE_THEME_COLOR','#CA6312','サイトのテーマカラーを「#666666」などHTMLカラーコードで設定します。このテーマカラーは、見出しの帯の背景色などで使用されます',100,3,NULL,'0001-01-01 00:00:00',NULL,NULL);
-INSERT INTO configuration VALUES (517,'CSSの設定','MOBILE_CSS_CONF','0','ここではHTML中の[class]と[id]の有無を設定します<br />デフォルトではファイルサイズ縮小目的の為に0が設定されています<br />CSSを使用する場合は1を設定して下さい<BR /><br />0=CSSを使用しない<br />1=CSSを使用する<br />',100,4,NULL,'0001-01-01 00:00:00',NULL,'zen_cfg_select_option(array(\'0\', \'1\'),');
-INSERT INTO configuration VALUES (518,'アバウトボックスブロックの有効化','MODULE_ABOUTBOX_STATUS','true','アバウトボックスを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:50:52',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (519,'優先順','MODULE_ABOUTBOX_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 12:50:52',NULL,NULL);
-INSERT INTO configuration VALUES (520,'アバウトボックスのタイトル','MODULE_ABOUTBOX_CFG_HEADER','','アバウトボックスブロックに表示するタイトルを指定します。',6,2,NULL,'2009-11-19 12:50:52',NULL,NULL);
-INSERT INTO configuration VALUES (521,'アバウトボックス説明文のタイトル','MODULE_ABOUTBOX_CFG_GREETING_TITLE','店長からの挨拶','アバウトボックスに表示する説明文のタイトルを指定します。',6,3,NULL,'2009-11-19 12:50:52',NULL,NULL);
-INSERT INTO configuration VALUES (522,'アバウトボックス説明文の本文','MODULE_ABOUTBOX_CFG_GREETING_TEXT','すぐでき（る）パックのデモショップです。\r\nテンプレートの実装をがんばろー！','アバウトボックスに表示する説明文の本文を指定します。',6,4,NULL,'2009-11-19 12:50:52',NULL,'zen_cfg_textarea_small(');
-INSERT INTO configuration VALUES (523,'アバウトボックスに表示する画像','MODULE_ABOUTBOX_CFG_IMAGEPATH','images/my.jpg','アバウトボックスに表示する画像のパスを指定します。',6,5,NULL,'2009-11-19 12:50:52',NULL,NULL);
-INSERT INTO configuration VALUES (524,'カレンダー表示','MODULE_ABOUTBOX_DISPLAY_CALENDAR','true','営業カレンダーを表示するかどうか指定します。営業カレンダーモジュールがインストールされていないとtrueにしても表示されません。<br />true: 表示<br />false: 非表示',6,6,NULL,'2009-11-19 12:50:52',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (525,'対応クレジットカード表示','MODULE_ABOUTBOX_AVALABLE_CARDS','2','対応クレジットカードを表示するかどうか指定します<br />0: 非表示<br />1: テキスト表示<br />2: 画像表示',6,7,NULL,'2009-11-19 12:50:52',NULL,'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), ');
-INSERT INTO configuration VALUES (526,'jQueryの有効化','MODULE_JQUERY_STATUS','true','jQueryを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:51:33',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (527,'jQueryライブラリ','MODULE_JQUERY_LIBRARY','jquery.js','jQueryライブラリのファイル名を設定します。特に理由がない限り変更する必要はありません。<br />・初期値 = jquery.js',6,1,NULL,'2009-11-19 12:51:33',NULL,NULL);
-INSERT INTO configuration VALUES (528,'noConflictの有効化','MODULE_JQUERY_NOCONFLICT_STATUS','false','noConflictを有効にしますか？ <br />true: 有効<br />false: 無効',6,2,NULL,'2009-11-19 12:51:33',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (529,'優先順','MODULE_JQUERY_SORT_ORDER','1','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,3,NULL,'2009-11-19 12:51:33',NULL,NULL);
-INSERT INTO configuration VALUES (530,'商品カテゴリの有効化','MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS','true','商品カテゴリ表示を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:51:55',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (531,'優先順','MODULE_ADDON_MODULES_AJAXCATEGORYTREE_SORT_ORDER','1000','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 12:51:55',NULL,NULL);
-INSERT INTO configuration VALUES (532,'ブログの有効化','MODULE_BLOG_STATUS','true','ブログを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:52:36',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (533,'ブログURL','MODULE_BLOG_URL','','取得対象のURLを http:// から入力してください(https未対応)',6,1,NULL,'2009-11-19 12:52:36',NULL,NULL);
-INSERT INTO configuration VALUES (534,'タイムアウト','MODULE_BLOG_TIMEOUT','1','取得リミット時間を設定します、ここで指定した時間以上に取得に時間がかかった場合は取得を中止します',6,2,NULL,'2009-11-19 12:52:36',NULL,NULL);
-INSERT INTO configuration VALUES (535,'表示件数','MODULE_BLOG_COUNT','10','最大表示件数を設定します、0の場合はすべてとなります',6,3,NULL,'2009-11-19 12:52:36',NULL,NULL);
-INSERT INTO configuration VALUES (536,'優先順','MODULE_BLOG_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,4,NULL,'2009-11-19 12:52:36',NULL,NULL);
-INSERT INTO configuration VALUES (537,'営業カレンダーの有効化','MODULE_CALENDAR_STATUS','true','営業カレンダーを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:53:04',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (538,'週の開始が日曜日','MODULE_CALENDAR_START_SUNDAY','true','週の開始を日曜日としますか？ <br />true: 日曜<br />false: 月曜',6,1,NULL,'2009-11-19 12:53:04',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (539,'最短配送可能日: 注文日の翌日からの営業日','MODULE_CALENDAR_DELIVERY_START','3','配送日として指定できる範囲を日数として指定します',6,2,NULL,'2009-11-19 12:53:04',NULL,NULL);
-INSERT INTO configuration VALUES (540,'最終配送可能日: 最短配送可能日から日間','MODULE_CALENDAR_DELIVERY_END','14','配送日として指定できる範囲を日数として指定します',6,3,NULL,'2009-11-19 12:53:04',NULL,NULL);
-INSERT INTO configuration VALUES (541,'配送時刻の選択項目','MODULE_CALENDAR_HOPE_DELIVERY_TIME','指定しない,午前中,12時015時,15時018時,18時021時','配送時刻の選択項目をカンマ区切りで入力してください',6,4,NULL,'2009-11-19 12:53:04',NULL,NULL);
-INSERT INTO configuration VALUES (542,'優先順','MODULE_CALENDAR_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,5,NULL,'2009-11-19 12:53:04',NULL,NULL);
-INSERT INTO configuration VALUES (543,'カルーセルUIの有効化','MODULE_CAROUSEL_UI_STATUS','true','カルーセルUIを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (544,'jCarouselLiteライブラリ','MODULE_CAROUSEL_UI_JCAROUSELLITE_LIBRARY','jcarousellite.js','jCarouselLiteライブラリのファイル名を設定します。特に理由がない限り変更する必要はありません。<br />・初期値 = jcarousellite.js',6,1,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (545,'優先順','MODULE_CAROUSEL_UI_SORT_ORDER','11','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。<br />※jQueryモジュールよりも大きな数字を設定してください。',6,2,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (546,'新着商品 - 最大表示件数','MODULE_CAROUSEL_UI_MAX_DISPLAY_NEW_PRODUCTS','4','新着商品の最大表示件数を設定します。<br />・初期値 = 4',6,3,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (547,'新着商品 - 自動スクロール','MODULE_CAROUSEL_UI_CONF_AUTO_NEW_PRODUCTS','0','新着商品を自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = 0',6,4,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (548,'新着商品 - スクロール速度','MODULE_CAROUSEL_UI_CONF_SPEED_NEW_PRODUCTS','200','新着商品をスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = 200',6,5,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (549,'新着商品 - 縦スクロール','MODULE_CAROUSEL_UI_CONF_VERTICAL_NEW_PRODUCTS','false','新着商品を縦にスクロールしますか？<br />true: 縦スクロール<br />false: 横スクロール<br />・初期値 = false',6,6,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (550,'新着商品 - 循環スクロール','MODULE_CAROUSEL_UI_CONF_CIRCULAR_NEW_PRODUCTS','true','新着商品を循環的にスクロールしますか？<br />true: 循環スクロール<br />false: 往復スクロール<br />・初期値 = true',6,7,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (551,'新着商品 - スクロールエリア表示件数','MODULE_CAROUSEL_UI_CONF_VISIBLE_NEW_PRODUCTS','3','新着商品のスクロールエリアに表示する件数を設定します。<br />・初期値 = 3',6,8,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (552,'新着商品 - スクロール件数','MODULE_CAROUSEL_UI_CONF_SCROLL_NEW_PRODUCTS','1','新着商品の一度にスクロールさせる件数を設定します。<br />・初期値 = 1',6,9,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (553,'おすすめ商品 - 最大表示件数','MODULE_CAROUSEL_UI_MAX_DISPLAY_FEATURED_PRODUCTS','4','おすすめ商品の最大表示件数を設定します。<br />・初期値 = 4',6,10,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (554,'おすすめ商品 - 自動スクロール','MODULE_CAROUSEL_UI_CONF_AUTO_FEATURED_PRODUCTS','0','おすすめ商品を自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = 0',6,11,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (555,'おすすめ商品 - スクロール速度','MODULE_CAROUSEL_UI_CONF_SPEED_FEATURED_PRODUCTS','200','おすすめ商品をスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = 200',6,12,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (556,'おすすめ商品 - 縦スクロール','MODULE_CAROUSEL_UI_CONF_VERTICAL_FEATURED_PRODUCTS','false','おすすめ商品を縦にスクロールしますか？<br />true: 縦スクロール<br />false: 横スクロール<br />・初期値 = false',6,13,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (557,'おすすめ商品 - 循環スクロール','MODULE_CAROUSEL_UI_CONF_CIRCULAR_FEATURED_PRODUCTS','true','おすすめ商品を循環的にスクロールしますか？<br />true: 循環スクロール<br />false: 往復スクロール<br />・初期値 = true',6,14,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (558,'おすすめ商品 - スクロールエリア表示件数','MODULE_CAROUSEL_UI_CONF_VISIBLE_FEATURED_PRODUCTS','3','おすすめ商品のスクロールエリアに表示する件数を設定します。<br />・初期値 = 3',6,15,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (559,'おすすめ商品 - スクロール件数','MODULE_CAROUSEL_UI_CONF_SCROLL_FEATURED_PRODUCTS','1','おすすめ商品の一度にスクロールさせる件数を設定します。<br />・初期値 = 1',6,16,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (560,'特価商品 - 最大表示件数','MODULE_CAROUSEL_UI_MAX_DISPLAY_SPECIALS_PRODUCTS','4','特価商品の最大表示件数を設定します。<br />・初期値 = 4',6,17,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (561,'特価商品 - 自動スクロール','MODULE_CAROUSEL_UI_CONF_AUTO_SPECIALS_PRODUCTS','0','特価商品を自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = 0',6,18,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (562,'特価商品 - スクロール速度','MODULE_CAROUSEL_UI_CONF_SPEED_SPECIALS_PRODUCTS','200','特価商品をスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = 200',6,19,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (563,'特価商品 - 縦スクロール','MODULE_CAROUSEL_UI_CONF_VERTICAL_SPECIALS_PRODUCTS','false','特価商品を縦にスクロールしますか？<br />true: 縦スクロール<br />false: 横スクロール<br />・初期値 = false',6,20,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (564,'特価商品 - 循環スクロール','MODULE_CAROUSEL_UI_CONF_CIRCULAR_SPECIALS_PRODUCTS','true','特価商品を循環的にスクロールしますか？<br />true: 循環スクロール<br />false: 往復スクロール<br />・初期値 = true',6,21,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (565,'特価商品 - スクロールエリア表示件数','MODULE_CAROUSEL_UI_CONF_VISIBLE_SPECIALS_PRODUCTS','3','特価商品のスクロールエリアに表示する件数を設定します。<br />・初期値 = 3',6,22,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (566,'特価商品 - スクロール件数','MODULE_CAROUSEL_UI_CONF_SCROLL_SPECIALS_PRODUCTS','1','特価商品の一度にスクロールさせる件数を設定します。<br />・初期値 = 1',6,23,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (567,'こんな商品も購入しています - 最大表示件数','MODULE_CAROUSEL_UI_MAX_DISPLAY_ALSO_PURCHASED_PRODUCTS','4','こんな商品も購入していますの最大表示件数を設定します。<br />・初期値 = 4',6,24,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (568,'こんな商品も購入しています - 自動スクロール','MODULE_CAROUSEL_UI_CONF_AUTO_ALSO_PURCHASED_PRODUCTS','0','こんな商品も購入していますを自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = 0',6,25,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (569,'こんな商品も購入しています - スクロール速度','MODULE_CAROUSEL_UI_CONF_SPEED_ALSO_PURCHASED_PRODUCTS','200','こんな商品も購入していますをスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = 200',6,26,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (570,'こんな商品も購入しています - 縦スクロール','MODULE_CAROUSEL_UI_CONF_VERTICAL_ALSO_PURCHASED_PRODUCTS','false','こんな商品も購入していますを縦にスクロールしますか？<br />true: 縦スクロール<br />false: 横スクロール<br />・初期値 = false',6,27,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (571,'こんな商品も購入しています - 循環スクロール','MODULE_CAROUSEL_UI_CONF_CIRCULAR_ALSO_PURCHASED_PRODUCTS','true','こんな商品も購入していますを循環的にスクロールしますか？<br />true: 循環スクロール<br />false: 往復スクロール<br />・初期値 = true',6,28,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (572,'こんな商品も購入しています - スクロールエリア表示件数','MODULE_CAROUSEL_UI_CONF_VISIBLE_ALSO_PURCHASED_PRODUCTS','3','こんな商品も購入していますのスクロールエリアに表示する件数を設定します。<br />・初期値 = 3',6,29,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (573,'こんな商品も購入しています - スクロール件数','MODULE_CAROUSEL_UI_CONF_SCROLL_ALSO_PURCHASED_PRODUCTS','1','こんな商品も購入していますの一度にスクロールさせる件数を設定します。<br />・初期値 = 1',6,30,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (574,'関連商品 - 最大表示件数','MODULE_CAROUSEL_UI_MAX_DISPLAY_XSELL_PRODUCTS','4','関連商品の最大表示件数を設定します。<br />・初期値 = 4',6,31,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (575,'関連商品 - 自動スクロール','MODULE_CAROUSEL_UI_CONF_AUTO_XSELL_PRODUCTS','0','関連商品を自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = 0',6,32,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (576,'関連商品 - スクロール速度','MODULE_CAROUSEL_UI_CONF_SPEED_XSELL_PRODUCTS','200','関連商品をスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = 200',6,33,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (577,'関連商品 - 縦スクロール','MODULE_CAROUSEL_UI_CONF_VERTICAL_XSELL_PRODUCTS','false','関連商品を縦にスクロールしますか？<br />true: 縦スクロール<br />false: 横スクロール<br />・初期値 = false',6,34,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (578,'関連商品 - 循環スクロール','MODULE_CAROUSEL_UI_CONF_CIRCULAR_XSELL_PRODUCTS','true','関連商品を循環的にスクロールしますか？<br />true: 循環スクロール<br />false: 往復スクロール<br />・初期値 = true',6,35,NULL,'2009-11-19 12:53:57',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (579,'関連商品 - スクロールエリア表示件数','MODULE_CAROUSEL_UI_CONF_VISIBLE_XSELL_PRODUCTS','3','関連商品のスクロールエリアに表示する件数を設定します。<br />・初期値 = 3',6,36,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (580,'関連商品 - スクロール件数','MODULE_CAROUSEL_UI_CONF_SCROLL_XSELL_PRODUCTS','1','関連商品の一度にスクロールさせる件数を設定します。<br />・初期値 = 1',6,37,NULL,'2009-11-19 12:53:57',NULL,NULL);
-INSERT INTO configuration VALUES (581,'カテゴリサイトマップの有効化','MODULE_ADDON_MODULES_CATEGORY_SITEMAP_STATUS','true','カテゴリサイトマップ表示を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:54:42',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (582,'表示するカテゴリの深さ','MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TREE_LEVEL','2','表示するカテゴリの深さを指定します（デフォルト=2）',6,1,NULL,'2009-11-19 12:54:42',NULL,NULL);
-INSERT INTO configuration VALUES (583,'優先順','MODULE_ADDON_MODULES_CATEGORY_SITEMAP_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,2,NULL,'2009-11-19 12:54:42',NULL,NULL);
-INSERT INTO configuration VALUES (584,'注文ステップ表示の有効化','MODULE_CHECKOUT_STEP_STATUS','true','注文ステップ表示を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:56:18',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (585,'優先順','MODULE_CHECKOUT_STEP_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 12:56:18',NULL,NULL);
-INSERT INTO configuration VALUES (586,'管理メニューの設定の有効化','MODULE_EASY_ADMIN_STATUS','false','管理メニューの設定を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:56:42',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (587,'優先順','MODULE_EASY_ADMIN_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 12:56:42',NULL,NULL);
-INSERT INTO configuration VALUES (590,'デザインの設定の有効化','MODULE_EASY_DESIGN_STATUS','true','デザインの設定を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 12:59:53',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (591,'優先順','MODULE_EASY_DESIGN_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 12:59:53',NULL,NULL);
-INSERT INTO configuration VALUES (1534,'メールテンプレートの有効化','MODULE_EMAIL_TEMPLATES_STATUS','true','メールテンプレートを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2010-06-27 04:29:58',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (1535,'優先順','MODULE_EMAIL_TEMPLATES_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2010-06-27 04:29:58',NULL,NULL);
-INSERT INTO configuration VALUES (594,'フィーチャーエリアUIの有効化','MODULE_FEATURE_AREA_STATUS','true','フィーチャーエリアUIを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 13:02:18',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (595,'優先順','MODULE_FEATURE_AREA_SORT_ORDER','10','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 13:02:18',NULL,NULL);
-INSERT INTO configuration VALUES (596,'サムネイル - 自動スクロール ','MODULE_FEATURE_AREA_UI_CONF_AUTO','6200','サムネイルを自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = 6200',6,2,NULL,'2009-11-19 13:02:18',NULL,NULL);
-INSERT INTO configuration VALUES (597,'サムネイル - スクロール速度','MODULE_FEATURE_AREA_UI_CONF_SPEED','800','サムネイルをスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = 800',6,3,NULL,'2009-11-19 13:02:18',NULL,NULL);
-INSERT INTO configuration VALUES (598,'サムネイル - スクロールエリア表示件数','MODULE_FEATURE_AREA_UI_CONF_VISIBLE','5','サムネイルのスクロールエリアに表示する件数を設定します。<br />・初期値 = 5',6,4,NULL,'2009-11-19 13:02:18',NULL,NULL);
-INSERT INTO configuration VALUES (599,'グローバルナビブロックの有効化','MODULE_GLOBALNAVI_STATUS','true','グローバルナビを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 13:03:12',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (600,'優先順','MODULE_GLOBALNAVI_SORT_ORDER','1950','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 13:03:12',NULL,NULL);
-INSERT INTO configuration VALUES (601,'表示するカテゴリの上限','MODULE_GLOBALNAVI_CFG_LIMIT','5','グローバルナビに表示するカテゴリ数の上限を設定します',6,2,NULL,'2009-11-19 13:03:12',NULL,NULL);
-INSERT INTO configuration VALUES (602,'複数画像表示 の有効化','MODULE_MULTIPLE_IMAGE_VIEW_STATUS','true','複数画像表示を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 13:03:54',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (603,'優先順','MODULE_MULTIPLE_IMAGE_VIEW_SORT_ORDER','10','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 13:03:54',NULL,NULL);
-INSERT INTO configuration VALUES (604,'サムネイルサイズ：幅','MODULE_MULTIPLE_IMAGE_VIEW_THMB_WIDTH','100','サムネイル画像の表示幅を設定できます。(pixel)',6,2,NULL,'2009-11-19 13:03:54',NULL,NULL);
-INSERT INTO configuration VALUES (605,'サムネイルサイズ：高さ','MODULE_MULTIPLE_IMAGE_VIEW_THMB_HEIGHT','80','サムネイル画像の表示高さを設定できます。(pixel)',6,3,NULL,'2009-11-19 13:03:54',NULL,NULL);
-INSERT INTO configuration VALUES (606,'CSVによる商品一括登録の有効化','MODULE_PRODUCT_CSV_STATUS','true','CSVによる商品一括登録を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 13:04:30',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (607,'優先順','MODULE_PRODUCT_CSV_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 13:04:30',NULL,NULL);
-INSERT INTO configuration VALUES (608,'オプション毎の在庫管理の有効化','MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS','true','オプション毎の在庫管理を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 13:05:03',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (609,'優先順','MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 13:05:03',NULL,NULL);
-INSERT INTO configuration VALUES (610,'商品レビューの有効化','MODULE_REVIEWS_STATUS','true','商品レビューを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 13:05:33',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (611,'商品詳細ページ　レビュー表示数','MODULE_REVIEWS_MAX_DISPLAY_NEW_REVIEWS','3','商品詳細ページで表示される商品レビューの数を設定してください。<br />商品レビュー一覧ページのレビュー数は「一般設定」-「最大値の設定」-「新しいレビューの表示数最大値」で設定してください。',6,1,NULL,'2009-11-19 13:05:33',NULL,NULL);
-INSERT INTO configuration VALUES (612,'非ログインユーザーの商品レビュー閲覧禁止','MODULE_REVIEWS_LIST_DISPLAY_FORCE_LOGIN','false','ログインしていないユーザーは商品レビュー閲覧ができない。',6,2,NULL,'2009-11-19 13:05:33',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (613,'優先順','MODULE_REVIEWS_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,3,NULL,'2009-11-19 13:05:33',NULL,NULL);
-INSERT INTO configuration VALUES (614,'もっと検索の有効化','MODULE_SEARCH_MORE_STATUS','true','もっと検索を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 13:06:01',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (615,'表示件数リストボックスのタイトル','MODULE_SEARCH_MORE_PAGE_MAX_LIST_NAME','表示件数','商品一覧の中で表示される商品の数を指定するリストのラベルを指定してください。デフォルト値は「表示件数」です。',6,1,NULL,'2009-11-19 13:06:01',NULL,NULL);
-INSERT INTO configuration VALUES (616,'表示件数リストボックスの値','MODULE_SEARCH_MORE_PAGE_MAX_LIST_VALUE','10,25,50,100','商品一覧の中で表示される商品の数を指定するリストの内容をカンマ(,)区切りで指定してください。デフォルト値は「10,25,50,100」です。',6,2,NULL,'2009-11-19 13:06:01',NULL,NULL);
-INSERT INTO configuration VALUES (617,'並び替えリストボックスのタイトル','MODULE_SEARCH_MORE_SORT_LIST_NAME','並び替え','商品一覧のソート順を指定するリストのラベルを指定してください。デフォルト値は「並び替え」です。',6,3,NULL,'2009-11-19 13:06:01',NULL,NULL);
-INSERT INTO configuration VALUES (618,'優先順','MODULE_SEARCH_MORE_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,4,NULL,'2009-11-19 13:06:01',NULL,NULL);
-INSERT INTO configuration VALUES (622,'ポイントモジュールの有効化<br />有効化の後に<a href=\"http://zen-cart.ark-web.jp/ohtsuji/zencart-sugu/admin/addon_modules_admin.php?module=addon_modules/blocks\">ブロックの設定</a>から「現在のポイント残額」ブロックの表示設定をしてください。','MODULE_POINT_BASE_STATUS','true','ポイントを有効にしますか？ (ポイントモジュールは他の全てのポイントモジュールにとって必須です)<br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 18:25:40',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (623,'ポイント単位名称','MODULE_POINT_BASE_POINT_SYMBOL','point','ポイントの単位名称を入力してください。<br />・初期値 = point',6,1,NULL,'2009-11-19 18:25:40',NULL,NULL);
-INSERT INTO configuration VALUES (624,'ポイント管理ページで表示するポイント履歴の最大値','MODULE_POINT_BASE_MAX_DISPLAY_SEARCH_RESULTS_POINTS','20','ポイント管理ページで表示するポイント履歴の最大値を設定してください。<br />・初期値 = 20',6,2,NULL,'2009-11-19 18:25:40',NULL,NULL);
-INSERT INTO configuration VALUES (625,'優先順','MODULE_POINT_BASE_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,3,NULL,'2009-11-19 18:25:40',NULL,NULL);
-INSERT INTO configuration VALUES (640,'会員登録ポイント発行モジュールの有効化','MODULE_POINT_CREATEACCOUNT_STATUS','true','会員登録ポイント発行モジュールを有効にしますか？<br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 18:56:07',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (641,'発行ポイントの保留','MODULE_POINT_CREATEACCOUNT_PENDING','false','ポイント発行時にそのポイントの使用を保留にしますか？<br />保留しない場合はポイント発行後すぐに使用できます。<br />true: 保留にする<br />false: 保留にしない（即時使用可能）',6,1,NULL,'2009-11-19 18:56:07',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (642,'会員登録ポイント数','MODULE_POINT_CREATEACCOUNT_POINT','','会員登録時にその会員へプレゼントするポイント数を設定します。<br />例: 500 (会員登録時に500ポイントプレゼント)',6,2,NULL,'2009-11-19 18:56:07',NULL,NULL);
-INSERT INTO configuration VALUES (643,'優先順','MODULE_POINT_CREATEACCOUNT_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,3,NULL,'2009-11-19 18:56:07',NULL,NULL);
-INSERT INTO configuration VALUES (644,'顧客毎ポイント還元率設定モジュールの有効化','MODULE_POINT_CUSTOMERSRATE_STATUS','true','顧客毎ポイント還元率設定を有効にしますか？<br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 18:56:29',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (645,'優先順','MODULE_POINT_CUSTOMERSRATE_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 18:56:29',NULL,NULL);
-INSERT INTO configuration VALUES (646,'顧客グループ毎ポイント還元率設定モジュールの有効化','MODULE_POINT_GROUPRATE_STATUS','true','顧客グループ毎ポイント還元率設定を有効にしますか？<br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 18:56:53',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (647,'優先順','MODULE_POINT_GROUPRATE_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 18:56:53',NULL,NULL);
-INSERT INTO configuration VALUES (648,'商品毎ポイント還元率設定モジュールの有効化','MODULE_POINT_PRODUCTSRATE_STATUS','true','商品毎ポイント還元率設定を有効にしますか？<br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 18:57:28',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (649,'優先順','MODULE_POINT_PRODUCTSRATE_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 18:57:28',NULL,NULL);
-INSERT INTO configuration VALUES (650,'ショッピングカートサマリーブロックの有効化','MODULE_SHOPPING_CART_SUMMARY_STATUS','true','ショッピングカートサマリーブロックを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2009-11-19 19:37:35',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (651,'優先順','MODULE_SHOPPING_CART_SUMMARY_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,1,NULL,'2009-11-19 19:37:35',NULL,NULL);
-INSERT INTO configuration VALUES (1531,'商品を修正','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SUPER_ORDERS_PRODUCTS','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1530,'梱包を分割','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SUPER_ORDERS_SPLIT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1529,'注文最終設定','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SUPER_ORDERS_FINAL','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1528,'支払情報','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SUPER_ORDERS_PAYMENT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1527,'合計モジュール','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_MODULES_OT_TOTAL','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1522,'SMTP認証 - DNS名','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_209','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1523,'SMTP認証 - IPポート番号','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_210','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1520,'SMTP認証 - メールアカウント','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_207','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1521,'SMTP認証 - パスワード','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_208','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1519,'オンラインユーザー数の表示設定','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_243','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1517,'在庫わずかになったらメール送信','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_240','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1518,'「メールマガジンの購読解除」リンクの表示','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_242','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1513,'掲載待ちレビューについてのメール送信先','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_236','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1514,'「お問い合わせ」メールのドロップダウン設定','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_237','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1516,'「お問い合わせ」にショップ名と住所を表記','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_239','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1515,'ゲストに「友達に知らせる」機能を許可','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_238','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1510,'ショップ運営者の注文ステータスメール(コピー)の送信','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_233','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1511,'ショップ運営者の注文ステータスメール(コピー)の送信先','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_234','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1512,'掲載待ちレビューについてメール送信','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_235','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1506,'ショップ運営者からのギフト券送付メール(コピー)の送信','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_229','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1507,'ショップ運営者からのギフト券送付メール(コピー)の送信先','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_230','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1508,'ショップ運営者からのクーポン券送付メール(コピー)の送信','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_231','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1509,'ショップ運営者からのクーポン券送付メール(コピー)の送信先','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_232','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1505,'ギフト券送付メール(コピー)の送信先','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_228','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1503,'管理者が送信するメールフォーマット','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_221','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1504,'ギフト券送付メール(コピー)の送信','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_227','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1502,'送信メールの送信元アドレスの実在性','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_220','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1501,'メール送信エラーの表示','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_217','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1500,'メール保存の設定','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_216','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1498,'メールアドレスをDNSで確認','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_214','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1499,'メールを送信','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_215','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1495,'メール送信 - 接続方法','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_206','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1497,'メール送信にMIME HTMLを使用','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_213','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1496,'メールの改行コード','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_12_212','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1494,'カテゴリ内の商品数を表示 - 管理画面','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_28','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1489,'Zen Cart新バージョンの自動チェック(ヘッダで告知するか否か)','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_22','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1490,'サーバの稼動時間(アップタイム)','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_24','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1491,'リンク切れページのチェック','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_25','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1492,'HTMLエディタ','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_26','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1493,'phpBBへのリンクを表示','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_27','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1488,'管理画面のプログラム処理の上限時間設定(秒)','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_21','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1487,'管理画面のタイムアウト設定(秒数)','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_20','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1486,'ショップのステータス','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_23','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1483,'商品にかかる税額の算定基準','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_17','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1484,'送料にかかる税額の算定基準','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_18','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1485,'税金の表示','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_19','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1482,'価格を税込みで表示 - 管理画面','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_16','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1480,'税額の小数点位置','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_14','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1481,'価格を税込みで表示','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_15','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1476,'表示言語の選択','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_8','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1477,'商品の追加後にカートを表示','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_10','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1478,'デフォルトの検索演算子','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_11','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1479,'カテゴリ内の商品数を表示','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_13','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1474,'入荷予定商品のソート順に用いるフィールド','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_6','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1475,'表示言語と通貨の連動','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_7','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1470,'画像ファイル名を入力','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_BANNER_MANAGER_IMAGE_LOCAL','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1471,'画像の保存先','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_BANNER_MANAGER_IMAGE_TARGET','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1473,'入荷予定商品のソート順','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_5','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1472,'ショップオーナー名','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CONFIGURATION_1_2','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1469,'新しいバナー','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_BANNER_MANAGER_NEW_GROUP','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1468,'重量,属性,値引き列','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_COLUMN','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1466,'商品選択プルダウン','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_PRODUCTS','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1467,'属性凡例','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_LEGEND','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1465,'カテゴリ選択プルダウン','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_CATEGORIES','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1464,'オプション画像','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_IMAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1463,'属性フラグ','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_FLAGS','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1462,'単語/文字値引き','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_PRICE_WORDS','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1461,'数量値引き','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_QTY_PRICES','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1460,'属性のプライスファクター','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_PRICE_FACTOR','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1459,'属性のワンタイム値引き','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_ONETIME','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1458,'属性の重量','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_WEIGHT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1457,'小数点','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_NUMBER_UNIT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1456,'複数カテゴリのリンク管理へのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_CATEGORY','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1455,'商品および価格編集ボタン','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_MODIFY','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1454,'おすすめ商品プルダウン','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_OPTIONS_VALUES_COPIER','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1453,'コピー操作','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_OPTIONS_VALUES_COPY','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1452,'日本語以外の入力項目','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_OPTIONS_VALUES_LANGUAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1451,'テキスト属性の長さ','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_OPTIONS_NAME_LENGTH','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1450,'一連の大きな変更','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_OPTIONS_NAME_BIG_MODIFY','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1449,'日本語以外の入力項目','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_OPTIONS_NAME_LANGUAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1448,'編集へのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_FEATURED_EDIT_LINK','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1447,'価格の管理へのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_FEATURED_PRICE_LINK','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1446,'小数点','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SPECIALS_NUMBER_UNIT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1445,'選択へのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SPECIALS_PRE_ADD','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1443,'価格の管理へのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SPECIALS_PRICE_LINK','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1444,'編集へのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_SPECIALS_EDIT_LINK','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1436,'小数点','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_NUMBER_UNIT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1437,'メタタグでの注意書き','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_META_TAGS_USAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1438,'複数のカテゴリがマネージャをリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_CATEGORY_MANAGER','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1439,'日本語以外の入力項目','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ORDER_STATUS_LANGUAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1440,'グループ割引','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CUSTOMERS_GROUP_PRICING','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1441,'割引券贈呈','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CUSTOMERS_REFERRAL','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1442,'日本語以外の入力項目','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_MANUFACTURERS_LANGUAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (767,'Sitemap XMLの有効化','MODULE_SITEMAPXML_STATUS','true','Sitemap XMLを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (768,'Compress XML File','MODULE_SITEMAPXML_COMPRESS','false','Compress Google XML Sitemap file',6,1,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (769,'Lastmod tag format','MODULE_SITEMAPXML_LASTMOD_FORMAT','date','Lastmod tag format:<br />date - Complete date: YYYY-MM-DD (eg 1997-07-16)<br />full -    Complete date plus hours, minutes and seconds: YYYY-MM-DDThh:mm:ssTZD (eg 1997-07-16T19:20:30+01:00)',6,2,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'date\', \'full\'), ');
-INSERT INTO configuration VALUES (770,'Use Existing Files','MODULE_SITEMAPXML_USE_EXISTING_FILES','true','Use Existing XML Files',6,3,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (771,'Generate language_id for default language','MODULE_SITEMAPXML_USE_DEFAULT_LANGUAGE','true','Generate language_id parameter for default language',6,4,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (772,'Ping urls','MODULE_SITEMAPXML_PING_URLS','Google => http://www.google.com/webmasters/sitemaps/ping?sitemap=%s; Yahoo! => http://search.yahooapis.com/SiteExplorerService/V1/ping?sitemap=%s; Ask.com => http://submissions.ask.com/ping?sitemap=%s; Microsoft => http://www.moreover.com/ping?u=%s','List of pinging urls separated by ;',6,5,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_textarea(');
-INSERT INTO configuration VALUES (773,'Products order by','MODULE_SITEMAPXML_PRODUCTS_ORDERBY','products_sort_order ASC, last_date DESC','',6,6,NULL,'2010-04-20 19:40:09',NULL,NULL);
-INSERT INTO configuration VALUES (774,'Products changefreq','MODULE_SITEMAPXML_PRODUCTS_CHANGEFREQ','weekly','How frequently the Product pages page is likely to change.',6,7,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'always\', \'hourly\', \'daily\', \'weekly\', \'monthly\', \'yearly\', \'never\'),');
-INSERT INTO configuration VALUES (775,'Categories order by','MODULE_SITEMAPXML_CATEGORIES_ORDERBY','sort_order ASC, last_date DESC','',6,8,NULL,'2010-04-20 19:40:09',NULL,NULL);
-INSERT INTO configuration VALUES (776,'Category changefreq','MODULE_SITEMAPXML_CATEGORIES_CHANGEFREQ','weekly','How frequently the Category pages page is likely to change.',6,9,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'always\', \'hourly\', \'daily\', \'weekly\', \'monthly\', \'yearly\', \'never\'),');
-INSERT INTO configuration VALUES (777,'Reviews order by','MODULE_SITEMAPXML_REVIEWS_ORDERBY','reviews_rating ASC, last_date DESC','',6,10,NULL,'2010-04-20 19:40:09',NULL,NULL);
-INSERT INTO configuration VALUES (778,'Reviews changefreq','MODULE_SITEMAPXML_REVIEWS_CHANGEFREQ','weekly','How frequently the Category pages page is likely to change.',6,11,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'always\', \'hourly\', \'daily\', \'weekly\', \'monthly\', \'yearly\', \'never\'),');
-INSERT INTO configuration VALUES (779,'EZPages order by','MODULE_SITEMAPXML_EZPAGES_ORDERBY','sidebox_sort_order ASC, header_sort_order ASC, footer_sort_order ASC','',6,12,NULL,'2010-04-20 19:40:09',NULL,NULL);
-INSERT INTO configuration VALUES (780,'EZPages changefreq','MODULE_SITEMAPXML_EZPAGES_CHANGEFREQ','weekly','How frequently the EZPages pages page is likely to change.',6,13,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'always\', \'hourly\', \'daily\', \'weekly\', \'monthly\', \'yearly\', \'never\'),');
-INSERT INTO configuration VALUES (781,'Testimonials order by','MODULE_SITEMAPXML_TESTIMONIALS_ORDERBY','last_date DESC','',6,14,NULL,'2010-04-20 19:40:09',NULL,NULL);
-INSERT INTO configuration VALUES (782,'Testimonials changefreq','MODULE_SITEMAPXML_TESTIMONIALS_CHANGEFREQ','weekly','How frequently the EZPages pages page is likely to change.',6,15,NULL,'2010-04-20 19:40:09',NULL,'zen_cfg_select_option(array(\'always\', \'hourly\', \'daily\', \'weekly\', \'monthly\', \'yearly\', \'never\'),');
-INSERT INTO configuration VALUES (783,'優先順','MODULE_SITEMAPXML_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,16,NULL,'2010-04-20 19:40:09',NULL,NULL);
-INSERT INTO configuration VALUES (784,'商品レビューの有効化','MODULE_EASY_REVIEWS_STATUS','true','商品レビューを有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2010-05-20 12:54:48',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (785,'商品詳細ページ　レビュー表示数','MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS','3','商品詳細ページで表示される商品レビューの数を設定してください。<br />商品レビュー一覧ページのレビュー数は「一般設定」-「最大値の設定」-「新しいレビューの表示数最大値」で設定してください。',6,1,NULL,'2010-05-20 12:54:48',NULL,NULL);
-INSERT INTO configuration VALUES (786,'非ログインユーザーの商品レビュー閲覧禁止','MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN','false','ログインしていないユーザーは商品レビュー閲覧ができない。',6,2,NULL,'2010-05-20 12:54:48',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (787,'優先順','MODULE_EASY_REVIEWS_SORT_ORDER','','モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。',6,3,NULL,'2010-05-20 12:54:48',NULL,NULL);
-INSERT INTO configuration VALUES (788,'郵便番号による住所自動入力の有効化','MODULE_AM_AJAX_ADDRESS_STATUS','true','郵便番号による住所自動入力を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2010-05-20 13:02:17',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration VALUES (1435,'商品重量','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_WEIGHT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1434,'最小数量/単位ミックス','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_QUANTITY_MIXED','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1433,'商品の数量単位','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_QUANTITY_ORDER_UNIT','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1432,'商品の最大数量','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_QUANTITY_ORDER_MIN','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1431,'商品の最小数量','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_QUANTITY_ORDER_MAX','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1430,'常に送料無料','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_ALWAYS_FREE_SHIPPING','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1429,'ヴァーチャル商品','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_VIRTUAL','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1428,'価格お問い合わせ','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_PRICE_CALL','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1427,'無料商品','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_PRICE_FREE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1426,'商品価格（グロス）','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_PRICE_GROSS','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1424,'商品属性による価格','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_PRICE_ATTRIBUTE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1425,'税種別','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_TAX_CLASS','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1423,'日本語以外の入力項目','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_LANGUAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1422,'商品オプションへのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CATEGORY_PRODUCT_ATTRIBUTE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1421,'新規商品の商品種類プルダウン','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CATEGORY_PRODUCT_TYPE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1420,'商品価格管理へのリンク','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CATEGORY_PRICE_LINK','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (1419,'日本語以外の入力項目','MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CATEGORY_LANGUAGE','false','',-1,1,NULL,'2010-06-07 22:43:03',NULL,NULL);
-INSERT INTO configuration VALUES (907,'Store Fax','STORE_FAX','03-XXXX-XXXX','Enter the fax number for your store.<br>You can call upon this by using the define <strong>STORE_FAX</strong>.',1,4,'2010-06-18 11:27:23','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (908,'Store Phone','STORE_PHONE','03-XXXX-XXXX','Enter the phone number for your store.<br>You can call upon this by using the define <strong>STORE_PHONE</strong>.',1,4,'2010-06-18 11:27:28','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (909,'Enable Purchase Order Module','MODULE_PAYMENT_PURCHASE_ORDER_STATUS','True','Do you want to accept Purchase Order payments?',6,1,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (910,'Make payable to:','MODULE_PAYMENT_PURCHASE_ORDER_PAYTO','Destination ImagiNation, Inc.','Who should payments be made payable to?',6,2,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (911,'Sort order of display.','MODULE_PAYMENT_PURCHASE_ORDER_SORT_ORDER','0','Sort order of display. Lowest is displayed first.',6,4,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (912,'Payment Zone','MODULE_PAYMENT_PURCHASE_ORDER_ZONE','0','If a zone is selected, only enable this payment method for that zone.',6,5,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_zone_class_title','zen_cfg_pull_down_zone_classes(');
-INSERT INTO configuration VALUES (913,'Set Order Status','MODULE_PAYMENT_PURCHASE_ORDER_ORDER_STATUS_ID','2','Set the status of orders made with this payment module to this value',6,6,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (914,'Auto Status - Purchase Order','AUTO_STATUS_PO','2','Number of the status assigned to an order when a purchase order is added to the payment data.',28,11,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (915,'Auto Status - Payment','AUTO_STATUS_PAYMENT','2','Number of the order status assigned when a payment (<B>not</B> attached to a purchase order) is added to the payment data.',28,10,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (916,'Auto Status - P.O. Payment','AUTO_STATUS_PO_PAYMENT','2','Number of the order status assigned when a payment <B>attached to a purchase order</B> is added to the payment data.',28,10,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (917,'Auto Status - Refund','AUTO_STATUS_REFUND','2','Number of the order status assigned when a refund is added to the payment data.',28,13,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (918,'Auto Comments - Payment','AUTO_COMMENTS_PAYMENT','Payment received in our office. Payment ID: %s','You\'ll have the option of adding these pre-configured comments to an order when a payment is entered.  You can attach the payment number to the comments by typing <strong>%s</strong>.',28,14,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (919,'Auto Comments - P.O. Payment','AUTO_COMMENTS_PO_PAYMENT','Payment on purchase order received in our office. Payment ID: %s','You will have the option of adding these pre-configured comments to an order when a purchase order payment is entered.  You can attach the payment number to the comments by typing <strong>%s</strong>.',28,14,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (920,'Auto Comments - Purchase Order','AUTO_COMMENTS_PO','Purchase Order #%s received in our office','You will have the option of adding these pre-configured comments to an order when a purchase order is entered.  You can attach the payment number to the comments by typing <strong>%s</strong>.',28,15,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (921,'Auto Comments - Refund','AUTO_COMMENTS_REFUND','Refund #%s has been issued from our office.','You will have the option of adding these pre-configured comments to an order when a refund is entered.  You can attach the refund number to the comments by typing <strong>%s</strong>.',28,17,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (922,'Federal Tax Exempt Number','FED_TAX_ID_NUMBER','00-000000','If your tax exempt, then you should have a federal tax ID number. Enter the number here and the tax columns will not appear on the invoice. The number will also be displayed at the top of the invoice.',28,50,'2010-06-04 14:00:45','2010-06-04 14:00:45',NULL,NULL);
-INSERT INTO configuration VALUES (923,'Closed Status - \"Cancelled\"','STATUS_ORDER_CANCELLED','0','Insert the order status ID # you would like to assign to an order when you press the special \"Cancelled!\" button on super_orders.php.<p>If you do not have a \"cancel\" status, or do not want assign one automatically, choose <B>default</B> and this option will be ignored.<p><strong>You cannot attach comments or notify the customer using this option.</strong>',28,30,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (924,'Closed Status - \"Completed\"','STATUS_ORDER_COMPLETED','0','Insert the order status ID # you would like to assign to an order when you press the special \"Completed!\" button on super_orders.php.<p>If you do not have a \"complete\" status, or do not want assign one automatically, choose <B>default</B> and this option will be ignored.<p><strong>You cannot attach comments or notify the customer using this option.</strong>',28,30,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (925,'Closed Status - \"Reopened\"','STATUS_ORDER_REOPEN','0','Insert the order status ID # you would like to assign to an order when you undo the cancelled/completed status of an order.<p>If you do not have a \"reopened\" status, or do not want assign one automatically, choose <B>default</B> and this option will be ignored.<p><strong>You cannot attach comments or notify the customer using this option.</strong>',28,30,'2010-06-04 14:00:45','2010-06-04 14:00:45','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (926,'銀行振込を有効にする','MODULE_PAYMENT_MONEYORDER_STATUS','True','銀行振込による支払いを受け付けますか？',6,1,NULL,'2010-06-04 14:41:50',NULL,'zen_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO configuration VALUES (927,'お振込先:','MODULE_PAYMENT_MONEYORDER_PAYTO','','お振込先名義を設定してください。',6,1,NULL,'2010-06-04 14:41:50',NULL,NULL);
-INSERT INTO configuration VALUES (928,'表示の整列順','MODULE_PAYMENT_MONEYORDER_SORT_ORDER','0','表示の整列順を設定できます。数字が小さいほど上位に表示されます。',6,0,NULL,'2010-06-04 14:41:50',NULL,NULL);
-INSERT INTO configuration VALUES (929,'適用地域','MODULE_PAYMENT_MONEYORDER_ZONE','0','適用地域を選択すると、選択した地域のみで利用可能となります。',6,2,NULL,'2010-06-04 14:41:50','zen_get_zone_class_title','zen_cfg_pull_down_zone_classes(');
-INSERT INTO configuration VALUES (930,'初期注文ステータス','MODULE_PAYMENT_MONEYORDER_ORDER_STATUS_ID','0','設定したステータスが受注時に適用されます。',6,0,NULL,'2010-06-04 14:41:50','zen_get_order_status_name','zen_cfg_pull_down_order_statuses(');
-INSERT INTO configuration VALUES (931,'インストール状態','MODULE_ORDER_TOTAL_GROUP_PRICING_STATUS','true','',6,1,NULL,'2010-06-04 14:43:24',NULL,'zen_cfg_select_option(array(\'true\'), ');
-INSERT INTO configuration VALUES (932,'表示の整列順','MODULE_ORDER_TOTAL_GROUP_PRICING_SORT_ORDER','290','表示の整列順を設定できます. 数字が小さいほど上位に表示されます。',6,2,NULL,'2010-06-04 14:43:24',NULL,NULL);
-INSERT INTO configuration VALUES (933,'送料を含める','MODULE_ORDER_TOTAL_GROUP_PRICING_INC_SHIPPING','false','送料を計算に含めますか？',6,5,NULL,'2010-06-04 14:43:24',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (934,'税金を含める','MODULE_ORDER_TOTAL_GROUP_PRICING_INC_TAX','true','税金を計算に含めますか？',6,6,NULL,'2010-06-04 14:43:24',NULL,'zen_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES (935,'税金の再計算','MODULE_ORDER_TOTAL_GROUP_PRICING_CALC_TAX','Standard','税金を再計算しますか？',6,7,NULL,'2010-06-04 14:43:24',NULL,'zen_cfg_select_option(array(\'None\', \'Standard\', \'Credit Note\'), ');
-INSERT INTO configuration VALUES (936,'税種別','MODULE_ORDER_TOTAL_GROUP_PRICING_TAX_CLASS','0','顧客割引をCredit Note（貸方票）取引として利用する際に適応する税種別。',6,0,NULL,'2010-06-04 14:43:24','zen_get_tax_class_title','zen_cfg_pull_down_tax_classes(');
-INSERT INTO configuration VALUES (937,'インストール状態','MODULE_ORDER_TOTAL_COD_STATUS','true','',6,1,NULL,'2010-06-04 14:43:27',NULL,'zen_cfg_select_option(array(\'true\'), ');
-INSERT INTO configuration VALUES (938,'表示の整列順','MODULE_ORDER_TOTAL_COD_SORT_ORDER','950','表示の整列順を設定できます. 数字が小さいほど上位に表示されます。',6,2,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (939,'COD Fee for FLAT','MODULE_ORDER_TOTAL_COD_FEE_FLAT','AT:3.00,DE:3.58,00:9.99','FLAT: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,3,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (940,'COD Fee for Free Shipping by default','MODULE_ORDER_TOTAL_COD_FEE_FREE','US:3.00','Free by default: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,3,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (941,'COD Fee for Free Shipping Module - (freeshipper)','MODULE_ORDER_TOTAL_COD_FEE_FREESHIPPER','CA:4.50,US:3.00,00:9.99','Free Module: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,3,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (942,'COD Fee for Free-Options Shipping Module - (freeoptions)','MODULE_ORDER_TOTAL_COD_FEE_FREEOPTIONS','CA:4.50,US:3.00,00:9.99','Free+Options: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,3,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (943,'COD Fee for Per Weight Unit Shipping Module - (perweightunit)','MODULE_ORDER_TOTAL_COD_FEE_PERWEIGHTUNIT','CA:4.50,US:3.00,00:9.99','Per Weight Unit: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,3,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (944,'COD Fee for ITEM','MODULE_ORDER_TOTAL_COD_FEE_ITEM','AT:3.00,DE:3.58,00:9.99','ITEM: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,4,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (945,'COD Fee for TABLE','MODULE_ORDER_TOTAL_COD_FEE_TABLE','AT:3.00,DE:3.58,00:9.99','TABLE: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,5,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (946,'COD Fee for UPS','MODULE_ORDER_TOTAL_COD_FEE_UPS','CA:4.50,US:3.00,00:9.99','UPS: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,6,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (947,'COD Fee for USPS','MODULE_ORDER_TOTAL_COD_FEE_USPS','CA:4.50,US:3.00,00:9.99','USPS: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,7,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (948,'COD Fee for ZONES','MODULE_ORDER_TOTAL_COD_FEE_ZONES','CA:4.50,US:3.00,00:9.99','ZONES: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,8,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (949,'COD Fee for Austrian Post','MODULE_ORDER_TOTAL_COD_FEE_AP','AT:3.63,00:9.99','Austrian Post: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,9,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (950,'COD Fee for German Post','MODULE_ORDER_TOTAL_COD_FEE_DP','DE:3.58,00:9.99','German Post: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,10,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (951,'COD Fee for Servicepakke','MODULE_ORDER_TOTAL_COD_FEE_SERVICEPAKKE','NO:69','Servicepakke: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,11,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (952,'COD Fee for FedEx','MODULE_ORDER_TOTAL_COD_FEE_FEDEX','US:3.00','FedEx: &lt;Country code&gt;:&lt;COD price&gt;, .... 00 as country code applies for all countries. If country code is 00, it must be the last statement. If no 00:9.99 appears, COD shipping in foreign countries is not calculated (not possible)',6,12,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (953,'佐川急便の代金引換(e-コレクト)用の代引き手数料','MODULE_ORDER_TOTAL_COD_FEE_SAGAWA','00:500','e-コレクトの手数料を「国コード:手数料,国コード:手数料,...」という書式で入力してください。国コードがわかならい場合、またはすべて統一する場合は00：手数料で記してください',6,13,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (954,'ヤマト運輸の代金引換(ヤマトコレクト)用の代引き手数料','MODULE_ORDER_TOTAL_COD_FEE_YAMATO','00:400','ヤマトコレクトの手数料を「国コード:手数料,国コード:手数料,...」という書式で入力してください。国コードがわかならい場合、またはすべて統一する場合は00：手数料で記してください',6,14,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (955,'日本通運の代金引換(ペリカン集金サービス)用の代引き手数料','MODULE_ORDER_TOTAL_COD_FEE_NITTSU','00:400','ペリカン集金サービスの手数料を「国コード:手数料,国コード:手数料,...」という書式で入力してください。国コードがわかならい場合、またはすべて統一する場合は00：手数料で記してください',6,15,NULL,'2010-06-04 14:43:27',NULL,NULL);
-INSERT INTO configuration VALUES (956,'税種別','MODULE_ORDER_TOTAL_COD_TAX_CLASS','0','代金引換手数料に適用される税種別',6,25,NULL,'2010-06-04 14:43:27','zen_get_tax_class_title','zen_cfg_pull_down_tax_classes(');
-INSERT INTO configuration VALUES (957,'管理メニューの設定の有効化','MODULE_EASY_ADMIN_SIMPLIFY_STATUS','true','管理メニューの設定を有効にしますか？ <br />true: 有効<br />false: 無効',6,0,NULL,'2010-06-07 16:43:06',NULL,'zen_cfg_select_option(array(\'true\', \'false\'),');
 
 --
 -- Table structure for table configuration_foreach_template
@@ -1307,11 +486,6 @@ UNIQUE KEY unq_config_key_zen (template_dir,configuration_key),
 KEY idx_key_value_zen (configuration_key,configuration_value(10)),
 KEY idx_cfg_grp_id_zen (configuration_group_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=226 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table configuration_foreach_template
---
-
 
 --
 -- Table structure for table configuration_group
@@ -1375,6 +549,7 @@ counter int(12) default NULL
 -- Dumping data for table counter
 --
 
+INSERT INTO counter VALUES ('20091119',1898);
 
 --
 -- Table structure for table counter_history
@@ -1386,10 +561,6 @@ startdate char(8) default NULL,
 counter int(12) default NULL,
 session_counter int(12) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table counter_history
---
 
 
 --
@@ -1670,11 +841,6 @@ KEY idx_coupon_id_zen (coupon_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table coupon_email_track
---
-
-
---
 -- Table structure for table coupon_gv_customer
 --
 
@@ -1684,11 +850,6 @@ customer_id int(5) NOT NULL default '0',
 amount decimal(20,4) NOT NULL default '0.0000',
 PRIMARY KEY  (customer_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table coupon_gv_customer
---
-
 
 --
 -- Table structure for table coupon_gv_queue
@@ -1728,11 +889,6 @@ order_id int(11) NOT NULL default '0',
 PRIMARY KEY  (unique_id),
 KEY idx_coupon_id_zen (coupon_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table coupon_redeem_track
---
-
 
 --
 -- Table structure for table coupon_restrict
@@ -1782,11 +938,6 @@ KEY idx_coupon_type_zen (coupon_type)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table coupons
---
-
-
---
 -- Table structure for table coupons_description
 --
 
@@ -1798,11 +949,6 @@ coupon_name varchar(32) NOT NULL default '',
 coupon_description text,
 PRIMARY KEY  (coupon_id,language_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table coupons_description
---
-
 
 --
 -- Table structure for table csv_columns
@@ -1818,11 +964,6 @@ csv_columns_dbtable varchar(255) default NULL,
 csv_columns_dbcolumn varchar(255) default NULL,
 PRIMARY KEY  (csv_column_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=3115 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table csv_columns
---
-
 
 --
 -- Table structure for table csv_format_columns
@@ -1842,6 +983,101 @@ KEY idx_csv_format_columns_zen (csv_format_id,csv_format_column_number,csv_colum
 -- Dumping data for table csv_format_columns
 --
 
+INSERT INTO csv_format_columns VALUES (1,1,1001,1);
+INSERT INTO csv_format_columns VALUES (2,1,1002,2);
+INSERT INTO csv_format_columns VALUES (3,1,1003,3);
+INSERT INTO csv_format_columns VALUES (4,1,1004,4);
+INSERT INTO csv_format_columns VALUES (5,1,1005,5);
+INSERT INTO csv_format_columns VALUES (6,1,1006,6);
+INSERT INTO csv_format_columns VALUES (7,1,1007,7);
+INSERT INTO csv_format_columns VALUES (8,1,1008,8);
+INSERT INTO csv_format_columns VALUES (9,1,1009,9);
+INSERT INTO csv_format_columns VALUES (10,1,1010,10);
+INSERT INTO csv_format_columns VALUES (11,1,1011,11);
+INSERT INTO csv_format_columns VALUES (12,1,1012,12);
+INSERT INTO csv_format_columns VALUES (13,1,1013,13);
+INSERT INTO csv_format_columns VALUES (14,1,1014,14);
+INSERT INTO csv_format_columns VALUES (15,1,1015,15);
+INSERT INTO csv_format_columns VALUES (16,1,1016,16);
+INSERT INTO csv_format_columns VALUES (17,1,1017,17);
+INSERT INTO csv_format_columns VALUES (18,1,1018,18);
+INSERT INTO csv_format_columns VALUES (19,1,1019,19);
+INSERT INTO csv_format_columns VALUES (20,1,1020,20);
+INSERT INTO csv_format_columns VALUES (21,1,1021,21);
+INSERT INTO csv_format_columns VALUES (22,1,1022,22);
+INSERT INTO csv_format_columns VALUES (23,1,1023,23);
+INSERT INTO csv_format_columns VALUES (24,1,1100,24);
+INSERT INTO csv_format_columns VALUES (25,1,1101,25);
+INSERT INTO csv_format_columns VALUES (26,1,1200,26);
+INSERT INTO csv_format_columns VALUES (27,1,1201,27);
+INSERT INTO csv_format_columns VALUES (28,1,1300,28);
+INSERT INTO csv_format_columns VALUES (29,1,1301,29);
+INSERT INTO csv_format_columns VALUES (30,1,1400,30);
+INSERT INTO csv_format_columns VALUES (31,1,1401,31);
+INSERT INTO csv_format_columns VALUES (32,1,1500,32);
+INSERT INTO csv_format_columns VALUES (33,1,1501,33);
+INSERT INTO csv_format_columns VALUES (34,1,1600,34);
+INSERT INTO csv_format_columns VALUES (35,1,1601,35);
+INSERT INTO csv_format_columns VALUES (36,1,1700,36);
+INSERT INTO csv_format_columns VALUES (37,1,1701,37);
+INSERT INTO csv_format_columns VALUES (38,1,1702,38);
+INSERT INTO csv_format_columns VALUES (39,1,1703,39);
+INSERT INTO csv_format_columns VALUES (40,1,1704,40);
+INSERT INTO csv_format_columns VALUES (41,1,1706,41);
+INSERT INTO csv_format_columns VALUES (42,1,1707,42);
+INSERT INTO csv_format_columns VALUES (43,2,2000,1);
+INSERT INTO csv_format_columns VALUES (44,2,2001,2);
+INSERT INTO csv_format_columns VALUES (45,2,2050,3);
+INSERT INTO csv_format_columns VALUES (46,2,2051,4);
+INSERT INTO csv_format_columns VALUES (47,2,2100,5);
+INSERT INTO csv_format_columns VALUES (48,2,2101,6);
+INSERT INTO csv_format_columns VALUES (49,2,2150,7);
+INSERT INTO csv_format_columns VALUES (50,2,2151,8);
+INSERT INTO csv_format_columns VALUES (51,2,2200,9);
+INSERT INTO csv_format_columns VALUES (52,2,2201,10);
+INSERT INTO csv_format_columns VALUES (53,2,2250,11);
+INSERT INTO csv_format_columns VALUES (54,2,2251,12);
+INSERT INTO csv_format_columns VALUES (55,2,2300,13);
+INSERT INTO csv_format_columns VALUES (56,2,2301,14);
+INSERT INTO csv_format_columns VALUES (57,2,2350,15);
+INSERT INTO csv_format_columns VALUES (58,2,2351,16);
+INSERT INTO csv_format_columns VALUES (59,2,2400,17);
+INSERT INTO csv_format_columns VALUES (60,2,2401,18);
+INSERT INTO csv_format_columns VALUES (61,2,2450,19);
+INSERT INTO csv_format_columns VALUES (62,2,2451,20);
+INSERT INTO csv_format_columns VALUES (63,2,2500,21);
+INSERT INTO csv_format_columns VALUES (64,2,2501,22);
+INSERT INTO csv_format_columns VALUES (65,2,2600,23);
+INSERT INTO csv_format_columns VALUES (66,2,2601,24);
+INSERT INTO csv_format_columns VALUES (67,2,2602,25);
+INSERT INTO csv_format_columns VALUES (68,2,2603,26);
+INSERT INTO csv_format_columns VALUES (69,2,2650,27);
+INSERT INTO csv_format_columns VALUES (70,2,2651,28);
+INSERT INTO csv_format_columns VALUES (71,2,2700,29);
+INSERT INTO csv_format_columns VALUES (72,2,2701,30);
+INSERT INTO csv_format_columns VALUES (73,2,2750,31);
+INSERT INTO csv_format_columns VALUES (74,2,2751,32);
+INSERT INTO csv_format_columns VALUES (75,2,2800,33);
+INSERT INTO csv_format_columns VALUES (76,2,2801,34);
+INSERT INTO csv_format_columns VALUES (77,3,3000,1);
+INSERT INTO csv_format_columns VALUES (78,3,3001,2);
+INSERT INTO csv_format_columns VALUES (79,3,3050,3);
+INSERT INTO csv_format_columns VALUES (80,3,3051,4);
+INSERT INTO csv_format_columns VALUES (81,3,3100,5);
+INSERT INTO csv_format_columns VALUES (82,3,3101,6);
+INSERT INTO csv_format_columns VALUES (83,3,3102,7);
+INSERT INTO csv_format_columns VALUES (84,3,3103,8);
+INSERT INTO csv_format_columns VALUES (85,3,3104,9);
+INSERT INTO csv_format_columns VALUES (86,3,3105,10);
+INSERT INTO csv_format_columns VALUES (87,3,3106,11);
+INSERT INTO csv_format_columns VALUES (88,3,3107,12);
+INSERT INTO csv_format_columns VALUES (89,3,3108,13);
+INSERT INTO csv_format_columns VALUES (90,3,3109,14);
+INSERT INTO csv_format_columns VALUES (91,3,3110,15);
+INSERT INTO csv_format_columns VALUES (92,3,3111,16);
+INSERT INTO csv_format_columns VALUES (93,3,3112,17);
+INSERT INTO csv_format_columns VALUES (94,3,3113,18);
+INSERT INTO csv_format_columns VALUES (95,3,3114,19);
 
 --
 -- Table structure for table csv_format_types
@@ -1858,6 +1094,9 @@ PRIMARY KEY  (csv_format_type_id)
 -- Dumping data for table csv_format_types
 --
 
+INSERT INTO csv_format_types VALUES (1,'商品マスタ');
+INSERT INTO csv_format_types VALUES (2,'商品カテゴリ');
+INSERT INTO csv_format_types VALUES (3,'商品オプション');
 
 --
 -- Table structure for table csv_formats
@@ -1878,6 +1117,9 @@ KEY idx_format_name_zen (csv_format_name)
 -- Dumping data for table csv_formats
 --
 
+INSERT INTO csv_formats VALUES (1,1,'商品マスタ(全て)','2009-11-19 13:04:30','2009-11-19 13:04:30');
+INSERT INTO csv_formats VALUES (2,2,'商品カテゴリ(全て)','2009-11-19 13:04:30','2009-11-19 13:04:30');
+INSERT INTO csv_formats VALUES (3,3,'商品オプション(全て)','2009-11-19 13:04:30','2009-11-19 13:04:30');
 
 --
 -- Table structure for table currencies
@@ -1923,6 +1165,15 @@ PRIMARY KEY  (currencies_id,language_id)
 -- Dumping data for table currencies_m17n
 --
 
+INSERT INTO currencies_m17n VALUES (1,1,'$','');
+INSERT INTO currencies_m17n VALUES (2,1,'','EUR');
+INSERT INTO currencies_m17n VALUES (3,1,'','円');
+INSERT INTO currencies_m17n VALUES (1,2,'$','');
+INSERT INTO currencies_m17n VALUES (2,2,'','EUR');
+INSERT INTO currencies_m17n VALUES (3,2,'','円');
+INSERT INTO currencies_m17n VALUES (3,9,'','円');
+INSERT INTO currencies_m17n VALUES (2,9,'','EUR');
+INSERT INTO currencies_m17n VALUES (1,9,'$','');
 
 --
 -- Table structure for table customers
@@ -1980,11 +1231,6 @@ KEY customers_id (customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table customers_admin_notes
---
-
-
---
 -- Table structure for table customers_basket
 --
 
@@ -1999,11 +1245,6 @@ customers_basket_date_added varchar(8) default NULL,
 PRIMARY KEY  (customers_basket_id),
 KEY idx_customers_id_zen (customers_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table customers_basket
---
-
 
 --
 -- Table structure for table customers_basket_attributes
@@ -2021,11 +1262,6 @@ products_options_sort_order text NOT NULL,
 PRIMARY KEY  (customers_basket_attributes_id),
 KEY idx_cust_id_prod_id_zen (customers_id,products_id(36))
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table customers_basket_attributes
---
-
 
 --
 -- Table structure for table customers_info
@@ -2077,11 +1313,6 @@ PRIMARY KEY  (customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table customers_points
---
-
-
---
 -- Table structure for table customers_wishlist
 --
 
@@ -2096,11 +1327,6 @@ final_price decimal(8,2) NOT NULL default '0.00',
 products_quantity int(2) NOT NULL default '0',
 wishlist_name varchar(64) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table customers_wishlist
---
-
 
 --
 -- Table structure for table db_cache
@@ -2137,6 +1363,13 @@ PRIMARY KEY  (easy_admin_sub_menu_id)
 -- Dumping data for table easy_admin_sub_menus
 --
 
+INSERT INTO easy_admin_sub_menus VALUES (1,1,'顧客管理','customers.php',1);
+INSERT INTO easy_admin_sub_menus VALUES (2,1,'注文管理','orders.php',2);
+INSERT INTO easy_admin_sub_menus VALUES (3,2,'カテゴリ・商品の管理','categories.php',1);
+INSERT INTO easy_admin_sub_menus VALUES (4,2,'商品価格の管理','products_price_manager.php',2);
+INSERT INTO easy_admin_sub_menus VALUES (5,4,'管理者の設定','admin.php',1);
+INSERT INTO easy_admin_sub_menus VALUES (6,4,'管理メニューの設定','addon_modules_admin.php?module=easy_admin',2);
+INSERT INTO easy_admin_sub_menus VALUES (7,4,'追加モジュールの管理','addon_modules.php',3);
 
 --
 -- Table structure for table easy_admin_top_menus
@@ -2155,6 +1388,11 @@ PRIMARY KEY  (easy_admin_top_menu_id)
 -- Dumping data for table easy_admin_top_menus
 --
 
+INSERT INTO easy_admin_top_menus VALUES (1,'注文・顧客管理',1,0);
+INSERT INTO easy_admin_top_menus VALUES (2,'商品管理',1,0);
+INSERT INTO easy_admin_top_menus VALUES (3,'コンテンツ管理',1,0);
+INSERT INTO easy_admin_top_menus VALUES (4,'初期設定',0,0);
+INSERT INTO easy_admin_top_menus VALUES (5,'その他',0,0);
 
 --
 -- Table structure for table easy_design_colors
@@ -2176,6 +1414,17 @@ KEY easy_design_color_key (easy_design_color_key)
 -- Dumping data for table easy_design_colors
 --
 
+INSERT INTO easy_design_colors VALUES (1,'template_default','maincolor','メインカラー','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (2,'template_default','subcolor','サブカラー','#ffffff');
+INSERT INTO easy_design_colors VALUES (3,'classic','maincolor','メインカラー','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (4,'classic','subcolor','サブカラー','#ffffff');
+INSERT INTO easy_design_colors VALUES (5,'sugudeki','maincolor','メインカラー','#FF6347');
+INSERT INTO easy_design_colors VALUES (6,'addon_modules','maincolor','メインカラー','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (7,'addon_modules','subcolor','サブカラー','#ffffff');
+INSERT INTO easy_design_colors VALUES (8,'zen_mobile','maincolor','メインカラー','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (9,'zen_mobile','subcolor','サブカラー','#ffffff');
+INSERT INTO easy_design_colors VALUES (10,'accessible_and_usable','maincolor','メインカラー','#0203E9');
+INSERT INTO easy_design_colors VALUES (11,'accessible_and_usable','subcolor','サブカラー','#DCDCDC');
 
 --
 -- Table structure for table easy_design_languages
@@ -2197,6 +1446,8 @@ KEY easy_design_language_key (easy_design_language_key)
 -- Dumping data for table easy_design_languages
 --
 
+INSERT INTO easy_design_languages VALUES (1,2,'EASY_DESIGN_TAGLINE','タグライン','ECサイトがすぐできる！',1);
+INSERT INTO easy_design_languages VALUES (2,2,'EASY_DESIGN_KEY_COPYLIGHT','コピーライト','Zen-Cart すぐでき（る）パック',2);
 
 --
 -- Table structure for table email_archive
@@ -2218,11 +1469,6 @@ PRIMARY KEY  (archive_id),
 KEY idx_email_to_address_zen (email_to_address),
 KEY idx_module_zen (module)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table email_archive
---
-
 
 --
 -- Table structure for table email_templates
@@ -2333,11 +1579,6 @@ KEY idx_sort_order_zen (sort_order)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table feature_area
---
-
-
---
 -- Table structure for table feature_area_info
 --
 
@@ -2351,11 +1592,6 @@ date_last_click datetime default NULL,
 PRIMARY KEY  (id,languages_id),
 KEY idx_categories_name_zen (name)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table feature_area_info
---
-
 
 --
 -- Table structure for table featured
@@ -2397,11 +1633,6 @@ KEY idx_customers_id_zen (customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis COMMENT='Must always have either a sesskey or customers_id';
 
 --
--- Dumping data for table files_uploaded
---
-
-
---
 -- Table structure for table geo_zones
 --
 
@@ -2414,12 +1645,6 @@ last_modified datetime default NULL,
 date_added datetime NOT NULL default '0001-01-01 00:00:00',
 PRIMARY KEY  (geo_zone_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table geo_zones
---
-
-INSERT INTO geo_zones VALUES (1,'日本','日本（消費税）','2007-01-15 11:44:41','2006-11-29 16:18:40');
 
 --
 -- Table structure for table get_terms_to_filter
@@ -2449,11 +1674,6 @@ group_id int(11) NOT NULL default '0',
 rate int(11) NOT NULL default '0',
 PRIMARY KEY  (group_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table group_point_rate
---
-
 
 --
 -- Table structure for table group_pricing
@@ -2490,6 +1710,9 @@ PRIMARY KEY  (group_id,language_id)
 -- Dumping data for table group_pricing_m17n
 --
 
+INSERT INTO group_pricing_m17n VALUES (1,1,'10%割引');
+INSERT INTO group_pricing_m17n VALUES (1,2,'10%割引');
+INSERT INTO group_pricing_m17n VALUES (1,9,'10%割引');
 
 --
 -- Table structure for table holidays
@@ -2511,6 +1734,31 @@ PRIMARY KEY  (id)
 -- Dumping data for table holidays
 --
 
+INSERT INTO holidays VALUES (1,-1,1,1,-1,-1,0);
+INSERT INTO holidays VALUES (2,-1,1,2,-1,-1,0);
+INSERT INTO holidays VALUES (3,-1,1,3,-1,-1,0);
+INSERT INTO holidays VALUES (4,-1,1,-1,1,2,0);
+INSERT INTO holidays VALUES (5,-1,2,11,-1,-1,0);
+INSERT INTO holidays VALUES (6,-1,4,29,-1,-1,0);
+INSERT INTO holidays VALUES (7,-1,5,3,-1,-1,0);
+INSERT INTO holidays VALUES (8,-1,5,4,-1,-1,0);
+INSERT INTO holidays VALUES (9,-1,5,5,-1,-1,0);
+INSERT INTO holidays VALUES (10,-1,7,-1,1,3,0);
+INSERT INTO holidays VALUES (11,-1,9,-1,1,3,0);
+INSERT INTO holidays VALUES (12,-1,10,-1,1,2,0);
+INSERT INTO holidays VALUES (13,-1,11,3,-1,-1,0);
+INSERT INTO holidays VALUES (14,-1,11,23,-1,-1,0);
+INSERT INTO holidays VALUES (15,-1,12,23,-1,-1,0);
+INSERT INTO holidays VALUES (16,-1,12,29,-1,-1,0);
+INSERT INTO holidays VALUES (17,-1,12,30,-1,-1,0);
+INSERT INTO holidays VALUES (18,-1,12,31,-1,-1,0);
+INSERT INTO holidays VALUES (19,2009,3,20,-1,-1,0);
+INSERT INTO holidays VALUES (20,2009,5,6,-1,-1,0);
+INSERT INTO holidays VALUES (21,2009,9,22,-1,-1,0);
+INSERT INTO holidays VALUES (22,2009,9,23,-1,-1,0);
+INSERT INTO holidays VALUES (23,2010,3,21,-1,-1,0);
+INSERT INTO holidays VALUES (24,2010,3,22,-1,-1,0);
+INSERT INTO holidays VALUES (25,2010,9,23,-1,-1,0);
 
 --
 -- Table structure for table languages
@@ -3014,11 +2262,6 @@ PRIMARY KEY  (newsletters_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table newsletters
---
-
-
---
 -- Table structure for table orders
 --
 
@@ -3091,11 +2334,6 @@ KEY idx_status_orders_cust_zen (orders_status,orders_id,customers_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table orders
---
-
-
---
 -- Table structure for table orders_products
 --
 
@@ -3119,11 +2357,6 @@ products_prid tinytext NOT NULL,
 PRIMARY KEY  (orders_products_id),
 KEY idx_orders_id_prod_id_zen (orders_id,products_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table orders_products
---
-
 
 --
 -- Table structure for table orders_products_attributes
@@ -3162,11 +2395,6 @@ KEY idx_orders_id_prod_id_zen (orders_id,orders_products_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table orders_products_attributes
---
-
-
---
 -- Table structure for table orders_products_download
 --
 
@@ -3183,11 +2411,6 @@ PRIMARY KEY  (orders_products_download_id),
 KEY idx_orders_id_zen (orders_id),
 KEY idx_orders_products_id_zen (orders_products_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table orders_products_download
---
-
 
 --
 -- Table structure for table orders_status
@@ -3236,11 +2459,6 @@ KEY idx_orders_id_status_id_zen (orders_id,orders_status_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table orders_status_history
---
-
-
---
 -- Table structure for table orders_total
 --
 
@@ -3257,11 +2475,6 @@ PRIMARY KEY  (orders_total_id),
 KEY idx_ot_orders_id_zen (orders_id),
 KEY idx_ot_class_zen (class)
 ) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table orders_total
---
-
 
 --
 -- Table structure for table paypal
@@ -3315,11 +2528,6 @@ KEY idx_zen_order_id_zen (zen_order_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table paypal
---
-
-
---
 -- Table structure for table paypal_payment_status
 --
 
@@ -3360,11 +2568,6 @@ KEY idx_paypal_ipn_id_zen (paypal_ipn_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table paypal_payment_status_history
---
-
-
---
 -- Table structure for table paypal_session
 --
 
@@ -3377,11 +2580,6 @@ expiry int(17) NOT NULL default '0',
 PRIMARY KEY  (unique_id),
 KEY idx_session_id_zen (session_id(36))
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table paypal_session
---
-
 
 --
 -- Table structure for table paypal_testing
@@ -3436,11 +2634,6 @@ KEY idx_zen_order_id_zen (zen_order_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table paypal_testing
---
-
-
---
 -- Table structure for table point_histories
 --
 
@@ -3461,11 +2654,6 @@ status tinyint(1) NOT NULL default '1',
 PRIMARY KEY  (id),
 KEY IDX_customers_id_status (customers_id,status)
 ) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table point_histories
---
-
 
 --
 -- Table structure for table product_music_extra
@@ -3864,11 +3052,6 @@ PRIMARY KEY  (products_id,customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table products_notifications
---
-
-
---
 -- Table structure for table products_options
 --
 
@@ -3933,9 +3116,6 @@ PRIMARY KEY  (products_options_values_id,language_id)
 -- Dumping data for table products_options_values
 --
 
-INSERT INTO products_options_values VALUES (0,1,'TEXT',0);
-INSERT INTO products_options_values VALUES (0,2,'TEXT',0);
-INSERT INTO products_options_values VALUES (0,9,'TEXT',0);
 
 --
 -- Table structure for table products_options_values_to_products_options
@@ -3964,11 +3144,6 @@ products_id int(11) NOT NULL default '0',
 rate int(11) NOT NULL default '0',
 PRIMARY KEY  (products_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table products_point_rate
---
-
 
 --
 -- Table structure for table products_to_categories
@@ -4005,6 +3180,7 @@ PRIMARY KEY  (stock_id)
 -- Dumping data for table products_with_attributes_stock
 --
 
+INSERT INTO products_with_attributes_stock VALUES (1,90,'319','Ｗ５００',10);
 
 --
 -- Table structure for table products_xsell
@@ -4024,6 +3200,10 @@ KEY idx_products_id_xsell (products_id)
 -- Dumping data for table products_xsell
 --
 
+INSERT INTO products_xsell VALUES (1,9,15,1);
+INSERT INTO products_xsell VALUES (2,9,16,2);
+INSERT INTO products_xsell VALUES (3,9,35,3);
+INSERT INTO products_xsell VALUES (4,9,36,4);
 
 --
 -- Table structure for table project_version
@@ -4278,6 +3458,73 @@ PRIMARY KEY  (sesskey)
 -- Dumping data for table sessions
 --
 
+INSERT INTO sessions VALUES ('',1277612410,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"9\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{s:35:\"62:78e6a0b3768d7ebf276544913453c289\";a:1:{s:3:\"qty\";s:1:\"1\";}}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:0:{}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";new_products_id_in_cart|s:35:\"62:78e6a0b3768d7ebf276544913453c289\";valid_to_checkout|b:1;cart_errors|s:0:\"\";last_secure_page|s:22:\"create_account_success\";customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_first_name_kana|s:4:\"シダ\";customer_last_name_kana|s:6:\"ユウキ\";customer_default_address_id|i:16;customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";customers_authorization|s:1:\"0\";');
+INSERT INTO sessions VALUES ('ri34sv8gncupi48tv2cjpipmk2',1277612290,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"8\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:63;a:1:{s:3:\"qty\";s:1:\"1\";}}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"bsuk88lf4r360aej4b733qprp6\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:14:\"logout_confirm\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"bsuk88lf4r360aej4b733qprp6\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"bsuk88lf4r360aej4b733qprp6\";}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";new_products_id_in_cart|s:2:\"63\";valid_to_checkout|b:1;cart_errors|s:0:\"\";last_secure_page|s:22:\"create_account_success\";customer_id|i:14;customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_first_name_kana|s:4:\"シダ\";customer_last_name_kana|s:6:\"ユウキ\";customer_default_address_id|i:15;customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";customers_authorization|s:1:\"0\";');
+INSERT INTO sessions VALUES ('94128e157c062jedn6389io2n0',1277612461,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"9\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:8:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:5:\"cPath\";s:4:\"1_16\";s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:7:{s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";s:5:\"cPath\";s:4:\"1_16\";s:11:\"products_id\";s:2:\"62\";s:17:\"number_of_uploads\";s:1:\"0\";s:6:\"action\";s:11:\"add_product\";s:2:\"id\";a:1:{i:2;s:1:\"9\";}s:13:\"cart_quantity\";s:1:\"1\";}s:4:\"post\";a:8:{s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";s:9:\"main_page\";s:12:\"product_info\";s:5:\"cPath\";s:4:\"1_16\";s:11:\"products_id\";s:2:\"62\";s:17:\"number_of_uploads\";s:1:\"0\";s:6:\"action\";s:11:\"add_product\";s:2:\"id\";a:1:{i:2;s:1:\"9\";}s:13:\"cart_quantity\";s:1:\"1\";}}i:2;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:4:{s:17:\"number_of_uploads\";s:1:\"0\";s:2:\"id\";s:5:\"Array\";s:13:\"cart_quantity\";s:1:\"1\";s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:5:{s:5:\"zenid\";s:26:\"89brl7qvk9b7jjk10m8kc42lm5\";s:6:\"action\";s:7:\"process\";s:8:\"shipping\";s:9:\"flat_flat\";s:15:\"yamato_timespec\";s:8:\"希望なし\";s:8:\"comments\";s:0:\"\";}s:4:\"post\";a:6:{s:5:\"zenid\";s:26:\"89brl7qvk9b7jjk10m8kc42lm5\";s:9:\"main_page\";s:17:\"checkout_shipping\";s:6:\"action\";s:7:\"process\";s:8:\"shipping\";s:9:\"flat_flat\";s:15:\"yamato_timespec\";s:8:\"希望なし\";s:8:\"comments\";s:0:\"\";}}i:4;a:4:{s:4:\"page\";s:16:\"checkout_payment\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"sdo053v82o35v33gfcmlfj2fo1\";}s:4:\"post\";a:0:{}}i:5;a:4:{s:4:\"page\";s:21:\"checkout_confirmation\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:8:{s:5:\"zenid\";s:26:\"ssqdl9fafrqos6o7kpot1njj95\";s:14:\"dc_redeem_code\";s:0:\"\";s:8:\"cc_owner\";s:9:\"志田 裕樹\";s:9:\"cc_number\";s:0:\"\";s:16:\"cc_expires_month\";s:2:\"01\";s:15:\"cc_expires_year\";s:2:\"10\";s:7:\"payment\";s:3:\"cod\";s:8:\"comments\";s:0:\"\";}s:4:\"post\";a:9:{s:5:\"zenid\";s:26:\"ssqdl9fafrqos6o7kpot1njj95\";s:9:\"main_page\";s:21:\"checkout_confirmation\";s:14:\"dc_redeem_code\";s:0:\"\";s:8:\"cc_owner\";s:9:\"志田 裕樹\";s:9:\"cc_number\";s:0:\"\";s:16:\"cc_expires_month\";s:2:\"01\";s:15:\"cc_expires_year\";s:2:\"10\";s:7:\"payment\";s:3:\"cod\";s:8:\"comments\";s:0:\"\";}}i:6;a:4:{s:4:\"page\";s:16:\"checkout_process\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"3qsna8frrft4t0eagv823c0pr1\";}s:4:\"post\";a:2:{s:5:\"zenid\";s:26:\"3qsna8frrft4t0eagv823c0pr1\";s:9:\"main_page\";s:16:\"checkout_process\";}}i:7;a:4:{s:4:\"page\";s:16:\"checkout_success\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"lqm79ulkc092rvsd57cgitgj93\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";new_products_id_in_cart|s:35:\"62:78e6a0b3768d7ebf276544913453c289\";valid_to_checkout|b:1;cart_errors|s:0:\"\";last_secure_page|s:16:\"checkout_success\";customer_id|s:2:\"15\";customer_default_address_id|s:2:\"16\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";cot_gv|b:0;cc_id|s:0:\"\";order_number_created|i:26;|s:7:\"c_ot_gv\";');
+INSERT INTO sessions VALUES ('2vhonh4v6m8cv9u24tqa4hqjc0',1277614965,'initiated|b:1;securityToken|s:32:\"d3ec14b8463f58269870a61379a43791\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";');
+INSERT INTO sessions VALUES ('9tgqpko9rgso4gjbfjbtc7gh54',1277614971,'initiated|b:1;securityToken|s:32:\"48f2c6913d40df170ac310e8d41eaae9\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";');
+INSERT INTO sessions VALUES ('tn4v2eb6bskqnt4lk87gkbcsi0',1277615328,'initiated|b:1;securityToken|s:32:\"50f86a5acde7159b4bdd4d7cb138ac9f\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";messageToStack|s:0:\"\";');
+INSERT INTO sessions VALUES ('kbgjnc73pjrd4rqrrle4g820t4',1277612605,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"bsuk88lf4r360aej4b733qprp6\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"addon\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:6:\"module\";s:15:\"email_templates\";s:2:\"id\";s:1:\"4\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('9s5ar01hof6a5q0f9ks0dmr9i4',1277612429,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"9\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{s:35:\"62:78e6a0b3768d7ebf276544913453c289\";a:2:{s:3:\"qty\";i:1;s:10:\"attributes\";a:1:{i:2;s:1:\"9\";}}}s:5:\"total\";d:4725;s:6:\"weight\";d:0.25;s:6:\"cartID\";s:5:\"06851\";s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:5:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:5:\"cPath\";s:4:\"1_16\";s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:7:{s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";s:5:\"cPath\";s:4:\"1_16\";s:11:\"products_id\";s:2:\"62\";s:17:\"number_of_uploads\";s:1:\"0\";s:6:\"action\";s:11:\"add_product\";s:2:\"id\";a:1:{i:2;s:1:\"9\";}s:13:\"cart_quantity\";s:1:\"1\";}s:4:\"post\";a:8:{s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";s:9:\"main_page\";s:12:\"product_info\";s:5:\"cPath\";s:4:\"1_16\";s:11:\"products_id\";s:2:\"62\";s:17:\"number_of_uploads\";s:1:\"0\";s:6:\"action\";s:11:\"add_product\";s:2:\"id\";a:1:{i:2;s:1:\"9\";}s:13:\"cart_quantity\";s:1:\"1\";}}i:2;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:4:{s:17:\"number_of_uploads\";s:1:\"0\";s:2:\"id\";s:5:\"Array\";s:13:\"cart_quantity\";s:1:\"1\";s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";}s:4:\"post\";a:0:{}}i:4;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"9s5ar01hof6a5q0f9ks0dmr9i4\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"bpte9qj9ujqm45a33ea5t4f233\";}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";new_products_id_in_cart|s:35:\"62:78e6a0b3768d7ebf276544913453c289\";valid_to_checkout|b:1;cart_errors|s:0:\"\";last_secure_page|s:17:\"checkout_shipping\";');
+INSERT INTO sessions VALUES ('ek7kudp0bkev2u9jvhpbo6pud2',1277447044,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";payment|N;');
+INSERT INTO sessions VALUES ('s5i64nkvd8f2l1qdmo110lrpj5',1277447739,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";customer_id|s:1:\"3\";customer_default_address_id|s:1:\"3\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"菱田\";customer_last_name|s:4:\"好美\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"182\";valid_to_checkout|b:1;cart_errors|s:0:\"\";cot_gv|b:0;cot_subpoint|b:0;cc_id|s:0:\"\";order_number_created|i:18;|s:13:\"c_ot_addpoint\";new_products_id_in_cart|s:3:\"194\";');
+INSERT INTO sessions VALUES ('3ope3g4tjl7jmonj8gh5k9boo6',1277576607,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{s:36:\"199:a5b8375ec4b65ef7f7a2d726f14dc364\";a:2:{s:3:\"qty\";i:1;s:10:\"attributes\";a:1:{i:12;i:39;}}}s:5:\"total\";d:14600;s:6:\"weight\";d:0.25;s:6:\"cartID\";s:5:\"46322\";s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:5:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:11:\"products_id\";s:3:\"199\";s:17:\"number_of_uploads\";s:1:\"0\";s:6:\"action\";s:11:\"add_product\";}s:4:\"post\";a:5:{s:13:\"cart_quantity\";s:1:\"1\";s:11:\"products_id\";s:3:\"199\";s:1:\"x\";s:2:\"31\";s:1:\"y\";s:1:\"7\";s:2:\"id\";a:1:{i:12;i:39;}}}i:2;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:17:\"number_of_uploads\";s:1:\"0\";}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:4;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:4:{s:13:\"email_address\";s:5:\"admin\";s:8:\"password\";s:5:\"admin\";s:1:\"x\";s:2:\"27\";s:1:\"y\";s:2:\"12\";}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";new_products_id_in_cart|s:36:\"199:a5b8375ec4b65ef7f7a2d726f14dc364\";valid_to_checkout|b:1;cart_errors|s:0:\"\";');
+INSERT INTO sessions VALUES ('jj4edvegaaql920vs6o9ge0ec6',1277576617,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:4:{s:36:\"199:a5b8375ec4b65ef7f7a2d726f14dc364\";a:2:{s:3:\"qty\";s:1:\"1\";s:10:\"attributes\";a:1:{i:12;s:2:\"39\";}}i:11;a:1:{s:3:\"qty\";s:1:\"1\";}s:35:\"64:5f8a454d7eac16f952537f1187838525\";a:2:{s:3:\"qty\";s:1:\"1\";s:10:\"attributes\";a:1:{i:1;s:1:\"3\";}}i:9;a:1:{s:3:\"qty\";s:1:\"1\";}}s:5:\"total\";d:28775;s:6:\"weight\";d:1;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:5:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:11:\"products_id\";s:3:\"199\";s:17:\"number_of_uploads\";s:1:\"0\";s:6:\"action\";s:11:\"add_product\";}s:4:\"post\";a:5:{s:13:\"cart_quantity\";s:1:\"1\";s:11:\"products_id\";s:3:\"199\";s:1:\"x\";s:2:\"31\";s:1:\"y\";s:1:\"7\";s:2:\"id\";a:1:{i:12;i:39;}}}i:2;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:17:\"number_of_uploads\";s:1:\"0\";}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:6:{s:6:\"action\";s:7:\"process\";s:8:\"shipping\";s:9:\"flat_flat\";s:15:\"yamato_timespec\";s:8:\"希望なし\";s:8:\"comments\";s:0:\"\";s:1:\"x\";s:2:\"58\";s:1:\"y\";s:2:\"27\";}}i:4;a:4:{s:4:\"page\";s:16:\"checkout_payment\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";new_products_id_in_cart|s:36:\"199:a5b8375ec4b65ef7f7a2d726f14dc364\";valid_to_checkout|b:1;cart_errors|s:0:\"\";customer_id|s:1:\"4\";customer_default_address_id|s:1:\"5\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";sendto|s:1:\"5\";payment|N;shipping|a:4:{s:2:\"id\";s:9:\"flat_flat\";s:5:\"title\";s:8:\"定額料金\";s:4:\"cost\";s:4:\"5.00\";s:8:\"timespec\";N;}billto|s:1:\"5\";cot_gv|s:4:\"0.00\";');
+INSERT INTO sessions VALUES ('phv1ucu8eothjlatq0q89esaq3',1277579805,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:92;a:1:{s:3:\"qty\";i:1;}}s:5:\"total\";d:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"25364\";s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:1;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";d:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";new_products_id_in_cart|s:2:\"92\";valid_to_checkout|b:1;cart_errors|s:0:\"\";payment|N;');
+INSERT INTO sessions VALUES ('k7l000qaqliq50dbo9aier8kk2',1277579837,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:5:{s:36:\"199:a5b8375ec4b65ef7f7a2d726f14dc364\";a:2:{s:3:\"qty\";s:1:\"1\";s:10:\"attributes\";a:1:{i:12;s:2:\"39\";}}i:11;a:1:{s:3:\"qty\";s:1:\"1\";}s:35:\"64:5f8a454d7eac16f952537f1187838525\";a:2:{s:3:\"qty\";s:1:\"1\";s:10:\"attributes\";a:1:{i:1;s:1:\"3\";}}i:92;a:1:{s:3:\"qty\";s:1:\"1\";}i:9;a:1:{s:3:\"qty\";s:1:\"1\";}}s:5:\"total\";d:28775;s:6:\"weight\";d:1;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:1;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";d:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:16:\"checkout_process\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:2:{s:12:\"btn_submit_x\";s:3:\"104\";s:12:\"btn_submit_y\";s:2:\"25\";}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";new_products_id_in_cart|s:2:\"92\";valid_to_checkout|b:1;cart_errors|s:0:\"\";payment|s:3:\"cod\";customer_id|s:1:\"4\";customer_default_address_id|s:1:\"5\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";sendto|s:1:\"5\";shipping|a:4:{s:2:\"id\";s:13:\"yamato_yamato\";s:5:\"title\";s:37:\"ヤマト運輸(宅急便) (1 x 4kg) (宅急便)\";s:4:\"cost\";i:950;s:8:\"timespec\";s:8:\"希望なし\";}calendar_hope_delivery_day|s:8:\"07月01日\";calendar_hope_delivery_time|s:10:\"12時015時\";billto|s:1:\"5\";cot_gv|b:0;cot_subpoint|b:0;comments|s:0:\"\";cc_id|s:0:\"\";order_number_created|i:20;');
+INSERT INTO sessions VALUES ('kpk7if74mmc5leuj4m296v7jf0',1277584251,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:6:\"logoff\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"cPath\";s:1:\"3\";}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:11:\"products_id\";s:2:\"54\";}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";');
+INSERT INTO sessions VALUES ('10cu7vlltn8lckd6nv90an78m7',1277585550,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:6:\"logoff\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";customer_id|i:13;customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_first_name_kana|s:4:\"シダ\";customer_last_name_kana|s:6:\"ユウキ\";customer_default_address_id|i:14;customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";customers_authorization|s:1:\"0\";new_products_id_in_cart|s:36:\"224:e21ef06698eb3286347a85479dd1e917\";valid_to_checkout|b:1;cart_errors|s:0:\"\";cot_gv|b:0;cc_id|s:0:\"\";order_number_created|i:24;|s:7:\"c_ot_gv\";');
+INSERT INTO sessions VALUES ('j0fceufb9bvvln8r5u6loi8g01',1277586144,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:5:\"cPath\";s:4:\"3_12\";s:11:\"products_id\";s:2:\"43\";s:5:\"zenid\";s:26:\"97rlf0thh8m9begi2qt95o9kp5\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('97rlf0thh8m9begi2qt95o9kp5',1277586191,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"3\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:50;a:1:{s:3:\"qty\";i:1;}}s:5:\"total\";d:4725;s:6:\"weight\";d:0.25;s:6:\"cartID\";s:5:\"79507\";s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:5:\"cPath\";s:4:\"3_12\";s:5:\"zenid\";s:26:\"97rlf0thh8m9begi2qt95o9kp5\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:5:\"cPath\";s:4:\"3_12\";s:11:\"products_id\";s:2:\"43\";s:5:\"zenid\";s:26:\"97rlf0thh8m9begi2qt95o9kp5\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";new_products_id_in_cart|s:2:\"50\";valid_to_checkout|b:1;cart_errors|s:0:\"\";');
+INSERT INTO sessions VALUES ('2vkgivsb3qd7nj0baavgihqd16',1277589155,'initiated|b:1;securityToken|s:32:\"2ee45526082a5b4ed1195abee39025ec\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";');
+INSERT INTO sessions VALUES ('r2ne67gv4m265hbl7s6fo01vn0',1277589224,'initiated|b:1;securityToken|s:32:\"d04cd3c1aa41cf6e939d95da72c00a32\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";');
+INSERT INTO sessions VALUES ('iplv04eu8e0ukqld1odml361l4',1277589326,'initiated|b:1;securityToken|s:32:\"53bbffcd2f431614cf48b4310670460e\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";');
+INSERT INTO sessions VALUES ('ujm1cjjp1l7cjne6d6dajrd7q2',1277589326,'initiated|b:1;securityToken|s:32:\"70b5e636865dc184a6d2a779b7e5d0f7\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";');
+INSERT INTO sessions VALUES ('660lp9rf0mi4krnsojq9qnr1l4',1277589329,'initiated|b:1;securityToken|s:32:\"8d011ed63fe6a30ca3cf29ab6fb8939a\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";');
+INSERT INTO sessions VALUES ('b5gibb5c1eb077hmnp68d77gs1',1277589329,'initiated|b:1;securityToken|s:32:\"8a3b6617b1ea80c8527235aa271d254a\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";');
+INSERT INTO sessions VALUES ('kutbqhcl40i644kjrst7057oi7',1277589342,'initiated|b:1;securityToken|s:32:\"0edf8e321c5ae57973a0b40982c87ddf\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";');
+INSERT INTO sessions VALUES ('ucqgu20dsq743lqbfq45hjf497',1277613792,'initiated|b:1;securityToken|s:32:\"854762d908b999bcf3c424f6abefc13f\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";messageToStack|s:0:\"\";');
+INSERT INTO sessions VALUES ('9hltqdhvtib6fei95j1bkr8bu7',1277610770,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:5:\"cPath\";s:4:\"3_12\";s:11:\"products_id\";s:2:\"43\";s:5:\"zenid\";s:26:\"97rlf0thh8m9begi2qt95o9kp5\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('m18trp7q01smt4dr49feng4s94',1277610751,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"8\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":8:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:5:\"cPath\";s:4:\"3_12\";s:11:\"products_id\";s:2:\"43\";s:5:\"zenid\";s:26:\"97rlf0thh8m9begi2qt95o9kp5\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('jkago43toe153eeu1vg8miccv2',1277610758,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"8\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":8:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:5:\"cPath\";s:4:\"3_12\";s:5:\"zenid\";s:26:\"97rlf0thh8m9begi2qt95o9kp5\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('iu75b88he4btollvp4k24dlk95',1277610758,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"8\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":8:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:5:\"cPath\";s:4:\"3_12\";s:11:\"products_id\";s:2:\"43\";s:5:\"zenid\";s:26:\"97rlf0thh8m9begi2qt95o9kp5\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('7kd982j4loij1rk8otu1q8s957',1277610791,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"8\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:43;a:1:{s:3:\"qty\";i:1;}}s:5:\"total\";d:4725;s:6:\"weight\";d:0.25;s:6:\"cartID\";s:5:\"99072\";s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"sl3s0qh7atsakd58kd65c2i175\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"7kd982j4loij1rk8otu1q8s957\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"sl3s0qh7atsakd58kd65c2i175\";}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";new_products_id_in_cart|s:2:\"43\";valid_to_checkout|b:1;cart_errors|s:0:\"\";last_secure_page|s:17:\"checkout_shipping\";');
+INSERT INTO sessions VALUES ('pencg26emfbagb5sqm04i825o3',1277457035,'initiated|b:1;securityToken|s:32:\"eb1fa7667b20c12625d4a233e76b4a12\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";messageToStack|s:0:\"\";');
+INSERT INTO sessions VALUES ('78maq3kbeqgc64coom01ncm765',1277570881,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":8:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";');
+INSERT INTO sessions VALUES ('pdpn49u0rkdnquov0a4caqble6',1277571757,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:9;a:1:{s:3:\"qty\";i:1;}}s:5:\"total\";d:4725;s:6:\"weight\";d:0.25;s:6:\"cartID\";s:5:\"35254\";s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:22:\"advanced_search_result\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:10:{s:7:\"keyword\";s:8:\"びちっこ\";s:13:\"categories_id\";s:0:\"\";s:10:\"inc_subcat\";s:1:\"1\";s:16:\"manufacturers_id\";s:0:\"\";s:5:\"pfrom\";s:0:\"\";s:3:\"pto\";s:0:\"\";s:5:\"dfrom\";s:0:\"\";s:3:\"dto\";s:0:\"\";s:1:\"x\";s:1:\"0\";s:1:\"y\";s:1:\"0\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:11:\"products_id\";s:1:\"9\";s:6:\"action\";s:11:\"add_product\";}s:4:\"post\";a:4:{s:13:\"cart_quantity\";s:1:\"1\";s:11:\"products_id\";s:1:\"9\";s:1:\"x\";s:2:\"95\";s:1:\"y\";s:2:\"15\";}}i:2;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";new_products_id_in_cart|s:1:\"9\";valid_to_checkout|b:1;cart_errors|s:0:\"\";payment|N;');
+INSERT INTO sessions VALUES ('unuesap4ttvj96c2bp2ati40k2',1277574185,'initiated|b:1;securityToken|s:32:\"f8e9028ff2e7626b8c1997a59b32c34c\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";');
+INSERT INTO sessions VALUES ('5ikabdk0n071jfjd19kjhcp372',1277571787,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:3:{i:11;a:1:{s:3:\"qty\";s:1:\"1\";}s:35:\"64:5f8a454d7eac16f952537f1187838525\";a:2:{s:3:\"qty\";s:1:\"1\";s:10:\"attributes\";a:1:{i:1;s:1:\"3\";}}i:9;a:1:{s:3:\"qty\";s:1:\"1\";}}s:5:\"total\";d:14175;s:6:\"weight\";d:0.75;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:5:{i:0;a:4:{s:4:\"page\";s:22:\"advanced_search_result\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:10:{s:7:\"keyword\";s:8:\"びちっこ\";s:13:\"categories_id\";s:0:\"\";s:10:\"inc_subcat\";s:1:\"1\";s:16:\"manufacturers_id\";s:0:\"\";s:5:\"pfrom\";s:0:\"\";s:3:\"pto\";s:0:\"\";s:5:\"dfrom\";s:0:\"\";s:3:\"dto\";s:0:\"\";s:1:\"x\";s:1:\"0\";s:1:\"y\";s:1:\"0\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:11:\"products_id\";s:1:\"9\";s:6:\"action\";s:11:\"add_product\";}s:4:\"post\";a:4:{s:13:\"cart_quantity\";s:1:\"1\";s:11:\"products_id\";s:1:\"9\";s:1:\"x\";s:2:\"95\";s:1:\"y\";s:2:\"15\";}}i:2;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:4;a:4:{s:4:\"page\";s:16:\"checkout_process\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:2:{s:12:\"btn_submit_x\";s:3:\"121\";s:12:\"btn_submit_y\";s:2:\"13\";}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";new_products_id_in_cart|s:1:\"9\";valid_to_checkout|b:1;cart_errors|s:0:\"\";payment|s:10:\"moneyorder\";customer_id|s:1:\"4\";customer_default_address_id|s:1:\"5\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";sendto|s:1:\"5\";shipping|a:4:{s:2:\"id\";s:9:\"flat_flat\";s:5:\"title\";s:8:\"定額料金\";s:4:\"cost\";s:4:\"5.00\";s:8:\"timespec\";N;}calendar_hope_delivery_day|s:10:\"最短で発送\";calendar_hope_delivery_time|s:10:\"指定しない\";billto|s:1:\"5\";cot_gv|b:0;cot_subpoint|b:0;comments|s:0:\"\";cc_id|s:0:\"\";order_number_created|i:19;');
+INSERT INTO sessions VALUES ('rmj10lqunql1lpnarn313g03b7',1277588564,'initiated|b:1;securityToken|s:32:\"61cbf25850f17ff55a4379aaed0c5921\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";messageToStack|s:0:\"\";categories_products_sort_order|s:1:\"0\";display_categories_dropdown|i:0;cot_gv|s:4:\"0.00\";cot_subpoint|s:1:\"0\";easy_admin_simplify_message|s:0:\"\";');
+INSERT INTO sessions VALUES ('1fime8hqmhot90l9tm7f706016',1277582212,'initiated|b:1;customers_host_address|s:15:\"okra.ark-web.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{s:35:\"88:d35fdb7752dae9737fa0d654e6056779\";a:2:{s:3:\"qty\";i:1;s:10:\"attributes\";a:1:{i:11;i:36;}}}s:5:\"total\";d:210;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"46055\";s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:1;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";d:210;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:5:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:12:\"product_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:11:\"products_id\";s:2:\"88\";s:17:\"number_of_uploads\";s:1:\"0\";s:6:\"action\";s:11:\"add_product\";}s:4:\"post\";a:5:{s:13:\"cart_quantity\";s:1:\"1\";s:11:\"products_id\";s:2:\"88\";s:1:\"x\";s:2:\"49\";s:1:\"y\";s:2:\"23\";s:2:\"id\";a:1:{i:11;i:36;}}}i:2;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:17:\"number_of_uploads\";s:1:\"0\";}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:4;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:12:\"192.168.0.77\";new_products_id_in_cart|s:35:\"88:d35fdb7752dae9737fa0d654e6056779\";valid_to_checkout|b:1;cart_errors|s:0:\"\";');
+INSERT INTO sessions VALUES ('6ft3e28oee0v3g09pjr2jm6qc7',1277612474,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"9\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:20:\"account_history_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:8:\"order_id\";s:2:\"26\";s:5:\"zenid\";s:26:\"lqm79ulkc092rvsd57cgitgj93\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"zenid\";s:26:\"6ft3e28oee0v3g09pjr2jm6qc7\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:20:\"account_history_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:8:\"order_id\";s:2:\"26\";s:5:\"zenid\";s:26:\"lqm79ulkc092rvsd57cgitgj93\";}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";last_secure_page|s:20:\"account_history_info\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('ulvl26rbb4mrs6unqpvk0r92l0',1277612486,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";language|s:8:\"japanese\";languages_id|s:1:\"9\";languages_code|s:9:\"ja-mobile\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:20:\"account_history_info\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:8:\"order_id\";s:2:\"26\";s:5:\"zenid\";s:26:\"a99vldrjju386q05qks8ehc291\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";currency|s:3:\"JPY\";last_secure_page|s:20:\"account_history_info\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";customer_id|s:2:\"15\";customer_default_address_id|s:2:\"16\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"志田\";customer_last_name|s:4:\"裕樹\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"194\";');
+INSERT INTO sessions VALUES ('crq3chusm037r7qg4jb60jjep0',1277615557,'initiated|b:1;securityToken|s:32:\"bad39433c98b6d59ea780efc5cedab61\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";');
+INSERT INTO sessions VALUES ('8bslftr66ncd7jv1opksddqpt6',1277618522,'initiated|b:1;securityToken|s:32:\"6e442fee47cdad482c44d4517bb071e5\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";');
+INSERT INTO sessions VALUES ('2s20qbo1p2p301vphk21gdg9e6',1277615465,'initiated|b:1;customers_host_address|s:43:\"nttkyo894111.tkyo.nt.ftth.ppp.infoweb.ne.jp\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"addon\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:6:\"module\";s:15:\"email_templates\";s:2:\"id\";s:1:\"4\";s:8:\"order_id\";s:2:\"18\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:14:\"116.83.144.111\";');
+INSERT INTO sessions VALUES ('0avlp0c89l21fpdv6u13obc6s4',1279265150,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
+INSERT INTO sessions VALUES ('uhvlkktibl5f38df2ihn01ift5',1279265787,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";');
+INSERT INTO sessions VALUES ('ilm070ksdq2s2kmsbah565e3h3',1279267404,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:14:\"create_account\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:22:{s:6:\"action\";s:7:\"process\";s:15:\"email_pref_html\";s:12:\"email_format\";s:13:\"email_address\";s:18:\"hishida@ark-web.jp\";s:8:\"password\";s:7:\"hishida\";s:12:\"confirmation\";s:7:\"hishida\";s:9:\"firstname\";s:4:\"菱田\";s:8:\"lastname\";s:4:\"好美\";s:14:\"firstname_kana\";s:6:\"ひしだ\";s:13:\"lastname_kana\";s:6:\"よしみ\";s:7:\"country\";s:3:\"107\";s:8:\"postcode\";s:8:\"061-3201\";s:5:\"state\";s:6:\"北海道\";s:4:\"city\";s:6:\"石狩市\";s:14:\"street_address\";s:15:\"花川南一条4-900\";s:7:\"company\";s:8:\"菱田商事\";s:9:\"telephone\";s:12:\"0133-66-9874\";s:3:\"fax\";s:12:\"0133-66-9874\";s:6:\"gender\";s:1:\"f\";s:3:\"dob\";s:10:\"1978/03/32\";s:18:\"privacy_conditions\";s:1:\"1\";s:1:\"x\";s:2:\"12\";s:1:\"y\";s:1:\"6\";}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";');
+INSERT INTO sessions VALUES ('46gbltmn6d3idbn4qbc955cud1',1279265919,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:14:\"create_account\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";');
+INSERT INTO sessions VALUES ('kfdme9fj97boqgaa2779r0bae4',1279265943,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":8:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";');
+INSERT INTO sessions VALUES ('qf12neo635lrbso8gtt80k4vk1',1279265986,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:14:\"create_account\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";');
+INSERT INTO sessions VALUES ('kpmiqi327qf2bepvsmui73ppj6',1279265999,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:14:\"create_account\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";');
+INSERT INTO sessions VALUES ('7f60namdcf8d4msjg1tjiiqmd2',1279270080,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:5:\"40974\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:225;a:1:{s:3:\"qty\";s:1:\"2\";}}s:5:\"total\";d:10000;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"40974\";s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:3:{i:0;a:4:{s:4:\"page\";s:14:\"create_account\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:22:{s:6:\"action\";s:7:\"process\";s:15:\"email_pref_html\";s:12:\"email_format\";s:13:\"email_address\";s:18:\"hishida@ark-web.jp\";s:8:\"password\";s:7:\"hishida\";s:12:\"confirmation\";s:7:\"hishida\";s:9:\"firstname\";s:4:\"菱田\";s:8:\"lastname\";s:4:\"好美\";s:14:\"firstname_kana\";s:6:\"ひしだ\";s:13:\"lastname_kana\";s:6:\"よしみ\";s:7:\"country\";s:3:\"107\";s:8:\"postcode\";s:8:\"061-3201\";s:5:\"state\";s:6:\"北海道\";s:4:\"city\";s:6:\"石狩市\";s:14:\"street_address\";s:15:\"花川南一条4-900\";s:7:\"company\";s:8:\"菱田商事\";s:9:\"telephone\";s:12:\"0133-66-9874\";s:3:\"fax\";s:12:\"0133-66-9874\";s:6:\"gender\";s:1:\"f\";s:3:\"dob\";s:10:\"2000/02/29\";s:18:\"privacy_conditions\";s:1:\"1\";s:1:\"x\";s:2:\"41\";s:1:\"y\";s:1:\"8\";}}i:1;a:4:{s:4:\"page\";s:22:\"create_account_success\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";customer_id|i:16;customer_first_name|s:4:\"菱田\";customer_last_name|s:4:\"好美\";customer_first_name_kana|s:6:\"ひしだ\";customer_last_name_kana|s:6:\"よしみ\";customer_default_address_id|i:17;customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"182\";customers_authorization|s:1:\"0\";new_products_id_in_cart|s:3:\"225\";valid_to_checkout|b:1;cart_errors|s:0:\"\";addon_search_more_par_page|s:2:\"10\";addon_search_more_sort|s:3:\"20a\";cot_gv|i:0;cc_id|s:0:\"\";order_number_created|i:27;|s:7:\"c_ot_gv\";sendto|i:17;payment|s:10:\"moneyorder\";shipping|a:4:{s:2:\"id\";s:23:\"freeshipper_freeshipper\";s:5:\"title\";s:10:\"配送料無料\";s:4:\"cost\";i:0;s:8:\"timespec\";N;}calendar_hope_delivery_day|s:10:\"最短で発送\";calendar_hope_delivery_time|s:10:\"指定しない\";billto|i:17;comments|s:775:\"あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが\r\n★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss1233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333\";');
+INSERT INTO sessions VALUES ('6bdmuen7kmia0jpdlb1gfd8315',1279268432,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";payment|N;');
+INSERT INTO sessions VALUES ('jd6ghi0b2kv2f20ki1m4hlsin2',1279269603,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:225;a:1:{s:3:\"qty\";s:1:\"2\";}}s:5:\"total\";d:10000;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:4:{s:13:\"email_address\";s:18:\"hishida@ark-web.jp\";s:8:\"password\";s:7:\"hishida\";s:1:\"x\";s:2:\"65\";s:1:\"y\";s:1:\"6\";}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";payment|s:10:\"moneyorder\";customer_id|s:2:\"16\";customer_default_address_id|s:2:\"17\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"菱田\";customer_last_name|s:4:\"好美\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"182\";valid_to_checkout|b:1;cart_errors|s:0:\"\";sendto|s:2:\"17\";shipping|a:4:{s:2:\"id\";s:23:\"freeshipper_freeshipper\";s:5:\"title\";s:10:\"配送料無料\";s:4:\"cost\";i:0;s:8:\"timespec\";N;}calendar_hope_delivery_day|s:10:\"最短で発送\";calendar_hope_delivery_time|s:10:\"指定しない\";billto|s:2:\"17\";cot_gv|i:0;comments|s:775:\"あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが\r\n★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss1233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333\";');
+INSERT INTO sessions VALUES ('593k8jt89p4vn1oabqs8mk9r82',1279269242,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:225;a:1:{s:3:\"qty\";s:1:\"2\";}}s:5:\"total\";d:10000;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:4:{s:13:\"email_address\";s:18:\"hishida@ark-web.jp\";s:8:\"password\";s:7:\"hishida\";s:1:\"x\";s:1:\"0\";s:1:\"y\";s:1:\"0\";}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";payment|s:10:\"moneyorder\";customer_id|s:2:\"16\";customer_default_address_id|s:2:\"17\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"菱田\";customer_last_name|s:4:\"好美\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"182\";valid_to_checkout|b:1;cart_errors|s:0:\"\";sendto|s:2:\"17\";shipping|a:4:{s:2:\"id\";s:23:\"freeshipper_freeshipper\";s:5:\"title\";s:10:\"配送料無料\";s:4:\"cost\";i:0;s:8:\"timespec\";N;}calendar_hope_delivery_day|s:10:\"最短で発送\";calendar_hope_delivery_time|s:10:\"指定しない\";comments|s:775:\"あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが\r\n★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss1233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333\";billto|s:2:\"17\";cot_gv|i:0;');
+INSERT INTO sessions VALUES ('hhlm8ej9kc8gf1o58hi2hqcdq3',1279269163,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";payment|N;');
+INSERT INTO sessions VALUES ('f5rkk50sco7ku8hgbkupm3kgr3',1279270262,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:14:\"create_account\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";');
+INSERT INTO sessions VALUES ('3k17kqn0stkbl1mrsed6vna3p4',1279270269,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";payment|N;');
+INSERT INTO sessions VALUES ('o7p1e1b3ko3cqd6e7sb2tritu3',1279270306,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:225;a:1:{s:3:\"qty\";s:1:\"2\";}}s:5:\"total\";d:10000;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";s:8:\"physical\";s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:5:\"login\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:4:{s:13:\"email_address\";s:18:\"hishida@ark-web.jp\";s:8:\"password\";s:7:\"hishida\";s:1:\"x\";s:1:\"0\";s:1:\"y\";s:1:\"0\";}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";payment|s:10:\"moneyorder\";customer_id|s:2:\"16\";customer_default_address_id|s:2:\"17\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"菱田\";customer_last_name|s:4:\"好美\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"182\";valid_to_checkout|b:1;cart_errors|s:0:\"\";sendto|s:2:\"17\";shipping|a:4:{s:2:\"id\";s:23:\"freeshipper_freeshipper\";s:5:\"title\";s:10:\"配送料無料\";s:4:\"cost\";i:0;s:8:\"timespec\";N;}calendar_hope_delivery_day|s:10:\"最短で発送\";calendar_hope_delivery_time|s:10:\"指定しない\";comments|s:775:\"あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが・・・あのですね、質問なのですが\r\n★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss1233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333\";billto|s:2:\"17\";cot_gv|i:0;');
+INSERT INTO sessions VALUES ('7cm1cvnco96u6hagnphmcaejb2',1279604856,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:89;a:1:{s:3:\"qty\";i:1;}}s:5:\"total\";d:210;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"40495\";s:12:\"content_type\";s:7:\"virtual\";s:18:\"free_shipping_item\";i:1;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";d:210;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:17:\"checkout_shipping\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";addon_search_more_par_page|s:2:\"10\";addon_search_more_sort|s:3:\"20a\";new_products_id_in_cart|s:2:\"89\";valid_to_checkout|b:1;cart_errors|s:0:\"\";payment|N;');
+INSERT INTO sessions VALUES ('qp0uvdufa6fnt2csedof9djhj2',1279611563,'initiated|b:1;securityToken|s:32:\"9f2e27bc02ed63f5f76b1dc3325c7396\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:13:\"configuration\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";categories_products_sort_order|s:1:\"0\";display_categories_dropdown|i:0;option_names_values_copier|s:1:\"1\";page_info|s:58:\"attribute_page=1&products_filter=89&current_category_id=27\";messageToStack|s:0:\"\";');
+INSERT INTO sessions VALUES ('villsmp4emu9l6fmnva5utbou3',1279604845,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:13:\"shopping_cart\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:17:\"number_of_uploads\";s:1:\"0\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";valid_to_checkout|b:1;cart_errors|s:0:\"\";');
+INSERT INTO sessions VALUES ('mrjie5t6lhpcn3fhqp9394urp5',1279607743,'initiated|b:1;customers_host_address|s:11:\"pc109.local\";cartID|N;cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:1:{i:89;a:1:{s:3:\"qty\";s:1:\"1\";}}s:5:\"total\";d:210;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"26608\";s:12:\"content_type\";s:5:\"mixed\";s:18:\"free_shipping_item\";i:1;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";d:210;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.109\";addon_search_more_par_page|s:2:\"10\";addon_search_more_sort|s:3:\"20a\";new_products_id_in_cart|s:2:\"19\";valid_to_checkout|b:1;cart_errors|s:0:\"\";payment|N;customer_id|s:2:\"16\";customer_default_address_id|s:2:\"17\";customers_authorization|s:1:\"0\";customer_first_name|s:4:\"菱田\";customer_last_name|s:4:\"好美\";customer_country_id|s:3:\"107\";customer_zone_id|s:3:\"182\";sendto|s:2:\"17\";shipping|a:4:{s:2:\"id\";s:23:\"freeshipper_freeshipper\";s:5:\"title\";s:13:\"配送料無料 ()\";s:4:\"cost\";i:0;s:6:\"module\";s:11:\"freeshipper\";}');
+INSERT INTO sessions VALUES ('1k0j0s5t37p44q1v39ljbdt8h3',1279612748,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":8:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
+INSERT INTO sessions VALUES ('03hcbr7sv6prh1qua9vdbm51o3',1279620013,'initiated|b:1;securityToken|s:32:\"87db7fecd097b323e534c3d7056fc559\";language|s:8:\"japanese\";languages_id|s:1:\"2\";selected_box|s:5:\"tools\";html_editor_preference_status|s:4:\"NONE\";admin_id|s:1:\"1\";messageToStack|s:0:\"\";');
+INSERT INTO sessions VALUES ('27arla5buurof9t7jm1i7rosd0',1279615838,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"addon\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:3:{s:6:\"module\";s:15:\"email_templates\";s:2:\"id\";s:1:\"4\";s:11:\"language_id\";s:1:\"2\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
+INSERT INTO sessions VALUES ('qhevhu02q88ks5e96ugbk086s1',1279624699,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
+INSERT INTO sessions VALUES ('sl4inlcdm066vemlv3eeft60j2',1279674118,'initiated|b:1;customers_host_address|s:11:\"pc104.local\";cartID|s:0:\"\";cart|O:12:\"shoppingCart\":9:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;s:18:\"free_shipping_item\";i:0;s:20:\"free_shipping_weight\";i:0;s:19:\"free_shipping_price\";i:0;s:9:\"observers\";a:0:{}}navigation|O:17:\"navigationHistory\":3:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:5:\"index\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";s:0:\"\";s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}s:9:\"observers\";a:0:{}}check_valid|s:4:\"true\";language|s:8:\"japanese\";languages_id|s:1:\"2\";languages_code|s:2:\"ja\";currency|s:3:\"JPY\";session_counter|b:1;customers_ip_address|s:13:\"192.168.0.104\";');
 
 --
 -- Table structure for table so_payment_types
@@ -4298,6 +3545,15 @@ KEY type_code_2 (payment_type_code)
 -- Dumping data for table so_payment_types
 --
 
+INSERT INTO so_payment_types VALUES (1,1,'CA','Cash');
+INSERT INTO so_payment_types VALUES (2,1,'CK','Check');
+INSERT INTO so_payment_types VALUES (3,1,'MO','Money Order');
+INSERT INTO so_payment_types VALUES (4,1,'ADJ','Adjustment');
+INSERT INTO so_payment_types VALUES (5,1,'CC','Credit Card');
+INSERT INTO so_payment_types VALUES (6,1,'MC','Master Card');
+INSERT INTO so_payment_types VALUES (7,1,'VISA','Visa');
+INSERT INTO so_payment_types VALUES (8,1,'AMEX','American Express');
+INSERT INTO so_payment_types VALUES (9,1,'DISC','Discover');
 
 --
 -- Table structure for table so_payments
@@ -4428,6 +3684,9 @@ PRIMARY KEY  (tax_class_id,language_id)
 -- Dumping data for table tax_class_m17n
 --
 
+INSERT INTO tax_class_m17n VALUES (1,1,'消費税','消費税（日本）');
+INSERT INTO tax_class_m17n VALUES (1,2,'消費税','消費税（日本）');
+INSERT INTO tax_class_m17n VALUES (1,9,'消費税','消費税（日本）');
 
 --
 -- Table structure for table tax_rates
@@ -4470,6 +3729,9 @@ PRIMARY KEY  (tax_rates_id,language_id)
 -- Dumping data for table tax_rates_m17n
 --
 
+INSERT INTO tax_rates_m17n VALUES (1,1,'消費税：5%');
+INSERT INTO tax_rates_m17n VALUES (1,2,'消費税：5%');
+INSERT INTO tax_rates_m17n VALUES (1,9,'消費税：5%');
 
 --
 -- Table structure for table template_select
@@ -4509,6 +3771,12 @@ PRIMARY KEY  (upgrade_exception_id)
 -- Dumping data for table upgrade_exceptions
 --
 
+INSERT INTO upgrade_exceptions VALUES (1,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'全顧客\' WHERE query_id =1 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (2,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'メールマガジン希望者\' WHERE query_id =2 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (3,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'休眠顧客（過去三ヶ月間、配信希望者のみ）\' WHERE query_id =3 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (4,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'稼動顧客（過去三ヶ月間、配信希望者のみ）\' WHERE query_id =4 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (5,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'稼動顧客（過去三ヶ月間）\' WHERE query_id =5 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (6,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'管理者\' WHERE query_id =6 LIMIT 1;');
 
 --
 -- Table structure for table visitors
@@ -4525,11 +3793,6 @@ KEY IDX_visitors_email_address (visitors_email_address)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table visitors
---
-
-
---
 -- Table structure for table visitors_orders
 --
 
@@ -4542,11 +3805,6 @@ date_purchased datetime default NULL,
 PRIMARY KEY  (orders_id),
 KEY IDX_visitors_id (visitors_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table visitors_orders
---
-
 
 --
 -- Table structure for table whos_online
@@ -4570,11 +3828,6 @@ KEY idx_time_entry_zen (time_entry),
 KEY idx_time_last_click_zen (time_last_click),
 KEY idx_last_page_url_zen (last_page_url)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table whos_online
---
-
 
 --
 -- Table structure for table zones
@@ -4838,6 +4091,690 @@ PRIMARY KEY  (zone_id,language_id)
 -- Dumping data for table zones_m17n
 --
 
+INSERT INTO zones_m17n VALUES (1,1,'Alabama');
+INSERT INTO zones_m17n VALUES (2,1,'Alaska');
+INSERT INTO zones_m17n VALUES (3,1,'American Samoa');
+INSERT INTO zones_m17n VALUES (4,1,'Arizona');
+INSERT INTO zones_m17n VALUES (5,1,'Arkansas');
+INSERT INTO zones_m17n VALUES (6,1,'Armed Forces Africa');
+INSERT INTO zones_m17n VALUES (7,1,'Armed Forces Americas');
+INSERT INTO zones_m17n VALUES (8,1,'Armed Forces Canada');
+INSERT INTO zones_m17n VALUES (9,1,'Armed Forces Europe');
+INSERT INTO zones_m17n VALUES (10,1,'Armed Forces Middle East');
+INSERT INTO zones_m17n VALUES (11,1,'Armed Forces Pacific');
+INSERT INTO zones_m17n VALUES (12,1,'California');
+INSERT INTO zones_m17n VALUES (13,1,'Colorado');
+INSERT INTO zones_m17n VALUES (14,1,'Connecticut');
+INSERT INTO zones_m17n VALUES (15,1,'Delaware');
+INSERT INTO zones_m17n VALUES (16,1,'District of Columbia');
+INSERT INTO zones_m17n VALUES (17,1,'Federated States Of Micronesia');
+INSERT INTO zones_m17n VALUES (18,1,'Florida');
+INSERT INTO zones_m17n VALUES (19,1,'Georgia');
+INSERT INTO zones_m17n VALUES (20,1,'Guam');
+INSERT INTO zones_m17n VALUES (21,1,'Hawaii');
+INSERT INTO zones_m17n VALUES (22,1,'Idaho');
+INSERT INTO zones_m17n VALUES (23,1,'Illinois');
+INSERT INTO zones_m17n VALUES (24,1,'Indiana');
+INSERT INTO zones_m17n VALUES (25,1,'Iowa');
+INSERT INTO zones_m17n VALUES (26,1,'Kansas');
+INSERT INTO zones_m17n VALUES (27,1,'Kentucky');
+INSERT INTO zones_m17n VALUES (28,1,'Louisiana');
+INSERT INTO zones_m17n VALUES (29,1,'Maine');
+INSERT INTO zones_m17n VALUES (30,1,'Marshall Islands');
+INSERT INTO zones_m17n VALUES (31,1,'Maryland');
+INSERT INTO zones_m17n VALUES (32,1,'Massachusetts');
+INSERT INTO zones_m17n VALUES (33,1,'Michigan');
+INSERT INTO zones_m17n VALUES (34,1,'Minnesota');
+INSERT INTO zones_m17n VALUES (35,1,'Mississippi');
+INSERT INTO zones_m17n VALUES (36,1,'Missouri');
+INSERT INTO zones_m17n VALUES (37,1,'Montana');
+INSERT INTO zones_m17n VALUES (38,1,'Nebraska');
+INSERT INTO zones_m17n VALUES (39,1,'Nevada');
+INSERT INTO zones_m17n VALUES (40,1,'New Hampshire');
+INSERT INTO zones_m17n VALUES (41,1,'New Jersey');
+INSERT INTO zones_m17n VALUES (42,1,'New Mexico');
+INSERT INTO zones_m17n VALUES (43,1,'New York');
+INSERT INTO zones_m17n VALUES (44,1,'North Carolina');
+INSERT INTO zones_m17n VALUES (45,1,'North Dakota');
+INSERT INTO zones_m17n VALUES (46,1,'Northern Mariana Islands');
+INSERT INTO zones_m17n VALUES (47,1,'Ohio');
+INSERT INTO zones_m17n VALUES (48,1,'Oklahoma');
+INSERT INTO zones_m17n VALUES (49,1,'Oregon');
+INSERT INTO zones_m17n VALUES (50,1,'Palau');
+INSERT INTO zones_m17n VALUES (51,1,'Pennsylvania');
+INSERT INTO zones_m17n VALUES (52,1,'Puerto Rico');
+INSERT INTO zones_m17n VALUES (53,1,'Rhode Island');
+INSERT INTO zones_m17n VALUES (54,1,'South Carolina');
+INSERT INTO zones_m17n VALUES (55,1,'South Dakota');
+INSERT INTO zones_m17n VALUES (56,1,'Tennessee');
+INSERT INTO zones_m17n VALUES (57,1,'Texas');
+INSERT INTO zones_m17n VALUES (58,1,'Utah');
+INSERT INTO zones_m17n VALUES (59,1,'Vermont');
+INSERT INTO zones_m17n VALUES (60,1,'Virgin Islands');
+INSERT INTO zones_m17n VALUES (61,1,'Virginia');
+INSERT INTO zones_m17n VALUES (62,1,'Washington');
+INSERT INTO zones_m17n VALUES (63,1,'West Virginia');
+INSERT INTO zones_m17n VALUES (64,1,'Wisconsin');
+INSERT INTO zones_m17n VALUES (65,1,'Wyoming');
+INSERT INTO zones_m17n VALUES (66,1,'Alberta');
+INSERT INTO zones_m17n VALUES (67,1,'British Columbia');
+INSERT INTO zones_m17n VALUES (68,1,'Manitoba');
+INSERT INTO zones_m17n VALUES (69,1,'Newfoundland');
+INSERT INTO zones_m17n VALUES (70,1,'New Brunswick');
+INSERT INTO zones_m17n VALUES (71,1,'Nova Scotia');
+INSERT INTO zones_m17n VALUES (72,1,'Northwest Territories');
+INSERT INTO zones_m17n VALUES (73,1,'Nunavut');
+INSERT INTO zones_m17n VALUES (74,1,'Ontario');
+INSERT INTO zones_m17n VALUES (75,1,'Prince Edward Island');
+INSERT INTO zones_m17n VALUES (76,1,'Quebec');
+INSERT INTO zones_m17n VALUES (77,1,'Saskatchewan');
+INSERT INTO zones_m17n VALUES (78,1,'Yukon Territory');
+INSERT INTO zones_m17n VALUES (79,1,'Niedersachsen');
+INSERT INTO zones_m17n VALUES (80,1,'Baden-Wrttemberg');
+INSERT INTO zones_m17n VALUES (81,1,'Bayern');
+INSERT INTO zones_m17n VALUES (82,1,'Berlin');
+INSERT INTO zones_m17n VALUES (83,1,'Brandenburg');
+INSERT INTO zones_m17n VALUES (84,1,'Bremen');
+INSERT INTO zones_m17n VALUES (85,1,'Hamburg');
+INSERT INTO zones_m17n VALUES (86,1,'Hessen');
+INSERT INTO zones_m17n VALUES (87,1,'Mecklenburg-Vorpommern');
+INSERT INTO zones_m17n VALUES (88,1,'Nordrhein-Westfalen');
+INSERT INTO zones_m17n VALUES (89,1,'Rheinland-Pfalz');
+INSERT INTO zones_m17n VALUES (90,1,'Saarland');
+INSERT INTO zones_m17n VALUES (91,1,'Sachsen');
+INSERT INTO zones_m17n VALUES (92,1,'Sachsen-Anhalt');
+INSERT INTO zones_m17n VALUES (93,1,'Schleswig-Holstein');
+INSERT INTO zones_m17n VALUES (94,1,'Thringen');
+INSERT INTO zones_m17n VALUES (95,1,'Wien');
+INSERT INTO zones_m17n VALUES (96,1,'Niedersterreich');
+INSERT INTO zones_m17n VALUES (97,1,'Obersterreich');
+INSERT INTO zones_m17n VALUES (98,1,'Salzburg');
+INSERT INTO zones_m17n VALUES (99,1,'Kten');
+INSERT INTO zones_m17n VALUES (100,1,'Steiermark');
+INSERT INTO zones_m17n VALUES (101,1,'Tirol');
+INSERT INTO zones_m17n VALUES (102,1,'Burgenland');
+INSERT INTO zones_m17n VALUES (103,1,'Voralberg');
+INSERT INTO zones_m17n VALUES (104,1,'Aargau');
+INSERT INTO zones_m17n VALUES (105,1,'Appenzell Innerrhoden');
+INSERT INTO zones_m17n VALUES (106,1,'Appenzell Ausserrhoden');
+INSERT INTO zones_m17n VALUES (107,1,'Bern');
+INSERT INTO zones_m17n VALUES (108,1,'Basel-Landschaft');
+INSERT INTO zones_m17n VALUES (109,1,'Basel-Stadt');
+INSERT INTO zones_m17n VALUES (110,1,'Freiburg');
+INSERT INTO zones_m17n VALUES (111,1,'Genf');
+INSERT INTO zones_m17n VALUES (112,1,'Glarus');
+INSERT INTO zones_m17n VALUES (113,1,'Graubnden');
+INSERT INTO zones_m17n VALUES (114,1,'Jura');
+INSERT INTO zones_m17n VALUES (115,1,'Luzern');
+INSERT INTO zones_m17n VALUES (116,1,'Neuenburg');
+INSERT INTO zones_m17n VALUES (117,1,'Nidwalden');
+INSERT INTO zones_m17n VALUES (118,1,'Obwalden');
+INSERT INTO zones_m17n VALUES (119,1,'St. Gallen');
+INSERT INTO zones_m17n VALUES (120,1,'Schaffhausen');
+INSERT INTO zones_m17n VALUES (121,1,'Solothurn');
+INSERT INTO zones_m17n VALUES (122,1,'Schwyz');
+INSERT INTO zones_m17n VALUES (123,1,'Thurgau');
+INSERT INTO zones_m17n VALUES (124,1,'Tessin');
+INSERT INTO zones_m17n VALUES (125,1,'Uri');
+INSERT INTO zones_m17n VALUES (126,1,'Waadt');
+INSERT INTO zones_m17n VALUES (127,1,'Wallis');
+INSERT INTO zones_m17n VALUES (128,1,'Zug');
+INSERT INTO zones_m17n VALUES (129,1,'Zrich');
+INSERT INTO zones_m17n VALUES (130,1,'A Corua');
+INSERT INTO zones_m17n VALUES (131,1,'Alava');
+INSERT INTO zones_m17n VALUES (132,1,'Albacete');
+INSERT INTO zones_m17n VALUES (133,1,'Alicante');
+INSERT INTO zones_m17n VALUES (134,1,'Almeria');
+INSERT INTO zones_m17n VALUES (135,1,'Asturias');
+INSERT INTO zones_m17n VALUES (136,1,'Avila');
+INSERT INTO zones_m17n VALUES (137,1,'Badajoz');
+INSERT INTO zones_m17n VALUES (138,1,'Baleares');
+INSERT INTO zones_m17n VALUES (139,1,'Barcelona');
+INSERT INTO zones_m17n VALUES (140,1,'Burgos');
+INSERT INTO zones_m17n VALUES (141,1,'Caceres');
+INSERT INTO zones_m17n VALUES (142,1,'Cadiz');
+INSERT INTO zones_m17n VALUES (143,1,'Cantabria');
+INSERT INTO zones_m17n VALUES (144,1,'Castellon');
+INSERT INTO zones_m17n VALUES (145,1,'Ceuta');
+INSERT INTO zones_m17n VALUES (146,1,'Ciudad Real');
+INSERT INTO zones_m17n VALUES (147,1,'Cordoba');
+INSERT INTO zones_m17n VALUES (148,1,'Cuenca');
+INSERT INTO zones_m17n VALUES (149,1,'Girona');
+INSERT INTO zones_m17n VALUES (150,1,'Granada');
+INSERT INTO zones_m17n VALUES (151,1,'Guadalajara');
+INSERT INTO zones_m17n VALUES (152,1,'Guipuzcoa');
+INSERT INTO zones_m17n VALUES (153,1,'Huelva');
+INSERT INTO zones_m17n VALUES (154,1,'Huesca');
+INSERT INTO zones_m17n VALUES (155,1,'Jaen');
+INSERT INTO zones_m17n VALUES (156,1,'La Rioja');
+INSERT INTO zones_m17n VALUES (157,1,'Las Palmas');
+INSERT INTO zones_m17n VALUES (158,1,'Leon');
+INSERT INTO zones_m17n VALUES (159,1,'Lleida');
+INSERT INTO zones_m17n VALUES (160,1,'Lugo');
+INSERT INTO zones_m17n VALUES (161,1,'Madrid');
+INSERT INTO zones_m17n VALUES (162,1,'Malaga');
+INSERT INTO zones_m17n VALUES (163,1,'Melilla');
+INSERT INTO zones_m17n VALUES (164,1,'Murcia');
+INSERT INTO zones_m17n VALUES (165,1,'Navarra');
+INSERT INTO zones_m17n VALUES (166,1,'Ourense');
+INSERT INTO zones_m17n VALUES (167,1,'Palencia');
+INSERT INTO zones_m17n VALUES (168,1,'Pontevedra');
+INSERT INTO zones_m17n VALUES (169,1,'Salamanca');
+INSERT INTO zones_m17n VALUES (170,1,'Santa Cruz de Tenerife');
+INSERT INTO zones_m17n VALUES (171,1,'Segovia');
+INSERT INTO zones_m17n VALUES (172,1,'Sevilla');
+INSERT INTO zones_m17n VALUES (173,1,'Soria');
+INSERT INTO zones_m17n VALUES (174,1,'Tarragona');
+INSERT INTO zones_m17n VALUES (175,1,'Teruel');
+INSERT INTO zones_m17n VALUES (176,1,'Toledo');
+INSERT INTO zones_m17n VALUES (177,1,'Valencia');
+INSERT INTO zones_m17n VALUES (178,1,'Valladolid');
+INSERT INTO zones_m17n VALUES (179,1,'Vizcaya');
+INSERT INTO zones_m17n VALUES (180,1,'Zamora');
+INSERT INTO zones_m17n VALUES (181,1,'Zaragoza');
+INSERT INTO zones_m17n VALUES (182,1,'Hokkaido');
+INSERT INTO zones_m17n VALUES (183,1,'Aomori');
+INSERT INTO zones_m17n VALUES (184,1,'Iwate');
+INSERT INTO zones_m17n VALUES (185,1,'Miyagi');
+INSERT INTO zones_m17n VALUES (186,1,'Akita');
+INSERT INTO zones_m17n VALUES (187,1,'Yamagata');
+INSERT INTO zones_m17n VALUES (188,1,'Fukushima');
+INSERT INTO zones_m17n VALUES (189,1,'Ibaragi');
+INSERT INTO zones_m17n VALUES (190,1,'Tochigi');
+INSERT INTO zones_m17n VALUES (191,1,'Gunma');
+INSERT INTO zones_m17n VALUES (192,1,'Saitama');
+INSERT INTO zones_m17n VALUES (193,1,'Chiba');
+INSERT INTO zones_m17n VALUES (194,1,'Tokyo');
+INSERT INTO zones_m17n VALUES (195,1,'Kanagama');
+INSERT INTO zones_m17n VALUES (196,1,'Niigata');
+INSERT INTO zones_m17n VALUES (197,1,'Toyama');
+INSERT INTO zones_m17n VALUES (198,1,'Ishikawa');
+INSERT INTO zones_m17n VALUES (199,1,'Fukui');
+INSERT INTO zones_m17n VALUES (200,1,'Yamagata');
+INSERT INTO zones_m17n VALUES (201,1,'Nagano');
+INSERT INTO zones_m17n VALUES (202,1,'Gifu');
+INSERT INTO zones_m17n VALUES (203,1,'Shizuoka');
+INSERT INTO zones_m17n VALUES (204,1,'Aichu');
+INSERT INTO zones_m17n VALUES (205,1,'Mie');
+INSERT INTO zones_m17n VALUES (206,1,'Shiga');
+INSERT INTO zones_m17n VALUES (207,1,'Kyoto');
+INSERT INTO zones_m17n VALUES (208,1,'Osaka');
+INSERT INTO zones_m17n VALUES (209,1,'Hyogo');
+INSERT INTO zones_m17n VALUES (210,1,'Nara');
+INSERT INTO zones_m17n VALUES (211,1,'Wakayama');
+INSERT INTO zones_m17n VALUES (212,1,'Tottori');
+INSERT INTO zones_m17n VALUES (213,1,'Shimane');
+INSERT INTO zones_m17n VALUES (214,1,'Okayama');
+INSERT INTO zones_m17n VALUES (215,1,'Hiroshima');
+INSERT INTO zones_m17n VALUES (216,1,'Yamaguchi');
+INSERT INTO zones_m17n VALUES (217,1,'Tokushima');
+INSERT INTO zones_m17n VALUES (218,1,'Kagawa');
+INSERT INTO zones_m17n VALUES (219,1,'Ehime');
+INSERT INTO zones_m17n VALUES (220,1,'Kochi');
+INSERT INTO zones_m17n VALUES (221,1,'Fukushima');
+INSERT INTO zones_m17n VALUES (222,1,'Saga');
+INSERT INTO zones_m17n VALUES (223,1,'Nagasaki');
+INSERT INTO zones_m17n VALUES (224,1,'Kumamoto');
+INSERT INTO zones_m17n VALUES (225,1,'Oita');
+INSERT INTO zones_m17n VALUES (226,1,'Miyazaki');
+INSERT INTO zones_m17n VALUES (227,1,'Kagoshima');
+INSERT INTO zones_m17n VALUES (228,1,'Okinawa');
+INSERT INTO zones_m17n VALUES (1,2,'Alabama');
+INSERT INTO zones_m17n VALUES (2,2,'Alaska');
+INSERT INTO zones_m17n VALUES (3,2,'American Samoa');
+INSERT INTO zones_m17n VALUES (4,2,'Arizona');
+INSERT INTO zones_m17n VALUES (5,2,'Arkansas');
+INSERT INTO zones_m17n VALUES (6,2,'Armed Forces Africa');
+INSERT INTO zones_m17n VALUES (7,2,'Armed Forces Americas');
+INSERT INTO zones_m17n VALUES (8,2,'Armed Forces Canada');
+INSERT INTO zones_m17n VALUES (9,2,'Armed Forces Europe');
+INSERT INTO zones_m17n VALUES (10,2,'Armed Forces Middle East');
+INSERT INTO zones_m17n VALUES (11,2,'Armed Forces Pacific');
+INSERT INTO zones_m17n VALUES (12,2,'California');
+INSERT INTO zones_m17n VALUES (13,2,'Colorado');
+INSERT INTO zones_m17n VALUES (14,2,'Connecticut');
+INSERT INTO zones_m17n VALUES (15,2,'Delaware');
+INSERT INTO zones_m17n VALUES (16,2,'District of Columbia');
+INSERT INTO zones_m17n VALUES (17,2,'Federated States Of Micronesia');
+INSERT INTO zones_m17n VALUES (18,2,'Florida');
+INSERT INTO zones_m17n VALUES (19,2,'Georgia');
+INSERT INTO zones_m17n VALUES (20,2,'Guam');
+INSERT INTO zones_m17n VALUES (21,2,'Hawaii');
+INSERT INTO zones_m17n VALUES (22,2,'Idaho');
+INSERT INTO zones_m17n VALUES (23,2,'Illinois');
+INSERT INTO zones_m17n VALUES (24,2,'Indiana');
+INSERT INTO zones_m17n VALUES (25,2,'Iowa');
+INSERT INTO zones_m17n VALUES (26,2,'Kansas');
+INSERT INTO zones_m17n VALUES (27,2,'Kentucky');
+INSERT INTO zones_m17n VALUES (28,2,'Louisiana');
+INSERT INTO zones_m17n VALUES (29,2,'Maine');
+INSERT INTO zones_m17n VALUES (30,2,'Marshall Islands');
+INSERT INTO zones_m17n VALUES (31,2,'Maryland');
+INSERT INTO zones_m17n VALUES (32,2,'Massachusetts');
+INSERT INTO zones_m17n VALUES (33,2,'Michigan');
+INSERT INTO zones_m17n VALUES (34,2,'Minnesota');
+INSERT INTO zones_m17n VALUES (35,2,'Mississippi');
+INSERT INTO zones_m17n VALUES (36,2,'Missouri');
+INSERT INTO zones_m17n VALUES (37,2,'Montana');
+INSERT INTO zones_m17n VALUES (38,2,'Nebraska');
+INSERT INTO zones_m17n VALUES (39,2,'Nevada');
+INSERT INTO zones_m17n VALUES (40,2,'New Hampshire');
+INSERT INTO zones_m17n VALUES (41,2,'New Jersey');
+INSERT INTO zones_m17n VALUES (42,2,'New Mexico');
+INSERT INTO zones_m17n VALUES (43,2,'New York');
+INSERT INTO zones_m17n VALUES (44,2,'North Carolina');
+INSERT INTO zones_m17n VALUES (45,2,'North Dakota');
+INSERT INTO zones_m17n VALUES (46,2,'Northern Mariana Islands');
+INSERT INTO zones_m17n VALUES (47,2,'Ohio');
+INSERT INTO zones_m17n VALUES (48,2,'Oklahoma');
+INSERT INTO zones_m17n VALUES (49,2,'Oregon');
+INSERT INTO zones_m17n VALUES (50,2,'Palau');
+INSERT INTO zones_m17n VALUES (51,2,'Pennsylvania');
+INSERT INTO zones_m17n VALUES (52,2,'Puerto Rico');
+INSERT INTO zones_m17n VALUES (53,2,'Rhode Island');
+INSERT INTO zones_m17n VALUES (54,2,'South Carolina');
+INSERT INTO zones_m17n VALUES (55,2,'South Dakota');
+INSERT INTO zones_m17n VALUES (56,2,'Tennessee');
+INSERT INTO zones_m17n VALUES (57,2,'Texas');
+INSERT INTO zones_m17n VALUES (58,2,'Utah');
+INSERT INTO zones_m17n VALUES (59,2,'Vermont');
+INSERT INTO zones_m17n VALUES (60,2,'Virgin Islands');
+INSERT INTO zones_m17n VALUES (61,2,'Virginia');
+INSERT INTO zones_m17n VALUES (62,2,'Washington');
+INSERT INTO zones_m17n VALUES (63,2,'West Virginia');
+INSERT INTO zones_m17n VALUES (64,2,'Wisconsin');
+INSERT INTO zones_m17n VALUES (65,2,'Wyoming');
+INSERT INTO zones_m17n VALUES (66,2,'Alberta');
+INSERT INTO zones_m17n VALUES (67,2,'British Columbia');
+INSERT INTO zones_m17n VALUES (68,2,'Manitoba');
+INSERT INTO zones_m17n VALUES (69,2,'Newfoundland');
+INSERT INTO zones_m17n VALUES (70,2,'New Brunswick');
+INSERT INTO zones_m17n VALUES (71,2,'Nova Scotia');
+INSERT INTO zones_m17n VALUES (72,2,'Northwest Territories');
+INSERT INTO zones_m17n VALUES (73,2,'Nunavut');
+INSERT INTO zones_m17n VALUES (74,2,'Ontario');
+INSERT INTO zones_m17n VALUES (75,2,'Prince Edward Island');
+INSERT INTO zones_m17n VALUES (76,2,'Quebec');
+INSERT INTO zones_m17n VALUES (77,2,'Saskatchewan');
+INSERT INTO zones_m17n VALUES (78,2,'Yukon Territory');
+INSERT INTO zones_m17n VALUES (79,2,'Niedersachsen');
+INSERT INTO zones_m17n VALUES (80,2,'Baden-Wrttemberg');
+INSERT INTO zones_m17n VALUES (81,2,'Bayern');
+INSERT INTO zones_m17n VALUES (82,2,'Berlin');
+INSERT INTO zones_m17n VALUES (83,2,'Brandenburg');
+INSERT INTO zones_m17n VALUES (84,2,'Bremen');
+INSERT INTO zones_m17n VALUES (85,2,'Hamburg');
+INSERT INTO zones_m17n VALUES (86,2,'Hessen');
+INSERT INTO zones_m17n VALUES (87,2,'Mecklenburg-Vorpommern');
+INSERT INTO zones_m17n VALUES (88,2,'Nordrhein-Westfalen');
+INSERT INTO zones_m17n VALUES (89,2,'Rheinland-Pfalz');
+INSERT INTO zones_m17n VALUES (90,2,'Saarland');
+INSERT INTO zones_m17n VALUES (91,2,'Sachsen');
+INSERT INTO zones_m17n VALUES (92,2,'Sachsen-Anhalt');
+INSERT INTO zones_m17n VALUES (93,2,'Schleswig-Holstein');
+INSERT INTO zones_m17n VALUES (94,2,'Thringen');
+INSERT INTO zones_m17n VALUES (95,2,'Wien');
+INSERT INTO zones_m17n VALUES (96,2,'Niedersterreich');
+INSERT INTO zones_m17n VALUES (97,2,'Obersterreich');
+INSERT INTO zones_m17n VALUES (98,2,'Salzburg');
+INSERT INTO zones_m17n VALUES (99,2,'Kten');
+INSERT INTO zones_m17n VALUES (100,2,'Steiermark');
+INSERT INTO zones_m17n VALUES (101,2,'Tirol');
+INSERT INTO zones_m17n VALUES (102,2,'Burgenland');
+INSERT INTO zones_m17n VALUES (103,2,'Voralberg');
+INSERT INTO zones_m17n VALUES (104,2,'Aargau');
+INSERT INTO zones_m17n VALUES (105,2,'Appenzell Innerrhoden');
+INSERT INTO zones_m17n VALUES (106,2,'Appenzell Ausserrhoden');
+INSERT INTO zones_m17n VALUES (107,2,'Bern');
+INSERT INTO zones_m17n VALUES (108,2,'Basel-Landschaft');
+INSERT INTO zones_m17n VALUES (109,2,'Basel-Stadt');
+INSERT INTO zones_m17n VALUES (110,2,'Freiburg');
+INSERT INTO zones_m17n VALUES (111,2,'Genf');
+INSERT INTO zones_m17n VALUES (112,2,'Glarus');
+INSERT INTO zones_m17n VALUES (113,2,'Graubnden');
+INSERT INTO zones_m17n VALUES (114,2,'Jura');
+INSERT INTO zones_m17n VALUES (115,2,'Luzern');
+INSERT INTO zones_m17n VALUES (116,2,'Neuenburg');
+INSERT INTO zones_m17n VALUES (117,2,'Nidwalden');
+INSERT INTO zones_m17n VALUES (118,2,'Obwalden');
+INSERT INTO zones_m17n VALUES (119,2,'St. Gallen');
+INSERT INTO zones_m17n VALUES (120,2,'Schaffhausen');
+INSERT INTO zones_m17n VALUES (121,2,'Solothurn');
+INSERT INTO zones_m17n VALUES (122,2,'Schwyz');
+INSERT INTO zones_m17n VALUES (123,2,'Thurgau');
+INSERT INTO zones_m17n VALUES (124,2,'Tessin');
+INSERT INTO zones_m17n VALUES (125,2,'Uri');
+INSERT INTO zones_m17n VALUES (126,2,'Waadt');
+INSERT INTO zones_m17n VALUES (127,2,'Wallis');
+INSERT INTO zones_m17n VALUES (128,2,'Zug');
+INSERT INTO zones_m17n VALUES (129,2,'Zrich');
+INSERT INTO zones_m17n VALUES (130,2,'A Corua');
+INSERT INTO zones_m17n VALUES (131,2,'Alava');
+INSERT INTO zones_m17n VALUES (132,2,'Albacete');
+INSERT INTO zones_m17n VALUES (133,2,'Alicante');
+INSERT INTO zones_m17n VALUES (134,2,'Almeria');
+INSERT INTO zones_m17n VALUES (135,2,'Asturias');
+INSERT INTO zones_m17n VALUES (136,2,'Avila');
+INSERT INTO zones_m17n VALUES (137,2,'Badajoz');
+INSERT INTO zones_m17n VALUES (138,2,'Baleares');
+INSERT INTO zones_m17n VALUES (139,2,'Barcelona');
+INSERT INTO zones_m17n VALUES (140,2,'Burgos');
+INSERT INTO zones_m17n VALUES (141,2,'Caceres');
+INSERT INTO zones_m17n VALUES (142,2,'Cadiz');
+INSERT INTO zones_m17n VALUES (143,2,'Cantabria');
+INSERT INTO zones_m17n VALUES (144,2,'Castellon');
+INSERT INTO zones_m17n VALUES (145,2,'Ceuta');
+INSERT INTO zones_m17n VALUES (146,2,'Ciudad Real');
+INSERT INTO zones_m17n VALUES (147,2,'Cordoba');
+INSERT INTO zones_m17n VALUES (148,2,'Cuenca');
+INSERT INTO zones_m17n VALUES (149,2,'Girona');
+INSERT INTO zones_m17n VALUES (150,2,'Granada');
+INSERT INTO zones_m17n VALUES (151,2,'Guadalajara');
+INSERT INTO zones_m17n VALUES (152,2,'Guipuzcoa');
+INSERT INTO zones_m17n VALUES (153,2,'Huelva');
+INSERT INTO zones_m17n VALUES (154,2,'Huesca');
+INSERT INTO zones_m17n VALUES (155,2,'Jaen');
+INSERT INTO zones_m17n VALUES (156,2,'La Rioja');
+INSERT INTO zones_m17n VALUES (157,2,'Las Palmas');
+INSERT INTO zones_m17n VALUES (158,2,'Leon');
+INSERT INTO zones_m17n VALUES (159,2,'Lleida');
+INSERT INTO zones_m17n VALUES (160,2,'Lugo');
+INSERT INTO zones_m17n VALUES (161,2,'Madrid');
+INSERT INTO zones_m17n VALUES (162,2,'Malaga');
+INSERT INTO zones_m17n VALUES (163,2,'Melilla');
+INSERT INTO zones_m17n VALUES (164,2,'Murcia');
+INSERT INTO zones_m17n VALUES (165,2,'Navarra');
+INSERT INTO zones_m17n VALUES (166,2,'Ourense');
+INSERT INTO zones_m17n VALUES (167,2,'Palencia');
+INSERT INTO zones_m17n VALUES (168,2,'Pontevedra');
+INSERT INTO zones_m17n VALUES (169,2,'Salamanca');
+INSERT INTO zones_m17n VALUES (170,2,'Santa Cruz de Tenerife');
+INSERT INTO zones_m17n VALUES (171,2,'Segovia');
+INSERT INTO zones_m17n VALUES (172,2,'Sevilla');
+INSERT INTO zones_m17n VALUES (173,2,'Soria');
+INSERT INTO zones_m17n VALUES (174,2,'Tarragona');
+INSERT INTO zones_m17n VALUES (175,2,'Teruel');
+INSERT INTO zones_m17n VALUES (176,2,'Toledo');
+INSERT INTO zones_m17n VALUES (177,2,'Valencia');
+INSERT INTO zones_m17n VALUES (178,2,'Valladolid');
+INSERT INTO zones_m17n VALUES (179,2,'Vizcaya');
+INSERT INTO zones_m17n VALUES (180,2,'Zamora');
+INSERT INTO zones_m17n VALUES (181,2,'Zaragoza');
+INSERT INTO zones_m17n VALUES (182,2,'北海道');
+INSERT INTO zones_m17n VALUES (183,2,'青森県');
+INSERT INTO zones_m17n VALUES (184,2,'岩手県');
+INSERT INTO zones_m17n VALUES (185,2,'宮城県');
+INSERT INTO zones_m17n VALUES (186,2,'秋田県');
+INSERT INTO zones_m17n VALUES (187,2,'山形県');
+INSERT INTO zones_m17n VALUES (188,2,'福島県');
+INSERT INTO zones_m17n VALUES (189,2,'茨城県');
+INSERT INTO zones_m17n VALUES (190,2,'栃木県');
+INSERT INTO zones_m17n VALUES (191,2,'群馬県');
+INSERT INTO zones_m17n VALUES (192,2,'埼玉県');
+INSERT INTO zones_m17n VALUES (193,2,'千葉県');
+INSERT INTO zones_m17n VALUES (194,2,'東京都');
+INSERT INTO zones_m17n VALUES (195,2,'神奈川県');
+INSERT INTO zones_m17n VALUES (196,2,'新潟県');
+INSERT INTO zones_m17n VALUES (197,2,'富山県');
+INSERT INTO zones_m17n VALUES (198,2,'石川県');
+INSERT INTO zones_m17n VALUES (199,2,'福井県');
+INSERT INTO zones_m17n VALUES (200,2,'山梨県');
+INSERT INTO zones_m17n VALUES (201,2,'長野県');
+INSERT INTO zones_m17n VALUES (202,2,'岐阜県');
+INSERT INTO zones_m17n VALUES (203,2,'静岡県');
+INSERT INTO zones_m17n VALUES (204,2,'愛知県');
+INSERT INTO zones_m17n VALUES (205,2,'三重県');
+INSERT INTO zones_m17n VALUES (206,2,'滋賀県');
+INSERT INTO zones_m17n VALUES (207,2,'京都府');
+INSERT INTO zones_m17n VALUES (208,2,'大阪府');
+INSERT INTO zones_m17n VALUES (209,2,'兵庫県');
+INSERT INTO zones_m17n VALUES (210,2,'奈良県');
+INSERT INTO zones_m17n VALUES (211,2,'和歌山県');
+INSERT INTO zones_m17n VALUES (212,2,'鳥取県');
+INSERT INTO zones_m17n VALUES (213,2,'島根県');
+INSERT INTO zones_m17n VALUES (214,2,'岡山県');
+INSERT INTO zones_m17n VALUES (215,2,'広島県');
+INSERT INTO zones_m17n VALUES (216,2,'山口県');
+INSERT INTO zones_m17n VALUES (217,2,'徳島県');
+INSERT INTO zones_m17n VALUES (218,2,'香川県');
+INSERT INTO zones_m17n VALUES (219,2,'愛媛県');
+INSERT INTO zones_m17n VALUES (220,2,'高知県');
+INSERT INTO zones_m17n VALUES (221,2,'福岡県');
+INSERT INTO zones_m17n VALUES (222,2,'佐賀県');
+INSERT INTO zones_m17n VALUES (223,2,'長崎県');
+INSERT INTO zones_m17n VALUES (224,2,'熊本県');
+INSERT INTO zones_m17n VALUES (225,2,'大分県');
+INSERT INTO zones_m17n VALUES (226,2,'宮崎県');
+INSERT INTO zones_m17n VALUES (227,2,'鹿児島県');
+INSERT INTO zones_m17n VALUES (228,2,'沖縄県');
+INSERT INTO zones_m17n VALUES (154,9,'Huesca');
+INSERT INTO zones_m17n VALUES (153,9,'Huelva');
+INSERT INTO zones_m17n VALUES (152,9,'Guipuzcoa');
+INSERT INTO zones_m17n VALUES (151,9,'Guadalajara');
+INSERT INTO zones_m17n VALUES (150,9,'Granada');
+INSERT INTO zones_m17n VALUES (149,9,'Girona');
+INSERT INTO zones_m17n VALUES (148,9,'Cuenca');
+INSERT INTO zones_m17n VALUES (147,9,'Cordoba');
+INSERT INTO zones_m17n VALUES (146,9,'Ciudad Real');
+INSERT INTO zones_m17n VALUES (145,9,'Ceuta');
+INSERT INTO zones_m17n VALUES (144,9,'Castellon');
+INSERT INTO zones_m17n VALUES (143,9,'Cantabria');
+INSERT INTO zones_m17n VALUES (142,9,'Cadiz');
+INSERT INTO zones_m17n VALUES (141,9,'Caceres');
+INSERT INTO zones_m17n VALUES (140,9,'Burgos');
+INSERT INTO zones_m17n VALUES (139,9,'Barcelona');
+INSERT INTO zones_m17n VALUES (138,9,'Baleares');
+INSERT INTO zones_m17n VALUES (137,9,'Badajoz');
+INSERT INTO zones_m17n VALUES (136,9,'Avila');
+INSERT INTO zones_m17n VALUES (135,9,'Asturias');
+INSERT INTO zones_m17n VALUES (134,9,'Almeria');
+INSERT INTO zones_m17n VALUES (133,9,'Alicante');
+INSERT INTO zones_m17n VALUES (132,9,'Albacete');
+INSERT INTO zones_m17n VALUES (131,9,'Alava');
+INSERT INTO zones_m17n VALUES (130,9,'A Corua');
+INSERT INTO zones_m17n VALUES (129,9,'Zrich');
+INSERT INTO zones_m17n VALUES (128,9,'Zug');
+INSERT INTO zones_m17n VALUES (127,9,'Wallis');
+INSERT INTO zones_m17n VALUES (126,9,'Waadt');
+INSERT INTO zones_m17n VALUES (125,9,'Uri');
+INSERT INTO zones_m17n VALUES (124,9,'Tessin');
+INSERT INTO zones_m17n VALUES (123,9,'Thurgau');
+INSERT INTO zones_m17n VALUES (122,9,'Schwyz');
+INSERT INTO zones_m17n VALUES (121,9,'Solothurn');
+INSERT INTO zones_m17n VALUES (120,9,'Schaffhausen');
+INSERT INTO zones_m17n VALUES (119,9,'St. Gallen');
+INSERT INTO zones_m17n VALUES (118,9,'Obwalden');
+INSERT INTO zones_m17n VALUES (117,9,'Nidwalden');
+INSERT INTO zones_m17n VALUES (116,9,'Neuenburg');
+INSERT INTO zones_m17n VALUES (115,9,'Luzern');
+INSERT INTO zones_m17n VALUES (114,9,'Jura');
+INSERT INTO zones_m17n VALUES (113,9,'Graubnden');
+INSERT INTO zones_m17n VALUES (112,9,'Glarus');
+INSERT INTO zones_m17n VALUES (111,9,'Genf');
+INSERT INTO zones_m17n VALUES (110,9,'Freiburg');
+INSERT INTO zones_m17n VALUES (109,9,'Basel-Stadt');
+INSERT INTO zones_m17n VALUES (108,9,'Basel-Landschaft');
+INSERT INTO zones_m17n VALUES (107,9,'Bern');
+INSERT INTO zones_m17n VALUES (106,9,'Appenzell Ausserrhoden');
+INSERT INTO zones_m17n VALUES (105,9,'Appenzell Innerrhoden');
+INSERT INTO zones_m17n VALUES (104,9,'Aargau');
+INSERT INTO zones_m17n VALUES (103,9,'Voralberg');
+INSERT INTO zones_m17n VALUES (102,9,'Burgenland');
+INSERT INTO zones_m17n VALUES (101,9,'Tirol');
+INSERT INTO zones_m17n VALUES (100,9,'Steiermark');
+INSERT INTO zones_m17n VALUES (99,9,'Kten');
+INSERT INTO zones_m17n VALUES (98,9,'Salzburg');
+INSERT INTO zones_m17n VALUES (97,9,'Obersterreich');
+INSERT INTO zones_m17n VALUES (96,9,'Niedersterreich');
+INSERT INTO zones_m17n VALUES (95,9,'Wien');
+INSERT INTO zones_m17n VALUES (94,9,'Thringen');
+INSERT INTO zones_m17n VALUES (93,9,'Schleswig-Holstein');
+INSERT INTO zones_m17n VALUES (92,9,'Sachsen-Anhalt');
+INSERT INTO zones_m17n VALUES (91,9,'Sachsen');
+INSERT INTO zones_m17n VALUES (90,9,'Saarland');
+INSERT INTO zones_m17n VALUES (89,9,'Rheinland-Pfalz');
+INSERT INTO zones_m17n VALUES (88,9,'Nordrhein-Westfalen');
+INSERT INTO zones_m17n VALUES (87,9,'Mecklenburg-Vorpommern');
+INSERT INTO zones_m17n VALUES (86,9,'Hessen');
+INSERT INTO zones_m17n VALUES (85,9,'Hamburg');
+INSERT INTO zones_m17n VALUES (84,9,'Bremen');
+INSERT INTO zones_m17n VALUES (83,9,'Brandenburg');
+INSERT INTO zones_m17n VALUES (82,9,'Berlin');
+INSERT INTO zones_m17n VALUES (81,9,'Bayern');
+INSERT INTO zones_m17n VALUES (80,9,'Baden-Wrttemberg');
+INSERT INTO zones_m17n VALUES (79,9,'Niedersachsen');
+INSERT INTO zones_m17n VALUES (78,9,'Yukon Territory');
+INSERT INTO zones_m17n VALUES (77,9,'Saskatchewan');
+INSERT INTO zones_m17n VALUES (76,9,'Quebec');
+INSERT INTO zones_m17n VALUES (75,9,'Prince Edward Island');
+INSERT INTO zones_m17n VALUES (74,9,'Ontario');
+INSERT INTO zones_m17n VALUES (73,9,'Nunavut');
+INSERT INTO zones_m17n VALUES (72,9,'Northwest Territories');
+INSERT INTO zones_m17n VALUES (71,9,'Nova Scotia');
+INSERT INTO zones_m17n VALUES (70,9,'New Brunswick');
+INSERT INTO zones_m17n VALUES (69,9,'Newfoundland');
+INSERT INTO zones_m17n VALUES (68,9,'Manitoba');
+INSERT INTO zones_m17n VALUES (67,9,'British Columbia');
+INSERT INTO zones_m17n VALUES (66,9,'Alberta');
+INSERT INTO zones_m17n VALUES (65,9,'Wyoming');
+INSERT INTO zones_m17n VALUES (64,9,'Wisconsin');
+INSERT INTO zones_m17n VALUES (63,9,'West Virginia');
+INSERT INTO zones_m17n VALUES (62,9,'Washington');
+INSERT INTO zones_m17n VALUES (61,9,'Virginia');
+INSERT INTO zones_m17n VALUES (60,9,'Virgin Islands');
+INSERT INTO zones_m17n VALUES (59,9,'Vermont');
+INSERT INTO zones_m17n VALUES (58,9,'Utah');
+INSERT INTO zones_m17n VALUES (57,9,'Texas');
+INSERT INTO zones_m17n VALUES (56,9,'Tennessee');
+INSERT INTO zones_m17n VALUES (55,9,'South Dakota');
+INSERT INTO zones_m17n VALUES (54,9,'South Carolina');
+INSERT INTO zones_m17n VALUES (53,9,'Rhode Island');
+INSERT INTO zones_m17n VALUES (52,9,'Puerto Rico');
+INSERT INTO zones_m17n VALUES (51,9,'Pennsylvania');
+INSERT INTO zones_m17n VALUES (50,9,'Palau');
+INSERT INTO zones_m17n VALUES (49,9,'Oregon');
+INSERT INTO zones_m17n VALUES (48,9,'Oklahoma');
+INSERT INTO zones_m17n VALUES (47,9,'Ohio');
+INSERT INTO zones_m17n VALUES (46,9,'Northern Mariana Islands');
+INSERT INTO zones_m17n VALUES (45,9,'North Dakota');
+INSERT INTO zones_m17n VALUES (44,9,'North Carolina');
+INSERT INTO zones_m17n VALUES (43,9,'New York');
+INSERT INTO zones_m17n VALUES (42,9,'New Mexico');
+INSERT INTO zones_m17n VALUES (41,9,'New Jersey');
+INSERT INTO zones_m17n VALUES (40,9,'New Hampshire');
+INSERT INTO zones_m17n VALUES (39,9,'Nevada');
+INSERT INTO zones_m17n VALUES (38,9,'Nebraska');
+INSERT INTO zones_m17n VALUES (37,9,'Montana');
+INSERT INTO zones_m17n VALUES (36,9,'Missouri');
+INSERT INTO zones_m17n VALUES (35,9,'Mississippi');
+INSERT INTO zones_m17n VALUES (34,9,'Minnesota');
+INSERT INTO zones_m17n VALUES (33,9,'Michigan');
+INSERT INTO zones_m17n VALUES (32,9,'Massachusetts');
+INSERT INTO zones_m17n VALUES (31,9,'Maryland');
+INSERT INTO zones_m17n VALUES (30,9,'Marshall Islands');
+INSERT INTO zones_m17n VALUES (29,9,'Maine');
+INSERT INTO zones_m17n VALUES (28,9,'Louisiana');
+INSERT INTO zones_m17n VALUES (27,9,'Kentucky');
+INSERT INTO zones_m17n VALUES (26,9,'Kansas');
+INSERT INTO zones_m17n VALUES (25,9,'Iowa');
+INSERT INTO zones_m17n VALUES (24,9,'Indiana');
+INSERT INTO zones_m17n VALUES (23,9,'Illinois');
+INSERT INTO zones_m17n VALUES (22,9,'Idaho');
+INSERT INTO zones_m17n VALUES (21,9,'Hawaii');
+INSERT INTO zones_m17n VALUES (20,9,'Guam');
+INSERT INTO zones_m17n VALUES (19,9,'Georgia');
+INSERT INTO zones_m17n VALUES (18,9,'Florida');
+INSERT INTO zones_m17n VALUES (17,9,'Federated States Of Micronesia');
+INSERT INTO zones_m17n VALUES (16,9,'District of Columbia');
+INSERT INTO zones_m17n VALUES (15,9,'Delaware');
+INSERT INTO zones_m17n VALUES (14,9,'Connecticut');
+INSERT INTO zones_m17n VALUES (13,9,'Colorado');
+INSERT INTO zones_m17n VALUES (12,9,'California');
+INSERT INTO zones_m17n VALUES (11,9,'Armed Forces Pacific');
+INSERT INTO zones_m17n VALUES (10,9,'Armed Forces Middle East');
+INSERT INTO zones_m17n VALUES (9,9,'Armed Forces Europe');
+INSERT INTO zones_m17n VALUES (8,9,'Armed Forces Canada');
+INSERT INTO zones_m17n VALUES (7,9,'Armed Forces Americas');
+INSERT INTO zones_m17n VALUES (6,9,'Armed Forces Africa');
+INSERT INTO zones_m17n VALUES (5,9,'Arkansas');
+INSERT INTO zones_m17n VALUES (4,9,'Arizona');
+INSERT INTO zones_m17n VALUES (3,9,'American Samoa');
+INSERT INTO zones_m17n VALUES (2,9,'Alaska');
+INSERT INTO zones_m17n VALUES (1,9,'Alabama');
+INSERT INTO zones_m17n VALUES (155,9,'Jaen');
+INSERT INTO zones_m17n VALUES (156,9,'La Rioja');
+INSERT INTO zones_m17n VALUES (157,9,'Las Palmas');
+INSERT INTO zones_m17n VALUES (158,9,'Leon');
+INSERT INTO zones_m17n VALUES (159,9,'Lleida');
+INSERT INTO zones_m17n VALUES (160,9,'Lugo');
+INSERT INTO zones_m17n VALUES (161,9,'Madrid');
+INSERT INTO zones_m17n VALUES (162,9,'Malaga');
+INSERT INTO zones_m17n VALUES (163,9,'Melilla');
+INSERT INTO zones_m17n VALUES (164,9,'Murcia');
+INSERT INTO zones_m17n VALUES (165,9,'Navarra');
+INSERT INTO zones_m17n VALUES (166,9,'Ourense');
+INSERT INTO zones_m17n VALUES (167,9,'Palencia');
+INSERT INTO zones_m17n VALUES (168,9,'Pontevedra');
+INSERT INTO zones_m17n VALUES (169,9,'Salamanca');
+INSERT INTO zones_m17n VALUES (170,9,'Santa Cruz de Tenerife');
+INSERT INTO zones_m17n VALUES (171,9,'Segovia');
+INSERT INTO zones_m17n VALUES (172,9,'Sevilla');
+INSERT INTO zones_m17n VALUES (173,9,'Soria');
+INSERT INTO zones_m17n VALUES (174,9,'Tarragona');
+INSERT INTO zones_m17n VALUES (175,9,'Teruel');
+INSERT INTO zones_m17n VALUES (176,9,'Toledo');
+INSERT INTO zones_m17n VALUES (177,9,'Valencia');
+INSERT INTO zones_m17n VALUES (178,9,'Valladolid');
+INSERT INTO zones_m17n VALUES (179,9,'Vizcaya');
+INSERT INTO zones_m17n VALUES (180,9,'Zamora');
+INSERT INTO zones_m17n VALUES (181,9,'Zaragoza');
+INSERT INTO zones_m17n VALUES (182,9,'北海道');
+INSERT INTO zones_m17n VALUES (183,9,'青森県');
+INSERT INTO zones_m17n VALUES (184,9,'岩手県');
+INSERT INTO zones_m17n VALUES (185,9,'宮城県');
+INSERT INTO zones_m17n VALUES (186,9,'秋田県');
+INSERT INTO zones_m17n VALUES (187,9,'山形県');
+INSERT INTO zones_m17n VALUES (188,9,'福島県');
+INSERT INTO zones_m17n VALUES (189,9,'茨城県');
+INSERT INTO zones_m17n VALUES (190,9,'栃木県');
+INSERT INTO zones_m17n VALUES (191,9,'群馬県');
+INSERT INTO zones_m17n VALUES (192,9,'埼玉県');
+INSERT INTO zones_m17n VALUES (193,9,'千葉県');
+INSERT INTO zones_m17n VALUES (194,9,'東京都');
+INSERT INTO zones_m17n VALUES (195,9,'神奈川県');
+INSERT INTO zones_m17n VALUES (196,9,'新潟県');
+INSERT INTO zones_m17n VALUES (197,9,'富山県');
+INSERT INTO zones_m17n VALUES (198,9,'石川県');
+INSERT INTO zones_m17n VALUES (199,9,'福井県');
+INSERT INTO zones_m17n VALUES (200,9,'山梨県');
+INSERT INTO zones_m17n VALUES (201,9,'長野県');
+INSERT INTO zones_m17n VALUES (202,9,'岐阜県');
+INSERT INTO zones_m17n VALUES (203,9,'静岡県');
+INSERT INTO zones_m17n VALUES (204,9,'愛知県');
+INSERT INTO zones_m17n VALUES (205,9,'三重県');
+INSERT INTO zones_m17n VALUES (206,9,'滋賀県');
+INSERT INTO zones_m17n VALUES (207,9,'京都府');
+INSERT INTO zones_m17n VALUES (208,9,'大阪府');
+INSERT INTO zones_m17n VALUES (209,9,'兵庫県');
+INSERT INTO zones_m17n VALUES (210,9,'奈良県');
+INSERT INTO zones_m17n VALUES (211,9,'和歌山県');
+INSERT INTO zones_m17n VALUES (212,9,'鳥取県');
+INSERT INTO zones_m17n VALUES (213,9,'島根県');
+INSERT INTO zones_m17n VALUES (214,9,'岡山県');
+INSERT INTO zones_m17n VALUES (215,9,'広島県');
+INSERT INTO zones_m17n VALUES (216,9,'山口県');
+INSERT INTO zones_m17n VALUES (217,9,'徳島県');
+INSERT INTO zones_m17n VALUES (218,9,'香川県');
+INSERT INTO zones_m17n VALUES (219,9,'愛媛県');
+INSERT INTO zones_m17n VALUES (220,9,'高知県');
+INSERT INTO zones_m17n VALUES (221,9,'福岡県');
+INSERT INTO zones_m17n VALUES (222,9,'佐賀県');
+INSERT INTO zones_m17n VALUES (223,9,'長崎県');
+INSERT INTO zones_m17n VALUES (224,9,'熊本県');
+INSERT INTO zones_m17n VALUES (225,9,'大分県');
+INSERT INTO zones_m17n VALUES (226,9,'宮崎県');
+INSERT INTO zones_m17n VALUES (227,9,'鹿児島県');
+INSERT INTO zones_m17n VALUES (228,9,'沖縄県');
 
 --
 -- Table structure for table zones_to_geo_zones
