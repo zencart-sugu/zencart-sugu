@@ -55,13 +55,14 @@ if (!defined('IS_ADMIN_FLAG')) {
             global $db;
             $sql = "create table if not exists " . TABLE_ADDON_MODULES_CUSTOMERS_TEMPORARY . " "
                 . "("
+                . "customers_temporary_id int(11) auto_increment,"
                 . "gender varchar(6) NULL,"
                 . "firstname varchar(32) NULL,"
                 . "lastname varchar(32) NULL,"
                 . "dob varchar(10) NULL,"
                 . "email_address  varchar(96) NOT NULL,"
                 . "nick varchar(32) NOT NULL,"
-                . "password varchar(16) NOT NULL,"
+                . "password varchar(255) NOT NULL,"
                 . "newsletter int(1) NULL,"
                 . "payment_method varchar(24) NULL,"
                 . "postcode varchar(10) NULL,"
@@ -72,7 +73,8 @@ if (!defined('IS_ADMIN_FLAG')) {
                 . "telephone varchar(32) NULL,"
                 . "fax varchar(32) NULL,"
                 . "temporary_id varchar(255) NOT NULL,"
-                . "reg_date datetime NOT NULL DEFAULT '0000-00-00 00:00:00'"
+                . "reg_date datetime NOT NULL DEFAULT '0000-00-00 00:00:00',"
+                . "primary key (customers_temporary_id)"
                 . ")";
             $db->execute($sql);
         }
