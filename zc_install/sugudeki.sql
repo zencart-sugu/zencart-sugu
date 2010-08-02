@@ -2889,6 +2889,12 @@ CREATE TABLE `geo_zones` (
   PRIMARY KEY  (`geo_zone_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=ujis;
 
+LOCK TABLES `geo_zones` WRITE;
+/*!40000 ALTER TABLE `geo_zones` DISABLE KEYS */;
+INSERT INTO geo_zones VALUES (1,'日本','日本（消費税）','2007-01-15 11:44:41','2006-11-29 16:18:40');
+/*!40000 ALTER TABLE `geo_zones` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Table structure for table `get_terms_to_filter`
 --
