@@ -125,10 +125,6 @@ KEY idx_access_date_zen (access_date),
 KEY idx_ip_zen (ip_address)
 ) ENGINE=MyISAM AUTO_INCREMENT=2445 DEFAULT CHARSET=ujis;
 
---
--- Dumping data for table admin_activity_log
---
-
 
 --
 -- Table structure for table authorizenet
@@ -207,11 +203,6 @@ banners_history_date datetime NOT NULL default '0001-01-01 00:00:00',
 PRIMARY KEY  (banners_history_id),
 KEY idx_banners_id_zen (banners_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table banners_history
---
-
 
 --
 -- Table structure for table blocks
@@ -1309,11 +1300,6 @@ KEY idx_cfg_grp_id_zen (configuration_group_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=226 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table configuration_foreach_template
---
-
-
---
 -- Table structure for table configuration_group
 --
 
@@ -1375,6 +1361,7 @@ counter int(12) default NULL
 -- Dumping data for table counter
 --
 
+INSERT INTO counter VALUES ('20091119',1898);
 
 --
 -- Table structure for table counter_history
@@ -1386,10 +1373,6 @@ startdate char(8) default NULL,
 counter int(12) default NULL,
 session_counter int(12) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table counter_history
---
 
 
 --
@@ -1670,11 +1653,6 @@ KEY idx_coupon_id_zen (coupon_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table coupon_email_track
---
-
-
---
 -- Table structure for table coupon_gv_customer
 --
 
@@ -1684,11 +1662,6 @@ customer_id int(5) NOT NULL default '0',
 amount decimal(20,4) NOT NULL default '0.0000',
 PRIMARY KEY  (customer_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table coupon_gv_customer
---
-
 
 --
 -- Table structure for table coupon_gv_queue
@@ -1728,11 +1701,6 @@ order_id int(11) NOT NULL default '0',
 PRIMARY KEY  (unique_id),
 KEY idx_coupon_id_zen (coupon_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table coupon_redeem_track
---
-
 
 --
 -- Table structure for table coupon_restrict
@@ -1782,11 +1750,6 @@ KEY idx_coupon_type_zen (coupon_type)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table coupons
---
-
-
---
 -- Table structure for table coupons_description
 --
 
@@ -1798,11 +1761,6 @@ coupon_name varchar(32) NOT NULL default '',
 coupon_description text,
 PRIMARY KEY  (coupon_id,language_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table coupons_description
---
-
 
 --
 -- Table structure for table csv_columns
@@ -1818,11 +1776,6 @@ csv_columns_dbtable varchar(255) default NULL,
 csv_columns_dbcolumn varchar(255) default NULL,
 PRIMARY KEY  (csv_column_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=3115 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table csv_columns
---
-
 
 --
 -- Table structure for table csv_format_columns
@@ -1842,6 +1795,101 @@ KEY idx_csv_format_columns_zen (csv_format_id,csv_format_column_number,csv_colum
 -- Dumping data for table csv_format_columns
 --
 
+INSERT INTO csv_format_columns VALUES (1,1,1001,1);
+INSERT INTO csv_format_columns VALUES (2,1,1002,2);
+INSERT INTO csv_format_columns VALUES (3,1,1003,3);
+INSERT INTO csv_format_columns VALUES (4,1,1004,4);
+INSERT INTO csv_format_columns VALUES (5,1,1005,5);
+INSERT INTO csv_format_columns VALUES (6,1,1006,6);
+INSERT INTO csv_format_columns VALUES (7,1,1007,7);
+INSERT INTO csv_format_columns VALUES (8,1,1008,8);
+INSERT INTO csv_format_columns VALUES (9,1,1009,9);
+INSERT INTO csv_format_columns VALUES (10,1,1010,10);
+INSERT INTO csv_format_columns VALUES (11,1,1011,11);
+INSERT INTO csv_format_columns VALUES (12,1,1012,12);
+INSERT INTO csv_format_columns VALUES (13,1,1013,13);
+INSERT INTO csv_format_columns VALUES (14,1,1014,14);
+INSERT INTO csv_format_columns VALUES (15,1,1015,15);
+INSERT INTO csv_format_columns VALUES (16,1,1016,16);
+INSERT INTO csv_format_columns VALUES (17,1,1017,17);
+INSERT INTO csv_format_columns VALUES (18,1,1018,18);
+INSERT INTO csv_format_columns VALUES (19,1,1019,19);
+INSERT INTO csv_format_columns VALUES (20,1,1020,20);
+INSERT INTO csv_format_columns VALUES (21,1,1021,21);
+INSERT INTO csv_format_columns VALUES (22,1,1022,22);
+INSERT INTO csv_format_columns VALUES (23,1,1023,23);
+INSERT INTO csv_format_columns VALUES (24,1,1100,24);
+INSERT INTO csv_format_columns VALUES (25,1,1101,25);
+INSERT INTO csv_format_columns VALUES (26,1,1200,26);
+INSERT INTO csv_format_columns VALUES (27,1,1201,27);
+INSERT INTO csv_format_columns VALUES (28,1,1300,28);
+INSERT INTO csv_format_columns VALUES (29,1,1301,29);
+INSERT INTO csv_format_columns VALUES (30,1,1400,30);
+INSERT INTO csv_format_columns VALUES (31,1,1401,31);
+INSERT INTO csv_format_columns VALUES (32,1,1500,32);
+INSERT INTO csv_format_columns VALUES (33,1,1501,33);
+INSERT INTO csv_format_columns VALUES (34,1,1600,34);
+INSERT INTO csv_format_columns VALUES (35,1,1601,35);
+INSERT INTO csv_format_columns VALUES (36,1,1700,36);
+INSERT INTO csv_format_columns VALUES (37,1,1701,37);
+INSERT INTO csv_format_columns VALUES (38,1,1702,38);
+INSERT INTO csv_format_columns VALUES (39,1,1703,39);
+INSERT INTO csv_format_columns VALUES (40,1,1704,40);
+INSERT INTO csv_format_columns VALUES (41,1,1706,41);
+INSERT INTO csv_format_columns VALUES (42,1,1707,42);
+INSERT INTO csv_format_columns VALUES (43,2,2000,1);
+INSERT INTO csv_format_columns VALUES (44,2,2001,2);
+INSERT INTO csv_format_columns VALUES (45,2,2050,3);
+INSERT INTO csv_format_columns VALUES (46,2,2051,4);
+INSERT INTO csv_format_columns VALUES (47,2,2100,5);
+INSERT INTO csv_format_columns VALUES (48,2,2101,6);
+INSERT INTO csv_format_columns VALUES (49,2,2150,7);
+INSERT INTO csv_format_columns VALUES (50,2,2151,8);
+INSERT INTO csv_format_columns VALUES (51,2,2200,9);
+INSERT INTO csv_format_columns VALUES (52,2,2201,10);
+INSERT INTO csv_format_columns VALUES (53,2,2250,11);
+INSERT INTO csv_format_columns VALUES (54,2,2251,12);
+INSERT INTO csv_format_columns VALUES (55,2,2300,13);
+INSERT INTO csv_format_columns VALUES (56,2,2301,14);
+INSERT INTO csv_format_columns VALUES (57,2,2350,15);
+INSERT INTO csv_format_columns VALUES (58,2,2351,16);
+INSERT INTO csv_format_columns VALUES (59,2,2400,17);
+INSERT INTO csv_format_columns VALUES (60,2,2401,18);
+INSERT INTO csv_format_columns VALUES (61,2,2450,19);
+INSERT INTO csv_format_columns VALUES (62,2,2451,20);
+INSERT INTO csv_format_columns VALUES (63,2,2500,21);
+INSERT INTO csv_format_columns VALUES (64,2,2501,22);
+INSERT INTO csv_format_columns VALUES (65,2,2600,23);
+INSERT INTO csv_format_columns VALUES (66,2,2601,24);
+INSERT INTO csv_format_columns VALUES (67,2,2602,25);
+INSERT INTO csv_format_columns VALUES (68,2,2603,26);
+INSERT INTO csv_format_columns VALUES (69,2,2650,27);
+INSERT INTO csv_format_columns VALUES (70,2,2651,28);
+INSERT INTO csv_format_columns VALUES (71,2,2700,29);
+INSERT INTO csv_format_columns VALUES (72,2,2701,30);
+INSERT INTO csv_format_columns VALUES (73,2,2750,31);
+INSERT INTO csv_format_columns VALUES (74,2,2751,32);
+INSERT INTO csv_format_columns VALUES (75,2,2800,33);
+INSERT INTO csv_format_columns VALUES (76,2,2801,34);
+INSERT INTO csv_format_columns VALUES (77,3,3000,1);
+INSERT INTO csv_format_columns VALUES (78,3,3001,2);
+INSERT INTO csv_format_columns VALUES (79,3,3050,3);
+INSERT INTO csv_format_columns VALUES (80,3,3051,4);
+INSERT INTO csv_format_columns VALUES (81,3,3100,5);
+INSERT INTO csv_format_columns VALUES (82,3,3101,6);
+INSERT INTO csv_format_columns VALUES (83,3,3102,7);
+INSERT INTO csv_format_columns VALUES (84,3,3103,8);
+INSERT INTO csv_format_columns VALUES (85,3,3104,9);
+INSERT INTO csv_format_columns VALUES (86,3,3105,10);
+INSERT INTO csv_format_columns VALUES (87,3,3106,11);
+INSERT INTO csv_format_columns VALUES (88,3,3107,12);
+INSERT INTO csv_format_columns VALUES (89,3,3108,13);
+INSERT INTO csv_format_columns VALUES (90,3,3109,14);
+INSERT INTO csv_format_columns VALUES (91,3,3110,15);
+INSERT INTO csv_format_columns VALUES (92,3,3111,16);
+INSERT INTO csv_format_columns VALUES (93,3,3112,17);
+INSERT INTO csv_format_columns VALUES (94,3,3113,18);
+INSERT INTO csv_format_columns VALUES (95,3,3114,19);
 
 --
 -- Table structure for table csv_format_types
@@ -1858,6 +1906,9 @@ PRIMARY KEY  (csv_format_type_id)
 -- Dumping data for table csv_format_types
 --
 
+INSERT INTO csv_format_types VALUES (1,'¾¦ÉÊ¥Þ¥¹¥¿');
+INSERT INTO csv_format_types VALUES (2,'¾¦ÉÊ¥«¥Æ¥´¥ê');
+INSERT INTO csv_format_types VALUES (3,'¾¦ÉÊ¥ª¥×¥·¥ç¥ó');
 
 --
 -- Table structure for table csv_formats
@@ -1878,6 +1929,9 @@ KEY idx_format_name_zen (csv_format_name)
 -- Dumping data for table csv_formats
 --
 
+INSERT INTO csv_formats VALUES (1,1,'¾¦ÉÊ¥Þ¥¹¥¿(Á´¤Æ)','2009-11-19 13:04:30','2009-11-19 13:04:30');
+INSERT INTO csv_formats VALUES (2,2,'¾¦ÉÊ¥«¥Æ¥´¥ê(Á´¤Æ)','2009-11-19 13:04:30','2009-11-19 13:04:30');
+INSERT INTO csv_formats VALUES (3,3,'¾¦ÉÊ¥ª¥×¥·¥ç¥ó(Á´¤Æ)','2009-11-19 13:04:30','2009-11-19 13:04:30');
 
 --
 -- Table structure for table currencies
@@ -1923,6 +1977,15 @@ PRIMARY KEY  (currencies_id,language_id)
 -- Dumping data for table currencies_m17n
 --
 
+INSERT INTO currencies_m17n VALUES (1,1,'$','');
+INSERT INTO currencies_m17n VALUES (2,1,'','EUR');
+INSERT INTO currencies_m17n VALUES (3,1,'','±ß');
+INSERT INTO currencies_m17n VALUES (1,2,'$','');
+INSERT INTO currencies_m17n VALUES (2,2,'','EUR');
+INSERT INTO currencies_m17n VALUES (3,2,'','±ß');
+INSERT INTO currencies_m17n VALUES (3,9,'','±ß');
+INSERT INTO currencies_m17n VALUES (2,9,'','EUR');
+INSERT INTO currencies_m17n VALUES (1,9,'$','');
 
 --
 -- Table structure for table customers
@@ -1980,11 +2043,6 @@ KEY customers_id (customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table customers_admin_notes
---
-
-
---
 -- Table structure for table customers_basket
 --
 
@@ -1999,11 +2057,6 @@ customers_basket_date_added varchar(8) default NULL,
 PRIMARY KEY  (customers_basket_id),
 KEY idx_customers_id_zen (customers_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table customers_basket
---
-
 
 --
 -- Table structure for table customers_basket_attributes
@@ -2021,11 +2074,6 @@ products_options_sort_order text NOT NULL,
 PRIMARY KEY  (customers_basket_attributes_id),
 KEY idx_cust_id_prod_id_zen (customers_id,products_id(36))
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table customers_basket_attributes
---
-
 
 --
 -- Table structure for table customers_info
@@ -2077,11 +2125,6 @@ PRIMARY KEY  (customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table customers_points
---
-
-
---
 -- Table structure for table customers_wishlist
 --
 
@@ -2096,11 +2139,6 @@ final_price decimal(8,2) NOT NULL default '0.00',
 products_quantity int(2) NOT NULL default '0',
 wishlist_name varchar(64) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table customers_wishlist
---
-
 
 --
 -- Table structure for table db_cache
@@ -2137,6 +2175,13 @@ PRIMARY KEY  (easy_admin_sub_menu_id)
 -- Dumping data for table easy_admin_sub_menus
 --
 
+INSERT INTO easy_admin_sub_menus VALUES (1,1,'¸ÜµÒ´ÉÍý','customers.php',1);
+INSERT INTO easy_admin_sub_menus VALUES (2,1,'ÃíÊ¸´ÉÍý','orders.php',2);
+INSERT INTO easy_admin_sub_menus VALUES (3,2,'¥«¥Æ¥´¥ê¡¦¾¦ÉÊ¤Î´ÉÍý','categories.php',1);
+INSERT INTO easy_admin_sub_menus VALUES (4,2,'¾¦ÉÊ²Á³Ê¤Î´ÉÍý','products_price_manager.php',2);
+INSERT INTO easy_admin_sub_menus VALUES (5,4,'´ÉÍý¼Ô¤ÎÀßÄê','admin.php',1);
+INSERT INTO easy_admin_sub_menus VALUES (6,4,'´ÉÍý¥á¥Ë¥å¡¼¤ÎÀßÄê','addon_modules_admin.php?module=easy_admin',2);
+INSERT INTO easy_admin_sub_menus VALUES (7,4,'ÄÉ²Ã¥â¥¸¥å¡¼¥ë¤Î´ÉÍý','addon_modules.php',3);
 
 --
 -- Table structure for table easy_admin_top_menus
@@ -2155,6 +2200,11 @@ PRIMARY KEY  (easy_admin_top_menu_id)
 -- Dumping data for table easy_admin_top_menus
 --
 
+INSERT INTO easy_admin_top_menus VALUES (1,'ÃíÊ¸¡¦¸ÜµÒ´ÉÍý',1,0);
+INSERT INTO easy_admin_top_menus VALUES (2,'¾¦ÉÊ´ÉÍý',1,0);
+INSERT INTO easy_admin_top_menus VALUES (3,'¥³¥ó¥Æ¥ó¥Ä´ÉÍý',1,0);
+INSERT INTO easy_admin_top_menus VALUES (4,'½é´üÀßÄê',0,0);
+INSERT INTO easy_admin_top_menus VALUES (5,'¤½¤ÎÂ¾',0,0);
 
 --
 -- Table structure for table easy_design_colors
@@ -2176,6 +2226,17 @@ KEY easy_design_color_key (easy_design_color_key)
 -- Dumping data for table easy_design_colors
 --
 
+INSERT INTO easy_design_colors VALUES (1,'template_default','maincolor','¥á¥¤¥ó¥«¥é¡¼','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (2,'template_default','subcolor','¥µ¥Ö¥«¥é¡¼','#ffffff');
+INSERT INTO easy_design_colors VALUES (3,'classic','maincolor','¥á¥¤¥ó¥«¥é¡¼','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (4,'classic','subcolor','¥µ¥Ö¥«¥é¡¼','#ffffff');
+INSERT INTO easy_design_colors VALUES (5,'sugudeki','maincolor','¥á¥¤¥ó¥«¥é¡¼','#FF6347');
+INSERT INTO easy_design_colors VALUES (6,'addon_modules','maincolor','¥á¥¤¥ó¥«¥é¡¼','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (7,'addon_modules','subcolor','¥µ¥Ö¥«¥é¡¼','#ffffff');
+INSERT INTO easy_design_colors VALUES (8,'zen_mobile','maincolor','¥á¥¤¥ó¥«¥é¡¼','#f4f4f4');
+INSERT INTO easy_design_colors VALUES (9,'zen_mobile','subcolor','¥µ¥Ö¥«¥é¡¼','#ffffff');
+INSERT INTO easy_design_colors VALUES (10,'accessible_and_usable','maincolor','¥á¥¤¥ó¥«¥é¡¼','#0203E9');
+INSERT INTO easy_design_colors VALUES (11,'accessible_and_usable','subcolor','¥µ¥Ö¥«¥é¡¼','#DCDCDC');
 
 --
 -- Table structure for table easy_design_languages
@@ -2197,6 +2258,8 @@ KEY easy_design_language_key (easy_design_language_key)
 -- Dumping data for table easy_design_languages
 --
 
+INSERT INTO easy_design_languages VALUES (1,2,'EASY_DESIGN_TAGLINE','¥¿¥°¥é¥¤¥ó','EC¥µ¥¤¥È¤¬¤¹¤°¤Ç¤­¤ë¡ª',1);
+INSERT INTO easy_design_languages VALUES (2,2,'EASY_DESIGN_KEY_COPYLIGHT','¥³¥Ô¡¼¥é¥¤¥È','Zen-Cart ¤¹¤°¤Ç¤­¡Ê¤ë¡Ë¥Ñ¥Ã¥¯',2);
 
 --
 -- Table structure for table email_archive
@@ -2218,11 +2281,6 @@ PRIMARY KEY  (archive_id),
 KEY idx_email_to_address_zen (email_to_address),
 KEY idx_module_zen (module)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table email_archive
---
-
 
 --
 -- Table structure for table email_templates
@@ -2333,11 +2391,6 @@ KEY idx_sort_order_zen (sort_order)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table feature_area
---
-
-
---
 -- Table structure for table feature_area_info
 --
 
@@ -2351,11 +2404,6 @@ date_last_click datetime default NULL,
 PRIMARY KEY  (id,languages_id),
 KEY idx_categories_name_zen (name)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table feature_area_info
---
-
 
 --
 -- Table structure for table featured
@@ -2397,11 +2445,6 @@ KEY idx_customers_id_zen (customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis COMMENT='Must always have either a sesskey or customers_id';
 
 --
--- Dumping data for table files_uploaded
---
-
-
---
 -- Table structure for table geo_zones
 --
 
@@ -2414,10 +2457,6 @@ last_modified datetime default NULL,
 date_added datetime NOT NULL default '0001-01-01 00:00:00',
 PRIMARY KEY  (geo_zone_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table geo_zones
---
 
 INSERT INTO geo_zones VALUES (1,'ÆüËÜ','ÆüËÜ¡Ê¾ÃÈñÀÇ¡Ë','2007-01-15 11:44:41','2006-11-29 16:18:40');
 
@@ -2449,11 +2488,6 @@ group_id int(11) NOT NULL default '0',
 rate int(11) NOT NULL default '0',
 PRIMARY KEY  (group_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table group_point_rate
---
-
 
 --
 -- Table structure for table group_pricing
@@ -2490,6 +2524,9 @@ PRIMARY KEY  (group_id,language_id)
 -- Dumping data for table group_pricing_m17n
 --
 
+INSERT INTO group_pricing_m17n VALUES (1,1,'10%³ä°ú');
+INSERT INTO group_pricing_m17n VALUES (1,2,'10%³ä°ú');
+INSERT INTO group_pricing_m17n VALUES (1,9,'10%³ä°ú');
 
 --
 -- Table structure for table holidays
@@ -2511,6 +2548,31 @@ PRIMARY KEY  (id)
 -- Dumping data for table holidays
 --
 
+INSERT INTO holidays VALUES (1,-1,1,1,-1,-1,0);
+INSERT INTO holidays VALUES (2,-1,1,2,-1,-1,0);
+INSERT INTO holidays VALUES (3,-1,1,3,-1,-1,0);
+INSERT INTO holidays VALUES (4,-1,1,-1,1,2,0);
+INSERT INTO holidays VALUES (5,-1,2,11,-1,-1,0);
+INSERT INTO holidays VALUES (6,-1,4,29,-1,-1,0);
+INSERT INTO holidays VALUES (7,-1,5,3,-1,-1,0);
+INSERT INTO holidays VALUES (8,-1,5,4,-1,-1,0);
+INSERT INTO holidays VALUES (9,-1,5,5,-1,-1,0);
+INSERT INTO holidays VALUES (10,-1,7,-1,1,3,0);
+INSERT INTO holidays VALUES (11,-1,9,-1,1,3,0);
+INSERT INTO holidays VALUES (12,-1,10,-1,1,2,0);
+INSERT INTO holidays VALUES (13,-1,11,3,-1,-1,0);
+INSERT INTO holidays VALUES (14,-1,11,23,-1,-1,0);
+INSERT INTO holidays VALUES (15,-1,12,23,-1,-1,0);
+INSERT INTO holidays VALUES (16,-1,12,29,-1,-1,0);
+INSERT INTO holidays VALUES (17,-1,12,30,-1,-1,0);
+INSERT INTO holidays VALUES (18,-1,12,31,-1,-1,0);
+INSERT INTO holidays VALUES (19,2009,3,20,-1,-1,0);
+INSERT INTO holidays VALUES (20,2009,5,6,-1,-1,0);
+INSERT INTO holidays VALUES (21,2009,9,22,-1,-1,0);
+INSERT INTO holidays VALUES (22,2009,9,23,-1,-1,0);
+INSERT INTO holidays VALUES (23,2010,3,21,-1,-1,0);
+INSERT INTO holidays VALUES (24,2010,3,22,-1,-1,0);
+INSERT INTO holidays VALUES (25,2010,9,23,-1,-1,0);
 
 --
 -- Table structure for table languages
@@ -3014,11 +3076,6 @@ PRIMARY KEY  (newsletters_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table newsletters
---
-
-
---
 -- Table structure for table orders
 --
 
@@ -3091,11 +3148,6 @@ KEY idx_status_orders_cust_zen (orders_status,orders_id,customers_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table orders
---
-
-
---
 -- Table structure for table orders_products
 --
 
@@ -3119,11 +3171,6 @@ products_prid tinytext NOT NULL,
 PRIMARY KEY  (orders_products_id),
 KEY idx_orders_id_prod_id_zen (orders_id,products_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table orders_products
---
-
 
 --
 -- Table structure for table orders_products_attributes
@@ -3162,11 +3209,6 @@ KEY idx_orders_id_prod_id_zen (orders_id,orders_products_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table orders_products_attributes
---
-
-
---
 -- Table structure for table orders_products_download
 --
 
@@ -3183,11 +3225,6 @@ PRIMARY KEY  (orders_products_download_id),
 KEY idx_orders_id_zen (orders_id),
 KEY idx_orders_products_id_zen (orders_products_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table orders_products_download
---
-
 
 --
 -- Table structure for table orders_status
@@ -3236,11 +3273,6 @@ KEY idx_orders_id_status_id_zen (orders_id,orders_status_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table orders_status_history
---
-
-
---
 -- Table structure for table orders_total
 --
 
@@ -3257,11 +3289,6 @@ PRIMARY KEY  (orders_total_id),
 KEY idx_ot_orders_id_zen (orders_id),
 KEY idx_ot_class_zen (class)
 ) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table orders_total
---
-
 
 --
 -- Table structure for table paypal
@@ -3315,11 +3342,6 @@ KEY idx_zen_order_id_zen (zen_order_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table paypal
---
-
-
---
 -- Table structure for table paypal_payment_status
 --
 
@@ -3360,11 +3382,6 @@ KEY idx_paypal_ipn_id_zen (paypal_ipn_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table paypal_payment_status_history
---
-
-
---
 -- Table structure for table paypal_session
 --
 
@@ -3377,11 +3394,6 @@ expiry int(17) NOT NULL default '0',
 PRIMARY KEY  (unique_id),
 KEY idx_session_id_zen (session_id(36))
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table paypal_session
---
-
 
 --
 -- Table structure for table paypal_testing
@@ -3436,11 +3448,6 @@ KEY idx_zen_order_id_zen (zen_order_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table paypal_testing
---
-
-
---
 -- Table structure for table point_histories
 --
 
@@ -3461,11 +3468,6 @@ status tinyint(1) NOT NULL default '1',
 PRIMARY KEY  (id),
 KEY IDX_customers_id_status (customers_id,status)
 ) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table point_histories
---
-
 
 --
 -- Table structure for table product_music_extra
@@ -3864,11 +3866,6 @@ PRIMARY KEY  (products_id,customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table products_notifications
---
-
-
---
 -- Table structure for table products_options
 --
 
@@ -3933,9 +3930,6 @@ PRIMARY KEY  (products_options_values_id,language_id)
 -- Dumping data for table products_options_values
 --
 
-INSERT INTO products_options_values VALUES (0,1,'TEXT',0);
-INSERT INTO products_options_values VALUES (0,2,'TEXT',0);
-INSERT INTO products_options_values VALUES (0,9,'TEXT',0);
 
 --
 -- Table structure for table products_options_values_to_products_options
@@ -3964,11 +3958,6 @@ products_id int(11) NOT NULL default '0',
 rate int(11) NOT NULL default '0',
 PRIMARY KEY  (products_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table products_point_rate
---
-
 
 --
 -- Table structure for table products_to_categories
@@ -4024,6 +4013,10 @@ KEY idx_products_id_xsell (products_id)
 -- Dumping data for table products_xsell
 --
 
+INSERT INTO products_xsell VALUES (1,9,15,1);
+INSERT INTO products_xsell VALUES (2,9,16,2);
+INSERT INTO products_xsell VALUES (3,9,35,3);
+INSERT INTO products_xsell VALUES (4,9,36,4);
 
 --
 -- Table structure for table project_version
@@ -4298,6 +4291,15 @@ KEY type_code_2 (payment_type_code)
 -- Dumping data for table so_payment_types
 --
 
+INSERT INTO so_payment_types VALUES (1,1,'CA','Cash');
+INSERT INTO so_payment_types VALUES (2,1,'CK','Check');
+INSERT INTO so_payment_types VALUES (3,1,'MO','Money Order');
+INSERT INTO so_payment_types VALUES (4,1,'ADJ','Adjustment');
+INSERT INTO so_payment_types VALUES (5,1,'CC','Credit Card');
+INSERT INTO so_payment_types VALUES (6,1,'MC','Master Card');
+INSERT INTO so_payment_types VALUES (7,1,'VISA','Visa');
+INSERT INTO so_payment_types VALUES (8,1,'AMEX','American Express');
+INSERT INTO so_payment_types VALUES (9,1,'DISC','Discover');
 
 --
 -- Table structure for table so_payments
@@ -4428,6 +4430,9 @@ PRIMARY KEY  (tax_class_id,language_id)
 -- Dumping data for table tax_class_m17n
 --
 
+INSERT INTO tax_class_m17n VALUES (1,1,'¾ÃÈñÀÇ','¾ÃÈñÀÇ¡ÊÆüËÜ¡Ë');
+INSERT INTO tax_class_m17n VALUES (1,2,'¾ÃÈñÀÇ','¾ÃÈñÀÇ¡ÊÆüËÜ¡Ë');
+INSERT INTO tax_class_m17n VALUES (1,9,'¾ÃÈñÀÇ','¾ÃÈñÀÇ¡ÊÆüËÜ¡Ë');
 
 --
 -- Table structure for table tax_rates
@@ -4470,6 +4475,9 @@ PRIMARY KEY  (tax_rates_id,language_id)
 -- Dumping data for table tax_rates_m17n
 --
 
+INSERT INTO tax_rates_m17n VALUES (1,1,'¾ÃÈñÀÇ¡§5%');
+INSERT INTO tax_rates_m17n VALUES (1,2,'¾ÃÈñÀÇ¡§5%');
+INSERT INTO tax_rates_m17n VALUES (1,9,'¾ÃÈñÀÇ¡§5%');
 
 --
 -- Table structure for table template_select
@@ -4509,6 +4517,12 @@ PRIMARY KEY  (upgrade_exception_id)
 -- Dumping data for table upgrade_exceptions
 --
 
+INSERT INTO upgrade_exceptions VALUES (1,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'Á´¸ÜµÒ\' WHERE query_id =1 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (2,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'¥á¡¼¥ë¥Þ¥¬¥¸¥ó´õË¾¼Ô\' WHERE query_id =2 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (3,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'µÙÌ²¸ÜµÒ¡Ê²áµî»°¥ö·î´Ö¡¢ÇÛ¿®´õË¾¼Ô¤Î¤ß¡Ë\' WHERE query_id =3 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (4,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'²ÔÆ°¸ÜµÒ¡Ê²áµî»°¥ö·î´Ö¡¢ÇÛ¿®´õË¾¼Ô¤Î¤ß¡Ë\' WHERE query_id =4 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (5,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'²ÔÆ°¸ÜµÒ¡Ê²áµî»°¥ö·î´Ö¡Ë\' WHERE query_id =5 LIMIT 1;');
+INSERT INTO upgrade_exceptions VALUES (6,'mysql_zencart.sql','REASON_TABLE_NOT_FOUND CHECK PREFIXES!','2009-11-19 12:39:41','UPDATE query_builder SET query_name = \'´ÉÍý¼Ô\' WHERE query_id =6 LIMIT 1;');
 
 --
 -- Table structure for table visitors
@@ -4525,11 +4539,6 @@ KEY IDX_visitors_email_address (visitors_email_address)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
 
 --
--- Dumping data for table visitors
---
-
-
---
 -- Table structure for table visitors_orders
 --
 
@@ -4542,11 +4551,6 @@ date_purchased datetime default NULL,
 PRIMARY KEY  (orders_id),
 KEY IDX_visitors_id (visitors_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table visitors_orders
---
-
 
 --
 -- Table structure for table whos_online
@@ -4570,11 +4574,6 @@ KEY idx_time_entry_zen (time_entry),
 KEY idx_time_last_click_zen (time_last_click),
 KEY idx_last_page_url_zen (last_page_url)
 ) ENGINE=MyISAM DEFAULT CHARSET=ujis;
-
---
--- Dumping data for table whos_online
---
-
 
 --
 -- Table structure for table zones
@@ -4838,6 +4837,690 @@ PRIMARY KEY  (zone_id,language_id)
 -- Dumping data for table zones_m17n
 --
 
+INSERT INTO zones_m17n VALUES (1,1,'Alabama');
+INSERT INTO zones_m17n VALUES (2,1,'Alaska');
+INSERT INTO zones_m17n VALUES (3,1,'American Samoa');
+INSERT INTO zones_m17n VALUES (4,1,'Arizona');
+INSERT INTO zones_m17n VALUES (5,1,'Arkansas');
+INSERT INTO zones_m17n VALUES (6,1,'Armed Forces Africa');
+INSERT INTO zones_m17n VALUES (7,1,'Armed Forces Americas');
+INSERT INTO zones_m17n VALUES (8,1,'Armed Forces Canada');
+INSERT INTO zones_m17n VALUES (9,1,'Armed Forces Europe');
+INSERT INTO zones_m17n VALUES (10,1,'Armed Forces Middle East');
+INSERT INTO zones_m17n VALUES (11,1,'Armed Forces Pacific');
+INSERT INTO zones_m17n VALUES (12,1,'California');
+INSERT INTO zones_m17n VALUES (13,1,'Colorado');
+INSERT INTO zones_m17n VALUES (14,1,'Connecticut');
+INSERT INTO zones_m17n VALUES (15,1,'Delaware');
+INSERT INTO zones_m17n VALUES (16,1,'District of Columbia');
+INSERT INTO zones_m17n VALUES (17,1,'Federated States Of Micronesia');
+INSERT INTO zones_m17n VALUES (18,1,'Florida');
+INSERT INTO zones_m17n VALUES (19,1,'Georgia');
+INSERT INTO zones_m17n VALUES (20,1,'Guam');
+INSERT INTO zones_m17n VALUES (21,1,'Hawaii');
+INSERT INTO zones_m17n VALUES (22,1,'Idaho');
+INSERT INTO zones_m17n VALUES (23,1,'Illinois');
+INSERT INTO zones_m17n VALUES (24,1,'Indiana');
+INSERT INTO zones_m17n VALUES (25,1,'Iowa');
+INSERT INTO zones_m17n VALUES (26,1,'Kansas');
+INSERT INTO zones_m17n VALUES (27,1,'Kentucky');
+INSERT INTO zones_m17n VALUES (28,1,'Louisiana');
+INSERT INTO zones_m17n VALUES (29,1,'Maine');
+INSERT INTO zones_m17n VALUES (30,1,'Marshall Islands');
+INSERT INTO zones_m17n VALUES (31,1,'Maryland');
+INSERT INTO zones_m17n VALUES (32,1,'Massachusetts');
+INSERT INTO zones_m17n VALUES (33,1,'Michigan');
+INSERT INTO zones_m17n VALUES (34,1,'Minnesota');
+INSERT INTO zones_m17n VALUES (35,1,'Mississippi');
+INSERT INTO zones_m17n VALUES (36,1,'Missouri');
+INSERT INTO zones_m17n VALUES (37,1,'Montana');
+INSERT INTO zones_m17n VALUES (38,1,'Nebraska');
+INSERT INTO zones_m17n VALUES (39,1,'Nevada');
+INSERT INTO zones_m17n VALUES (40,1,'New Hampshire');
+INSERT INTO zones_m17n VALUES (41,1,'New Jersey');
+INSERT INTO zones_m17n VALUES (42,1,'New Mexico');
+INSERT INTO zones_m17n VALUES (43,1,'New York');
+INSERT INTO zones_m17n VALUES (44,1,'North Carolina');
+INSERT INTO zones_m17n VALUES (45,1,'North Dakota');
+INSERT INTO zones_m17n VALUES (46,1,'Northern Mariana Islands');
+INSERT INTO zones_m17n VALUES (47,1,'Ohio');
+INSERT INTO zones_m17n VALUES (48,1,'Oklahoma');
+INSERT INTO zones_m17n VALUES (49,1,'Oregon');
+INSERT INTO zones_m17n VALUES (50,1,'Palau');
+INSERT INTO zones_m17n VALUES (51,1,'Pennsylvania');
+INSERT INTO zones_m17n VALUES (52,1,'Puerto Rico');
+INSERT INTO zones_m17n VALUES (53,1,'Rhode Island');
+INSERT INTO zones_m17n VALUES (54,1,'South Carolina');
+INSERT INTO zones_m17n VALUES (55,1,'South Dakota');
+INSERT INTO zones_m17n VALUES (56,1,'Tennessee');
+INSERT INTO zones_m17n VALUES (57,1,'Texas');
+INSERT INTO zones_m17n VALUES (58,1,'Utah');
+INSERT INTO zones_m17n VALUES (59,1,'Vermont');
+INSERT INTO zones_m17n VALUES (60,1,'Virgin Islands');
+INSERT INTO zones_m17n VALUES (61,1,'Virginia');
+INSERT INTO zones_m17n VALUES (62,1,'Washington');
+INSERT INTO zones_m17n VALUES (63,1,'West Virginia');
+INSERT INTO zones_m17n VALUES (64,1,'Wisconsin');
+INSERT INTO zones_m17n VALUES (65,1,'Wyoming');
+INSERT INTO zones_m17n VALUES (66,1,'Alberta');
+INSERT INTO zones_m17n VALUES (67,1,'British Columbia');
+INSERT INTO zones_m17n VALUES (68,1,'Manitoba');
+INSERT INTO zones_m17n VALUES (69,1,'Newfoundland');
+INSERT INTO zones_m17n VALUES (70,1,'New Brunswick');
+INSERT INTO zones_m17n VALUES (71,1,'Nova Scotia');
+INSERT INTO zones_m17n VALUES (72,1,'Northwest Territories');
+INSERT INTO zones_m17n VALUES (73,1,'Nunavut');
+INSERT INTO zones_m17n VALUES (74,1,'Ontario');
+INSERT INTO zones_m17n VALUES (75,1,'Prince Edward Island');
+INSERT INTO zones_m17n VALUES (76,1,'Quebec');
+INSERT INTO zones_m17n VALUES (77,1,'Saskatchewan');
+INSERT INTO zones_m17n VALUES (78,1,'Yukon Territory');
+INSERT INTO zones_m17n VALUES (79,1,'Niedersachsen');
+INSERT INTO zones_m17n VALUES (80,1,'Baden-Wrttemberg');
+INSERT INTO zones_m17n VALUES (81,1,'Bayern');
+INSERT INTO zones_m17n VALUES (82,1,'Berlin');
+INSERT INTO zones_m17n VALUES (83,1,'Brandenburg');
+INSERT INTO zones_m17n VALUES (84,1,'Bremen');
+INSERT INTO zones_m17n VALUES (85,1,'Hamburg');
+INSERT INTO zones_m17n VALUES (86,1,'Hessen');
+INSERT INTO zones_m17n VALUES (87,1,'Mecklenburg-Vorpommern');
+INSERT INTO zones_m17n VALUES (88,1,'Nordrhein-Westfalen');
+INSERT INTO zones_m17n VALUES (89,1,'Rheinland-Pfalz');
+INSERT INTO zones_m17n VALUES (90,1,'Saarland');
+INSERT INTO zones_m17n VALUES (91,1,'Sachsen');
+INSERT INTO zones_m17n VALUES (92,1,'Sachsen-Anhalt');
+INSERT INTO zones_m17n VALUES (93,1,'Schleswig-Holstein');
+INSERT INTO zones_m17n VALUES (94,1,'Thringen');
+INSERT INTO zones_m17n VALUES (95,1,'Wien');
+INSERT INTO zones_m17n VALUES (96,1,'Niedersterreich');
+INSERT INTO zones_m17n VALUES (97,1,'Obersterreich');
+INSERT INTO zones_m17n VALUES (98,1,'Salzburg');
+INSERT INTO zones_m17n VALUES (99,1,'Kten');
+INSERT INTO zones_m17n VALUES (100,1,'Steiermark');
+INSERT INTO zones_m17n VALUES (101,1,'Tirol');
+INSERT INTO zones_m17n VALUES (102,1,'Burgenland');
+INSERT INTO zones_m17n VALUES (103,1,'Voralberg');
+INSERT INTO zones_m17n VALUES (104,1,'Aargau');
+INSERT INTO zones_m17n VALUES (105,1,'Appenzell Innerrhoden');
+INSERT INTO zones_m17n VALUES (106,1,'Appenzell Ausserrhoden');
+INSERT INTO zones_m17n VALUES (107,1,'Bern');
+INSERT INTO zones_m17n VALUES (108,1,'Basel-Landschaft');
+INSERT INTO zones_m17n VALUES (109,1,'Basel-Stadt');
+INSERT INTO zones_m17n VALUES (110,1,'Freiburg');
+INSERT INTO zones_m17n VALUES (111,1,'Genf');
+INSERT INTO zones_m17n VALUES (112,1,'Glarus');
+INSERT INTO zones_m17n VALUES (113,1,'Graubnden');
+INSERT INTO zones_m17n VALUES (114,1,'Jura');
+INSERT INTO zones_m17n VALUES (115,1,'Luzern');
+INSERT INTO zones_m17n VALUES (116,1,'Neuenburg');
+INSERT INTO zones_m17n VALUES (117,1,'Nidwalden');
+INSERT INTO zones_m17n VALUES (118,1,'Obwalden');
+INSERT INTO zones_m17n VALUES (119,1,'St. Gallen');
+INSERT INTO zones_m17n VALUES (120,1,'Schaffhausen');
+INSERT INTO zones_m17n VALUES (121,1,'Solothurn');
+INSERT INTO zones_m17n VALUES (122,1,'Schwyz');
+INSERT INTO zones_m17n VALUES (123,1,'Thurgau');
+INSERT INTO zones_m17n VALUES (124,1,'Tessin');
+INSERT INTO zones_m17n VALUES (125,1,'Uri');
+INSERT INTO zones_m17n VALUES (126,1,'Waadt');
+INSERT INTO zones_m17n VALUES (127,1,'Wallis');
+INSERT INTO zones_m17n VALUES (128,1,'Zug');
+INSERT INTO zones_m17n VALUES (129,1,'Zrich');
+INSERT INTO zones_m17n VALUES (130,1,'A Corua');
+INSERT INTO zones_m17n VALUES (131,1,'Alava');
+INSERT INTO zones_m17n VALUES (132,1,'Albacete');
+INSERT INTO zones_m17n VALUES (133,1,'Alicante');
+INSERT INTO zones_m17n VALUES (134,1,'Almeria');
+INSERT INTO zones_m17n VALUES (135,1,'Asturias');
+INSERT INTO zones_m17n VALUES (136,1,'Avila');
+INSERT INTO zones_m17n VALUES (137,1,'Badajoz');
+INSERT INTO zones_m17n VALUES (138,1,'Baleares');
+INSERT INTO zones_m17n VALUES (139,1,'Barcelona');
+INSERT INTO zones_m17n VALUES (140,1,'Burgos');
+INSERT INTO zones_m17n VALUES (141,1,'Caceres');
+INSERT INTO zones_m17n VALUES (142,1,'Cadiz');
+INSERT INTO zones_m17n VALUES (143,1,'Cantabria');
+INSERT INTO zones_m17n VALUES (144,1,'Castellon');
+INSERT INTO zones_m17n VALUES (145,1,'Ceuta');
+INSERT INTO zones_m17n VALUES (146,1,'Ciudad Real');
+INSERT INTO zones_m17n VALUES (147,1,'Cordoba');
+INSERT INTO zones_m17n VALUES (148,1,'Cuenca');
+INSERT INTO zones_m17n VALUES (149,1,'Girona');
+INSERT INTO zones_m17n VALUES (150,1,'Granada');
+INSERT INTO zones_m17n VALUES (151,1,'Guadalajara');
+INSERT INTO zones_m17n VALUES (152,1,'Guipuzcoa');
+INSERT INTO zones_m17n VALUES (153,1,'Huelva');
+INSERT INTO zones_m17n VALUES (154,1,'Huesca');
+INSERT INTO zones_m17n VALUES (155,1,'Jaen');
+INSERT INTO zones_m17n VALUES (156,1,'La Rioja');
+INSERT INTO zones_m17n VALUES (157,1,'Las Palmas');
+INSERT INTO zones_m17n VALUES (158,1,'Leon');
+INSERT INTO zones_m17n VALUES (159,1,'Lleida');
+INSERT INTO zones_m17n VALUES (160,1,'Lugo');
+INSERT INTO zones_m17n VALUES (161,1,'Madrid');
+INSERT INTO zones_m17n VALUES (162,1,'Malaga');
+INSERT INTO zones_m17n VALUES (163,1,'Melilla');
+INSERT INTO zones_m17n VALUES (164,1,'Murcia');
+INSERT INTO zones_m17n VALUES (165,1,'Navarra');
+INSERT INTO zones_m17n VALUES (166,1,'Ourense');
+INSERT INTO zones_m17n VALUES (167,1,'Palencia');
+INSERT INTO zones_m17n VALUES (168,1,'Pontevedra');
+INSERT INTO zones_m17n VALUES (169,1,'Salamanca');
+INSERT INTO zones_m17n VALUES (170,1,'Santa Cruz de Tenerife');
+INSERT INTO zones_m17n VALUES (171,1,'Segovia');
+INSERT INTO zones_m17n VALUES (172,1,'Sevilla');
+INSERT INTO zones_m17n VALUES (173,1,'Soria');
+INSERT INTO zones_m17n VALUES (174,1,'Tarragona');
+INSERT INTO zones_m17n VALUES (175,1,'Teruel');
+INSERT INTO zones_m17n VALUES (176,1,'Toledo');
+INSERT INTO zones_m17n VALUES (177,1,'Valencia');
+INSERT INTO zones_m17n VALUES (178,1,'Valladolid');
+INSERT INTO zones_m17n VALUES (179,1,'Vizcaya');
+INSERT INTO zones_m17n VALUES (180,1,'Zamora');
+INSERT INTO zones_m17n VALUES (181,1,'Zaragoza');
+INSERT INTO zones_m17n VALUES (182,1,'Hokkaido');
+INSERT INTO zones_m17n VALUES (183,1,'Aomori');
+INSERT INTO zones_m17n VALUES (184,1,'Iwate');
+INSERT INTO zones_m17n VALUES (185,1,'Miyagi');
+INSERT INTO zones_m17n VALUES (186,1,'Akita');
+INSERT INTO zones_m17n VALUES (187,1,'Yamagata');
+INSERT INTO zones_m17n VALUES (188,1,'Fukushima');
+INSERT INTO zones_m17n VALUES (189,1,'Ibaragi');
+INSERT INTO zones_m17n VALUES (190,1,'Tochigi');
+INSERT INTO zones_m17n VALUES (191,1,'Gunma');
+INSERT INTO zones_m17n VALUES (192,1,'Saitama');
+INSERT INTO zones_m17n VALUES (193,1,'Chiba');
+INSERT INTO zones_m17n VALUES (194,1,'Tokyo');
+INSERT INTO zones_m17n VALUES (195,1,'Kanagama');
+INSERT INTO zones_m17n VALUES (196,1,'Niigata');
+INSERT INTO zones_m17n VALUES (197,1,'Toyama');
+INSERT INTO zones_m17n VALUES (198,1,'Ishikawa');
+INSERT INTO zones_m17n VALUES (199,1,'Fukui');
+INSERT INTO zones_m17n VALUES (200,1,'Yamagata');
+INSERT INTO zones_m17n VALUES (201,1,'Nagano');
+INSERT INTO zones_m17n VALUES (202,1,'Gifu');
+INSERT INTO zones_m17n VALUES (203,1,'Shizuoka');
+INSERT INTO zones_m17n VALUES (204,1,'Aichu');
+INSERT INTO zones_m17n VALUES (205,1,'Mie');
+INSERT INTO zones_m17n VALUES (206,1,'Shiga');
+INSERT INTO zones_m17n VALUES (207,1,'Kyoto');
+INSERT INTO zones_m17n VALUES (208,1,'Osaka');
+INSERT INTO zones_m17n VALUES (209,1,'Hyogo');
+INSERT INTO zones_m17n VALUES (210,1,'Nara');
+INSERT INTO zones_m17n VALUES (211,1,'Wakayama');
+INSERT INTO zones_m17n VALUES (212,1,'Tottori');
+INSERT INTO zones_m17n VALUES (213,1,'Shimane');
+INSERT INTO zones_m17n VALUES (214,1,'Okayama');
+INSERT INTO zones_m17n VALUES (215,1,'Hiroshima');
+INSERT INTO zones_m17n VALUES (216,1,'Yamaguchi');
+INSERT INTO zones_m17n VALUES (217,1,'Tokushima');
+INSERT INTO zones_m17n VALUES (218,1,'Kagawa');
+INSERT INTO zones_m17n VALUES (219,1,'Ehime');
+INSERT INTO zones_m17n VALUES (220,1,'Kochi');
+INSERT INTO zones_m17n VALUES (221,1,'Fukushima');
+INSERT INTO zones_m17n VALUES (222,1,'Saga');
+INSERT INTO zones_m17n VALUES (223,1,'Nagasaki');
+INSERT INTO zones_m17n VALUES (224,1,'Kumamoto');
+INSERT INTO zones_m17n VALUES (225,1,'Oita');
+INSERT INTO zones_m17n VALUES (226,1,'Miyazaki');
+INSERT INTO zones_m17n VALUES (227,1,'Kagoshima');
+INSERT INTO zones_m17n VALUES (228,1,'Okinawa');
+INSERT INTO zones_m17n VALUES (1,2,'Alabama');
+INSERT INTO zones_m17n VALUES (2,2,'Alaska');
+INSERT INTO zones_m17n VALUES (3,2,'American Samoa');
+INSERT INTO zones_m17n VALUES (4,2,'Arizona');
+INSERT INTO zones_m17n VALUES (5,2,'Arkansas');
+INSERT INTO zones_m17n VALUES (6,2,'Armed Forces Africa');
+INSERT INTO zones_m17n VALUES (7,2,'Armed Forces Americas');
+INSERT INTO zones_m17n VALUES (8,2,'Armed Forces Canada');
+INSERT INTO zones_m17n VALUES (9,2,'Armed Forces Europe');
+INSERT INTO zones_m17n VALUES (10,2,'Armed Forces Middle East');
+INSERT INTO zones_m17n VALUES (11,2,'Armed Forces Pacific');
+INSERT INTO zones_m17n VALUES (12,2,'California');
+INSERT INTO zones_m17n VALUES (13,2,'Colorado');
+INSERT INTO zones_m17n VALUES (14,2,'Connecticut');
+INSERT INTO zones_m17n VALUES (15,2,'Delaware');
+INSERT INTO zones_m17n VALUES (16,2,'District of Columbia');
+INSERT INTO zones_m17n VALUES (17,2,'Federated States Of Micronesia');
+INSERT INTO zones_m17n VALUES (18,2,'Florida');
+INSERT INTO zones_m17n VALUES (19,2,'Georgia');
+INSERT INTO zones_m17n VALUES (20,2,'Guam');
+INSERT INTO zones_m17n VALUES (21,2,'Hawaii');
+INSERT INTO zones_m17n VALUES (22,2,'Idaho');
+INSERT INTO zones_m17n VALUES (23,2,'Illinois');
+INSERT INTO zones_m17n VALUES (24,2,'Indiana');
+INSERT INTO zones_m17n VALUES (25,2,'Iowa');
+INSERT INTO zones_m17n VALUES (26,2,'Kansas');
+INSERT INTO zones_m17n VALUES (27,2,'Kentucky');
+INSERT INTO zones_m17n VALUES (28,2,'Louisiana');
+INSERT INTO zones_m17n VALUES (29,2,'Maine');
+INSERT INTO zones_m17n VALUES (30,2,'Marshall Islands');
+INSERT INTO zones_m17n VALUES (31,2,'Maryland');
+INSERT INTO zones_m17n VALUES (32,2,'Massachusetts');
+INSERT INTO zones_m17n VALUES (33,2,'Michigan');
+INSERT INTO zones_m17n VALUES (34,2,'Minnesota');
+INSERT INTO zones_m17n VALUES (35,2,'Mississippi');
+INSERT INTO zones_m17n VALUES (36,2,'Missouri');
+INSERT INTO zones_m17n VALUES (37,2,'Montana');
+INSERT INTO zones_m17n VALUES (38,2,'Nebraska');
+INSERT INTO zones_m17n VALUES (39,2,'Nevada');
+INSERT INTO zones_m17n VALUES (40,2,'New Hampshire');
+INSERT INTO zones_m17n VALUES (41,2,'New Jersey');
+INSERT INTO zones_m17n VALUES (42,2,'New Mexico');
+INSERT INTO zones_m17n VALUES (43,2,'New York');
+INSERT INTO zones_m17n VALUES (44,2,'North Carolina');
+INSERT INTO zones_m17n VALUES (45,2,'North Dakota');
+INSERT INTO zones_m17n VALUES (46,2,'Northern Mariana Islands');
+INSERT INTO zones_m17n VALUES (47,2,'Ohio');
+INSERT INTO zones_m17n VALUES (48,2,'Oklahoma');
+INSERT INTO zones_m17n VALUES (49,2,'Oregon');
+INSERT INTO zones_m17n VALUES (50,2,'Palau');
+INSERT INTO zones_m17n VALUES (51,2,'Pennsylvania');
+INSERT INTO zones_m17n VALUES (52,2,'Puerto Rico');
+INSERT INTO zones_m17n VALUES (53,2,'Rhode Island');
+INSERT INTO zones_m17n VALUES (54,2,'South Carolina');
+INSERT INTO zones_m17n VALUES (55,2,'South Dakota');
+INSERT INTO zones_m17n VALUES (56,2,'Tennessee');
+INSERT INTO zones_m17n VALUES (57,2,'Texas');
+INSERT INTO zones_m17n VALUES (58,2,'Utah');
+INSERT INTO zones_m17n VALUES (59,2,'Vermont');
+INSERT INTO zones_m17n VALUES (60,2,'Virgin Islands');
+INSERT INTO zones_m17n VALUES (61,2,'Virginia');
+INSERT INTO zones_m17n VALUES (62,2,'Washington');
+INSERT INTO zones_m17n VALUES (63,2,'West Virginia');
+INSERT INTO zones_m17n VALUES (64,2,'Wisconsin');
+INSERT INTO zones_m17n VALUES (65,2,'Wyoming');
+INSERT INTO zones_m17n VALUES (66,2,'Alberta');
+INSERT INTO zones_m17n VALUES (67,2,'British Columbia');
+INSERT INTO zones_m17n VALUES (68,2,'Manitoba');
+INSERT INTO zones_m17n VALUES (69,2,'Newfoundland');
+INSERT INTO zones_m17n VALUES (70,2,'New Brunswick');
+INSERT INTO zones_m17n VALUES (71,2,'Nova Scotia');
+INSERT INTO zones_m17n VALUES (72,2,'Northwest Territories');
+INSERT INTO zones_m17n VALUES (73,2,'Nunavut');
+INSERT INTO zones_m17n VALUES (74,2,'Ontario');
+INSERT INTO zones_m17n VALUES (75,2,'Prince Edward Island');
+INSERT INTO zones_m17n VALUES (76,2,'Quebec');
+INSERT INTO zones_m17n VALUES (77,2,'Saskatchewan');
+INSERT INTO zones_m17n VALUES (78,2,'Yukon Territory');
+INSERT INTO zones_m17n VALUES (79,2,'Niedersachsen');
+INSERT INTO zones_m17n VALUES (80,2,'Baden-Wrttemberg');
+INSERT INTO zones_m17n VALUES (81,2,'Bayern');
+INSERT INTO zones_m17n VALUES (82,2,'Berlin');
+INSERT INTO zones_m17n VALUES (83,2,'Brandenburg');
+INSERT INTO zones_m17n VALUES (84,2,'Bremen');
+INSERT INTO zones_m17n VALUES (85,2,'Hamburg');
+INSERT INTO zones_m17n VALUES (86,2,'Hessen');
+INSERT INTO zones_m17n VALUES (87,2,'Mecklenburg-Vorpommern');
+INSERT INTO zones_m17n VALUES (88,2,'Nordrhein-Westfalen');
+INSERT INTO zones_m17n VALUES (89,2,'Rheinland-Pfalz');
+INSERT INTO zones_m17n VALUES (90,2,'Saarland');
+INSERT INTO zones_m17n VALUES (91,2,'Sachsen');
+INSERT INTO zones_m17n VALUES (92,2,'Sachsen-Anhalt');
+INSERT INTO zones_m17n VALUES (93,2,'Schleswig-Holstein');
+INSERT INTO zones_m17n VALUES (94,2,'Thringen');
+INSERT INTO zones_m17n VALUES (95,2,'Wien');
+INSERT INTO zones_m17n VALUES (96,2,'Niedersterreich');
+INSERT INTO zones_m17n VALUES (97,2,'Obersterreich');
+INSERT INTO zones_m17n VALUES (98,2,'Salzburg');
+INSERT INTO zones_m17n VALUES (99,2,'Kten');
+INSERT INTO zones_m17n VALUES (100,2,'Steiermark');
+INSERT INTO zones_m17n VALUES (101,2,'Tirol');
+INSERT INTO zones_m17n VALUES (102,2,'Burgenland');
+INSERT INTO zones_m17n VALUES (103,2,'Voralberg');
+INSERT INTO zones_m17n VALUES (104,2,'Aargau');
+INSERT INTO zones_m17n VALUES (105,2,'Appenzell Innerrhoden');
+INSERT INTO zones_m17n VALUES (106,2,'Appenzell Ausserrhoden');
+INSERT INTO zones_m17n VALUES (107,2,'Bern');
+INSERT INTO zones_m17n VALUES (108,2,'Basel-Landschaft');
+INSERT INTO zones_m17n VALUES (109,2,'Basel-Stadt');
+INSERT INTO zones_m17n VALUES (110,2,'Freiburg');
+INSERT INTO zones_m17n VALUES (111,2,'Genf');
+INSERT INTO zones_m17n VALUES (112,2,'Glarus');
+INSERT INTO zones_m17n VALUES (113,2,'Graubnden');
+INSERT INTO zones_m17n VALUES (114,2,'Jura');
+INSERT INTO zones_m17n VALUES (115,2,'Luzern');
+INSERT INTO zones_m17n VALUES (116,2,'Neuenburg');
+INSERT INTO zones_m17n VALUES (117,2,'Nidwalden');
+INSERT INTO zones_m17n VALUES (118,2,'Obwalden');
+INSERT INTO zones_m17n VALUES (119,2,'St. Gallen');
+INSERT INTO zones_m17n VALUES (120,2,'Schaffhausen');
+INSERT INTO zones_m17n VALUES (121,2,'Solothurn');
+INSERT INTO zones_m17n VALUES (122,2,'Schwyz');
+INSERT INTO zones_m17n VALUES (123,2,'Thurgau');
+INSERT INTO zones_m17n VALUES (124,2,'Tessin');
+INSERT INTO zones_m17n VALUES (125,2,'Uri');
+INSERT INTO zones_m17n VALUES (126,2,'Waadt');
+INSERT INTO zones_m17n VALUES (127,2,'Wallis');
+INSERT INTO zones_m17n VALUES (128,2,'Zug');
+INSERT INTO zones_m17n VALUES (129,2,'Zrich');
+INSERT INTO zones_m17n VALUES (130,2,'A Corua');
+INSERT INTO zones_m17n VALUES (131,2,'Alava');
+INSERT INTO zones_m17n VALUES (132,2,'Albacete');
+INSERT INTO zones_m17n VALUES (133,2,'Alicante');
+INSERT INTO zones_m17n VALUES (134,2,'Almeria');
+INSERT INTO zones_m17n VALUES (135,2,'Asturias');
+INSERT INTO zones_m17n VALUES (136,2,'Avila');
+INSERT INTO zones_m17n VALUES (137,2,'Badajoz');
+INSERT INTO zones_m17n VALUES (138,2,'Baleares');
+INSERT INTO zones_m17n VALUES (139,2,'Barcelona');
+INSERT INTO zones_m17n VALUES (140,2,'Burgos');
+INSERT INTO zones_m17n VALUES (141,2,'Caceres');
+INSERT INTO zones_m17n VALUES (142,2,'Cadiz');
+INSERT INTO zones_m17n VALUES (143,2,'Cantabria');
+INSERT INTO zones_m17n VALUES (144,2,'Castellon');
+INSERT INTO zones_m17n VALUES (145,2,'Ceuta');
+INSERT INTO zones_m17n VALUES (146,2,'Ciudad Real');
+INSERT INTO zones_m17n VALUES (147,2,'Cordoba');
+INSERT INTO zones_m17n VALUES (148,2,'Cuenca');
+INSERT INTO zones_m17n VALUES (149,2,'Girona');
+INSERT INTO zones_m17n VALUES (150,2,'Granada');
+INSERT INTO zones_m17n VALUES (151,2,'Guadalajara');
+INSERT INTO zones_m17n VALUES (152,2,'Guipuzcoa');
+INSERT INTO zones_m17n VALUES (153,2,'Huelva');
+INSERT INTO zones_m17n VALUES (154,2,'Huesca');
+INSERT INTO zones_m17n VALUES (155,2,'Jaen');
+INSERT INTO zones_m17n VALUES (156,2,'La Rioja');
+INSERT INTO zones_m17n VALUES (157,2,'Las Palmas');
+INSERT INTO zones_m17n VALUES (158,2,'Leon');
+INSERT INTO zones_m17n VALUES (159,2,'Lleida');
+INSERT INTO zones_m17n VALUES (160,2,'Lugo');
+INSERT INTO zones_m17n VALUES (161,2,'Madrid');
+INSERT INTO zones_m17n VALUES (162,2,'Malaga');
+INSERT INTO zones_m17n VALUES (163,2,'Melilla');
+INSERT INTO zones_m17n VALUES (164,2,'Murcia');
+INSERT INTO zones_m17n VALUES (165,2,'Navarra');
+INSERT INTO zones_m17n VALUES (166,2,'Ourense');
+INSERT INTO zones_m17n VALUES (167,2,'Palencia');
+INSERT INTO zones_m17n VALUES (168,2,'Pontevedra');
+INSERT INTO zones_m17n VALUES (169,2,'Salamanca');
+INSERT INTO zones_m17n VALUES (170,2,'Santa Cruz de Tenerife');
+INSERT INTO zones_m17n VALUES (171,2,'Segovia');
+INSERT INTO zones_m17n VALUES (172,2,'Sevilla');
+INSERT INTO zones_m17n VALUES (173,2,'Soria');
+INSERT INTO zones_m17n VALUES (174,2,'Tarragona');
+INSERT INTO zones_m17n VALUES (175,2,'Teruel');
+INSERT INTO zones_m17n VALUES (176,2,'Toledo');
+INSERT INTO zones_m17n VALUES (177,2,'Valencia');
+INSERT INTO zones_m17n VALUES (178,2,'Valladolid');
+INSERT INTO zones_m17n VALUES (179,2,'Vizcaya');
+INSERT INTO zones_m17n VALUES (180,2,'Zamora');
+INSERT INTO zones_m17n VALUES (181,2,'Zaragoza');
+INSERT INTO zones_m17n VALUES (182,2,'ËÌ³¤Æ»');
+INSERT INTO zones_m17n VALUES (183,2,'ÀÄ¿¹¸©');
+INSERT INTO zones_m17n VALUES (184,2,'´ä¼ê¸©');
+INSERT INTO zones_m17n VALUES (185,2,'µÜ¾ë¸©');
+INSERT INTO zones_m17n VALUES (186,2,'½©ÅÄ¸©');
+INSERT INTO zones_m17n VALUES (187,2,'»³·Á¸©');
+INSERT INTO zones_m17n VALUES (188,2,'Ê¡Åç¸©');
+INSERT INTO zones_m17n VALUES (189,2,'°ñ¾ë¸©');
+INSERT INTO zones_m17n VALUES (190,2,'ÆÊÌÚ¸©');
+INSERT INTO zones_m17n VALUES (191,2,'·²ÇÏ¸©');
+INSERT INTO zones_m17n VALUES (192,2,'ºë¶Ì¸©');
+INSERT INTO zones_m17n VALUES (193,2,'ÀéÍÕ¸©');
+INSERT INTO zones_m17n VALUES (194,2,'ÅìµþÅÔ');
+INSERT INTO zones_m17n VALUES (195,2,'¿ÀÆàÀî¸©');
+INSERT INTO zones_m17n VALUES (196,2,'¿·³ã¸©');
+INSERT INTO zones_m17n VALUES (197,2,'ÉÙ»³¸©');
+INSERT INTO zones_m17n VALUES (198,2,'ÀÐÀî¸©');
+INSERT INTO zones_m17n VALUES (199,2,'Ê¡°æ¸©');
+INSERT INTO zones_m17n VALUES (200,2,'»³Íü¸©');
+INSERT INTO zones_m17n VALUES (201,2,'Ä¹Ìî¸©');
+INSERT INTO zones_m17n VALUES (202,2,'´ôÉì¸©');
+INSERT INTO zones_m17n VALUES (203,2,'ÀÅ²¬¸©');
+INSERT INTO zones_m17n VALUES (204,2,'°¦ÃÎ¸©');
+INSERT INTO zones_m17n VALUES (205,2,'»°½Å¸©');
+INSERT INTO zones_m17n VALUES (206,2,'¼¢²ì¸©');
+INSERT INTO zones_m17n VALUES (207,2,'µþÅÔÉÜ');
+INSERT INTO zones_m17n VALUES (208,2,'ÂçºåÉÜ');
+INSERT INTO zones_m17n VALUES (209,2,'Ê¼¸Ë¸©');
+INSERT INTO zones_m17n VALUES (210,2,'ÆàÎÉ¸©');
+INSERT INTO zones_m17n VALUES (211,2,'ÏÂ²Î»³¸©');
+INSERT INTO zones_m17n VALUES (212,2,'Ä»¼è¸©');
+INSERT INTO zones_m17n VALUES (213,2,'Åçº¬¸©');
+INSERT INTO zones_m17n VALUES (214,2,'²¬»³¸©');
+INSERT INTO zones_m17n VALUES (215,2,'¹­Åç¸©');
+INSERT INTO zones_m17n VALUES (216,2,'»³¸ý¸©');
+INSERT INTO zones_m17n VALUES (217,2,'ÆÁÅç¸©');
+INSERT INTO zones_m17n VALUES (218,2,'¹áÀî¸©');
+INSERT INTO zones_m17n VALUES (219,2,'°¦É²¸©');
+INSERT INTO zones_m17n VALUES (220,2,'¹âÃÎ¸©');
+INSERT INTO zones_m17n VALUES (221,2,'Ê¡²¬¸©');
+INSERT INTO zones_m17n VALUES (222,2,'º´²ì¸©');
+INSERT INTO zones_m17n VALUES (223,2,'Ä¹ºê¸©');
+INSERT INTO zones_m17n VALUES (224,2,'·§ËÜ¸©');
+INSERT INTO zones_m17n VALUES (225,2,'ÂçÊ¬¸©');
+INSERT INTO zones_m17n VALUES (226,2,'µÜºê¸©');
+INSERT INTO zones_m17n VALUES (227,2,'¼¯»ùÅç¸©');
+INSERT INTO zones_m17n VALUES (228,2,'²­Æì¸©');
+INSERT INTO zones_m17n VALUES (154,9,'Huesca');
+INSERT INTO zones_m17n VALUES (153,9,'Huelva');
+INSERT INTO zones_m17n VALUES (152,9,'Guipuzcoa');
+INSERT INTO zones_m17n VALUES (151,9,'Guadalajara');
+INSERT INTO zones_m17n VALUES (150,9,'Granada');
+INSERT INTO zones_m17n VALUES (149,9,'Girona');
+INSERT INTO zones_m17n VALUES (148,9,'Cuenca');
+INSERT INTO zones_m17n VALUES (147,9,'Cordoba');
+INSERT INTO zones_m17n VALUES (146,9,'Ciudad Real');
+INSERT INTO zones_m17n VALUES (145,9,'Ceuta');
+INSERT INTO zones_m17n VALUES (144,9,'Castellon');
+INSERT INTO zones_m17n VALUES (143,9,'Cantabria');
+INSERT INTO zones_m17n VALUES (142,9,'Cadiz');
+INSERT INTO zones_m17n VALUES (141,9,'Caceres');
+INSERT INTO zones_m17n VALUES (140,9,'Burgos');
+INSERT INTO zones_m17n VALUES (139,9,'Barcelona');
+INSERT INTO zones_m17n VALUES (138,9,'Baleares');
+INSERT INTO zones_m17n VALUES (137,9,'Badajoz');
+INSERT INTO zones_m17n VALUES (136,9,'Avila');
+INSERT INTO zones_m17n VALUES (135,9,'Asturias');
+INSERT INTO zones_m17n VALUES (134,9,'Almeria');
+INSERT INTO zones_m17n VALUES (133,9,'Alicante');
+INSERT INTO zones_m17n VALUES (132,9,'Albacete');
+INSERT INTO zones_m17n VALUES (131,9,'Alava');
+INSERT INTO zones_m17n VALUES (130,9,'A Corua');
+INSERT INTO zones_m17n VALUES (129,9,'Zrich');
+INSERT INTO zones_m17n VALUES (128,9,'Zug');
+INSERT INTO zones_m17n VALUES (127,9,'Wallis');
+INSERT INTO zones_m17n VALUES (126,9,'Waadt');
+INSERT INTO zones_m17n VALUES (125,9,'Uri');
+INSERT INTO zones_m17n VALUES (124,9,'Tessin');
+INSERT INTO zones_m17n VALUES (123,9,'Thurgau');
+INSERT INTO zones_m17n VALUES (122,9,'Schwyz');
+INSERT INTO zones_m17n VALUES (121,9,'Solothurn');
+INSERT INTO zones_m17n VALUES (120,9,'Schaffhausen');
+INSERT INTO zones_m17n VALUES (119,9,'St. Gallen');
+INSERT INTO zones_m17n VALUES (118,9,'Obwalden');
+INSERT INTO zones_m17n VALUES (117,9,'Nidwalden');
+INSERT INTO zones_m17n VALUES (116,9,'Neuenburg');
+INSERT INTO zones_m17n VALUES (115,9,'Luzern');
+INSERT INTO zones_m17n VALUES (114,9,'Jura');
+INSERT INTO zones_m17n VALUES (113,9,'Graubnden');
+INSERT INTO zones_m17n VALUES (112,9,'Glarus');
+INSERT INTO zones_m17n VALUES (111,9,'Genf');
+INSERT INTO zones_m17n VALUES (110,9,'Freiburg');
+INSERT INTO zones_m17n VALUES (109,9,'Basel-Stadt');
+INSERT INTO zones_m17n VALUES (108,9,'Basel-Landschaft');
+INSERT INTO zones_m17n VALUES (107,9,'Bern');
+INSERT INTO zones_m17n VALUES (106,9,'Appenzell Ausserrhoden');
+INSERT INTO zones_m17n VALUES (105,9,'Appenzell Innerrhoden');
+INSERT INTO zones_m17n VALUES (104,9,'Aargau');
+INSERT INTO zones_m17n VALUES (103,9,'Voralberg');
+INSERT INTO zones_m17n VALUES (102,9,'Burgenland');
+INSERT INTO zones_m17n VALUES (101,9,'Tirol');
+INSERT INTO zones_m17n VALUES (100,9,'Steiermark');
+INSERT INTO zones_m17n VALUES (99,9,'Kten');
+INSERT INTO zones_m17n VALUES (98,9,'Salzburg');
+INSERT INTO zones_m17n VALUES (97,9,'Obersterreich');
+INSERT INTO zones_m17n VALUES (96,9,'Niedersterreich');
+INSERT INTO zones_m17n VALUES (95,9,'Wien');
+INSERT INTO zones_m17n VALUES (94,9,'Thringen');
+INSERT INTO zones_m17n VALUES (93,9,'Schleswig-Holstein');
+INSERT INTO zones_m17n VALUES (92,9,'Sachsen-Anhalt');
+INSERT INTO zones_m17n VALUES (91,9,'Sachsen');
+INSERT INTO zones_m17n VALUES (90,9,'Saarland');
+INSERT INTO zones_m17n VALUES (89,9,'Rheinland-Pfalz');
+INSERT INTO zones_m17n VALUES (88,9,'Nordrhein-Westfalen');
+INSERT INTO zones_m17n VALUES (87,9,'Mecklenburg-Vorpommern');
+INSERT INTO zones_m17n VALUES (86,9,'Hessen');
+INSERT INTO zones_m17n VALUES (85,9,'Hamburg');
+INSERT INTO zones_m17n VALUES (84,9,'Bremen');
+INSERT INTO zones_m17n VALUES (83,9,'Brandenburg');
+INSERT INTO zones_m17n VALUES (82,9,'Berlin');
+INSERT INTO zones_m17n VALUES (81,9,'Bayern');
+INSERT INTO zones_m17n VALUES (80,9,'Baden-Wrttemberg');
+INSERT INTO zones_m17n VALUES (79,9,'Niedersachsen');
+INSERT INTO zones_m17n VALUES (78,9,'Yukon Territory');
+INSERT INTO zones_m17n VALUES (77,9,'Saskatchewan');
+INSERT INTO zones_m17n VALUES (76,9,'Quebec');
+INSERT INTO zones_m17n VALUES (75,9,'Prince Edward Island');
+INSERT INTO zones_m17n VALUES (74,9,'Ontario');
+INSERT INTO zones_m17n VALUES (73,9,'Nunavut');
+INSERT INTO zones_m17n VALUES (72,9,'Northwest Territories');
+INSERT INTO zones_m17n VALUES (71,9,'Nova Scotia');
+INSERT INTO zones_m17n VALUES (70,9,'New Brunswick');
+INSERT INTO zones_m17n VALUES (69,9,'Newfoundland');
+INSERT INTO zones_m17n VALUES (68,9,'Manitoba');
+INSERT INTO zones_m17n VALUES (67,9,'British Columbia');
+INSERT INTO zones_m17n VALUES (66,9,'Alberta');
+INSERT INTO zones_m17n VALUES (65,9,'Wyoming');
+INSERT INTO zones_m17n VALUES (64,9,'Wisconsin');
+INSERT INTO zones_m17n VALUES (63,9,'West Virginia');
+INSERT INTO zones_m17n VALUES (62,9,'Washington');
+INSERT INTO zones_m17n VALUES (61,9,'Virginia');
+INSERT INTO zones_m17n VALUES (60,9,'Virgin Islands');
+INSERT INTO zones_m17n VALUES (59,9,'Vermont');
+INSERT INTO zones_m17n VALUES (58,9,'Utah');
+INSERT INTO zones_m17n VALUES (57,9,'Texas');
+INSERT INTO zones_m17n VALUES (56,9,'Tennessee');
+INSERT INTO zones_m17n VALUES (55,9,'South Dakota');
+INSERT INTO zones_m17n VALUES (54,9,'South Carolina');
+INSERT INTO zones_m17n VALUES (53,9,'Rhode Island');
+INSERT INTO zones_m17n VALUES (52,9,'Puerto Rico');
+INSERT INTO zones_m17n VALUES (51,9,'Pennsylvania');
+INSERT INTO zones_m17n VALUES (50,9,'Palau');
+INSERT INTO zones_m17n VALUES (49,9,'Oregon');
+INSERT INTO zones_m17n VALUES (48,9,'Oklahoma');
+INSERT INTO zones_m17n VALUES (47,9,'Ohio');
+INSERT INTO zones_m17n VALUES (46,9,'Northern Mariana Islands');
+INSERT INTO zones_m17n VALUES (45,9,'North Dakota');
+INSERT INTO zones_m17n VALUES (44,9,'North Carolina');
+INSERT INTO zones_m17n VALUES (43,9,'New York');
+INSERT INTO zones_m17n VALUES (42,9,'New Mexico');
+INSERT INTO zones_m17n VALUES (41,9,'New Jersey');
+INSERT INTO zones_m17n VALUES (40,9,'New Hampshire');
+INSERT INTO zones_m17n VALUES (39,9,'Nevada');
+INSERT INTO zones_m17n VALUES (38,9,'Nebraska');
+INSERT INTO zones_m17n VALUES (37,9,'Montana');
+INSERT INTO zones_m17n VALUES (36,9,'Missouri');
+INSERT INTO zones_m17n VALUES (35,9,'Mississippi');
+INSERT INTO zones_m17n VALUES (34,9,'Minnesota');
+INSERT INTO zones_m17n VALUES (33,9,'Michigan');
+INSERT INTO zones_m17n VALUES (32,9,'Massachusetts');
+INSERT INTO zones_m17n VALUES (31,9,'Maryland');
+INSERT INTO zones_m17n VALUES (30,9,'Marshall Islands');
+INSERT INTO zones_m17n VALUES (29,9,'Maine');
+INSERT INTO zones_m17n VALUES (28,9,'Louisiana');
+INSERT INTO zones_m17n VALUES (27,9,'Kentucky');
+INSERT INTO zones_m17n VALUES (26,9,'Kansas');
+INSERT INTO zones_m17n VALUES (25,9,'Iowa');
+INSERT INTO zones_m17n VALUES (24,9,'Indiana');
+INSERT INTO zones_m17n VALUES (23,9,'Illinois');
+INSERT INTO zones_m17n VALUES (22,9,'Idaho');
+INSERT INTO zones_m17n VALUES (21,9,'Hawaii');
+INSERT INTO zones_m17n VALUES (20,9,'Guam');
+INSERT INTO zones_m17n VALUES (19,9,'Georgia');
+INSERT INTO zones_m17n VALUES (18,9,'Florida');
+INSERT INTO zones_m17n VALUES (17,9,'Federated States Of Micronesia');
+INSERT INTO zones_m17n VALUES (16,9,'District of Columbia');
+INSERT INTO zones_m17n VALUES (15,9,'Delaware');
+INSERT INTO zones_m17n VALUES (14,9,'Connecticut');
+INSERT INTO zones_m17n VALUES (13,9,'Colorado');
+INSERT INTO zones_m17n VALUES (12,9,'California');
+INSERT INTO zones_m17n VALUES (11,9,'Armed Forces Pacific');
+INSERT INTO zones_m17n VALUES (10,9,'Armed Forces Middle East');
+INSERT INTO zones_m17n VALUES (9,9,'Armed Forces Europe');
+INSERT INTO zones_m17n VALUES (8,9,'Armed Forces Canada');
+INSERT INTO zones_m17n VALUES (7,9,'Armed Forces Americas');
+INSERT INTO zones_m17n VALUES (6,9,'Armed Forces Africa');
+INSERT INTO zones_m17n VALUES (5,9,'Arkansas');
+INSERT INTO zones_m17n VALUES (4,9,'Arizona');
+INSERT INTO zones_m17n VALUES (3,9,'American Samoa');
+INSERT INTO zones_m17n VALUES (2,9,'Alaska');
+INSERT INTO zones_m17n VALUES (1,9,'Alabama');
+INSERT INTO zones_m17n VALUES (155,9,'Jaen');
+INSERT INTO zones_m17n VALUES (156,9,'La Rioja');
+INSERT INTO zones_m17n VALUES (157,9,'Las Palmas');
+INSERT INTO zones_m17n VALUES (158,9,'Leon');
+INSERT INTO zones_m17n VALUES (159,9,'Lleida');
+INSERT INTO zones_m17n VALUES (160,9,'Lugo');
+INSERT INTO zones_m17n VALUES (161,9,'Madrid');
+INSERT INTO zones_m17n VALUES (162,9,'Malaga');
+INSERT INTO zones_m17n VALUES (163,9,'Melilla');
+INSERT INTO zones_m17n VALUES (164,9,'Murcia');
+INSERT INTO zones_m17n VALUES (165,9,'Navarra');
+INSERT INTO zones_m17n VALUES (166,9,'Ourense');
+INSERT INTO zones_m17n VALUES (167,9,'Palencia');
+INSERT INTO zones_m17n VALUES (168,9,'Pontevedra');
+INSERT INTO zones_m17n VALUES (169,9,'Salamanca');
+INSERT INTO zones_m17n VALUES (170,9,'Santa Cruz de Tenerife');
+INSERT INTO zones_m17n VALUES (171,9,'Segovia');
+INSERT INTO zones_m17n VALUES (172,9,'Sevilla');
+INSERT INTO zones_m17n VALUES (173,9,'Soria');
+INSERT INTO zones_m17n VALUES (174,9,'Tarragona');
+INSERT INTO zones_m17n VALUES (175,9,'Teruel');
+INSERT INTO zones_m17n VALUES (176,9,'Toledo');
+INSERT INTO zones_m17n VALUES (177,9,'Valencia');
+INSERT INTO zones_m17n VALUES (178,9,'Valladolid');
+INSERT INTO zones_m17n VALUES (179,9,'Vizcaya');
+INSERT INTO zones_m17n VALUES (180,9,'Zamora');
+INSERT INTO zones_m17n VALUES (181,9,'Zaragoza');
+INSERT INTO zones_m17n VALUES (182,9,'ËÌ³¤Æ»');
+INSERT INTO zones_m17n VALUES (183,9,'ÀÄ¿¹¸©');
+INSERT INTO zones_m17n VALUES (184,9,'´ä¼ê¸©');
+INSERT INTO zones_m17n VALUES (185,9,'µÜ¾ë¸©');
+INSERT INTO zones_m17n VALUES (186,9,'½©ÅÄ¸©');
+INSERT INTO zones_m17n VALUES (187,9,'»³·Á¸©');
+INSERT INTO zones_m17n VALUES (188,9,'Ê¡Åç¸©');
+INSERT INTO zones_m17n VALUES (189,9,'°ñ¾ë¸©');
+INSERT INTO zones_m17n VALUES (190,9,'ÆÊÌÚ¸©');
+INSERT INTO zones_m17n VALUES (191,9,'·²ÇÏ¸©');
+INSERT INTO zones_m17n VALUES (192,9,'ºë¶Ì¸©');
+INSERT INTO zones_m17n VALUES (193,9,'ÀéÍÕ¸©');
+INSERT INTO zones_m17n VALUES (194,9,'ÅìµþÅÔ');
+INSERT INTO zones_m17n VALUES (195,9,'¿ÀÆàÀî¸©');
+INSERT INTO zones_m17n VALUES (196,9,'¿·³ã¸©');
+INSERT INTO zones_m17n VALUES (197,9,'ÉÙ»³¸©');
+INSERT INTO zones_m17n VALUES (198,9,'ÀÐÀî¸©');
+INSERT INTO zones_m17n VALUES (199,9,'Ê¡°æ¸©');
+INSERT INTO zones_m17n VALUES (200,9,'»³Íü¸©');
+INSERT INTO zones_m17n VALUES (201,9,'Ä¹Ìî¸©');
+INSERT INTO zones_m17n VALUES (202,9,'´ôÉì¸©');
+INSERT INTO zones_m17n VALUES (203,9,'ÀÅ²¬¸©');
+INSERT INTO zones_m17n VALUES (204,9,'°¦ÃÎ¸©');
+INSERT INTO zones_m17n VALUES (205,9,'»°½Å¸©');
+INSERT INTO zones_m17n VALUES (206,9,'¼¢²ì¸©');
+INSERT INTO zones_m17n VALUES (207,9,'µþÅÔÉÜ');
+INSERT INTO zones_m17n VALUES (208,9,'ÂçºåÉÜ');
+INSERT INTO zones_m17n VALUES (209,9,'Ê¼¸Ë¸©');
+INSERT INTO zones_m17n VALUES (210,9,'ÆàÎÉ¸©');
+INSERT INTO zones_m17n VALUES (211,9,'ÏÂ²Î»³¸©');
+INSERT INTO zones_m17n VALUES (212,9,'Ä»¼è¸©');
+INSERT INTO zones_m17n VALUES (213,9,'Åçº¬¸©');
+INSERT INTO zones_m17n VALUES (214,9,'²¬»³¸©');
+INSERT INTO zones_m17n VALUES (215,9,'¹­Åç¸©');
+INSERT INTO zones_m17n VALUES (216,9,'»³¸ý¸©');
+INSERT INTO zones_m17n VALUES (217,9,'ÆÁÅç¸©');
+INSERT INTO zones_m17n VALUES (218,9,'¹áÀî¸©');
+INSERT INTO zones_m17n VALUES (219,9,'°¦É²¸©');
+INSERT INTO zones_m17n VALUES (220,9,'¹âÃÎ¸©');
+INSERT INTO zones_m17n VALUES (221,9,'Ê¡²¬¸©');
+INSERT INTO zones_m17n VALUES (222,9,'º´²ì¸©');
+INSERT INTO zones_m17n VALUES (223,9,'Ä¹ºê¸©');
+INSERT INTO zones_m17n VALUES (224,9,'·§ËÜ¸©');
+INSERT INTO zones_m17n VALUES (225,9,'ÂçÊ¬¸©');
+INSERT INTO zones_m17n VALUES (226,9,'µÜºê¸©');
+INSERT INTO zones_m17n VALUES (227,9,'¼¯»ùÅç¸©');
+INSERT INTO zones_m17n VALUES (228,9,'²­Æì¸©');
 
 --
 -- Table structure for table zones_to_geo_zones

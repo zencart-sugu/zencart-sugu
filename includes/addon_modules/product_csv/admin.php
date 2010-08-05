@@ -18,7 +18,7 @@ if ($action == 'import') {
   // update
   $format = $ProductCSV->getFormatById($_POST['csv_format_id']);
   if (isset($_POST['upfile']) && $_FILES['file'] && $_FILES['file']['size'] > 0) {
-    $tempfile = DIR_FS_CATALOG . '/temp/import_' . date('YmdHis') . '.csv';
+    $tempfile = DIR_FS_CATALOG . 'temp/import_' . date('YmdHis') . '.csv';
     move_uploaded_file($_FILES['file']['tmp_name'], $tempfile);
   }
   if (is_readable($tempfile)) {
@@ -114,7 +114,7 @@ if ($action == 'import') {
   foreach ($format['columns'] as $val) {
     $arr[] = mb_convert_encoding($val['csv_column_name'], MODULE_PRODUCT_CSV_EXPORT_CHARACTER ,MODULE_PRODUCT_CSV_INTERNAL_CHARACTER);
   }
-  $tempfile = DIR_FS_CATALOG . '/temp/export_'.date('YmdHis').'.csv';
+  $tempfile = DIR_FS_CATALOG . 'temp/export_'.date('YmdHis').'.csv';
   File_CSV::getPointer($tempfile, $conf, FILE_MODE_WRITE);
   File_CSV::write($tempfile, $arr, $conf);
 
@@ -186,6 +186,11 @@ if ($action == 'import') {
   }
 
   // output and delete tempfile
+  if ($request_type== 'NONSSL') {
+    header("Pragma: no-cache");
+  } else {
+    header("Pragma: ");
+  }
   header('Content-Type: application/octet-stream');
   header('Content-Disposition: attachment; filename="'.$prefix.date('YmdHis').'.csv"');
   header('Content-Length: '.filesize($tempfile));
@@ -226,7 +231,7 @@ PRODUCT_CSV_EXPORT_TITLE.'</th></tr><tr><td><table border="0" width="100%" cells
 <th width="40%"><label for="category">'.PRODUCT_CSV_EXPORT_CATEGORY.': </label></th><td>'.zen_draw_pull_down_menu('category_id', zen_get_category_tree(), '', 'id="category"').'</td>
 </tr>
 <tr>
-<td  colspan="2" align="center"><input type="image" name="downfile" src="../admin/includes/languages/japanese/images/buttons/button_download_csv.gif" value="'.PRODUCT_CSV_EXPORT_BUTTON.'"/></td>
+<td  colspan="2" align="center"><input type="submit" name="downfile" value="'.PRODUCT_CSV_EXPORT_BUTTON.'"/></td>
 </form>
 </tr>
 </table>
