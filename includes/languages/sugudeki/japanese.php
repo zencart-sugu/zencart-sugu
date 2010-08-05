@@ -18,7 +18,6 @@ if(MODULE_ADDON_MODULES_REFER_RESOURCE_SERVER_STATUS == 'true'){
     $prefix_image_host = MODULE_ADDON_MODULES_REFER_RESOURCE_SERVER_HOST_SSL . '/';
 }
 $images = $prefix_image_host . $template->get_template_dir('images/',DIR_WS_TEMPLATE, $current_page_base,'images/');
-define('TITLE', STORE_NAME);
 
 //ヘッダー　===============================================================================================
 
