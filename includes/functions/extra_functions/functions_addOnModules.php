@@ -341,4 +341,31 @@ function zen_addOnModules_get_block($module_name, $block_name = 'block') {
     return '';
   }
 }
+
+/**
+ * call addon_module's methods with parameter.
+ *
+ * @param string $module_name module's_name
+ * @param string $function_name function's name
+ * @param array $values function's parameter
+ */
+function zen_addOnModules_call_function($module_name, $function_name, $values = array(), $default_module_name = null, $default_function_name = null, $default_values = array()) {
+  if (is_object($GLOBALS[$module_name]) && $GLOBALS[$module_name]->enabled) {
+    if (method_exists($GLOBALS[$module_name], $function_name)) {
+      // call class method
+      return call_user_func_array(array($GLOBALS[$module_name], $function_name), $values);
+    }
+  } elseif (!is_null($default_function_name)) {
+    if (!is_null($default_module_name) && is_object($GLOBALS[$default_module_name]) && $GLOBALS[$default_module_name]->enabled) {
+      if (method_exists($GLOBALS[$default_module_name], $default_function_name)) {
+        // call class method
+        return call_user_func_array(array($GLOBALS[$default_module_name], $default_function_name), $values);
+      } elseif (functions_exists($default_function_name)) {
+        // call global functions
+        return call_user_func_array($function_name, $values);
+      }
+    }
+  }
+  return '';
+}
 ?>
