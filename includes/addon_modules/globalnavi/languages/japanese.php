@@ -38,4 +38,4 @@ define('MODULE_GLOBALNAVI_LIMIT_DESCRIPTION', '¥°¥í¡¼¥Ð¥ë¥Ê¥Ó¤ËÉ½¼¨¤¹¤ë¥«¥Æ¥´¥ê¿
 // addon_module¥Ö¥í¥Ã¥¯´ÉÍýÍÑ
 define('MODULE_GLOBALNAVI_BLOCK_TITLE', '¥°¥í¡¼¥Ð¥ë¥Ê¥Ó');
 
-?>
+?> 
