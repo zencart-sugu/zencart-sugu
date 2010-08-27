@@ -364,6 +364,9 @@ function zen_addOnModules_call_function($module_name, $function_name, $values = 
         // call global functions
         return call_user_func_array($function_name, $values);
       }
+    } else {
+      // call global functions
+      return call_user_func_array($function_name, $values);
     }
   }
   return '';
