@@ -46,10 +46,10 @@
       }
     }
     catch (HTTP_Request2_Exception $e) {
-      $results['error'] = '';//$e->getMessage();
+      $results['error'] = $e->getMessage();
     }
     catch (Exception $e) {
-      $results['error'] = '';//$e->getMessage();;
+      $results['error'] = $e->getMessage();
     }
 
     // タイムアウト戻し
