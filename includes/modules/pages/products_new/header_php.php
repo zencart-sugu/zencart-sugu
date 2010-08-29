@@ -18,7 +18,7 @@
 // display limits
   $display_limit = zen_get_products_new_timelimit();
 
-  $products_new_query_raw = "SELECT p.products_id, p.products_type, pd.products_name, pd.products_short_desc, p.products_image, p.products_price, 
+  $products_new_query_raw = "SELECT p.products_id, p.products_type, pd.products_name, p.products_image, p.products_price, 
                                     p.products_tax_class_id, p.products_date_added, mi.manufacturers_name, p.products_model, 
                                     p.products_quantity, p.products_weight, p.product_is_call 
                              FROM " . TABLE_PRODUCTS . " p 
