@@ -20,7 +20,7 @@
 
   $products_all_array = array();
 
-  $products_all_query_raw = "SELECT p.products_type, p.products_id, pd.products_name, pd.products_short_desc, p.products_image, p.products_price, p.products_tax_class_id, 
+  $products_all_query_raw = "SELECT p.products_type, p.products_id, pd.products_name, p.products_image, p.products_price, p.products_tax_class_id, 
                                     p.products_date_added, mi.manufacturers_name, p.products_model, p.products_quantity, p.products_weight, p.product_is_call 
                              FROM " . TABLE_PRODUCTS . " p 
                              LEFT JOIN " . TABLE_MANUFACTURERS . " m ON (p.manufacturers_id = m.manufacturers_id) 
