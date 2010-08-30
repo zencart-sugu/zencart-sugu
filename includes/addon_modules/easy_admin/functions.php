@@ -31,85 +31,85 @@
     $index  = 0;
     $menus  = array();
 
-	//トップメニューを取得する処理ここから
+    //トップメニューを取得する処理ここから
     while (!$result->EOF) {
 
-		//トップメニューIDをキーにサブメニュー数を取得
-		$sql = "select "
-					."count(*) "
-				. "from "
-					. TABLE_EASY_ADMIN_SUB_MENUS . " "
-				. "where "
-					. "easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
+        //トップメニューIDをキーにサブメニュー数を取得
+        $sql = "select "
+                    ."count(*) "
+                . "from "
+                    . TABLE_EASY_ADMIN_SUB_MENUS . " "
+                . "where "
+                    . "easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
 
-		$cnt_submenu = $db->Execute($sql);
+        $cnt_submenu = $db->Execute($sql);
 
-		//トップメニューIDと管理者IDをキーにアクセス制御リスト数を取得
-		$sql = "select "
-					. "count(*) "
-				. "from "
-					. TABLE_ADMIN_ACL . " "
-				. "where "
-					. "admin_id = " . $_SESSION['admin_id'] . " "
-				. "and "
-					. "easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
+        //トップメニューIDと管理者IDをキーにアクセス制御リスト数を取得
+        $sql = "select "
+                    . "count(*) "
+                . "from "
+                    . TABLE_ADMIN_ACL . " "
+                . "where "
+                    . "admin_id = " . $_SESSION['admin_id'] . " "
+                . "and "
+                    . "easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
 
-		$cnt_acllist = $db->Execute($sql);
+        $cnt_acllist = $db->Execute($sql);
 
-		//サブメニュー数と制御リスト数が異なれば処理
-		//（同じならトップメニューを含むメニュー生成処理はスルー）
-		if($cnt_submenu->fields['count(*)'] != $cnt_acllist->fields['count(*)']) {
+        //サブメニュー数と制御リスト数が異なれば処理
+        //（同じならトップメニューを含むメニュー生成処理はスルー）
+        if($cnt_submenu->fields['count(*)'] != $cnt_acllist->fields['count(*)']) {
 
-			$menus[$index] = array('id' => $result->fields['easy_admin_top_menu_id'],
-									'name' => $result->fields['easy_admin_top_menu_name']);
+            $menus[$index] = array('id' => $result->fields['easy_admin_top_menu_id'],
+                                    'name' => $result->fields['easy_admin_top_menu_name']);
 
-			//サブメニューデータ取得
-			$sql = "select "
-						. "edsm.easy_admin_sub_menu_id, "
-						. "edsm.easy_admin_sub_menu_name, "
-						. "edsm.easy_admin_sub_menu_url, "
-						. "aa.acl_id "
-					. "from "
-						. TABLE_EASY_ADMIN_SUB_MENUS . " edsm "
-					. "left join "
-						. TABLE_ADMIN_ACL . " aa "
-					. "on "
-						. "edsm.easy_admin_sub_menu_id = aa.easy_admin_sub_menu_id "
-					. "and "
-						. "aa.admin_id = " . $_SESSION['admin_id'] . " "
-					. "where "
-						. "edsm.easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
+            //サブメニューデータ取得
+            $sql = "select "
+                        . "edsm.easy_admin_sub_menu_id, "
+                        . "edsm.easy_admin_sub_menu_name, "
+                        . "edsm.easy_admin_sub_menu_url, "
+                        . "aa.acl_id "
+                    . "from "
+                        . TABLE_EASY_ADMIN_SUB_MENUS . " edsm "
+                    . "left join "
+                        . TABLE_ADMIN_ACL . " aa "
+                    . "on "
+                        . "edsm.easy_admin_sub_menu_id = aa.easy_admin_sub_menu_id "
+                    . "and "
+                        . "aa.admin_id = " . $_SESSION['admin_id'] . " "
+                    . "where "
+                        . "edsm.easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
 
-			$subresult = $db->Execute($sql);
+            $subresult = $db->Execute($sql);
 
-			$menus[$index]['menu'] = array();
+            $menus[$index]['menu'] = array();
 
 
-			while (!$subresult->EOF) {
-				if(empty($subresult->fields['acl_id'])) {
-					$menus[$index]['menu'][] = array('id' => $subresult->fields['easy_admin_sub_menu_id'],
-													'name' => $subresult->fields['easy_admin_sub_menu_name'],
-													'url'  => $subresult->fields['easy_admin_sub_menu_url']);
-				}
+            while (!$subresult->EOF) {
+                if(empty($subresult->fields['acl_id'])) {
+                    $menus[$index]['menu'][] = array('id' => $subresult->fields['easy_admin_sub_menu_id'],
+                                                    'name' => $subresult->fields['easy_admin_sub_menu_name'],
+                                                    'url'  => $subresult->fields['easy_admin_sub_menu_url']);
+                }
 
-				$subresult->MoveNext();
+                $subresult->MoveNext();
 
-			}
+            }
 
-			$index++;
+            $index++;
 
-		}
+        }
 
-		$result->MoveNext();
+        $result->MoveNext();
 
-	}
+    }
 
     return $menus;
   }
 
   function getSelectAcl($dropdown=1) {
 
-	global $db;
+    global $db;
 
     $sql = "select
                easy_admin_top_menu_id
@@ -129,88 +129,88 @@
 
     while (!$result->EOF) {
 
-    	//トップメニューにサブメニューが登録されていなければトップも非表示にする処理
-		$sql = "select "
-					. "count(*) "
-				. "from "
-					. TABLE_EASY_ADMIN_SUB_MENUS . " "
-				. "where "
-					. "easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
+        //トップメニューにサブメニューが登録されていなければトップも非表示にする処理
+        $sql = "select "
+                    . "count(*) "
+                . "from "
+                    . TABLE_EASY_ADMIN_SUB_MENUS . " "
+                . "where "
+                    . "easy_admin_top_menu_id = " . $result->fields['easy_admin_top_menu_id'];
 
-		$cnt_submenu = $db->Execute($sql);
+        $cnt_submenu = $db->Execute($sql);
 
-		if(!empty($cnt_submenu->fields['count(*)'])) {
+        if(!empty($cnt_submenu->fields['count(*)'])) {
 
-			$acls[$index] = array('id'   => $result->fields['easy_admin_top_menu_id'],
-									'name' => $result->fields['easy_admin_top_menu_name']);
+            $acls[$index] = array('id'   => $result->fields['easy_admin_top_menu_id'],
+                                    'name' => $result->fields['easy_admin_top_menu_name']);
 
-	      	$sql = "select
-						easy_admin_sub_menu_id
-						,easy_admin_sub_menu_name
-						,easy_admin_sub_menu_url
-					from ".
-						TABLE_EASY_ADMIN_SUB_MENUS."
-					where
-						easy_admin_top_menu_id=".(int)$result->fields['easy_admin_top_menu_id']."
-					order by
-						easy_admin_sub_menu_sort_order";
+              $sql = "select
+                        easy_admin_sub_menu_id
+                        ,easy_admin_sub_menu_name
+                        ,easy_admin_sub_menu_url
+                    from ".
+                        TABLE_EASY_ADMIN_SUB_MENUS."
+                    where
+                        easy_admin_top_menu_id=".(int)$result->fields['easy_admin_top_menu_id']."
+                    order by
+                        easy_admin_sub_menu_sort_order";
 
-			$subresult = $db->Execute($sql);
+            $subresult = $db->Execute($sql);
 
-			$acls[$index]['menu'] = array();
+            $acls[$index]['menu'] = array();
 
-			while (!$subresult->EOF) {
-				$acls[$index]['menu'][] = array('id' => $subresult->fields['easy_admin_sub_menu_id'],
-												'name' => $subresult->fields['easy_admin_sub_menu_name'],
-												'url'  => $subresult->fields['easy_admin_sub_menu_url']);
-				$subresult->MoveNext();
-			}
+            while (!$subresult->EOF) {
+                $acls[$index]['menu'][] = array('id' => $subresult->fields['easy_admin_sub_menu_id'],
+                                                'name' => $subresult->fields['easy_admin_sub_menu_name'],
+                                                'url'  => $subresult->fields['easy_admin_sub_menu_url']);
+                $subresult->MoveNext();
+            }
 
-			$index++;
+            $index++;
 
-		}
+        }
 
-		$result->MoveNext();
-	}
+        $result->MoveNext();
+    }
 
     return $acls;
   }
 
   //アカウントごとの拒否設定情報を取得
-	function aclCheckList($menu, $admin) {
+    function aclCheckList($menu, $admin) {
 
-		global $db;
+        global $db;
 
-		if(empty($admin)) $admin = 0;
+        if(empty($admin)) $admin = 0;
 
-		for($i=0; $i<count($menu); $i++) {
+        for($i=0; $i<count($menu); $i++) {
 
-			for($n=0; $n<count($menu[$i]['menu']); $n++) {
+            for($n=0; $n<count($menu[$i]['menu']); $n++) {
 
-				$sql = "select "
-							. "count(*) "
-						. "from "
-							. "admin_acl "
-						. "where "
-							. "admin_id = " . $admin . " "
-						. "and "
-							. "easy_admin_sub_menu_id = " . $menu[$i]['menu'][$n]['id'];
+                $sql = "select "
+                            . "count(*) "
+                        . "from "
+                            . "admin_acl "
+                        . "where "
+                            . "admin_id = " . $admin . " "
+                        . "and "
+                            . "easy_admin_sub_menu_id = " . $menu[$i]['menu'][$n]['id'];
 
-				$count = $db->execute($sql);
+                $count = $db->execute($sql);
 
-				if(!empty($count->fields['count(*)'])) {
-					$menu[$i]['menu'][$n]['aclflag'] = "checked";
-				}else{
-					$menu[$i]['menu'][$n]['aclflag'] = NULL;
-				}
+                if(!empty($count->fields['count(*)'])) {
+                    $menu[$i]['menu'][$n]['aclflag'] = "checked";
+                }else{
+                    $menu[$i]['menu'][$n]['aclflag'] = NULL;
+                }
 
-			}
+            }
 
-		}
+        }
 
-		return $menu;
+        return $menu;
 
-	}
+    }
 
   function getTopMenus($id=0) {
     global $db;
@@ -224,10 +224,10 @@
               TABLE_EASY_ADMIN_TOP_MENUS;
     if ($id>0)
       $sql .= " where easy_admin_top_menu_id=".(int)$id;
-	  $sql .= " order by
-	              easy_admin_top_menu_sort_order";
-	  $result = $db->Execute($sql);
-	  $menu   = array();
+      $sql .= " order by
+                  easy_admin_top_menu_sort_order";
+      $result = $db->Execute($sql);
+      $menu   = array();
     while (!$result->EOF) {
       $menu[] = array('id'       => $result->fields['easy_admin_top_menu_id'],
                       'name'     => $result->fields['easy_admin_top_menu_name'],
@@ -275,7 +275,8 @@
   }
 
   function getSubMenus($pid, $id=0) {
-    global $db;
+
+      global $db;
 
     $sql = "select
                easy_admin_top_menu_id
@@ -295,25 +296,27 @@
     $menu   = array();
     while (!$result->EOF) {
 
-    	//admin_aclテーブルチェック 10/06/18
-    	$sql = "select "
-    				. "count(*) "
-    			. "from "
-    				. TABLE_ADMIN_ACL . " "
-    			. "where "
-    				. "easy_admin_sub_menu_id = " . $result->fields['easy_admin_sub_menu_id'];
+        //admin_aclテーブルチェック 10/06/18
+        $sql = "select "
+                    . "count(*) "
+                . "from "
+                    . TABLE_ADMIN_ACL . " "
+                . "where "
+                    . "easy_admin_sub_menu_id = " . $result->fields['easy_admin_sub_menu_id'] . " "
+                . "and "
+                    . "admin_id = " . $_SESSION['admin_id'];
 
-    	$acl = $db->Execute($sql);
+        $acl = $db->Execute($sql);
 
-		if(empty($acl->fields['count(*)'])) {
-			$menu[] = array('id'    => $result->fields['easy_admin_sub_menu_id'],
-							'topid' => $result->fields['easy_admin_top_menu_id'],
-							'name'  => $result->fields['easy_admin_sub_menu_name'],
-							'url'   => $result->fields['easy_admin_sub_menu_url'],
-							'order' => $result->fields['easy_admin_sub_menu_sort_order']);
-		}
+        if(empty($acl->fields['count(*)'])) {
+            $menu[] = array('id'    => $result->fields['easy_admin_sub_menu_id'],
+                            'topid' => $result->fields['easy_admin_top_menu_id'],
+                            'name'  => $result->fields['easy_admin_sub_menu_name'],
+                            'url'   => $result->fields['easy_admin_sub_menu_url'],
+                            'order' => $result->fields['easy_admin_sub_menu_sort_order']);
+        }
 
-		$result->MoveNext();
+        $result->MoveNext();
     }
 
     return $menu;
@@ -357,7 +360,7 @@
 
   function parseAdminMenus() {
 
-  	global $db;
+      global $db;
     $PHP_SELF = "dummy";
 
     ob_start();
@@ -407,31 +410,31 @@
     return $keymenu;
   }
 
-	function check_page($p) {
+    function check_page($p) {
 
-		global $db;
+        global $db;
 
-		$sql = "select "
-					. "count(*) "
-				. "from "
-					. TABLE_ADMIN_ACL . " aa "
-				. "inner join "
-					. TABLE_EASY_ADMIN_SUB_MENUS . " easm "
-				. "on "
-					. "aa.easy_admin_sub_menu_id = easm.easy_admin_sub_menu_id "
-				. "where "
-					. "aa.admin_id = " . $_SESSION['admin_id'] . " "
-				. "and "
-					. "easy_admin_sub_menu_url = '" . $p . "'";
+        $sql = "select "
+                    . "count(*) "
+                . "from "
+                    . TABLE_ADMIN_ACL . " aa "
+                . "inner join "
+                    . TABLE_EASY_ADMIN_SUB_MENUS . " easm "
+                . "on "
+                    . "aa.easy_admin_sub_menu_id = easm.easy_admin_sub_menu_id "
+                . "where "
+                    . "aa.admin_id = " . $_SESSION['admin_id'] . " "
+                . "and "
+                    . "easy_admin_sub_menu_url = '" . $p . "'";
 
-		$result = $db->execute($sql);
+        $result = $db->execute($sql);
 
-		if(!empty($result->fields['count(*)'])) {
-			return true;
-		}else{
-			return false;
-		}
-	}
+        if(!empty($result->fields['count(*)'])) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 ?>
