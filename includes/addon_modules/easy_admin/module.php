@@ -197,12 +197,6 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
-    function block_acl_setup() {
-        $return = array();
-        $return['test'] = 'abcdefghijklmn';
-        return $return;
-    }
-
     // override getBlock method
     // admin/includes/header.phpからの呼び出し
     function getBlock($block, $page) {
