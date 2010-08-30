@@ -296,25 +296,11 @@
     $menu   = array();
     while (!$result->EOF) {
 
-        //admin_aclテーブルチェック 10/06/18
-        $sql = "select "
-                    . "count(*) "
-                . "from "
-                    . TABLE_ADMIN_ACL . " "
-                . "where "
-                    . "easy_admin_sub_menu_id = " . $result->fields['easy_admin_sub_menu_id'] . " "
-                . "and "
-                    . "admin_id = " . $_SESSION['admin_id'];
-
-        $acl = $db->Execute($sql);
-
-        if(empty($acl->fields['count(*)'])) {
-            $menu[] = array('id'    => $result->fields['easy_admin_sub_menu_id'],
-                            'topid' => $result->fields['easy_admin_top_menu_id'],
-                            'name'  => $result->fields['easy_admin_sub_menu_name'],
-                            'url'   => $result->fields['easy_admin_sub_menu_url'],
-                            'order' => $result->fields['easy_admin_sub_menu_sort_order']);
-        }
+        $menu[] = array('id'    => $result->fields['easy_admin_sub_menu_id'],
+                        'topid' => $result->fields['easy_admin_top_menu_id'],
+                        'name'  => $result->fields['easy_admin_sub_menu_name'],
+                        'url'   => $result->fields['easy_admin_sub_menu_url'],
+                        'order' => $result->fields['easy_admin_sub_menu_sort_order']);
 
         $result->MoveNext();
     }
