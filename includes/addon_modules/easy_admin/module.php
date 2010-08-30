@@ -142,14 +142,14 @@ if (!defined('IS_ADMIN_FLAG')) {
         $topmenu++;
       }
 
-		$sql = "create table if not exists ".TABLE_ADMIN_ACL." "
-			. "(acl_id int(11) auto_increment,"
-			. "admin_id int(11),"
-			. "easy_admin_top_menu_id int(11),"
-			. "easy_admin_sub_menu_id int(11),"
-			. "primary key (acl_id)"
-			. ")";
-		$db->execute($sql);
+        $sql = "create table if not exists ".TABLE_ADMIN_ACL." "
+            . "(acl_id int(11) auto_increment,"
+            . "admin_id int(11),"
+            . "easy_admin_top_menu_id int(11),"
+            . "easy_admin_sub_menu_id int(11),"
+            . "primary key (acl_id)"
+            . ")";
+        $db->execute($sql);
 
     }
 
@@ -198,25 +198,25 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function block_acl_setup() {
-    	$return = array();
-    	$return['test'] = 'abcdefghijklmn';
-		return $return;
+        $return = array();
+        $return['test'] = 'abcdefghijklmn';
+        return $return;
     }
 
     // override getBlock method
     // admin/includes/header.phpからの呼び出し
     function getBlock($block, $page) {
 
-		if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) > 0) {
-			preg_match("/\/([^\/\?]*\??[^\?]*)$/", $_SERVER["REQUEST_URI"], $matches);
-		}else{
-			preg_match("/\/([^\/]*)$/", $_SERVER["REQUEST_URI"], $matches);
-		}
+        if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) > 0) {
+            preg_match("/\/([^\/\?]*\??[^\?]*)$/", $_SERVER["REQUEST_URI"], $matches);
+        }else{
+            preg_match("/\/([^\/]*)$/", $_SERVER["REQUEST_URI"], $matches);
+        }
 
-		if(check_page($matches[1])) {
+        if(check_page($matches[1])) {
 
-			if(!@header("location: denied.php")) die("<p style='line-height:1.4em; text-align:center; padding-top:10px;'>このページを閲覧するための権限がありません。<br /><a href=" . zen_href_link(FILENAME_DEFAULT, '', 'NONSSL') . ">管理画面トップ</a>に戻って下さい。</p>");
-		}
+            die("<p style='line-height:1.4em; text-align:center; padding-top:10px;'>このページを閲覧するための権限がありません。<br /><a href=" . zen_href_link(FILENAME_DEFAULT, '', 'NONSSL') . ">管理画面トップ</a>に戻って下さい。</p>");
+        }
 
       global $template;
       $return = false;

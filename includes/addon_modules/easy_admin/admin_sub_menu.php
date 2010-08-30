@@ -184,6 +184,7 @@ else if ($action == "sub-delete") {
 <?php
               // サブメニュー
               $sub_menus = getSubMenus($topmenuid);
+
               for ($i=0; $i<count($sub_menus); $i++) {
                 $sub_menu_id         = $sub_menus[$i]['id'];
                 $top_menu_id         = $sub_menus[$i]['topid'];
