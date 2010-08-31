@@ -96,6 +96,9 @@ $shipping_modules = new shipping($_SESSION['shipping']);
 $any_out_of_stock = false;
 if (STOCK_CHECK == 'true') {
   for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
+    if (zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_sendfor_status', array($order->products[$i]['id'])) != '') {
+      continue;
+    }
     $order->products[$i]['stock_check'] = '';
     if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS != 'true') {
       $stock_check = zen_check_stock($order->products[$i]['id'], $order->products[$i]['qty']);

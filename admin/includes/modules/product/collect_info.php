@@ -305,9 +305,14 @@ echo zen_draw_hidden_field('products_price_sorter', $pInfo->products_price_sorte
             <th class="main"><?php echo TEXT_PRODUCTS_STATUS; ?></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('products_status', '1', $in_status) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE . '&nbsp;' . zen_draw_radio_field('products_status', '0', $out_status) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE; ?></td>
           </tr>
-<?php if (MODULE_ADDON_MODULES_ADVANCED_STOCK_STATUS == 'true') {
-  echo advanced_stock_draw_sendfor_flag();
-} ?>
+<?php
+/*
+  echo zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_sendfor_message'); ?>
+*/
+  if(is_object($GLOBALS['advanced_stock']) && $GLOBALS['advanced_stock']->enabled) {
+    echo advanced_stock_draw_sendfor_flag();
+  }
+?>
           <tr>
             <th class="main"><?php echo TEXT_PRODUCTS_DATE_AVAILABLE; ?><br /><small>(YYYY-MM-DD)</small></th>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;'; ?><script language="javascript">dateAvailable.writeControl(); dateAvailable.dateFormat="yyyy-MM-dd";</script></td>

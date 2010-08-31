@@ -170,10 +170,10 @@ if ($listing_split->number_of_rows > 0) {
               $lc_button = '<a href="' . zen_href_link($_GET['main_page'], zen_get_all_get_params(array('action')) . 'action=buy_now&products_id=' . $listing->fields['products_id']) . '">' . zen_image_button(BUTTON_IMAGE_BUY_NOW, BUTTON_BUY_NOW_ALT) . '</a>';
             }
           }
-          $the_button = $lc_button;
-          $products_link = '<a href="' . zen_href_link(zen_get_info_page($listing->fields['products_id']), 'products_id=' . $listing->fields['products_id']) . '">' . MORE_INFO_TEXT . '</a>';
-          $lc_text .= '<br />' . zen_get_buy_now_button($listing->fields['products_id'], $the_button, $products_link) . '<br />' . zen_get_products_quantity_min_units_display($listing->fields['products_id']);
-          $lc_text .= '<br />' . (zen_get_show_product_switch($listing->fields['products_id'], 'ALWAYS_FREE_SHIPPING_IMAGE_SWITCH') ? (zen_get_product_is_always_free_shipping($listing->fields['products_id']) ? TEXT_PRODUCT_FREE_SHIPPING_ICON . '<br />' : '') : '');
+        $the_button = $lc_button;
+        $products_link = '<a href="' . zen_href_link(zen_get_info_page($listing->fields['products_id']), 'products_id=' . $listing->fields['products_id']) . '">' . MORE_INFO_TEXT . '</a>';
+        $lc_text .= '<br />' . (($advanced_stock_button = zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_buy_now_button', array($listing->fields['products_id'], $the_button, $products_link))) != '' ? $advanced_stock_button : zen_get_buy_now_button($listing->fields['products_id'], $the_button, $products_link)) . '<br />' . zen_get_products_quantity_min_units_display($listing->fields['products_id']);
+        $lc_text .= '<br />' . (zen_get_show_product_switch($listing->fields['products_id'], 'ALWAYS_FREE_SHIPPING_IMAGE_SWITCH') ? (zen_get_product_is_always_free_shipping($listing->fields['products_id']) ? TEXT_PRODUCT_FREE_SHIPPING_ICON . '<br />' : '') : '');
 
           break;
         case 'PRODUCT_LIST_QUANTITY':
