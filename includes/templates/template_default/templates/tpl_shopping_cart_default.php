@@ -48,7 +48,13 @@
 
 <?php    } //endif STOCK_ALLOW_CHECKOUT ?>
 <?php  } //endif flagAnyOutOfStock ?>
-
+<?php
+if (($advanced_stock_message = zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_sendfor_message')) != '' && isset($flagAnySendForProduct) && $flagAnySendForProduct):
+?>
+<div class="messageStackError"><?php echo $advanced_stock_message; ?></div>
+<?php
+endif;
+?>
 <table  border="0" width="100%" cellspacing="0" cellpadding="0" id="cartContentsDisplay">
      <tr class="tableHeading">
         <th scope="col" id="scQuantityHeading"><?php echo TABLE_HEADING_QUANTITY; ?></th>

@@ -271,6 +271,14 @@ echo zen_draw_hidden_field('products_price_sorter', $pInfo->products_price_sorte
             <td class="main"><?php echo TEXT_PRODUCTS_STATUS; ?></td>
             <td class="main"><?php echo zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('products_status', '1', $in_status) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE . '&nbsp;' . zen_draw_radio_field('products_status', '0', $out_status) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE; ?></td>
           </tr>
+<?php
+/*
+  echo zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_sendfor_message'); ?>
+*/
+  if(is_object($GLOBALS['advanced_stock']) && $GLOBALS['advanced_stock']->enabled) {
+    echo advanced_stock_draw_sendfor_flag();
+  }
+?>
           <tr>
             <td colspan="2"><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>

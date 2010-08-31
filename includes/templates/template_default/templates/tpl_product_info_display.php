@@ -100,7 +100,7 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
               // show the quantity box
     $the_button = PRODUCTS_ORDER_QTY_TEXT . '<input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($_GET['products_id'])) . '" maxlength="6" size="4" /><br />' . zen_get_products_quantity_min_units_display((int)$_GET['products_id']) . '<br />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
             }
-    $display_button = zen_get_buy_now_button($_GET['products_id'], $the_button);
+    $display_button = ($advanced_stock_button = zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_buy_now_button', array($_GET['products_id'], $the_button))) != '' ? $advanced_stock_button : zen_get_buy_now_button($_GET['products_id'], $the_button);
   ?>
   <?php if ($display_qty != '' or $display_button != '') { ?>
     <div id="cartAdd">
@@ -120,6 +120,7 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
   <?php echo (($flag_show_product_info_weight == 1 and $products_weight !=0) ? '<li>' . TEXT_PRODUCT_WEIGHT .  $products_weight . TEXT_PRODUCT_WEIGHT_UNIT . '</li>'  : '') . "\n"; ?>
   <?php echo (($flag_show_product_info_quantity == 1) ? '<li>' . $products_quantity . TEXT_PRODUCT_QUANTITY . '</li>'  : '') . "\n"; ?>
   <?php echo (($flag_show_product_info_manufacturer == 1 and !empty($manufacturers_name)) ? '<li>' . TEXT_PRODUCT_MANUFACTURER . $manufacturers_name . '</li>' : '') . "\n"; ?>
+  <?php echo ((($advanced_stock = zen_addOnModules_call_function('advanced_stock', 'display_advanced_stock', array((int)$_GET['products_id']))) != '') ? '<li>' . $advanced_stock . '</li>' : '') . "\n"; ?>
 </ul>
 <br class="clearBoth" />
 <?php
