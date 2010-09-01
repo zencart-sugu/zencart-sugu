@@ -146,7 +146,7 @@ function advanced_stock_draw_sendfor_flag() {
   }
   $send_for_html = '
           <tr>
-            <td class="main">' . TEXT_PRODUCTS_SEND_FOR . '</th>
+            <th class="main">' . TEXT_PRODUCTS_SEND_FOR . '</th>
             <td class="main">' . zen_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . zen_draw_radio_field('send_for_status', '1', $send_on) . '&nbsp;' . TEXT_PRODUCTS_SEND_ON . '&nbsp;' . zen_draw_radio_field('send_for_status', '0', $send_off) . '&nbsp;' . TEXT_PRODUCTS_SEND_OFF . '</td>
           </tr>
 ';
