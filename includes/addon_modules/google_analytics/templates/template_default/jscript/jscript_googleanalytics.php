@@ -73,7 +73,9 @@ if (defined('MODULE_GOOGLE_ANALYTICS_ACCOUNT') && MODULE_GOOGLE_ANALYTICS_ACCOUN
         for ($j = 0; $j < sizeof($order->products[$i]['attributes']); $j++) {
           $products_attributes[$j] = $order->products[$i]['attributes'][$j]['option'] . ': ' . $order->products[$i]['attributes'][$j]['value'];
         }
-        $ga_products[$i]['name'] = $ga_products[$i]['name'] . substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, 0, 1) . implode(MODULE_GOOGLE_ANALYTICS_DELIMITER, $products_attributes) . substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, -1, 1);
+        $attributes = substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, 0, 1) . implode(MODULE_GOOGLE_ANALYTICS_DELIMITER, $products_attributes) . substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, -1, 1);
+        $ga_products[$i]['name'] = $ga_products[$i]['name'] . $attributes;
+	$ga_products[$i]['skucode'] = $ga_products[$i]['skucode'] . $attributes;
       } // end of products attributes
     } // end of products data
   } // end of orders data
