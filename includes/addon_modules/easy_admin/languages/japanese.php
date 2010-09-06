@@ -34,6 +34,7 @@ define('MODULE_EASY_ADMIN_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定で
 define('MODULE_EASY_ADMIN_BLOCK_TITLE',              '管理メニューの設定');
 
 define('BOX_EASY_ADMIN',                             '管理メニューの設定');
+define('BOX_ADMIN_ACL',                              'アクセス権限の設定');
 
 // TOP MENU
 //   MENU NAME,DROP DOWN

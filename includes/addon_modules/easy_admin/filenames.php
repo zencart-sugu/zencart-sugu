@@ -20,4 +20,5 @@ if (!defined('IS_ADMIN_FLAG')) {
   define('FILENAME_EASY_ADMIN',          'easy_admin');
   define('FILENAME_EASY_ADMIN_SUB_MENU', 'sub_menu');
   define('FILENAME_ADDON_MODULES', 'addon_modules');
+  define('FILENAME_ADMIN_ACL', 'easy_admin/acl_setup');
 ?>
