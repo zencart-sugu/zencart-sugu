@@ -42,6 +42,9 @@
   if ( (STOCK_CHECK == 'true') && (STOCK_ALLOW_CHECKOUT != 'true') ) {
     $products = $_SESSION['cart']->get_products();
     for ($i=0, $n=sizeof($products); $i<$n; $i++) {
+      if (zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_sendfor_status', array($products[$i]['id'])) != '') {
+        continue;
+      }
       if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS != 'true') {
         if (zen_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
           zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));

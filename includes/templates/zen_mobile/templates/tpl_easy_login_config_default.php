@@ -17,6 +17,7 @@ echo TEXT_CURRENT_SETTING;
 <font color=red>
 <?php echo $current_config?>
 </font>
+<div class="buttonRow back"><?php echo '<a href="' . zen_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_BACK , BUTTON_BACK_ALT) . '</a>'; ?></div>
 <?php
  if($mobile->isDoCoMo()){
      echo "<form action=./index.php?main_page=".FILENAME_EASY_LOGIN_CONFIG."&guid=on method=post>";

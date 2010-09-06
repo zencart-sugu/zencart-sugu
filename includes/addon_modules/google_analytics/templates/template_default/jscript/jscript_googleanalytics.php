@@ -44,14 +44,14 @@ if (defined('MODULE_GOOGLE_ANALYTICS_ACCOUNT') && MODULE_GOOGLE_ANALYTICS_ACCOUN
       break;
     }
     // get total tax shipping
-    $ga_order['total'] = $order->info['total'];
-    $ga_order['tax'] = $order->info['tax'];
+    $ga_order['total'] = number_format(zen_round($order->info['total'], $currencies[$order->info['currency']]['decimal_places']), $currencies[$order->info['currency']]['decimal_places'], $currencies[$order->info['currency']]['decimal_point'], '');
+    $ga_order['tax'] = number_format(zen_round($order->info['tax'], $currencies[$order->info['currency']]['decimal_places']), $currencies[$order->info['currency']]['decimal_places'], $currencies[$order->info['currency']]['decimal_point'], '');
     $orders_total_query = "select value from " . TABLE_ORDERS_TOTAL . "
                            where orders_id = :ordersid
                            and class = 'ot_shipping'";
     $orders_total_query = $db->bindvars($orders_total_query, ':ordersid', $orders_id, 'integer');
     $orders_total = $db->execute($orders_total_query);
-    $ga_order['shippingcost'] = $orders_total->fields['value'];
+    $ga_order['shippingcost'] = number_format(zen_round($orders_total->fields['value'], $currencies[$order->info['currency']]['decimal_places']), $currencies[$order->info['currency']]['decimal_places'], $currencies[$order->info['currency']]['decimal_point'], '');
 
     $ga_order['affiliation'] = MODULE_GOOGLE_ANALYTICS_AFFILIATION;
 
@@ -64,7 +64,7 @@ if (defined('MODULE_GOOGLE_ANALYTICS_ACCOUNT') && MODULE_GOOGLE_ANALYTICS_ACCOUN
       } else {
         $ga_products[$i]['skucode'] = $order->products[$i]['id'];
       }
-      $ga_products[$i]['final_price'] = $order->products[$i]['final_price'];
+      $ga_products[$i]['final_price'] = number_format(zen_round($order->products[$i]['final_price'], $currencies[$order->info['currency']]['decimal_places']), $currencies[$order->info['currency']]['decimal_places'], $currencies[$order->info['currency']]['decimal_point'], '');
       $ga_products[$i]['qty'] = $order->products[$i]['qty'];
       // get product name and attributes_name
       $ga_products[$i]['name'] = $order->products[$i]['name'];
@@ -73,7 +73,9 @@ if (defined('MODULE_GOOGLE_ANALYTICS_ACCOUNT') && MODULE_GOOGLE_ANALYTICS_ACCOUN
         for ($j = 0; $j < sizeof($order->products[$i]['attributes']); $j++) {
           $products_attributes[$j] = $order->products[$i]['attributes'][$j]['option'] . ': ' . $order->products[$i]['attributes'][$j]['value'];
         }
-        $ga_products[$i]['name'] = $ga_products[$i]['name'] . substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, 0, 1) . implode(MODULE_GOOGLE_ANALYTICS_DELIMITER, $products_attributes) . substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, -1, 1);
+        $attributes = substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, 0, 1) . implode(MODULE_GOOGLE_ANALYTICS_DELIMITER, $products_attributes) . substr(MODULE_GOOGLE_ANALYTICS_BRACKETS, -1, 1);
+        $ga_products[$i]['name'] = $ga_products[$i]['name'] . $attributes;
+	$ga_products[$i]['skucode'] = $ga_products[$i]['skucode'] . $attributes;
       } // end of products attributes
     } // end of products data
   } // end of orders data
