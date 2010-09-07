@@ -32,6 +32,17 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
     }
 
+// -> zen_smartphone: smartphone用の特別なパラメータがあれば引き継ぐ
+if ($_SESSION['languages_code'] == 'ja-smartphone') {
+    if (preg_match("/tmpl=jqt/", $url) == false)
+        $url .= '&tmpl=jqt';
+    if (isset($_POST['jqt_anchor_id']) and preg_match("/jqt_anchor_id=/", $url) == false)
+        $url .= '&jqt_anchor_id='. $_POST['jqt_anchor_id'];
+    if (isset($_GET['jqt_anchor_id']) and preg_match("/jqt_anchor_id=/", $url) == false)
+        $url .= '&jqt_anchor_id='. $_GET['jqt_anchor_id'];
+}
+// <- zen_smartphone: smartphone用の特別なパラメータがあれば引き継ぐ
+
 // clean up URL before executing it
   while (strstr($url, '&&')) $url = str_replace('&&', '&', $url);
   while (strstr($url, '&amp;&amp;')) $url = str_replace('&amp;&amp;', '&amp;', $url);
