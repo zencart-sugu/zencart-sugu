@@ -27,7 +27,6 @@
 $include_path = DIR_FS_CATALOG.DIR_WS_CLASSES ."pear";
 $include_path .= PATH_SEPARATOR . ini_get("include_path");
 ini_set("include_path", $include_path);
-require_once 'Net/UserAgent/Mobile.php';
 
 /**
  * Zen Cartをモバイル対応させるためのメソッド等を提供します。
