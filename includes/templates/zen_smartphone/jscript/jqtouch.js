@@ -450,6 +450,17 @@
                     data: settings.data,
                     type: settings.method,
                     success: function (data, textStatus) {
+
+// -> zen_smartphone: contentsから<body>〜</body>を削除する
+                        data = data.replace(/^((?:[\r\n]|.)*<body[^>]*>)/,'');
+                        data = data.replace(/(<\/body[^>]*>(?:[\r\n]|.)*)$/,'');
+// <- zen_smartphone: contentsから<body>〜</body>を削除する
+
+// -> zen_smartphone: hrefをmd5化したidを<div>にしてcontentsを囲む
+                        var id = MD5_hexhash(href);
+                        data = '<div id="' + id + '" >' + data + '</div>';
+// <- zen_smartphone: hrefをmd5化したidを<div>にしてcontentsを囲む
+
                         var firstPage = insertPages(data, settings.animation);
                         if (firstPage)
                         {

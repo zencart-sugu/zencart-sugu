@@ -76,11 +76,6 @@ $column = ' class="onecolumn"';
 // <- zen_smartphone: たぶん必要ない
 ?>
 
-<?php
-// -> zen_smartphone: tmpl = jqt なら、bodyタグと、id="body"は要らない
-if ($_REQUEST['tmpl'] != 'jqt') {
-?>
-
 <body id="<?php echo $body_id .'Body' ; ?>"<?php echo $column ; ?>>
 
 <?php
@@ -105,23 +100,6 @@ if ($_REQUEST['tmpl'] != 'jqt') {
 <!-- body -->
 <div id="body" class="home <?php echo $body_id; ?>">
 
-<?php
-}
-// <- zen_smartphone: tmpl = jqt なら、bodyタグと、id="body"は要らない
-?>
-<?php
-// -> zen_smartphone: jqt_anchor_id がセットされていたら、div id="..." をセットする
-if ($_REQUEST['jqt_anchor_id'] != '') {
-$jqt_id = $_REQUEST['jqt_anchor_id'];
-?>
-
-<!-- post-responce -->
-<div id="<?php echo zen_output_string_protected($jqt_id);?>" class="current">
-
-<?php
-}
-// <- zen_smartphone: jqt_anchor_id がセットされていたら、div id="..." をセットする
-?>
 <?php
  /**
   * prepares and displays header output
@@ -279,29 +257,11 @@ if (!isset($flag_disable_left) || !$flag_disable_left) {
 // <- zen_smartphone: container は必要ない
 ?>
 
-<?php
-// -> zen_smartphone: tmpl = jqt なら、bodyタグと、id="body"は要らない
-if ($_REQUEST['tmpl'] != 'jqt') {
-?>
-
 </div>
 <!-- /body -->
 
 </body>
 <?php
-}
-// <- zen_smartphone: tmpl = jqt なら、bodyタグと、id="body"は要らない
-?>
-<?php
-// -> zen_smartphone: jqt_anchor_id がセットされていたら、div id="..." をセットする
-if ($_REQUEST['jqt_anchor_id'] != '') {
-?>
-</div>
-<!-- /post-responce -->
-<?php
-}
-// <- zen_smartphone: jqt_anchor_id がセットされていたら、div id="..." をセットする
-
 
 // -> zen_smartphone: ajax的な表示の場合は、下記とは別の内容にします
 }

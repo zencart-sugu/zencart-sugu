@@ -96,16 +96,7 @@
  */
   require($template->get_template_dir('tpl_main_page.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/tpl_main_page.php');
 ?>
-<?php
-// -> zen_smartphone: tmpl = jqt なら、bodyタグと、id="body"は要らない
-if ($_SESSION['languages_code'] != 'ja-smartphone' 
-or  $_REQUEST['tmpl'] != 'jqt') {
-?>
 </html>
-<?php
-}
-// <- zen_smartphone: tmpl = jqt なら、bodyタグと、id="body"は要らない
-?>
 <?php
 /**
  * Load general code run before page closes

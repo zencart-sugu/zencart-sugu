@@ -33,12 +33,7 @@
 ?>
 
 <div id="centerColumnBody">
-<?php
-// -> zen_smartphone: zen_draw_form は止めて zen_draw_form_for_jqtouch を使う。あとonsubmitは必要ない。
-// echo zen_draw_form('create_account', zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return check_form(create_account);"') . zen_draw_hidden_field('action', 'process') . zen_draw_hidden_field('email_pref_html', 'email_format');
-echo zen_draw_form_for_jqtouch('create_account', zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', '') .  zen_draw_hidden_field('action', 'process') . zen_draw_hidden_field('email_pref_html', 'email_format');
-// <- zen_smartphone: zen_draw_form は止めて zen_draw_form_for_jqtouch を使う。あとonsubmitは必要ない。
-?>
+<?php echo zen_draw_form('create_account', zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return check_form(create_account);"') . zen_draw_hidden_field('action', 'process') . zen_draw_hidden_field('email_pref_html', 'email_format'); ?>
 
 <p id="flow"><?php echo FLOW ; ?></p>
 

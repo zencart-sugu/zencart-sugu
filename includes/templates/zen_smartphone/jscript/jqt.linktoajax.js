@@ -15,8 +15,11 @@
                     anchor.attr('class', c);
                 }
                 
-                var href_add_tmpl = href + (href.match(/\?/) ? '&' : '?') + 'tmpl=jqt';
-                $.get(href_add_tmpl, function(contents) {
+                $.get(href, function(contents) {
+                    // contents‚©‚ç<body>`</body>‚ğíœ‚·‚é
+                    contents = contents.replace(/^((?:[\r\n]|.)*<body[^>]*>)/,'');
+                    contents = contents.replace(/(<\/body[^>]*>(?:[\r\n]|.)*)$/,'');
+                    
                     var id = MD5_hexhash(href);
                     $('body').append('<div id="' + id + '" >' + contents + '</div>');
                     $('#'+id+' a').click(jQT.changeLinkToAjax);
