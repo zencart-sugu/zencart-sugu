@@ -29,12 +29,7 @@
 <h2 class="transparent"><?php echo HEADING_RETURNING_CUSTOMER; ?></h2>
 
 <div id="loginBox" class="box">
-<?php
-// -> zen_smartphone: zen_draw_form ‚ÍŽ~‚ß‚Ä zen_draw_form_for_jqtouch ‚ðŽg‚¤
-//echo zen_draw_form('login', zen_href_link(FILENAME_LOGIN, 'action=process', 'SSL'));
-echo zen_draw_form_for_jqtouch('login', zen_href_link(FILENAME_LOGIN, 'action=process', 'SSL'));
-// <- zen_smartphone: zen_draw_form ‚ÍŽ~‚ß‚Ä zen_draw_form_for_jqtouch ‚ðŽg‚¤
-?>
+<?php echo zen_draw_form('login', zen_href_link(FILENAME_LOGIN, 'action=process', 'SSL')); ?>
 <?php if ($messageStack->size('login') > 0) echo $messageStack->output('login'); ?>
 
 <p class="attention"><?php echo TEXT_RETURNING_CUSTOMER ; ?></p>

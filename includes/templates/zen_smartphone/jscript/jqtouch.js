@@ -79,9 +79,6 @@
                 startupScreen: null,
                 statusBar: 'default', // other options: black-translucent, black
                 submitSelector: '.submit',
-// -> zen_smartphone: submit時のcallback関数
-                submitedCallback: null,
-// <- zen_smartphone: submit時のcallback関数
                 swapSelector: '.swap',
                 useAnimations: true,
                 useFastTouch: true // Experimental.
@@ -159,10 +156,10 @@
                     .bind('touchstart', handleTouch)
                     .bind('orientationchange', updateOrientation)
                     .trigger('orientationchange')
-// -> zen_smartphone: submit時のcallback関数を指定
+// -> zen_smartphone: submitはここで指定しない
 //                    .submit(submitForm);
-                    .submit(function(e){submitForm(e, jQTSettings.submitedCallback)});
-// <- zen_smartphone: submit時のcallback関数を指定
+;
+// <- zen_smartphone: submitはここで指定しない
                     
                 if (jQTSettings.useFastTouch && $.support.touch)
                 {
@@ -450,6 +447,7 @@
                     data: settings.data,
                     type: settings.method,
                     success: function (data, textStatus) {
+
                         var firstPage = insertPages(data, settings.animation);
                         if (firstPage)
                         {
@@ -458,20 +456,14 @@
                                 settings.$referrer.attr('href', '#' + firstPage.attr('id'));
                             }
                             if (settings.callback) {
-// -> zen_smartphone: 
-//                                settings.callback(true);
-                                settings.callback(true, firstPage.attr('id'));
-// <- zen_smartphone: 
+                                settings.callback(true);
                             }
                         }
                     },
                     error: function (data) {
                         if (settings.$referrer) settings.$referrer.unselect();
                         if (settings.callback) {
-// -> zen_smartphone: 
-//                            settings.callback(false);
-                            settings.callback(false, null);
-// <- zen_smartphone: 
+                            settings.callback(false);
                         }
                     }
                 });

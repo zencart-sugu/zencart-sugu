@@ -16,10 +16,7 @@
 <div class="centerColumn" id="productGeneral">
 
 <!-- Form start-->
-<?php // -> zen_smartphone: formタグ対応 ?>
-<?php // echo zen_draw_form('cart_quantity', zen_href_link(zen_get_info_page($_GET['products_id']), zen_get_all_get_params(array('action')) . 'action=add_product'), 'post', 'enctype="multipart/form-data"') . "\n"; ?>
-<?php echo zen_draw_form_for_jqtouch('cart_quantity', zen_href_link(zen_get_info_page($_GET['products_id']), zen_get_all_get_params(array('action')) . 'action=add_product'), 'post', 'enctype="multipart/form-data"') . "\n"; ?>
-<?php // <- zen_smartphone: formタグ対応 ?>
+<?php echo zen_draw_form('cart_quantity', zen_href_link(zen_get_info_page($_GET['products_id']), zen_get_all_get_params(array('action')) . 'action=add_product'), 'post', 'enctype="multipart/form-data"') . "\n"; ?>
 <!-- /Form start-->
 
 <div class="toolbar"><h1><?php echo $products_name; ?></h1></div>

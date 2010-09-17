@@ -24,26 +24,4 @@ function zen_customer_greeting_for_smartphone() {
   return $greeting_string;
 }
 
-/*
- *  Output a form for jqtouch
- *  zen_draw_formと異なる部分は、下記の部分です
- *    actionのURLに #xxxxxxxxxx を付ける
- *    hiddenで jqt_anchor_id をセットする
- *    hiddenで tmpl=jqt をセットする
- */
-function zen_draw_form_for_jqtouch($name, $action, $method = 'post', $parameters = '') {
-  $anchor = md5($action);
-  
-  $form = '<form name="' . zen_output_string($name) . '" action="' . zen_output_string($action) . '#'. $anchor . '" method="' . zen_output_string($method) . '"';
-
-  if (zen_not_null($parameters)) $form .= ' ' . $parameters;
-
-  $form .= '>';
-  
-  $form .= zen_draw_hidden_field('tmpl', 'jqt');
-  $form .= zen_draw_hidden_field('jqt_anchor_id', $anchor);
-
-  return $form;
-}
-
 ?>
