@@ -58,12 +58,16 @@ $('#ajax-nextpage a').click(apd.addPage);
             added_list_element: $('#product-listing'),
             max_page_callback: null
         }, options);
-        
+        	
         function addPage(e) {
             if (options.current_page > options.max_page) return;
             
             options.added_list_element.append(options.loading);
             $.get(options.url+(parseInt(options.current_page)+1), function(contents) {
+                // contents‚©‚ç<body>`</body>‚ğíœ‚·‚é
+                contents = contents.replace(/^((?:[\r\n]|.)*<body[^>]*>)/,'');
+                contents = contents.replace(/(<\/body[^>]*>(?:[\r\n]|.)*)$/,'');
+                
                 $(options.loading_element_name).remove();
                 options.added_list_element.append(contents);
                 options.current_page++;

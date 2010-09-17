@@ -267,13 +267,18 @@ if (!isset($flag_disable_left) || !$flag_disable_left) {
 }
 else {
 // 以下、ajax的な表示の場合のtpl_main_page.php の内容
-
+?>
+<body class="ajax">
+<?php
  /**
   * prepares and displays center column
   *
   */
  require($body_code);
 
+?>
+</body>
+<?php
 }
 // <- zen_smartphone: ajax的な表示の場合は、下記とは別の内容にします
 ?>
