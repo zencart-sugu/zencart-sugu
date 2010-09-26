@@ -11,10 +11,6 @@
  * @version $Id: html_header.php 3688 2006-06-02 00:12:18Z drbyte $
  */
 
-// -> zen_smartphone: tmpl = jqt なら、htmlヘッダーは要らない。ただし、JSは必要。
-if ($_REQUEST['tmpl'] != 'jqt') {
-// <- zen_smartphone: tmpl = jqt なら、htmlヘッダーは要らない。ただし、JSは必要。
-
 /**
  * load the module for generating page meta-tags
  */
@@ -186,10 +182,3 @@ DD_belatedPNG.fix(\'.transparent,.category #main h1\');
 
 </head>
 <?php // NOTE: Blank line following is intended: ?>
-
-<?php
-// -> zen_smartphone: tmpl = jqt なら、htmlヘッダーは要らない。ただし、JSは必要。
-}
-// <- zen_smartphone: tmpl = jqt なら、htmlヘッダーは要らない。ただし、JSは必要。
-// @todo JS取得部分
-?>

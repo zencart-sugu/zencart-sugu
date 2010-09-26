@@ -180,15 +180,7 @@ if ($category_depth == 'nested')
 
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// -> zen_mobile: if page!= 1 then return ajax view
-//  $tpl_page_body = 'tpl_index_product_list.php';
-  if ($_SESSION['languages_code'] == 'ja-smartphone' 
-  and isset($_GET['page']) and $_GET['page'] > 1) {
-    $tpl_page_body = 'tpl_index_product_list_parts.php';
-  } else {
-    $tpl_page_body = 'tpl_index_product_list.php';
-  }
-// <- zen_mobile: if page!= 1 then return ajax view
+  $tpl_page_body = 'tpl_index_product_list.php';
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 } else {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////

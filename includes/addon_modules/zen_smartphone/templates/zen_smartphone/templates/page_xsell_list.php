@@ -40,7 +40,7 @@ require($template->get_template_dir('tpl_columnar_display.php',DIR_WS_TEMPLATE, 
     $number_of_pages = ceil($number_of_rows / $number_of_rows_per_page);
     // next button
     if (($current_page_number < $number_of_pages) &&  ($number_of_pages != 1)) {
-       $display_links_string = zen_href_link(FILENAME_ADDON, 'module=zen_smartphone/xsell_list_parts&tmpl=jqt&products_id='. (int)$_GET['products_id']);
+       $display_links_string = zen_href_link(FILENAME_ADDON, 'module=zen_smartphone/xsell_list_parts&products_id='. (int)$_GET['products_id']);
        $display_links_string = preg_replace("/&amp;/", "&", $display_links_string); // これどこでhtmlspecialcharsされているんだろうか…手動で戻す
 ?>
 <ul id="ajax-nextpage">

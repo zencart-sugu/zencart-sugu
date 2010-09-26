@@ -16,6 +16,7 @@ $jqt_template_dir = $template->get_template_dir('.png', DIR_WS_TEMPLATE, $curren
 <script type="text/javascript" src="<?php echo $template->get_template_dir('.js', DIR_WS_TEMPLATE, $current_page_base, 'jscript') . '/jqtouch.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo $template->get_template_dir('.js', DIR_WS_TEMPLATE, $current_page_base, 'jscript') . '/md5.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo $template->get_template_dir('.js', DIR_WS_TEMPLATE, $current_page_base, 'jscript') . '/jqt.linktoajax.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo $template->get_template_dir('.js', DIR_WS_TEMPLATE, $current_page_base, 'jscript') . '/jqt.formtoajax.js'; ?>"></script>
 <script language="javascript" type="text/javascript">
 var jQT = new $.jQTouch({
     icon: '<?php echo $jqt_template_dir . '/jqtouch.png' ?>',
@@ -29,15 +30,19 @@ var jQT = new $.jQTouch({
         '<?php echo $jqt_template_dir . '/grayButton.png' ?>',
         '<?php echo $jqt_template_dir . '/whiteButton.png' ?>',
         '<?php echo $jqt_template_dir . '/loading.gif' ?>'
-        ],
-    submitedCallback: function(result, id) {
-      if (result == true) {
-        $('#'+id+' a').click(jQT.changeLinkToAjax);
-      }
+        ]
     }
-});
+);
 
 $(function(){
 	$('a').click(jQT.changeLinkToAjax);
+	
+	jQT.setCallback(submitedCallback);
+	$('body').submit(jQT.submitFormToAjax);
 });
+function submitedCallback(result, id) {
+    if (result == true) {
+        $('#'+id+' a').click(jQT.changeLinkToAjax);
+    }
+}
 </script>
