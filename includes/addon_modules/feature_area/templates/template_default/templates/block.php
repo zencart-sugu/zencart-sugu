@@ -15,40 +15,60 @@ if (count($result) > 0 ):
 ?>
 <div class="content">
 <div id="feature_main_images">
+<ul>
 <?php
+      $count = 0;
       $main_image_visible = false;
       while (!$result->EOF) {
         if ($result->fields['status']==true){
+          $count++;
           $target = ( $result->fields['new_window'] == 1 )? ' target="_blank"' : '';
 ?>
-     <div id="<?php echo $module.$result->fields['id']; ?>" class="feature_main_image <?php if($main_image_visible=='true'){ echo '" style="display:none;'; }else{echo ' start';} ?>">
-       <?php echo '<a href="'. $result->fields['link_url'] .'" rel="'.$module.$result->fields['id'].'"'.$target.'>' . zen_image(DIR_WS_IMAGES . $result->fields['main_image'] , feature_area_get_name($result->fields['id'], $_SESSION['languages_id']) , "", "") . '</a>'; ?>
-     </div>
+     <li class="<?php echo $module.$result->fields['id']; ?> feature_main_image <?php if($main_image_visible=='true'){ echo '" style="display:block;'; }else{echo ' start';} ?>">
+       <?php echo '<dl><dt><a href="'. $result->fields['link_url'] .'" rel="'.$module.$result->fields['id'].'"'.$target.'>' . zen_image(DIR_WS_IMAGES . $result->fields['main_image'] , feature_area_get_name($result->fields['id'], $_SESSION['languages_id']) , "", "") . '</a></dt></dl>'."\n"; ?>
+     </li>
 <?php
+	 $thumb_area .= '      <li class="'.$module.$result->fields['id'].' '.($main_image_visible==false ? 'active' : 'inactive').'"><dl><dt><a href="'. $result->fields['link_url'] .'" rel="'.$module.$result->fields['id'].'"'.$target.'>'. zen_image(DIR_WS_IMAGES . $result->fields['thumb_image'] , feature_area_get_name($result->fields['id'], $_SESSION['languages_id']) , "", "" ) . '</a></dt></dl></li>'."\n";
           if( $main_image_visible == false ) $main_image_visible = true;
-          $thumb_area .= '      <li><a href="'. $result->fields['link_url'] .'" rel="'.$module.$result->fields['id'].'"'.$target.'>'. zen_image(DIR_WS_IMAGES . $result->fields['thumb_image'] , feature_area_get_name($result->fields['id'], $_SESSION['languages_id']) , "", "" ) . '</a></li>';
+
+          $btns .= '<div style="display: none;" id="'.$module.$result->fields['id'].'">'.$module.$result->fields['id'].'</div>';
         }
         $result->MoveNext();
       }
+      if ($this->getVisibleCount() < $count) {
+        $output_buttons = true;
+      } else {
+        $output_buttons = false;
+      }
+      $output_buttons = true;  // set true (force)
 ?>
+</ul>
 </div>
+<?php if ($output_buttons): ?>
 <script language="javascript" type="text/javascript">
   //<![CDATA[
   document.write('<div class="prev prev-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_CAROUSEL_UI_PREVIOUS, BUTTON_CAROUSEL_UI_PREVIOUS_ALT); ?></div>');
   //]]>
 //--></script>
+<?php endif; ?>
 <div class="carouselUI carouselUI-<?php echo $module . '-' . $block; ?>">
   <ul>
 <?php
       echo $thumb_area;
 ?>
   </ul>
-  </div>
+</div>
+<?php if ($output_buttons): ?>
 <script language="javascript" type="text/javascript">
   //<![CDATA[
   document.write('<div href="#" class="next next-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_CAROUSEL_UI_NEXT, BUTTON_CAROUSEL_UI_NEXT_ALT); ?></div>');
   //]]>
 //--></script>
+<?php endif; ?>
 </div>
+<?php
+      echo $btns;
+?>
+<div id="feature_start" style="display:none;">start</div><div id="feature_stop" style="display:none;">stop</div>
 <?php
 endif;
