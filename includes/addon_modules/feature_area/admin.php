@@ -312,7 +312,7 @@ if (!defined('IS_ADMIN_FLAG')) {
         $manufacturer_inputs_string .= '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('feature_name[' . $languages[$i]['id'] . ']', '', zen_set_field_length(TABLE_ADDON_MODULES_FEATURE_AREA_INFO, 'name') );
       }
       $contents[] = array('text' => '<br>' . TEXT_FEATURE_NAME . $manufacturer_inputs_string);
-      $contents[] = array('text' => '<br>' . TEXT_FEATURE_URL . '<br>' . zen_draw_input_field('feature_url', '', zen_set_field_length(TABLE_ADDON_MODULES_FEATURE_AREA, 'link_url')));
+      $contents[] = array('text' => '<br>' . TEXT_FEATURE_URL . '<br>' . zen_draw_input_field('link_url', '', zen_set_field_length(TABLE_ADDON_MODULES_FEATURE_AREA, 'link_url')));
 
       $contents[] = array('text' => '<br>' . TEXT_FEATURE_MAIN_IMAGE . '<br>' . zen_draw_file_field('main_image'));
       $dir = @dir(DIR_FS_CATALOG_IMAGES);

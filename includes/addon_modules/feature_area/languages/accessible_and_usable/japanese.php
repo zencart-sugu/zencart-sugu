@@ -37,10 +37,10 @@ define('BOX_ADDON_MODULES_FEATURE_AREA', 'フィーチャーエリアUI');
 
 define('MODULE_FEATURE_AREA_UI_MAX_DISPLAY_TITLE', 'サムネイル - 最大表示数');
 define('MODULE_FEATURE_AREA_UI_MAX_DISPLAY_DESCRIPTION', 'サムネイルの最大表示件数を設定します。<br />・初期値 = ' . MODULE_FEATURE_AREA_UI_MAX_DISPLAY_DEFAULT);
-define('MODULE_FEATURE_AREA_UI_CONF_AUTO_TITLE', 'サムネイル - 自動スクロール ');
-define('MODULE_FEATURE_AREA_UI_CONF_AUTO_DESCRIPTION', 'サムネイルを自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = ' . MODULE_FEATURE_AREA_UI_CONF_AUTO_DEFAULT);
-define('MODULE_FEATURE_AREA_UI_CONF_SPEED_TITLE', 'サムネイル - スクロール速度');
-define('MODULE_FEATURE_AREA_UI_CONF_SPEED_DESCRIPTION', 'サムネイルをスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = ' . MODULE_FEATURE_AREA_UI_CONF_SPEED_DEFAULT);
+define('MODULE_FEATURE_AREA_UI_CONF_AUTO_TITLE', 'メイン画像 - 自動スクロール ');
+define('MODULE_FEATURE_AREA_UI_CONF_AUTO_DESCRIPTION', 'メイン画像を自動的にスクロールする場合の間隔(ミリ秒)を設定します。<br />0ミリ秒の場合は自動スクロールしません。<br />・初期値 = ' . MODULE_FEATURE_AREA_UI_CONF_AUTO_DEFAULT);
+define('MODULE_FEATURE_AREA_UI_CONF_SPEED_TITLE', 'メイン画像 - スクロール速度');
+define('MODULE_FEATURE_AREA_UI_CONF_SPEED_DESCRIPTION', 'メイン画像をスクロールする速度(ミリ秒)を設定します。<br />設定値を大きくするとゆっくりスクロールします。0に設定するとスクロールしなくなります。<br />・初期値 = ' . MODULE_FEATURE_AREA_UI_CONF_SPEED_DEFAULT);
 define('MODULE_FEATURE_AREA_UI_CONF_VISIBLE_TITLE', 'サムネイル - スクロールエリア表示件数');
 define('MODULE_FEATURE_AREA_UI_CONF_VISIBLE_DESCRIPTION', 'サムネイルのスクロールエリアに表示する件数を設定します。<br />・初期値 = ' . MODULE_FEATURE_AREA_UI_CONF_VISIBLE_DEFAULT);
 

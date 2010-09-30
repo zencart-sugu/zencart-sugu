@@ -1,0 +1,6 @@
+.carouselUI-feature_area-block ul .active {
+    border: 1px solid red;
+}
+.carouselUI-feature_area-block ul .inactive {
+    border: 1px solid white;
+}
