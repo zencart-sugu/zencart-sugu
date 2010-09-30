@@ -16,6 +16,12 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 
   class feature_area extends addonModuleBase {
+    var $author                        = "Koji Sasaki";
+    var $author_email                  = "info@zencart-sugu.jp";
+    var $version                       = "0.1.2";
+    var $require_zen_cart_version      = "1.3.0.2";
+    var $require_addon_modules_version = "0.1";
+
     var $title = MODULE_FEATURE_AREA_TITLE;
     var $description = MODULE_FEATURE_AREA_DESCRIPTION;
     var $sort_order = MODULE_FEATURE_AREA_SORT_ORDER;
