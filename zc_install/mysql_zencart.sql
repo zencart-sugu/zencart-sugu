@@ -3286,8 +3286,8 @@ INSERT INTO get_terms_to_filter VALUES ('record_company_id');
 # Dumping data for table `project_version`
 #
 
-INSERT INTO project_version (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch1, project_version_patch1_source, project_version_patch2, project_version_patch2_source, project_version_comment, project_version_date_applied) VALUES (1, 'Zen-Cart Main', '1', '3.0.2-l10n-jp-5', '', '', '', '', 'Fresh Installation', now());
-INSERT INTO project_version (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch1, project_version_patch1_source, project_version_patch2, project_version_patch2_source, project_version_comment, project_version_date_applied) VALUES (2, 'Zen-Cart Database', '1', '3.0.2-l10n-jp-5', '', '', '', '', 'Fresh Installation', now());
+INSERT INTO project_version (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch1, project_version_patch1_source, project_version_patch2, project_version_patch2_source, project_version_comment, project_version_date_applied) VALUES (1, 'Zen-Cart Main', '1', '3.0.2-l10n-jp-6', '', '', '', '', 'Fresh Installation', now());
+INSERT INTO project_version (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch1, project_version_patch1_source, project_version_patch2, project_version_patch2_source, project_version_comment, project_version_date_applied) VALUES (2, 'Zen-Cart Database', '1', '3.0.2-l10n-jp-6', '', '', '', '', 'Fresh Installation', now());
 
 INSERT INTO project_version_history (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch, project_version_comment, project_version_date_applied) VALUES (1, 'Zen-Cart Main', '1', '3.0.2', '', 'Fresh Installation', now());
 INSERT INTO project_version_history (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch, project_version_comment, project_version_date_applied) VALUES (2, 'Zen-Cart Database', '1', '3.0.2', '', 'Fresh Installation', now());
@@ -3301,6 +3301,8 @@ INSERT INTO project_version_history (project_version_id, project_version_key, pr
 INSERT INTO project_version_history (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch, project_version_comment, project_version_date_applied) VALUES (10, 'Zen-Cart Database', '1', '3.0.2-l10n-jp-4', '', 'v1.3.0.2-l10n-jp-4', now());
 INSERT INTO project_version_history (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch, project_version_comment, project_version_date_applied) VALUES (11, 'Zen-Cart Main', '1', '3.0.2-l10n-jp-5', '', 'v1.3.0.2-l10n-jp-5', now());
 INSERT INTO project_version_history (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch, project_version_comment, project_version_date_applied) VALUES (12, 'Zen-Cart Database', '1', '3.0.2-l10n-jp-5', '', 'v1.3.0.2-l10n-jp-5', now());
+INSERT INTO project_version_history (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch, project_version_comment, project_version_date_applied) VALUES (13, 'Zen-Cart Main', '1', '3.0.2-l10n-jp-6', '', 'v1.3.0.2-l10n-jp-6', now());
+INSERT INTO project_version_history (project_version_id, project_version_key, project_version_major, project_version_minor, project_version_patch, project_version_comment, project_version_date_applied) VALUES (14, 'Zen-Cart Database', '1', '3.0.2-l10n-jp-6', '', 'v1.3.0.2-l10n-jp-6', now());
 
 
 ##### End of SQL setup for Zen Cart.

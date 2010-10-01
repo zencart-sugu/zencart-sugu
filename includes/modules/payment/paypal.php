@@ -183,8 +183,8 @@ class paypal extends base {
     //                              zen_draw_hidden_field('handling', MODULE_PAYMENT_PAYPAL_HANDLING) .
                              zen_draw_hidden_field('image_url', MODULE_PAYMENT_PAYPAL_IMAGE_URL) .
                              zen_draw_hidden_field('page_style', MODULE_PAYMENT_PAYPAL_PAGE_STYLE) .
-                             zen_draw_hidden_field('item_name', STORE_NAME) .
-                             zen_draw_hidden_field('item_number', '1') .
+                             //zen_draw_hidden_field('item_name', STORE_NAME) .
+                             //zen_draw_hidden_field('item_name', MODULE_PAYMENT_PAYPAL_BUSINESS_ID) .
     //                               zen_draw_hidden_field('invoice', '') .
     //                               zen_draw_hidden_field('num_cart_items', '') .
                              zen_draw_hidden_field('lc', $order->customer['country']['iso_code_2']) .
@@ -195,6 +195,18 @@ class paypal extends base {
                              zen_draw_hidden_field('custom', zen_session_name() . '=' . zen_session_id() ) .
                              zen_draw_hidden_field('upload', sizeof($order->products) ) .
                              zen_draw_hidden_field('redirect_cmd', '_xclick') .
+                             zen_draw_hidden_field('paypal_order_id', $paypal_order_id)
+                             ;
+                             
+    if(MODULE_PAYMENT_PAYPAL_IGNORE_STORE_NAME == 'False'){
+      $process_button_string .= zen_draw_hidden_field('item_name', STORE_NAME) .
+      zen_draw_hidden_field('item_number', '1');
+    }else if(MODULE_PAYMENT_PAYPAL_IGNORE_STORE_NAME == 'Original'){
+      $process_button_string .= zen_draw_hidden_field('item_name', 'Purchase');
+    }
+    
+    if(MODULE_PAYMENT_PAYPAL_IGNORE_ADDRESS != 'True'){
+      $process_button_string .= 
 //                             zen_draw_hidden_field('first_name', $order->customer['firstname']) .
 //                             zen_draw_hidden_field('last_name', $order->customer['lastname']) .
                              zen_draw_hidden_field('first_name', $order->customer['lastname']) .
@@ -212,9 +224,9 @@ class paypal extends base {
                              zen_draw_hidden_field('night_phone_c',substr($telephone,6,4)) .
                              zen_draw_hidden_field('day_phone_a',substr($telephone,0,3)) .
                              zen_draw_hidden_field('day_phone_b',substr($telephone,3,3)) .
-                             zen_draw_hidden_field('day_phone_c',substr($telephone,6,4)) .
-                             zen_draw_hidden_field('paypal_order_id', $paypal_order_id)
+                             zen_draw_hidden_field('day_phone_c',substr($telephone,6,4))
                              ;
+    }
 
     return $process_button_string;
   }
@@ -309,7 +321,8 @@ class paypal extends base {
     $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('表示の整列順', 'MODULE_PAYMENT_PAYPAL_SORT_ORDER', '0', '表示の整列順を設定できます。数字が小さいほど上位に表示されます', '6', '5', now())");
     $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('適用地域', 'MODULE_PAYMENT_PAYPAL_ZONE', '0', '適用地域を選択すると、選択した地域のみで利用可能となります。', '6', '6', 'zen_get_zone_class_title', 'zen_cfg_pull_down_zone_classes(', now())");
     $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('初期注文ステータス', 'MODULE_PAYMENT_PAYPAL_ORDER_STATUS_ID', '0', '設定したステータスが受注時に適用されます。', '6', '7', 'zen_cfg_pull_down_order_statuses(', 'zen_get_order_status_name', now())");
-
+    $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('item_nameを送信しない(文字化け対策)', 'MODULE_PAYMENT_PAYPAL_IGNORE_STORE_NAME', 'True', 'PayPalサイトへitem_nameを送信しないようにします。<br />True=item_nameを送信しません。この場合、paypalサイト上で、購入者が自由に入力できるようになります。<br />False=Zen-Cart標準の動作で、ショップ名を送信します。文字化けの可能性があります。<br />Original=任意の文字列(デフォルトでPurchase)を送信します。item_nameを指定した場合は、こちらを利用してください。文字列の変更はincludes/modules/payment/paypal.phpです。*英数のみ利用可', '6', '1', 'zen_cfg_select_option(array(\'True\', \'False\', \'Original\'), ', now())");
+    $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('顧客情報を送信しない(文字化け対策)', 'MODULE_PAYMENT_PAYPAL_IGNORE_ADDRESS', 'True', 'PayPalサイトへ顧客の住所、氏名を送信しないようにします。(paypal側で入力できるので、送信しなくても問題ありません)', '6', '1', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
     $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Pending Notification Status', 'MODULE_PAYMENT_PAYPAL_PROCESSING_STATUS_ID', '" . DEFAULT_ORDERS_STATUS_ID .  "', 'Set the status of orders made with this payment module that are not yet completed to this value<br />(\'Pending\' recommended)', '6', '5', 'zen_cfg_pull_down_order_statuses(', 'zen_get_order_status_name', now())");
     $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Refund Order Status', 'MODULE_PAYMENT_PAYPAL_REFUND_ORDER_STATUS_ID', '1', 'Set the status of orders that have been refunded made with this payment module to this value<br />(\'Pending\' recommended)', '6', '7', 'zen_cfg_pull_down_order_statuses(', 'zen_get_order_status_name', now())");
     //     $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Handling Charge', 'MODULE_PAYMENT_PAYPAL_HANDLING', '0', 'The cost of handling. This is not quantity specific. The same handling will be charged regardless of the number of items purchased. If omitted or 0, no handling charges will be assessed.', '6', '15', now())");
@@ -359,6 +372,8 @@ class paypal extends base {
     //         'MODULE_PAYMENT_PAYPAL_IMAGE_URL' ,
     'MODULE_PAYMENT_PAYPAL_PAGE_STYLE' ,
     'MODULE_PAYMENT_PAYPAL_HANDLER',
+    'MODULE_PAYMENT_PAYPAL_IGNORE_STORE_NAME',
+    'MODULE_PAYMENT_PAYPAL_IGNORE_ADDRESS',
 
     // Paypal testing/debug options go here:
 //    'MODULE_PAYMENT_PAYPAL_IPN_DEBUG',
