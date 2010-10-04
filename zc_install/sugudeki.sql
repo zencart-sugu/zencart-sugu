@@ -6079,8 +6079,9 @@ CREATE TABLE `project_version` (
 
 LOCK TABLES `project_version` WRITE;
 /*!40000 ALTER TABLE `project_version` DISABLE KEYS */;
-INSERT INTO `project_version` VALUES (1,'Zen-Cart Main','1','3.0.2-l10n-jp-5','','','','','Fresh Installation','2009-11-19 12:39:40');
-INSERT INTO `project_version` VALUES (2,'Zen-Cart Database','1','3.0.2-l10n-jp-5','','','','','Fresh Installation','2009-11-19 12:39:40');
+INSERT INTO `project_version` VALUES (1,'Zen-Cart Main','1','3.0.2-l10n-jp-6','','','','','Fresh Installation', now());
+INSERT INTO `project_version` VALUES (2,'Zen-Cart Database','1','3.0.2-l10n-jp-6','','','','','Fresh Installation', now());
+
 /*!40000 ALTER TABLE `project_version` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6118,6 +6119,9 @@ INSERT INTO `project_version_history` VALUES (9,'Zen-Cart Main','1','3.0.2-l10n-
 INSERT INTO `project_version_history` VALUES (10,'Zen-Cart Database','1','3.0.2-l10n-jp-4','','v1.3.0.2-l10n-jp-4','2009-11-19 12:39:40');
 INSERT INTO `project_version_history` VALUES (11,'Zen-Cart Main','1','3.0.2-l10n-jp-5','','v1.3.0.2-l10n-jp-5','2009-11-19 12:39:40');
 INSERT INTO `project_version_history` VALUES (12,'Zen-Cart Database','1','3.0.2-l10n-jp-5','','v1.3.0.2-l10n-jp-5','2009-11-19 12:39:40');
+INSERT INTO `project_version_history` VALUES (13, 'Zen-Cart Main', '1', '3.0.2-l10n-jp-6', '', 'v1.3.0.2-l10n-jp-6', '2009-11-19 12:39:40');
+INSERT INTO `project_version_history` VALUES (14, 'Zen-Cart Database', '1', '3.0.2-l10n-jp-6', '', 'v1.3.0.2-l10n-jp-6', '2009-11-19 12:39:40');
+
 /*!40000 ALTER TABLE `project_version_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
