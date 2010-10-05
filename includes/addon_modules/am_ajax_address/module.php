@@ -17,7 +17,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   class am_ajax_address extends addonModuleBase {
     var $author                        = "saito";
     var $author_email                  = "info@zencart-sugu.jp";
-    var $version                       = "0.1.1";
+    var $version                       = "0.1.2";
     var $require_zen_cart_version      = "1.3.0.2";
     var $require_addon_modules_version = "0.1.1";
 
@@ -44,6 +44,7 @@ if (!defined('IS_ADMIN_FLAG')) {
                                  'NOTIFY_HEADER_START_CREATE_VISITOR',
                                  'NOTIFY_HEADER_START_VISITOR_TO_ACCOUNT',
                                  'NOTIFY_HEADER_START_VISITOR_EDIT',
+                                 'NOTIFY_HEADER_START_LOGIN'
                            );
 
     // class constructer for php4
@@ -54,10 +55,11 @@ if (!defined('IS_ADMIN_FLAG')) {
     function notifierUpdate($notifier) {
       switch($notifier) {
       default:
-	$dir = $this->_getTemplateDir('.js', $page, 'jscript').'/ajaxzip2';
-	$GLOBALS['jscripts'] .= sprintf(MODULE_AM_AJAX_ADDRESS_JSONDATA, $dir);
-	$GLOBALS['jscripts'] .= sprintf(MODULE_AM_AJAX_ADDRESS_AJAXZIP2, $dir);
-	//$GLOBALS['jscripts'] .= MODULE_AM_AJAX_ADDRESS_ADD_EVENT;
+        $template_dir = $this->_getTemplateDir('.js', $page, 'jscript');
+        $directory_array = $this->_getTemplatePart($template_dir, '/^notifier_/', '.php');
+        while(list ($key, $value) = each($directory_array)) {
+          require($template_dir . '/' . $value);
+        }
 	break;
       }
     }
