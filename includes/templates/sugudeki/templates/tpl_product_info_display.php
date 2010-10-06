@@ -57,12 +57,13 @@ if(MODULE_MULTIPLE_IMAGE_VIEW_STATUS == 'true') {
 <?php echo $products_name; ?></h1>
 
 <dl class="summary">
+<?php $stock =  ((($advanced_stock = zen_addOnModules_call_function('advanced_stock', 'display_advanced_stock', array((int)$_GET['products_id']))) != '') ? $advanced_stock : $products_quantity); ?>
+<?php if ($flag_show_product_info_quantity == 1 && $stock != ''): ?>
 <dt><?php echo TEXT_PRODUCT_QUANTITY ; ?></dt>
-<?php if (MODULE_ADDON_MODULES_ADVANCED_STOCK_STATUS == 'true'): ?>
-<dd><?php echo display_advanced_stock((int)$_GET['products_id']) ?></dd>
-<?php else: ?>
-<dd><?php if($products_quantity != 0){echo 'あり';}else{echo 'なし';}?></dd>
-<?php endif; ?>
+<dd><?php echo $stock; ?></dd>
+<?php
+endif; // end of display stock
+?>
 <?php
   if ($pr_attr->fields['total'] > 0) {
 ?>
@@ -74,27 +75,39 @@ if(MODULE_MULTIPLE_IMAGE_VIEW_STATUS == 'true') {
 <?php
   }
 ?>
-
+<!--bof Add to Cart Box -->
 <?php
+if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
+  // do nothing
+} else {
+?>
+            <?php
+    $display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($_GET['products_id'])) ? '<dt>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . '</dt><dd>' . $_SESSION['cart']->get_quantity($_GET['products_id']) . '</dd>' : '');
+            ?>
+<?php
+            if ($products_qty_box_status == 0 or $products_quantity_order_max== 1) {
+              // hide the quantity box and default to 1
+              $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']);
+            } else {
+              // show the quantity box
 $the_button = '';
 $the_button .= '<dt>'.PRODUCTS_ORDER_QTY.'</dt>'."\n";
 $the_button .= '<dd><input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($_GET['products_id'])) . '" maxlength="6" size="4" />' .PRODUCTS_ORDER_QTY_TEXT.'<br />'. zen_get_products_quantity_min_units_display((int)$_GET['products_id']) . '' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']).'</dd>'."\n".'</dl>'."\n";
-
+            }
 $in_cart_button_html    = '<div class="cartAdd">'
                         . '<div class="price">'. ((zen_has_product_attributes_values((int)$_GET['products_id']) and $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$_GET['products_id']).'</div>'."\n"
                         .  zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT,'class="imgover"')
                         . '</div>';
 $the_button .= $in_cart_button_html;
-if (MODULE_ADDON_MODULES_ADVANCED_STOCK_STATUS == 'true'):
-  $display_button = advanced_stock_get_buy_now_button($_GET['products_id'], $the_button);
-else:
-  $display_button = zen_get_buy_now_button($_GET['products_id'], $the_button);
-endif;
+$display_button = ($advanced_stock_button = zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_buy_now_button', array($_GET['products_id'], $the_button))) != '' ? $advanced_stock_button : zen_get_buy_now_button($_GET['products_id'], $the_button);
 ?>
 
 <?php if ($display_qty != '' or $display_button != '') { ?>
+<?php echo $display_qty; ?>
 <?php echo $display_button; ?>
 <?php } // display qty and button ?>
+<?php } // CUSTOMERS_APPROVAL == 3 ?>
+<!--eof Add to Cart Box-->
 
 <ul id="productInformation">
 <?php
