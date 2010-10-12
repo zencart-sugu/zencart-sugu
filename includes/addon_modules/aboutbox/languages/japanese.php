@@ -24,7 +24,7 @@
 
   // 管理画面用
 define('MODULE_ABOUTBOX_TITLE', 'アバウトボックス');
-define('MODULE_ABOUTBOX_DESCRIPTION', 'アバウトボックスブロック<br />アバウトボックスを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_BLOCKS) . '">ブロックの設定</a>から表示設定をしてください。');
+define('MODULE_ABOUTBOX_DESCRIPTION', 'アバウトボックスブロック<br />アバウトボックスを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">ブロックの設定</a>から表示設定をしてください。');
 define('MODULE_ABOUTBOX_STATUS_TITLE', 'アバウトボックスブロックの有効化');
 define('MODULE_ABOUTBOX_STATUS_DESCRIPTION', 'アバウトボックスを有効にしますか？ <br />true: 有効<br />false: 無効');
 define('MODULE_ABOUTBOX_SORT_ORDER_TITLE', '優先順');
