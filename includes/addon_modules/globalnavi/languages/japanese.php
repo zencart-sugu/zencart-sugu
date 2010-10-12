@@ -1,7 +1,7 @@
 <?php
   // 管理画面用
 define('MODULE_GLOBALNAVI_TITLE', 'グローバルナビ');
-define('MODULE_GLOBALNAVI_DESCRIPTION', 'グローバルナビ<br />グローバルナビを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_BLOCKS) . '">ブロックの設定</a>から表示設定をしてください。');
+define('MODULE_GLOBALNAVI_DESCRIPTION', 'グローバルナビ<br />グローバルナビを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">ブロックの設定</a>から表示設定をしてください。');
 define('MODULE_GLOBALNAVI_STATUS_TITLE', 'グローバルナビブロックの有効化');
 define('MODULE_GLOBALNAVI_STATUS_DESCRIPTION', 'グローバルナビを有効にしますか？ <br />true: 有効<br />false: 無効');
 define('MODULE_GLOBALNAVI_SORT_ORDER_TITLE', '優先順');
