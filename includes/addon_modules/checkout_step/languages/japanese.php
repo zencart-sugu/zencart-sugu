@@ -24,7 +24,7 @@
 
   // 管理画面用
 define('MODULE_CHECKOUT_STEP_TITLE', '注文ステップ表示');
-define('MODULE_CHECKOUT_STEP_DESCRIPTION', '注文ステップ表示<br />注文完了までステップを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_BLOCKS) . '">ブロックの設定</a>から表示設定をしてください。');
+define('MODULE_CHECKOUT_STEP_DESCRIPTION', '注文ステップ表示<br />注文完了までステップを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">ブロックの設定</a>から表示設定をしてください。');
 define('MODULE_CHECKOUT_STEP_STATUS_TITLE', '注文ステップ表示の有効化');
 define('MODULE_CHECKOUT_STEP_STATUS_DESCRIPTION', '注文ステップ表示を有効にしますか？ <br />true: 有効<br />false: 無効');
 define('MODULE_CHECKOUT_STEP_SORT_ORDER_TITLE', '優先順');
