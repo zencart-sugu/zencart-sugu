@@ -62,7 +62,8 @@
 <tr>
 <th scope="row"><span class="required"><?php echo TEXT_REQUIRED ?></span><label><?php echo ENTRY_STATE; ?></label></th>
 <td><?php
-    if ($process == true || $entry_state_has_zones == true ) {
+//    if ($process == true || $entry_state_has_zones == true ) {
+    if ( ($process == true || $entry_state_has_zones == true) && ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN == 'true' ) {
       if ($entry_state_has_zones == true) {
         echo zen_draw_pull_down_menu('state', $zones_array, zen_convert_to_zone_name_m17n($zone_name), ' id="state"');
       } else {
@@ -128,10 +129,14 @@
 
   if ($_GET['main_page'] == 'checkout_shipping_address') {
 ?>
+<?php /*
+// #12567 ->
 <tr>
 <th scope="row"><?php echo ENTRY_EMAIL_ADDRESS; ?></th>
 <td><p><?php echo ENTRY_SAMPLE_01 ; ?></p><?php echo zen_draw_input_field('email_address', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_email_address', '40') . ' id="email-address"') ; ?></td>
 </tr>
+// <- #12567
+*/ ?>
 <?php
   }
 ?>

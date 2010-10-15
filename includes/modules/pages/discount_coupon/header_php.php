@@ -14,7 +14,7 @@
   if (isset($_POST['lookup_discount_coupon']) and $_POST['lookup_discount_coupon'] != '') {
 // lookup requested discount coupon
 
-    $coupon = $db->Execute("select * from " . TABLE_COUPONS . " where coupon_code = '" . $_POST['lookup_discount_coupon'] . "' and  coupon_type != 'G'");
+    $coupon = $db->Execute("select * from " . TABLE_COUPONS . " where coupon_code = '" . zen_db_input($_POST['lookup_discount_coupon']) . "' and  coupon_type != 'G'");
 
     if ($coupon->RecordCount() < 1) {
 // invalid discount coupon code

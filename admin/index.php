@@ -87,7 +87,6 @@
 
 
 ?>
-<div class="wrapperBox">
 <div id="colone">
 <div class="reportBox">
 <div class="header"><?php echo BOX_TITLE_STATISTICS; ?> </div>
@@ -120,7 +119,7 @@
   while (!$orders_status->EOF) {
     $orders_pending = $db->Execute("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . $orders_status->fields['orders_status_id'] . "'");
 
-    $orders_contents .= '<div class="row"><span class="left"><a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'selected_box=customers&status=' . $orders_status->fields['orders_status_id'], 'NONSSL') . '">' . $orders_status->fields['orders_status_name'] . '</a>:</span><span class="rigth"> ' . $orders_pending->fields['count'] . '</span>   </div>';
+    $orders_contents .= '<div class="row"><span class="left"><a href="' . zen_href_link(FILENAME_ORDERS, 'selected_box=customers&status=' . $orders_status->fields['orders_status_id'], 'NONSSL') . '">' . $orders_status->fields['orders_status_name'] . '</a>:</span><span class="rigth"> ' . $orders_pending->fields['count'] . '</span>   </div>';
     $orders_status->MoveNext();
   }
 
@@ -134,7 +133,9 @@
   <?php  $customers = $db->Execute("select c.customers_id as customers_id, c.customers_firstname as customers_firstname, c.customers_lastname as customers_lastname, a.customers_info_date_account_created as customers_info_date_account_created, a.customers_info_id from " . TABLE_CUSTOMERS . " c left join " . TABLE_CUSTOMERS_INFO . " a on c.customers_id = a.customers_info_id order by a.customers_info_date_account_created DESC limit 5");
 
   while (!$customers->EOF) {
-    echo '              <div class="row"><span class="left"><a href="' . zen_href_link(FILENAME_CUSTOMERS, 'cID=' . $customers->fields['customers_id'] . '&origin=' . FILENAME_DEFAULT, 'NONSSL') . '" class="contentlink">'. $customers->fields['customers_firstname'] . ' ' . $customers->fields['customers_lastname'] . '</a></span><span class="rigth">' . "\n";
+    $customers->fields['customers_firstname'] = zen_output_string_protected($customers->fields['customers_firstname']);
+    $customers->fields['customers_lastname'] = zen_output_string_protected($customers->fields['customers_lastname']);
+    echo '              <div class="row"><span class="left"><a href="' . zen_href_link(FILENAME_CUSTOMERS, 'search=' . $customers->fields['customers_lastname'] . '&origin=' . FILENAME_DEFAULT, 'NONSSL') . '" class="contentlink">'. $customers->fields['customers_firstname'] . ' ' . $customers->fields['customers_lastname'] . '</a></span><span class="rigth">' . "\n";
     echo zen_date_short($customers->fields['customers_info_date_account_created']);
     echo '              </span></div>' . "\n";
     $customers->MoveNext();
@@ -162,19 +163,16 @@
 </div>
 <div id="colthree">
 <div class="reportBox">
-<div class="header"><?php echo BOX_ENTRY_NEW_ORDERS; ?></div>
+<div class="header"><?php echo BOX_ENTRY_NEW_ORDERS; ?> </div>
   <?php  $orders = $db->Execute("select o.orders_id as orders_id, o.customers_name as customers_name, o.customers_id, o.date_purchased as date_purchased, o.currency, o.currency_value, ot.class, ot.text as order_total from " . TABLE_ORDERS . " o left join " . TABLE_ORDERS_TOTAL . " ot on (o.orders_id = ot.orders_id) where class = 'ot_total' order by orders_id DESC limit 5");
 
   while (!$orders->EOF) {
-    echo '<div class="row"><span class="left">' . zen_datetime_short($orders->fields['date_purchased']);
-    echo '</span><span class="left"><a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&action=edit&origin=' . FILENAME_DEFAULT, 'NONSSL') . '" class="contentlink"> ' . $orders->fields['customers_name'] . '</a></span><span class="right2">' . $orders->fields['order_total'] . '</span>' . "\n";
-    
-
-    echo '</div>' . "\n";
+    echo '              <div class="row"><span class="left"><a href="' . zen_href_link(FILENAME_ORDERS, 'oID=' . $orders->fields['orders_id'] . '&origin=' . FILENAME_DEFAULT, 'NONSSL') . '" class="contentlink"> ' . $orders->fields['customers_name'] . '</a></span><span class="center">' . $orders->fields['order_total'] . '</span><span class="rigth">' . "\n";
+    echo zen_date_short($orders->fields['date_purchased']);
+    echo '              </span></div>' . "\n";
     $orders->MoveNext();
   }
 ?>
-</div>
 </div>
 </div>
 <!-- The following copyright announcement is in compliance
@@ -185,7 +183,7 @@ appropriately.
 Please leave this comment intact together with the
 following copyright announcement. //-->
 
-<div class="copyrightrow"><!--<a href="http://www.zen-cart.com" target="_blank"><img src="images/small_zen_logo.gif" alt="Zen Cart:: the art of e-commerce" border="0" /></a>--><br /><br />E-Commerce Engine Copyright &copy; 2003 <a href="http://www.zen-cart.com" target="_blank">Zen Cart&trade;</a>  Powered by <a href="http://www.zen-cart.com" target="_blank">zen-cart.com</a> / <a href="http://www.zen-cart.jp" target="_blank">zen-cart.jp</a></div><div class="warrantyrow"><br /><br />Zen Cart is derived from: Copyright &copy; 2003 osCommerce<br />This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />and is redistributable under the <a href="http://www.zen-cart.com/license/2_0.txt" target="_blank">GNU General Public License</a><br />
+<div class="copyrightrow"><a href="http://www.zen-cart.com" target="_blank"><img src="images/small_zen_logo.gif" alt="Zen Cart:: the art of e-commerce" border="0" /></a><br /><br />E-Commerce Engine Copyright &copy; 2003 <a href="http://www.zen-cart.com" target="_blank">Zen Cart&trade;</a>  Powered by <a href="http://www.zen-cart.com" target="_blank">zen-cart.com</a> / <a href="http://www.zen-cart.jp" target="_blank">zen-cart.jp</a></div><div class="warrantyrow"><br /><br />Zen Cart is derived from: Copyright &copy; 2003 osCommerce<br />This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br />without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE<br />and is redistributable under the <a href="http://www.zen-cart.com/license/2_0.txt" target="_blank">GNU General Public License</a><br />
 </div>
 </body>
 </html>

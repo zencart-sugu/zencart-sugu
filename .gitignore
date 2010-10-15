@@ -1,2 +1,4 @@
 admin/includes/configure.php
 includes/configure.php
+cache/*
+.gitignore

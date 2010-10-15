@@ -19,7 +19,7 @@
 // +----------------------------------------------------------------------+
 
 //
-// 配送モジュール 佐川急便
+// 配送モジュール ヤマト運輸
 // TAMURA Toshihiko (tamura@bitscope.co.jp)
 // 2004/02/27 modified for ZenCart by HISASUE Takahiro ( hisa@flatz.jp )
 // 2005/02/15 modified for Yamato Transport by HIRAOKA Tadahito ( hira@s-page.net )
@@ -173,7 +173,7 @@
     function install() {
 			global $db;
       $db->Execute("insert into " . TABLE_CONFIGURATION .
-      " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('佐川急便の配送を有効にする', 'MODULE_SHIPPING_YAMATO_STATUS', 'True', 'ヤマト運輸(宅急便)の配送を提供しますか?', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('ヤマト運輸(宅急便)の配送を有効にする', 'MODULE_SHIPPING_YAMATO_STATUS', 'True', 'ヤマト運輸(宅急便)の配送を提供しますか?', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
 
       $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('取扱い手数料', 'MODULE_SHIPPING_YAMATO_HANDLING', '0', '送料に適用する取扱手数料を設定できます.', '6', '1', now())");
 

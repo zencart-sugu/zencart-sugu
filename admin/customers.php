@@ -1,4 +1,4 @@
-x<?php
+<?php
 //
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
@@ -26,6 +26,7 @@ x<?php
   $currencies = new currencies();
 
   $action = (isset($_GET['action']) ? $_GET['action'] : '');
+  $customers_id = zen_db_prepare_input($_GET['cID']);
 
   $error = false;
   $processed = false;
@@ -34,17 +35,15 @@ x<?php
     switch ($action) {
       case 'status':
         if ($_GET['current'] == CUSTOMERS_APPROVAL_AUTHORIZATION) {
-          $sql = "update " . TABLE_CUSTOMERS . " set customers_authorization=0 where customers_id='" . $_GET['cID'] . "'";
+          $sql = "update " . TABLE_CUSTOMERS . " set customers_authorization=0 where customers_id='" . (int)$customers_id . "'";
         } else {
-          $sql = "update " . TABLE_CUSTOMERS . " set customers_authorization='" . CUSTOMERS_APPROVAL_AUTHORIZATION . "' where customers_id='" . $_GET['cID'] . "'";
+          $sql = "update " . TABLE_CUSTOMERS . " set customers_authorization='" . CUSTOMERS_APPROVAL_AUTHORIZATION . "' where customers_id='" . (int)$customers_id . "'";
         }
         $db->Execute($sql);
         $action = '';
-        zen_restore_language($admin_language);
-        zen_redirect(zen_href_link(FILENAME_CUSTOMERS, 'cID=' . $_GET['cID'] . '&page=' . $_GET['page'], 'NONSSL'));
+        zen_redirect(zen_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$customers_id . '&page=' . $_GET['page'], 'NONSSL'));
         break;
       case 'update':
-        $customers_id = zen_db_prepare_input($_GET['cID']);
         $customers_firstname = zen_db_prepare_input($_POST['customers_firstname']);
         $customers_lastname = zen_db_prepare_input($_POST['customers_lastname']);
 		// ->furikana
@@ -55,7 +54,7 @@ x<?php
         $entry_telephone = zen_db_prepare_input($_POST['entry_telephone']);
         $entry_fax = zen_db_prepare_input($_POST['entry_fax']);
         $customers_newsletter = zen_db_prepare_input($_POST['customers_newsletter']);
-        $customers_group_pricing = zen_db_prepare_input($_POST['customers_group_pricing']);
+        $customers_group_pricing = (int)zen_db_prepare_input($_POST['customers_group_pricing']);
         $customers_email_format = zen_db_prepare_input($_POST['customers_email_format']);
         $customers_gender = zen_db_prepare_input($_POST['customers_gender']);
         $customers_dob = (empty($_POST['customers_dob']) ? zen_db_prepare_input('0001-01-01 00:00:00') : zen_db_prepare_input($_POST['customers_dob']));
@@ -312,16 +311,14 @@ x<?php
           zen_restore_language($admin_language);
           zen_redirect(zen_href_link(FILENAME_CUSTOMERS, zen_get_all_get_params(array('cID', 'action')), 'NONSSL'));
         }
-        $customers_id = zen_db_prepare_input($_GET['cID']);
 
         if (isset($_POST['delete_reviews']) && ($_POST['delete_reviews'] == 'on')) {
           $reviews = $db->Execute("select reviews_id
                                    from " . TABLE_REVIEWS . "
                                    where customers_id = '" . (int)$customers_id . "'");
-
           while (!$reviews->EOF) {
-            $dbExecute("delete from " . TABLE_REVIEWS_DESCRIPTION . "
-                        where reviews_id = '" . (int)$reviews['reviews_id'] . "'");
+            $db->Execute("delete from " . TABLE_REVIEWS_DESCRIPTION . "
+                        where reviews_id = '" . (int)$reviews->fields['reviews_id'] . "'");
             $reviews->MoveNext();
           }
 
@@ -369,7 +366,7 @@ x<?php
                                     from " . TABLE_CUSTOMERS . " c left join " . TABLE_ADDRESS_BOOK . " a
                                     on c.customers_default_address_id = a.address_book_id
                                     where a.customers_id = c.customers_id
-                                    and c.customers_id = '" . (int)$_GET['cID'] . "'");
+                                    and c.customers_id = '" . (int)$customers_id . "'");
         else
           $customers = $db->Execute("select c.customers_id, c.customers_gender, c.customers_firstname,
                                             c.customers_lastname, c.customers_dob, c.customers_email_address,
@@ -382,10 +379,18 @@ x<?php
                                     from " . TABLE_CUSTOMERS . " c left join " . TABLE_ADDRESS_BOOK . " a
                                     on c.customers_default_address_id = a.address_book_id
                                     where a.customers_id = c.customers_id
-                                    and c.customers_id = '" . (int)$_GET['cID'] . "'");
+                                    and c.customers_id = '" . (int)$customers_id . "'");
         // <-furikana
 
-        $cInfo = new objectInfo($customers->fields);
+// -> set number_of_reviews in $cInfo (jp6)
+//        $cInfo = new objectInfo($customers->fields);
+        $reviews = $db->Execute("select count(*) as number_of_reviews
+                                 from " . TABLE_REVIEWS . " where customers_id = '" . (int)$customers->fields['customers_id'] . "'");
+
+        $cInfo_array = array_merge($customers->fields, $reviews->fields);
+
+        $cInfo = new objectInfo($cInfo_array);
+// <- set number_of_reviews in $cInfo (jp6)
     }
   }
 ?>
@@ -539,7 +544,7 @@ function check_form() {
   // -->
 </script>
 </head>
-<body onload="init()">
+<body onLoad="init()">
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
@@ -1017,8 +1022,8 @@ if ($processed == true) {
     }
     echo HEADING_TITLE_SEARCH_DETAIL . ' ' . zen_draw_input_field('search') . zen_hide_session_id();
     if (isset($_GET['search']) && zen_not_null($_GET['search'])) {
-      $keywords = zen_db_input(zen_db_prepare_input($_GET['search']));
-      echo '<br/ >' . TEXT_INFO_SEARCH_DETAIL_FILTER . $keywords;
+      $keywords = zen_db_prepare_input($_GET['search']);
+      echo '<br/ >' . TEXT_INFO_SEARCH_DETAIL_FILTER . zen_output_string_protected($keywords);
     }
 ?>
             </td>
@@ -1243,6 +1248,7 @@ if (($_GET['page'] == '' or $_GET['page'] == '1') and $_GET['cID'] != '') {
       break;
     default:
       if (isset($cInfo) && is_object($cInfo)) {
+        if (isset($_GET['search'])) $_GET['search'] = zen_output_string_protected($_GET['search']);
         $customers_orders = $db->Execute("select orders_id, date_purchased, order_total, currency, currency_value from " . TABLE_ORDERS . " where customers_id='" . $cInfo->customers_id . "' order by date_purchased desc");
 
         $heading[] = array('text' => '<b>' . TABLE_HEADING_ID . $cInfo->customers_id . ' ' . $cInfo->customers_firstname . ' ' . $cInfo->customers_lastname . '</b>');

@@ -22,7 +22,7 @@
 // $Id: japanese.php $
 //
 define('MODULE_CAROUSEL_UI_TITLE', 'カルーセルUI');
-define('MODULE_CAROUSEL_UI_DESCRIPTION', 'カルーセルUI<br />「新着商品」「おすすめ商品」「特価商品」をカルーセルUIブロックで表示します。<br />有効化の後に<a href="' . zen_href_link(FILENAME_BLOCKS) . '">ブロックの設定</a>から表示設定をしてください。');
+define('MODULE_CAROUSEL_UI_DESCRIPTION', 'カルーセルUI<br />「新着商品」「おすすめ商品」「特価商品」をカルーセルUIブロックで表示します。<br />有効化の後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">ブロックの設定</a>から表示設定をしてください。');
 
 define('MODULE_CAROUSEL_UI_STATUS_TITLE', 'カルーセルUIの有効化');
 define('MODULE_CAROUSEL_UI_STATUS_DESCRIPTION', 'カルーセルUIを有効にしますか？ <br />true: 有効<br />false: 無効');
