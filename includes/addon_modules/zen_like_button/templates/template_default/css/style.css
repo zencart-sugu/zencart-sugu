@@ -1,0 +1,22 @@
+@CHARSET "EUC-JP";
+
+#zen_tweet {
+	margin-top: 10px;
+}
+#zen_tweet h2 {
+	background-image:url("images/heaeline-short.png");
+	background-repeat:no-repeat;
+	border-bottom:1px solid #CCCCCC;
+	font-size:117%;
+	font-weight:800;
+	padding-bottom:9px;
+	padding-left:25px;
+	padding-top:14px;
+}
+#zen_tweet .date {
+	color: #FF00cc;
+	font-size: 10px;
+}
+#zen_tweet .tweet {
+	font-size: 10px;
+}
