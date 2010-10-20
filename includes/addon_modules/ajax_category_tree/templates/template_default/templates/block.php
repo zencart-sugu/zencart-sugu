@@ -1,8 +1,8 @@
 <script type='text/javascript'>
-$(function(){
+<?php echo JQUERY_ALIAS; ?>(function(){
 
 	// --- Initialize sample trees
-	$("#categorytree").dynatree({
+	<?php echo JQUERY_ALIAS; ?>("#categorytree").dynatree({
     title: "<?php echo MODULE_ADDON_MODULES_TEXT_ALL_CATEGORIES; ?>",
     rootVisible: true,
     persist: false,
