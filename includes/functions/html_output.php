@@ -95,8 +95,9 @@
 
 // for mobile
     global $mobile;
-    $link = $mobile->convertToMobileLink($link);
-
+    if ($mobile) {
+      $link = $mobile->convertToMobileLink($link);
+    }
     return $link;
   }
 
