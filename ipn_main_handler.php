@@ -150,6 +150,12 @@ switch ($txn_type) {
   zen_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
   $order->create_add_products($new_order_id, 2);
   $order->send_order_email($new_order_id, 2);
+// zaikorobot
+  require_once('includes/classes/observers/class.zaikoRobotObserver.php');
+  $zaikoRobotObserver = new zaikoRobotObserver();
+  $zco_notifier->attach($zaikoRobotObserver, array('NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL'));
+  $zco_notifier->notify('NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL');
+// end of zaikorobot
   $_SESSION['cart']->reset(true);
   break;
   case 'parent':
