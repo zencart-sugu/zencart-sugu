@@ -44,9 +44,11 @@ $statuses = $db->Execute($statuses_query);
 
 while (!$statuses->EOF) {
 
+  // ステータス中の改行を<br/>へ変換
+  $comments = nl2br($statuses->fields['comments']);
   $statusArray[] = array('date_added'=>$statuses->fields['date_added'],
   'orders_status_name'=>$statuses->fields['orders_status_name'],
-  'comments'=>$statuses->fields['comments']);
+  'comments'=>$comments);
 
   $statuses->MoveNext();
 }
