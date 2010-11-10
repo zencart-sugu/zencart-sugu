@@ -21,8 +21,8 @@ if (count($pId)) {
 <?php
     $img_alt     = zen_get_products_name($pId);
     $href_title  = $img_alt . '(' . zen_get_products_display_price($pId) . ')';
-    $img_alt     = zen_clean_html($img_alt);
-    $href_title  = zen_clean_html($href_title);
+    $img_alt     = htmlspecialchars(zen_clean_html($img_alt), ENT_QUOTES);
+    $href_title  = htmlspecialchars(zen_clean_html($href_title), ENT_QUOTES);
 
     $first_image_expd = DIR_WS_IMAGES . $multi_images[0]['img_expd'];
     $first_image_libx = DIR_WS_IMAGES . $multi_images[0]['img_libx'];
