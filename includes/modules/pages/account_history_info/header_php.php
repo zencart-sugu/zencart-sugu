@@ -48,7 +48,7 @@ while (!$statuses->EOF) {
   $comments = nl2br($statuses->fields['comments']);
   $statusArray[] = array('date_added'=>$statuses->fields['date_added'],
   'orders_status_name'=>$statuses->fields['orders_status_name'],
-  'comments'=>$statuses->$comments);
+  'comments'=>$comments);
 
   $statuses->MoveNext();
 }

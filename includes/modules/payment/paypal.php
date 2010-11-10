@@ -250,9 +250,11 @@ class paypal extends base {
       unset($_SESSION['comments']);
       unset($_SESSION['cot_gv']);
       $order_total_modules->clear_posts();//ICW ADDED FOR CREDIT CLASS SYSTEM
+      $_SESSION['navigation']->remove_current_page();
       zen_redirect(zen_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
     } else {
       $this->notify('NOTIFY_PAYMENT_PAYPAL_CANCELLED_DURING_CHECKOUT');
+      $_SESSION['navigation']->remove_current_page();
       zen_redirect(zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
     }
   }

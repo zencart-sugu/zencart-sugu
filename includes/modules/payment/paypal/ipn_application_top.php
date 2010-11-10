@@ -27,6 +27,19 @@ define('IS_ADMIN_FLAG', false);
   if (file_exists('includes/configure.php')) {
     include('includes/configure.php');
   }
+  /**
+   * include the list of extra configure files
+   */
+  if ($za_dir = @dir(DIR_WS_INCLUDES . 'extra_configures')) {
+    while ($zv_file = $za_dir->read()) {
+      if (preg_match('/\.php$/', $zv_file) > 0) {
+        /**
+         * load any user/contribution specific configuration files.
+         */
+        include(DIR_WS_INCLUDES . 'extra_configures/' . $zv_file);
+      }
+    }
+  }
 
   require('includes/classes/class.base.php');
   require('includes/classes/class.notifier.php');
