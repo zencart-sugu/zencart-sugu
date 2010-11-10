@@ -12,6 +12,7 @@
  * @version $Id: ot_addpoint.php $
  */
 
+if (is_object($GLOBALS['point_base'])):
   class ot_addpoint {
     var $title, $output;
     var $point;
@@ -299,4 +300,5 @@
       return $error;
     }
   }
+endif;
 ?>
