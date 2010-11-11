@@ -12,6 +12,7 @@
  * @version $Id: ot_subpoint.php $
  */
 
+if (is_object($GLOBALS['point_base'])):
   class ot_subpoint {
     var $title, $output;
     var $require_modules = array('point_base');
@@ -401,4 +402,5 @@
       return $error;
     }
   }
+endif;
 ?>

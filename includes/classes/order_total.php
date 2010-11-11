@@ -27,13 +27,17 @@ class order_total extends base {
       $this->modules = explode(';', MODULE_ORDER_TOTAL_INSTALLED);
 
       reset($this->modules);
-      while (list(, $value) = each($this->modules)) {
+      while (list($key, $value) = each($this->modules)) {
         //          include(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/order_total/' . $value);
         include(zen_get_file_directory(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/order_total/', $value, 'false'));
         include(DIR_WS_MODULES . 'order_total/' . $value);
 
         $class = substr($value, 0, strrpos($value, '.'));
-        $GLOBALS[$class] = new $class;
+        if (class_exists($class)) {
+          $GLOBALS[$class] = new $class;
+        } else {
+          unset($this->modules[$key]);
+        }
       }
     }
   }
