@@ -53,7 +53,9 @@ define('IS_ADMIN_FLAG', false);
 
 // include the list of project database tables
   require(DIR_WS_INCLUDES . 'database_tables.php');
-  require(DIR_FS_CATALOG_ADDON_MODULES . 'products_with_attributes_stock/database_tables.php');
+  if (file_exists(DIR_FS_CATALOG_ADDON_MODULES . 'products_with_attributes_stock/database_tables.php')) {
+    require(DIR_FS_CATALOG_ADDON_MODULES . 'products_with_attributes_stock/database_tables.php');
+  }
 
 // include the list of compatibility issues
   require(DIR_WS_FUNCTIONS . 'compatibility.php');
