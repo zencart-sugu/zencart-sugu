@@ -206,11 +206,16 @@ function zen_cfg_m17n_use_function($configuration_value = '', $default = false) 
 
 function zen_m17n_init_db_config_read() {
   global $db;
+  global $exclude_db_configuration_keys;
+  if (!is_array($exclude_db_configuration_keys)) {
+    $exclude_db_configuration_keys = array();
+  }
   $sql = 'SELECT configuration_key AS cfgkey, configuration_value AS cfgvalue FROM '.TABLE_CONFIGURATION.' WHERE use_function=\'zen_cfg_m17n_use_function\'';
   $configuration = $db->Execute($sql);
   while (!$configuration->EOF) {
     $configuration->fields['cfgvalue'] = call_user_func('zen_cfg_m17n_use_function', $configuration->fields['cfgvalue']);
     define(strtoupper($configuration->fields['cfgkey']), $configuration->fields['cfgvalue']);
+    $exclude_db_configuration_keys[] = strtoupper($configuration->fields['cfgkey']);
     $configuration->MoveNext();
   }
 }
