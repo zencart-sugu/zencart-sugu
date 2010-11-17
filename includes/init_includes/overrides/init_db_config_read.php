@@ -14,7 +14,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
 $use_cache = (isset($_GET['nocache']) ? false : true ) ;
-if (!is_array($exclude_db_configuretion_keys)) $exclude_db_configuretion_keys = array();
+if (!is_array($exclude_db_configuration_keys)) $exclude_db_configuration_keys = array();
 $configuration = $db->Execute('select configuration_key as cfgkey, configuration_value as cfgvalue
                                  from ' . TABLE_CONFIGURATION, '', $use_cache, 150);
 db_define($configuration);
@@ -23,7 +23,7 @@ $configuration = $db->Execute('select configuration_key as cfgkey, configuration
                           from ' . TABLE_PRODUCT_TYPE_LAYOUT);
 db_define($configuration);
 function db_define($configuration){
-  global $exclude_db_configuretion_keys;
+  global $exclude_db_configuration_keys;
   if(isset($configuration)){
     while (!$configuration->EOF) {
      /**
@@ -31,7 +31,7 @@ function db_define($configuration){
     * @ignore
     */
       $db_configuration_key = strtoupper($configuration->fields['cfgkey']);
-      if (!in_array($db_configuration_key, $exclude_db_configuretion_keys)) {
+      if (!in_array($db_configuration_key, $exclude_db_configuration_keys)) {
         define($db_configuration_key, $configuration->fields['cfgvalue']);
       }
       $configuration->MoveNext();

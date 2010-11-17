@@ -18,6 +18,10 @@ if (!defined('IS_ADMIN_FLAG')) {
   define('PROJECT_DB_VERSION_PATCH1_SOURCE',$project_db_info->fields['project_version_patch1_source']);
   define('PROJECT_DB_VERSION_PATCH2_SOURCE',$project_db_info->fields['project_version_patch2_source']);
 
+  if (!is_array($exclude_db_configuration_keys)) {
+    $exclude_db_configuration_keys = array();
+  }
+
 // set application wide parameters
   $configuration = $db->Execute('select configuration_key as cfgKey, configuration_value as cfgValue
                                  from ' . TABLE_CONFIGURATION);
@@ -26,7 +30,7 @@ if (!defined('IS_ADMIN_FLAG')) {
      * exclude db configuretion keys cause configuretion values defined on language files.
      */
     $db_configuration_key = strtoupper($configuration->fields['cfgKey']);
-    if (!in_array($db_configuration_key, $exclude_db_configuretion_keys)) {
+    if (!in_array($db_configuration_key, $exclude_db_configuration_keys)) {
       define($db_configuration_key, $configuration->fields['cfgValue']);
     }
     $configuration->MoveNext();
