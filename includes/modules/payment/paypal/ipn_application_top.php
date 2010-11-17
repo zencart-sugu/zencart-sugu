@@ -67,6 +67,10 @@ define('IS_ADMIN_FLAG', false);
     }
   }
 
+  if (file_exists(DIR_FS_CATALOG_ADDON_MODULES . 'm17n_configuration/auto_loaders/init.php')) {
+    require(DIR_FS_CATALOG_ADDON_MODULES . 'm17n_configuration/auto_loaders/init.php');
+  }
+
 // include the cache class
   require(DIR_WS_CLASSES . 'cache.php');
   $zc_cache = new cache;
