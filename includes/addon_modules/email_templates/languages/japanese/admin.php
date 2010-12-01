@@ -71,6 +71,7 @@ else if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID) {
   	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;顧客の名前に置換されます<br>
   	<font color="blue">[ORDER_ID]</font>:&nbsp;注文IDに置換されます<br>
   	<font color="blue">[INVOICE_URL]</font>:&nbsp;注文情報URLに変換されます<br>
+        <font color="blue">[COMMENTS]</font>:&nbsp;ステータス変更時のコメントに変換されます<br>
   	<font color="blue">[DATE_ORDERED]</font>:&nbsp;注文日に変換されます<br>
   	<font color="blue">[PRODUCTS_ORDERED]</font>:&nbsp;商品名に変換されます<br>
   	<font color="blue">[TOTALS]</font>:&nbsp;金額合計に変換されます<br>
@@ -85,6 +86,7 @@ else {
   	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;顧客の名前に置換されます<br>
   	<font color="blue">[ORDER_ID]</font>:&nbsp;注文IDに置換されます<br>
   	<font color="blue">[INVOICE_URL]</font>:&nbsp;注文情報URLに変換されます<br>
+        <font color="blue">[COMMENTS]</font>:&nbsp;ステータス変更時のコメントに変換されます<br>
   ');
 }
 

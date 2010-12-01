@@ -32,6 +32,8 @@ define('BOX_TOOLS_EMAIL_TEMPLATES', 'Emailテンプレート');
 define('TEXT_EMAIL_TEMPLATE', 'Emailテンプレート: ');
 define('TEXT_EMAIL_TEMPLATE_SETUP_PAGE', 'セットアップページ');
 define('TEXT_EMAIL_TEMPLATE_EMPTY', 'Emailテンプレートがありません');
+define('TEXT_EMAIL_TEMPLATE_DESCRIPTION', 'コメント:'.BOX_TOOLS_EMAIL_TEMPLATES.'内の[COMMENTS]に埋め込まれます<br />(テンプレート内に[COMMENTS]が無い場合はコメントの埋め込みは行われません)');
+define('TEXT_EMAIL_TEMPLATE_NO_TEMPLATE', BOX_TOOLS_EMAIL_TEMPLATES.'が見つからなかったためメールの送信は行われませんでした。');
 
 define('MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID', '2');
 

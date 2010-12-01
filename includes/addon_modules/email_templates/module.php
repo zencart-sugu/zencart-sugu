@@ -41,7 +41,9 @@ if (!defined('IS_ADMIN_FLAG')) {
           ),
         );
     var $require_modules = array('jquery');
-    var $notifier = array('NOTIFY_CHECKOUT_PROCESS_AFTER_ORDER_CREATE_ADD_PRODUCTS',
+    var $notifier = array('NOTIFY_BEFORE_CREATE_HEADER',
+			  'NOTIFY_BEFORE_CREATE_BODY',
+			  'NOTIFY_CHECKOUT_PROCESS_AFTER_ORDER_CREATE_ADD_PRODUCTS',
 			  'NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL');
 
     var $author                        = "kohata";
@@ -53,11 +55,31 @@ if (!defined('IS_ADMIN_FLAG')) {
     // class constructer for php4
     function email_templates() {
       require_once($this->dir . 'classes/CustomMail.php');
+      require_once($this->dir . 'classes/class.email_templates_notifier.php');
       $this->__construct();
     }
 
     function notifierUpdate($notifier) {
       global $order_back, $order;
+      global $messageStack;
+      global $request_type;
+
+      // detect pagename
+      if (isset($_GET['main_page']) && zen_not_null($_GET['main_page'])) {
+        $pagename = $_GET['main_page'];
+      } elseif (zen_not_null(basename($_SERVER['SCRIPT_NAME']))) {
+        $pagename = basename($_SERVER['SCRIPT_NAME']);
+        if (substr($pagename, -4) == '.php') {
+          $pagename = substr($pagename, 0, -4);
+        }
+      } else {
+        $pagename = FILENAME_DEFAULT;
+      }
+
+      // prepare notifier processor
+      $etn = new email_templates_notifier();
+      // call funcs
+      $ret = $etn->call($pagename, $notifier);
 
       switch( $notifier ){
       case 'NOTIFY_CHECKOUT_PROCESS_AFTER_ORDER_CREATE_ADD_PRODUCTS':
@@ -216,38 +238,10 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function page() {
-      global $db;
-
       if (isset($_GET['id'])) {
-      	$id  = $_GET['id'];
-      	if(isset($_GET['language_id'])) {
-
-      		$language_id = $_GET['language_id'];
-
-      	}elseif(isset($_SESSION['languages_id'])){
-
-      		$language_id = $_SESSION['languages_id'];
-      	}
-	//$language_id = $_SESSION['languages_id'];
-	if (isset($_GET['order_id'])) {
-	  $query          = "SELECT c.customers_languages_id
-                               FROM " . TABLE_CUSTOMERS . " c
-                              INNER JOIN " . TABLE_ORDERS . " o ON c.customers_id=o.customers_id
-                            WHERE o.orders_id= :order_id";
-	  $query = $db->bindVars($query, ':order_id', $_GET['order_id'], 'integer');
-	  $result = $db->Execute($query);
-	  if ($result->fields['customers_languages_id'] > 0) {
-	    $language_id = $result->fields['customers_languages_id'];
-	  }
-	}
-        $query          = "SELECT *
-                             FROM " . TABLE_EMAIL_TEMPLATES . " et
-                             INNER JOIN " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd ON et.id=etd.email_templates_id AND etd.language_id= :language_id
-                            WHERE id= :id";
-	$query = $db->bindVars($query, ':id', $_GET['id'], 'integer');
-	$query = $db->bindVars($query, ':language_id', $language_id, 'integer');
-        $email_template = $db->Execute($query);
-        echo $email_template->fields['contents'];
+	$language_id = isset($_GET['language_id']) ? $_GET['language_id'] : null;
+	$order_id = isset($_GET['oID']) ? $_GET['oID'] : null;
+	echo get_email_template_contents($_GET['id'], $language_id, $order_id);
       	exit;
       } else {
       	return "";
