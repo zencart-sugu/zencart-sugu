@@ -19,6 +19,24 @@ class email_templates_notifier {
     }
   }
 
+  function _cleanup_email($email_text) {
+    // clean up &amp; and && from email text
+    while (strstr($email_text, '&amp;&amp;')) $email_text = str_replace('&amp;&amp;', '&amp;', $email_text);
+    while (strstr($email_text, '&amp;')) $email_text = str_replace('&amp;', '&', $email_text);
+    while (strstr($email_text, '&&')) $email_text = str_replace('&&', '&', $email_text);
+
+    // fix double quotes
+    while (strstr($email_text, '&quot;')) $email_text = str_replace('&quot;', '"', $email_text);
+
+    // fix spaces
+    while (strstr($GLOBALS['phpmailer']['Body'], '&nbsp;')) $GLOBALS['phpmailer']['Body'] = str_replace('&nbsp;', ' ', $GLOBALS['phpmailer']['Body']);
+
+    // fix slashes
+    $email_text = stripslashes($email_text);
+
+    return $email_text;
+  }
+
   function index() {
     return true;
   }
@@ -51,56 +69,152 @@ class email_templates_notifier {
     switch( $notifier ){
     case 'NOTIFY_BEFORE_CREATE_HEADER':
       if (!empty($_POST['email_template_id']) && is_numeric($_POST['email_template_id'])) {
-        // templateæœ¬æ–‡å–å¾—
+        // templateËÜÊ¸¼èÆÀ
         $id = $_POST['email_template_id'];
         $subject = get_email_template_contents($id, $order_id, $language_id, 'subject');
         if ($subject === false) {
-          // templateå–å¾—ã§ããªã‘ã‚Œã°redirect
+          // template¼èÆÀ¤Ç¤­¤Ê¤±¤ì¤Ðredirect
           $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
           zen_redirect($redirect);
         }
         if (strpos($GLOBALS['phpmailer']['Subject'], SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_SUBJECT) !== false) {
-          $GLOBALS['phpmailer']['Subject'] = zen_db_prepare_input($subject) . ' #' . $GLOBALS['oID'];
-	} else {
-          // admin å®›ã®ãƒ¡ãƒ¼ãƒ«ã¯subjectã«prefixã‚’ä»˜ã‘ã‚‹
+          // admin °¸¤Î¥á¡¼¥ë¤Ïsubject¤Ëprefix¤òÉÕ¤±¤ë
           $GLOBALS['phpmailer']['Subject'] = SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_SUBJECT . zen_db_prepare_input($subject) . ' #' . $GLOBALS['oID'];
+	} else {
+          $GLOBALS['phpmailer']['Subject'] = zen_db_prepare_input($subject) . ' #' . $GLOBALS['oID'];
 	}
       } else {
-        // idãŒç„¡åŠ¹ãªã‚‰redirect
+        // id¤¬Ìµ¸ú¤Ê¤éredirect
         $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
         zen_redirect($redirect);
       }
       break;
     case 'NOTIFY_BEFORE_CREATE_BODY':
       if (!empty($_POST['email_template_id']) && is_numeric($_POST['email_template_id'])) {
-        // templateæœ¬æ–‡å–å¾—
+        // templateËÜÊ¸¼èÆÀ
         $id = $_POST['email_template_id'];
         $contents = get_email_template_contents($id, $order_id, $language_id, 'contents');
         if ($contents === false) {
-          // templateå–å¾—ã§ããªã‘ã‚Œã°redirect
+          // template¼èÆÀ¤Ç¤­¤Ê¤±¤ì¤Ðredirect
           $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
           zen_redirect($redirect);
         }
-        // æ³¨æ–‡ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å¤‰æ›´æ™‚ã«ã‚³ãƒ¡ãƒ³ãƒˆãŒã‚ã‚Œã°ç½®æ›
-        //$CustomMail = new CustomMail();
+        // ÃíÊ¸¥¹¥Æ¡¼¥¿¥¹ÊÑ¹¹»þ¤Ë¥³¥á¥ó¥È¤¬¤¢¤ì¤ÐÃÖ´¹
         $GLOBALS['phpmailer']['Body'] = zen_db_prepare_input($contents);
         if (!empty($GLOBALS['phpmailer']['AltBody'])) {
           $GLOBALS['phpmailer']['AltBody'] = zen_db_prepare_input($contents);
         }
-        // ç½®æ›é–‹å§‹
+        // ÃÖ´¹³«»Ï
         $GLOBALS['phpmailer']['Body'] = replace_status_email($GLOBALS['oID'], $GLOBALS['phpmailer']['Body']);
-        $GLOBALS['phpmailer']['AltBody'] = replace_status_email($GLOBALS['oID'], $GLOBALS['phpmailer']['AltBody']);
+        $GLOBALS['phpmailer']['Body'] = $this->_cleanup_email($GLOBALS['phpmailer']['Body']);
+        if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+          $GLOBALS['phpmailer']['AltBody'] = replace_status_email($GLOBALS['oID'], $GLOBALS['phpmailer']['AltBody']);
+          $GLOBALS['phpmailer']['AltBody'] = $this->_cleanup_email($GLOBALS['phpmailer']['AltBody']);
+        }
         if ($this->pagename == 'orders') {
-          // DBã¸ã®ãƒ­ã‚°è¨˜éŒ²ç”¨ã«ç½®æ›å¾Œã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’ã‚»ãƒƒãƒˆ(orders.php)
+          // DB¤Ø¤Î¥í¥°µ­Ï¿ÍÑ¤ËÃÖ´¹¸å¤Î¥³¥á¥ó¥È¤ò¥»¥Ã¥È(orders.php)
           $GLOBALS['comments'] = zen_db_prepare_input($_POST['comments']);
         }
       } else {
-        // idãŒç„¡åŠ¹ãªã‚‰redirect
+        // id¤¬Ìµ¸ú¤Ê¤éredirect
         $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
         zen_redirect($redirect);
       }
       break;
     }
+  }
+  function checkout_process($notifier) {
+    global $currencies, $order_totals, $order;
+    global $messageStack;
+    global $request_type;
+
+    // send lowstock email to admin
+    if ($order->email_low_stock != '' and SEND_LOWSTOCK_EMAIL=='1') {
+      return true;
+    }
+
+    // prepare data
+    $customer = $order->customer;
+    $GLOBALS['phpmailer']['comments'] = $order->info['comments'];
+    $GLOBALS['phpmailer']['content_type'] = $order->content_type;
+    $oID = $_SESSION['order_number_created'];
+    $redirect = '';
+
+    // get template id 
+    if ($_SESSION['customer_id'] > 0 && !isset($_SESSION['visitors_id'])) {
+      // members
+      $email_template_id = MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID;
+    }
+    else {
+      //visitors
+      $email_template_id = MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID;
+    }
+
+    switch ( $notifier ) {
+    case 'NOTIFY_BEFORE_CREATE_HEADER':
+      if (!empty($email_template_id) && is_numeric($email_template_id)) {
+        // templateËÜÊ¸¼èÆÀ
+        $id = $email_template_id;
+        $order_id = null;
+        $language_id = $_SESSION['language_id'];
+        $subject = get_email_template_contents($id, $order_id, $language_id, 'subject');
+        if ($subject === false) {
+          // template¼èÆÀ¤Ç¤­¤Ê¤±¤ì¤Ðredirect
+          $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
+          zen_redirect($redirect);
+        }
+        if (strpos($GLOBALS['phpmailer']['Subject'], SEND_EXTRA_NEW_ORDERS_EMAILS_TO_SUBJECT) !== false) {
+          // admin °¸¤Î¥á¡¼¥ë¤Ïsubject¤Ëprefix¤òÉÕ¤±¤ë
+          $GLOBALS['phpmailer']['Subject'] = SEND_EXTRA_NEW_ORDERS_EMAILS_TO_SUBJECT . zen_db_prepare_input($subject) . EMAIL_ORDER_NUMBER_SUBJECT . $oID;
+	} else {
+          $GLOBALS['phpmailer']['Subject'] = zen_db_prepare_input($subject) . EMAIL_ORDER_NUMBER_SUBJECT . $oID;
+	}
+      } else {
+        // id¤¬Ìµ¸ú¤Ê¤éredirect
+        $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
+        zen_redirect($redirect);
+      }
+      break;
+    case 'NOTIFY_BEFORE_CREATE_BODY':
+      if (!empty($email_template_id) && is_numeric($email_template_id)) {
+        // templateËÜÊ¸¼èÆÀ
+        $id = $email_template_id;
+        $order_id = null;
+        $language_id = $_SESSION['language_id'];
+        $contents = get_email_template_contents($id, $order_id, $language_id, 'contents');
+        if ($contents === false) {
+          // template¼èÆÀ¤Ç¤­¤Ê¤±¤ì¤Ðredirect
+          $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
+          zen_redirect($redirect);
+        }
+        // GLOBALS¤Ë¥Æ¥ó¥×¥ì¡¼¥È¤ò¥»¥Ã¥È
+        $GLOBALS['phpmailer']['Body'] = zen_db_prepare_input($contents);
+        if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+          $GLOBALS['phpmailer']['AltBody'] = zen_db_prepare_input($contents);
+        }
+        // ÃÖ´¹³«»Ï
+        $GLOBALS['phpmailer']['Body'] = replace_status_email($oID, $GLOBALS['phpmailer']['Body']);
+        $GLOBALS['phpmailer']['Body'] = $this->_cleanup_email($GLOBALS['phpmailer']['Body']);
+        if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+          $GLOBALS['phpmailer']['AltBody'] = replace_status_email($oID, $GLOBALS['phpmailer']['AltBody']);
+          $GLOBALS['phpmailer']['AltBody'] = $this->_cleanup_email($GLOBALS['phpmailer']['AltBody']);
+        }
+        // admin °¸¤Ë¤ÏÄÉ²Ã¾ðÊó¤òÉÕ²Ã
+        if (strpos($GLOBALS['phpmailer']['Subject'], SEND_EXTRA_NEW_ORDERS_EMAILS_TO_SUBJECT) !== false) {
+          $extra_info=email_collect_extra_info('','', $this->customer['firstname'] . ' ' . $this->customer['lastname'], $this->customer['email_address'], $this->customer['telephone']);
+          $GLOBALS['phpmailer']['Body'] .= strip_tags($extra_info['TEXT']);
+          if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+            $GLOBALS['phpmailer']['AltBody'] .= strip_tags($extra_info['TEXT']);
+          }
+        }
+      } else {
+        // id¤¬Ìµ¸ú¤Ê¤éredirect
+        $messageStack->add_session(TEXT_EMAIL_TEMPLATE_NO_TEMPLATE, 'warning');
+        zen_redirect($redirect);
+      }
+      break;
+    }
+
   }
 }
 ?>

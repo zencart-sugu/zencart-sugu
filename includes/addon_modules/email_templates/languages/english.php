@@ -130,4 +130,5 @@ xxxxxxx@example.org
 Copyright (c) XXXXXXXX Inc. All Rights Reserved
 ');
 
+define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', 'NONE');
 ?>

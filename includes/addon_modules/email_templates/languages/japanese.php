@@ -159,4 +159,13 @@ Copyright (c) XXXXXXXX Inc. All Rights Reserved
 define('MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY', 'しない');
 define('MODULE_EMAIL_TEMPLATE_DATE_FORMAT_LONG',        '%Y年%m月%d日 ');
 
+define('MODULE_EMAIL_TEMPLATE_SUN', '日曜日');
+define('MODULE_EMAIL_TEMPLATE_MON', '月曜日');
+define('MODULE_EMAIL_TEMPLATE_TUE', '火曜日');
+define('MODULE_EMAIL_TEMPLATE_WED', '水曜日');
+define('MODULE_EMAIL_TEMPLATE_THU', '木曜日');
+define('MODULE_EMAIL_TEMPLATE_FRI', '金曜日');
+define('MODULE_EMAIL_TEMPLATE_SAT', '土曜日');
+
+define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', '無し');
 ?>

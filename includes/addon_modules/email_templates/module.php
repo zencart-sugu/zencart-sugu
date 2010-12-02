@@ -80,16 +80,6 @@ if (!defined('IS_ADMIN_FLAG')) {
       $etn = new email_templates_notifier();
       // call funcs
       $ret = $etn->call($pagename, $notifier);
-
-      switch( $notifier ){
-      case 'NOTIFY_CHECKOUT_PROCESS_AFTER_ORDER_CREATE_ADD_PRODUCTS':
-	$order_back = $order;
-	$order = new CustomMail();
-	break;
-      case 'NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL':
-	$order = $order_back;
-	break;
-      }
     }
 
     function _install() {

@@ -419,18 +419,26 @@ function replace_status_email($oID, $comments) {
   $comments = str_replace('[ORDER_ID]',
               stripslashes($oID),
               $comments);
-  $comments = str_replace('[INVOICE_URL]',
-              zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL'),
-              $comments);
-  if ($_POST['notify_comments'] == 'on') {
-    $comments = str_replace('[COMMENTS]',
-                stripslashes($_POST['comments']),
-                $comments);
+
+  if (function_exists('zen_catalog_href_link')) {
+    $invoice_url = zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL');
   } else {
-    $comments = str_replace('[COMMENTS]',
-                            '',
-                            $comments);
+    $invoice_url = zen_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL', false);
   }
+  $comments = str_replace('[INVOICE_URL]',
+              $invoice_url,
+              $comments);
+ 
+  // insert comments if status changed
+  if ($_POST['notify_comments'] == 'on') {
+    $notify_comments = stripslashes($_POST['comments']);
+  } else {
+    $notify_comments = '';
+  }
+  $comments = str_replace('[COMMENTS]',
+              $notify_comments,
+              $comments);
+
    // products
   $products_ordered = "";
   for ($i=0, $n=count($order->products); $i<$n; $i++) {
@@ -463,29 +471,40 @@ function replace_status_email($oID, $comments) {
               stripslashes($totals),
               $comments);
 
-  $billing_address = zen_address_format($order->billing['format_id'], $order->billing, 1, '', "<br />");
+  $billing_address = zen_address_format($order->billing['format_id'], $order->billing, 0, '', "\n");
   $comments = str_replace('[BILLING_ADDRESS]',
               stripslashes($billing_address),
               $comments);
-  $delivery_address = zen_address_format($order->delivery['format_id'], $order->delivery, 1, '', "<br />");
+
+  if (isset($GLOBALS['phpmailer']['content_type']) && $GLOBALS['phpmailer']['content_type'] != 'virtual') {
+    $delivery_address = stripslashes(zen_address_format($order->delivery['format_id'], $order->delivery, 0, '', "\n"));
+  } else {
+    $delivery_address = MODULE_EMAIL_TEMPLATE_NOT_DELIVERY;
+  }
   $comments = str_replace('[DELIVERY_ADDRESS]',
-              stripslashes($delivery_address),
+              $delivery_address,
               $comments);
+
   $comments = str_replace('[PAYMENT_METHOD]',
               stripslashes($order->info['payment_method']),
               $comments);
 
   $date_ordered  = strftime(MODULE_EMAIL_TEMPLATE_DATE_FORMAT_LONG, strtotime($order->info['date_purchased']));
-  $weekday       = array ('ÆüÍËÆü', '·îÍËÆü', '²ÐÍËÆü', '¿åÍËÆü', 'ÌÚÍËÆü', '¶âÍËÆü', 'ÅÚÍËÆü');
+  $weekday = array(MODULE_EMAIL_TEMPLATE_SUN, MODULE_EMAIL_TEMPLATE_MON, MODULE_EMAIL_TEMPLATE_TUE, MODULE_EMAIL_TEMPLATE_WED, MODULE_EMAIL_TEMPLATE_THU, MODULE_EMAIL_TEMPLATE_FRI, MODULE_EMAIL_TEMPLATE_SAT);
   $date_ordered .= $weekday[strftime('%w', strtotime($order->info['date_purchased']))];
 
   $comments = str_replace('[DATE_ORDERED]',
               $date_ordered,
               $comments);
-
-//print_r($order);
-//print $comments;
-//die;
+  // insert orderd comment
+  if (!empty($GLOBALS['phpmailer']['comments'])) {
+    $order_comments = stripslashes($GLOBALS['phpmailer']['comments']);
+  } else {
+    $order_comments = '';
+  }
+  $comments = str_replace('[COMMENT]',
+              $order_comments,
+              $comments);
 
   return $comments;
 }
