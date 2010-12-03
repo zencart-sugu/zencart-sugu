@@ -403,8 +403,13 @@ function get_email_template_contents($id, $order_id = null, $language_id = null,
   }
 }
 
+// replace order email
+function replace_order_email($oID, $email_order, $email_template_id) {
+  return replace_status_email($oID, $email_order, $email_template_id);
+}
+
 //任意に選択された注文詳細のコメントを部分置換する
-function replace_status_email($oID, $comments) {
+function replace_status_email($oID, $comments, $email_template_id) {
   require_once('includes/classes/currencies.php');
   $currencies = new currencies();
 
@@ -420,6 +425,7 @@ function replace_status_email($oID, $comments) {
               stripslashes($oID),
               $comments);
 
+  if ($email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
   if (function_exists('zen_catalog_href_link')) {
     $invoice_url = zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL');
   } else {
@@ -428,8 +434,10 @@ function replace_status_email($oID, $comments) {
   $comments = str_replace('[INVOICE_URL]',
               $invoice_url,
               $comments);
- 
+  endif;
+
   // insert comments if status changed
+  if ($email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID && $email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
   if ($_POST['notify_comments'] == 'on') {
     $notify_comments = stripslashes($_POST['comments']);
   } else {
@@ -438,6 +446,7 @@ function replace_status_email($oID, $comments) {
   $comments = str_replace('[COMMENTS]',
               $notify_comments,
               $comments);
+  endif;
 
    // products
   $products_ordered = "";
@@ -497,6 +506,7 @@ function replace_status_email($oID, $comments) {
               $date_ordered,
               $comments);
   // insert orderd comment
+  if ($email_template_id == MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID || $email_template_id == MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
   if (!empty($GLOBALS['phpmailer']['comments'])) {
     $order_comments = stripslashes($GLOBALS['phpmailer']['comments']);
   } else {
@@ -505,7 +515,44 @@ function replace_status_email($oID, $comments) {
   $comments = str_replace('[COMMENT]',
               $order_comments,
               $comments);
+  endif;
 
   return $comments;
+}
+
+function replace_welcome_email($customer_id, $email_welcome) {
+  global $db;
+
+  // get user information
+  $query = "SELECT
+              customers_firstname
+              ,customers_lastname
+              ,customers_email_address
+              ,customers_dob
+              ,customers_telephone
+              ,customers_fax
+            from ".
+              TABLE_CUSTOMERS."
+            where
+              customers_id=".(int)$customer_id;
+  $customer = $db->Execute($query);
+
+  $email_welcome     = str_replace('[CUSTOMER_NAME]',
+                       stripslashes($customer->fields['customers_firstname'] . ' ' . $customer->fields['customers_lastname']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_EMAIL]',
+                       stripslashes($customer->fields['customers_email_address']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_DOB]',
+                       stripslashes($customer->fields['customers_dob']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_PHONE]',
+                       stripslashes($customer->fields['customers_telephone']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_FAX]',
+                       stripslashes($customer->fields['customers_fax']),
+                       $email_welcome);
+
+  return $email_welcome;
 }
 ?>

@@ -42,9 +42,7 @@ if (!defined('IS_ADMIN_FLAG')) {
         );
     var $require_modules = array('jquery');
     var $notifier = array('NOTIFY_BEFORE_CREATE_HEADER',
-			  'NOTIFY_BEFORE_CREATE_BODY',
-			  'NOTIFY_CHECKOUT_PROCESS_AFTER_ORDER_CREATE_ADD_PRODUCTS',
-			  'NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL');
+			  'NOTIFY_BEFORE_CREATE_BODY');
 
     var $author                        = "kohata";
     var $author_email                  = "info@zencart-sugu.jp";
