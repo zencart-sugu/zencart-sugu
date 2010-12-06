@@ -136,12 +136,16 @@ class ZenCart_Mobile {
             foreach ($_GET as $key => $val) {
                 if (is_array($val)) {
                     foreach ($val as $key2 => $val2) {
-                        $_GET[$key][$key2] = mb_convert_encoding($val2, 'EUC-JP', 'SJIS');
+                        if (! ini_get('mbstring.encoding_translation') == 1) {
+                            $_GET[$key][$key2] = mb_convert_encoding($val2, 'EUC-JP', 'SJIS');
+                        }
                         $_GET[$key][$key2] = mb_convert_kana($_GET[$key][$key2], 'KV', 'EUC-JP');
                     }
                 }
                 else {
-                    $_GET[$key] = mb_convert_encoding($val, 'EUC-JP', 'SJIS');
+                    if (! ini_get('mbstring.encoding_translation') == 1) {
+                        $_GET[$key] = mb_convert_encoding($val, 'EUC-JP', 'SJIS');
+                    }
                     $_GET[$key] = mb_convert_kana($_GET[$key], 'KV', 'EUC-JP');
                 }
             }
@@ -149,12 +153,16 @@ class ZenCart_Mobile {
             foreach ($_POST as $key => $val) {
                 if (is_array($val)) {
                     foreach ($val as $key2 => $val2) {
-                        $_POST[$key][$key2] = mb_convert_encoding($val2, 'EUC-JP', 'SJIS');
+                        if (! ini_get('mbstring.encoding_translation') == 1) {
+                            $_POST[$key][$key2] = mb_convert_encoding($val2, 'EUC-JP', 'SJIS');
+                        }
                         $_POST[$key][$key2] = mb_convert_kana($_POST[$key][$key2], 'KV', 'EUC-JP');
                     }
                 }
                 else {
-                    $_POST[$key] = mb_convert_encoding($val, 'EUC-JP', 'SJIS');
+                    if (! ini_get('mbstring.encoding_translation') == 1) {
+                        $_POST[$key] = mb_convert_encoding($val, 'EUC-JP', 'SJIS');
+                    }
                     $_POST[$key] = mb_convert_kana($_POST[$key], 'KV', 'EUC-JP');
                 }
             }            
