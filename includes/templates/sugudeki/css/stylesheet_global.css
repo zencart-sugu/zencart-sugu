@@ -44,7 +44,7 @@ h1,h2,h3,h4,h5,h6{
 body{
 	padding: 0px;
 	margin: 0px;
-	font-family: "£Í£Ó £Ð¥´¥·¥Ã¥¯", Osaka, "¥Ò¥é¥®¥Î³Ñ¥´ Pro W3";
+	font-family: "Ž£ŽÍŽ£ŽÓ Ž£ŽÐŽ¥Ž´Ž¥Ž·Ž¥ŽÃŽ¥Ž¯", Osaka, "Ž¥ŽÒŽ¥ò§Ž®Ž¥ŽÎŽ³ŽÑŽ¥Ž´ Pro W3";
 	color: #323232;
 	text-align: center;
 	background-color: #FFF;
@@ -103,6 +103,11 @@ a:hover{
 
 a:active{
 	color: #42A0FF;
+}
+
+a:link img{
+	border: none;
+	text-decoration: none;
 }
 
 
