@@ -45,27 +45,9 @@
       if (zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_sendfor_status', array($products[$i]['id'])) != '') {
         continue;
       }
-      if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS != 'true') {
-        if (zen_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
-          zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
-          break;
-        }
-      }
-      else {
-  			// Added to allow individual stock of different attributes
-  			unset($attributes);
-  			if(is_array($products[$i]['attributes'])){
-  				$attributes = $products[$i]['attributes'];
-  			} else {
-  				$attributes = '';
-  			}
-  			// End change
-
-  			$stock_check = zen_check_stock($products[$i]['id'], $products[$i]['quantity'], $attributes);
-  			if (zen_not_null($stock_check)) {
-          zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
-          break;
-        }
+      if (zen_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
+        zen_redirect(zen_href_link(FILENAME_SHOPPING_CART));
+        break;
       }
     }
   }

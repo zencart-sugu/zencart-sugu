@@ -17,11 +17,11 @@
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
-class order extends base {
+class pwas_order extends base {
   var $info, $totals, $products, $customer, $delivery, $content_type, $email_low_stock, $products_ordered_attributes,
   $products_ordered, $products_ordered_email;
 
-  function order($order_id = '') {
+  function pwas_order($order_id = '') {
     $this->info = array();
     $this->totals = array();
     $this->products = array();
@@ -716,6 +716,51 @@ class order extends base {
           //            $this->products[$i]['stock_value'] = $stock_values->fields['products_quantity'];
 
           $db->Execute("update " . TABLE_PRODUCTS . " set products_quantity = '" . $stock_left . "' where products_id = '" . zen_get_prid($this->products[$i]['id']) . "'");
+
+          if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS == 'true') {
+            // kuroi: Begin Stock by Attributes additions
+            // added to update quantities of products with attributes
+            $attribute_search = array();
+            $attribute_stock_left = STOCK_REORDER_LEVEL + 1;  // kuroi: prevent false low stock triggers  
+
+            if(isset($this->products[$i]['attributes']) and sizeof($this->products[$i]['attributes']) >0){
+              foreach($this->products[$i]['attributes'] as $attributes){
+                $attribute_search[] = $attributes['value_id'];
+              }
+            
+              if(sizeof($attribute_search) > 1){
+                $attribute_search = 'where options_values_id in ("'.implode('","', $attribute_search).'")';
+              } else {
+                $attribute_search = 'where options_values_id="' . $attribute_search[0].'"';
+              }
+
+              $query = 'select products_attributes_id from ' . TABLE_PRODUCTS_ATTRIBUTES . ' ' . $attribute_search .' and products_id="' . zen_get_prid($this->products[$i]['id']) . '" order by products_attributes_id';
+              $attributes = $db->Execute($query);
+              $stock_attributes_search = array();
+              while(!$attributes->EOF){
+                $stock_attributes_search[] = $attributes->fields['products_attributes_id']; 
+                $attributes->MoveNext();
+              }
+              if(sizeof($stock_attributes_search) > 1){
+                $stock_attributes_search = implode(',', $stock_attributes_search);
+              } else {
+                foreach($stock_attributes_search as $attribute_search){
+                  $stock_attributes_search1 = $attribute_search;
+                }
+                $stock_attributes_search = $stock_attributes_search1;
+              }
+              
+              $get_quantity_query = 'select quantity from ' . TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK . ' where products_id="' . zen_get_prid($this->products[$i]['id']) . '" and stock_attributes="' . $stock_attributes_search . '"';
+
+              $attribute_stock_available = $db->Execute($get_quantity_query); 
+              $attribute_stock_left = $attribute_stock_available->fields['quantity'] - $this->products[$i]['qty'];
+        
+              $attribute_update_query = 'update ' . TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK . ' set quantity='.$attribute_stock_left.' where products_id="' . zen_get_prid($this->products[$i]['id']) . '" and stock_attributes="' . $stock_attributes_search . '"';
+              $db->Execute($attribute_update_query);  
+            }
+            // kuroi: End Stock by Attribute additions
+          }
+
           //        if ( ($stock_left < 1) && (STOCK_ALLOW_CHECKOUT == 'false') ) {
           if ($stock_left < 1) {
             // only set status to off when not displaying sold out
@@ -728,6 +773,18 @@ class order extends base {
           if ( $stock_left <= STOCK_REORDER_LEVEL ) {
             // WebMakers.com Added: add to low stock email
             $this->email_low_stock .=  'ID# ' . zen_get_prid($this->products[$i]['id']) . "\t\t" . $this->products[$i]['model'] . "\t\t" . $this->products[$i]['name'] . "\t\t" . ' Qty Left: ' . $stock_left . "\n";
+          }
+          else {
+            if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS == 'true') {
+              // kuroi: trigger and details for attribute low stock email
+              if ($attribute_stock_left <= STOCK_REORDER_LEVEL) {
+                $this->email_low_stock .=  'ID# ' . zen_get_prid($this->products[$i]['id']) . ', ' . $this->products[$i]['model'] . ', ' . $this->products[$i]['name'] . ', ';
+    						foreach($this->products[$i]['attributes'] as $attributes){
+    							$this->email_low_stock .= $attributes['option'] . ': ' . $attributes['value'] . ', ';
+    						}
+    						$this->email_low_stock .= 'Stock: ' . $attribute_stock_left . "\n\n";
+  						}
+  					}
           }
         }
       }

@@ -42,7 +42,11 @@ if (!defined('IS_ADMIN_FLAG')) {
           ),
         );
     var $require_modules = array();
-    var $notifier        = array();
+    var $notifier        = array('NOTIFY_HEADER_START_CHECKOUT_SHIPPING',
+                                 'NOTIFY_HEADER_START_CHECKOUT_PAYMENT',
+                                 'NOTIFY_HEADER_START_CHECKOUT_CONFIRMATION',
+                                 'NOTIFY_CHECKOUT_PROCESS_BEFORE_ORDER_TOTALS_PRE_CONFIRMATION_CHECK'
+                           );
 
     var $author                        = "kohata";
     var $author_email                  = "info@zencart-sugu.jp";
@@ -56,6 +60,20 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function notifierUpdate($notifier) {
+      switch ($notifier) {
+      case 'NOTIFY_HEADER_START_CHECKOUT_SHIPPING':
+        pwas_notify_start_checkout_shipping();
+        break;
+      case 'NOTIFY_HEADER_START_CHECKOUT_PAYMENT':
+        pwas_notify_start_checkout_payment();
+        break;
+      case 'NOTIFY_HEADER_START_CHECKOUT_CONFIRMATION':
+        pwas_notify_checkout_start_confirmation();
+        break;
+      case 'NOTIFY_CHECKOUT_PROCESS_BEFORE_ORDER_TOTALS_PRE_CONFIRMATION_CHECK':
+        pwas_switch_order_class();
+        break;
+      }
     }
 
     function page() {
