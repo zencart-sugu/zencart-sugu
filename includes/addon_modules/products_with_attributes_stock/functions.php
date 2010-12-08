@@ -296,4 +296,25 @@ function pwas_switch_order_class() {
 
   $GLOBALS['order'] = $pwas_order;
 }
+
+function notify_header_end_shopping_cart() {
+  global $productArray;
+  global $flagAnyOutOfStock;
+  global $stockAvailable;
+
+  if (STOCK_CHECK == 'true') {
+    $products = $_SESSION['cart']->get_products();
+    reset($productArray);
+    reset($products);
+    for ($i=0, $n=sizeof($productArray); $i<$n; $i++) {
+      if ($productArray[$i]['id'] == $products[$i]['id'] && is_array($products[$i]['attributes'])) {
+        $stock_check = pwas_check_stock($productArray[$i]['id'], $products[$i]['quantity'], $products[$i]['attributes']);
+        if (zen_not_null($stock_check)) {
+          $flagAnyOutOfStock = true;
+          $productArray[$i]['flagStockCheck'] = $stock_check;
+        }
+      }
+    }
+  }
+}
 ?>

@@ -45,6 +45,7 @@ if (!defined('IS_ADMIN_FLAG')) {
     var $notifier        = array('NOTIFY_HEADER_START_CHECKOUT_SHIPPING',
                                  'NOTIFY_HEADER_START_CHECKOUT_PAYMENT',
                                  'NOTIFY_HEADER_START_CHECKOUT_CONFIRMATION',
+                                 'NOTIFY_HEADER_END_SHOPPING_CART',
                                  'NOTIFY_CHECKOUT_PROCESS_BEFORE_ORDER_TOTALS_PRE_CONFIRMATION_CHECK'
                            );
 
@@ -72,6 +73,9 @@ if (!defined('IS_ADMIN_FLAG')) {
         break;
       case 'NOTIFY_CHECKOUT_PROCESS_BEFORE_ORDER_TOTALS_PRE_CONFIRMATION_CHECK':
         pwas_switch_order_class();
+        break;
+      case 'NOTIFY_HEADER_END_SHOPPING_CART':
+        notify_header_end_shopping_cart();
         break;
       }
     }
