@@ -96,28 +96,11 @@ $shipping_modules = new shipping($_SESSION['shipping']);
 $any_out_of_stock = false;
 if (STOCK_CHECK == 'true') {
   for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
-    $order->products[$i]['stock_check'] = '';
-    if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS != 'true') {
-      $stock_check = zen_check_stock($order->products[$i]['id'], $order->products[$i]['qty']);
-      if (zen_not_null($stock_check)) {
-        $any_out_of_stock = true;
-        $order->products[$i]['stock_check'] = $stock_check;
-      }
+    if (zen_addOnModules_call_function('advanced_stock', 'advanced_stock_get_sendfor_status', array($order->products[$i]['id'])) != '') {
+      continue;
     }
-    else {
-			// Added to allow individual stock of different attributes
-			unset($attributes);
-			if(is_array($order->products[$i]['attributes'])){
-				$attributes = $order->products[$i]['attributes'];
-			} else {
-				$attributes = '';
-			}
-			// End change
-			$stock_check = zen_check_stock($order->products[$i]['id'], $order->products[$i]['qty'], $attributes);
-			if (zen_not_null($stock_check)) {
-				$any_out_of_stock = true;
-        $order->products[$i]['stock_check'] = $stock_check;
-			}
+    if (zen_check_stock($order->products[$i]['id'], $order->products[$i]['qty'])) {
+      $any_out_of_stock = true;
     }
   }
   // Out of Stock
@@ -161,6 +144,9 @@ if (isset($$_SESSION['payment']->form_action_url)) {
 } else {
   $form_action_url = zen_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 }
+
+$stock_check = (STOCK_CHECK == 'true' ? zen_check_stock(stripslashes($order->products[$i]['id']), $order->products[$i]['qty']) : '');
+
 
 require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
 $breadcrumb->add(NAVBAR_TITLE_1, zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
