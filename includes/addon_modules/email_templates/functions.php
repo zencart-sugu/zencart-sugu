@@ -173,17 +173,22 @@
               var notify            = document.getElementById("notify");
               var notify_comments   = document.getElementById("notify_comments");
               var email_template_id = document.getElementById("email_template_id");
+              var template_node = document.getElementById(\'templateparent\');
 
               // しない？
               if (grp.value == "") {
+                /*
                 if (comments)
                   comments.value = "";
+                */
                 if (notify)
                   notify.value = "";
                 if (notify_comments)
                   notify_comments.value = "";
                 if (email_template_id)
                   email_template_id.value = "";
+                if (template_node)
+                  template_node.parentNode.removeChild(template_node);
               }
               // する？
               else {
@@ -196,9 +201,29 @@
                     order_id: ' . $order_id . '
                   },
                   success: function(msg) {
-                    var comments = document.getElementById("comments");
-                    if (comments)
-                      comments.value = msg;
+                    var comments = document.getElementsByName(\'comments\')[0];
+                      var newNode = document.getElementById(\'templateparent\');
+                      if (newNode) {
+                        newNode.parentNode.removeChild(newNode);
+                      }
+                      var newNode = document.createElement(\'div\');
+                      newNode.id = \'templateparent\';
+                      var templateTitle = document.createElement(\'div\');
+                      templateTitle.class = \'innertitle\';
+                      templateTitle.innerHTML = \''.TEXT_EMAIL_TEMPLATE.'\';
+                      newNode.appendChild(templateTitle);
+                      var newChild = document.createElement(\'textarea\');
+                      newChild.setAttribute(\'wrap\', \'soft\');
+                      newChild.setAttribute(\'rows\', \'20\');
+                      newChild.setAttribute(\'cols\', \'60\');
+                      newChild.setAttribute(\'readonly\', \'readonly\');
+                      newChild.value = msg;
+                      newNode.appendChild(newChild);
+                      var commentTitle = document.createElement(\'div\');
+                      commentTitle.class = \'innertitle\';
+                      commentTitle.innerHTML = \''.TEXT_EMAIL_TEMPLATE_DESCRIPTION.'\';
+                      newNode.appendChild(commentTitle);
+                      comments.parentNode.insertBefore(newNode, comments);
                   }
                 });
                 if (notify)
@@ -225,19 +250,42 @@
 		$out .= "　　<strong>" . TEXT_SELECT_LANGUAGES . "</strong>";
 		$out .= zen_draw_pull_down_menu('lang_id', $languages, '', 'id="lang_id"');
 
-		//zencartのformヘルパーに変更する
-		$out .= '<br /><INPUT TYPE="BUTTON" VALUE="' . BUTTON_READ_EMAIL_TEMPLATE . '" ONCLICK="readEmailTemplate();">';
+		$out .= '<br />'.zen_draw_input_field('', BUTTON_READ_EMAIL_TEMPLATE, 'onclick="readEmailTemplate();"', false, 'button');
 
 		return '<script type="text/javascript">
 	        <!--
+	        var notify            = document.getElementsByName("notify")[0];
+	        var notify_comments   = document.getElementsByName("notify_comments")[0];
+                if (notify) {
+                  notify.value = \'on\';
+                  notify.removeAttribute(\'checked\');
+                }
+                if (notify_comments) {
+                  notify_comments.value = \'on\';
+                  notify_comments.removeAttribute(\'checked\');
+                }
+
 	        function readEmailTemplate()
 	        {
 						var comments          = document.getElementById("comments");
-						var notify            = document.getElementById("notify");
-						var notify_comments   = document.getElementById("notify_comments");
+						var notify            = document.getElementsByName("notify")[0];
+						var notify_comments   = document.getElementsByName("notify_comments")[0];
 						var email_template_id = document.getElementById("et_id");
 						var language_id = document.getElementById("lang_id");
+                                                var template_node = document.getElementById(\'templateparent\');
+                                                var real_email_template_id = document.getElementById(\'email_template_id\');
 
+                                              // しない？
+                                              if (email_template_id.value == "") {
+                                                if (notify)
+                                                  notify.removeAttribute(\'checked\');
+                                                if (notify_comments)
+                                                  notify_comments.removeAttribute(\'checked\');
+                                                if (real_email_template_id)
+                                                  real_email_template_id.value = "";
+                                                if (template_node)
+                                                  template_node.parentNode.removeChild(template_node);
+                                              } else {
 						$.ajax({
 						  type: "GET",
 						  url:  "'.zen_href_link("../index.php?main_page=addon").'",
@@ -247,15 +295,40 @@
 						    language_id: language_id.value
 						  },
 						  success: function(msg) {
-						    var comments = document.getElementById("comments");
-						    if (comments)
-						      comments.value = msg;
+						    var comments = document.getElementsByName(\'comments\')[0];
+                                                      var newNode = document.getElementById(\'templateparent\');
+                                                      if (newNode) {
+                                                        newNode.parentNode.removeChild(newNode);
+                                                      }
+                                                      var newNode = document.createElement(\'div\');
+                                                      newNode.id = \'templateparent\';
+                                                      var templateTitle = document.createElement(\'div\');
+                                                      templateTitle.class = \'innertitle\';
+                                                      templateTitle.innerHTML = \''.TEXT_EMAIL_TEMPLATE.'\';
+                                                      newNode.appendChild(templateTitle);
+                                                      var newChild = document.getElementById(\'templatearea\');
+                                                      var newChild = document.createElement(\'textarea\');
+                                                      newChild.id = \'templatearea\';
+                                                      newChild.setAttribute(\'wrap\', \'soft\');
+                                                      newChild.setAttribute(\'rows\', \'20\');
+                                                      newChild.setAttribute(\'cols\', \'60\');
+                                                      newChild.setAttribute(\'readonly\', \'readonly\');
+                                                      newChild.value = msg;
+                                                      newNode.appendChild(newChild);
+                                                      var commentTitle = document.createElement(\'div\');
+                                                      commentTitle.class = \'innertitle\'; 
+                                                      commentTitle.innerHTML = \''.TEXT_EMAIL_TEMPLATE_DESCRIPTION.'\';
+                                                      newNode.appendChild(commentTitle);
+                                                      comments.parentNode.insertBefore(newNode, comments);
 						  }
 						});
 						if (notify)
-								notify.value = "on";
+								notify.setAttribute(\'checked\', \'checked\');
 						if (notify_comments)
-								notify_comments.value = "on";
+								notify_comments.setAttribute(\'checked\', \'checked\');
+                                                if (real_email_template_id)
+                                                                real_email_template_id.value = email_template_id.value;
+                                              }
 	        }
 	        // -->
 	        </script>
@@ -296,4 +369,235 @@
 
 		return $languages;
 	}
+
+function get_email_template_contents($id, $order_id = null, $language_id = null, $type = 'contents') {
+  global $db;
+
+  if (is_null($language_id)) {
+    if (isset($_SESSION['languages_id'])) {
+      $language_id = $_SESSION['languages_id'];
+    }
+  }
+  if (!is_null($order_id)) {
+    $query  = "SELECT c.customers_languages_id
+               FROM " . TABLE_CUSTOMERS . " c
+               INNER JOIN " . TABLE_ORDERS . " o ON c.customers_id=o.customers_id
+               WHERE o.orders_id= :order_id";
+    $query = $db->bindVars($query, ':order_id', $order_id, 'integer');
+    $result = $db->Execute($query);
+    if ($result->fields['customers_languages_id'] > 0) {
+      $language_id = $result->fields['customers_languages_id'];
+    }
+  }
+  $query = "SELECT subject, contents
+            FROM " . TABLE_EMAIL_TEMPLATES . " et
+            INNER JOIN " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " etd ON et.id=etd.email_templates_id AND etd.language_id= :language_id
+            WHERE id= :id";
+  $query = $db->bindVars($query, ':id', $id, 'integer');
+  $query = $db->bindVars($query, ':language_id', $language_id, 'integer');
+  $email_template = $db->Execute($query);
+  if (!$email_template->EOF) {
+    return $email_template->fields[$type];
+  } else {
+    return false;
+  }
+}
+
+// replace order email
+function replace_order_email($oID, $email_order, $email_template_id) {
+  return replace_status_email($oID, $email_order, $email_template_id);
+}
+
+//任意に選択された注文詳細のコメントを部分置換する
+function replace_status_email($oID, $comments, $email_template_id) {
+  require_once('includes/classes/currencies.php');
+  $currencies = new currencies();
+
+  //オーダー情報の取得
+  require_once('includes/classes/order.php');
+  $order = new order($oID);
+
+  //============ 以下、予約語を置換 ============
+  $comments = str_replace('[CUSTOMER_NAME]',
+              stripslashes($order->customer['name']),
+              $comments);
+  $comments = str_replace('[ORDER_ID]',
+              stripslashes($oID),
+              $comments);
+
+  if ($email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
+  if (function_exists('zen_visitors_purchase_is_visitors_order') && zen_visitors_purchase_is_visitors_order($oID)) {
+    $invoice_url = '';
+  } elseif (function_exists('zen_catalog_href_link')) {
+    $invoice_url = zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL');
+    $invoice_url = MODULE_EMAIL_TEMPLATE_INVOICE_TEXT . "\n" . $invoice_url;
+  } else {
+    $invoice_url = zen_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL', false);
+  }
+  $comments = str_replace('[INVOICE_URL]',
+              $invoice_url,
+              $comments);
+  endif;
+
+  // insert comments if status changed
+  if ($email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID && $email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
+  if ($_POST['notify_comments'] == 'on') {
+    $notify_comments = stripslashes($_POST['comments']);
+  } else {
+    $notify_comments = '';
+  }
+  $comments = str_replace('[COMMENTS]',
+              $notify_comments,
+              $comments);
+  endif;
+
+   // products
+  $products_ordered = "";
+  for ($i=0, $n=count($order->products); $i<$n; $i++) {
+    $products_ordered_attributes = '';
+    for ($j=0; $j<count($order->products[$i]['attributes']); $j++) {
+      $products_ordered_attributes .= "\n\t"
+                                    . $order->products[$i]['attributes'][$j]['option']
+                                    . ' '
+                                    . $order->products[$i]['attributes'][$j]['value'];
+    }
+
+    $products_ordered .= $order->products[$i]['name']
+                       . ($order->products[$i]['model'] != '' ? ' (' . $order->products[$i]['model'] . ') ' : '')
+                       . $order->products[$i]['qty'] . '点　'
+                       . $currencies->display_price($order->products[$i]['final_price'], $order->products[$i]['tax'], $order->products[$i]['qty'])
+                       . ($order->products[$i]['onetime_charges'] !=0 ? "\n" . TEXT_ONETIME_CHARGES_EMAIL . $currencies->display_price($order->products[$i]['onetime_charges'], $order->products[$i]['tax'], 1) : '')
+                       . $products_ordered_attributes . "\n";
+  }
+
+  $comments = str_replace('[PRODUCTS_ORDERED]',
+              stripslashes($products_ordered),
+              $comments);
+
+  // totals
+  $totals = '';
+  for ($i=0, $n=sizeof($order->totals); $i<$n; $i++) {
+    $totals .= strip_tags($order->totals[$i]['title']) . ' ' . strip_tags($order->totals[$i]['text']) . "\n";
+  }
+  $comments = str_replace('[TOTALS]',
+              stripslashes($totals),
+              $comments);
+
+  $billing_address = zen_address_format($order->billing['format_id'], $order->billing, 0, '', "\n");
+  $comments = str_replace('[BILLING_ADDRESS]',
+              stripslashes($billing_address),
+              $comments);
+
+  if (isset($GLOBALS['phpmailer']['content_type']) && $GLOBALS['phpmailer']['content_type'] != 'virtual') {
+    $delivery_address = stripslashes(zen_address_format($order->delivery['format_id'], $order->delivery, 0, '', "\n"));
+  } else {
+    $delivery_address = MODULE_EMAIL_TEMPLATE_NOT_DELIVERY;
+  }
+  $comments = str_replace('[DELIVERY_ADDRESS]',
+              $delivery_address,
+              $comments);
+
+  $comments = str_replace('[PAYMENT_METHOD]',
+              stripslashes($order->info['payment_method']),
+              $comments);
+
+  $date_ordered  = strftime(MODULE_EMAIL_TEMPLATE_DATE_FORMAT_LONG, strtotime($order->info['date_purchased']));
+  $weekday = array(MODULE_EMAIL_TEMPLATE_SUN, MODULE_EMAIL_TEMPLATE_MON, MODULE_EMAIL_TEMPLATE_TUE, MODULE_EMAIL_TEMPLATE_WED, MODULE_EMAIL_TEMPLATE_THU, MODULE_EMAIL_TEMPLATE_FRI, MODULE_EMAIL_TEMPLATE_SAT);
+  $date_ordered .= $weekday[strftime('%w', strtotime($order->info['date_purchased']))];
+
+  $comments = str_replace('[DATE_ORDERED]',
+              $date_ordered,
+              $comments);
+  // insert orderd comment
+  if ($email_template_id == MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID || $email_template_id == MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
+  if (!empty($GLOBALS['phpmailer']['comments'])) {
+    $order_comments = stripslashes($GLOBALS['phpmailer']['comments']);
+  } else {
+    $order_comments = '';
+  }
+  $comments = str_replace('[COMMENT]',
+              $order_comments,
+              $comments);
+  endif;
+
+  return $comments;
+}
+
+function replace_welcome_email($customer_id, $email_welcome) {
+  global $db;
+
+  // get user information
+  $query = "SELECT
+              customers_firstname
+              ,customers_lastname
+              ,customers_email_address
+              ,customers_dob
+              ,customers_telephone
+              ,customers_fax
+            from ".
+              TABLE_CUSTOMERS."
+            where
+              customers_id=".(int)$customer_id;
+  $customer = $db->Execute($query);
+
+  $email_welcome     = str_replace('[CUSTOMER_NAME]',
+                       stripslashes($customer->fields['customers_firstname'] . ' ' . $customer->fields['customers_lastname']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_EMAIL]',
+                       stripslashes($customer->fields['customers_email_address']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_DOB]',
+                       stripslashes($customer->fields['customers_dob']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_PHONE]',
+                       stripslashes($customer->fields['customers_telephone']),
+                       $email_welcome);
+  $email_welcome     = str_replace('[CUSTOMER_FAX]',
+                       stripslashes($customer->fields['customers_fax']),
+                       $email_welcome);
+
+  return $email_welcome;
+}
+
+function replace_general_email($oID, $text, $comments) {
+  require_once('includes/classes/currencies.php');
+  $currencies = new currencies();
+
+  //オーダー情報の取得
+  require_once('includes/classes/order.php');
+  $order = new order($oID);
+
+  //============ 以下、予約語を置換 ============
+  $text = str_replace('[CUSTOMER_NAME]',
+          stripslashes($order->customer['name']),
+          $text);
+  $text = str_replace('[ORDER_ID]',
+          stripslashes($oID),
+          $text);
+
+  if ($email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
+  if (function_exists('zen_visitors_purchase_is_visitors_order') && zen_visitors_purchase_is_visitors_order($oID)) {
+    $invoice_url = '';
+  } elseif (function_exists('zen_catalog_href_link')) {
+    $invoice_url = zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL');
+    $invoice_url = MODULE_EMAIL_TEMPLATE_INVOICE_TEXT . "\n" . $invoice_url;
+  } else {
+    $invoice_url = zen_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL', false);
+  }
+  $text = str_replace('[INVOICE_URL]',
+          $invoice_url,
+          $text);
+  endif;
+
+  if (!empty($comments)) {
+    $notify_comments = stripslashes($comments);
+  } else {
+    $notify_comments = '';
+  }
+  $text = str_replace('[COMMENTS]',
+          $notify_comments,
+          $text);
+
+  return $text;
+}
 ?>

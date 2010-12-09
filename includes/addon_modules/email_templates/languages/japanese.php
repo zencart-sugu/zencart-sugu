@@ -32,6 +32,8 @@ define('BOX_TOOLS_EMAIL_TEMPLATES', 'Emailテンプレート');
 define('TEXT_EMAIL_TEMPLATE', 'Emailテンプレート: ');
 define('TEXT_EMAIL_TEMPLATE_SETUP_PAGE', 'セットアップページ');
 define('TEXT_EMAIL_TEMPLATE_EMPTY', 'Emailテンプレートがありません');
+define('TEXT_EMAIL_TEMPLATE_DESCRIPTION', 'コメント:'.BOX_TOOLS_EMAIL_TEMPLATES.'内の[COMMENTS]に埋め込まれます<br />(テンプレート内に[COMMENTS]が無い場合はコメントの埋め込みは行われません)');
+define('TEXT_EMAIL_TEMPLATE_NO_TEMPLATE', BOX_TOOLS_EMAIL_TEMPLATES.'が見つからなかったためメールの送信は行われませんでした。');
 
 define('MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID', '2');
 
@@ -140,8 +142,9 @@ define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY', '
 [DATE_ORDERED]にご利用いただいた
 ご注文受付番号：[ORDER_ID]の状況が変更されましたのでお知らせします。
 
-ご注文についての情報は下記URLでご覧いただけます。
 [INVOICE_URL]
+
+[COMMENTS]
 
 よろしくお願いします。
 
@@ -157,4 +160,14 @@ Copyright (c) XXXXXXXX Inc. All Rights Reserved
 define('MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY', 'しない');
 define('MODULE_EMAIL_TEMPLATE_DATE_FORMAT_LONG',        '%Y年%m月%d日 ');
 
+define('MODULE_EMAIL_TEMPLATE_SUN', '日曜日');
+define('MODULE_EMAIL_TEMPLATE_MON', '月曜日');
+define('MODULE_EMAIL_TEMPLATE_TUE', '火曜日');
+define('MODULE_EMAIL_TEMPLATE_WED', '水曜日');
+define('MODULE_EMAIL_TEMPLATE_THU', '木曜日');
+define('MODULE_EMAIL_TEMPLATE_FRI', '金曜日');
+define('MODULE_EMAIL_TEMPLATE_SAT', '土曜日');
+
+define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', '無し');
+define('MODULE_EMAIL_TEMPLATE_INVOICE_TEXT', 'ご注文についての情報は下記URLでご覧いただけます。');
 ?>

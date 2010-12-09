@@ -501,11 +501,6 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
     $html_msg['EMAIL_DISCLAIMER'] = sprintf(EMAIL_DISCLAIMER_NEW_CUSTOMER, '<a href="mailto:' . STORE_OWNER_EMAIL_ADDRESS . '">'. STORE_OWNER_EMAIL_ADDRESS .' </a>');
 
     // send welcome email
-    if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-      $CustomMail = new CustomMail();
-      $CustomMail->send_welcome_email($_SESSION['customer_id'], $email_address);
-    }
-    else
     zen_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_NAME, EMAIL_FROM, $html_msg, 'welcome');
 
     // send additional emails

@@ -950,7 +950,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
             <tr><?php echo zen_draw_form('status', FILENAME_SUPER_ORDERS, zen_get_all_get_params(array('action')) . 'action=update_order', 'post', '', true); ?>
               <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
                 <tr>
-                  <td class="main"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4', '', 'id="comments"'); ?></td>
+                  <td class="main"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4'); ?></td>
                   <td class="main" valign="center"><strong><?php
                     //echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br />';
                     //echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS;

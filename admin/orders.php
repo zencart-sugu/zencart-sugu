@@ -84,14 +84,6 @@
         $status = zen_db_prepare_input($_POST['status']);
         $comments = zen_db_prepare_input($_POST['comments']);
 
-        // ステータス変更メールをカスタマイズできるようにする
-        // ここでコメントへ書き込む
-        if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-          require_once("../includes/addon_modules/email_templates/classes/CustomMail.php");
-          $CustomMail = new CustomMail();
-          $comments = $CustomMail->replace_status_email($oID, $comments);
-        }
-
         $order_updated = false;
         $check_status = $db->Execute("select customers_name, customers_email_address, orders_status,
                                       date_purchased from " . TABLE_ORDERS . "
@@ -537,7 +529,7 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
         <td class="noprint"><?php echo zen_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
       </tr>
       <tr><?php echo zen_draw_form('status', FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=update_order', 'post', '', true); ?>
-        <td class="main noprint"><?php echo zen_draw_textarea_field('comments', 'soft', '60', '20', '', 'id="comments"'); ?></td>
+        <td class="main noprint"><?php echo zen_draw_textarea_field('comments', 'soft', '60', '5'); ?></td>
       </tr>
       <tr>
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>

@@ -291,7 +291,7 @@ if (isset($_GET['start_date']) ) {
               </tr>
               <tr>
                 <td class="main" valign="top"><strong><?php echo HEADING_ADD_COMMENTS; ?></strong></td>
-                <td width="400" class="smallText"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4', '', 'id="comments"'); ?></td>
+                <td width="400" class="smallText"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4'); ?></td>
                 <td class="main" valign="center"><strong><?php
                   echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br/>';
                   echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS; ?></strong>
