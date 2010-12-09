@@ -111,27 +111,6 @@ for ($i=0, $n=sizeof($products); $i<$n; $i++) {
       $attrArray[$option]['options_values_price'] = $attributes_values->fields['options_values_price'];
       $attrArray[$option]['price_prefix'] = $attributes_values->fields['price_prefix'];
     }
-
-    if (STOCK_CHECK == 'true' && MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS == 'true') {
-			// Added to allow individual stock of different attributes
-			unset($attributes);
-			if(is_array($products[$i]['attributes'])){
-				$attributes = $products[$i]['attributes'];
-			} else {
-				$attributes = '';
-			}
-			// End change
-
-			$stock_check = zen_check_stock($products[$i]['id'], $products[$i]['quantity'], $attributes);
-	
-			if (zen_not_null($stock_check))
-			{
-				$flagAnyOutOfStock = true;
-				$flagStockCheck = $stock_check;
-			  $stockAvailable = zen_get_products_stock($products[$i]['id'], $attributes);		
-			}
-    }
-
   } //end foreach [attributes]
   $linkProductsImage = zen_href_link(zen_get_info_page($products[$i]['id']), 'products_id=' . $products[$i]['id']);
   $linkProductsName = zen_href_link(zen_get_info_page($products[$i]['id']), 'products_id=' . $products[$i]['id']);

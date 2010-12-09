@@ -95,7 +95,7 @@ function zen_m17n_get_user_language() {
     }
     // get session key
     if (isset($_POST[session_name()])) {
-      session_id($_POST[zen_session_name()]);
+      session_id($_POST[session_name()]);
     } elseif ( ($request_type == 'SSL') && isset($_GET[session_name()]) ) {
       session_id($_GET[session_name()]);
     }
