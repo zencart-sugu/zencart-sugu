@@ -52,7 +52,6 @@ if (!defined('IS_ADMIN_FLAG')) {
 
     // class constructer for php4
     function email_templates() {
-      require_once($this->dir . 'classes/CustomMail.php');
       require_once($this->dir . 'classes/class.email_templates_notifier.php');
       $this->__construct();
     }
@@ -77,7 +76,9 @@ if (!defined('IS_ADMIN_FLAG')) {
       // prepare notifier processor
       $etn = new email_templates_notifier();
       // call funcs
-      $ret = $etn->call($pagename, $notifier);
+      if ($notifier == 'NOTIFY_BEFORE_CREATE_HEADER' || $notifier == 'NOTIFY_BEFORE_CREATE_BODY') {
+	$ret = $etn->call($pagename, $notifier);
+      }
     }
 
     function _install() {

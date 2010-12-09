@@ -33,7 +33,7 @@ class email_templates_notifier {
       $values[] = $notifier;
       return call_user_func_array(array($this, $pagename), $values);
     } else {
-      return $this->index();
+      return $this->general($notifier);
     }
   }
   function addon($notifier) {
@@ -44,11 +44,83 @@ class email_templates_notifier {
       if (method_exists($this, $module)) {
         $values[] = $notifier;
 	return call_user_func_array(array($this, $module), $values);
+      } else {
+        return $this->general();
       }
     }
   }
-  function index() {
-    return true;
+  function general($notifier) {
+    // テンプレートID取得
+    if (!empty($GLOBALS['email_template_id']) && is_numeric($GLOBALS['email_template_id'])) {
+      $email_template_id = $email_template_id;
+    } elseif (!empty($_REQUEST['id']) && is_numeric($_REQUEST['id'])) {
+      $email_template_id = $_REQUEST['id'];
+    } else {
+      return false;
+    }
+    // order id取得
+    if (!empty($GLOBALS['order_id']) && is_numeric($GLOBALS['order_id'])) {
+      $order_id = $GLOBALS['order_id'];
+    } elseif (!empty($GLOBALS['oID']) && is_numeric($GLOBALS['oID'])) {
+      $order_id = $GLOBALS['oID'];
+    } elseif (!empty($_REQUEST['order_id']) && is_numeric($_REQUEST['order_id'])) {
+      $order_id = $_REQUEST['order_id'];
+    } elseif (!empty($_REQUEST['oID']) && is_numeric($_REQUEST['oID'])) {
+      $order_id = $_REQUEST['oID'];
+    } else {
+      return false;
+    }
+    // customer_id取得
+
+    // comments取得
+
+    switch ( $notifier ) {
+    case 'NOTIFY_BEFORE_CREATE_HEADER':
+      if (!empty($email_template_id) && is_numeric($email_template_id)) {
+        // template本文取得
+        $id = $email_template_id;
+        $order_id = $order_id;
+        $language_id = $_SESSION['language_id'];
+        $subject = get_email_template_contents($id, $order_id, $language_id, 'subject');
+        if ($subject === false) {
+          // template取得できなければ何もしない
+          return false;
+        }
+        $GLOBALS['phpmailer']['Subject'] = zen_db_prepare_input($subject);
+      } else {
+        // idが無効なら何もしない
+        return false;
+      }
+      break;
+    case 'NOTIFY_BEFORE_CREATE_BODY':
+      if (!empty($email_template_id) && is_numeric($email_template_id)) {
+        // template本文取得
+        $id = $email_template_id;
+        $order_id = null;
+        $language_id = $_SESSION['language_id'];
+        $contents = get_email_template_contents($id, $order_id, $language_id, 'contents');
+        if ($contents === false) {
+          // template取得できなければ何もしない
+          return false;
+        }
+        // GLOBALSにテンプレートをセット
+        $GLOBALS['phpmailer']['Body'] = zen_db_prepare_input($contents);
+        if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+          $GLOBALS['phpmailer']['AltBody'] = zen_db_prepare_input($contents);
+        }
+        // 置換開始
+        $GLOBALS['phpmailer']['Body'] = replace_general_email($order_id, $GLOBALS['phpmailer']['Body'], $comments);
+        $GLOBALS['phpmailer']['Body'] = $this->_cleanup_email($GLOBALS['phpmailer']['Body']);
+        if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+          $GLOBALS['phpmailer']['AltBody'] = replace_general_email($order_id, $GLOBALS['phpmailer']['AltBody'], $comments);
+          $GLOBALS['phpmailer']['AltBody'] = $this->_cleanup_email($GLOBALS['phpmailer']['AltBody']);
+        }
+      } else {
+        // idが無効なら何もしない
+        return false;
+      }
+      break;
+    }
   }
 
   // send status emails

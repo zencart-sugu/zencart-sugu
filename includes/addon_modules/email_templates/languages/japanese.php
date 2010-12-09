@@ -142,8 +142,9 @@ define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY', '
 [DATE_ORDERED]にご利用いただいた
 ご注文受付番号：[ORDER_ID]の状況が変更されましたのでお知らせします。
 
-ご注文についての情報は下記URLでご覧いただけます。
 [INVOICE_URL]
+
+[COMMENTS]
 
 よろしくお願いします。
 
@@ -168,4 +169,5 @@ define('MODULE_EMAIL_TEMPLATE_FRI', '金曜日');
 define('MODULE_EMAIL_TEMPLATE_SAT', '土曜日');
 
 define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', '無し');
+define('MODULE_EMAIL_TEMPLATE_INVOICE_TEXT', 'ご注文についての情報は下記URLでご覧いただけます。');
 ?>

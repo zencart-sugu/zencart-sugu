@@ -118,8 +118,9 @@ Thank you for use
 [DATE_ORDERED]
 Order receipt number¡§[ORDER_ID]
 
-You can see ordering information
 [INVOICE_URL]
+
+[COMMENTS]
 
 -----
 This E-mail is sent to the customer registered in this shop.
@@ -131,4 +132,5 @@ Copyright (c) XXXXXXXX Inc. All Rights Reserved
 ');
 
 define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', 'NONE');
+define('MODULE_EMAIL_TEMPLATE_INVOICE_TEXT', 'You can see ordering information');
 ?>

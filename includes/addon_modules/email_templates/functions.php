@@ -426,8 +426,11 @@ function replace_status_email($oID, $comments, $email_template_id) {
               $comments);
 
   if ($email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
-  if (function_exists('zen_catalog_href_link')) {
+  if (function_exists('zen_visitors_purchase_is_visitors_order') && zen_visitors_purchase_is_visitors_order($oID)) {
+    $invoice_url = '';
+  } elseif (function_exists('zen_catalog_href_link')) {
     $invoice_url = zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL');
+    $invoice_url = MODULE_EMAIL_TEMPLATE_INVOICE_TEXT . "\n" . $invoice_url;
   } else {
     $invoice_url = zen_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL', false);
   }
@@ -554,5 +557,47 @@ function replace_welcome_email($customer_id, $email_welcome) {
                        $email_welcome);
 
   return $email_welcome;
+}
+
+function replace_general_email($oID, $text, $comments) {
+  require_once('includes/classes/currencies.php');
+  $currencies = new currencies();
+
+  //オーダー情報の取得
+  require_once('includes/classes/order.php');
+  $order = new order($oID);
+
+  //============ 以下、予約語を置換 ============
+  $text = str_replace('[CUSTOMER_NAME]',
+          stripslashes($order->customer['name']),
+          $text);
+  $text = str_replace('[ORDER_ID]',
+          stripslashes($oID),
+          $text);
+
+  if ($email_template_id != MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID):
+  if (function_exists('zen_visitors_purchase_is_visitors_order') && zen_visitors_purchase_is_visitors_order($oID)) {
+    $invoice_url = '';
+  } elseif (function_exists('zen_catalog_href_link')) {
+    $invoice_url = zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL');
+    $invoice_url = MODULE_EMAIL_TEMPLATE_INVOICE_TEXT . "\n" . $invoice_url;
+  } else {
+    $invoice_url = zen_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL', false);
+  }
+  $text = str_replace('[INVOICE_URL]',
+          $invoice_url,
+          $text);
+  endif;
+
+  if (!empty($comments)) {
+    $notify_comments = stripslashes($comments);
+  } else {
+    $notify_comments = '';
+  }
+  $text = str_replace('[COMMENTS]',
+          $notify_comments,
+          $text);
+
+  return $text;
 }
 ?>
