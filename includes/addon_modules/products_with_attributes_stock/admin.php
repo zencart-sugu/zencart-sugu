@@ -76,7 +76,7 @@ switch($action)
                       FROM 
                         '.TABLE_PRODUCTS_ATTRIBUTES.' attrib, '.TABLE_PRODUCTS_DESCRIPTION.' description
                       WHERE 
-                        attrib.products_id = description.products_id and description.language_id='.$language_id.' order by description.products_name';
+                        attrib.products_id = description.products_id and description.language_id='.(int)$language_id.' order by description.products_name';
 
             $products = $db->execute($query);
             while(!$products->EOF)
@@ -108,7 +108,7 @@ switch($action)
             zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, zen_get_all_get_params(array('action')), 'NONSSL'));
         }
 
-        $query  = "select * from ".TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK." where stock_id=".$stock_id;
+        $query  = "select * from ".TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK." where stock_id=".(int)$stock_id;
         $result = $db->Execute($query);
         if ($result->EOF)
             zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, zen_get_all_get_params(array('action')), 'NONSSL'));
@@ -167,7 +167,7 @@ switch($action)
             }
             $s_mack_noconfirm .='attributes=' . $stock_attributes . '&'; //kuroi: to pass string not array
 
-            $query = 'select * from '.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.' where products_id = '.$products_id.' and stock_attributes="'.$stock_attributes.'"';
+            $query = 'select * from '.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.' where products_id = '.(int)$products_id.' and stock_attributes="'.zen_db_prepare_input($stock_attributes).'"';
             $stock_check = $db->Execute($query);
 
             if(!$stock_check->EOF)
@@ -275,11 +275,11 @@ switch($action)
                 }
                 for ($i = 0;$i < sizeof($arrNew);$i++) {
                     $strAttributes = implode(",", $arrNew[$i]);
-                    $query = 'insert into `'.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.'` (`products_id`,`stock_attributes`,`quantity`,`skumodel`) values ('.$products_id.',"'.$strAttributes.'",'.$quantity.",'".$skumodel."'".') ON DUPLICATE KEY UPDATE `stock_attributes` = "'.$strAttributes.'", `quantity` = '.$quantity;
+                    $query = 'insert into `'.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.'` (`products_id`,`stock_attributes`,`quantity`,`skumodel`) values ('.(int)$products_id.',"'.zen_db_prepare_input($strAttributes).'",'.(float)$quantity.",'".zen_db_prepare_input($skumodel)."'".') ON DUPLICATE KEY UPDATE `stock_attributes` = "'.zen_db_prepare_input($strAttributes).'", `quantity` = '.(float)$quantity;
                     $db->Execute($query);
                 }
             } else {
-                $query = 'insert into `'.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.'` (`products_id`,`stock_attributes`,`quantity`,`skumodel`) values ('.$products_id.',"'.$attributes.'",'.$quantity.",'".$skumodel."')";
+              $query = 'insert into `'.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.'` (`products_id`,`stock_attributes`,`quantity`,`skumodel`) values ('.(int)$products_id.',"'.zen_db_prepare_input($attributes).'",'.(float)$quantity.",'".zen_db_prepare_input($skumodel)."')";
                 $db->Execute($query);
             }
         }
@@ -292,7 +292,7 @@ switch($action)
                 zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, zen_get_all_get_params(array('action')), 'NONSSL'));
             }
 
-            $query = 'update `'.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.'` set quantity='.$quantity.",skumodel='".$skumodel."' where stock_id=".$stock_id.' limit 1';
+            $query = 'update `'.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.'` set quantity='.(float)$quantity.",skumodel='".zen_db_prepare_input($skumodel)."' where stock_id=".(int)$stock_id.' limit 1';
             $db->Execute($query);
         }
         
@@ -311,7 +311,7 @@ switch($action)
         {
             // delete it
             if($_POST['confirm'] == PWA_DELETE_VARIANT_YES){
-                $query = 'delete from '.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.' where stock_id="'.$_POST['stock_id'].'" limit 1';
+                $query = 'delete from '.TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK.' where stock_id="'.(int)$_POST['stock_id'].'" limit 1';
                 $db->Execute($query);
                 $stock->update_parent_products_stock((int)$_POST['products_id']);
                 $messageStack->add_session(PWA_DELETE_VARIANT_PROCESSED, 'failure');
