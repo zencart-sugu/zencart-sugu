@@ -1451,13 +1451,6 @@ if (!defined('IS_ADMIN_FLAG')) {
           $html_msg['EMAIL_DISCLAIMER'] = sprintf(EMAIL_DISCLAIMER_NEW_CUSTOMER, '<a href="mailto:' . STORE_OWNER_EMAIL_ADDRESS . '">'. STORE_OWNER_EMAIL_ADDRESS .' </a>');
 
           // send welcome email
-          // 登録ありがとうメールをカスタマイズできるようにする
-          if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-            require_once("includes/addon_modules/email_templates/classes/CustomMail.php");
-            $CustomMail = new CustomMail();
-            $CustomMail->send_welcome_email($_SESSION['customer_id'], $email_address);
-          }
-          else
             zen_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_NAME, EMAIL_FROM, $html_msg, 'welcome');
 
           // send additional emails
