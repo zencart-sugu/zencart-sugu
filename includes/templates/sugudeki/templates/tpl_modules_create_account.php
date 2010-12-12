@@ -71,7 +71,7 @@
 <th scope="row"><span class="required"><?php echo TEXT_REQUIRED2;?></span><label><?php echo ENTRY_POST_CODE; ?></label></th>
 <td><p><?php echo ENTRY_SAMPLE_08 ; ?></p><?php 
 	// Modified for Ajax住所+国名非表示 by zen-dera project 2007 BOF
-	echo zen_draw_input_field('postcode', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_postcode', '40') . 'onKeyUp="AjaxZip2.zip2addr(this,\'state\',\'city\',null,\'addr\',\'street_address\');"' . ' id="postcode"'); 
+	echo zen_draw_input_field('postcode', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_postcode', '40') . ' id="postcode"'); 
 	// Modified for Ajax住所+国名非表示 by zen-dera project 2007 EOF
 ?><span><?php echo ENTRY_SAMPLE_00 ; ?></span></td>
 </tr>
