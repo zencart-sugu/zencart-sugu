@@ -19,11 +19,6 @@ $email_templates_insert[] = array('target' => '</tr>[\w\d\s\r\n]*<tr>[\w\d\s\r\n
                                                  </td>
                                                </tr>'
                                  );
-// super_batch_status.php
-$email_templates_insert[] = array('target' => '</table></td>[\w\d\s\r\n]*</tr>[\w\d\s\r\n]*<tr>[\w\d\s\r\n]*<td colspan="2">[\w\d\s\r\n]*'.TEXT_TOTAL_ORDERS,
-                                  'insert' => '<tr><td colspan=3><?php echo zen_get_email_template_for_status(); ?></td></tr>'
-                                 );
-
 
 $email_templates_replace = array();
 // orders.php
@@ -37,12 +32,15 @@ $email_templates_replace[] = array('original' => '<td class="main"><strong>'.ENT
                                    'replace' => ''
                                   );
 // super_orders.php
-$email_templates_replace[] = array('original' => '<input type="checkbox".*name="notify".*'.ENTRY_NOTIFY_CUSTOMER.'<br />',
+$email_templates_replace[] = array('original' => '<input type="checkbox".*name="notify".*'.ENTRY_NOTIFY_CUSTOMER.'<br />[\w\d\s\r\n]*<input type="checkbox".*name="notify_comments".*'.ENTRY_NOTIFY_COMMENTS.'[\w\d\s\r\n]*</strong>[\w\d\s\r\n]*</td>',
                                    'replace' => ''
                                   );
-$email_templates_replace[] = array('original' => '<input type="checkbox".*name="notify_comments".*'.ENTRY_NOTIFY_COMMENTS,
-                                   'replace' => ''
-                                  );
+
+// super_batch_status.php
+$button = zen_image_submit('button_update.gif', IMAGE_UPDATE);
+$email_templates_replace[] = array('original' => $button.'[\w\d\s\r\n]*</td>[\w\d\s\r\n]*</tr>[\w\d\s\r\n]*</table>[\w\d\s\r\n]*</td>[\w\d\s\r\n]*</tr>',
+                                   'replace' => $button.'</td></tr><tr><td colspan="3">'.zen_get_email_template_for_status().'</td></tr></table></td></tr>'
+                                 );
 
 $etr = new email_templates_replacer($email_templates_insert);
 
