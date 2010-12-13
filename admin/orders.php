@@ -213,12 +213,6 @@
 <link rel="stylesheet" type="text/css" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
-<?php
-// ステータス変更メールをカスタマイズできるようにする
-if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-?>
-<script language="javascript" src="../includes/addon_modules/jquery/templates/template_default/jscript/jquery.js"></script>
-<?php } ?>
 <script type="text/javascript">
   <!--
   function init()
@@ -542,20 +536,8 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
                 <td class="main"><strong><?php echo ENTRY_STATUS; ?></strong> <?php echo zen_draw_pull_down_menu('status', $orders_statuses, $order->info['orders_status']); ?></td>
               </tr>
               <tr>
-<?php
-// ステータス変更メールをカスタマイズできるようにする
-if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-                echo ENTRY_NOTIFY_CUSTOMER;
-                echo zen_get_email_group_for_status($oID);
-                echo zen_draw_hidden_field('notify',          '', 'id="notify"');
-                echo zen_draw_hidden_field('notify_comments', '', 'id="notify_comments"');
-} else {
-?>
                 <td class="main"><strong><?php echo ENTRY_NOTIFY_CUSTOMER; ?></strong> <?php echo zen_draw_checkbox_field('notify', '', true); ?></td>
                 <td class="main"><strong><?php echo ENTRY_NOTIFY_COMMENTS; ?></strong> <?php echo zen_draw_checkbox_field('notify_comments', '', true); ?></td>
-<?php
-}
-?>
               </tr>
             </table></td>
             <td valign="top"><?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>

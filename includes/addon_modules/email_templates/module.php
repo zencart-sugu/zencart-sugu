@@ -61,14 +61,8 @@ if (!defined('IS_ADMIN_FLAG')) {
       global $messageStack;
       global $request_type;
 
-      // detect pagename
-      if (isset($_GET['main_page']) && zen_not_null($_GET['main_page'])) {
-        $pagename = $_GET['main_page'];
-      } elseif (zen_not_null(basename($_SERVER['SCRIPT_NAME']))) {
-        $pagename = basename($_SERVER['SCRIPT_NAME']);
-        if (substr($pagename, -4) == '.php') {
-          $pagename = substr($pagename, 0, -4);
-        }
+      if (zen_not_null($GLOBALS['email_templates_pagename'])) {
+        $pagename = $GLOBALS['email_templates_pagename'];
       } else {
         $pagename = FILENAME_DEFAULT;
       }

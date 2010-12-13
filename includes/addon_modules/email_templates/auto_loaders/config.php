@@ -10,4 +10,7 @@ foreach ($autoLoadConfig[0] as $idx => $cfg) {
 $autoLoadConfig[0][$phpmailer_index] = array('autoType'=>'require',
                                              'loadFile'=> DIR_FS_CATALOG_ADDON_MODULES . 'email_templates/classes/class.phpmailer.php');
 unset($phpmailer_index);
+
+$autoLoadConfig[][] = array('autoType' => 'require',
+                            'loadFile' => DIR_FS_CATALOG_ADDON_MODULES . 'email_templates/auto_loaders/init.php');
 ?>

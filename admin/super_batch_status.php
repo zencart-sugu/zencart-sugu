@@ -89,11 +89,6 @@
 <script language="JavaScript" src="includes/javascript/spiffyCal/spiffyCal_v2_1.js"></script>
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
-<?php
-if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-?>
-<script language="javascript" src="../includes/addon_modules/jquery/templates/template_default/jscript/jquery.js"></script>
-<?php } ?>
 <script type="text/javascript">
 <!--
   function init() {
@@ -298,9 +293,6 @@ if (isset($_GET['start_date']) ) {
                   <br /><br />
                   &nbsp;<?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>
               </tr>
-							<tr>
-								<td colspan=3><?php echo zen_get_email_template_for_status(); ?></td>
-							</tr>
             </table></td>
               </tr>
               <tr>
