@@ -6,29 +6,7 @@
 
 	foreach($lines as $line) {
 		$line = trim($line);
-/*		$line = str_replace("`", "", $line);
-		$line_upper = strtoupper($line);*/
-
 		$line_upper = strtoupper($line);
-
-/*		if(substr($line_upper, 0, 12) == 'INSERT INTO '){
-			if(!preg_match("/(`admin_activity_log`)|(`media_types`)|(`paypal_payment_status`)|(`template_select`)|(`address_format`)|(`admin`)|(`blocks`)|(`banners`)|(`configuration_foreach_template`)|(`configuration_group`)|(`email_templates`)|(`email_templates_description`)|(`countries`)|(`currencies`)|(`languages`)|(`layout_boxes`)|(`orders_status`)|(`product_types`)|(`products_options_types`)|(`zones`)|(`product_type_layout`)|(`query_builder`)|(`get_terms_to_filter`)|(`project_version`)|(`project_version_history`)|(`tax_rates`)|(`geo_zones`)|(`zones_to_geo_zones`)|(`tax_class`)/", $line)) {
-
-				if(preg_match("/`products_options_values`/", $line)) {
-					if(preg_match("/'TEXT'/", $line)) {
-						$def .= $line."\n";
-					}
-				}else{
-					$demo .= $line."\n";
-				}
-			}else{
-				$def .= $line."\n";
-			}
-		}else{
-			if(!preg_match("/(LOCK TABLES)|(UNLOCK TABLES)|(!40000 ALTER TABLE )/", $line)) {
-				$def .= $line."\n";
-			}
-		}*/
 
 		if(substr($line_upper, 0, 12) == 'INSERT INTO '){
 			//デモ用データ
@@ -49,12 +27,6 @@
 
 	$demo = str_replace("`", "", $demo);
 	$def = str_replace("`", "", $def);
-/*
-	$encoding = mb_detect_encoding($demo);
-	$demo = mb_convert_encoding($demo, "EUC-JP", $encoding);
-
-	$encoding = mb_detect_encoding($def);
-	$def = mb_convert_encoding($def, "EUC-JP", $encoding);*/
 
 	umask(0);
 	$file_name = "mysql_zencart.sql";//作成するファイル名
