@@ -1,9 +1,14 @@
 <?php
+  /*
+   ** mysqldump option
+   ** --add-locks --add-drop-table --complete-insert --disable-keys --no-create-db --skip-extended-insert
+   */
 	$sql_file = "sugudeki.sql";
 	$lines = file($sql_file);
 	$demo = "";
 	$def = "";
 
+// demo用テーブル
 	$demos  = array('(`categories`)',
 			'(`categories_description`)',
 			'(`ezpages`)',
@@ -39,29 +44,42 @@
 			);
 	$demos_pattern = '/'.implode('|', $demos).'/';
 
-	$default = array('(`orders`)',
-			 '(`orders_products`)',
-			 '(`orders_products_attributes`)',
-			 '(`orders_total`)',
-			 '(`orders_status_history`)',
-			 '(`customers`)',
-			 '(`customers_info`)',
-			 '(`customers_basket`)',
-			 '(`address_book`)',
+// デフォルトから除外するテーブル(増えたら適時追加)
+	$default = array('(`address_book`)',
 			 '(`admin_activity_log`)',
 			 '(`banners_history`)',
+			 '(`counter`)',
 			 '(`counter_history`)',
+			 '(`coupons`)',
 			 '(`coupon_email_track`)',
 			 '(`coupon_gv_customer`)',
 			 '(`coupon_redeem_track`)',
-			 '(`coupons`)',
 			 '(`coupons_description`)',
+			 '(`coupons_descriptionnewsletters`)',
+			 '(`coupons`)',
+			 '(`customers_basket_attributes`)',
+			 '(`customers_basket`)',
+			 '(`customers_info`)',
 			 '(`customers_points`)',
+			 '(`customers_viewed_products`)',
+			 '(`customers`)',
 			 '(`newsletters`)',
+			 '(`orders`)',
+			 '(`orders_products_attributes`)',
 			 '(`orders_products_download`)',
+			 '(`orders_products`)',
+			 '(`orders_status_history`)',
+			 '(`orders_total`)',
+			 '(`orders`)',
+			 '(`paypal`)',
+			 '(`paypal_payment_status`)',
+			 '(`paypal_payment_status_history`)',
+			 '(`paypal_session`)',
+			 '(`paypal_testing`)',
 			 '(`point_histories`)',
 			 '(`products_with_attributes_stock`)',
-			 '(`sessions`)'
+			 '(`visitors`)',
+			 '(`visitors_orders`)',
 			 );
 	$default_pattern = '/'.implode('|', $default).'/';
 
