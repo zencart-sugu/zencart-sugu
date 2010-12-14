@@ -50,7 +50,7 @@
 <table class="border fit account" id="address">
 <tr class="post">
 <th scope="row"><span class="required"><?php echo TEXT_REQUIRED ?></span><label><?php echo ENTRY_POST_CODE; ?></label></th>
-<td><p><?php echo ENTRY_SAMPLE_08 ; ?></p><?php echo zen_draw_input_field('postcode', $entry->fields['entry_postcode'], 'id="postcode"  onkeyup="AjaxZip2.zip2addr(this,\'state\',\'city\',null,\'addr\',\'street_address\');"'); ?><span><?php echo ENTRY_SAMPLE_00 ; ?></span></td>
+<td><p><?php echo ENTRY_SAMPLE_08 ; ?></p><?php echo zen_draw_input_field('postcode', $entry->fields['entry_postcode'], 'id="postcode" '); ?><span><?php echo ENTRY_SAMPLE_00 ; ?></span></td>
 </tr>
 <?php
   if (ACCOUNT_STATE == 'true') {

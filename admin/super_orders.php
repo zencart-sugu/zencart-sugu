@@ -185,8 +185,6 @@
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
 <script language="javascript" src="includes/javascript/jquery.js"></script>
-<script language="javascript" src="../includes/addon_modules/jquery/templates/template_default/jscript/jquery.js"></script>
-
 <script type="text/javascript">
   <!--
   function init()
@@ -952,23 +950,13 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 <tr>
                   <td class="main"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4'); ?></td>
                   <td class="main" valign="center"><strong><?php
-                    //echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br />';
-                    //echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS;
+                    echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br />';
+                    echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS;
                   ?></strong></td>
                 </tr>
                 <tr>
                   <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
                 </tr>
-								<tr>
-									<td>
-<?php
-                echo ENTRY_NOTIFY_CUSTOMER;
-                echo zen_get_email_group_for_status($oID);
-                echo zen_draw_hidden_field('notify',          '', 'id="notify"');
-                echo zen_draw_hidden_field('notify_comments', '', 'id="notify_comments"');
-?>
-									</td>
-								</tr>
                 <tr>
                   <td class="main"><strong><?php echo ENTRY_STATUS; ?></strong> <?php echo zen_draw_pull_down_menu('status', $orders_statuses, $order->info['orders_status']); ?></td>
                   <td valign="top" align="right">&nbsp;<?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>
