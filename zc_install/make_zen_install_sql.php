@@ -50,7 +50,6 @@
 			 '(`banners_history`)',
 			 '(`counter`)',
 			 '(`counter_history`)',
-			 '(`coupons`)',
 			 '(`coupon_email_track`)',
 			 '(`coupon_gv_customer`)',
 			 '(`coupon_redeem_track`)',
