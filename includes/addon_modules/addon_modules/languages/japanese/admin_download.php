@@ -3,6 +3,8 @@
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
 // +----------------------------------------------------------------------+
+// | Copyright (c) 2009 Liquid System Technology, Inc.                    |
+// | Author Koji Sasaki                                                   |
 // |                                                                      |
 // | http://www.zen-cart.com/index.php                                    |
 // |                                                                      |

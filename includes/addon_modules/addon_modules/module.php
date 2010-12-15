@@ -18,7 +18,7 @@ if (!defined('IS_ADMIN_FLAG')) {
    *
    */
   class addon_modules extends addOnModuleBase {
-    var $author = 'Koji Sasaki';
+    var $author = array('Koji Sasaki');
     var $author_email = 'info@zencart-sugu.jp';
     var $require_zen_cart_version = '1.3.0.2';
     var $require_addon_modules_version = '1.0.0';
