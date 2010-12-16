@@ -16,7 +16,8 @@ if (!defined('IS_ADMIN_FLAG')) {
 
   class carousel_ui extends addonModuleBase {
 
-    var $author                        = "Koji Sasaki";
+    var $author                        = array("Koji Sasaki",
+                                               "Ganeshji Marwaha");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1.2";
     var $require_zen_cart_version      = "1.3.0.2";
