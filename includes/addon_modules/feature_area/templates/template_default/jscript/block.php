@@ -20,6 +20,8 @@
       vertical: <?php echo (MODULE_FEATURE_AREA_UI_CONF_VERTICAL == 'true' ? 'true' : 'false'); ?>,
       circular: <?php echo (MODULE_FEATURE_AREA_UI_CONF_CIRCULAR == 'true' ? 'true' : 'false'); ?>,
       btnGo: btns,
+      btnNext: ".next-<?php echo $module . '-' . $block; ?>",
+      btnPrev: ".prev-<?php echo $module . '-' . $block; ?>",
       btnStart: '#feature_start',
       btnStop: '#feature_stop',
       beforeStart: callback,
@@ -31,8 +33,6 @@
 
   <?php echo JQUERY_ALIAS; ?>(function() {
     thumb = <?php echo JQUERY_ALIAS; ?>(".<?php echo $block . '-' . $module; ?> .carouselUI").jCarouselLite({
-      btnNext: ".next-<?php echo $module . '-' . $block; ?>",
-      btnPrev: ".prev-<?php echo $module . '-' . $block; ?>",
       speed: <?php echo (int)MODULE_FEATURE_AREA_UI_CONF_SPEED; ?>,
       vertical: <?php echo (MODULE_FEATURE_AREA_UI_CONF_VERTICAL == 'true' ? 'true' : 'false'); ?>,
       //circular: <?php echo (MODULE_FEATURE_AREA_UI_CONF_CIRCULAR == 'true' ? 'true' : 'false'); ?>,
