@@ -79,7 +79,7 @@ if (!defined('IS_ADMIN_FLAG')) {
                             'NOTIFY_CHECKOUT_PROCESS_AFTER_SEND_ORDER_EMAIL',
                            );
 
-    var $author                        = "kohata";
+    var $author                        = array("kohata");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1";
     var $require_zen_cart_version      = "1.3.0.2";
