@@ -3,12 +3,9 @@
  * addon_modules_example Module
  *
  * @package Viewed_products
- * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
- * @author Koji Sasaki
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @author Koji Sasaki <sasaki@liquidst.jp>
  * @version $Id: addon_modules_example.php $
  */
 if (!defined('IS_ADMIN_FLAG')) {
@@ -49,7 +46,15 @@ if (!defined('IS_ADMIN_FLAG')) {
                                  'NOTIFY_CHECKOUT_PROCESS_BEFORE_ORDER_TOTALS_PRE_CONFIRMATION_CHECK'
                            );
 
-    var $author                        = "kohata";
+    var $author                        = array("Kohata",
+                                               "That Software Guy",
+                                               "Numinix",
+                                               "niestudio",
+                                               "rainer langheiter (hugo13)",
+                                               "mcinallym",
+                                               "mmcinally",
+                                               "Kuroi",
+                                               "dafonz");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1";
     var $require_zen_cart_version      = "1.3.0.2";
