@@ -3,9 +3,6 @@
  * japanese.php
  *
  * @package zen-cart addon module google analytics
- * @author saito
- * @copyright Copyright 2010 saito dev.zen-cart.jp
- * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
  * @copyright Copyright 2004-2008 Andrew Berezin eCommerce-Service.com
  * @copyright Copyright 2003-2007 Zen Cart Development Team
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
