@@ -3,12 +3,9 @@
  * addon_modules_example Module
  *
  * @package Viewed_products
- * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
- * @author Koji Sasaki
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @author Koji Sasaki <sasaki@liquidst.jp>
  * @version $Id: addon_modules_example.php $
  */
 if (!defined('IS_ADMIN_FLAG')) {
@@ -16,6 +13,12 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 
   class zen_smartphone extends addonModuleBase {
+    var $author                        = array("tiadeen2");
+    var $author_email                  = "info@zencart-sugu.jp";
+    var $version                       = "0.1";
+    var $require_zen_cart_version      = "1.3.0.2";
+    var $require_addon_modules_version = "0.1";
+
     var $title       = MODULE_ZEN_SMARTPHONE_TITLE;
     var $description = MODULE_ZEN_SMARTPHONE_DESCRIPTION;
     var $sort_order  = MODULE_ZEN_SMARTPHONE_SORT_ORDER;
