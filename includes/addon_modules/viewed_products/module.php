@@ -3,8 +3,6 @@
  * viewed_products Module
  *
  * @package viewed_products
- * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
- * @author Koji Sasaki
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
@@ -36,7 +34,7 @@ if (!defined('IS_ADMIN_FLAG')) {
      * Module author
      * @var string
      */
-    var $author = "Koji Sasaki";
+    var $author = array("Koji Sasaki");
 
     /**
      * Module author email
