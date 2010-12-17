@@ -3,12 +3,9 @@
  * point_grouprate Module
  *
  * @package Viewed_group
- * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
- * @author Koji Sasaki
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @author Koji Sasaki <sasaki@liquidst.jp>
  * @version $Id: point_grouprate.php $
  */
 if (!defined('IS_ADMIN_FLAG')) {
@@ -19,7 +16,8 @@ if (!defined('IS_ADMIN_FLAG')) {
     var $title = MODULE_POINT_GROUPRATE_TITLE;
     var $description = MODULE_POINT_GROUPRATE_DESCRIPTION;
 
-    var $author                        = "Koji Sasaki";
+    var $author                        = array("saito",
+                                               "Koji Sasaki");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1";
     var $require_zen_cart_version      = "1.3.0.2";
