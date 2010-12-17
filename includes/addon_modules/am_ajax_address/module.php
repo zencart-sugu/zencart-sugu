@@ -14,7 +14,8 @@ if (!defined('IS_ADMIN_FLAG')) {
 
   class am_ajax_address extends addonModuleBase {
     var $author                        = array("saito",
-                                               "zen-dera project");
+                                               "zen-dera project",
+                                               "Kawasaki Yusuke");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1.2";
     var $require_zen_cart_version      = "1.3.0.2";
