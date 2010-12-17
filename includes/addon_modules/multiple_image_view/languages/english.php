@@ -3,8 +3,6 @@
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
 // +----------------------------------------------------------------------+
-// | Copyright (c) 2009 Liquid System Technology, Inc.                    |
-// | Author Otsuji Takashi <ohtsuji@ark-web.jp>                                                   |
 // |                                                                      |
 // | http://www.zen-cart.com/index.php                                    |
 // |                                                                      |
