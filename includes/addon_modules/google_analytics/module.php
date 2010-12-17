@@ -3,9 +3,6 @@
  * module.php
  *
  * @package zen-cart addon module google analytics
- * @author saito
- * @copyright Copyright 2010 saito dev.zen-cart.jp
- * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
  * @copyright Copyright 2004-2008 Andrew Berezin eCommerce-Service.com
  * @copyright Copyright 2003-2007 Zen Cart Development Team
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
@@ -18,7 +15,8 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 
   class google_analytics extends addonModuleBase {
-    var $author                        = "saito";
+    var $author                        = array("saito",
+                                               "Andrew Berezin");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1.1";
     var $require_zen_cart_version      = "1.3.0.2";
