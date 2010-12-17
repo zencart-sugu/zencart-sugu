@@ -22,7 +22,7 @@
 // $Id: japanese.php $
 //
 define('MODULE_SITEMAPXML_TITLE', 'Sitemap XML');
-define('MODULE_SITEMAPXML_DESCRIPTION', '');
+define('MODULE_SITEMAPXML_DESCRIPTION', 'サイトマップを作成します');
 
 define('MODULE_SITEMAPXML_STATUS_TITLE', 'Sitemap XMLの有効化');
 define('MODULE_SITEMAPXML_STATUS_DESCRIPTION', 'Sitemap XMLを有効にしますか？ <br />true: 有効<br />false: 無効');
