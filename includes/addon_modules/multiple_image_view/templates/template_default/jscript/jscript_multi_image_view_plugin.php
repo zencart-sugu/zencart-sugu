@@ -3,8 +3,6 @@
  * jscript_multi_image_view
  *
  * @package Addon Modules
- * @copyright Copyright (C) 2009 Liquid System Technology, Inc.
- * @author Otsuji Takashi <ohtsuji@ark-web.jp>
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
