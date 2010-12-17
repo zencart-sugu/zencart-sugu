@@ -48,7 +48,9 @@ if (!defined('IS_ADMIN_FLAG')) {
     var $require_modules = array('jquery');
     var $notifier = array();
 
-    var $author                        = "s.saito";
+    var $author                        = array("Otsuji Takashi",
+                                               "kohata",
+                                               "s.saito");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1";
     var $require_zen_cart_version      = "1.3.0.2";
