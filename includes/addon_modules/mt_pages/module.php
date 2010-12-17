@@ -1,8 +1,6 @@
 <?php
 /**
  * @package addon_modules
- * @copyright Copyright (C) 2010 zencart-sugu Development Team
- * @author Yuki SHIDA
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
@@ -15,7 +13,8 @@ if (!defined('IS_ADMIN_FLAG')) {
 
   class mt_pages extends addOnModuleBase {
     var $version = "0.0.1";
-    var $author = "Yuki SHIDA";
+    var $author = array("Yuki SHIDA",
+                        "saito");
     var $author_email = "info@zencart-sugu.jp";
     var $require_zen_cart_version = "1.3.0.2";
     var $require_addon_modules_version = "0.1.1";
