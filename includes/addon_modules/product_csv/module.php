@@ -4,7 +4,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 
   class product_csv extends addOnModuleBase {
-    var $author = 'saito';
+    var $author = array("saito");
     var $author_email = 'info@zencart-sugu.jp';
     var $version = '0.1.4';
     var $require_zen_cart_version = '1.3.0.2';
