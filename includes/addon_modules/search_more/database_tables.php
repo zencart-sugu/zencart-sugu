@@ -3,8 +3,6 @@
  * search_more - Database Name Defines
  *
  * @package classes
- * @copyright Copyright 2009 Liquid System Technology, Inc.
- * @author Ohtsuji Takashi
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
