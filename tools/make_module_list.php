@@ -9,6 +9,7 @@
  */
   define('IS_ADMIN_FLAG', 'true');
   define('YML_FILENAME', 'addon_module_list.yml');
+  define('DEFAULT_AUTHOR_EMAIL', 'info@zencart-sugu.jp');
 
   require_once 'includes/configure.php';
   require_once 'includes/extra_configures/addon_modules.php';
@@ -16,6 +17,7 @@
   require_once 'includes/addon_modules/addon_modules/pear/Tar.php';
   require_once 'includes/classes/class.base.php';
   require_once 'includes/classes/class.addOnModuleBase.php';
+  require_once 'includes/init_includes/init_mobile.php';
   require_once 'includes/functions/functions_general.php';
   require_once 'includes/functions/html_output.php';
 
@@ -81,6 +83,9 @@
     require $tempdir.$module_name."/languages/japanese.php";
     require $tempdir.$module_name."/module.php";
     $class = new $module_name;
+    if (!isset($class->author_email)) {
+      $class->author_email = DEFAULT_AUTHOR_EMAIL;
+    }
     error_reporting($level);
 
     // 英語リソース
@@ -113,18 +118,26 @@
     // エラーがない場合追加
     if ($indispensableBAD == false) {
       $a_addon_module['class']                         = $module_name;
-      if (isset($class->author) && $class->author!="")
-        $a_addon_module['author'] = $class->author;
+      unset($a_addon_module['author']);
+      if (isset($class->author) && $class->author!="") {
+        if (is_array($class->author)) {
+          foreach ($class->author as $value) {
+            $a_addon_module['author'][] = output_protected($value);
+          }
+        } else {
+          $a_addon_module['author'] = array(output_protected($class->author));
+        }
+      }
       else
-        $a_addon_module['author'] = $class->author_email;
-      $a_addon_module['author_email']                  = $class->author_email;
-      $a_addon_module['name']                          = $class->title;
-      $a_addon_module['summary']                       = $class->description;
-      $a_addon_module['version']                       = $class->version;
-      $a_addon_module['require_zen_cart_version']      = $class->require_zen_cart_version;
-      $a_addon_module['require_addon_modules_version'] = $class->require_addon_modules_version;
-      $a_addon_module['english_name']                  = $english_title;
-      $a_addon_module['english_summary']               = $english_description;
+        $a_addon_module['author'] = array(output_protected($class->author_email));
+      $a_addon_module['author_email']                  = output_protected($class->author_email);
+      $a_addon_module['name']                          = output_protected($class->title);
+      $a_addon_module['summary']                       = output_protected($class->description);
+      $a_addon_module['version']                       = output_protected($class->version);
+      $a_addon_module['require_zen_cart_version']      = output_protected($class->require_zen_cart_version);
+      $a_addon_module['require_addon_modules_version'] = output_protected($class->require_addon_modules_version);
+      $a_addon_module['english_name']                  = output_protected($english_title);
+      $a_addon_module['english_summary']               = output_protected($english_description);
       $addon_modules[] = $a_addon_module;
       echo "=== processed!!!\n";
     }
@@ -143,6 +156,9 @@
 
   // 現在のymlのバックアップ
   if (file_exists($directory.YML_FILENAME)) {
+    if (function_exists('date_default_timezone_set')) {
+      date_default_timezone_set('Asia/Tokyo');
+    }
     rename($directory.YML_FILENAME, $directory.YML_FILENAME.".".date("YmdHis"));
   }
 
@@ -150,7 +166,10 @@
   convert_write($handle, "modules :\n");
   for ($i=0; $i<count($addon_modules); $i++) {
     convert_write($handle, "  ".$addon_modules[$i]['class']." :\n");
-    convert_write($handle, "    author : ".$addon_modules[$i]['author']."\n");
+    convert_write($handle, "    author :\n");
+    for ($j=1, $k=sizeof($addon_modules[$i]['author']); $j<=$k; $j++) {
+      convert_write($handle, "      author".$j.": ".$addon_modules[$i]['author'][$j-1]."\n");
+    }
     convert_write($handle, "    author_email : ".$addon_modules[$i]['author_email']."\n");
     convert_write($handle, "    name :\n");
     convert_write($handle, "      default : ".$addon_modules[$i]['name']."\n");
@@ -182,5 +201,14 @@ function property_check($class, $name) {
 
 function convert_write($handle, $text) {
   fwrite($handle, mb_convert_encoding($text, "UTF-8", "EUC"));
+}
+
+function output_protected($text) {
+  $text = preg_replace('~<br */?>~', "\n", $text);
+  $text = strip_tags($text);
+  $text = htmlspecialchars($text, ENT_QUOTES);
+  $text = nl2br($text);
+  $text = preg_replace('~\r*\n~', '', $text);
+  return $text;
 }
 ?>
