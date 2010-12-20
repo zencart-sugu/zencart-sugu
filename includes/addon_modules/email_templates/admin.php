@@ -209,7 +209,7 @@
 				$_GET['search'], $_GET['search'], $_GET['search']);
 		}
 		//$query_raw = "select * from " . TABLE_EMAIL_TEMPLATES . "$search_query order by grp asc";
-		$query_raw = "select * from " . TABLE_EMAIL_TEMPLATES . " inner join " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " ON email_templates.id = email_templates_description.email_templates_id where language_id = 2" . "$search_query order by grp asc";
+		$query_raw = "select * from " . TABLE_EMAIL_TEMPLATES . " inner join " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " ON ".TABLE_EMAIL_TEMPLATES.".id = ".TABLE_EMAIL_TEMPLATES_DESCRIPTION.".email_templates_id where language_id = 2" . "$search_query order by grp asc";
 		$page = zen_not_null($_GET['page']) ? $_GET['page'] : 1;
 		$split_page = new splitPageResults($page, MAX_DISPLAY_SEARCH_RESULTS, $query_raw, $query_numrows);
 		$result  = $db->Execute($query_raw);
