@@ -57,8 +57,7 @@ if (!defined('IS_ADMIN_FLAG')) {
     var $notifier = array();
 
     var $author                        = array("kohata",
-                                               "Koji Sasaki",
-                                               "The jQuery Project");
+                                               "Koji Sasaki");
     var $author_email                  = "info@zencart-sugu.jp";
     var $version                       = "0.1";
     var $require_zen_cart_version      = "1.3.0.2";
