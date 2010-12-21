@@ -7,17 +7,17 @@ if ($) {
 
 if (zenJQuery) {
   zenJQuery(document).ready(function() {
-    zenJQuery('.pagetop a').click(function(){
-      var offset = zenJQuery('.pagetop').offset().top;
+    zenJQuery('.pagetop a').click(function(e){
+      var target = zenJQuery(e.target);
+      var offset = target.offset().top;
 
-      zenJQuery('.pagetop').animate(
+      target.animate(
         {opacity: 'toggle'},
         {duration: "slow",
          easing: "linear",
-         complete: function() {zenJQuery('.pagetop').toggle();},
+         complete: function() {target.toggle();},
          step: function(s){window.scrollTo(0, offset * s);}
         }
-  
       );
       return false;
     });
