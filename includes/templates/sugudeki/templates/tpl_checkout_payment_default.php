@@ -20,11 +20,7 @@
 <div id="centerColumnBody">
 
 <?php
-  if ($main_top) {
-?>
-<?php echo $main_top; ?>
-<?php
-  }
+  echo zen_addOnModules_get_block('checkout_step');
 ?>
 
 <p class="attention"><?php echo FLOW_TEXT ; ?></p>

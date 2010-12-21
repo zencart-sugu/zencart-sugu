@@ -18,11 +18,7 @@
 <div id="centerColumnBody">
 
 <?php
-  if ($main_top) {
-?>
-<?php echo $main_top; ?>
-<?php
-  }
+  echo zen_addOnModules_get_block('checkout_step');
 ?>
 
 <?php if ($messageStack->size('redemptions') > 0) echo $messageStack->output('redemptions'); ?>

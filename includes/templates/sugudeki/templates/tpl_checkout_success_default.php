@@ -18,11 +18,7 @@
 <div id="centerColumnBody">
 
 <?php
-  if ($main_top) {
-?>
-<?php echo $main_top; ?>
-<?php
-  }
+  echo zen_addOnModules_get_block('checkout_step');
 ?>
 
 <h2 class="headline"><?php echo TEXT_THANKS_FOR_SHOPPING; ?></h2>
