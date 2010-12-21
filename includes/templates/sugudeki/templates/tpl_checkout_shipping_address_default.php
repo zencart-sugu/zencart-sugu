@@ -17,13 +17,11 @@
 <?php echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'onsubmit="return check_form_optional(checkout_address);"'); ?>
 <h1 id="checkoutShipAddressDefaultHeading"><?php echo HEADING_TITLE; ?></h1>
 <div id="centerColumnBody">
+
 <?php
-  if ($main_top) {
+  echo zen_addOnModules_get_block('checkout_step');
 ?>
-<?php echo $main_top; ?>
-<?php
-  }
-?>
+
 <?php if ($messageStack->size('checkout_address') > 0) echo $messageStack->output('checkout_address'); ?>
 
 <?php
