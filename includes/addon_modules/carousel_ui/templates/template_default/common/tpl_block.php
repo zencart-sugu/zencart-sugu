@@ -19,7 +19,7 @@ if ($ui_conf['vertical'] == 'true') {
 }
 ?>
 
-<p class="pagetop"><a href="<?php echo $_SERVER['REQUEST_URI'] ?>#skip"><?php echo PAGETOP ; ?></a></p>
+<p class="pagetop"><a href="<?php echo htmlspecialchars$_SERVER['REQUEST_URI']) ?>#container"><?php echo PAGETOP ; ?></a></p>
 
 <div id="block-<?php echo $module; ?>-<?php echo $block; ?>" class="block block-<?php echo $module; ?> <?php echo $vh_class; ?>">
 <?php
