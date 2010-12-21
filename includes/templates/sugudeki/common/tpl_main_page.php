@@ -208,7 +208,7 @@ if (!isset($flag_disable_left) || !$flag_disable_left) {
   } }
 ?>
 <br class="clearBoth" />
-<p class="pagetop"><a href="<?php echo $_SERVER['REQUEST_URI'] ?>#skip"><?php echo PAGETOP ; ?></a></p>
+<p class="pagetop"><a href="<?php echo $_SERVER['REQUEST_URI'] ?>#container"><?php echo PAGETOP ; ?></a></p>
 
 </div>
 <!-- /content -->
