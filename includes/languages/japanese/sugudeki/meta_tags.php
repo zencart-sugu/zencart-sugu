@@ -7,8 +7,6 @@
  * @version $Id: meta_tags.php 2555 2005-12-13 05:37:01Z drbyte $
  */
 
-// page title
-define('TITLE', '');
 
 // Site Tagline
 define('SITE_TAGLINE', '');
@@ -37,5 +35,24 @@ define('META_TAGS_REVIEW', 'Reviews: ');
 // favicon setting
 // There is usually NO need to enable this unless you wish to specify a path and/or a different filename
 //  define('FAVICON','favicon.ico');
+
+
+// page title
+if (isset($_GET['cPath'])) {
+  $title_categories_name_array = array();
+  $path_array = explode('_', $_GET['cPath']);
+  for ($i=0, $j=sizeof($path_array); $i<$j-1; $i++) {
+    $sql = "select cd.categories_name from " . TABLE_CATEGORIES . ' c, ' . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = cd.categories_id and cd.categories_id = '" . (int)$path_array[$i] . "' and cd.language_id = '" . (int)$_SESSION['languages_id'] . "' and c.categories_status=1";
+    $categories_name = $db->Execute($sql);
+    if (!$categories_name->EOF) {
+      $title_categories_name_array[] = $categories_name->fields['categories_name'];
+    }
+  }
+  $title_categories_name_array = array_reverse($title_categories_name_array);
+  $title_categories_name = implode(PRIMARY_SECTION, $title_categories_name_array);
+  define('TITLE', $title_categories_name . PRIMARY_SECTION . STORE_NAME);
+} else {
+  define('TITLE', STORE_NAME);
+}
 
 ?>
