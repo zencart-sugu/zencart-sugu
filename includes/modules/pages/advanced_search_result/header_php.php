@@ -213,8 +213,12 @@ $zco_notifier->notify('NOTIFY_SEARCH_SELECT_STRING');
 
 //  $from_str = "from " . TABLE_PRODUCTS . " p left join " . TABLE_MANUFACTURERS . " m using(manufacturers_id), " . TABLE_PRODUCTS_DESCRIPTION . " pd left join " . TABLE_SPECIALS . " s on p.products_id = s.products_id, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c";
 $from_str = "FROM (" . TABLE_PRODUCTS . " p
-             LEFT JOIN " . TABLE_MANUFACTURERS . " m
-             USING(manufacturers_id), " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c
+             LEFT JOIN " . TABLE_MANUFACTURERS . " m USING(manufacturers_id)
+             LEFT JOIN " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "', " .
+             TABLE_PRODUCTS_DESCRIPTION . " pd, " .
+             TABLE_CATEGORIES . " c, " . 
+             TABLE_PRODUCTS_TO_CATEGORIES . " p2c
+
              LEFT JOIN " . TABLE_META_TAGS_PRODUCTS_DESCRIPTION . " mtpd
              ON mtpd.products_id= p2c.products_id
              AND mtpd.language_id = :languagesID )";
