@@ -9,10 +9,9 @@
  * @version $Id: tpl_modules_product_listing.php 3241 2006-03-22 04:27:27Z ajeh $
  * UPDATED TO WORK WITH COLUMNAR PRODUCT LISTING 04/04/2006
  */
- if(MODULE_SEARCH_MORE_STATUS == 'true') {
-   echo $GLOBALS['search_more']->getBlock('block_search_form',$current_page_base);
- }
 
+echo zen_addOnModules_get_block('search_more', 'block_par_page');
+echo zen_addOnModules_get_block('search_more', 'block_sort');
  include(DIR_WS_MODULES . zen_get_module_directory(FILENAME_PRODUCT_LISTING));
 ?>
 <div id="productListing">
@@ -21,14 +20,6 @@
 ?>
 <div class="navSplitPages">
 <div id="productsListingTopNumber" class="navSplitPagesResult"><?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?></div>
-<?php
-if(MODULE_SEARCH_MORE_STATUS == 'true') {
-	echo '<div id="block_sort">';
-  echo $GLOBALS['search_more']->getBlock('block_par_page',$current_page_base);
-  echo $GLOBALS['search_more']->getBlock('block_sort',$current_page_base);
-	echo '</div>';
-}
-?>
 </div>
 
 <div id="productsListingListingTopLinks" class="navSplitPagesLinks"><?php echo TEXT_RESULT_PAGE . ' ' . $listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, zen_get_all_get_params(array('page', 'info', 'x', 'y', 'main_page'))); ?></div>
