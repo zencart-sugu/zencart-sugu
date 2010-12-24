@@ -33,7 +33,7 @@ h2.headline,
 
 
 #tagline{
-	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 
@@ -45,7 +45,6 @@ h2.headline,
 	list-style: none;
 	position: relative;
 }
-
 
 #header-nav li{
 	font-size: 102%;
@@ -956,7 +955,7 @@ ul.categories li.subs-parent .subs-parent li.products a{
 /* category */
 .category #main{
 	border: 1px solid #CCC;
-	width: 728px;
+	width: 830px;
 }
 
 .category #main p{
@@ -1606,6 +1605,10 @@ h2.headline,
 	margin: 10px 96px 10px 31px;
 }
 
+.carouselUI-feature_area-block {
+	float: left;
+}
+
 .next-feature_area-block {
 	display:inline;
 	float:right;
@@ -1613,17 +1616,17 @@ h2.headline,
 	margin: 10px 31px 10px 0;
 }
 
-/* for IE6 */
+/* for IE6 
 * html .next-feature_area-block {
 	margin-top: -35px;
 	zoom: 1;
-}
+}*/
 
-/* for IE7 */
+/* for IE7 
 *:first-child+html .next-feature_area-block {
 	margin-top: -35px;
 	zoom: 1;
-}
+}*/
 
 .horizontal h3,
 h2.centerBoxHeading{
@@ -1876,7 +1879,7 @@ td.head{
 /* login */
 #affiliateloginBody .category #main,
 #loginBody .category #main{
-	width: 728px;
+	width: 830px;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -1914,7 +1917,7 @@ td.head{
 #affiliateloginBody .box,
 #loginBody .box{
 	padding: 20px 60px;
-	width: 608px;
+	width: 710px;
 }
 #affiliateloginBody .box2{
 	padding: 20px;

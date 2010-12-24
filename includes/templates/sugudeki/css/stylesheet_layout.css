@@ -11,12 +11,12 @@ Description: layout
 	padding: 0px;
 	margin: 0px;
 	text-align: center;
-	/*min-width: 940px;*/
+	/*min-width: 1170px;*/
 }
 
 
 #header{
-	width: 940px;
+	width: 1170px;
 	padding-top: 20px;
 	margin: 0px auto;
 	text-align: left;
@@ -25,7 +25,7 @@ Description: layout
 
 
 #content{
-	width: 940px;
+	width: 1170px;
 	margin: 0px auto;
 	overflow: hidden;
 	text-align: left;
@@ -50,7 +50,7 @@ Description: layout
 
 #main{
 	float: right;
-	width: 730px;
+	width: 830px;
 	overflow: hidden;
 }
 
@@ -58,21 +58,21 @@ Description: layout
 
 #sub-a{
 	float: left;
-	width: 200px;
+	width: 230px;
 	overflow: hidden;
 }
 
 
 #sub-b{
 	float: right;
-	width: 200px;
+	width: 230px;
 	overflow: hidden;
 }
 
 
 .home #indexDefaultSubContent{
 	float: left;
-	width: 520px;
+	width: 620px;
 	margin-top: 10px;
 }
 
@@ -87,6 +87,6 @@ Description: layout
 }
 
 .onecolumn #mainBody{
-	width: 730px;
+	width: 830px;
 	margin: 0px auto;
 }
