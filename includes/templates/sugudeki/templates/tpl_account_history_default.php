@@ -59,8 +59,4 @@
   }
 ?>
 
-<div class="submit">
-<?php echo '<a href="' . zen_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_BACK, BUTTON_BACK_ALT,'class="imgover"') . '</a>'; ?>
-</div>
-
 </div></div>

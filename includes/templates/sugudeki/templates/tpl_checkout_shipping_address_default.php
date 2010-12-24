@@ -19,7 +19,7 @@
 <div id="centerColumnBody">
 
 <?php
-  echo zen_addOnModules_get_block('checkout_step');
+echo zen_addOnModules_get_block('checkout_step');
 ?>
 
 <?php if ($messageStack->size('checkout_address') > 0) echo $messageStack->output('checkout_address'); ?>
@@ -57,16 +57,7 @@
 
 <div class="submit">
 <p class="forward"><?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CHANGE_ORAGE, BUTTON_CHANGE_ALT,'class="imgover"'); ?></p>
-<p class="back"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_BACK, BUTTON_BACK_ALT,'class="imgover"') . '</a>'; ?></p>
 </div>
 
-<?php
-  if (false) { //$process == true) {
-?>
-  <div class="submit"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_BACK, BUTTON_BACK_ALT,'class="imgover"') . '</a>'; ?></div>
-
-<?php
-  }
-?>
 </form>
 </div></div>

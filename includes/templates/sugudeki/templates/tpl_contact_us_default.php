@@ -29,7 +29,6 @@
 <?php if (CONTACT_US_STORE_NAME_ADDRESS== '1') { ?>
 <address><?php echo nl2br(STORE_NAME_ADDRESS); ?></address>
 <?php } ?>
-<div class="buttonRow"><?php echo zen_back_link() . zen_image_button(BUTTON_IMAGE_BACK, BUTTON_BACK_ALT) . '</a>'; ?></div>
 
 <?php
   } else {
@@ -98,7 +97,6 @@ if (MODULE_MT_PAGES_STATUS == 'true' and !empty($mt_page_contact_us_top_message)
 
 <div class="submit">
 <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_SEND, BUTTON_SEND_ALT,'class="imgover"'); ?></div>
-<div class="buttonRow back"><?php echo zen_back_link() . zen_image_button(BUTTON_IMAGE_BACK, BUTTON_BACK_ALT,'class="imgover"') . '</a>'; ?></div>
 </div>
 <?php
   }
