@@ -42,13 +42,13 @@ if ( ($category_depth == 'products') || (zen_check_url_get_terms()) ) {
   define('TABLE_HEADING_PRICE', '価格');
   define('TABLE_HEADING_WEIGHT', '重量');
   define('TABLE_HEADING_BUY_NOW', '今すぐ買う');
-  define('TEXT_NO_PRODUCTS', '<dt>このカテゴリの商品はありません。</dt>');
+  define('TEXT_NO_PRODUCTS', '<dt>このカテゴリーの商品はありません。</dt>');
   define('TEXT_NO_PRODUCTS2', 'このメーカーの商品はありません。');
   define('TEXT_NUMBER_OF_PRODUCTS', '商品番号: ');
   define('TEXT_SHOW', '分類：');
   define('TEXT_BUY', '一つ買う \'');
   define('TEXT_NOW', '\' 今すぐ');
-  define('TEXT_ALL_CATEGORIES', '全カテゴリ');
+  define('TEXT_ALL_CATEGORIES', '全カテゴリー');
   define('TEXT_ALL_MANUFACTURERS', '全メーカー');
 } elseif ($category_depth == 'top') {
   // 何も選択されていないトップレベルのホームページでの表示
@@ -57,7 +57,7 @@ if ( ($category_depth == 'products') || (zen_check_url_get_terms()) ) {
   define('HEADING_TITLE', 'おめでとうございます!<br />
 オンラインショップ構築ソフトZen Cart 日本語版のインストールに成功しました。');
 } elseif ($category_depth == 'nested') {
-  // サブカテゴリでの表示
+  // サブカテゴリーでの表示
   /*このヘッドラインは「○○○ショップへようこそ」など好みのコピーに変更してください。*/
   define('HEADING_TITLE', 'おめでとうございます!<br />
 オンラインショップ構築ソフトZen Cart 日本語版のインストールに成功しました。'); 
