@@ -22,6 +22,6 @@
   echo zen_hide_session_id();
   echo $field_hidden;
 ?>
-<?php echo zen_image_submit(BUTTON_IMAGE_SEARCH, BUTTON_SEARCH_ALT,'class="imgover"'); ?>
+<a href="#" onclick="document.forms['search_more_par_page'].submit();return false;"><?php echo MODULE_SEARCH_MORE_TEXT_DISPLAY; ?></a>
 </form>
 </div>
