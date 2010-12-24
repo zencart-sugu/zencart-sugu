@@ -9,7 +9,7 @@
 
 define('HEADING_PRODUCT_NOT_FOUND', '該当する商品は見つかりませんでした');
 
-define('TEXT_PRODUCT_NOT_FOUND', '左のカテゴリメニューよりお探しください。');
+define('TEXT_PRODUCT_NOT_FOUND', '左のカテゴリーメニューよりお探しください。');
 define('TEXT_CURRENT_REVIEWS', '現在のレビュー:');
 define('TEXT_MORE_INFORMATION', '<a href="%s" target="_blank">メーカーのサイトへ</a>');
 define('TEXT_DATE_ADDED', 'この商品は%sに登録されました。');

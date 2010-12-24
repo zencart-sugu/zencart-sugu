@@ -40,7 +40,6 @@
 
 <div class="submit">
 <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_REGISTER , BUTTON_REGISTER_ALT,'class="imgover"'); ?></div>
-<div class="buttonRow back"><?php echo '<a href="' . zen_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_BACK, BUTTON_BACK_ALT,'class="imgover"') . '</a>'; ?></div>
 </div>
 
 </form>

@@ -44,12 +44,12 @@ h1,h2,h3,h4,h5,h6{
 body{
 	padding: 0px;
 	margin: 0px;
-	font-family: "Ž£ŽÍŽ£ŽÓ Ž£ŽÐŽ¥Ž´Ž¥Ž·Ž¥ŽÃŽ¥Ž¯", Osaka, "Ž¥ŽÒŽ¥ò§Ž®Ž¥ŽÎŽ³ŽÑŽ¥Ž´ Pro W3";
+	font-family: "Ž¼Ž¥Ž¼ŽÏŽ¼Ž¥Ž¼ŽÕ Ž¼Ž¥Ž¼ŽÒŽ¼Ž§Ž¼Ž¶Ž¼Ž§Ž¼Ž¹Ž¼Ž§Ž¼ŽÅŽ¼Ž§Ž¼Ž±", Osaka, "Ž¼Ž§Ž¼ŽÔŽ¼Ž§¨«Ž¼Ž°Ž¼Ž§Ž¼ŽÐŽ¼ŽµŽ¼ŽÓŽ¼Ž§Ž¼Ž¶ Pro W3";
 	color: #323232;
 	text-align: center;
 	background-color: #FFF;
-  font-size: 12px;
-	min-width: 940px;
+  font-size: 14px;
+	min-width: 1170px;
 }
 
 html{
@@ -57,12 +57,12 @@ html{
 
 /* for IE6 */
 * html body{
-  font-size: 75%;
+  font-size: 87%;
 }
 
 /* for IE7 */
 *:first-child+html body{
-  font-size: 75%;
+  font-size: 87%;
 }
 
 
