@@ -13,6 +13,7 @@
 ?>
 <div id="block_search_more_search_form">
 <?php
+  echo '<h2 class="search_form_title">'.HEADING_TITLE_2.'</h2>';
   $form = zen_draw_form(
             'search_more_form', zen_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 
             'get', 'onsubmit="return check_search_more_form(this);"') . zen_hide_session_id();
@@ -43,7 +44,7 @@
 <th scope="row"><?php echo MODULE_SEARCH_MORE_ENTRY_PRICE_RANGE; ?></th>
 <td><?php echo zen_draw_input_field('pfrom',$form_vars['pfrom'] ,'','text',false); ?><?php echo MODULE_SEARCH_MORE_TEXT_PRICE_EN ; ?>
         <?php echo MODULE_SEARCH_MORE_TEXT_FROM_TO ?> 
-        <?php echo zen_draw_input_field('pto',$form_vars['pto'] ,'','text',false); ?><?php echo MODULE_SEARCH_MORE_TEXT_PRICE_EN ; ?></td>
+        <?php echo zen_draw_input_field('pto',$form_vars['pto'] ,'','text',false); ?><?php echo MODULE_SEARCH_MORE_TEXT_PRICE_EN ; ?>&nbsp;<?php echo MODULE_SEARCH_MORE_PRICE_FORMAT_STRING_SAMPLE; ?></td>
 </tr>
 <tr>
 <th scope="row"><?php echo MODULE_SEARCH_MORE_ENTRY_DATE_RANGE; ?></th>

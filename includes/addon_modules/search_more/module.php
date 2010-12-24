@@ -191,6 +191,7 @@ class search_more extends addOnModuleBase {
             }
             $_GET['cPath'] = $cPath . $_GET['categories_id'];
         }
+        define('HEADING_TITLE', sprintf(HEADING_TITLE_1, htmlspecialchars(($_GET['keyword']), ENT_QUOTES)));
     }
 
     // create vars for block search form

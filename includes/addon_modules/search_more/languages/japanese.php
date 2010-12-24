@@ -39,13 +39,15 @@ define('MODULE_SEARCH_MORE_BLOCK_SORT_TITLE', '¤â¤Ã¤È¸¡º÷¡§ÊÂ¤ÓÂØ¤¨¥Ö¥í¥Ã¥¯');
 define('MODULE_SEARCH_MORE_BLOCK_PAR_PAGE_TITLE', '¤â¤Ã¤È¸¡º÷¡§É½¼¨·ï¿ô¡ÊÊÇ¡Ë¥Ö¥í¥Ã¥¯');
 
 #¸¡º÷¾ò·ï¥Õ¥©¡¼¥à¤Ç»ÈÍÑ¤¹¤ëÊ¸¸À
-define('MODULE_SEARCH_MORE_ENTRY_KEYWORD', '¥­¡¼¥ï¡¼¥É¤Ç¹Ê¤ê¹þ¤à');
+define('HEADING_TITLE_1', '¾ÜºÙ¸¡º÷(¡Ö%s¡×¤Ç¤Î¸¡º÷·ë²Ì)');
+define('HEADING_TITLE_2', 'ºÆ¸¡º÷¡¦¹Ê¤ê¹þ¤ß');
+define('MODULE_SEARCH_MORE_ENTRY_KEYWORD', '¥­¡¼¥ï¡¼¥É');
 define('MODULE_SEARCH_MORE_TEXT_SEARCH_IN_DESCRIPTION', '¾¦ÉÊÀâÌÀÊ¸¤â¸¡º÷ÂÐ¾Ý¤Ë¤¹¤ë');
-define('MODULE_SEARCH_MORE_ENTRY_CATEGORIES', '¥«¥Æ¥´¥ê¤Ç¹Ê¤ê¹þ¤à');
+define('MODULE_SEARCH_MORE_ENTRY_CATEGORIES', '¥«¥Æ¥´¥ê');
 define('MODULE_SEARCH_MORE_ENTRY_INCLUDE_SUBCATEGORIES', '¥µ¥Ö¥«¥Æ¥´¥ê¤ò´Þ¤à');
-define('MODULE_SEARCH_MORE_ENTRY_MANUFACTURERS', '¥á¡¼¥«¡¼¤Ç¹Ê¤ê¹þ¤à');
-define('MODULE_SEARCH_MORE_ENTRY_PRICE_RANGE', '²Á³ÊÂÓ¤Ç¹Ê¤ê¹þ¤à');
-define('MODULE_SEARCH_MORE_ENTRY_DATE_RANGE', 'ÅÐÏ¿Æü¤Ç¹Ê¤ê¹þ¤à');
+define('MODULE_SEARCH_MORE_ENTRY_MANUFACTURERS', '¥á¡¼¥«¡¼');
+define('MODULE_SEARCH_MORE_ENTRY_PRICE_RANGE', '²Á³ÊÂÓ');
+define('MODULE_SEARCH_MORE_ENTRY_DATE_RANGE', 'ÅÐÏ¿Æü');
 
 define('MODULE_SEARCH_MORE_TEXT_SEARCH_HELP_LINK', '¸¡º÷¥Ø¥ë¥× [?]');
 define('MODULE_SEARCH_MORE_TEXT_ALL_CATEGORIES', 'Á´¥«¥Æ¥´¥ê');
@@ -63,6 +65,7 @@ define('MODULE_SEARCH_MORE_ERROR_PRICE_TO_MUST_BE_NUM', '²Á³Ê¾å¸Â¤Ë¤Ï¿ô»ú¤òÆþÎÏ¤
 define('MODULE_SEARCH_MORE_ERROR_PRICE_TO_LESS_THAN_PRICE_FROM', '²Á³Ê¾å¸Â¤Ï²Á³Ê²¼¸Â¤ÈÆ±¤¸¤«¤½¤ì°Ê¾å¤Î¿ô»ú¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤');
 define('MODULE_SEARCH_MORE_ERROR_INVALID_KEYWORDS', 'Ìµ¸ú¤Ê¥­¡¼¥ï¡¼¥É¤Ç¤¹¡£');
 define('MODULE_SEARCH_MORE_TEXT_PRICE_EN'                  ,'±ß');
+define('MODULE_SEARCH_MORE_PRICE_FORMAT_STRING_SAMPLE'     ,'Îã¡§500¡¡¡Á¡¡10000');
 define('MODULE_SEARCH_MORE_DOB_FORMAT_STRING_SAMPLE'       ,'Îã¡§2009/01/01¡¡¡Á¡¡2009/06/30');
 
 #¥½¡¼¥È¥Ö¥í¥Ã¥¯¤ÇÍÑ¤¤¤ëÊ¸¸À
