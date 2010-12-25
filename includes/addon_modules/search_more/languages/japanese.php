@@ -3,6 +3,8 @@
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
 // +----------------------------------------------------------------------+
+// | Copyright (c) 2009 Liquid System Technology, Inc.                    |
+// | Author Ohtsuji Takashi                                                   |
 // |                                                                      |
 // | http://www.zen-cart.com/index.php                                    |
 // |                                                                      |
@@ -43,14 +45,14 @@ define('HEADING_TITLE_1', '詳細検索(「%s」での検索結果)');
 define('HEADING_TITLE_2', '再検索・絞り込み');
 define('MODULE_SEARCH_MORE_ENTRY_KEYWORD', 'キーワード');
 define('MODULE_SEARCH_MORE_TEXT_SEARCH_IN_DESCRIPTION', '商品説明文も検索対象にする');
-define('MODULE_SEARCH_MORE_ENTRY_CATEGORIES', 'カテゴリ');
-define('MODULE_SEARCH_MORE_ENTRY_INCLUDE_SUBCATEGORIES', 'サブカテゴリを含む');
+define('MODULE_SEARCH_MORE_ENTRY_CATEGORIES', 'カテゴリー');
+define('MODULE_SEARCH_MORE_ENTRY_INCLUDE_SUBCATEGORIES', 'サブカテゴリーを含む');
 define('MODULE_SEARCH_MORE_ENTRY_MANUFACTURERS', 'メーカー');
 define('MODULE_SEARCH_MORE_ENTRY_PRICE_RANGE', '価格帯');
 define('MODULE_SEARCH_MORE_ENTRY_DATE_RANGE', '登録日');
 
 define('MODULE_SEARCH_MORE_TEXT_SEARCH_HELP_LINK', '検索ヘルプ [?]');
-define('MODULE_SEARCH_MORE_TEXT_ALL_CATEGORIES', '全カテゴリ');
+define('MODULE_SEARCH_MORE_TEXT_ALL_CATEGORIES', '全カテゴリー');
 define('MODULE_SEARCH_MORE_TEXT_ALL_MANUFACTURERS', '全て');
 define('MODULE_SEARCH_MORE_TEXT_FROM_TO', '〜');
 
