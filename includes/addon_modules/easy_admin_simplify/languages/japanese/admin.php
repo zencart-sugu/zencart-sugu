@@ -36,7 +36,7 @@ define('TEXT_UPDATE_SUCCESS', '設定しました');
 // type:C 変更,従来
 $easy_admin_simplify_config   = array();
 $easy_admin_simplify_config[] = array(
-  'title' => 'カテゴリ管理',
+  'title' => 'カテゴリー管理',
   'item'  => array(
     array('type'=>'D', 'key'=>'CATEGORY_LANGUAGE',          'description'=>'日本語以外の入力項目'),
     array('type'=>'D', 'key'=>'CATEGORY_PRICE_LINK',        'description'=>'商品価格管理へのリンク'),
@@ -62,7 +62,7 @@ $easy_admin_simplify_config[] = array(
     array('type'=>'D', 'key'=>'PRODUCT_WEIGHT',               'description'=>'商品重量'),
     array('type'=>'D', 'key'=>'PRODUCT_NUMBER_UNIT',          'description'=>'小数点'),
     array('type'=>'D', 'key'=>'PRODUCT_META_TAGS_USAGE',      'description'=>'メタタグでの注意書き'),
-    array('type'=>'D', 'key'=>'PRODUCT_CATEGORY_MANAGER',     'description'=>'複数のカテゴリがマネージャをリンク'),
+    array('type'=>'D', 'key'=>'PRODUCT_CATEGORY_MANAGER',     'description'=>'複数のカテゴリーがマネージャをリンク'),
   )
 );
 $easy_admin_simplify_config[] = array(
@@ -120,7 +120,7 @@ $easy_admin_simplify_config[] = array(
   'title' => '商品オプション属性の管理',
   'item'  => array(
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_MODIFY',       'description'=>'商品および価格編集ボタン'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORY',     'description'=>'複数カテゴリのリンク管理へのリンク'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORY',     'description'=>'複数カテゴリーのリンク管理へのリンク'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_NUMBER_UNIT',  'description'=>'小数点'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_WEIGHT',       'description'=>'属性の重量'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_ONETIME',      'description'=>'属性のワンタイム値引き'),
@@ -129,7 +129,7 @@ $easy_admin_simplify_config[] = array(
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRICE_WORDS',  'description'=>'単語/文字値引き'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_FLAGS',        'description'=>'属性フラグ'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_IMAGE',        'description'=>'オプション画像'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORIES',   'description'=>'カテゴリ選択プルダウン'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORIES',   'description'=>'カテゴリー選択プルダウン'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRODUCTS',     'description'=>'商品選択プルダウン'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_LEGEND',       'description'=>'属性凡例'),
     array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_COLUMN',       'description'=>'重量,属性,値引き列'),
@@ -153,7 +153,7 @@ $easy_admin_simplify_config[] = array(
     array('type'=>'D', 'key'=>'CONFIGURATION_1_8',  'description'=>'表示言語の選択'),
     array('type'=>'D', 'key'=>'CONFIGURATION_1_10', 'description'=>'商品の追加後にカートを表示'),
     array('type'=>'D', 'key'=>'CONFIGURATION_1_11', 'description'=>'デフォルトの検索演算子'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_13', 'description'=>'カテゴリ内の商品数を表示'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_13', 'description'=>'カテゴリー内の商品数を表示'),
     array('type'=>'D', 'key'=>'CONFIGURATION_1_14', 'description'=>'税額の小数点位置'),
     array('type'=>'D', 'key'=>'CONFIGURATION_1_15', 'description'=>'価格を税込みで表示'),
     array('type'=>'D', 'key'=>'CONFIGURATION_1_16', 'description'=>'価格を税込みで表示 - 管理画面'),
@@ -168,7 +168,7 @@ $easy_admin_simplify_config[] = array(
     array('type'=>'D', 'key'=>'CONFIGURATION_1_25', 'description'=>'リンク切れページのチェック'),
     array('type'=>'D', 'key'=>'CONFIGURATION_1_26', 'description'=>'HTMLエディタ'),
     array('type'=>'D', 'key'=>'CONFIGURATION_1_27', 'description'=>'phpBBへのリンクを表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_28', 'description'=>'カテゴリ内の商品数を表示 - 管理画面'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_28', 'description'=>'カテゴリー内の商品数を表示 - 管理画面'),
   )
 );
 $easy_admin_simplify_config[] = array(
