@@ -3,6 +3,8 @@
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
 // +----------------------------------------------------------------------+
+// | Copyright (c) 2009 Liquid System Technology, Inc.                    |
+// | Author Koji Sasaki                                                   |
 // |                                                                      |
 // | http://www.zen-cart.com/index.php                                    |
 // |                                                                      |
@@ -19,6 +21,6 @@
 // +----------------------------------------------------------------------+
 // $Id:  $
 //
-define('MODULE_ZEN_SMARTPHONE_CATEGORIES_LIST_TITLE', 'カテゴリ選択');
+define('MODULE_ZEN_SMARTPHONE_CATEGORIES_LIST_TITLE', 'カテゴリー選択');
 
 ?>
