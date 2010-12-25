@@ -36,14 +36,14 @@ define('TEXT_COUPON_HELP_FREESHIP', '');
 define('TEXT_COUPON_HELP_DESC', '<p><span class="bold">割引のご提供:</span> %s</p><p class="smallText">割引のご利用にあたって一部制限がある場合がございます。詳しくは下記をご覧下さい。</p>');
 define('TEXT_COUPON_HELP_DATE', '<p>このクーポンは %s 〜 %s の間に限り有効です。</p>');
 define('TEXT_COUPON_HELP_RESTRICT', '<p class="biggerText bold">割引クーポンの対象</p>');
-define('TEXT_COUPON_HELP_CATEGORIES', '<p class="bold">カテゴリによる制限:</p>');
+define('TEXT_COUPON_HELP_CATEGORIES', '<p class="bold">カテゴリーによる制限:</p>');
 define('TEXT_COUPON_HELP_PRODUCTS', '<p class="bold">商品による制限:</p>');
 define('TEXT_ALLOW', '対象');
 define('TEXT_DENY', '対象外');
-define('TEXT_NO_CAT_RESTRICTIONS', '<p>この割引クーポンは全カテゴリ対象です。</p>');
+define('TEXT_NO_CAT_RESTRICTIONS', '<p>この割引クーポンは全カテゴリー対象です。</p>');
 define('TEXT_NO_PROD_RESTRICTIONS', '<p>この割引クーポンは全商品対象です。</p>');
-define('TEXT_CAT_ALLOWED', ' (このカテゴリでお使いいただけます)');
-define('TEXT_CAT_DENIED', ' (このカテゴリは割引対象外です)');
+define('TEXT_CAT_ALLOWED', ' (このカテゴリーでお使いいただけます)');
+define('TEXT_CAT_DENIED', ' (このカテゴリーは割引対象外です)');
 define('TEXT_PROD_ALLOWED', ' (この商品でお使いいただけます)');
 define('TEXT_PROD_DENIED', ' (この商品は割引対象外です)');
 // gift certificates cannot be purchased with Discount Coupons

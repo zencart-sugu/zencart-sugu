@@ -16,8 +16,8 @@
   define('HEADING_SEARCH_CRITERIA', '検索条件を選択してください');
 
   define('TEXT_SEARCH_IN_DESCRIPTION', '商品説明文も検索対象にする');
-  define('ENTRY_CATEGORIES', 'このカテゴリを対象に:');
-  define('ENTRY_INCLUDE_SUBCATEGORIES', 'サブカテゴリを含む');
+  define('ENTRY_CATEGORIES', 'このカテゴリーを対象に:');
+  define('ENTRY_INCLUDE_SUBCATEGORIES', 'サブカテゴリーを含む');
   define('ENTRY_MANUFACTURERS', 'このメーカーを対象に');
 define('ENTRY_PRICE_RANGE', '価格帯で検索');
   define('ENTRY_PRICE_FROM', '価格下限:');
@@ -28,7 +28,7 @@ define('ENTRY_DATE_RANGE', '登録日で検索');
 
   define('TEXT_SEARCH_HELP_LINK', '検索ヘルプ [?]');
 
-  define('TEXT_ALL_CATEGORIES', '全カテゴリ');
+  define('TEXT_ALL_CATEGORIES', '全カテゴリー');
   define('TEXT_ALL_MANUFACTURERS', '全メーカー');
 
   define('TABLE_HEADING_IMAGE', '');

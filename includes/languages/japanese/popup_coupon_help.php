@@ -29,8 +29,8 @@ define('TEXT_COUPON_HELP_MINORDER', '<br /><br />%s°Ê¾å¤ªµá¤á¤¤¤¿¤À¤«¤Ê¤¤¤È¤³¤Î¥
 define('TEXT_COUPON_HELP_FREESHIP', '<br /><br />¤³¤Î¥¯¡¼¥Ý¥ó¤ò¤´ÍøÍÑ¤¤¤¿¤À¤¯¤ÈÇÛÁ÷ÎÁ¤¬ÌµÎÁ¤Ë¤Ê¤ê¤Þ¤¹¡£');
 define('TEXT_COUPON_HELP_DESC', '<br /><br />¥¯¡¼¥Ý¥ó¤Î¼ïÎà: %s');
 define('TEXT_COUPON_HELP_DATE', '<br /><br />¤³¤Î¥¯¡¼¥Ý¥ó¤Ï%s¤«¤é%s¤Î´Ö¤À¤±¤´ÍøÍÑ¤Ë¤Ê¤ì¤Þ¤¹¡£');
-define('TEXT_COUPON_HELP_RESTRICT', '<br /><br />¾¦ÉÊ¡¦¥«¥Æ¥´¥êÀ©¸Â');
-define('TEXT_COUPON_HELP_CATEGORIES', '¥«¥Æ¥´¥ê');
+define('TEXT_COUPON_HELP_RESTRICT', '<br /><br />¾¦ÉÊ¡¦¥«¥Æ¥´¥ê¡¼À©¸Â');
+define('TEXT_COUPON_HELP_CATEGORIES', '¥«¥Æ¥´¥ê¡¼');
 define('TEXT_COUPON_HELP_PRODUCTS', '¾¦ÉÊ');
 define('TEXT_ALLOW', '³ä°ú²Ä');
 define('TEXT_DENY', '³ä°úÂÐ¾Ý³°');

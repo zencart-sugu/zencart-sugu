@@ -30,7 +30,7 @@ define('HEADING_SEARCH_CRITERIA', '検索キーワードを入力してください');
 
 define('TEXT_SEARCH_IN_DESCRIPTION', '商品説明から検索する');
 define('ENTRY_CATEGORIES', 'カテゴリー:');
-define('ENTRY_INCLUDE_SUBCATEGORIES', 'サブカテゴリを含む');
+define('ENTRY_INCLUDE_SUBCATEGORIES', 'サブカテゴリーを含む');
 define('ENTRY_MANUFACTURERS', 'メーカー:');
 define('ENTRY_PRICE_FROM', '価格下限:');
 define('ENTRY_PRICE_TO', '価格上限:');
@@ -39,7 +39,7 @@ define('ENTRY_DATE_TO', '終了日付:');
 
 define('TEXT_SEARCH_HELP_LINK', 'ヘルプ[?]');
 
-define('TEXT_ALL_CATEGORIES', '全カテゴリ');
+define('TEXT_ALL_CATEGORIES', '全カテゴリー');
 define('TEXT_ALL_MANUFACTURERS', '全メーカー');
 
 define('HEADING_SEARCH_HELP', '検索ヘルプ');
