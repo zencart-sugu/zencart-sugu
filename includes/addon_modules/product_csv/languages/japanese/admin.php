@@ -7,7 +7,7 @@ define('PRODUCT_CSV_IMPORT_MESSAGE', 'CSVファイルをアップロードしてください。');
 define('PRODUCT_CSV_IMPORT_BUTTON', 'アップロード');
 
 define('PRODUCT_CSV_EXPORT_TITLE', '* 商品CSVのダウンロード');
-define('PRODUCT_CSV_EXPORT_CATEGORY', 'ダウンロード対象カテゴリ');
+define('PRODUCT_CSV_EXPORT_CATEGORY', 'ダウンロード対象カテゴリー');
 define('PRODUCT_CSV_EXPORT_BUTTON', 'CSVダウンロード');
 
 define('PRODUCT_CSV_FORMAT', 'CSVファイルのフォーマット');
@@ -39,13 +39,13 @@ define('PRODUCT_CSV_MESSAGE_NO_SHIPPING_TYPE', '配送タイプ%sは存在しません');
 
 // category
 define('PRODUCT_CSV_MESSAGE_NO_TOPLEVEL_CATEGORY', '階層1は必ず入力してください');
-define('PRODUCT_CSV_MESSAGE_NO_CATEGORY_NAME', 'カテゴリ名に空欄があります');
-define('PRODUCT_CSV_MESSAGE_NOT_SEQUENTIAL', 'カテゴリ階層の間に空欄があります');
-define('PRODUCT_CSV_MESSAGE_NOT_MATCH', 'カテゴリ名%sが一致しませんでした');
-define('PRODUCT_CSV_MESSAGE_CANNOT_ADD_CATEGORY', '商品の入ったカテゴリにサブカテゴリを追加することはできません');
-define('PRODUCT_CSV_MESSAGE_CANNOT_ADD_PRODUCT', 'サブカテゴリの入ったカテゴリに商品を追加することはできません');
-define('PRODUCT_CSV_MESSAGE_CREATE_CATEGORY', 'カテゴリを作成しました');
-define('PRODUCT_CSV_MESSAGE_DELETE_CATEGORY', 'カテゴリとの紐付けを削除しました');
+define('PRODUCT_CSV_MESSAGE_NO_CATEGORY_NAME', 'カテゴリー名に空欄があります');
+define('PRODUCT_CSV_MESSAGE_NOT_SEQUENTIAL', 'カテゴリー階層の間に空欄があります');
+define('PRODUCT_CSV_MESSAGE_NOT_MATCH', 'カテゴリー名%sが一致しませんでした');
+define('PRODUCT_CSV_MESSAGE_CANNOT_ADD_CATEGORY', '商品の入ったカテゴリーにサブカテゴリーを追加することはできません');
+define('PRODUCT_CSV_MESSAGE_CANNOT_ADD_PRODUCT', 'サブカテゴリーの入ったカテゴリーに商品を追加することはできません');
+define('PRODUCT_CSV_MESSAGE_CREATE_CATEGORY', 'カテゴリーを作成しました');
+define('PRODUCT_CSV_MESSAGE_DELETE_CATEGORY', 'カテゴリーとの紐付けを削除しました');
 // option
 define('PRODUCT_CSV_MESSAGE_NOT_PLUS_MINUS', '%sは+または-で入力してください');
 define('PRODUCT_CSV_MESSAGE_NO_OPTION_NAME', 'オプション名が一致しません');

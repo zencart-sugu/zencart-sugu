@@ -24,7 +24,7 @@ define('FORM_FORMAT_COLUMN_HEADER2', 'アップロードしたファイルの1行目の値');
 define('FORM_FORMAT_COLUMN_HEADER3', '項目の内容');
 define('FORM_FORMAT_NOTICE', '注意: 次の項目は必ず必要です。');
 define('FORM_FORMAT_NECESSITY_PRODUCT', '型番');
-define('FORM_FORMAT_NECESSITY_CATEGORY', 'カテゴリ名-階層1');
+define('FORM_FORMAT_NECESSITY_CATEGORY', 'カテゴリー名-階層1');
 define('FORM_FORMAT_NECESSITY_OPTION', 'オプション名 オプション値 型番');
 define('FORM_FORMAT_SAVE', '設定');
 
