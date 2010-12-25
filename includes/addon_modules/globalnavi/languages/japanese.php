@@ -8,8 +8,8 @@ define('MODULE_GLOBALNAVI_SORT_ORDER_TITLE', '優先順');
 define('MODULE_GLOBALNAVI_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
 // install用
-define('MODULE_GLOBALNAVI_LIMIT_TITLE', '表示するカテゴリの上限');
-define('MODULE_GLOBALNAVI_LIMIT_DESCRIPTION', 'グローバルナビに表示するカテゴリ数の上限を設定します');
+define('MODULE_GLOBALNAVI_LIMIT_TITLE', '表示するカテゴリーの上限');
+define('MODULE_GLOBALNAVI_LIMIT_DESCRIPTION', 'グローバルナビに表示するカテゴリー数の上限を設定します');
 
 
 // addon_moduleブロック管理用
