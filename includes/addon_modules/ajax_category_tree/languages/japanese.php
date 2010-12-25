@@ -21,18 +21,18 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_TITLE',                  '商品カテゴリ');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_DESCRIPTION',            'カテゴリをツリー表示にします');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_TITLE',           '商品カテゴリの有効化');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_DESCRIPTION',     '商品カテゴリ表示を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_TITLE',                  '商品カテゴリー');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_DESCRIPTION',            'カテゴリーをツリー表示にします');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_TITLE',           '商品カテゴリーの有効化');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_DESCRIPTION',     '商品カテゴリー表示を有効にしますか？ <br />true: 有効<br />false: 無効');
 define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_SORT_ORDER_TITLE',       '優先順');
 define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
-define('MODULE_AJAX_CATEGORY_TREE_TITLE',          '商品カテゴリ');
-define('MODULE_AJAX_CATEGORY_TREE_BLOCK_TITLE',    '商品カテゴリ');
-define('MODULE_ADDON_MODULES_TEXT_ALL_CATEGORIES', '全カテゴリ');
+define('MODULE_AJAX_CATEGORY_TREE_TITLE',          '商品カテゴリー');
+define('MODULE_AJAX_CATEGORY_TREE_BLOCK_TITLE',    '商品カテゴリー');
+define('MODULE_ADDON_MODULES_TEXT_ALL_CATEGORIES', '全カテゴリー');
 
 // header_navigation extra_boxes
-define('BOX_AJAXCATEGORYTREE',               '商品カテゴリ');
-define('MODULE_AJAXCATEGORYTREE_PAGE_TITLE', '商品カテゴリ');
+define('BOX_AJAXCATEGORYTREE',               '商品カテゴリー');
+define('MODULE_AJAXCATEGORYTREE_PAGE_TITLE', '商品カテゴリー');
 ?>
