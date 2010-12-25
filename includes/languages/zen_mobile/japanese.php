@@ -107,9 +107,9 @@ mb_http_output("EUC-JP");
   define('BOX_HEADING_LINKS', '&nbsp;&nbsp;[more]');
 
 // categories box text in sideboxes/categories.php
-  define('BOX_HEADING_CATEGORIES', '<font color="' . MOBILE_THEME_COLOR . '">■</font>カテゴリで探す');
+  define('BOX_HEADING_CATEGORIES', '<font color="' . MOBILE_THEME_COLOR . '">■</font>カテゴリーで探す');
 
-// manufacturers box text in sideboxes/manufacturers.phpカテゴリ
+// manufacturers box text in sideboxes/manufacturers.phpカテゴリー
   define('BOX_HEADING_MANUFACTURERS', 'メーカー');
 
 // whats_new box text in sideboxes/whats_new.php
@@ -404,7 +404,7 @@ define('BOX_SEND_TO_FRIEND', ' ' . TEXT_GV_NAME . 'を贈る');
   define('TEXT_INVALID_USES_USER_COUPON', 'クーポンコード: %s は既に最大使用回数に達しています。このクーポンはお客様ごとに最大 ');
   define('REDEEMED_COUPON', '割引額 ');
   define('REDEEMED_MIN_ORDER', '円以上のご注文');
-  define('REDEEMED_RESTRICTIONS', ' [商品カテゴリが限定されます]');
+  define('REDEEMED_RESTRICTIONS', ' [商品カテゴリーが限定されます]');
   define('TEXT_ERROR', 'エラーがおこりました');
   define('TEXT_INVALID_COUPON_PRODUCT', '現在カートに入っている商品でこのクーポンコードをお使いいただけるものがありません');
   define('TEXT_VALID_COUPON', '割引クーポンを引き換えました');
