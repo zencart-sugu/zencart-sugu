@@ -3,6 +3,8 @@
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
 // +----------------------------------------------------------------------+
+// | Copyright (c) 2008 Liquid System Technology, Inc.                    |
+// | Author Koji Sasaki                                                   |
 // |                                                                      |
 // | http://www.zen-cart.com/index.php                                    |
 // |                                                                      |
@@ -19,19 +21,19 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TITLE',                  'カテゴリサイトマップ');
-define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_DESCRIPTION',            'カテゴリサイトマップを表示します');
-define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_STATUS_TITLE',           'カテゴリサイトマップの有効化');
-define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_STATUS_DESCRIPTION',     'カテゴリサイトマップ表示を有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TREE_LEVEL_TITLE',       '表示するカテゴリの深さ');
-define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TREE_LEVEL_DESCRIPTION', '表示するカテゴリの深さを指定します（デフォルト='.MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TREE_LEVEL_DEFAULT.'）');
+define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TITLE',                  'カテゴリーサイトマップ');
+define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_DESCRIPTION',            'カテゴリーサイトマップを表示します');
+define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_STATUS_TITLE',           'カテゴリーサイトマップの有効化');
+define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_STATUS_DESCRIPTION',     'カテゴリーサイトマップ表示を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TREE_LEVEL_TITLE',       '表示するカテゴリーの深さ');
+define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TREE_LEVEL_DESCRIPTION', '表示するカテゴリーの深さを指定します（デフォルト='.MODULE_ADDON_MODULES_CATEGORY_SITEMAP_TREE_LEVEL_DEFAULT.'）');
 define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_SORT_ORDER_TITLE',       '優先順');
 define('MODULE_ADDON_MODULES_CATEGORY_SITEMAP_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
-define('MODULE_CATEGORY_SITEMAP_TITLE',            'カテゴリサイトマップ');
-define('MODULE_CATEGORY_SITEMAP_BLOCK_TITLE',      'カテゴリサイトマップ');
+define('MODULE_CATEGORY_SITEMAP_TITLE',            'カテゴリーサイトマップ');
+define('MODULE_CATEGORY_SITEMAP_BLOCK_TITLE',      'カテゴリーサイトマップ');
 
 // header_navigation extra_boxes
-define('BOX_CATEGORY_SITEMAP',               '商品カテゴリ一覧');
-define('MODULE_CATEGORY_SITEMAP_PAGE_TITLE', 'カテゴリサイトマップ');
+define('BOX_CATEGORY_SITEMAP',               '商品カテゴリー一覧');
+define('MODULE_CATEGORY_SITEMAP_PAGE_TITLE', 'カテゴリーサイトマップ');
 ?>
