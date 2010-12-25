@@ -3,6 +3,8 @@
  * easy admin modules functions.php
  *
  * @package functions
+ * @copyright Copyright 2008 Liquid System Technology, Inc.
+ * @author Koji Sasaki
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
@@ -401,7 +403,7 @@
 
   // 商品コピー
   function _products_copy_modify($html_body) {
-    // 複数のカテゴリがマネージャをリンクします。ボタンの非表示
+    // 複数のカテゴリーがマネージャをリンクします。ボタンの非表示
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_PRODUCT_CATEGORY_MANAGER != 'true') {
       $button = '"'.BUTTON_PRODUCTS_TO_CATEGORIES.'"';
       $pos   = strpos($html_body, $button);
@@ -412,7 +414,7 @@
     return $html_body;
   }
 
-  // カテゴリ管理
+  // カテゴリー管理
   function _categories_list_modify($html_body) {
     // 商品価格の管理へのリンク非表示
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CATEGORY_PRICE_LINK != 'true') {
@@ -463,7 +465,7 @@
     return $html_body;
   }
 
-  // カテゴリ管理
+  // カテゴリー管理
   function _categories_modify($html_body) {
     // 国旗の非表示化
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CATEGORY_LANGUAGE != 'true') {
@@ -476,9 +478,9 @@
         // 処理対象は日本語以外
         if (!_isVisibleLanguage($languages[$i]['code'])) {
           $language_suffix  = "[".$languages[$i]['id']."]";
-          // カテゴリ名の非表示化
+          // カテゴリー名の非表示化
           $html_body = _change_input($html_body, "categories_name".$language_suffix);
-          // カテゴリ説明の非表示化
+          // カテゴリー説明の非表示化
           $html_body = _change_input($html_body, "categories_description".$language_suffix);
         }
       }
@@ -487,7 +489,7 @@
     return $html_body;
   }
 
-  // カテゴリメタタグ管理
+  // カテゴリーメタタグ管理
   function _categories_meta_tags_modify($html_body) {
     // 国旗の非表示化
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_CATEGORY_LANGUAGE != 'true') {
@@ -711,7 +713,7 @@
       $pos += strlen($col);
     }
 
-    // カテゴリ列の非表示
+    // カテゴリー列の非表示
     $col = ">".TABLE_HEADING_CATEGORY."<";
     $pos = strpos($html_body, $col);
     if ($pos !== FALSE) {
@@ -897,7 +899,7 @@
       }
     }
 
-    // 複数カテゴリのリンク管理の非表示
+    // 複数カテゴリーのリンク管理の非表示
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_CATEGORY != 'true') {
       $link = zen_href_link(FILENAME_PRODUCTS_TO_CATEGORIES, '&products_filter=');
       $pos  = strpos($html_body, $link);
@@ -1051,7 +1053,7 @@
   function _attributes_controller_modify($html_body) {
     $html_body = _attributes_controller_modify_common($html_body);
 
-    // カテゴリ選択プルダウンの非表示
+    // カテゴリー選択プルダウンの非表示
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_CATEGORIES != 'true') {
       $form  = 'name="new_category"';
       $pos   = strpos($html_body, $form);
@@ -1196,7 +1198,7 @@
   function _attributes_controller_delete_option_name_values_confirm_modify($html_body) {
     $html_body = _attributes_controller_modify_common($html_body);
 
-    // カテゴリ選択プルダウンの非表示
+    // カテゴリー選択プルダウンの非表示
     if (MODULE_EASY_ADMIN_SIMPLIFY_CONFIG_ATTRIBUTES_CONTROLLER_CATEGORIES != 'true') {
       $form  = 'name="new_category"';
       $pos   = strpos($html_body, $form);
