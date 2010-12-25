@@ -3,6 +3,8 @@
  * addon_modules_help Module
  *
  * @package Viewed_products
+ * @copyright Copyright (C) 2008 Liquid System Technology, Inc.
+ * @author Koji Sasaki
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
@@ -79,7 +81,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
     }
 
-    // 指定カテゴリから、親カテゴリまでのIDリストを作成する
+    // 指定カテゴリーから、親カテゴリーまでのIDリストを作成する
     function getCategoryIdList($category_id) {
       global $db;
 
@@ -129,7 +131,7 @@ if (!defined('IS_ADMIN_FLAG')) {
         // cPathが指定された場合の子供の展開
         $child = array();
 
-        // 今処理しているカテゴリと同じ場合に
+        // 今処理しているカテゴリーと同じ場合に
         // その下層を検索する
         if (count($cPathArray) > 0 &&
             $categories->fields['categories_id'] == $cPathArray[0]) {
