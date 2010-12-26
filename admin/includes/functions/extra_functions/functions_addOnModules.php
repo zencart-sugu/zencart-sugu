@@ -117,3 +117,23 @@ function zen_addOnModules_perseAdminModule($str = null) {
 
   return array('class' => $class, 'page' => $page);
 }
+
+function zen_addOnModules_save_enabled_modules_to_cache() {
+
+  $enabled_modules = zen_addOnModules_get_enabled_modules();
+  if (is_array($enabled_modules)) {
+    $fd = fopen(DIR_FS_SQL_CACHE . "/enabled_addon_modules.txt", "w");
+    if ($fd) {
+      fwrite($fd, implode(';', $enabled_modules));
+      fclose($fd);
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else {
+    return false;
+  }
+}
+
