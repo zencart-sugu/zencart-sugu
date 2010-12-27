@@ -361,7 +361,9 @@ function version_check($oper, $current, $require) {
           </tr>
           <tr>
             <td class="infoBoxContent"><b><?php echo TEXT_INFO_BOX_AUTHOR; ?></b><br/>
-              <?php echo $modules[$row]['author']; ?><br/><br/>
+              <?php foreach ($modules[$row]['author'] as $author): ?>
+              <?php echo $author; ?><br/>
+              <?php endforeach; ?><br/>
             </td>
           </tr>
           <tr>

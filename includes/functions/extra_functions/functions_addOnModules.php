@@ -29,21 +29,46 @@ function zen_addOnModules_get_installed_modules() {
 }
 
 function zen_addOnModules_get_enabled_modules() {
-  $enabled_addon_modules = array();
-  $installed_addon_modules = zen_addOnModules_get_installed_modules();
-  for ($i = 0, $n = count($installed_addon_modules); $i < $n; $i++) {
-    $class = $installed_addon_modules[$i];
-    if (!is_object($GLOBALS[$class])) {
-      zen_addOnModules_load_module_files($class);
-      if (class_exists($class)) {
-        $GLOBALS[$class] = new $class;
+  global $enabled_addon_modules;
+  if (!isset($enabled_addon_modules)) {
+    $enabled_addon_modules = array();
+    $installed_addon_modules = zen_addOnModules_get_installed_modules();
+    for ($i = 0, $n = count($installed_addon_modules); $i < $n; $i++) {
+      $class = $installed_addon_modules[$i];
+      if (!is_object($GLOBALS[$class])) {
+        zen_addOnModules_load_module_files($class);
+        if (class_exists($class)) {
+          $GLOBALS[$class] = new $class;
+        }
+      }
+      if ($GLOBALS[$class]->enabled) {
+        $enabled_addon_modules[] = $installed_addon_modules[$i];
       }
     }
-    if ($GLOBALS[$class]->enabled) {
-      $enabled_addon_modules[] = $installed_addon_modules[$i];
-    }
+    usort($enabled_addon_modules, "zen_addOnModules_sort_enabled_modules");
   }
   return $enabled_addon_modules;
+}
+
+/**
+ * sort enabled modules order by sort_order
+ *
+ * @author saito
+ * @see zen_addOnModules_get_enabled_modules
+ */
+function zen_addOnModules_sort_enabled_modules($a, $b) {
+  $sort_order_a = $GLOBALS[$a]->sort_order;
+  $sort_order_b = $GLOBALS[$b]->sort_order;
+  if ($sort_order_a == $sort_order_b) {
+    return 0;
+  }
+  if (is_numeric($sort_order_a) && is_numeric($sort_order_b)) {
+    return ($sort_order_a < $sort_order_b) ? -1 : 1;
+  } elseif (is_numeric($sort_order_a)) {
+    return -1;
+  } elseif (is_numeric($sort_order_b)) {
+    return 1;
+  }
 }
 
 function zen_addOnModules_load_module_files($class) {
@@ -305,5 +330,47 @@ function zen_addOnModules_persePageModule($str = null) {
   }
 
   return array('class' => $class, 'method' => $method);
+}
+
+function zen_addOnModules_get_block($module_name, $block_name = 'block') {
+  global $current_page_base;
+  if (is_object($GLOBALS[$module_name]) && $GLOBALS[$module_name]->enabled) {
+    return  $GLOBALS[$module_name]->getBlock($block_name, $current_page_base);
+  }
+  else {
+    return '';
+  }
+}
+
+/**
+ * call addon_module's methods with parameter.
+ *
+ * @param string $module_name module's_name
+ * @param string $function_name function's name
+ * @param array $values function's parameter
+ */
+function zen_addOnModules_call_function($module_name, $function_name, $values = array(), $default_module_name = null, $default_function_name = null, $default_values = array()) {
+  if (is_object($GLOBALS[$module_name]) && $GLOBALS[$module_name]->enabled) {
+    if (method_exists($GLOBALS[$module_name], $function_name)) {
+      // call class method
+      return call_user_func_array(array($GLOBALS[$module_name], $function_name), $values);
+    }
+  } elseif (function_exists($function_name)) {
+    return call_user_func_array($function_name, $values);
+  } elseif (!is_null($default_function_name)) {
+    if (!is_null($default_module_name) && is_object($GLOBALS[$default_module_name]) && $GLOBALS[$default_module_name]->enabled) {
+      if (method_exists($GLOBALS[$default_module_name], $default_function_name)) {
+        // call class method
+        return call_user_func_array(array($GLOBALS[$default_module_name], $default_function_name), $default_values);
+      } elseif (functions_exists($default_function_name)) {
+        // call global functions
+        return call_user_func_array($default_function_name, $default_values);
+      }
+    } else {
+      // call global functions
+      return call_user_func_array($default_function_name, $default_values);
+    }
+  }
+  return '';
 }
 ?>
