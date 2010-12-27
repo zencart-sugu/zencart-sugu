@@ -118,7 +118,7 @@ define('ENTRY_SAMPLE_00', '<a href="http://www.post.japanpost.jp/zipcode/" targe
 
 //ÃíÊ¸¼êÂ³¤­
 define('HEADING_COMMENTS', 'È÷¹ÍÍó');
-define('TABLE_HEADING_PRICE','Ã±²Á');
+define('TABLE_HEADING_PRICE','²Á³Ê');
 define('ORDERTOTALS_SHIPPUING','ÇÛÁ÷ÎÁ');
 
 
