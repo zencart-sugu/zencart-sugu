@@ -89,6 +89,9 @@ function linkTo(e) {
   var target = e.target;
 
   while (target.tagName != 'TR') {
+    if (target.tagName == 'INPUT') {
+      return false;
+    }
     target = target.parentNode;
   }
 
