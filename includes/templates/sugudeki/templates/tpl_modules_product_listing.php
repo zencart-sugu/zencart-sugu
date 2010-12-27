@@ -15,6 +15,15 @@ echo zen_addOnModules_get_block('search_more', 'block_sort');
  include(DIR_WS_MODULES . zen_get_module_directory(FILENAME_PRODUCT_LISTING));
 ?>
 <div id="productListing">
+<?php
+// only show when there is something to submit and enabled
+    if ($show_top_submit_button == true) {
+?>
+<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_ADD_PRODUCTS_TO_CART, BUTTON_ADD_PRODUCTS_TO_CART_ALT, 'id="submit1" name="submit1"'); ?></div>
+<br class="clearBoth" />
+<?php
+    } // show top submit
+?>
 
 <?php if ( ($listing_split->number_of_rows > 0) && ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3') ) ) {
 ?>
@@ -47,6 +56,15 @@ if (PRODUCT_LISTING_LAYOUT_STYLE == 'columns') {
   }
 ?>
 
+<?php
+// only show when there is something to submit and enabled
+    if ($show_bottom_submit_button == true) {
+?>
+<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_ADD_PRODUCTS_TO_CART, BUTTON_ADD_PRODUCTS_TO_CART_ALT, 'id="submit2" name="submit1"'); ?></div>
+<br class="clearBoth" />
+<?php
+    } // show_bottom_submit_button
+?>
 </div>
 
 <?php
