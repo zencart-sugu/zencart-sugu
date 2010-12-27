@@ -1,0 +1,7 @@
+<?php
+if (!defined('IS_ADMIN_FLAG')) {
+  die('Illegal Access');
+}
+define('MODULE_VISITORS_PURCHASE_STATUS_DEFAULT', 'false');
+define('MODULE_VISITORS_PURCHASE_ORDERS_DATA_KEEP_DAYS_DEFAULT', '365');
+define('MODULE_VISITORS_PURCHASE_SORT_ORDER_DEFAULT', '0');
