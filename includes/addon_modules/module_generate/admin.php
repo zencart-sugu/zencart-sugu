@@ -121,6 +121,7 @@ if (isset($_POST['module_title'])) {
       $buff = preg_replace('/:version/', $module_author, $buff);
       $buff = preg_replace('/:zencart_version/', $module_zencart_version, $buff);
       $buff = preg_replace('/:addonmodule_version/', $module_addonmodule_version, $buff);
+      $buff = preg_replace('/:required/', $module_required, $buff);
 
       $buff = preg_replace('/:def_title/', $def_title, $buff);
       $buff = preg_replace('/:def_description/', $def_description, $buff);
