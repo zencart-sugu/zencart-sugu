@@ -43,7 +43,7 @@ if (!defined('IS_ADMIN_FLAG')) {
             'set_function' => 'null'
           ),
         );
-    var $require_modules = array(:required);
+    var $require_modules = array(':required');
     var $notifier = array();
 
     // class constructer for php4
