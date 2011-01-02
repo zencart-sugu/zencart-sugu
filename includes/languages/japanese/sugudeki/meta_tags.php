@@ -15,7 +15,7 @@ define('SITE_TAGLINE', '');
 define('CUSTOM_KEYWORDS', '');
 
 // Review Page can have a lead in:
-define('META_TAGS_REVIEW', 'Reviews: ');
+define('META_TAGS_REVIEW', '商品レビュー: ');
 
 // separators for meta tag definitions
 // Define Primary Section Output

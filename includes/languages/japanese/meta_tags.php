@@ -17,7 +17,7 @@ define('SITE_TAGLINE', 'The Art of E-commerce');
 define('CUSTOM_KEYWORDS', 'ecommerce, open source, shop, online shopping');
 
 // Review Page can have a lead in:
-define('META_TAGS_REVIEW', 'Reviews: ');
+define('META_TAGS_REVIEW', '商品レビュー: ');
 
 // separators for meta tag definitions
 // Define Primary Section Output
