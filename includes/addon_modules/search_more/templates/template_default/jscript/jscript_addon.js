@@ -67,10 +67,10 @@ function setColor(e) {
   }
 
   target.backup = target.style.backgroundColor;
-  target.style.backgroundColor = '#FF0000';
+  target.style.backgroundColor = '#E1EBF5';
   if (target.sib) {
     target.sib.backup = target.sib.style.backgroundColor;
-    target.sib.style.backgroundColor = '#FF0000';
+    target.sib.style.backgroundColor = '#E1EBF5';
   }
 }
 function reverseColor(e) {
