@@ -112,7 +112,7 @@ define('BUTTON_IMAGE_CONTINUE_CHECKOUT', 'button_continue_checkout.gif');
  */
 define('BUTTON_ADD_TO_CART_ALT', 'カートに入れる');
 define('BUTTON_ADD_ADDRESS_ALT', '住所を追加');
-define('BUTTON_ADD_PRODUCTS_TO_CART_ALT','選択した商品をカートに入れる');
+define('BUTTON_ADD_PRODUCTS_TO_CART_ALT','数量を変更して商品をカートを入れる');
 define('BUTTON_BACK_ALT', '戻る');
 define('BUTTON_BUY_NOW_ALT', '今すぐ購入');
 define('BUTTON_CANCEL_ALT', 'キャンセル');
