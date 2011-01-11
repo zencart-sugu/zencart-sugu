@@ -61,3 +61,12 @@ div.submit,
 .category #main #productGuide div.sugudeki .more a{
 	right: 10px;
 }
+
+/* login */
+#mainBody .new #visitorBox{
+	height: 247px;
+}
+
+#mainBody .returning #loginBox{
+	height: 240px;
+}

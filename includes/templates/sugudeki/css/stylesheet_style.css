@@ -139,11 +139,11 @@ h2.headline,
 
 #block-sideboxes-search h2{
 	font-weight: 800;
-	background-image: url(../images/icon_search.png);
+/*	background-image: url(../images/icon_search.png);
 	background-repeat: no-repeat;
-	background-position: 0px 50%;
+	background-position: 0px 50%; */
 	float: left;
-	padding-left: 25px;
+/*	padding-left: 25px; */
 	padding-top: 5px;
 	padding-bottom: 4px;
 }
@@ -166,7 +166,7 @@ h2.headline,
 
 #block_search_more_par_page,
 #block_search_more_sort{
-	float: left;
+	float: right;
 	padding: 0 10px 10px;
 }
 
@@ -214,6 +214,11 @@ table.tabTable td.productListing-data,
 table.tabTable td.productListing-data-description-odd,
 table.tabTable td.productListing-data-description-even{
 	padding: 0 10px 15px;
+}
+
+.productListing-data-description-odd,
+.productListing-data-description-even{
+	display: none;
 }
 
 td.productListing-data h3.itemTitle {
@@ -333,7 +338,7 @@ td.productListing-data h3.itemTitle {
 }
 
 
-/* Ωµ•ÿ•√•¿°º */
+/* éΩéµé•éÿé•é√é•é¿é°éº */
 .calendar td.w0 {
 	background-color:#FDBADB;
 }
@@ -356,7 +361,7 @@ td.productListing-data h3.itemTitle {
 	background-color:#E8F8B7;
 }
 
-/*  ø∆¸ */
+/* é éøé∆òÅ*/
 .calendar td.d0 {
 	background-color:#FDBADB;
 }
@@ -375,7 +380,7 @@ td.productListing-data h3.itemTitle {
 	color: #FFFFFF;
 }
 
-/* µŸ∆¸ */
+/* éµéŸé∆òÅ*/
 .calendar td.restd0 {
 	background-color:#ffe8e8;
 }
@@ -620,7 +625,7 @@ td.productListing-data h3.itemTitle {
 }
 
 * html #ui-dynatree-id-98 a.ui-dynatree-title {
-	margin: 0 0 0 1px;
+	margin: 0 0 0 6px;
 	zoom: 1;
 }
 
@@ -633,7 +638,7 @@ td.productListing-data h3.itemTitle {
 }
 
 *:first-child+html #ui-dynatree-id-98 a.ui-dynatree-title {
-	margin: 0 0 0 1px;
+	margin: 0 0 0 6px;
 	zoom: 1;
 }
 
@@ -848,7 +853,7 @@ ul.categories li.subs-parent .subs-parent li.products a{
 }
 
 .onecolumn .pagetop{
-	width: 730px;
+	width: 830px;
 	margin: 0 auto;
 }
 
@@ -1200,13 +1205,13 @@ table.search td span{
 #shoppingcartBody .category #main,
 #productinfoBody .category #main{
 	border: 0px;
-	width: 730px;
+	width: 830px; /*730px*/
 }
 
 #shoppingcartBody .category #mainBody,
 #productinfoBody .category #mainBody{
 	border: 1px solid #CCC;
-	width: 728px;
+	width: 828px; /*728px*/
 	/*margin-bottom: 10px;*/
 	padding-bottom: 15px;
 }
@@ -1643,7 +1648,7 @@ h2.centerBoxHeading{
 
 .horizontal .content{
 	border: 1px solid #CCC;
-	width: 728px;
+	width: 828px; /*728px*/
 	/*margin-top: 5px;*/
 	padding: 20px 0px 50px 0px;
 	text-align: left;	/*padding-bottom: 50px;*/
@@ -1799,6 +1804,7 @@ h2.centerBoxHeading{
 	padding-top: 20px;
 	padding-bottom: 20px;
 	vertical-align: top;
+	background: #F7F6F4;
 }
 
 td.cartUnitDisplay,
@@ -1877,6 +1883,47 @@ td.head{
 }
 
 /* login */
+#mainBody .new{
+	float: left;
+	width: 365px;
+}
+
+#mainBody .new #visitorBox{
+	width: 323px;
+/*	min-height: 241px; */
+	min-height: 280px;
+	padding: 20px;
+}
+
+/* for IE7 */
+*:first-child+html #mainBody .new #visitorBox{
+/*	min-height: 247px; */
+	min-height: 281px;
+}
+
+#mainBody .new #visitorBox #visitorBoxButtons .back,
+#mainBody .new #visitorBox #visitorBoxButtons .forward{
+	float: none;
+	text-align: center;
+}
+
+#mainBody .returning{
+	float: right;
+	width: 445px;
+}
+
+#mainBody .returning #loginBox{
+	width: 403px;
+/*	min-height: 240px; */
+	min-height: 280px;
+	padding: 20px;
+}
+
+#mainBody .returning #loginBox #login-email-address,
+#mainBody .returning #loginBox #login-password{
+	width: 230px;
+}
+
 #affiliateloginBody .category #main,
 #loginBody .category #main{
 	width: 830px;
@@ -2292,6 +2339,12 @@ span.update,
 	margin-left: -5px;
 }
 
+#checkoutShipping .buttonRow,
+#checkoutPayment .buttonRow,
+#checkoutConfirmDefault .buttonRow{
+	float: none;
+}
+
 #checkoutConfirmDefault .area,
 #accountHistInfo .area,
 #addressBookDefault address,
@@ -2300,6 +2353,7 @@ span.update,
 	border: 1px solid #CCC;
 	padding: 10px;
 	margin: 10px 0;
+	background: #E1EBF5;
 }
 
 #main .submit p{
@@ -2697,6 +2751,16 @@ p.primary{
 	zoom: 1;
 }
 
+#reviewsDefaultListingTopLinks,
+#reviewsDefaultListingBottomLinks{
+	margin: 10px 10px 0;
+}
+
+#reviewsDefaultListingTopNumber,
+#reviewsDefaultListingBottomNumber{
+	float: none;
+}
+
 #reviewsDefaultNoReviews,
 #reviewsDefaultListingTopNumber,
 .smallProductImage,
@@ -2710,6 +2774,10 @@ p.primary{
 #reviewsWrite {
 	overflow: hidden;
 	padding: 10px;
+}
+
+#reviewsWrite #reviewsWriteHeading{
+	padding-left: 0;
 }
 
 #reviewsWriteReviewer,
@@ -2728,4 +2796,57 @@ p.primary{
 .buttonRow{
 	float: left;
 	margin-right: 10px;
+}
+
+.reviewsDefaultListingBox{
+	overflow: hidden;
+}
+
+.reviewsBox{
+	display: inline;
+	float: left;
+	width: 85%;
+	margin-left: 10px;
+}
+
+.reviewsBox .forward{
+	margin-top: 10px;
+}
+
+#reviewsInfoDefaultProductImage {
+	display: inline;
+	margin-left: 20px;
+	width: 335px;
+}
+
+.reviewsBoxDetail {
+	display: inline;
+	float: left;
+	width: 448px;
+	margin-left: 20px;
+}
+
+.category #main .reviewsBoxDetail h1{
+	padding-left: 0;
+}
+
+.reviewsBoxDetail .buttonRow{
+	margin-top: 10px;
+}
+
+.reviewsBoxDetail .forward{
+	float: left;
+}
+
+#reviewsWriteReviewsRate{
+	text-align: left;
+}
+
+#reviewsWrite .forward{
+	float: left;
+}
+
+/* for IE6 */
+* html #reviewsWrite .forward img{
+	margin-bottom: 10px;
 }

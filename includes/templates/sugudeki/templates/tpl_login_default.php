@@ -17,6 +17,37 @@
 <!-- mainBody -->
 <div id="mainBody">
 
+<div class="new">
+<h2 class="transparent"><?php echo HEADING_NEW_CUSTOMER ; ?></h2>
+<div id="visitorBox" class="box">
+<?php echo TEXT_NEW_CUSTOMER_INTRODUCTION ; ?>
+
+<div id="visitorBoxButtons">
+
+<?php
+  require_once('includes/classes/order.php');
+  $order = new order();
+  if (count($order->products)) {
+$bt = "back";	
+}else{
+$bt = "submit";
+}
+?>
+
+<p class="<?php echo $bt ; ?>"><?php echo '<a href="' . zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CREATE_ACCOUNT, BUTTON_CREATE_ACCOUNT_ALT,'class="imgover"') . '</a>'; ?></p>
+
+<?php
+  if (count($order->products)) {
+?>
+<p class="forward"><?php echo '<a href="' . zen_href_link(FILENAME_ADDON, 'module=visitors/create_visitor', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_VISITOR, BUTTON_VISITOR_ALT,'class="imgover"') . '</a>'; ?></p>
+<?php
+}
+?>
+</div>
+</div>
+</div>
+
+<div class="returning">
 <h2 class="transparent"><?php echo HEADING_RETURNING_CUSTOMER; ?></h2>
 
 <div id="loginBox" class="box">
@@ -48,32 +79,6 @@
 
 </form>
 </div>
-
-<h2 class="transparent"><?php echo HEADING_NEW_CUSTOMER ; ?></h2>
-<div id="visitorBox" class="box">
-<?php echo TEXT_NEW_CUSTOMER_INTRODUCTION ; ?>
-
-<div id="visitorBoxButtons">
-
-<?php
-  require_once('includes/classes/order.php');
-  $order = new order();
-  if (count($order->products)) {
-$bt = "back";	
-}else{
-$bt = "submit";
-}
-?>
-
-<p class="<?php echo $bt ; ?>"><?php echo '<a href="' . zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CREATE_ACCOUNT, BUTTON_CREATE_ACCOUNT_ALT,'class="imgover"') . '</a>'; ?></p>
-
-<?php
-  if (count($order->products)) {
-?>
-<p class="forward"><?php echo '<a href="' . zen_href_link(FILENAME_ADDON, 'module=visitors/create_visitor', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_VISITOR, BUTTON_VISITOR_ALT,'class="imgover"') . '</a>'; ?></p>
-<?php
-}
-?>
 </div>
 
 </div>

@@ -37,6 +37,8 @@ echo $GLOBALS['multiple_image_view']->getBlock('block_expd', $current_page_base)
 }
 ?>
 
+<div class="reviewsBoxDetail">
+
 <h1 id="reviewsInfoDefaultHeading"><?php echo $products_name . $products_model; ?></h1>
 
 <h2 id="reviewsInfoDefaultPrice" class=""><?php echo $products_price; ?></h2>
@@ -46,9 +48,6 @@ echo $GLOBALS['multiple_image_view']->getBlock('block_expd', $current_page_base)
 <div id="reviewsInfoDefaultMainContent" class="content"><?php echo zen_break_string(nl2br(zen_output_string_protected(stripslashes($review_info->fields['reviews_text']))), 60, '-<br />'); ?></div>
 <div id="reviewsInfoDefaultDate" class="bold"><?php echo sprintf(TEXT_REVIEW_DATE_ADDED, zen_date_short($review_info->fields['date_added'])); ?>&nbsp;<?php echo sprintf(TEXT_REVIEW_BY, zen_output_string_protected($review_info->fields['customers_name'])); ?></div>
 
-</div>
-
-<div class="forward">
 <div class="buttonRow">
 <?php
         // more info in place of buy now
@@ -64,13 +63,16 @@ echo $GLOBALS['multiple_image_view']->getBlock('block_expd', $current_page_base)
         echo zen_get_buy_now_button($review_info->fields['products_id'], $the_button, $products_link) . '<br />' . zen_get_products_quantity_min_units_display($review_info->fields['products_id']);
       ?>
 </div>
+
+<div class="forward">
 <div id="reviewsInfoDefaultProductPageLink" class="buttonRow"><?php echo '<a href="' . zen_href_link(zen_get_info_page($_GET['products_id']), zen_get_all_get_params(array('reviews_id'))) . '">' . zen_image_button(BUTTON_IMAGE_GOTO_PROD_DETAILS , BUTTON_GOTO_PROD_DETAILS_ALT) . '</a>'; ?></div>
 
 <div id="reviewsInfoDefaultReviewsListingLink" class="buttonRow"><?php echo ($reviews_counter > 1 ? '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS, zen_get_all_get_params(array('reviews_id'))) . '">' . zen_image_button(BUTTON_IMAGE_MORE_REVIEWS , BUTTON_MORE_REVIEWS_ALT) . '</a>' : ''); ?></div>
 
 <div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, zen_get_all_get_params(array('reviews_id'))) . '">' . zen_image_button(BUTTON_IMAGE_WRITE_REVIEW, BUTTON_WRITE_REVIEW_ALT) . '</a>'; ?></div>
 </div>
-
+</div>
+</div>
 <br class="clearBoth" />
 
 </div>
