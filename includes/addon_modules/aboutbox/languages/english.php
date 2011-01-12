@@ -17,7 +17,7 @@
 // | to obtain it through the world-wide-web, please send a note to       |
 // | license@zen-cart.com so we can mail you a copy immediately.          |
 // +----------------------------------------------------------------------+
-// $Id: japanese.php $
+// $Id: english.php $
 //
 
   // 管理画面用
@@ -41,11 +41,11 @@ define('MODULE_ABOUTBOX_AVALABLE_CARDS_TITLE', '対応クレジットカード表示');
 define('MODULE_ABOUTBOX_AVAILABLE_CARDS_DESCRIPTION', '対応クレジットカードを表示するかどうか指定します<br />0: 非表示<br />1: テキスト表示<br />2: 画像表示');
 
 // install用
-define('MODULE_ABOUTBOX_GREETING_TITLE_DEFAULT', '店長からの挨拶');
-define('MODULE_ABOUTBOX_GREETING_TEXT_DEFAULT', '店長の○○○です');
+define('MODULE_ABOUTBOX_GREETING_TITLE_DEFAULT', 'Greetings from the shop master');
+define('MODULE_ABOUTBOX_GREETING_TEXT_DEFAULT', 'I\'m John Smith,the shop master.');
 
 // template用
-define('MODULE_ABOUTBOX_CREDITCARDS_TITLE', '利用可能な支払い方法');
+define('MODULE_ABOUTBOX_CREDITCARDS_TITLE', 'Payment methods available');
 
 // addon_moduleブロック管理用
 define('MODULE_ABOUTBOX_BLOCK_TITLE', 'アバウトボックス');
