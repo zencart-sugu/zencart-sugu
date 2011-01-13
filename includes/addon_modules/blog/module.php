@@ -116,7 +116,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
 
       $return          = array();
-      $return['title'] = MODULE_BLOG_TITLE;
+      $return['title'] = MODULE_BLOG_BLOCK_TITLE;
       $return['rss']   = $converted_rss;
       $return['error'] = $rss['error'];
       return $return;
