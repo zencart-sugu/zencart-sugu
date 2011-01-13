@@ -401,7 +401,7 @@
     $html .= '<div class="calendar">';
     $html .= '  <table>';
 
-    $html .= '      <caption>'.$calendar['year'].'年'.$calendar['month'].'月</caption>';
+    $html .= '      <caption>'.sprintf(MODULE_CALENDAR_TITLE_STYLE,$calendar['year'],$calendar['month']) .'</caption>';
     $html .= '    <tr>';
 
     // 週ヘッダー生成
