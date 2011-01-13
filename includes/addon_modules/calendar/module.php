@@ -232,7 +232,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       $shippingLastinfo = sprintf(MODULE_CALENDAR_SHIPPING_END, $shippingLastinfo);
 
       $return                     = array();
-      $return['title']            = MODULE_CALENDAR_TITLE;
+      $return['title']            = MODULE_CALENDAR_BLOCK_TITLE;
       $return['cur_calendar']     = $cur_calendar;
       $return['next_calendar']    = $next_calendar;
       $return['holidayinfo']      = $holidayinfo;

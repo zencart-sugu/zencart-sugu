@@ -45,39 +45,38 @@ define('MODULE_CALENDAR_SORT_ORDER_TITLE',         '優先順');
 define('MODULE_CALENDAR_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
 // addon_moduleブロック管理用
-define('MODULE_CALENDAR_BLOCK_TITLE', '営業カレンダー');
+define('MODULE_CALENDAR_BLOCK_TITLE', 'Business Calendar');
 
-define('MODULE_CALENDAR_TITLE_STYLE', '%s年%s月');
-define('MODULE_CALENDAR_SUN', '日');
-define('MODULE_CALENDAR_MON', '月');
-define('MODULE_CALENDAR_TUE', '火');
-define('MODULE_CALENDAR_WED', '水');
-define('MODULE_CALENDAR_THU', '木');
-define('MODULE_CALENDAR_FRI', '金');
-define('MODULE_CALENDAR_SAT', '土');
+define('MODULE_CALENDAR_TITLE_STYLE', '%s/%s');
+define('MODULE_CALENDAR_SUN', 'SUN');
+define('MODULE_CALENDAR_MON', 'MON');
+define('MODULE_CALENDAR_TUE', 'TUE');
+define('MODULE_CALENDAR_WED', 'WED');
+define('MODULE_CALENDAR_THU', 'THU');
+define('MODULE_CALENDAR_FRI', 'FRI');
+define('MODULE_CALENDAR_SAT', 'SAT');
 
-define('MODULE_CALENDAR_SHIPPING',             '本日ご注文いただくと、最短お届け日は%sです');
-define('MODULE_CALENDAR_SHIPPING_END',         '%sまで最終配送可能日として指定できます');
-define('MODULE_CALENDAR_SHIIPING_DAY',         '%_MONTH_%月%_DAY_%日');
+define('MODULE_CALENDAR_SHIPPING',             'You order today, the earliest delivery date is %s.');
+define('MODULE_CALENDAR_SHIPPING_END',         '%s can be specified as the delivery date.');
+define('MODULE_CALENDAR_SHIIPING_DAY',         '%_MONTH_%/%_DAY_%');
 
-define('MODULE_CALENDAR_HOLIDAY_DAY',          '毎月%_DAY_%日');
-define('MODULE_CALENDAR_HOLIDAY_WEEK',         '毎週%_WEEK_%曜日');
-define('MODULE_CALENDAR_HOLIDAY_WEEKCNT',      '第%_WEEKCNT_%%_WEEK_%曜日');
-define('MODULE_CALENDAR_HOLIDAY_MONTHWEEKCNT', '%_MONTH_%月第%_WEEKCNT_%%_WEEK_%曜日');
-define('MODULE_CALENDAR_HOLIDAY_MONTHDAY',     '%_MONTH_%月%_DAY_%日');
-define('MODULE_CALENDAR_HOLIDAY_YEARMONTHDAY', '%_YEAR_%年%_MONTH_%月%_DAY_%日');
-define('MODULE_CALENDAR_HOLIDAY',              'は定休日です');
+define('MODULE_CALENDAR_HOLIDAY_DAY',          '%_DAY_% of every month');
+define('MODULE_CALENDAR_HOLIDAY_WEEK',         'Every %_WEEK_%');
+define('MODULE_CALENDAR_HOLIDAY_WEEKCNT',      'Every %_WEEKCNT_%th %_WEEK_%');
+define('MODULE_CALENDAR_HOLIDAY_MONTHWEEKCNT', '%_WEEKCNT_%th %_WEEK_% of %_MONTH_%');
+define('MODULE_CALENDAR_HOLIDAY_MONTHDAY',     '%_MONTH_%/%_DAY_%');
+define('MODULE_CALENDAR_HOLIDAY_YEARMONTHDAY', '%_YEAR_%/%_MONTH_%/%_DAY_%');
+define('MODULE_CALENDAR_HOLIDAY',              'is regular holiday.');
 
-define('MODULE_CALENDAR_DAY',              '<span class="today">■</span>注文日&nbsp;&nbsp;<span class="rest">■</span>休業日&nbsp;&nbsp;<span>■</span>営業日');
-
-define('BOX_CALENDAR', '営業カレンダー');
+define('MODULE_CALENDAR_DAY', '<span class="today">X</span>Order date&nbsp;&nbsp;<span class="rest">X</span>Holiday&nbsp;&nbsp;<span>X</span>Buiness date');
+define('BOX_CALENDAR', 'Business Calendar');
 
 define('BUTTON_IMAGE_FOOTER_SHIPPING', 'button_footer_shipping.gif');
-define('BUTTON_FOOTER_SHIPPING_ALT', '配送方法');
+define('BUTTON_FOOTER_SHIPPING_ALT', 'Available Shipping Methods');
 
-define('MODULE_CALENDAR_HOPE_DELIVERY_DAY_HEADER',  '希望配送日');
-define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_HEADER', '希望配送時刻');
-define('MODULE_CALENDAR_HOPE_DELIVERY_DAY_FORMAT',  'm月d日');
-define('MODULE_CALENDAR_HOPE_DELIVERY_DAY_FAST',    '最短で発送');
-define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_NONE',   '指定しない');
+define('MODULE_CALENDAR_HOPE_DELIVERY_DAY_HEADER',  'Specified Delivery Date');
+define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_HEADER', 'Specified Delivery Time');
+define('MODULE_CALENDAR_HOPE_DELIVERY_DAY_FORMAT',  'm/d');
+define('MODULE_CALENDAR_HOPE_DELIVERY_DAY_FAST',    'As Soon As Possible');
+define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_NONE',   'Not Specified');
 ?>
