@@ -39,6 +39,7 @@ define('META_TAGS_REVIEW', '商品レビュー: ');
 
 // page title
 if (isset($_GET['cPath'])) {
+  // DBからカテゴリ名を取得
   $title_categories_name_array = array();
   $path_array = explode('_', $_GET['cPath']);
   for ($i=0, $j=sizeof($path_array); $i<$j-1; $i++) {
@@ -48,9 +49,14 @@ if (isset($_GET['cPath'])) {
       $title_categories_name_array[] = $categories_name->fields['categories_name'];
     }
   }
-  $title_categories_name_array = array_reverse($title_categories_name_array);
-  $title_categories_name = implode(PRIMARY_SECTION, $title_categories_name_array);
-  define('TITLE', $title_categories_name . PRIMARY_SECTION . STORE_NAME);
+  // カテゴリ名があればを連結してTITLEにdefine
+  if (sizeof($title_categories_name_array) > 0) {
+    $title_categories_name_array = array_reverse($title_categories_name_array);
+    $title_categories_name = implode(PRIMARY_SECTION, $title_categories_name_array);
+    define('TITLE', $title_categories_name . PRIMARY_SECTION . STORE_NAME);
+  } else {
+    define('TITLE', STORE_NAME);
+  }
 } else {
   define('TITLE', STORE_NAME);
 }
