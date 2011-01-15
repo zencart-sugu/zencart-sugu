@@ -2114,6 +2114,10 @@ fieldset#privacyBox{
 	font-size: 114%;
 }
 
+.onecolumn h2.headline{
+	margin-top: 10px;
+}
+
 table.fit{
 	width: 100%;
 }
@@ -2359,17 +2363,20 @@ span.update,
 	margin-left: -5px;
 }
 
-.category #main #checkoutShipping p.attention{
+.category #main #checkoutShipping p.attention,
+.category #main #checkoutPayment p.attention{
 	margin-top: 0;
 }
 
 /* for IE6 */
-* html .category #main #checkoutShipping p.attention{
+* html .category #main #checkoutShipping p.attention,
+* html .category #main #checkoutPayment p.attention{
 	margin-top: 10px;
 }
 
 /* for IE7 */
-*:first-child+html .category #main #checkoutShipping p.attention{
+*:first-child+html .category #main #checkoutShipping p.attention,
+*:first-child+html .category #main #checkoutPayment p.attention{
 	margin-top: 10px;
 }
 
@@ -2381,7 +2388,8 @@ span.update,
 	margin-top: 10px;
 }
 
-.category #main #checkoutShipping address p.buttonRow{
+.category #main #checkoutShipping address p.buttonRow,
+.category #main #checkoutPayment address p.buttonRow{
 	margin: -23px 0 0;
 	padding: 0;
 	text-align: right;
@@ -2404,6 +2412,15 @@ span.update,
 	padding: 10px;
 	margin: 10px 0 10px 20px;
 	background: #E1EBF5;
+}
+
+.ccinfo .inputLabelPayment{
+	margin: 0 10px 10px 0;
+}
+
+.methods input,
+.payment input{
+	margin-right: 10px;
 }
 
 #main .submit p{
