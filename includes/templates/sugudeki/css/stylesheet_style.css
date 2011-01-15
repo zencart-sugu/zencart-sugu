@@ -27,6 +27,18 @@ h2.headline,
 
 /* header
 ----------------------------------------- */
+/* for IE6 */
+* html #header{
+	margin-bottom: -20px;
+	zoom: 1;
+}
+
+/* for IE7 */
+*:first-child+html #header{
+	margin-bottom: -20px;
+	zoom: 1;
+}
+
 #logo{
 
 }
@@ -206,6 +218,11 @@ h2.headline,
 
 }
 
+table.tabTable{
+	border-collapse: separate;
+	border-spacing: 0 10px;
+}
+
 table.tabTable th{
 	padding: 15px 0;
 }
@@ -338,7 +355,7 @@ td.productListing-data h3.itemTitle {
 }
 
 
-/* éΩéµé•éÿé•é√é•é¿é°éº */
+/* Ωµ•ÿ•√•¿°º */
 .calendar td.w0 {
 	background-color:#FDBADB;
 }
@@ -361,7 +378,7 @@ td.productListing-data h3.itemTitle {
 	background-color:#E8F8B7;
 }
 
-/* é éøé∆òÅ*/
+/*  ø∆¸*/
 .calendar td.d0 {
 	background-color:#FDBADB;
 }
@@ -380,7 +397,7 @@ td.productListing-data h3.itemTitle {
 	color: #FFFFFF;
 }
 
-/* éµéŸé∆òÅ*/
+/* µŸ∆¸*/
 .calendar td.restd0 {
 	background-color:#ffe8e8;
 }
@@ -931,26 +948,26 @@ ul.categories li.subs-parent .subs-parent li.products a{
 }
 
 .centerBoxWrapper dl dt{
-	border-top-width: 1px;
+/*	border-top-width: 1px;
 	border-top-style: dotted;
 	border-top-color: #9A9A9A;
 	text-align: center;
 	margin: 0px 5px 0px 5px;
-	padding-top: 20px;
+	padding-top: 20px; */
 }
 
 .centerBoxWrapper dl.first dt{
-	border-top-width: 0px;
+/*	border-top-width: 0px; */
 }
 
 .centerBoxWrapper dl dd{
-	padding: 15px 5px 0px 10px;
+/*	padding: 15px 5px 0px 10px; */
 }
 
 .centerBoxWrapper dl dd.price{
-	padding-top: 5px;
+/*	padding-top: 5px;
 	padding-bottom: 20px;
-	font-size: 84%;
+	font-size: 84%; */
 }
 
 .centerBoxWrapper dl dd.price span{
@@ -986,7 +1003,7 @@ ul.categories li.subs-parent .subs-parent li.products a{
 	background-image: url(../images/heaeline-long.png);
 	background-repeat: no-repeat;
 	background-position: 0px 50%;
-	padding-left: 30px;
+	padding-left: 19px;
 	font-size: 134%;
 	font-weight: 800;
 }
@@ -1017,6 +1034,10 @@ dl.categoryListBoxContents {
 
 * html dl.categoryListBoxContents {
 	margin: 0 0 10px 15px;
+}
+
+dl.categoryListBoxContents dt{
+	display: none;
 }
 
 #indexProductListCatDescription{
@@ -1490,10 +1511,9 @@ h2.sugudeki{
 h2.headline,
 #productDescriptionBody h3{
 	font-weight: 800;
-	padding-top: 4px;
+/*	padding-top: 4px; */
 	padding-bottom: 4px;
-	padding-left: 15px;
-	margin-top: 15px;
+	margin-top: 10px;
 	background-image: url(../images/heaeline-long-inner2.gif);
 	background-repeat: no-repeat;
 	background-position: 0px 50%;
@@ -1727,10 +1747,10 @@ h2.centerBoxHeading{
 #checkoutShipping h3.headline,
 #shippingTypeTable h2.headline{
 	font-weight: 800;
-	padding-top: 4px;
+/*	padding-top: 4px; */
 	padding-bottom: 4px;
 	padding-left: 0px;
-	margin-top: 15px;
+	margin-top: 10px;
 	background-image: none;
 	background-repeat: no-repeat;
 	background-position: 0px 50%;
@@ -2072,7 +2092,7 @@ p.attention strong{
 	margin-top: 30px;
 }
 
-fieldset#privacy{
+fieldset#privacyBox{
 	margin-top: 20px;
 	padding-top: 10px;
 	padding-right: 20px;
@@ -2082,7 +2102,7 @@ fieldset#privacy{
 	overflow: hidden;
 }
 
-#privacy .information{
+#privacyBox .information{
 	text-align: left;
 	float: right;
 	width: 320px;
@@ -2188,7 +2208,7 @@ overflow: hidden;
 	background-repeat: no-repeat;
 	height: 50px;
 	text-indent: -9999px;
-	margin-bottom: 35px;
+	margin-bottom: 10px;
 	z-index: 1;
 	float:left;
 }
@@ -2339,6 +2359,35 @@ span.update,
 	margin-left: -5px;
 }
 
+.category #main #checkoutShipping p.attention{
+	margin-top: 0;
+}
+
+/* for IE6 */
+* html .category #main #checkoutShipping p.attention{
+	margin-top: 10px;
+}
+
+/* for IE7 */
+*:first-child+html .category #main #checkoutShipping p.attention{
+	margin-top: 10px;
+}
+
+.category #main #checkoutShipping p{
+	margin-top: 10px;
+}
+
+.category #main #checkoutShipping h2.headline{
+	margin-top: 10px;
+}
+
+.category #main #checkoutShipping address p.buttonRow{
+	margin: -23px 0 0;
+	padding: 0;
+	text-align: right;
+	zoom: 1;
+}
+
 #checkoutShipping .buttonRow,
 #checkoutPayment .buttonRow,
 #checkoutConfirmDefault .buttonRow{
@@ -2350,9 +2399,10 @@ span.update,
 #addressBookDefault address,
 #accountHistInfo address,
 .onecolumn .category #main address{
+	width: 50%;
 	border: 1px solid #CCC;
 	padding: 10px;
-	margin: 10px 0;
+	margin: 10px 0 10px 20px;
 	background: #E1EBF5;
 }
 
@@ -2362,8 +2412,10 @@ span.update,
 
 #checkoutpaymentBody div.payment,
 #checkoutShipping div.methods{
+	width: 50%;
 	background-color: #F7F6F4;
-	margin-top: 15px;
+	margin-top: 10px;
+	margin-left: 20px;
 	clear: both;
 	padding-top: 5px;
 	padding-right: 10px;
