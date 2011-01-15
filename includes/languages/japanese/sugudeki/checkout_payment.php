@@ -7,7 +7,7 @@
  * @version $Id: checkout_payment.php 3206 2006-03-19 04:04:09Z birdbrain $
  */
  
-define('FLOW_TEXT', '下記の項目をご入力ください。入力が終わりましたら、ページ下の<strong>「入力内容の確認へ進む」</strong>ボタンを押してください。
+define('FLOW_TEXT', '下記の項目をご入力ください。入力が終わりましたら、ページ下のボタンを押し次の画面に進んでください。
 ');
 
 define('NAVBAR_TITLE_1', 'ご注文手続き');

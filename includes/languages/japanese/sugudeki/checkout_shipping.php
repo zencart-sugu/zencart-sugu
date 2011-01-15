@@ -8,7 +8,7 @@
  */
 
 define('FLOW', '<img src="'.$images.'flow_checkout_shipping.gif" alt="配送情報の入力" width="688" height="50" />');
-define('FLOW_TEXT', '下記の項目をご入力ください。入力が終わりましたら、ページ下の<strong>「お支払い情報の入力へ進む」</strong>ボタンを押してください。');
+define('FLOW_TEXT', '下記の項目をご入力ください。入力が終わりましたら、ページ下のボタンを押し次の画面に進んでください。');
 
 define('NAVBAR_TITLE_1', 'ご注文手続き');
 define('NAVBAR_TITLE_2', '配送情報の入力');
