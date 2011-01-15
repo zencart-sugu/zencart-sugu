@@ -30,12 +30,12 @@ if (is_array($list_box_contents) > 0 ) {
        $sep = '<br />';
        $texts = explode($sep, $list_box_contents[$row][$col]['text']);
        // get text of dt
-       $dt = array_shift($texts);
+       $dt = trim(array_shift($texts));
        if (!preg_match('@</a>$@', $dt)) {
          $dt .= '</a>';
        }
        // get text of dd
-       $dd = implode($texts);
+       $dd = trim(implode('<br />', $texts));
        if (!preg_match('/<a.*/', $dd)) {
          // get element <a> if not exists
          $link = preg_match('@(<a.*)<img@', $dt, $matches);
