@@ -26,8 +26,24 @@ if (is_array($list_box_contents) > 0 ) {
       $r_params = "";
       if (isset($list_box_contents[$row][$col]['params'])) $r_params .= ' ' . (string)$list_box_contents[$row][$col]['params'];
      if (isset($list_box_contents[$row][$col]['text'])) {
+       // separate by br
+       $sep = '<br />';
+       $texts = explode($sep, $list_box_contents[$row][$col]['text']);
+       // get text of dt
+       $dt = array_shift($texts);
+       if (!preg_match('@</a>$@', $dt)) {
+         $dt .= '</a>';
+       }
+       // get text of dd
+       $dd = implode($texts);
+       if (!preg_match('/<a.*/', $dd)) {
+         // get element <a> if not exists
+         $link = preg_match('@(<a.*)<img@', $dt, $matches);
+	 $link = $matches[1];
+         $dd = $link . $dd;
+       }
 ?>
-<?php echo '<dl' . $r_params . '>' . $list_box_contents[$row][$col]['text'] .  '</dl>' . "\n"; ?>
+<?php echo '<dl' . $r_params . '>' . '<dt>' . $dt . '</dt>' . '<dd>' . $dd . '</dd>' .  '</dl>' . "\n"; ?>
 <?php
       }
     }
