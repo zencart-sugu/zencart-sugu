@@ -15,8 +15,8 @@
   define('SHIPPING_NOT_INCLUDED', ' [配送料別]');
   define('TAX_NOT_INCLUDED', ' [税別]');
   define('IMAGE_REDEEM_VOUCHER', '引き換えコード');
-  define('MODULE_ORDER_TOTAL_COUPON_REDEEM_INSTRUCTIONS', '<p>お客様のクーポンコードを引換コードのよこにあるフォームに入力してください。クーポンは合計に対して適用され、続けるをクリックした後カートに反映されます。
-</p><p>ご注意ください: ご注文毎に一つのクーポンしかご利用いただけません。</p>');
+  define('MODULE_ORDER_TOTAL_COUPON_REDEEM_INSTRUCTIONS', '<p>お客様のクーポンコードを引換コードのよこにあるフォームに入力してください。<br />クーポンは合計に対して適用され、続けるをクリックした後カートに反映されます。
+</p><p class="alert"><strong>注意：</strong> ご注文毎に一つのクーポンしかご利用いただけません。</p>');
   define('MODULE_ORDER_TOTAL_COUPON_TEXT_CURRENT_CODE', '現在の引換コード: ');
   define('MODULE_ORDER_TOTAL_COUPON_REMOVE_INSTRUCTIONS', '<p>このご注文から割引クーポンを取り除くには REMOVE と入力してEnterあるいはReturnキーを押して下さい。</p>');
   define('TEXT_REMOVE_REDEEM_COUPON', '割引クーポンを取り除きました。');
