@@ -29,8 +29,9 @@
 
 <p><?php echo TEXT_CHOOSE_SHIPPING_DESTINATION; ?></p>
 
-<address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'); ?></address>
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CHANGE_SHIPPING, BUTTON_CHANGE_SHIPPING_ALT,'class="imgover"') . '</a>'; ?></div>
+<address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'); ?>
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CHANGE_SHIPPING, BUTTON_CHANGE_SHIPPING_ALT,'class="imgover"') . '</a>'; ?></p>
+</address>
 
 
 <?php
@@ -134,5 +135,5 @@
 
 <div class="submit"><?php echo zen_image_submit(BUTTON_IMAGE_CHECKOUT_PAYMENT, BUTTON_CHECKOUT_PAYMENT_ALT,' class="imgover"'); ?></div>
 
-</form>
-</div></div>
+
+</div></form></div>

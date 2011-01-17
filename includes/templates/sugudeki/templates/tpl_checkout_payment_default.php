@@ -35,9 +35,10 @@
 <p class="floatingBox important"><?php echo TEXT_SELECTED_BILLING_DESTINATION; ?></p>
 
 
-<address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['billto'], true, ' ', '<br />'); ?></address>
+<address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['billto'], true, ' ', '<br />'); ?>
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CHANGE_ADDRESS, BUTTON_CHANGE_ADDRESS_ALT,'class="imgover"') . '</a>'; ?></p>
+</address>
 
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CHANGE_ADDRESS, BUTTON_CHANGE_ADDRESS_ALT,'class="imgover"') . '</a>'; ?></div>
 
 
 <?php
@@ -64,8 +65,8 @@
 ?>
 <?php echo $selection[$i]['redeem_instructions']; ?>
 <div class="gvBal larger"><?php echo $selection[$i]['checkbox']; ?></div>
-<label class="inputLabel"<?php echo ($selection[$i]['fields'][$j]['tag']) ? ' for="'.$selection[$i]['fields'][$j]['tag'].'"': ''; ?>><?php echo $selection[$i]['fields'][$j]['title']; ?></label>
-<?php echo $selection[$i]['fields'][$j]['field']; ?>
+<p><label class="inputLabel"<?php echo ($selection[$i]['fields'][$j]['tag']) ? ' for="'.$selection[$i]['fields'][$j]['tag'].'"': ''; ?>><?php echo $selection[$i]['fields'][$j]['title']; ?></label>
+<?php echo $selection[$i]['fields'][$j]['field']; ?></p>
 <?php
         }
 ?>
@@ -181,5 +182,5 @@
 
 <div class="submit"><?php echo zen_image_submit(BUTTON_IMAGE_CHECKOUT_CONFIRM, BUTTON_CHECKOUT_CONFIRM_ALT, ' class="imgover" onclick="submitFunction('.zen_user_has_gv_account($_SESSION['customer_id']).','.$order->info['total'].')"'); ?></div>
 
-</form>
-</div></div>
+
+</div></form></div>

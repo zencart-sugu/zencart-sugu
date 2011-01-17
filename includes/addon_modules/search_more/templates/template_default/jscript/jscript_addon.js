@@ -60,7 +60,7 @@ function xAddEventListener(e,eT,eL,cap)
 }
 
 function setColor(e) {
-  var target = e.target;
+  var target = e.target || e.srcElement;
 
   while (target.tagName != 'TR') {
     target = target.parentNode;
@@ -74,7 +74,7 @@ function setColor(e) {
   }
 }
 function reverseColor(e) {
-  var target = e.target;
+  var target = e.target || e.srcElement;
 
   while (target.tagName != 'TR') {
     target = target.parentNode;
@@ -86,7 +86,7 @@ function reverseColor(e) {
   }
 }
 function linkTo(e) {
-  var target = e.target;
+  var target = e.target || e.srcElement;
 
   while (target.tagName != 'TR') {
     if (target.tagName == 'INPUT') {
