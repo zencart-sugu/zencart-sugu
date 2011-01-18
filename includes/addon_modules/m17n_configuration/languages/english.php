@@ -20,7 +20,7 @@
 // $Id: japanese.php $
 //
 define('MODULE_M17N_CONFIGURATION_TITLE',                  'm17n_configuration');
-define('MODULE_M17N_CONFIGURATION_DESCRIPTION',            'm17n_configuration');
+define('MODULE_M17N_CONFIGURATION_DESCRIPTION',            'Define general configuration foreach languages and templates.');
 
 define('MODULE_M17N_CONFIGURATION_STATUS_TITLE',           'enable m17n_configuration');
 define('MODULE_M17N_CONFIGURATION_STATUS_DESCRIPTION',     'This module cannot be disable');
