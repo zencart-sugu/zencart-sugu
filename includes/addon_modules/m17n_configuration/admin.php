@@ -48,7 +48,7 @@ if (isset($_POST['securityToken']) && isset($_POST['action']) && $_POST['action'
           // 取得したfunctionをm17n_configuration_keysテーブルに挿入
           zen_m17n_backup_configuration($key, $functions['set_function'], $functions['use_function']);
           // configurationテーブル又はproduct_type_layoutテーブルを更新
-          zen_m17n_update_configuration($key, $new_set_function, $product_type_layout);
+          zen_m17n_update_configuration($key, $new_set_function, $functions['use_function'], $product_type_layout);
         }
       }
     } // end of foreach
@@ -328,14 +328,14 @@ xAddEventListener(window,'load', function(){new xMenu5('configuration_group', 'g
   echo '<ul id="configuration_group">'."\n";
   while (!$cfg_grp->EOF) {
     // 一般設定
-    $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, m17n_configuration_key as m17n_cfg_key FROM '.TABLE_CONFIGURATION.' AS c LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON c.configuration_key=m.m17n_configuration_key WHERE configuration_group_id='.$cfg_grp->fields['cfg_grp_id'].' AND (set_function LIKE \'zen_cfg_text%\' OR set_function LIKE \'zen_cfg_m17n%\' OR set_function IS NULL OR set_function=\'\') AND (use_function IS NULL OR use_function=\'\' OR use_function=\'zen_cfg_m17n_use_function\') ORDER BY configuration_id';
+    $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, configuration_description as cfg_desc, m17n_configuration_key as m17n_cfg_key FROM '.TABLE_CONFIGURATION.' AS c LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON c.configuration_key=m.m17n_configuration_key WHERE configuration_group_id='.$cfg_grp->fields['cfg_grp_id'].' ORDER BY configuration_id';
     $cfg = $db->Execute($sql);
     if (!$cfg->EOF) {
       echo '<li><div class="group_title depth1">'.$cfg_grp->fields['cfg_grp_title'].'</div><div class="group_separator depth1">|</div><div class="group_btn depth1">'.MODULE_M17N_CONFIGURATION_CHECK_OPEN.'</div>'."\n";
       echo '<ul class="configuration">'."\n";
       while (!$cfg->EOF) {
         $checked = empty($cfg->fields['m17n_cfg_key']) ? false : true;
-        echo '<li>'.zen_draw_checkbox_field('m17n_configuration['.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].'</label></li>'."\n";
+        echo '<li><dl><dt>'.zen_draw_checkbox_field('m17n_configuration['.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].'</label></dt><dd>'.strip_tags($cfg->fields['cfg_desc']).'</dd></dl></li>'."\n";
         $cfg->MoveNext();
       }
       echo '</ul></li>'."\n";
@@ -343,14 +343,14 @@ xAddEventListener(window,'load', function(){new xMenu5('configuration_group', 'g
     $cfg_grp->MoveNext();
   }
   // 商品タイプの管理
-  $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, m17n_configuration_key as m17n_cfg_key, type_name FROM '.TABLE_PRODUCT_TYPE_LAYOUT.' AS pl LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON pl.configuration_key=SUBSTRING(m.m17n_configuration_key FROM '.(strlen(MODULE_M17N_CONFIGURATION_PRODUCT_TYPE_LAYOUT_PREFIX)+1).') LEFT JOIN '.TABLE_PRODUCT_TYPES.' AS pt ON pl.product_type_id=pt.type_id WHERE  (set_function LIKE \'zen_cfg_text%\' OR set_function LIKE \'zen_cfg_m17n%\' OR set_function IS NULL OR set_function=\'\' OR use_function=\'zen_cfg_m17n_use_function\') AND (use_function IS NULL OR use_function=\'\') ORDER BY configuration_id';
+  $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, configuration_description as cfg_desc, m17n_configuration_key as m17n_cfg_key, type_name FROM '.TABLE_PRODUCT_TYPE_LAYOUT.' AS pl LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON pl.configuration_key=SUBSTRING(m.m17n_configuration_key FROM '.(strlen(MODULE_M17N_CONFIGURATION_PRODUCT_TYPE_LAYOUT_PREFIX)+1).') LEFT JOIN '.TABLE_PRODUCT_TYPES.' AS pt ON pl.product_type_id=pt.type_id ORDER BY configuration_id';
   $cfg = $db->Execute($sql);
   if (!$cfg->EOF) {
     echo '<li><div class="group_title depth1">'.HEADING_TITLE_LAYOUT.'</div><div class="group_separator depth1">|</div><div class="group_btn depth1">'.MODULE_M17N_CONFIGURATION_CHECK_OPEN.'</div>'."\n";
     echo '<ul class="configuration">'."\n";
     while (!$cfg->EOF) {
       $checked = empty($cfg->fields['m17n_cfg_key']) ? false : true;
-      echo '<li>'.zen_draw_checkbox_field('m17n_configuration['.MODULE_M17N_CONFIGURATION_PRODUCT_TYPE_LAYOUT_PREFIX.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].': '.$cfg->fields['type_name'].'</label></li>'."\n";
+      echo '<li><dl><dt>'.zen_draw_checkbox_field('m17n_configuration['.MODULE_M17N_CONFIGURATION_PRODUCT_TYPE_LAYOUT_PREFIX.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].': '.$cfg->fields['type_name'].'</label></dt><dd>'.strip_tags($cfg->fields['cfg_desc']).'</dd></dl></li>'."\n";
       $cfg->MoveNext();
     }
     echo '</ul></li>'."\n";
@@ -389,7 +389,7 @@ xAddEventListener(window,'load', function(){new xMenu5('configuration_group', 'g
         for ($i=0, $j=sizeof($module_keys); $i<$j; $i++) {
           $keys[] = '\''.zen_db_input($module_keys[$i]).'\'';
         }
-        $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, m17n_configuration_key as m17n_cfg_key FROM '.TABLE_CONFIGURATION.' AS c LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON c.configuration_key=m.m17n_configuration_key WHERE configuration_key IN ('.implode(',', $keys).') AND (set_function LIKE \'zen_cfg_text%\' OR set_function LIKE \'zen_cfg_m17n%\' OR set_function IS NULL OR set_function=\'\') AND (use_function IS NULL OR use_function=\'\' OR use_function=\'zen_cfg_m17n_use_function\') ORDER BY configuration_id';
+        $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, configuration_description as cfg_desc, m17n_configuration_key as m17n_cfg_key FROM '.TABLE_CONFIGURATION.' AS c LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON c.configuration_key=m.m17n_configuration_key WHERE configuration_key IN ('.implode(',', $keys).') ORDER BY configuration_id';
         $cfg = $db->Execute($sql);
         if (!$cfg->EOF) {
           $exists = true;
@@ -418,7 +418,7 @@ xAddEventListener(window,'load', function(){new xMenu5('configuration_group', 'g
         }
         while (!$cfg->EOF) {
           $checked = empty($cfg->fields['m17n_cfg_key']) ? false : true;
-          echo '<li>'.zen_draw_checkbox_field('m17n_configuration['.MODULE_M17N_CONFIGURATION_MODULE_PREFIX.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].'</label></li>'."\n";
+          echo '<li><dl><dt>'.zen_draw_checkbox_field('m17n_configuration['.MODULE_M17N_CONFIGURATION_MODULE_PREFIX.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].'</label></dt><dd>'.strip_tags($cfg->fields['cfg_desc']).'</dd></dl></li>'."\n";
           $cfg->MoveNext();
         }
         echo '</ul></li>'."\n";
@@ -463,7 +463,7 @@ xAddEventListener(window,'load', function(){new xMenu5('configuration_group', 'g
       for ($j=0, $k=sizeof($module_keys); $j<$k; $j++) {
         $keys[] = '\''.zen_db_input($module_keys[$j]).'\'';
       }
-      $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, m17n_configuration_key as m17n_cfg_key FROM '.TABLE_CONFIGURATION.' AS c LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON c.configuration_key=m.m17n_configuration_key WHERE configuration_key IN ('.implode(',', $keys).') AND (set_function LIKE \'zen_cfg_text%\' OR set_function LIKE \'zen_cfg_m17n%\' OR set_function IS NULL OR set_function=\'\') AND (use_function IS NULL OR use_function=\'\' OR use_function=\'zen_cfg_m17n_use_function\') ORDER BY configuration_id';
+      $sql = 'SELECT configuration_title as cfg_title, configuration_key as cfg_key, configuration_value as cfg_value, configuration_description as cfg_desc, m17n_configuration_key as m17n_cfg_key FROM '.TABLE_CONFIGURATION.' AS c LEFT JOIN '.TABLE_M17N_CONFIGURATION_KEYS.' AS m ON c.configuration_key=m.m17n_configuration_key WHERE configuration_key IN ('.implode(',', $keys).') ORDER BY configuration_id';
       $cfg = $db->Execute($sql);
       if (!$cfg->EOF) {
         $exists = true;
@@ -482,7 +482,7 @@ xAddEventListener(window,'load', function(){new xMenu5('configuration_group', 'g
       echo '<ul class="configuration">'."\n";
       while (!$cfg->EOF) {
         $checked = empty($cfg->fields['m17n_cfg_key']) ? false : true;
-        echo '<li>'.zen_draw_checkbox_field('m17n_configuration['.MODULE_M17N_CONFIGURATION_ADDON_MODULE_PREFIX.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].'</label></li>'."\n";
+        echo '<li><dl><dt>'.zen_draw_checkbox_field('m17n_configuration['.MODULE_M17N_CONFIGURATION_ADDON_MODULE_PREFIX.$cfg->fields['cfg_key'].']', 'on', $checked, '', 'id="'.$cfg->fields['cfg_key'].'"').'<label for="'.$cfg->fields['cfg_key'].'">'.$cfg->fields['cfg_title'].'</label></dt><dd>'.strip_tags($cfg->fields['cfg_desc']).'</dd></dl></li>'."\n";
         $cfg->MoveNext();
       }
       echo '</ul></li>'."\n";

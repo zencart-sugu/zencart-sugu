@@ -44,7 +44,11 @@ if (!defined('IS_ADMIN_FLAG')) {
           ),
         );
     var $require_modules = array();
-    var $notifier        = array();
+    var $notifier        = array('NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_PRODUCT_INFO',
+                                 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_PRODUCT_MUSIC_INFO',
+                                 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_PRODUCT_FREE_SHIPPING_INFO',
+                                 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_DOCUMENT_GENERAL_INFO',
+                                 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_DOCUMENT_PRODUCT_INFO');
 
     var $tables = array(
       TABLE_M17N_CONFIGURATION_KEYS => array(
@@ -65,6 +69,14 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function notifierUpdate($notifier) {
+      switch ($notifier) {
+      case 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_PRODUCT_INFO':
+      case 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_PRODUCT_MUSIC_INFO':
+      case 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_PRODUCT_FREE_SHIPPING_INFO':
+      case 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_DOCUMENT_GENERAL_INFO':
+      case 'NOTIFY_MAIN_TEMPLATE_VARS_EXTRA_DOCUMENT_PRODUCT_INFO':
+        zen_m17n_set_show_product_switch();
+      }
     }
 
     function _install() {
