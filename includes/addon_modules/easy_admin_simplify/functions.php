@@ -1712,7 +1712,8 @@
   // 表示要素か確認
   function _isVisibleLanguage($code) {
     if ($code == 'ja' ||
-        $code == 'ja-mobile') {
+        $code == 'ja-mobile' ||
+        $code == 'ja-smartphone') {
       return true;
     }
     else {
