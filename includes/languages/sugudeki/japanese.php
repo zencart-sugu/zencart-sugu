@@ -448,8 +448,8 @@ define('TEXT_NO_REVIEWS', '商品のレビューはまだありません。');
   define('TEXT_UNKNOWN_TAX_RATE', '税率不明');
 
  // define('TEXT_REQUIRED', '<span class="errorText">必須</span>');
-	define('TEXT_REQUIRED', '<img src="'.$images.'icon_required.gif" alt="必須" />');
-	define('TEXT_REQUIRED2', '<img src="'.$images.'icon_required2.gif" alt="必須" />');
+	define('TEXT_REQUIRED', '<img src="'.$template->get_template_dir('icon_required2.gif',DIR_WS_TEMPLATE, $current_page_base,'images/').'/icon_required.gif" alt="必須" />');
+	define('TEXT_REQUIRED2', '<img src="'.$template->get_template_dir('icon_required2.gif',DIR_WS_TEMPLATE, $current_page_base,'images/').'/icon_required2.gif" alt="必須" />');
 
   define('TEXT_TIME_SPECIFY','お届け時間帯の指定&nbsp;');
 
