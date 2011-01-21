@@ -68,12 +68,7 @@ function zen_m17n_init_db_config_read() {
   $m17n_configuration = $db->Execute($sql);
 
   while (!$m17n_configuration->EOF) {
-    if ($m17n_configuration->fields['use_function'] == 'zen_cfg_m17n_use_multi_func') {
-      $m17n_value = $m17n_configuration->fields['cfgvalue'] = call_user_func('zen_cfg_m17n_use_multi_func', array($m17n_configuration->fields['cfgvalue'], $m17n_configuration->fields['cfgkey']));
-    } else {
-      $m17n_value = $m17n_configuration->fields['cfgvalue'] = call_user_func('zen_cfg_m17n_use_function', $m17n_configuration->fields['cfgvalue']);
-    }
-
+    $m17n_value = $m17n_configuration->fields['cfgvalue'] = call_user_func('zen_cfg_m17n_use_function', $m17n_configuration->fields['cfgvalue']);
     define(strtoupper($m17n_configuration->fields['cfgkey']), $m17n_value);
     $m17n_configuration->MoveNext();
   }
