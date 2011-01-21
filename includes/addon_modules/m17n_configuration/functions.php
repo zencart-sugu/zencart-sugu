@@ -29,16 +29,21 @@ function zen_cfg_m17n_use_function($configuration_value = '') {
 function zen_cfg_m17n_use_multi_func($configurations = '') {
   global $db;
   global $configuration;
+  global $mInfo, $value;
 
   if (is_array($configurations)) {
     // if called in function zen_m17n_init_db_config_read
     $configuration_value = $configurations[0];
     $configuration_key = $configurations[1];
   } else {
-    // if called in admin/configuration.php
     $configuration_value = $configurations;
     if (isset($configuration) && is_object($configuration) && isset($configuration->fields) && isset($configuration->fields['configuration_key'])) {
+      // if called in admin/configuration.php
       $configuration_key = $configuration->fields['configuration_key'];
+    } elseif (isset($mInfo) && is_object($mInfo) && isset($mInfo->keys) && is_array($mInfo->keys)) {
+      // if called in admin/modules.php
+      $keys = array_keys($mInfo->keys, $value);
+      $configuration_key = $keys[0];
     } else {
       $configuration_key = '';
     }
@@ -63,8 +68,8 @@ function zen_cfg_m17n_use_multi_func($configurations = '') {
       } else {
         if ($use_functions[0] == 'currencies') {
           include_once(DIR_WS_CLASSES . 'currencies.php');
-          if (file_exists(DIR_WS_CLASSES . $use_functions[0] . '_m17n.php')) {
-            include_once(DIR_WS_CLASSES . $use_functions[0] . '_m17n.php');
+          if (file_exists(DIR_WS_CLASSES . 'currencies__m17n.php')) {
+            include_once(DIR_WS_CLASSES . 'currencies_m17n.php');
             $class_name = 'currenciesM17n';
           } else {
             $class_name = 'currencies';
