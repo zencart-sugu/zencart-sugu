@@ -58,16 +58,20 @@ function zen_cfg_m17n_use_multi_func($configurations = '') {
   if (isset($use_function)) {
     if (preg_match('/->/', $use_function)) {
       $use_functions = explode('->', $use_function);
-      var_dump($use_functions);
       if (is_object($GLOBALS[$use_functions[0]]) && method_exists($GLOBALS[$use_functions[0]], $use_functions[1])) {
         $m17n_value = call_user_func_array(array($GLOBALS[$use_functions[0]], $use_functions[1]), array($m17n_value));
       } else {
         if ($use_functions[0] == 'currencies') {
-          $use_functions[0] = 'currencies_m17n';
-	}
-        include_once(DIR_WS_CLASSES . ${$use_functions[0]} . '.php');
-	${$use_functions[0]} = new $use_functions[0]();
-        $m17n_value = call_user_func_array(array($use_functions[0], $use_functions[1]), array($m17n_value));
+          include_once(DIR_WS_CLASSES . 'currencies.php');
+          if (file_exists(DIR_WS_CLASSES . $use_functions[0] . '_m17n.php')) {
+            include_once(DIR_WS_CLASSES . $use_functions[0] . '_m17n.php');
+            $class_name = 'currenciesM17n';
+          } else {
+            $class_name = 'currencies';
+          }
+        }
+        ${$use_functions[0]} = new $class_name();
+        $m17n_value = call_user_func_array(array(${$use_functions[0]}, $use_functions[1]), array($m17n_value));
       }
     } else {
       $m17n_value = call_user_func_array($use_function, array($m17n_value));
