@@ -184,9 +184,43 @@
           }
           // ヘッダーの書き換え
           else {
-            $bth = _find_bth($html_body, $pos);
-            if ($bth !== FALSE)
-              $html_body = substr_replace($html_body, TEXT_PRODUCTS_NAME."</th>", $bth, 5);
+//            $bth = _find_bth($html_body, $pos);
+//            if ($bth !== FALSE)
+//              $html_body = substr_replace($html_body, TEXT_PRODUCTS_NAME."</th>", $bth, 5);
+          }
+        }
+
+        $item = "products_name_kana".$language_suffix;
+        $pos  = strpos($html_body, $item);
+        if ($pos !== false) {
+          if (!_isVisibleLanguage($languages[$i]['code'])) {
+            // 商品名の非表示化
+            $tr = _find_tr($html_body, $pos);
+            if ($tr !== FALSE)
+              $html_body = substr_replace($html_body, "<tr ".MODULE_EASY_ADMIN_SIMPLIFY_STYLE, $tr, 3);
+          }
+          // ヘッダーの書き換え
+          else {
+//            $bth = _find_bth($html_body, $pos);
+//            if ($bth !== FALSE)
+//              $html_body = substr_replace($html_body, TEXT_PRODUCTS_NAME_KANA."</th>", $bth, 5);
+          }
+        }
+
+        $item = "products_sub_title".$language_suffix;
+        $pos  = strpos($html_body, $item);
+        if ($pos !== false) {
+          if (!_isVisibleLanguage($languages[$i]['code'])) {
+            // 商品名の非表示化
+            $tr = _find_tr($html_body, $pos);
+            if ($tr !== FALSE)
+              $html_body = substr_replace($html_body, "<tr ".MODULE_EASY_ADMIN_SIMPLIFY_STYLE, $tr, 3);
+          }
+          // ヘッダーの書き換え
+          else {
+//            $bth = _find_bth($html_body, $pos);
+//            if ($bth !== FALSE)
+//              $html_body = substr_replace($html_body, TEXT_PRODUCTS_SUB_TITLE."</th>", $bth, 5);
           }
         }
 
@@ -201,9 +235,9 @@
           }
           // ヘッダーの書き換え
           else {
-            $bth = _find_bth($html_body, $pos);
-            if ($bth !== FALSE)
-              $html_body = substr_replace($html_body, TEXT_PRODUCTS_DESCRIPTION."</th>", $bth, 5);
+//            $bth = _find_bth($html_body, $pos);
+//            if ($bth !== FALSE)
+//              $html_body = substr_replace($html_body, TEXT_PRODUCTS_DESCRIPTION."</th>", $bth, 5);
           }
         }
 
@@ -218,9 +252,9 @@
           }
           // ヘッダーの書き換え
           else {
-            $bth = _find_bth($html_body, $pos);
-            if ($bth !== FALSE)
-              $html_body = substr_replace($html_body, TEXT_PRODUCTS_URL."</th>", $bth, 5);
+//            $bth = _find_bth($html_body, $pos);
+//            if ($bth !== FALSE)
+//              $html_body = substr_replace($html_body, TEXT_PRODUCTS_URL."</th>", $bth, 5);
           }
         }
       }
