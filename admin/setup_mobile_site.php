@@ -89,39 +89,6 @@
             $ezpages->MoveNext();
           }
 */
-// create additional configuration_foreach_template records
-          if (file_exists(DIR_FS_CATALOG.DIR_WS_CLASSES.'ZenCart/configuration_for_zen_mobile.csv')){
-            $fp = fopen(DIR_FS_CATALOG.DIR_WS_CLASSES.'ZenCart/configuration_for_zen_mobile.csv','r');
-            if($fp){
-              while (($data = fgetcsv($fp, 1000, ',')) !== FALSE) {
-                if(!empty($data[0])){
-                  $cfg = $db->Execute('SELECT * FROM '.TABLE_CONFIGURATION.' WHERE configuration_key="'.$data[0].'"');
-                  $check_cfg_ft = $db->Execute('SELECT configuration_key FROM '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.'
-                                      WHERE configuration_key="'.$data[0].'" AND template_dir="'.MOBILE_TEMPLATE_DIR.'"');
-                  if(empty($check_cfg_ft->fields['configuration_key'])){
-                    $insertquery = 'INSERT INTO '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.'
-                                   (configuration_id,configuration_title,configuration_key,
-                                   configuration_value,configuration_description,configuration_group_id,
-                                   template_dir,sort_order,last_modified,date_added,use_function,set_function)
-                                   VALUES(NULL'.
-                                   ',"'.zen_db_input($cfg->fields['configuration_title']).'"'.
-                                   ',"'.zen_db_input($data[0]).'"'.
-                                   ',"'.zen_db_input($data[1]).'"'.
-                                   ',"'.zen_db_input($cfg->fields['configuration_description']).'"'.
-                                   ',"'.zen_db_input($cfg->fields['configuration_group_id']).'"'.
-                                   ',"'.zen_db_input(MOBILE_TEMPLATE_DIR).'"'.
-                                   ',"'.zen_db_input($cfg->fields['sort_order']).'"'.
-                                   ',"'.zen_db_input($cfg->fields['last_modified']).'"'.
-                                   ',"'.zen_db_input($cfg->fields['date_added']).'"'.
-                                   ',"'.zen_db_input($cfg->fields['use_function']).'"'.
-                                   ',"'.zen_db_input($cfg->fields['set_function']).'")';
-                    $db->Execute($insertquery);
-                  }
-                }
-              }
-              fclose($fp);
-            }
-          }
 
 // create additional layout_boxes records for zen_mobile
           if (file_exists(DIR_FS_CATALOG.DIR_WS_CLASSES.'ZenCart/layout_boxes_for_zen_mobile.csv')){
