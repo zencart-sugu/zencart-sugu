@@ -15,10 +15,8 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 $use_cache = (isset($_GET['nocache']) ? false : true ) ;
 if (!is_array($exclude_db_configuration_keys)) $exclude_db_configuration_keys = array();
-$configuration = $db->Execute('SELECT cfg_t.configuration_key AS cfgkey, cfg_t.configuration_value AS cfgvalue 
-                               FROM '.TABLE_CONFIGURATION.' as cfg_t  LEFT JOIN '.TABLE_CONFIGURATION_FOREACH_TEMPLATE.' as cfg_ft 
-                               ON cfg_t.configuration_key=cfg_ft.configuration_key 
-                               WHERE cfg_ft.configuration_key IS NULL','',$use_cache,150);
+$configuration = $db->Execute('select configuration_key as cfgkey, configuration_value as cfgvalue
+                                 from ' . TABLE_CONFIGURATION, '', $use_cache, 150);
 db_define($configuration);
 
 $configuration = $db->Execute('select configuration_key as cfgkey, configuration_value as cfgvalue
@@ -41,10 +39,10 @@ function db_define($configuration){
   }
 }
 
-if (file_exists(DIR_WS_CLASSES . 'db/' . DB_TYPE . '/define_queries_configuration_foreach_template.php')) {
+if (file_exists(DIR_WS_CLASSES . 'db/' . DB_TYPE . '/define_queries.php')) {
   /**
  * Load the database dependant query defines
  */ 
-  include(DIR_WS_CLASSES . 'db/' . DB_TYPE . '/define_queries_configuration_foreach_template.php');
+  include(DIR_WS_CLASSES . 'db/' . DB_TYPE . '/define_queries.php');
 }
 ?>
