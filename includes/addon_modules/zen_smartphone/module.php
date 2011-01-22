@@ -59,33 +59,6 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       $db->Execute("ALTER TABLE " . TABLE_LANGUAGES . " MODIFY code varchar(20) not null");
 
-      // テンプレート用設定
-      if (file_exists("../".$this->dir.'zc_install/configuration_for_zen_smartphone.csv')) {
-        $fp = fopen("../".$this->dir.'zc_install/configuration_for_zen_smartphone.csv', 'r');
-        if ($fp){
-          while (($data = fgetcsv($fp, 1000, ',')) !== FALSE) { 
-            if (!empty($data[0])){
-              $cfg            = $db->Execute('SELECT * FROM '.TABLE_CONFIGURATION.' WHERE configuration_key="'.zen_db_input($data[0]).'"');
-              $sql_data_array = array(
-                                  'configuration_title'       => $cfg->fields['configuration_title'],
-                                  'configuration_key'         => $data[0],
-                                  'configuration_value'       => $data[1],
-                                  'configuration_description' => $cfg->fields['configuration_description'],
-                                  'configuration_group_id'    => $cfg->fields['configuration_group_id'],
-                                  'template_dir'              => MOBILE_ZEN_SMARTPHONE_TEMPLATE_DIR,
-                                  'sort_order'                => $cfg->fields['sort_order'],
-                                  'last_modified'             => $cfg->fields['last_modified'],
-                                  'date_added'                => $cfg->fields['date_added'],
-                                  'use_function'              => $cfg->fields['use_function'],
-                                  'set_function'              => $cfg->fields['set_function'],
-                                );
-              zen_db_perform(TABLE_CONFIGURATION_FOREACH_TEMPLATE, $sql_data_array);
-            }
-          }
-          fclose($fp);
-        }
-      }
-
       // レイアウト用設定
       if (file_exists("../".$this->dir.'zc_install/layout_boxes_for_zen_smartphone.csv')){
         $fp = fopen("../".$this->dir.'zc_install/layout_boxes_for_zen_smartphone.csv', 'r');
@@ -458,7 +431,6 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
 
       $db->Execute("delete from ".TABLE_LANGUAGES." where code like '%".MODULE_ZEN_SMARTPHONE_CODE_SUFFIX."'");
-      $db->Execute("delete from ".TABLE_CONFIGURATION_FOREACH_TEMPLATE." where template_dir='".MOBILE_ZEN_SMARTPHONE_TEMPLATE_DIR."'");
       $db->Execute("delete from ".TABLE_LAYOUT_BOXES." where layout_template='".MOBILE_ZEN_SMARTPHONE_TEMPLATE_DIR."'");
     }
 
