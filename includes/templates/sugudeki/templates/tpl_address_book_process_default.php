@@ -47,17 +47,17 @@
 <?php
     if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
 ?>
-<div class="buttonRow forward"><?php echo zen_draw_hidden_field('action', 'update') . zen_draw_hidden_field('edit', $_GET['edit']) . zen_image_submit(BUTTON_IMAGE_REGISTER, BUTTON_REGISTER_ALT,'class="imgover"'); ?></div>
+<p><?php echo zen_draw_hidden_field('action', 'update') . zen_draw_hidden_field('edit', $_GET['edit']) . zen_image_submit(BUTTON_IMAGE_REGISTER, BUTTON_REGISTER_ALT,'class="imgover"'); ?></p>
     
 <?php
     } else {
 ?>
-<div class="buttonRow forward"><?php echo zen_draw_hidden_field('action', 'process') . zen_image_submit(BUTTON_IMAGE_REGISTER, BUTTON_REGISTER_ALT,'class="imgover"'); ?></div>
+<p><?php echo zen_draw_hidden_field('action', 'process') . zen_image_submit(BUTTON_IMAGE_REGISTER, BUTTON_REGISTER_ALT,'class="imgover"'); ?></p>
 <?php
     }
   }
 ?>
-</div>
+</div></div>
 <?php if (!isset($_GET['delete'])) echo '</form>'; ?>
 
-</div></div>
+</div>

@@ -56,8 +56,8 @@ echo zen_addOnModules_get_block('checkout_step');
 ?>
 
 <div class="submit">
-<p class="forward"><?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CHANGE_ORAGE, BUTTON_CHANGE_ALT,'class="imgover"'); ?></p>
+<p><?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CHANGE_ORAGE, BUTTON_CHANGE_ALT,'class="imgover"'); ?></p>
 </div>
 
-</form>
-</div></div>
+
+</div></form></div>

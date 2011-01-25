@@ -28,8 +28,8 @@
 </table>
 
 <div class="submit">
-<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_SEND, BUTTON_SEND_ALT,'class="imgover"'); ?></div> 
+<p><?php echo zen_image_submit(BUTTON_IMAGE_SEND, BUTTON_SEND_ALT,'class="imgover"'); ?></p> 
 </div>
 
-</form>
-</div></div>
+
+</div></form></div>

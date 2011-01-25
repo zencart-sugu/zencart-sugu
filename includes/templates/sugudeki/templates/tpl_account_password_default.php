@@ -39,7 +39,7 @@
 
 
 <div class="submit">
-<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_REGISTER , BUTTON_REGISTER_ALT,'class="imgover"'); ?></div>
+<p><?php echo zen_image_submit(BUTTON_IMAGE_REGISTER , BUTTON_REGISTER_ALT,'class="imgover"'); ?></p>
 </div>
 
 </form>
