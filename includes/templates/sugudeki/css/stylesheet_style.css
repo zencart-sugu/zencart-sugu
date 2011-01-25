@@ -587,15 +587,19 @@ td.productListing-data h3.itemTitle {
 /* categories */
 #block-sideboxes-affiliates,
 #block-sideboxes-bestsellers,
+#block-sideboxes-shoppingcart,
 #block-ajax_category_tree-block{
+	overflow: hidden;
 	background-color: #fff;
 	background-image: url(../images/sidebox_btm.gif);
 	background-repeat: no-repeat;
 	background-position: left bottom;
+	margin-bottom: 7px;
 }
 
-* html#block-sideboxes-affiliates,
+* html #block-sideboxes-affiliates,
 * html #block-sideboxes-bestsellers,
+* html #block-sideboxes-shoppingcart,
 * html #block-ajax_category_tree-block{
 	zoom: 1;
 }
@@ -614,6 +618,11 @@ td.productListing-data h3.itemTitle {
 * html #block-ajax_category_tree-block h2,
 * html .sub .block-sideboxes h2{
 	zoom: 1;
+}
+
+#shoppingcartContent{
+	margin: 7px 0 0;
+	padding: 2px 25px 10px;
 }
 
 #main .sub .block-sideboxes h2{
@@ -1750,7 +1759,7 @@ h2.centerBoxHeading{
 /*	padding-top: 4px; */
 	padding-bottom: 4px;
 	padding-left: 0px;
-	margin-top: 10px;
+	margin-top: 20px;
 	background-image: none;
 	background-repeat: no-repeat;
 	background-position: 0px 50%;
@@ -1968,7 +1977,7 @@ td.head{
 	background-image: url(../images/heaeline-long2.png);
 	background-repeat: no-repeat;
 	padding-top: 12px;
-	padding-left: 25px;
+/*	padding-left: 25px; */
 	padding-bottom: 7px;
 	margin-top: 20px;
 }
@@ -2115,7 +2124,7 @@ fieldset#privacyBox{
 }
 
 .onecolumn h2.headline{
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 table.fit{
@@ -2363,33 +2372,27 @@ span.update,
 	margin-left: -5px;
 }
 
-.category #main #checkoutShipping p.attention,
-.category #main #checkoutPayment p.attention{
-	margin-top: 0;
+.category #main #checkoutPayment .gvBal{
+	margin-top: 10px;
+	padding: 0 10px 0 20px;
 }
 
-/* for IE6 */
-* html .category #main #checkoutShipping p.attention,
-* html .category #main #checkoutPayment p.attention{
+.category #main #checkoutShipping p,
+.category #main #checkoutSuccess p,
+#checkoutConfirmDefaultHeadingCart,
+.category #main .firstHeadline{
 	margin-top: 10px;
 }
 
-/* for IE7 */
-*:first-child+html .category #main #checkoutShipping p.attention,
-*:first-child+html .category #main #checkoutPayment p.attention{
-	margin-top: 10px;
-}
-
-.category #main #checkoutShipping p{
-	margin-top: 10px;
-}
-
-.category #main #checkoutShipping h2.headline{
-	margin-top: 10px;
+#checkoutConfirmDefault p.buttonRow{
+	margin: 0 0 10px;
+	text-align: right;
 }
 
 .category #main #checkoutShipping address p.buttonRow,
-.category #main #checkoutPayment address p.buttonRow{
+.category #main #checkoutPayment address p.buttonRow,
+.category #main #checkoutConfirmDefault address p.buttonRow,
+.category #main #checkoutConfirmDefault .area p.buttonRow{
 	margin: -23px 0 0;
 	padding: 0;
 	text-align: right;
@@ -2412,6 +2415,23 @@ span.update,
 	padding: 10px;
 	margin: 10px 0 10px 20px;
 	background: #E1EBF5;
+}
+
+#checkoutConfirmDefault .area div.important{
+	padding: 0;
+}
+
+#checkoutConfirmDefault .area div.important p{
+	padding-left: 0;
+}
+
+#checkoutConfirmDefault .area div.important p.notes{
+	margin-top: 0;
+	color: #CC0000;
+}
+
+.category #main #checkoutConfirmDefault .area div.important p{
+	margin-top: 10px;
 }
 
 .ccinfo .inputLabelPayment{
@@ -2442,7 +2462,7 @@ span.update,
 
 #checkoutShipping p.methods{
 	margin-top: 5px;
-	padding: 0 3em;
+	padding-left: 20px;
 }
 
 #checkoutShipping .important{
@@ -2451,17 +2471,34 @@ span.update,
 	color: #CC0000;
 }
 
+#checkoutShipping select{
+	margin-left: 10px;
+}
+
 #checkoutpaymentBody textarea,
 #checkoutShipping textarea{
 	height: 110px;
 	width: 668px;
 	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.category #main #checkoutPayment p{
+	margin-top: 10px;
+}
+
+.category #main #checkoutPayment .alert{
+	color: #C00;
+	margin-top: 10px;
+	padding-left: 10px;
+}
+
+.category #main #checkoutPayment label.inputLabel{
 	margin-left: 10px;
 }
 
-#checkoutpaymentBody .alert{
-	color: #C00;
-	margin-top: 10px;
+#checkoutPayment #cc-cc-expires-month{
+	margin-left: 8px;
 }
 
 .ccinfo{
@@ -2529,7 +2566,7 @@ span.update,
 
 #checkoutPayAddressDefault p.attention,
 #checkoutshippingaddressBody p.attention{
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 #addressBookDefault h3,
@@ -2550,9 +2587,19 @@ span.update,
 	overflow: hidden;
 }
 
+#checkoutConfirmDefault div.alert{
+	padding-left: 10px;
+}
+
 #checkoutConfirmDefault .important{
-	margin-top: 15px;
-	padding: 5px 10px;
+	margin-top: 10px;
+	padding: 0 10px 10px;
+	overflow: hidden;
+}
+
+#checkoutConfirmDefault p.important{
+	margin-top: 10px;
+	padding-left: 20px;
 	overflow: hidden;
 }
 

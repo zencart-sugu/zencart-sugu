@@ -97,7 +97,7 @@
   if (ACCOUNT_COMPANY == 'true') {
 ?>
 <h2 class="headline"><?php echo CATEGORY_COMPANY; ?></h2>
-<table class="border fit account" id="company">
+<table class="border fit account" id="companyName">
 <tr>
 <th scope="row"><?php echo ENTRY_COMPANY; ?></th>
 <td><?php echo zen_draw_input_field('company', $entry->fields['entry_company'], 'id="company"') ; ?></td>

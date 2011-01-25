@@ -85,7 +85,7 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
   }
 ?>
 
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_SHOPPING_CART) . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></div>
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_SHOPPING_CART) . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></p>
 
 <?php
 if (IS_VISITORS_SESSION === true) {
@@ -93,9 +93,10 @@ if (IS_VISITORS_SESSION === true) {
 
 <h2 class="headline" id="checkoutConfirmDefaultCustomerAddress"><?php echo HEADING_CUSTOMER_ADDRESS; ?></h2>
 
-<address><?php echo zen_address_format($order->customer['format_id'], $order->customer, 1, ' ', '<br />') . '<br />' . ENTRY_EMAIL_ADDRESS . $order->customer['email_address']; ?></address>
+<address><?php echo zen_address_format($order->customer['format_id'], $order->customer, 1, ' ', '<br />') . '<br />' . ENTRY_EMAIL_ADDRESS . $order->customer['email_address']; ?>
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_ADDON, 'module=visitors/visitor_edit', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></p>
+</address>
 
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_ADDON, 'module=visitors/visitor_edit', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></div>
 
 <?php
 }
@@ -105,18 +106,19 @@ if (IS_VISITORS_SESSION === true) {
   if ($_SESSION['sendto'] != false) {
 ?>
 
-<h2 class="headline" id="checkoutConfirmDefaultBillingAddress"><?php echo HEADING_DELIVERY_ADDRESS; ?></h2>
+<h2 class="headline" id="checkoutDefaultShippingAddress"><?php echo HEADING_DELIVERY_ADDRESS; ?></h2>
 
 
-<address><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'); ?></address>
+<address><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'); ?>
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></p>
+</address>
 
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></div>
 
 <?php
     if ($order->info['shipping_method']) {
 ?>
 <h2 class="headline"><?php echo HEADING_SHIPPING_METHOD; ?></h2>
-<p class="area"><?php echo $order->info['shipping_method']; ?></p>
+<div class="area"><?php echo $order->info['shipping_method']; ?>
 
 <?php
   // 配送情報
@@ -125,7 +127,8 @@ if (IS_VISITORS_SESSION === true) {
   }
 ?>
 
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></div>
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></p>
+</div>
 <?php
     }
 ?>
@@ -135,20 +138,21 @@ if (IS_VISITORS_SESSION === true) {
 ?>
 
 <h2 class="headline" id="checkoutConfirmDefaultBillingAddress"><?php echo HEADING_BILLING_ADDRESS; ?></h2>
-<address><?php echo zen_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'); ?></address>
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></div>
+<address><?php echo zen_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'); ?>
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></p>
+</address>
 
 <?php
   $class =& $_SESSION['payment'];
 ?>
 <h2 class="headline"><?php echo HEADING_PAYMENT_METHOD; ?></h2> 
-<p class="area"><?php echo $GLOBALS[$class]->title; ?></p>
-<div class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></div>
+<div class="area"><?php echo $GLOBALS[$class]->title; ?>
 <?php
   if (is_array($payment_modules->modules)) {
     if ($confirmation = $payment_modules->confirmation()) {
 ?>
 <div class="important"><?php echo $confirmation['title']; ?></div>
+
 <?php
     }
 ?>
@@ -156,23 +160,28 @@ if (IS_VISITORS_SESSION === true) {
 <?php
       for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
 ?>
-<div><?php echo $confirmation['fields'][$i]['title']; ?></div>
-<div><?php echo $confirmation['fields'][$i]['field']; ?></div>
+<div class="creditDetail"><?php echo $confirmation['fields'][$i]['title']; ?></div>
+<div class="creditDetail"><?php echo $confirmation['fields'][$i]['field']; ?></div>
 <?php
      }
 ?>
 
+
+<p class="buttonRow"><?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></p>
+</div>
 <?php
   }
 ?>
 
 
 
+
+
 <h2 class="headline" id="checkoutConfirmDefaultHeadingComments"><?php echo HEADING_COMMENTS; ?></h2>
 
-<div class="area"><?php echo (empty($order->info['comments']) ? NO_COMMENTS_TEXT : nl2br(zen_output_string_protected($order->info['comments'])) . zen_draw_hidden_field('comments', $order->info['comments'])); ?></div>
-<div class="buttonRow"><?php echo  '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></div>
-
+<div class="area"><?php echo (empty($order->info['comments']) ? NO_COMMENTS_TEXT : nl2br(zen_output_string_protected($order->info['comments'])) . zen_draw_hidden_field('comments', $order->info['comments'])); ?>
+<p class="buttonRow"><?php echo  '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT,'class="imgover"') . '</a>'; ?></p>
+</div>
 
 <?php
   echo zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation" onsubmit="submitonce();"');
