@@ -85,6 +85,9 @@
 <?php
             if ( ($n > 1) || ($n2 > 1) ) {
 ?>
+<p class="methods"><?php echo $quotes[$i]['methods'][$j]['title']; ?>
+<?php // echo "&nbsp;&nbsp;".$quotes[$i]['methods'][$j]['option']; ?></p>
+
 <div class="methods">
 <div class="important forward"><?php echo $currencies->format(zen_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0))); ?></div>
 <?php
@@ -100,9 +103,6 @@
 <?php echo $quotes[$i]['module']; ?>&nbsp;<?php if (isset($quotes[$i]['icon']) && zen_not_null($quotes[$i]['icon'])) { echo $quotes[$i]['icon']; } ?>
 </label>
 </div>
-<br class="clearBoth" />
-<p class="methods"><?php echo $quotes[$i]['methods'][$j]['title']; ?>
-<?php // echo "&nbsp;&nbsp;".$quotes[$i]['methods'][$j]['option']; ?></p>
 
 
 <?php

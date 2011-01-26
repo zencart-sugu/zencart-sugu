@@ -65,12 +65,12 @@
 //    if ($process == true || $entry_state_has_zones == true ) {
     if ( ($process == true || $entry_state_has_zones == true) && ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN == 'true' ) {
       if ($entry_state_has_zones == true) {
-        echo zen_draw_pull_down_menu('state', $zones_array, zen_convert_to_zone_name_m17n($zone_name), ' id="state"');
+        echo zen_draw_pull_down_menu('state', $zones_array, zen_convert_to_zone_name_m17n($zone_name) . ' id="state"');
       } else {
-        echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40'), ' id="state"');
+        echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
       }
     } else {
-      echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40'), ' id="state"');
+      echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
     };?>
 </td>
 </tr>
@@ -101,7 +101,7 @@
   if (ACCOUNT_COMPANY == 'true') {
 ?>
 <h3 class="headline"><?php echo CATEGORY_COMPANY; ?></h3>
-<table class="border fit account" id="company">
+<table class="border fit account" id="companyName">
 <tr>
 <th scope="row"><?php echo ENTRY_COMPANY; ?></th>
 <td><?php echo zen_draw_input_field('company', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_company', '40') . ' id="company"') ; ?></td>

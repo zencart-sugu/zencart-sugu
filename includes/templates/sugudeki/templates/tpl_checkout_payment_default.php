@@ -144,7 +144,6 @@
     }
 ?>
 </div>
-<br class="clearBoth" />
 
 <?php
     if (isset($selection[$i]['error'])) {
@@ -165,12 +164,10 @@
       }
 ?>
 </div>
-<br class="clearBoth" />
 <?php
     }
     $radio_buttons++;
 ?>
-<br class="clearBoth" />
 <?php
   }
 ?>
