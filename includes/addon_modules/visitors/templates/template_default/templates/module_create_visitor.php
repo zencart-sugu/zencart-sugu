@@ -20,7 +20,7 @@
 <?php
   if (DISPLAY_PRIVACY_CONDITIONS == 'true' && !$_SESSION['visitors_id']) {
 ?>
-<fieldset id="privacy">
+<fieldset id="privacyBox">
 <div class="information"><?php echo TEXT_PRIVACY_CONDITIONS_DESCRIPTION;?></div>
 <?php echo zen_draw_checkbox_field('privacy_conditions', '1', false, 'id="privacy"');?>
 <label class="checkboxLabel" for="privacy"><?php echo TEXT_PRIVACY_CONDITIONS_CONFIRM;?></label>
@@ -80,12 +80,12 @@
 <td><?php
     if ($process == true || $entry_state_has_zones == true ) {
       if ($entry_state_has_zones == true) {
-        echo zen_draw_pull_down_menu('state', $zones_array, $zone_name, ' id="state"');
+        echo zen_draw_pull_down_menu('state', $zones_array, $zone_name . ' id="state"');
       } else {
-        echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40'), ' id="state"');
+        echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
       }
     } else {
-      echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40'), ' id="state"');
+      echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
     };?>
 </td>
 </tr>
@@ -116,7 +116,7 @@
   if (ACCOUNT_COMPANY == 'true') {
 ?>
 <h2 class="headline"><?php echo CATEGORY_COMPANY; ?></h2>
-<table class="border fit account" id="company">
+<table class="border fit account" id="companyName">
 <tr>
 <th scope="row"><?php echo ENTRY_COMPANY; ?></th>
 <td><?php echo zen_draw_input_field('company', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_company', '40') . ' id="company"') ; ?></td>
