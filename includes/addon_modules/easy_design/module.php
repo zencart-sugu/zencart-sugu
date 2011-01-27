@@ -134,9 +134,5 @@ if (!defined('IS_ADMIN_FLAG')) {
 
     function _cleanUp() {
     }
-
-    function block() {
-      return array();
-    }
   }
 ?>
