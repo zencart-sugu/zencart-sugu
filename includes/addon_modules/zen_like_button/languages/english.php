@@ -24,5 +24,5 @@
     define('MODULE_ZEN_LIKE_BUTTON_SORT_ORDER_DESCRIPTION',		'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
     //ブロック管理用
-	define('MODULE_ZEN_LIKE_BUTTON_BLOCK_TITLE',				'ゼンライクボタン');
+	define('MODULE_ZEN_LIKE_BUTTON_BLOCK_TITLE',				'Zen like button');
 ?>
