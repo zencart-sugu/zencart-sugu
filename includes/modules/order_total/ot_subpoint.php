@@ -31,7 +31,7 @@ if (is_object($GLOBALS['point_base'])):
       $this->show_redeem_box = MODULE_ORDER_TOTAL_SUBPOIN_REDEEM_BOX;
       $this->credit_class = true;
       if (!zen_not_null(ltrim($_SESSION['cot_subpoint'], ' 0')) || $_SESSION['cot_subpoint'] == '0') $_SESSION['cot_subpoint'] = '0';
-      $this->checkbox = $this->user_prompt . '<input type="textfield" size="6" onchange="submitFunction()" name="cot_subpoint" value="' . number_format($_SESSION['cot_subpoint'], 0, null, '') . '" onfocus="if (this.value == \'' . number_format($_SESSION['cot_subpoint'], 0, null, '') . '\') this.value = \'\';" />' . ($this->user_has_subpoint_account($_SESSION['customer_id']) > 0 ? '<br />' . MODULE_ORDER_TOTAL_SUBPOINT_USER_BALANCE . $currencies->format($this->user_has_subpoint_account($_SESSION['customer_id'])) : '');
+      $this->checkbox = $this->user_prompt . '<input type="text" size="6" onchange="submitFunction()" name="cot_subpoint" value="' . number_format($_SESSION['cot_subpoint'], 0, null, '') . '" onfocus="if (this.value == \'' . number_format($_SESSION['cot_subpoint'], 0, null, '') . '\') this.value = \'\';" />' . ($this->user_has_subpoint_account($_SESSION['customer_id']) > 0 ? '<br />' . MODULE_ORDER_TOTAL_SUBPOINT_USER_BALANCE . $currencies->format($this->user_has_subpoint_account($_SESSION['customer_id'])) : '');
       $this->output = array();
 
       $this->enabled = ((MODULE_ORDER_TOTAL_SUBPOINT_STATUS == 'true' && MODULE_POINT_BASE_STATUS == 'true') ? true : false);
