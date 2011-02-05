@@ -15,7 +15,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   class aboutbox extends addOnModuleBase {
     var $author = array('saito');
     var $author_email = 'info@zencart-sugu.jp';
-    var $version = '0.1.2';
+    var $version = '0.1.8';
     var $require_zen_cart_version = '1.3.0.2';
     var $require_addon_modules_version = '1.0.0';
 
@@ -91,7 +91,24 @@ if (!defined('IS_ADMIN_FLAG')) {
             'set_function' => 'zen_cfg_select_option(array(\'0\', \'1\', \'2\'), '
           ),
         );
-    var $require_modules = array();
+    var $m17n_configuration_keys = array(
+          array(
+            'm17n_configuration_key' => 'MODULE_ABOUTBOX_CFG_HEADER',
+            'use_function_backup' => 'null',
+            'set_function_backup' => 'null'
+          ),
+          array(
+            'm17n_configuration_key' => 'MODULE_ABOUTBOX_CFG_GREETING_TITLE',
+            'use_function_backup' => 'null',
+            'set_function_backup' => 'null'
+          ),
+          array(
+            'm17n_configuration_key' => 'MODULE_ABOUTBOX_CFG_GREETING_TEXT',
+            'use_function_backup' => 'null',
+            'set_function_backup' => 'zen_cfg_textarea_aboutbox('
+          )
+        );
+    var $require_modules = array("m17n_configuration");
     var $notifier = array();
 
     // class constructer for php4
@@ -103,12 +120,14 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function _install() {
+      aboutbox_install($this->m17n_configuration_keys);
     }
 
     function _update() {
     }
 
     function _remove() {
+      aboutbox_remove($this->m17n_configuration_keys);
     }
 
     function _cleanUp() {
