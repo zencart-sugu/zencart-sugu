@@ -11,7 +11,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
 
-// productsæƒ…å ±
+// products¾ðÊó
 $products_column = array(
   'products_id'                      => 0,
   'products_type'                    => 1,
@@ -50,7 +50,7 @@ $products_column = array(
   'metatags_title_tagline_status'    => 0,
 );
 
-// products_descriptionæƒ…å ±
+// products_description¾ðÊó
 $products_description_column = array(
   'language_id'                      => 0,
   'products_name'                    => '',
@@ -59,7 +59,7 @@ $products_description_column = array(
   'products_viewed'                  => 0,
 );
 
-// featuredæƒ…å ±
+// featured¾ðÊó
 $featured_column = array(
   'featured_id'                      => 0,
   'featured_date_added'              => "",
@@ -70,7 +70,7 @@ $featured_column = array(
   'featured_date_available'          => "",
 );
 
-// specialsæƒ…å ±
+// specials¾ðÊó
 $specials_column = array(
   'specials_id'                      => 0,
   'specials_new_products_price'      => "",
@@ -82,7 +82,7 @@ $specials_column = array(
   'specials_date_available'          => "",
 );
 
-// meta_tags_products_descriptionæƒ…å ±
+// meta_tags_products_description¾ðÊó
 $meta_tags_products_description_column = array(
   'language_id'                      => 0,
   'metatags_title'                   => "",

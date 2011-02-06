@@ -13,5 +13,11 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 $model      = new easy_admin_products_model();
 $categories = $model->get_categories($_REQUEST);
+// json‚È‚Ì‚Åutf8o—Í
+for ($i=0; $i<count($categories); $i++) {
+  foreach($categories[$i] as $k => $v) {
+    $categories[$i][$k] = mb_convert_encoding($categories[$i][$k], "UTF8", CHARSET);
+  }
+}
 print json_encode($categories);
 ?>

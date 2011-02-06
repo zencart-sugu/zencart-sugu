@@ -12,24 +12,24 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 
 class easy_admin_products_html {
-  // formä½œæˆ
+  // formºîÀ®
   function form($name, $sub="", $option="") {
     if ($sub != "")
       $sub = "/".$sub;
     return zen_draw_form($name, FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'.$sub, 'post', $option);
   }
 
-  // imageä½œæˆ
+  // imageºîÀ®
   function image($image, $alt) {
     return '<img src="'.DIR_WS_CATALOG.DIR_WS_ADDON_MODULES.'/easy_admin_products/images/'.$image.'" title="'.$alt.'" alt="'.$alt.'"/>';
   }
 
-  // input-imageä½œæˆ
+  // input-imageºîÀ®
   function input_image($image, $alt) {
     return '<input type="image" src="'.DIR_WS_CATALOG.DIR_WS_ADDON_MODULES.'/easy_admin_products/images/'.$image.'" alt="'.$alt.'"/>';
   }
 
-  // linkä½œæˆ
+  // linkºîÀ®
   function href_link($sub="", $params=array()) {
     if ($sub != "")
        $sub = "/".$sub;
@@ -41,7 +41,7 @@ class easy_admin_products_html {
     return zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'.$sub.$parm);
   }
 
-  // å…¥åŠ›é …ç›®ä½œæˆ
+  // ÆşÎÏ¹àÌÜºîÀ®
   function pre_html($title) {
     return '<td width="10"></td>'."\n".
            '<td width="200" nowrap valign="top">'.$title.'</td>'."\n";
@@ -118,7 +118,7 @@ class easy_admin_products_html {
     return $html;
   }
 
-  // ç”»åƒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å…ˆ
+  // ²èÁü¥¢¥Ã¥×¥í¡¼¥ÉÀè
   function get_upload() {
     $dir         = @dir(DIR_FS_CATALOG_IMAGES);
     $dir_info[]  = array('id' => '', 'text' => "Main Directory");
@@ -136,7 +136,7 @@ class easy_admin_products_html {
     return $dir_info;
   }
 
-  // ã‚¨ãƒ©ãƒ¼å‡ºåŠ›
+  // ¥¨¥é¡¼½ĞÎÏ
   function error($validate, $key) {
     if (isset($validate[$key])) {
       return '<tr><td></td><td></td><td><font color="red">'.$validate[$key].'</font></td></tr>';

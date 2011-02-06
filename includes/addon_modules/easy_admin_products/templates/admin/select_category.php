@@ -12,15 +12,15 @@
   var category_getted = new Array();
 
   function toggle_categories(categories_id) {
-    // è¡¨ç¤ºã•ã‚Œã¦ã„ãªã„æ™‚ã¯ã‚µãƒ–ã‚«ãƒ†ã‚´ãƒªã‚’å–å¾—ã—ã¦ã€è¡¨ç¤º
-    // ãŸã ã—ï¼’å›ç›®ä»¥é™ã¯å–å¾—ã—ãªã„
+    // É½¼¨¤µ¤ì¤Æ¤¤¤Ê¤¤»ş¤Ï¥µ¥Ö¥«¥Æ¥´¥ê¤ò¼èÆÀ¤·¤Æ¡¢É½¼¨
+    // ¤¿¤À¤·£²²óÌÜ°Ê¹ß¤Ï¼èÆÀ¤·¤Ê¤¤
     if ($("#div_"+categories_id).css('display') == 'none') {
       if (category_getted["category_"+categories_id]) {
         $("#div_"+categories_id).show();
         $("#img_"+categories_id).attr("src","<?php echo DIR_WS_CATALOG.DIR_WS_ADDON_MODULES.'/easy_admin_products/images/icon_minus.gif'; ?>").attr("title","<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_CONTRACT; ?>").attr("alt","<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_CONTRACT; ?>");
       }
       else {
-        // ã‚µãƒ–ã‚«ãƒ†ã‚´ãƒªã®å–å¾—
+        // ¥µ¥Ö¥«¥Æ¥´¥ê¤Î¼èÆÀ
         $.ajax({
           type: "GET",
           url:  "<?php echo $html->href_link(); ?>",
@@ -32,7 +32,7 @@
               html += '<tr>';
               html += '<td width="10"></td>';
               html += '<td>';
-              if (categories[i].child) {
+              if (categories[i].child==1) {
                 html += '<a onclick="return toggle_categories('+categories[i].id+')">';
                 html += '<img id="img_'+categories[i].id+'" src="<?php echo DIR_WS_CATALOG.DIR_WS_ADDON_MODULES.'/easy_admin_products/images/icon_plus.gif'; ?>" title="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?>"/>';
                 html += '</a>';
@@ -59,7 +59,7 @@
         });
       }
     }
-    // æ—¢ã«è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹æ™‚ã¯éè¡¨ç¤º
+    // ´û¤ËÉ½¼¨¤µ¤ì¤Æ¤¤¤ë»ş¤ÏÈóÉ½¼¨
     else {
       $("#div_"+categories_id).hide();
       $("#img_"+categories_id).attr("src","<?php echo DIR_WS_CATALOG.DIR_WS_ADDON_MODULES.'/easy_admin_products/images/icon_plus.gif'; ?>").attr("title","<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?>").attr("alt","<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?>");
