@@ -24,7 +24,7 @@
   }
 
   function category_selected(categories_id) {
-    // Šù‚É“¯‚¶ƒJƒeƒSƒŠ‚ª‘I‘ð‚³‚ê‚Ä‚¢‚é‚©?
+    // ´û¤ËÆ±¤¸¥«¥Æ¥´¥ê¤¬ÁªÂò¤µ¤ì¤Æ¤¤¤ë¤«?
     var key   = "cat_"+categories_id;
     var check = $("#"+key);
     if (check.length != 0) {

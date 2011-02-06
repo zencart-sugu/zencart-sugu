@@ -17,7 +17,7 @@
         <?php echo $fields[$k]; ?>
       </td>
     <?php } ?>
-    <!-- æ“ä½œ -->
+    <!-- Áàºî -->
     <td>
       <?php
         $parm  = array(

@@ -15,8 +15,8 @@ if (file_exists(DIR_WS_CLASSES . 'split_page_results.php')) {
   require_once(DIR_WS_CLASSES . 'split_page_results.php');
 }
 
-// 専嶕忦審偑巜掕偝傟偰偄偨応崌偼僙僢僔儑儞傊
-// 巜掕偝傟偰偄側偄応崌偼僙僢僔儑儞偐傜栠偡
+// 浮瑚掘凤が回年されていた眷圭はセッションへ
+// 回年されていない眷圭はセッションから提す
 $searchs  = array(
   'category',
   'title',

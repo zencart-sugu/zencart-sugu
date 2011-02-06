@@ -70,7 +70,7 @@
   }
 
   function category_selected(categories_id) {
-    // æ—¢ã«åŒã˜ã‚«ãƒ†ã‚´ãƒªãŒé¸æŠã•ã‚Œã¦ã„ã‚‹ã‹?
+    // ´û¤ËÆ±¤¸¥«¥Æ¥´¥ê¤¬ÁªÂò¤µ¤ì¤Æ¤¤¤ë¤«?
     var key   = "cat_"+categories_id;
     var check = $("#"+key);
     if (check.length != 0) {
@@ -148,7 +148,7 @@
       <td colspan="3"><h3><?php echo ($product['products_id'])?MODULE_EASY_ADMIN_PRODUCTS_UPDATE_TITLE:MODULE_EASY_ADMIN_PRODUCTS_INSERT_TITLE; ?></h3></td>
     </tr>
 
-    <!-- åŸºæœ¬è¨­å®š -->
+    <!-- ´ğËÜÀßÄê -->
     <tr>
       <td colspan="3"><?php echo MODULE_EASY_ADMIN_PRODUCTS_BASE_TITLE; ?></td>
     </tr>
@@ -328,7 +328,7 @@
       ?>
     </tr>
 
-    <!-- ä¾¡æ ¼è©³ç´°è¨­å®š -->
+    <!-- ²Á³Ê¾ÜºÙÀßÄê -->
     <tr>
       <td><?php echo zen_draw_separator('pixel_trans.gif', 0, 20); ?><td>
     </tr>
@@ -372,7 +372,7 @@
       </td>
     </tr>
 
-    <!-- é…é€è¨­å®š -->
+    <!-- ÇÛÁ÷ÀßÄê -->
     <tr>
       <td><?php echo zen_draw_separator('pixel_trans.gif', 0, 20); ?><td>
     </tr>
@@ -411,7 +411,7 @@
       </td>
     </tr>
 
-    <!-- ã‚«ãƒ¼ãƒˆè¿½åŠ è¨­å®š -->
+    <!-- ¥«¡¼¥ÈÄÉ²ÃÀßÄê -->
     <tr>
       <td><?php echo zen_draw_separator('pixel_trans.gif', 0, 20); ?><td>
     </tr>
@@ -467,7 +467,7 @@
       </td>
     </tr>
 
-    <!-- SEOè¨­å®š -->
+    <!-- SEOÀßÄê -->
     <tr>
       <td><?php echo zen_draw_separator('pixel_trans.gif', 0, 20); ?><td>
     </tr>

@@ -36,7 +36,7 @@ class easy_admin_products_model {
   var $order   = array('p.products_sort_order',
                        'pd.products_name');
 
-  // å•†å“æ¤œç´¢ã®sqlç”Ÿæˆ
+  // ¾¦ÉÊ¸¡º÷¤ÎsqlÀ¸À®
   function get_products_query($search_param) {
     $join  = "";
     $where = "";
@@ -119,9 +119,9 @@ class easy_admin_products_model {
     return $query;
   }
 
-  // æ¤œç´¢ã•ã‚ŒãŸå„å•†å“ã®æƒ…å ±ã‚’è¿½åŠ ã€å¤‰æ›´ã™ã‚‹
+  // ¸¡º÷¤µ¤ì¤¿³Æ¾¦ÉÊ¤Î¾ğÊó¤òÄÉ²Ã¡¢ÊÑ¹¹¤¹¤ë
   function convert_product_result($fields) {
-    // ã‚«ãƒ†ã‚´ãƒª
+    // ¥«¥Æ¥´¥ê
     $categories_html = array();
     $categories      = self::get_product_categories($fields['products_id']);
     foreach($categories as $category_id) {
@@ -129,7 +129,7 @@ class easy_admin_products_model {
     }
     $fields['categories'] = implode("<br/>", $categories_html);
 
-    // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
+    // ¥¹¥Æ¡¼¥¿¥¹
     if (isset($_REQUEST['page']))
       $page = "&page=".$_REQUEST['page'];
     else
@@ -156,7 +156,7 @@ class easy_admin_products_model {
     return $fields;
   }
 
-  // å•†å“ãŒå±ã™ã‚‹å…¨ã‚«ãƒ†ã‚´ãƒªå–å¾—
+  // ¾¦ÉÊ¤¬Â°¤¹¤ëÁ´¥«¥Æ¥´¥ê¼èÆÀ
   function get_product_categories($products_id) {
     global $db;
 
@@ -170,7 +170,7 @@ class easy_admin_products_model {
     return $categories;
   }
 
-  // æŒ‡å®šã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªã‚’ãƒˆãƒƒãƒ—ã‚«ãƒ†ã‚´ãƒªã‹ã‚‰æ§‹ç¯‰
+  // »ØÄê¤µ¤ì¤¿¥«¥Æ¥´¥ê¤ò¥È¥Ã¥×¥«¥Æ¥´¥ê¤«¤é¹½ÃÛ
   function get_category($category_id, $link="", $separate="&nbsp;>&nbsp;") {
     global $db;
 
@@ -222,15 +222,15 @@ class easy_admin_products_model {
     }
   }
 
-  // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å¤‰æ›´
+  // ¥¹¥Æ¡¼¥¿¥¹ÊÑ¹¹
   function change_status($products_id, $on) {
     global $db;
 
     $db->Execute("update ".TABLE_PRODUCTS." set products_status=".(int)$on." where products_id=".(int)$products_id);
   }
 
-  // ã‚«ãƒ†ã‚´ãƒªå–å¾—
-  // idã‚‚ã—ãã¯ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æ¤œç´¢(æ’ä»–)
+  // ¥«¥Æ¥´¥ê¼èÆÀ
+  // id¤â¤·¤¯¤Ï¥­¡¼¥ï¡¼¥É¸¡º÷(ÇÓÂ¾)
   function get_categories($search_param) {
     global $db;
 
@@ -269,7 +269,7 @@ class easy_admin_products_model {
     $result      = $db->Execute($query);
     $categories  = array();
     while (!$result->EOF) {
-      // ã‚µãƒ–ã‚«ãƒ†ã‚´ãƒªãŒå­˜åœ¨ã™ã‚‹ã‹ï¼Ÿ
+      // ¥µ¥Ö¥«¥Æ¥´¥ê¤¬Â¸ºß¤¹¤ë¤«¡©
       $check = $db->Execute("select categories_id from ".TABLE_CATEGORIES." where parent_id=".(int)$result->fields['categories_id']);
       if ($check->EOF)
         $child = 0;
@@ -284,7 +284,7 @@ class easy_admin_products_model {
     return $categories;
   }
 
-  // æŒ‡å®šã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªé…ä¸‹ã®ã‚«ãƒ†ã‚´ãƒªä¸€è¦§å–å¾—
+  // »ØÄê¤µ¤ì¤¿¥«¥Æ¥´¥êÇÛ²¼¤Î¥«¥Æ¥´¥ê°ìÍ÷¼èÆÀ
   function zen_get_subcategories(&$subcategories_array, $parent_id = 0) {
     global $db;
     $subcategories_query = "select categories_id
@@ -302,7 +302,7 @@ class easy_admin_products_model {
     }
   }
 
-  // æ¤œç´¢æ¡ä»¶ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ã¸ã®ä¿å­˜ã€ãŠã‚ˆã³å–ã‚Šå‡ºã—
+  // ¸¡º÷¾ò·ï¤Î¥»¥Ã¥·¥ç¥ó¤Ø¤ÎÊİÂ¸¡¢¤ª¤è¤Ó¼è¤ê½Ğ¤·
   function set_get_search_condition($searchs) {
     foreach($searchs as $k) {
       if (isset($_REQUEST[$k]))
@@ -312,7 +312,7 @@ class easy_admin_products_model {
     }
   }
 
-  // productæƒ…å ±æ§‹ç¯‰
+  // product¾ğÊó¹½ÃÛ
   function new_product($columns) {
     $product = array();
     foreach($columns['products_column'] as $k => $v) {
@@ -357,7 +357,7 @@ class easy_admin_products_model {
     return $product;
   }
 
-  // å›½æ——
+  // ¹ñ´ú
   function language_flag($languages, $language_id) {
     foreach($languages as $v) {
       if ($v['id'] == $language_id)
@@ -366,7 +366,7 @@ class easy_admin_products_model {
     return "";
   }
 
-  // ç¨é‡‘
+  // ÀÇ¶â
   function get_tax($need_none=false) {
     global $db;
 
@@ -399,7 +399,7 @@ class easy_admin_products_model {
     return $array;
   }
 
-  // ç”»åƒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å…ˆ
+  // ²èÁü¥¢¥Ã¥×¥í¡¼¥ÉÀè
   function get_upload() {
     $dir         = @dir(DIR_FS_CATALOG_IMAGES);
     $dir_info[]  = array('id' => '', 'text' => "Main Directory");
@@ -417,7 +417,7 @@ class easy_admin_products_model {
     return $dir_info;
   }
 
-  // ãƒ¡ãƒ¼ã‚«ãƒ¼å
+  // ¥á¡¼¥«¡¼Ì¾
   function get_manufacturer($need_none=false) {
     global $db;
 
@@ -446,15 +446,15 @@ class easy_admin_products_model {
     return $array;
   }
 
-  // ãƒã‚§ãƒƒã‚¯
+  // ¥Á¥§¥Ã¥¯
   function validate_save($post) {
     $errors = array();
-    // å“ç•ª
+    // ÉÊÈÖ
     if ($post['products_model'] == "") {
       $errors['products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL;
     }
 
-    // ã‚«ãƒ†ã‚´ãƒª
+    // ¥«¥Æ¥´¥ê
     if ($post['categories'] == 0) {
       $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
     }
@@ -462,10 +462,10 @@ class easy_admin_products_model {
     return $errors;
   }
 
-  // ãƒã‚§ãƒƒã‚¯
+  // ¥Á¥§¥Ã¥¯
   function validate_copy($post) {
     $errors = array();
-    // ã‚«ãƒ†ã‚´ãƒª
+    // ¥«¥Æ¥´¥ê
     if ($post['categories'] == 0) {
       $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
     }
@@ -473,11 +473,11 @@ class easy_admin_products_model {
     return $errors;
   }
 
-  // å–å¾—
+  // ¼èÆÀ
   function load_product($columns, $products_id) {
     global $db;
 
-    // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®š
+    // ¥Ç¥Õ¥©¥ë¥ÈÀßÄê
     $product = self::new_product($columns);
 
     // categories
@@ -560,14 +560,14 @@ class easy_admin_products_model {
     return $product;
   }
 
-  // ä¿å­˜
+  // ÊİÂ¸
   function save_product($product) {
     global $db;
 
     $products_id     = $product['products_id'];
     $insert_products = ($products_id == 0);
 
-    // ã‚¤ãƒ¡ãƒ¼ã‚¸ä¿å­˜
+    // ¥¤¥á¡¼¥¸ÊİÂ¸
     $products_image = new upload('products_image');
     $products_image->set_destination(DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
     if ($products_image->parse() && $products_image->save($_POST['overwrite'])) {
@@ -577,7 +577,7 @@ class easy_admin_products_model {
     }
 
     // products
-    // ç‰¹æ®Šä¾¡æ ¼
+    // ÆÃ¼ì²Á³Ê
     if ($product['specials_price_status'] == 0) {
       $product['products_priced_by_attribute'] = 0;
       $product['product_is_free']              = 0;
@@ -644,7 +644,7 @@ class easy_admin_products_model {
     }
 
     // products_to_categories
-    // ã„ã£ãŸã‚“ã™ã¹ã¦ã®ã‚«ãƒ†ã‚´ãƒªã‚’å‰Šé™¤ã™ã‚‹
+    // ¤¤¤Ã¤¿¤ó¤¹¤Ù¤Æ¤Î¥«¥Æ¥´¥ê¤òºï½ü¤¹¤ë
     $db->Execute("delete from ".TABLE_PRODUCTS_TO_CATEGORIES." where products_id=".(int)$products_id);
     $array = explode(",", $product['categories']);
     foreach($array as $v) {
@@ -727,11 +727,11 @@ class easy_admin_products_model {
     }
   }
 
-  // å‰Šé™¤
+  // ºï½ü
   function delete_product($products_id, $products_image) {
     global $db;
 
-    // ã‚¤ãƒ¡ãƒ¼ã‚¸
+    // ¥¤¥á¡¼¥¸
     if ($products_image != "")
       unlink(DIR_FS_CATALOG_IMAGES.$products_image);
 
@@ -753,11 +753,11 @@ class easy_admin_products_model {
     }
   }
 
-  // ã‚³ãƒ”ãƒ¼
+  // ¥³¥Ô¡¼
   function copy_product($products_id, $products_image, $categories) {
     global $db;
 
-    // TABLE_PRODUCTSã¯å¿…ãšæœ€åˆ
+    // TABLE_PRODUCTS¤ÏÉ¬¤ººÇ½é
     $tables = array(
       TABLE_PRODUCTS,
       TABLE_PRODUCTS_DESCRIPTION,
@@ -782,6 +782,16 @@ class easy_admin_products_model {
         $db->Execute($query);
       }
     }
+
+    // products_image
+    if ($products_image != "") {
+      $dirname  = dirname($products_image);
+      $filename = basename($products_image);
+      preg_match("/(.*)\.(.*)/", $filename, $match);
+      $newname  = $dirname."/".$match[1]."-".$new_products_id.".".$match[2];
+      copy(DIR_FS_CATALOG_IMAGES.$products_image, DIR_FS_CATALOG_IMAGES.$newname);
+    }
+    $db->Execute("update ".TABLE_PRODUCTS." set products_image='".zen_db_input($newname)."' where products_id=".$new_products_id);
 
     // products_to_categories
     $array = explode(",", $categories);
