@@ -759,19 +759,20 @@ class easy_admin_products_model {
 
     // TABLE_PRODUCTSは必ず最初
     $tables = array(
-      TABLE_PRODUCTS,
-      TABLE_PRODUCTS_DESCRIPTION,
-      TABLE_PRODUCTS_ATTRIBUTES,
-      TABLE_PRODUCTS_DISCOUNT_QUANTITY,
-      TABLE_PRODUCTS_NOTIFICATIONS,
-      TABLE_PRODUCTS_POINT_RATE,
-      TABLE_META_TAGS_PRODUCTS_DESCRIPTION,
-      TABLE_FEATURED,
-      TABLE_SPECIALS,
+      TABLE_PRODUCTS                       => array("products_id"),
+      TABLE_PRODUCTS_DESCRIPTION           => array("products_id"),
+      TABLE_PRODUCTS_ATTRIBUTES            => array("products_id", "products_attributes_id"),
+      TABLE_PRODUCTS_DISCOUNT_QUANTITY     => array("products_id"),
+      TABLE_PRODUCTS_POINT_RATE            => array("products_id"),
+      TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK => array("products_id", "stock_id"),
+      TABLE_PRODUCTS_XSELL                 => array("products_id", "ID"),
+      TABLE_META_TAGS_PRODUCTS_DESCRIPTION => array("products_id"),
+      TABLE_FEATURED                       => array("products_id", "featured_id"),
+      TABLE_SPECIALS                       => array("products_id", "specials_id"),
     );
 
-    foreach($tables as $v) {
-      $columns = self::get_table_columns($v, array("products_id","products_attributes_id","specials_id","featured_id"));
+    foreach($tables as $v => $c) {
+      $columns = self::get_table_columns($v, $c);
       if ($v == TABLE_PRODUCTS) {
         $query           = "insert into ".$v." (".implode(",", $columns).") select ".implode(",", $columns)." from ".$v." where products_id=".(int)$products_id;
         $db->Execute($query);
