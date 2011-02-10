@@ -61,9 +61,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_OFF',                   '¥¹¥Æ¡¼¥¿¥¹¥ª¥
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_LIST',          '¢£¥«¥Æ¥´¥ê¤ò°ìÍ÷¤«¤éÁªÂò');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_SEARCH',        '¢£¥«¥Æ¥´¥ê¤ò¸¡º÷¤·¤ÆÁªÂò');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND',              'Å¸³«');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_CONTRACT',            '³ÊÇ¼');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              'ÁªÂò');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET',               '¥ê¥»¥Ã¥È');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TOP',                 '¥È¥Ã¥×');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEPARATE',            '&nbsp;>&nbsp;');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT',              '¡Ú%s¡Û');
