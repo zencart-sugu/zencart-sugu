@@ -32,11 +32,18 @@
       data: "module=easy_admin_products/ajax_get_category_name&category_id="+categories_id,
       success: function(name) {
         var format = "<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT; ?>";
-        format = format.replace("\%s", name);
+        format  = format.replace("\%s", name);
+        format += '<a href="javascript:void(0);" onclick="return category_reset();"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET; ?></a>';
         $("#category_name").html(format);
         $.fancybox.close();
       }
     });
+  }
+
+  function category_reset() {
+    $("#category").val(0);
+    $("#category_name").html("");
+    return false;
   }
 </script>
 
@@ -65,8 +72,10 @@
 
 <span id="category_name">
   <?php
-    if ($_SESSION['category'] > 0)
+    if ($_SESSION['category'] > 0) {
       echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT, $model->get_category($_SESSION['category']));
+      echo '<a href="javascript:void(0);" onclick="return category_reset();">'.MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET.'</a>';
+    }
   ?>
 </span>
 

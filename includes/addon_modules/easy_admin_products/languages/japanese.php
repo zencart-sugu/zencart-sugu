@@ -68,6 +68,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT',              '¡Ú%s¡Û');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_NAME',                '¥«¥Æ¥´¥êÌ¾');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEARCH',              '¸¡º÷');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP',                '³°¤¹');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET',               '¥ê¥»¥Ã¥È');
 
 // ÆÃ¼ì¾¦ÉÊ
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT',               '¡ÚÆÃ¼ì¾¦ÉÊ¹Ê¤ê¹þ¤ß¡Û');
