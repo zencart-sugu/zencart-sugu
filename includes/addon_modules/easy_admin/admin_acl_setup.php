@@ -45,7 +45,7 @@ global $db;
                 . "admin_id, "
                 . "admin_name "
             . "from "
-                . "admin";
+                . TABLE_ADMIN;
 
     $admins = $db->Execute($sql);
 
