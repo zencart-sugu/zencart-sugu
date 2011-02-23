@@ -7,6 +7,9 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  */
 ?>
+<?php
+  ob_start();
+?>
 <script type="text/javascript">
   var dateAvailable = new ctlSpiffyCalendarBox("dateAvailable", "product", "products_date_available",          "btnDate1", "<?php echo $product['products_date_available']; ?>",          scBTNMODE_CUSTOMBLUE);
   var featuredStart = new ctlSpiffyCalendarBox("featuredStart", "product", "featured_featured_date_available", "btnDate2", "<?php echo $product['featured_featured_date_available']; ?>", scBTNMODE_CUSTOMBLUE);
@@ -166,7 +169,7 @@
         echo $html->text("products_model", MODULE_EASY_ADMIN_PRODUCTS_HEADING_MODEL, $product['products_model'], "", MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY);
       ?>
     </tr>
-    <?php echo $html->error($validate, "products_model"); ?>
+    <?php echo $html->error($easy_admin_products_validate, "products_model"); ?>
 
     <?php 
       $first = true;
@@ -276,7 +279,7 @@
         </div>
       </td>
     </tr>
-    <?php echo $html->error($validate, "categories"); ?>
+    <?php echo $html->error($easy_admin_products_validate, "categories"); ?>
 
     <tr>
       <?php
@@ -327,6 +330,9 @@
         echo $html->radio("featured_status", MODULE_EASY_ADMIN_PRODUCTS_HEADING_FEATURED, $option, $product['featured_status'], "", $after);
       ?>
     </tr>
+
+    <!-- 追加項目 -->
+    %__EDIT_EXTERNAL_ITEMS__%
 
     <!-- 価格詳細設定 -->
     <tr>
@@ -582,6 +588,9 @@
       </td>
     </tr>
 
+    <!-- 追加展開設定 -->
+    %__EDIT_EXTERNAL_EXPAND_ITEMS__%
+
     <tr>
       <td colspan="3">
         <input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_SAVE; ?>">
@@ -590,3 +599,15 @@
 
   </table>
 </form>
+
+<?php
+  global $easy_admin_products_edit_screent_html;
+  $easy_admin_products_edit_screent_html = ob_get_contents();
+  ob_end_clean();
+
+  global $zco_notifier;
+  $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_DISPLAY_EDIT');
+  $easy_admin_products_edit_screent_html = str_replace('%__EDIT_EXTERNAL_ITEMS__%',        '', $easy_admin_products_edit_screent_html);
+  $easy_admin_products_edit_screent_html = str_replace('%__EDIT_EXTERNAL_EXPAND_ITEMS__%', '', $easy_admin_products_edit_screent_html);
+  print $easy_admin_products_edit_screent_html;
+?>

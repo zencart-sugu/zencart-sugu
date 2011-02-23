@@ -126,7 +126,7 @@
         </div>
       </td>
     </tr>
-    <?php echo $html->error($validate, "categories"); ?>
+    <?php echo $html->error($easy_admin_products_validate, "categories"); ?>
 
     <tr>
       <td colspan="3">

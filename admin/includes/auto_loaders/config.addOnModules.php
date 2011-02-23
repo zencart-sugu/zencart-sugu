@@ -17,6 +17,11 @@ if (!defined('IS_ADMIN_FLAG')) {
 
   $autoLoadConfig[][] = array('autoType'=>'class',
                               'loadFile'=>'class.addOnModuleBase.php');
+  $autoLoadConfig[][] = array('autoType'=>'class',
+                              'loadFile'=>'observers/class.addOnModulesObserver.php');
+  $autoLoadConfig[][] = array('autoType'=>'classInstantiate',
+                              'className'=>'addOnModulesObserver',
+                              'objectName'=>'addOnModulesObserver');
 
   $autoLoadConfig[1000][] = array('autoType'=>'init_script',
                                   'loadFile'=>'init_addOnModules.php');
