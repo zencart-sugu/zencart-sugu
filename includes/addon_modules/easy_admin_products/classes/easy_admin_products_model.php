@@ -90,6 +90,11 @@ class easy_admin_products_model {
       }
     }
 
+    global $zco_notifier;
+    global $easy_admin_products_search_where;
+    global $easy_admin_products_search_join;
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SEARCH');
+
     $query = "select distinct ".
                 implode(",", $this->columns)."
               from ".
@@ -108,11 +113,13 @@ class easy_admin_products_model {
                       on p.manufacturers_id=m.manufacturers_id
                     inner join ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
                       on p2c.products_id=p.products_id,".
-                    TABLE_PRODUCTS_DESCRIPTION." pd
+                    TABLE_PRODUCTS_DESCRIPTION." pd ".
+                    $easy_admin_products_search_join."
                   where
                         p.products_id=pd.products_id
                     and pd.language_id=".(int)$_SESSION['languages_id'].
-                    $where."
+                    $where." ".
+                    $easy_admin_products_search_where."
                 )
               order by ".
                 implode(",", $this->order);

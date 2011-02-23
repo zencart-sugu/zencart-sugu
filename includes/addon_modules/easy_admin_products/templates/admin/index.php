@@ -47,7 +47,10 @@
   }
 </script>
 
-<?php echo $html->form('form_search'); ?>
+<?php
+  ob_start();
+  echo $html->form('form_search');
+?>
   <table>
     <tr>
       <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_CATEGORY; ?></td>
@@ -65,10 +68,21 @@
       <td><input id="description" name="description" type="text" value="<?php echo htmlspecialchars($_SESSION['description']); ?>" /></td>
       <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_SPECIAL; ?></td>
       <td><?php echo zen_draw_pull_down_menu("special", $special, $_SESSION['special'], 'id="special"'); ?></td>
+      %__SEARCH_EXTERNAL_ITEMS__%
       <td><input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_SEARCH; ?>"/></td>
     </tr>
   </table>
 </form>
+<?php
+  global $easy_admin_products_search_form_html;
+  $easy_admin_products_search_form_html = ob_get_contents();
+  ob_end_clean();
+
+  global $zco_notifier;
+  $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_DISPLAY_SEARCH_FORM');
+  $easy_admin_products_search_form_html = str_replace('%__SEARCH_EXTERNAL_ITEMS__%', '', $easy_admin_products_search_form_html);
+  print $easy_admin_products_search_form_html;
+?>
 
 <span id="category_name">
   <?php
