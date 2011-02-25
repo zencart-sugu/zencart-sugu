@@ -26,4 +26,17 @@ function zen_cfg_textarea_aboutbox($text, $key = '') {
   return zen_draw_textarea_field($name, false, 60, 10, $text);
 }
 
+function aboutbox_install($cfg_keys) {
+  global $db;
+  foreach($cfg_keys as $rowdata) {
+    zen_m17n_backup_configuration($rowdata['m17n_configuration_key'],$rowdata['set_function_backup'],$rowdata['use_function_backup']);
+    $set_func = zen_m17n_select_function($rowdata['set_function_backup'],'[configuration]['.$rowdata['m17n_configuration_key'].']') ;
+    zen_m17n_update_configuration($rowdata['m17n_configuration_key'],$set_func);
+  }
+}
+
+function aboutbox_remove($cfg_keys) {
+  global $db;
+  $db->Execute("DELETE FROM " . TABLE_M17N_CONFIGURATION_KEYS . " WHERE m17n_configuration_key  LIKE 'MODULE_ABOUTBOX_%';");
+}
 ?>

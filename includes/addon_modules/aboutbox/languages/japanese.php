@@ -40,10 +40,6 @@ define('MODULE_ABOUTBOX_DISPLAY_CALENDAR_DESCRIPTION', '営業カレンダーを表示する
 define('MODULE_ABOUTBOX_AVALABLE_CARDS_TITLE', '対応クレジットカード表示');
 define('MODULE_ABOUTBOX_AVAILABLE_CARDS_DESCRIPTION', '対応クレジットカードを表示するかどうか指定します<br />0: 非表示<br />1: テキスト表示<br />2: 画像表示');
 
-// install用
-define('MODULE_ABOUTBOX_GREETING_TITLE_DEFAULT', '店長からの挨拶');
-define('MODULE_ABOUTBOX_GREETING_TEXT_DEFAULT', '店長の○○○です');
-
 // template用
 define('MODULE_ABOUTBOX_CREDITCARDS_TITLE', '利用可能な支払い方法');
 
