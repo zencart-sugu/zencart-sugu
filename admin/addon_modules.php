@@ -31,8 +31,8 @@
       case 'save':
         while (list($key, $value) = each($_POST['configuration'])) {
           $db->Execute("update " . TABLE_CONFIGURATION . "
-                       set configuration_value = '" . $value . "'
-                       where configuration_key = '" . $key . "'");
+                       set configuration_value = '" . zen_db_input($value) . "'
+                       where configuration_key = '" . zen_db_input($key) . "'");
         }
         $configuration_query = 'select configuration_key as cfgkey, configuration_value as cfgvalue
                                 from ' . TABLE_CONFIGURATION;
@@ -285,7 +285,7 @@
       while (list($key, $value) = each($mInfo->keys)) {
         $keys .= '<b>' . $value['title'] . '</b><br>' . $value['description'] . '<br>';
         if ($value['set_function']) {
-          eval('$keys .= ' . $value['set_function'] . "'" . $value['value'] . "', '" . $key . "');");
+          eval('$keys .= ' . $value['set_function'] . "'" . str_replace('\'', '\\\'', $value['value']) . "', '" . $key . "');");
         } else {
           $keys .= zen_draw_input_field('configuration[' . $key . ']', $value['value']);
         }
