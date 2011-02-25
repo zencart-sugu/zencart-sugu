@@ -45,7 +45,7 @@ if (!defined('IS_ADMIN_FLAG')) {
           array(
             'configuration_title' => MODULE_ABOUTBOX_HEADER_TITLE,
             'configuration_key' => 'MODULE_ABOUTBOX_CFG_HEADER',
-            'configuration_value' => MODULE_ABOUTBOX_HEADER_DEFAULT,
+            'configuration_value' => MODULE_ABOUTBOX_CFG_HEADER_DEFAULT,
             'configuration_description' => MODULE_ABOUTBOX_HEADER_DESCRIPTION,
             'use_function' => 'null',
             'set_function' => 'null'
