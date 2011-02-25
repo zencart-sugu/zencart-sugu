@@ -188,7 +188,7 @@
                 $sql = "select "
                             . "count(*) "
                         . "from "
-                            . "admin_acl "
+                            . TABLE_ADMIN_ACL . " "
                         . "where "
                             . "admin_id = " . $admin . " "
                         . "and "

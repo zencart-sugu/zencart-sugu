@@ -47,7 +47,8 @@ function zaikorobot_add_post_log($post, $server) {
 function zaikorobot_get_skumodel($products_id, $model, $attributes) {
   global $db;
 
-  if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS == 'true') {
+  // paypal経由(addon_modulesが無効の時)はこのロジックを通さない
+  if (is_object($GLOBALS['products_with_attributes_stock']) && $GLOBALS['products_with_attributes_stock']->enabled) {
     // SKU型番に対応
     $products_attributes_ids = array();
     for ($i=0; $i<count($attributes); $i++) {
