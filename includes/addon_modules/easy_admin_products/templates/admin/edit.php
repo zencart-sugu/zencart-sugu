@@ -57,7 +57,7 @@
     $("#products_price").val(doRound(netValue, 4));
   }
 
-  function category_select(category) {
+  function category_select(html_id, category, category_base) {
     $.fancybox({
         'padding':       0,
         'autoScale':     false,
@@ -65,16 +65,16 @@
         'transitionOut': 'none',
         'width':         '75%',
         'height':        '75%',
-        'href':          '<?php echo $html->href_link("select_category"); ?>&category_id='+category,
+        'href':          '<?php echo $html->href_link("select_category"); ?>&html_id='+html_id+'&category_id='+category+'&category_base_id='+category_base,
         'type':          'iframe'
       });
 
     return false;
   }
 
-  function category_selected(categories_id) {
+  function category_selected(html_id, category_id) {
     // 既に同じカテゴリが選択されているか?
-    var key   = "cat_"+categories_id;
+    var key   = "cat_"+category_id;
     var check = $("#"+key);
     if (check.length != 0) {
       $.fancybox.close();
@@ -84,35 +84,39 @@
     $.ajax({
       type: "GET",
       url:  "<?php echo $html->href_link(); ?>",
-      data: "module=easy_admin_products/ajax_get_category_name&category_id="+categories_id,
+      data: "module=easy_admin_products/ajax_get_category_name&category_id="+category_id,
       success: function(name) {
-        var categories_ids = $("#categories").val();
+        var categories_ids = $("#"+html_id+"_id").val();
         if (categories_ids != "")
           categories_ids += ",";
-        $("#categories").val(categories_ids+categories_id);
+        $("#"+html_id+"_id").val(categories_ids+category_id);
 
         var format = '<div id="'+key+'">'
                    +   '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT; ?>'
-                   +   '<a href="javascript:void()" onclick="category_remove('+categories_id+');">'
+                   +   '<a href="javascript:void()" onclick="category_remove('+category_id+');">'
                    +     '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP; ?>'
                    +   '<'+'/a>'
                    + '<'+'/div>';
         format = format.replace("\%s", name);
-        var html = $("#selected_categories").html();
-        $("#selected_categories").html(html+format);
+        var html = $("#"+html_id+"_div").html();
+        $("#"+html_id+"_div").html(html+format);
         $.fancybox.close();
       }
     });
   }
 
-  function category_remove(categories_id) {
-    var categories_ids = $("#categories").val().split(",");
+  function category_remove_sub(name, categories_id) {
+    var categories_ids = $("#"+name).val().split(",");
     var categories_new = new Array();
     for (var i=0; i<categories_ids.length; i++) {
       if (categories_ids[i] != categories_id)
         categories_new.push(categories_ids[i]);
     }
-    $("#categories").val(categories_new.join(","));
+    $("#"+name).val(categories_new.join(","));
+  }
+
+  function category_remove(categories_id) {
+    category_remove_sub('categories_id', categories_id);
     $("#cat_"+categories_id).remove();
     return false;
   }
@@ -258,10 +262,10 @@
         echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_HEADING_CATEGORY);
       ?>
       <td>
-        <input id="categories" type="hidden" name="categories" value="<?php echo $product['categories']; ?>">
-        <a id="fancybox_category" onclick="return category_select(0);"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT; ?></a>
+        <input id="categories_id" type="hidden" name="categories_id" value="<?php echo $product['categories']; ?>">
+        <a id="fancybox_category" onclick="return category_select('categories', 0, 0);"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT; ?></a>
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY; ?>
-        <div id="selected_categories">
+        <div id="categories_div">
           <?php
             $categories = explode(",", $product['categories']);
             foreach($categories as $v) {
@@ -605,6 +609,15 @@
   $easy_admin_products_edit_screent_html = ob_get_contents();
   ob_end_clean();
 
+<<<<<<< HEAD
+=======
+  global $easy_admin_languages;
+  $easy_admin_languages = $languages;
+
+  global $easy_admin_products_product;
+  $easy_admin_products_product = $product;
+
+>>>>>>> VB_easy_admin_products
   global $zco_notifier;
   $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_DISPLAY_EDIT');
   $easy_admin_products_edit_screent_html = str_replace('%__EDIT_EXTERNAL_ITEMS__%',        '', $easy_admin_products_edit_screent_html);

@@ -75,6 +75,7 @@ switch($action) {
 
   case 'new':
     $template = "edit";
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_START_EDIT');
     $columns  = array(
                   "languages"                             => $languages,
                   "products_column"                       => $products_column,
@@ -89,6 +90,7 @@ switch($action) {
 
   case 'edit':
     $template = "edit";
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_START_EDIT');
     $columns  = array(
                   "languages"                             => $languages,
                   "products_column"                       => $products_column,
@@ -112,15 +114,17 @@ switch($action) {
     $easy_admin_products_validate = $model->validate_save($product);
     $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_VALIDATE_SAVE');
     $product                      = $easy_admin_products_product;
+
     if (count($easy_admin_products_validate) > 0) {
       $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_ERROR_SAVE, 'error');
     }
     else {
-      $model->save_product($product);
+      $products_id = $model->save_product($product);
       if ($product['products_id'] > 0)
-        $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE, 'success');
+        $messageStack->add_session(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE, 'success');
       else
-        $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT, 'success');
+        $messageStack->add_session(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT, 'success');
+      zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products&products_id='.(int)$products_id.'&action=edit'));
     }
     break;
 

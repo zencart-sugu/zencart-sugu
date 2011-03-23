@@ -23,6 +23,7 @@ require(dirname(__FILE__) . '/includes/action.php');
 <link rel="stylesheet" type="text/css" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
 <link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>easy_admin_products/templates/admin/css/jquery.fancybox-1.3.4.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>easy_admin_products/templates/admin/css/spiffyCal_v2_1.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>easy_admin_products/templates/admin/css/easy_admin_products.css" media="screen" />
 
 <script type="text/javascript" src="includes/menu.js"></script>
 <script type="text/javascript" src="includes/general.js"></script>

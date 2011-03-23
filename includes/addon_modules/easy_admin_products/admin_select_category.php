@@ -22,6 +22,7 @@ $model->set_get_search_condition($searchs);
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>easy_admin_products/templates/admin/css/easy_admin_products.css" media="screen" />
 </head>
 <body>
 <!-- body //-->

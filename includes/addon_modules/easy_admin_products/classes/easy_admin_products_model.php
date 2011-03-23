@@ -18,7 +18,7 @@ class easy_admin_products_model {
     'products_model'      => '',
     'products_price'      => 'align="right"',
     'products_quantity'   => 'align="right"',
-    'products_status'     => '',
+    'products_status'     => 'align="center"',
     'products_sort_order' => 'align="right"',
   );
 
@@ -178,7 +178,7 @@ class easy_admin_products_model {
   }
 
   // 指定されたカテゴリをトップカテゴリから構築
-  function get_category($category_id, $link="", $separate="&nbsp;>&nbsp;") {
+  function get_category($category_id, $link="", $separate="&nbsp;>&nbsp;", $category_base_id=0) {
     global $db;
 
     $categories = array();
@@ -201,6 +201,8 @@ class easy_admin_products_model {
                             'text' => $result->fields['categories_name']);
       $category_id = $result->fields['parent_id'];
       if ($category_id == 0)
+        break;
+      if ($result->fields['categories_id'] == $category_base_id)
         break;
     }
     krsort($categories);
@@ -570,6 +572,11 @@ class easy_admin_products_model {
   // 保存
   function save_product($product) {
     global $db;
+    global $sql_data_array;
+    global $language_id;
+    global $zco_notifier;
+    global $product_save;
+    global $products_id;
 
     $products_id     = $product['products_id'];
     $insert_products = ($products_id == 0);
@@ -640,6 +647,9 @@ class easy_admin_products_model {
       'metatags_title_tagline_status'    => $product['metatags_title_tagline_status'],
     );
 
+    $product_save = $product;
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_PRODUCTS');
+
     if ($insert_products) {
       $sql_data_array['products_date_added'] = 'now()';
       zen_db_perform(TABLE_PRODUCTS, $sql_data_array);
@@ -651,7 +661,7 @@ class easy_admin_products_model {
     }
 
     // products_to_categories
-    // いったんすべてのカテゴリを削除する
+    // いったんすべてのカテゴリを削除後、追加する
     $db->Execute("delete from ".TABLE_PRODUCTS_TO_CATEGORIES." where products_id=".(int)$products_id);
     $array = explode(",", $product['categories']);
     foreach($array as $v) {
@@ -673,6 +683,9 @@ class easy_admin_products_model {
         'products_description' => $product['products_description_products_description'][$k],
         'products_url'         => $product['products_description_products_url'][$k],
       );
+      $language_id = $k;
+      $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_PRODUCTS_DESCRIPTION');
+
       if ($insert_products) {
         zen_db_perform(TABLE_PRODUCTS_DESCRIPTION, $sql_data_array);
       }
@@ -682,56 +695,79 @@ class easy_admin_products_model {
     }
 
     // meta_tags_products_description
-    foreach($product['meta_tags_products_description_metatags_title'] as $k => $v) {
-      $sql_data_array = array(
-        'products_id'          => $products_id,
-        'language_id'          => $k,
-        'metatags_title'       => $product['meta_tags_products_description_metatags_title'][$k],
-        'metatags_keywords'    => $product['meta_tags_products_description_metatags_keywords'][$k],
-        'metatags_description' => $product['meta_tags_products_description_metatags_description'][$k],
-      );
-      if ($insert_products) {
-        zen_db_perform(TABLE_META_TAGS_PRODUCTS_DESCRIPTION, $sql_data_array);
-      }
-      else {
-        zen_db_perform(TABLE_META_TAGS_PRODUCTS_DESCRIPTION, $sql_data_array, 'update', "products_id=".(int)$products_id." and language_id=".$k);
+    if (is_array($product['meta_tags_products_description_metatags_title'])) {
+      foreach($product['meta_tags_products_description_metatags_title'] as $k => $v) {
+        $sql_data_array = array(
+          'products_id'          => $products_id,
+          'language_id'          => $k,
+          'metatags_title'       => $product['meta_tags_products_description_metatags_title'][$k],
+          'metatags_keywords'    => $product['meta_tags_products_description_metatags_keywords'][$k],
+          'metatags_description' => $product['meta_tags_products_description_metatags_description'][$k],
+        );
+
+        $language_id = $k;
+        $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_META_TAGS_PRODUCTS_DESCRIPTION');
+
+        if ($insert_products) {
+          zen_db_perform(TABLE_META_TAGS_PRODUCTS_DESCRIPTION, $sql_data_array);
+        }
+        else {
+          zen_db_perform(TABLE_META_TAGS_PRODUCTS_DESCRIPTION, $sql_data_array, 'update', "products_id=".(int)$products_id." and language_id=".$k);
+        }
       }
     }
 
     // featured
-    $sql_data_array = array(
-      'products_id'             => $products_id,
-      'expires_date'            => $product['featured_expires_date'],
-      'status'                  => $product['featured_status'],
-      'featured_date_available' => $product['featured_featured_date_available'],
-    );
-    if ($product['featured_featured_id'] == 0) {
-      $sql_data_array['featured_date_added'] = 'now()';
-      zen_db_perform(TABLE_FEATURED, $sql_data_array);
-      $product['featured_featured_id'] = zen_db_insert_id();
-    }
-    else {
-      $sql_data_array['featured_last_modified'] = 'now()';
-      zen_db_perform(TABLE_FEATURED, $sql_data_array, "update", "featured_id=".$product['featured_featured_id']);
+    if (isset($product['featured_status'])) {
+      $sql_data_array = array(
+        'products_id'             => $products_id,
+        'expires_date'            => $product['featured_expires_date'],
+        'status'                  => $product['featured_status'],
+        'featured_date_available' => $product['featured_featured_date_available'],
+      );
+
+      $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_FEATURED');
+
+      if ($product['featured_featured_id'] == 0) {
+        $sql_data_array['featured_date_added'] = 'now()';
+        zen_db_perform(TABLE_FEATURED, $sql_data_array);
+        $product['featured_featured_id'] = zen_db_insert_id();
+      }
+      else {
+        $sql_data_array['featured_last_modified'] = 'now()';
+        zen_db_perform(TABLE_FEATURED, $sql_data_array, "update", "featured_id=".$product['featured_featured_id']);
+      }
     }
 
     // specials
-    $sql_data_array = array(
-      'products_id'             => $products_id,
-      'specials_new_products_price' => $product['specials_specials_new_products_price'],
-      'expires_date'                => $product['specials_expires_date'],
-      'status'                      => $product['specials_status'],
-      'specials_date_available'     => $product['specials_specials_date_available'],
-    );
-    if ($product['specials_specials_id'] == 0) {
-      $sql_data_array['specials_date_added'] = 'now()';
-      zen_db_perform(TABLE_SPECIALS, $sql_data_array);
-      $product['specials_specials_id'] = zen_db_insert_id();
+    if (isset($product['specials_status'])) {
+      $sql_data_array = array(
+        'products_id'             => $products_id,
+        'specials_new_products_price' => $product['specials_specials_new_products_price'],
+        'expires_date'                => $product['specials_expires_date'],
+        'status'                      => $product['specials_status'],
+        'specials_date_available'     => $product['specials_specials_date_available'],
+      );
+
+      $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_SPECIALS');
+
+      if ($product['specials_specials_id'] == 0) {
+        $sql_data_array['specials_date_added'] = 'now()';
+        zen_db_perform(TABLE_SPECIALS, $sql_data_array);
+        $product['specials_specials_id'] = zen_db_insert_id();
+      }
+      else {
+        $sql_data_array['specials_last_modified'] = 'now()';
+        zen_db_perform(TABLE_SPECIALS, $sql_data_array, "update", "specials_id=".$product['specials_specials_id']);
+      }
     }
-    else {
-      $sql_data_array['specials_last_modified'] = 'now()';
-      zen_db_perform(TABLE_SPECIALS, $sql_data_array, "update", "specials_id=".$product['specials_specials_id']);
+
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_SAVE');
+    if ($insert_products) {
+      $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_INSERT');
     }
+
+    return $products_id;
   }
 
   // 削除
@@ -740,7 +776,7 @@ class easy_admin_products_model {
 
     // イメージ
     if ($products_image != "")
-      unlink(DIR_FS_CATALOG_IMAGES.$products_image);
+      @unlink(DIR_FS_CATALOG_IMAGES.$products_image);
 
     $tables = array(
       TABLE_PRODUCTS,
