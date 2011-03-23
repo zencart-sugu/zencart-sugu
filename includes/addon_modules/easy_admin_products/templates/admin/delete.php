@@ -13,12 +13,10 @@
   <input type="hidden" name="products_name"  value="<?php echo htmlspecialchars($product["products_description_products_name"][(int)$_SESSION['languages_id']]); ?>">
   <input type="hidden" name="products_image" value="<?php echo htmlspecialchars($product["products_image"]); ?>">
 
-  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+<h3><?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE; ?></h3>
+<table class="tableLayout3 delete" border="0" width="100%" cellspacing="0" cellpadding="0">
     <tr>
-      <td><h3><?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE; ?></h3></td>
-    </tr>
-
-    <tr>
+      <th>商品名</th>
       <td>
         <?php
           echo htmlspecialchars($product["products_description_products_name"][(int)$_SESSION['languages_id']]);
@@ -28,6 +26,7 @@
     </tr>
 
     <tr>
+      <th>カテゴリ</th>
       <td>
         <?php
           $categories = explode(",", $product['categories']);
@@ -42,11 +41,13 @@
         ?>
       </td>
     </tr>
+  </table>
+  <table border="0" width="100%" cellspacing="0" cellpadding="0">
 
     <tr>
-      <td>
-        <input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE; ?>">
-        <a href="<?php echo $html->href_link(); ?>"><input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL; ?>"></a>
+      <td  colspan="2" class="submit">
+        <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE; ?>">
+        <a href="<?php echo $html->href_link(); ?>"><input  type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL; ?>"></a>
       </td>
     </tr>
 

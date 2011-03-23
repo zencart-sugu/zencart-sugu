@@ -15,8 +15,15 @@ if (file_exists(DIR_WS_CLASSES . 'split_page_results.php')) {
   require_once(DIR_WS_CLASSES . 'split_page_results.php');
 }
 
+global $zco_notifier;
+global $easy_admin_products_product;
+global $easy_admin_products_validate;
+global $easy_admin_products_product_id;
+global $easy_admin_products_searchs;
+
 // 検索条件が指定されていた場合はセッションへ
 // 指定されていない場合はセッションから戻す
+$zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SEARCH');
 $searchs  = array(
   'category',
   'title',
@@ -25,6 +32,11 @@ $searchs  = array(
   'description',
   'special'
 );
+if (is_array($easy_admin_products_searchs)) {
+  foreach($easy_admin_products_searchs as $v)
+    $searchs[] = $v;
+}
+
 
 $languages = zen_get_languages();
 $model     = new easy_admin_products_model();
@@ -63,6 +75,7 @@ switch($action) {
 
   case 'new':
     $template = "edit";
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_START_EDIT');
     $columns  = array(
                   "languages"                             => $languages,
                   "products_column"                       => $products_column,
@@ -72,11 +85,12 @@ switch($action) {
                   "meta_tags_products_description_column" => $meta_tags_products_description_column,
                 );
     $product  = $model->new_product($columns);
-    $validate = array();
+    $easy_admin_products_validate = array();
     break;
 
   case 'edit':
     $template = "edit";
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_START_EDIT');
     $columns  = array(
                   "languages"                             => $languages,
                   "products_column"                       => $products_column,
@@ -86,7 +100,7 @@ switch($action) {
                   "meta_tags_products_description_column" => $meta_tags_products_description_column,
                 );
     $product  = $model->load_product($columns, $_REQUEST['products_id']);
-    $validate = array();
+    $easy_admin_products_validate = array();
     break;
 
   case 'save':
@@ -95,16 +109,22 @@ switch($action) {
     foreach($_POST as $k => $v) {
       $product[$k] = $v;
     }
-    $validate = $model->validate_save($product);
-    if (count($validate) > 0) {
+
+    $easy_admin_products_product  = $product;
+    $easy_admin_products_validate = $model->validate_save($product);
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_VALIDATE_SAVE');
+    $product                      = $easy_admin_products_product;
+
+    if (count($easy_admin_products_validate) > 0) {
       $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_ERROR_SAVE, 'error');
     }
     else {
-      $model->save_product($product);
+      $products_id = $model->save_product($product);
       if ($product['products_id'] > 0)
-        $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE, 'success');
+        $messageStack->add_session(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE, 'success');
       else
-        $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT, 'success');
+        $messageStack->add_session(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT, 'success');
+      zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products&products_id='.(int)$products_id.'&action=edit'));
     }
     break;
 
@@ -123,7 +143,10 @@ switch($action) {
 
   case 'delete_process':
     $template = "index";
+    $easy_admin_products_product_id = (int)$_REQUEST['products_id'];
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_START_DELETE');
     $model->delete_product($_REQUEST['products_id'], $_REQUEST['products_image']);
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_DELETE');
     $messageStack->add(sprintf(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE, $_REQUEST['products_name']."(ID:".$_REQUEST['products_id'].")"), 'success');
     break;
 
@@ -146,8 +169,11 @@ switch($action) {
     foreach($_POST as $k => $v) {
       $product[$k] = $v;
     }
-    $validate = $model->validate_copy($product);
-    if (count($validate) > 0) {
+    $easy_admin_products_product  = $product;
+    $easy_admin_products_validate = $model->validate_copy($product);
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_VALIDATE_COPY');
+    $product                      = $easy_admin_products_product;
+    if (count($easy_admin_products_validate) > 0) {
       $template = "copy";
       $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_ERROR_SAVE, 'error');
     }

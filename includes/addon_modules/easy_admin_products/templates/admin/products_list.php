@@ -18,7 +18,7 @@
       </td>
     <?php } ?>
     <!-- Áàºî -->
-    <td>
+    <td class="operation">
       <?php
         $parm  = array(
                    "products_id" => $fields['products_id'],

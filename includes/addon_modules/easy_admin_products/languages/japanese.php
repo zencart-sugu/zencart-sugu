@@ -50,17 +50,19 @@ define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_5',                    '¥¹¥Æ¡¼¥¿¥¹');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_6',                    '¥½¡¼¥È½ç');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_7',                    'Áàºî');
 define('MODULE_EASY_ADMIN_PRODUCTS_SEARCH',                       '¸¡º÷');
+define('MODULE_EASY_ADMIN_PRODUCTS_SEARCH_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_search.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_INSERT',                       '¿·¤·¤¤¾¦ÉÊ¤ÎÄÉ²Ã');
+define('MODULE_EASY_ADMIN_PRODUCTS_INSERT_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_new_product_add.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_LIST',                         '¾¦ÉÊ°ìÍ÷¤ËÌá¤ë');
 
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              'ÁªÂò');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              '<img src="../includes/addon_modules/easy_admin_products/images/button_choice.gif" alt="ÁªÂò">');
 define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_ON',                    '¥¹¥Æ¡¼¥¿¥¹¥ª¥ó');
 define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_OFF',                   '¥¹¥Æ¡¼¥¿¥¹¥ª¥Õ');
 
 // ¥«¥Æ¥´¥ê°ìÍ÷
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_LIST',          '¢£¥«¥Æ¥´¥ê¤ò°ìÍ÷¤«¤éÁªÂò');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_SEARCH',        '¢£¥«¥Æ¥´¥ê¤ò¸¡º÷¤·¤ÆÁªÂò');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND',              'Å¸³«');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND',              '<img src="../includes/addon_modules/easy_admin_products/images/icon_plus.gif" alt="Å¸³«">');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              'ÁªÂò');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TOP',                 '¥È¥Ã¥×');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEPARATE',            '&nbsp;>&nbsp;');
@@ -69,6 +71,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_NAME',                '¥«¥Æ¥´¥êÌ¾');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEARCH',              '¸¡º÷');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP',                '³°¤¹');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET',               '¥ê¥»¥Ã¥È');
+define('MODULE_EASY_ADMIN_WINDOW_CLOSE_IMG',               '../includes/addon_modules/easy_admin_products/images/icon_close.gif');
+define('MODULE_EASY_ADMIN_WINDOW_CLOSE_ALT',               'ÊÄ¤¸¤ë');
 
 // ÆÃ¼ì¾¦ÉÊ
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT',               '¡ÚÆÃ¼ì¾¦ÉÊ¹Ê¤ê¹þ¤ß¡Û');
@@ -83,9 +87,12 @@ define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_NONDISPLAY',           'ÈóÉ½¼¨¾¦ÉÊ');
 // Áàºî
 define('MODULE_EASY_ADMIN_PRODUCTS_EDIT',                         'ÊÔ½¸');
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE',                       'ºï½ü');
+define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_delete.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY',                         '¥³¥Ô¡¼');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN',                         '../includes/addon_modules/easy_admin_products/images/button_copy.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         'ÊÝÂ¸');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       '¥­¥ã¥ó¥»¥ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_cancel.gif');
 
 // ¾¦ÉÊ
 define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">É¬¿Ü</font>');
@@ -165,6 +172,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE',                 'ËÜÅö¤Ë¾¦ÉÊ¤òº
 
 // ¥³¥Ô¡¼
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE',                   '¾¦ÉÊ¤ò¥³¥Ô¡¼¤¹¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY',             '<strong>¥«¥Æ¥´¥ê</strong>¡¡<font color="red">É¬¿Ü</font>');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_SELECT_TXT',             '¡ÊÊ£¿ôÁªÂò²Ä¡Ë');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE',                    '¾¦ÉÊ %s ¤ò¥³¥Ô¡¼¤·¤¿¤¤¥«¥Æ¥´¥ê¤òÁª¤ó¤Ç¤¯¤À¤µ¤¤');
 
 // ¥¨¥é¡¼

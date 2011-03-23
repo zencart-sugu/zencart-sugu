@@ -87,27 +87,21 @@
   <input type="hidden" name="products_name"  value="<?php echo htmlspecialchars($product["products_description_products_name"][(int)$_SESSION['languages_id']]); ?>">
   <input type="hidden" name="products_image" value="<?php echo htmlspecialchars($product["products_image"]); ?>">
 
-  <table border="0" width="100%" cellspacing="0" cellpadding="0">
-    <tr>
-      <td colspan="3"><h3><?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE; ?></h3></td>
-    </tr>
-
-    <tr>
-      <td colspan="3">
-        <?php
+<div class="copy">
+<h3><?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE; ?></h3>
+<p>        <?php
           echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE, htmlspecialchars($product["products_description_products_name"][(int)$_SESSION['languages_id']])."(ID:".$_REQUEST['products_id'].")");
         ?>
-      </td>
-    </tr>
-
+</p>
+<table class="tableLayout3" border="0" width="100%" cellspacing="0" cellpadding="0">
     <tr>
       <?php
-        echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_HEADING_CATEGORY);
+        echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY);
       ?>
-      <td>
+      <td id="categoriesSelect">
         <input id="categories" type="hidden" name="categories" value="<?php echo $product['categories']; ?>">
         <a id="fancybox_category" onclick="return category_select(0);"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT; ?></a>
-        <?php echo MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY; ?>
+        <?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_SELECT_TXT; ?>
         <div id="selected_categories">
           <?php
             $categories = explode(",", $product['categories']);
@@ -126,14 +120,16 @@
         </div>
       </td>
     </tr>
-    <?php echo $html->error($validate, "categories"); ?>
-
+    <?php echo $html->error($easy_admin_products_validate, "categories"); ?>
+</table>    
+<table>
     <tr>
-      <td colspan="3">
-        <input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY; ?>">
-        <a href="<?php echo $html->href_link(); ?>"><input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL; ?>"></a>
+      <td>
+        <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY; ?>">
+        <a href="<?php echo $html->href_link(); ?>"><input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL; ?>"></a>
       </td>
     </tr>
 
   </table>
+  </div> 
 </form>

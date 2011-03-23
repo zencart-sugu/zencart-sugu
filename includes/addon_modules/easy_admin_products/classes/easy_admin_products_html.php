@@ -42,25 +42,47 @@ class easy_admin_products_html {
   }
 
   // 入力項目作成
-  function pre_html($title) {
+  function pre_html($title, $colspan=0) {
+    if ($colspan>0)
+      $colspan = ' colspan="'.$colspan.'"';
+    else
+      $colspan = '';
     return '<td width="10"></td>'."\n".
-           '<td width="200" nowrap valign="top">'.$title.'</td>'."\n";
+           '<td width="200" nowrap valign="top"'.$colspan.'>'.$title.'</td>'."\n";
   }
 
-  function radio($name, $title, $options, $value, $before="", $after="", $parm="") {
+  function radio($name, $title, $options, $value, $before="", $after="", $parm="", $separator="&nbsp;") {
     $html = self::pre_html($title);
     if ($before != "") {
       $html .= '<td>'.
                  $before.
                '</td>';
     }
-      $html .= '<td>';
+    $html .= '<td>';
     foreach($options as $v) {
       $html .= '<input name="'.$name.'" value="'.$v['id'].'" type="radio"';
       if ($v['id'] == $value)
         $html .= ' checked="checked"';
-      $html .= '>&nbsp;'.$v['text'].'&nbsp;';
+      $html .= $parm.'>&nbsp;'.$v['text'].$separator;
     }
+    $html .= $after.
+             '</td>'."\n";
+
+    return $html;
+  }
+
+  function check($name, $title, $option, $value, $before="", $after="", $parm="") {
+    $html = self::pre_html($title);
+    if ($before != "") {
+      $html .= '<td>'.
+                 $before.
+               '</td>';
+    }
+    $html .= '<td>';
+    $html .= '<input name="'.$name.'" value="'.$option['id'].'" type="checkbox"';
+    if ($option['id'] == $value)
+      $html .= ' checked="checked"';
+    $html .= $parm.'>&nbsp;'.$option['text'];
     $html .= $after.
              '</td>'."\n";
 
