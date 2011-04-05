@@ -42,13 +42,6 @@ if (count($result) > 0 ):
 ?>
 </ul>
 </div>
-<?php if ($output_buttons): ?>
-<script language="javascript" type="text/javascript">
-  //<![CDATA[
-  document.write('<div class="prev prev-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_CAROUSEL_UI_PREVIOUS, BUTTON_CAROUSEL_UI_PREVIOUS_ALT); ?></div>');
-  //]]>
-//--></script>
-<?php endif; ?>
 <div class="carouselUI carouselUI-<?php echo $module . '-' . $block; ?>">
   <ul>
 <?php
@@ -59,7 +52,12 @@ if (count($result) > 0 ):
 <?php if ($output_buttons): ?>
 <script language="javascript" type="text/javascript">
   //<![CDATA[
-  document.write('<div href="#" class="next next-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_CAROUSEL_UI_NEXT, BUTTON_CAROUSEL_UI_NEXT_ALT); ?></div>');
+  document.write('<ul class="buttons">');
+  document.write('<li><a class="prev prev-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_PREV, BUTTON_CAROUSEL_UI_PREV_ALT); ?></a></li>');
+  document.write('<li><a class="stop stop-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_STOP, BUTTON_CAROUSEL_UI_STOP_ALT); ?></a></li>');
+  document.write('<li><a class="start start-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_START, BUTTON_CAROUSEL_UI_START_ALT); ?></a></li>');
+  document.write('<li><a class="next next-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_NEXT, BUTTON_CAROUSEL_UI_NEXT_ALT); ?></a></li>');
+  document.write('</ul>');
   //]]>
 //--></script>
 <?php endif; ?>
