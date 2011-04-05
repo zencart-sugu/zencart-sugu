@@ -20,10 +20,10 @@
       vertical: <?php echo (MODULE_FEATURE_AREA_UI_CONF_VERTICAL == 'true' ? 'true' : 'false'); ?>,
       circular: <?php echo (MODULE_FEATURE_AREA_UI_CONF_CIRCULAR == 'true' ? 'true' : 'false'); ?>,
       btnGo: btns,
-      btnNext: ".next-<?php echo $module . '-' . $block; ?>",
-      btnPrev: ".prev-<?php echo $module . '-' . $block; ?>",
-      btnStart: '#feature_start',
-      btnStop: '#feature_stop',
+      btnNext:  ".next-<?php echo $module . '-' . $block; ?>",
+      btnPrev:  ".prev-<?php echo $module . '-' . $block; ?>",
+      btnStart: ".start-<?php echo $module . '-' . $block; ?>",
+      btnStop:  ".stop-<?php echo $module . '-' . $block; ?>",
       beforeStart: callback,
       afterEnd: callback,
       visible: 1,
@@ -42,39 +42,64 @@
     });
   });
 
-  <?php echo JQUERY_ALIAS; ?>(document).ready( function() {
-    <?php echo JQUERY_ALIAS; ?>(".<?php echo $block . '-' . $module; ?> .carouselUI a").hover( function() {
-      var btn = <?php echo JQUERY_ALIAS; ?>('#'+this.rel);
-      var stop = <?php echo JQUERY_ALIAS; ?>('#feature_stop');
-      if (btn) {
-        btn.triggerHandler('click');
-        if (stop) {
-          stop.triggerHandler('click');
+  <?php echo JQUERY_ALIAS; ?>(function() {
+    <?php echo JQUERY_ALIAS; ?>(".start-<?php echo $module . '-' . $block; ?>").click( function() {
+      <?php echo JQUERY_ALIAS; ?>('.start-<?php echo $module . '-' . $block; ?>').hide();
+      <?php echo JQUERY_ALIAS; ?>('.stop-<?php echo $module . '-' . $block; ?>').show();
+    });
+
+    <?php echo JQUERY_ALIAS; ?>(".stop-<?php echo $module . '-' . $block; ?>").click( function() {
+      <?php echo JQUERY_ALIAS; ?>('.start-<?php echo $module . '-' . $block; ?>').show();
+      <?php echo JQUERY_ALIAS; ?>('.stop-<?php echo $module . '-' . $block; ?>').hide();
+    });
+
+    <?php echo JQUERY_ALIAS; ?>(".<?php echo $block . '-' . $module; ?> .carouselUI a").hover(
+      function() {
+        if (this.rel && this.ref != "") {
+          var btn = <?php echo JQUERY_ALIAS; ?>('#'+this.rel);
+          var stop = <?php echo JQUERY_ALIAS; ?>('.stop-<?php echo $module . '-' . $block; ?>');
+          if (btn) {
+            btn.triggerHandler('click');
+            if (stop) {
+              stop.triggerHandler('click');
+            }
+          }
+        }
+      },
+
+      function () {
+        if (this.rel && this.ref != "") {
+          var start = <?php echo JQUERY_ALIAS; ?>('.start-<?php echo $module . '-' . $block; ?>');
+          if (start) {
+            start.triggerHandler('click');
+          }
         }
       }
-    },
-    function () {
-      var start = <?php echo JQUERY_ALIAS; ?>('#feature_start');
-      if (start) {
-        start.triggerHandler('click');
-      }
-    });
+    );
+
     <?php echo JQUERY_ALIAS; ?>(".<?php echo $block . '-' . $module; ?> a").focus( function() {
-      var btn = <?php echo JQUERY_ALIAS; ?>('#'+this.rel);
-      var stop = <?php echo JQUERY_ALIAS; ?>('#feature_stop');
-      if (btn) {
-        btn.triggerHandler('click');
-        if (stop) {
-          stop.triggerHandler('click');
+      if (this.rel && this.ref != "") {
+        var btn = <?php echo JQUERY_ALIAS; ?>('#'+this.rel);
+        var stop = <?php echo JQUERY_ALIAS; ?>('.stop-<?php echo $module . '-' . $block; ?>');
+        if (btn) {
+          btn.triggerHandler('click');
+          if (stop) {
+            stop.triggerHandler('click');
+          }
         }
       }
     });
+
     <?php echo JQUERY_ALIAS; ?>(".<?php echo $block . '-' . $module; ?> a").blur( function() {
-      var start = <?php echo JQUERY_ALIAS; ?>('#feature_start');
-      if (start) {
-        start.triggerHandler('click');
+      if (this.rel && this.ref != "") {
+        var start = <?php echo JQUERY_ALIAS; ?>('.start-<?php echo $module . '-' . $block; ?>');
+        if (start) {
+          start.triggerHandler('click');
+        }
       }
     });
+
+    <?php echo JQUERY_ALIAS; ?>('.start-<?php echo $module . '-' . $block; ?>').triggerHandler('click');
   });
   //]]>
 //--></script>

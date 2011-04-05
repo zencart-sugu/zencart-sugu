@@ -44,4 +44,12 @@ define('MODULE_FEATURE_AREA_UI_CONF_SPEED_DESCRIPTION', '¥á¥¤¥ó²èÁü¤ò¥¹¥¯¥í¡¼¥ë¤
 define('MODULE_FEATURE_AREA_UI_CONF_VISIBLE_TITLE', '¥µ¥à¥Í¥¤¥ë - ¥¹¥¯¥í¡¼¥ë¥¨¥ê¥¢É½¼¨·ï¿ô');
 define('MODULE_FEATURE_AREA_UI_CONF_VISIBLE_DESCRIPTION', '¥µ¥à¥Í¥¤¥ë¤Î¥¹¥¯¥í¡¼¥ë¥¨¥ê¥¢¤ËÉ½¼¨¤¹¤ë·ï¿ô¤òÀßÄê¤·¤Þ¤¹¡£<br />¡¦½é´üÃÍ = ' . MODULE_FEATURE_AREA_UI_CONF_VISIBLE_DEFAULT);
 
+define('BUTTON_IMAGE_FEATURE_AREA_UI_PREV',  'button_carousel_ui_prev.gif');
+define('BUTTON_IMAGE_FEATURE_AREA_UI_NEXT',  'button_carousel_ui_next.gif');
+define('BUTTON_IMAGE_FEATURE_AREA_UI_STOP',  'button_carousel_ui_stop.gif');
+define('BUTTON_IMAGE_FEATURE_AREA_UI_START', 'button_carousel_ui_start.gif');
+define('BUTTON_CAROUSEL_UI_PREV_ALT',        'Á°¤Ø');
+define('BUTTON_CAROUSEL_UI_NEXT_ALT',        '¼¡¤Ø');
+define('BUTTON_CAROUSEL_UI_STOP_ALT',        'Ää»ß');
+define('BUTTON_CAROUSEL_UI_START_ALT',       'ºÆ³«');
 ?>
