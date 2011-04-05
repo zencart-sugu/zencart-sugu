@@ -609,15 +609,12 @@
   $easy_admin_products_edit_screent_html = ob_get_contents();
   ob_end_clean();
 
-<<<<<<< HEAD
-=======
   global $easy_admin_languages;
   $easy_admin_languages = $languages;
 
   global $easy_admin_products_product;
   $easy_admin_products_product = $product;
 
->>>>>>> VB_easy_admin_products
   global $zco_notifier;
   $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_DISPLAY_EDIT');
   $easy_admin_products_edit_screent_html = str_replace('%__EDIT_EXTERNAL_ITEMS__%',        '', $easy_admin_products_edit_screent_html);

@@ -121,12 +121,8 @@
       </td>
     </tr>
     <?php echo $html->error($easy_admin_products_validate, "categories"); ?>
-<<<<<<< HEAD
-
-=======
 </table>    
 <table>
->>>>>>> VB_easy_admin_products
     <tr>
       <td>
         <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY; ?>">

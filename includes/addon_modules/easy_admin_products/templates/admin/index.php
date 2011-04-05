@@ -83,42 +83,6 @@
   ob_start();
   echo $html->form('form_search');
 ?>
-<<<<<<< HEAD
-  <table>
-    <tr>
-      <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_CATEGORY; ?></td>
-      <td>
-        <input type="hidden" id="category" name="category" value="<?php echo htmlspecialchars($_SESSION['category']); ?>" />
-        <a id="fancybox_category" onclick="return category_select();"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT; ?></a>
-      </td>
-      <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_TITLE; ?></td>
-      <td><input id="title" name="title" type="text" value="<?php echo htmlspecialchars($_SESSION['title']); ?>" /></td>
-      <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_MODEL; ?></td>
-      <td><input id="model" name="model" type="text" value="<?php echo htmlspecialchars($_SESSION['model']); ?>" /></td>
-      <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_MANUFACTURER; ?></td>
-      <td><input id="manufacturer" name="manufacturer" type="text" value="<?php echo htmlspecialchars($_SESSION['manufacturer']); ?>" /></td>
-      <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_DESCRIPTION; ?></td>
-      <td><input id="description" name="description" type="text" value="<?php echo htmlspecialchars($_SESSION['description']); ?>" /></td>
-      <td align="right"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_SPECIAL; ?></td>
-      <td><?php echo zen_draw_pull_down_menu("special", $special, $_SESSION['special'], 'id="special"'); ?></td>
-      %__SEARCH_EXTERNAL_ITEMS__%
-      <td><input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_SEARCH; ?>"/></td>
-    </tr>
-  </table>
-</form>
-<?php
-  global $easy_admin_products_search_form_html;
-  $easy_admin_products_search_form_html = ob_get_contents();
-  ob_end_clean();
-
-  global $zco_notifier;
-  $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_DISPLAY_SEARCH_FORM');
-  $easy_admin_products_search_form_html = str_replace('%__SEARCH_EXTERNAL_ITEMS__%', '', $easy_admin_products_search_form_html);
-  print $easy_admin_products_search_form_html;
-?>
-
-<span id="category_name">
-=======
 <div class="searchBox">
   <table border="0" width="100%" cellspacing="0" cellpadding="0">
     <tr>
@@ -127,7 +91,6 @@
         <input type="hidden" id="category_id" name="category_id" value="<?php echo htmlspecialchars($_SESSION['category']); ?>" />
         <a id="fancybox_category" onclick="return category_select('category', 0, 0);"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT; ?></a>
         <span id="category_div">
->>>>>>> VB_easy_admin_products
   <?php
     if ($_SESSION['category'] > 0) {
       echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT, $model->get_category($_SESSION['category']));
