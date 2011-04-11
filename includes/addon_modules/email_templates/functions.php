@@ -343,6 +343,21 @@
     $arr   = array();
     $arr[] = array('id'   => '',
                    'text' => MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY);
+
+        $result = mysql_list_tables (DB_DATABASE);
+        $i = 0;
+        $status = false;
+        while($i < mysql_num_rows($result)) {
+            if(mysql_tablename ($result, $i) == TABLE_EMAIL_TEMPLATES) {
+                $status = true;
+                break;
+            }
+            $i++;
+        }
+        if($status == false) {
+            return $arr;
+        }
+
     $result = $db->Execute("select distinct id, grp, title from " . TABLE_EMAIL_TEMPLATES . " where id>3 order by 1 asc");
 
 		if($result->RecordCount() > 0){
