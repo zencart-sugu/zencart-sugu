@@ -222,13 +222,13 @@ if (!defined('IS_ADMIN_FLAG')) {
         $block_module = $this;
 
         ob_start();
-        require($this->_getTemplateDir($block . '.php', $page, 'templates'). '/'. $block . '.php');
+        require(DIR_FS_CATALOG . $this->_getTemplateDir($block . '.php', $page, 'templates'). '/'. $block . '.php');
         $content = ob_get_contents();
         ob_end_clean();
 
         if ($content != '') {
           ob_start();
-          require($this->_getTemplateDir('tpl_block.php', $page, 'common'). '/tpl_block.php');
+          require(DIR_FS_CATALOG . $this->_getTemplateDir('tpl_block.php', $page, 'common'). '/tpl_block.php');
           $return = ob_get_contents();
           ob_end_clean();
         }
