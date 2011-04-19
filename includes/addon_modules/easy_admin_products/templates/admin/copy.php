@@ -44,7 +44,7 @@
 
         var format = '<div id="'+key+'">'
                    +   '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT; ?>'
-                   +   '<a href="javascript:void()" onclick="category_remove('+categories_id+');">'
+                   +   '<a href="javascript:void(0)" onclick="category_remove('+categories_id+');">'
                    +     '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP; ?>'
                    +   '<'+'/a>'
                    + '<'+'/div>';
@@ -110,7 +110,7 @@
                 $name = $model->get_category($v);
                 echo '<div id=cat_'.$v.'>';
                 echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT, $name);
-                echo '<a href="javascript:void()" onclick="category_remove('.$v.');">';
+                echo '<a href="javascript:void(0)" onclick="category_remove('.$v.');">';
                 echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP;
                 echo '</a>';
                 echo '</div>';
@@ -121,12 +121,8 @@
       </td>
     </tr>
     <?php echo $html->error($easy_admin_products_validate, "categories"); ?>
-<<<<<<< HEAD
-
-=======
 </table>    
 <table>
->>>>>>> VB_easy_admin_products
     <tr>
       <td>
         <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY; ?>">
