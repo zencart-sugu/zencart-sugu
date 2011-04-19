@@ -7,6 +7,9 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  */
 ?>
+<?php
+  ob_start();
+?>
 <script type="text/javascript">
   function category_select(html_id, category, category_base) {
     $.fancybox({
@@ -44,7 +47,7 @@
 
         var format = '<div id="'+key+'">'
                    +   '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT; ?>'
-                   +   '<a href="javascript:void()" onclick="category_remove('+category_id+');">'
+                   +   '<a href="javascript:void(0)" onclick="category_remove('+category_id+');">'
                    +     '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP; ?>'
                    +   '<'+'/a>'
                    + '<'+'/div>';
@@ -163,3 +166,13 @@
   echo $split->display_links($query_numrows, MODULE_EASY_ADMIN_PRODUCTS_MAX_RESULTS, "", $_GET['page'], "module=easy_admin_products");
 ?>
 </div>
+
+<?php
+  global $easy_admin_products_index_screent_html;
+  $easy_admin_products_index_screent_html = ob_get_contents();
+  ob_end_clean();
+
+  global $zco_notifier;
+  $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_DISPLAY_INDEX');
+  print $easy_admin_products_index_screent_html;
+?>

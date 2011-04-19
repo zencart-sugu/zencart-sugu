@@ -93,7 +93,7 @@
 
         var format = '<div id="'+key+'">'
                    +   '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT; ?>'
-                   +   '<a href="javascript:void()" onclick="category_remove('+category_id+');">'
+                   +   '<a href="javascript:void(0)" onclick="category_remove('+category_id+');">'
                    +     '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP; ?>'
                    +   '<'+'/a>'
                    + '<'+'/div>';
@@ -273,7 +273,7 @@
                 $name = $model->get_category($v);
                 echo '<div id=cat_'.$v.'>';
                 echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT, $name);
-                echo '<a href="javascript:void()" onclick="category_remove('.$v.');">';
+                echo '<a href="javascript:void(0)" onclick="category_remove('.$v.');">';
                 echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP;
                 echo '</a>';
                 echo '</div>';
@@ -348,7 +348,7 @@
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_PRICE_TITLE; ?>
       </td>
       <td>
-        <a id="a_products_price" href="javascript:void()" onclick="toggle_detail('products_price');">
+        <a id="a_products_price" href="javascript:void(0)" onclick="toggle_detail('products_price');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
       </td>
@@ -392,7 +392,7 @@
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_SHIPPING_TITLE; ?>
       </td>
       <td>
-        <a id="a_products_shipping" href="javascript:void()" onclick="toggle_detail('products_shipping');">
+        <a id="a_products_shipping" href="javascript:void(0)" onclick="toggle_detail('products_shipping');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
       </td>
@@ -431,7 +431,7 @@
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_CART_TITLE; ?>
       </td>
       <td>
-        <a id="a_products_cart" href="javascript:void()" onclick="toggle_detail('products_cart');">
+        <a id="a_products_cart" href="javascript:void(0)" onclick="toggle_detail('products_cart');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
       </td>
@@ -487,7 +487,7 @@
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_SEO_TITLE; ?>
       </td>
       <td>
-        <a id="a_products_seo" href="javascript:void()" onclick="toggle_detail('products_seo');">
+        <a id="a_products_seo" href="javascript:void(0)" onclick="toggle_detail('products_seo');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
       </td>
