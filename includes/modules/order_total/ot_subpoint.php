@@ -152,7 +152,8 @@ if (is_object($GLOBALS['point_base'])):
         $full_cost = 0;
         $subpoint_payment_amount = $save_total_cost;
       }
-      return zen_round($subpoint_payment_amount, 0);
+      $_SESSION['cot_subpoint'] = zen_round($subpoint_payment_amount, 0);
+      return $_SESSION['cot_subpoint'];
     }
 
     function calculate_tax_deduction($amount, $od_amount, $method, $finalise = false) {
