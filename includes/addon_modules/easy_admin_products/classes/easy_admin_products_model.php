@@ -556,6 +556,7 @@ class easy_admin_products_model {
               $k == 'expires_date') {
             if ($result->fields[$k] == '0001-01-01')
               $result->fields[$k] = '';
+          }
           $product['specials_'.$k] = $result->fields[$k];
         }
       }
