@@ -531,8 +531,14 @@ class easy_admin_products_model {
     $result = $db->Execute($query);
     if (!$result->EOF) {
       foreach($columns['featured_column'] as $k => $v) {
-        if (isset($result->fields[$k]))
+        if (isset($result->fields[$k])) {
+          if ($k == 'featured_date_available' ||
+              $k == 'expires_date') {
+            if ($result->fields[$k] == '0001-01-01')
+              $result->fields[$k] = '';
+          }
           $product['featured_'.$k] = $result->fields[$k];
+        }
       }
     }
 
@@ -545,8 +551,13 @@ class easy_admin_products_model {
     $result = $db->Execute($query);
     if (!$result->EOF) {
       foreach($columns['specials_column'] as $k => $v) {
-        if (isset($result->fields[$k]))
+        if (isset($result->fields[$k])) {
+          if ($k == 'featured_date_available' ||
+              $k == 'expires_date') {
+            if ($result->fields[$k] == '0001-01-01')
+              $result->fields[$k] = '';
           $product['specials_'.$k] = $result->fields[$k];
+        }
       }
     }
 
@@ -719,6 +730,11 @@ class easy_admin_products_model {
 
     // featured
     if (isset($product['featured_status'])) {
+      if ($product['featured_expires_date'] == "")
+        $product['featured_expires_date'] = '0001-01-01';
+      if ($product['featured_featured_date_available'] == "")
+        $product['featured_featured_date_available'] = '0001-01-01';
+
       $sql_data_array = array(
         'products_id'             => $products_id,
         'expires_date'            => $product['featured_expires_date'],
@@ -741,6 +757,11 @@ class easy_admin_products_model {
 
     // specials
     if (isset($product['specials_status'])) {
+      if ($product['specials_expires_date'] == "")
+        $product['specials_expires_date'] = '0001-01-01';
+      if ($product['specials_specials_date_available'] == "")
+        $product['specials_specials_date_available'] = '0001-01-01';
+
       $sql_data_array = array(
         'products_id'             => $products_id,
         'specials_new_products_price' => $product['specials_specials_new_products_price'],
