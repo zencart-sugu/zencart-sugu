@@ -199,7 +199,7 @@ if (!defined('IS_ADMIN_FLAG')) {
     FROM " . TABLE_BLOCKS . "
     WHERE (template='" . $template_dir . "'
     AND block NOT LIKE '%ezpages_bar%')
-    ;");
+    AND sort_order > ".(int)MODULE_ADDON_MODULES_SORT_ORDER_CSS_SELECTOR);
   $sort_order_min = -$check_sort_order->fields['count'];
   if ($check_sort_order->fields['min'] < $sort_order_min) $sort_order_min = $check_sort_order->fields['min'];
   $sort_order_max = $check_sort_order->fields['count'];
@@ -209,6 +209,13 @@ if (!defined('IS_ADMIN_FLAG')) {
   for ($i = $sort_order_min, $n = $sort_order_max; $i <= $n; $i++) {
     $sort_order_options[] = array('id' => $i, 'text' => $i);
   }
+
+  $insert_position_options = array(
+    array('id' => 'append',  'text' => TEXT_APPEND),
+    array('id' => 'prepend', 'text' => TEXT_PREPEND),
+    array('id' => 'after',   'text' => TEXT_AFTER),
+    array('id' => 'before',  'text' => TEXT_BEFORE),
+  );
 
   // Check all exisiting pages are in the main /pages
   $pages_directory = DIR_FS_CATALOG_MODULES . 'pages/';
@@ -341,6 +348,10 @@ if (!defined('IS_ADMIN_FLAG')) {
         $id = zen_db_prepare_input($_GET['bID']);
         $location = zen_db_prepare_input($_POST['location']);
         $sort_order = zen_db_prepare_input($_POST['sort_order']);
+
+        $css_selector = zen_db_prepare_input($_POST['css_selector']);
+        $insert_position = zen_db_prepare_input($_POST['insert_position']);
+
         $visible = zen_db_prepare_input($_POST['visible']);
         $pages = '';
         if (is_array($_POST['pages'])) {
@@ -357,6 +368,8 @@ if (!defined('IS_ADMIN_FLAG')) {
           'sort_order' => (int)$sort_order,
           'visible' => (int)$visible,
           'pages' => $pages,
+          'css_selector' => $css_selector,
+          'insert_position' => $insert_position,
           );
         zen_db_perform(TABLE_BLOCKS, $sql_data_array, 'update', "id = '" . (int)$id . "'");
 
@@ -407,6 +420,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 <link rel="stylesheet" type="text/css" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
+<script language="javascript" src="../<?php echo DIR_WS_ADDON_MODULES; ?>addon_modules/javascript/jquery-1.6.min.js"></script>
 <script type="text/javascript">
   <!--
   function init()
@@ -467,6 +481,26 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
     }
     return false;
+  }
+
+  var sort_order_option = new Array();
+<?php
+  foreach($sort_order_options as $v) {
+?>
+  sort_order_option.push({'id':'<?php echo $v['id']; ?>', 'text':'<?php echo $v['text']; ?>'});
+<?php
+  }
+?>
+
+  function select_location() {
+    var location = $("#location")[0];
+
+    if (location.value == 'main') {
+      $("*[name=css_selector_div]").show();
+    }
+    else {
+      $("*[name=css_selector_div]").hide();
+    }
   }
 
   // -->
@@ -546,7 +580,7 @@ if (count($layout_locations) > 0) {
   $boxes_directory_template = DIR_FS_CATALOG_MODULES . 'sideboxes/' . $template_dir . '/';
 
   $block_layouts = $db->Execute("
-    SELECT id, module, block, status, location, sort_order, visible, pages
+    SELECT *
     FROM " . TABLE_BLOCKS . "
     WHERE (template='" . $template_dir . "'
     AND block NOT LIKE '%ezpages_bar%')
@@ -651,7 +685,7 @@ if (count($layout_locations) > 0) {
 <?php
   } elseif ($_GET['bID'] > 0) {
     $block_layouts = $db->Execute("
-      SELECT id, module, block, status, location, sort_order, visible, pages
+      SELECT *
       FROM " . TABLE_BLOCKS . "
       WHERE template='" . $template_dir . "'
         AND block NOT LIKE '%ezpages_bar%'
@@ -665,6 +699,11 @@ if (count($layout_locations) > 0) {
   $contents = array();
 
   if (is_object($bInfo)) {
+    if ($bInfo->location == "main")
+      $css_style_display = true;
+    else
+      $css_style_display = false;
+
     switch ($_GET['action']) {
       case 'edit':
         switch ($bInfo->visible) {
@@ -687,6 +726,14 @@ if (count($layout_locations) > 0) {
           }
         }
 
+        if ($css_style_display) {
+          $css_style = '';
+        }
+        else {
+          $css_style = ' style="display:none;"';
+        }
+        $div = '<div name="css_selector_div"'.$css_style.'>';
+
         if ($bInfo->module == 'sideboxes') {
           $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_EDIT_BOX . '</b>');
 
@@ -694,8 +741,12 @@ if (count($layout_locations) > 0) {
           $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
           $contents[] = array('text' => TEXT_INFO_BOX_NAME . ' <strong>' . $box_names[$bInfo->block] . '</strong> (' . $bInfo->block . ')');
           $contents[] = array('text' => TEXT_INFO_BOX_STATUS . ' ' .  ($bInfo->status == '1' ? TEXT_ON : TEXT_OFF));
-          $contents[] = array('text' => '<br />' . TEXT_INFO_BOX_LOCATION . '<br />' . zen_draw_pull_down_menu('location', $location_options , $bInfo->location));
+          $contents[] = array('text' => '<br />' . TEXT_INFO_BOX_LOCATION . '<br />' . zen_draw_pull_down_menu('location', $location_options , $bInfo->location, ' id="location" onChange="select_location();"'));
           $contents[] = array('text' => '<br />' . TEXT_INFO_BOX_SORT_ORDER . '<br />' . zen_draw_pull_down_menu('sort_order', $sort_order_options , $bInfo->sort_order));
+
+          $contents[] = array('text' => $div.'<br />' . TEXT_INFO_BOX_CSS_SELECTOR . '<br />' . zen_draw_input_field('css_selector', $bInfo->css_selector).'</div>');
+          $contents[] = array('text' => $div.'<br />' . TEXT_INFO_BOX_INSERT_POSITION . '<br />' . zen_draw_pull_down_menu('insert_position', $insert_position_options, $bInfo->insert_position).'</div>');
+
           $contents[] = array('text' => '<br />' . TEXT_INFO_BOX_VISIBLE . '<br /><label for="visible-1">' . zen_draw_radio_field('visible', '1', $in_visible, '', 'id="visible-1"') . TEXT_VISIBLE_PAGES . '</label><br /><label for="visible-0">' . zen_draw_radio_field('visible', '0', $out_visible, '', 'id="visible-0"') . TEXT_INVISIBLE_PAGES . '</label>');
           $contents[] = array('text' => '<br />' . TEXT_INFO_BOX_PAGES . ' ' . $pages_inputs_string);
         } else {
@@ -706,8 +757,12 @@ if (count($layout_locations) > 0) {
           $contents[] = array('text' => TEXT_INFO_MODULE_NAME . ' ' . $bInfo->module);
           $contents[] = array('text' => TEXT_INFO_BLOCK_NAME . ' <strong>' . $block_names[$bInfo->module . '#' . $bInfo->block] . '</strong> (' . $bInfo->block . ')');
           $contents[] = array('text' => TEXT_INFO_BLOCK_STATUS . ' ' .  ($bInfo->status == '1' ? TEXT_ON : TEXT_OFF));
-          $contents[] = array('text' => '<br />' . TEXT_INFO_BLOCK_LOCATION . '<br />' . zen_draw_pull_down_menu('location', $location_options , $bInfo->location));
+          $contents[] = array('text' => '<br />' . TEXT_INFO_BLOCK_LOCATION . '<br />' . zen_draw_pull_down_menu('location', $location_options , $bInfo->location, ' id="location" onChange="select_location();"'));
           $contents[] = array('text' => '<br />' . TEXT_INFO_BLOCK_SORT_ORDER . '<br />' . zen_draw_pull_down_menu('sort_order', $sort_order_options , $bInfo->sort_order));
+
+          $contents[] = array('text' => $div.'<br />' . TEXT_INFO_BOX_CSS_SELECTOR . '<br />' . zen_draw_input_field('css_selector', $bInfo->css_selector).'</div>');
+          $contents[] = array('text' => $div.'<br />' . TEXT_INFO_BOX_INSERT_POSITION . '<br />' . zen_draw_pull_down_menu('insert_position', $insert_position_options, $bInfo->insert_position).'</div>');
+
           $contents[] = array('text' => '<br />' . TEXT_INFO_BLOCK_VISIBLE . '<br /><label for="visible-1">' . zen_draw_radio_field('visible', '1', $in_visible, '', 'id="visible-1"') . TEXT_VISIBLE_PAGES . '</label><br /><label for="visible-0">' . zen_draw_radio_field('visible', '0', $out_visible, '', 'id="visible-0"') . TEXT_INVISIBLE_PAGES . '</label>');
           $contents[] = array('text' => '<br />' . TEXT_INFO_BOX_PAGES . ' ' . $pages_inputs_string);
         }
@@ -757,6 +812,19 @@ if (count($layout_locations) > 0) {
           $contents[] = array('text' => TEXT_INFO_BOX_STATUS . ' ' .  ($bInfo->status == '1' ? TEXT_ON : TEXT_OFF));
           $contents[] = array('text' => TEXT_INFO_BOX_LOCATION . ' ' . $bInfo->location);
           $contents[] = array('text' => TEXT_INFO_BOX_SORT_ORDER . ' ' . $bInfo->sort_order);
+
+          if ($css_style_display) {
+            $insert_position = "";
+            foreach($insert_position_options as $v) {
+              if ($v['id'] == $bInfo->insert_position) {
+                $insert_position = $v['text'];
+                break;
+              }
+            }
+            $contents[] = array('text' => TEXT_INFO_BOX_CSS_SELECTOR . ' ' . $bInfo->css_selector);
+            $contents[] = array('text' => TEXT_INFO_BOX_INSERT_POSITION . ' ' . $insert_position);
+          }
+
           $contents[] = array('text' => ($bInfo->visible == '1' ? TEXT_VISIBLE_PAGES : TEXT_INVISIBLE_PAGES));
           $contents[] = array('text' => $pages_outputs_string);
           if (!(file_exists($boxes_directory . $bInfo->block) || file_exists($boxes_directory_template . $bInfo->block))) {
