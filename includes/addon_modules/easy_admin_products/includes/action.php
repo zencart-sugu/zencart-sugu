@@ -6,7 +6,6 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  */
-
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
@@ -25,7 +24,7 @@ global $easy_admin_products_searchs;
 // 指定されていない場合はセッションから戻す
 $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SEARCH');
 $searchs  = array(
-  'category',
+  'category_id',
   'title',
   'model',
   'manufacturer',
@@ -59,16 +58,19 @@ $special  = array(
 );
 
 $template  = "index";
+$zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_ACTION');
 switch($action) {
   case 'index':
     break;
 
   case 'status_on':
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_START_STATUS_ON');
     $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_STATUS, 'success');
     $model->change_status($_REQUEST['products_id'], 1);
     break;
 
   case 'status_off':
+    $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_START_STATUS_OFF');
     $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_STATUS, 'success');
     $model->change_status($_REQUEST['products_id'], 0);
     break;

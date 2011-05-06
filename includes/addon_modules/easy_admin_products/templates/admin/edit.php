@@ -262,7 +262,7 @@
         echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_HEADING_CATEGORY);
       ?>
       <td>
-        <input id="categories_id" type="hidden" name="categories_id" value="<?php echo $product['categories']; ?>">
+        <input id="categories_id" type="hidden" name="categories_id" value="<?php echo htmlspecialchars($product['categories']); ?>">
         <a id="fancybox_category" onclick="return category_select('categories', 0, 0);"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT; ?></a>
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY; ?>
         <div id="categories_div">
@@ -283,7 +283,7 @@
         </div>
       </td>
     </tr>
-    <?php echo $html->error($easy_admin_products_validate, "categories"); ?>
+    <?php echo $html->error($easy_admin_products_validate, "categories_id"); ?>
 
     <tr>
       <?php

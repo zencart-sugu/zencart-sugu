@@ -41,10 +41,15 @@ class easy_admin_products_model {
     $join  = "";
     $where = "";
 
-    if ($search_param['category'] > 0) {
+    if ($search_param['category_id'] > 0) {
       $categories = array();
-      self::zen_get_subcategories($categories, (int)$search_param['category']);
-      $categories[] = (int)$search_param['category'];
+      foreach(explode(",", $search_param['category_id']) as $v) {
+        if ($v > 0) {
+          self::zen_get_subcategories($acategories, (int)$v);
+          $categories[] = (int)$a;
+          $categories   = array_merge($categories, $acategories);
+        }
+      }
       $where .= " and p2c.categories_id in (".implode(",", $categories).")";
     }
 
@@ -245,7 +250,23 @@ class easy_admin_products_model {
 
     $category_id = $search_param['category_id'];
     $keyword     = $search_param['keyword'];
-    if ($keyword != "") {
+    if ($keyword != "" && $category_id>0) {
+      $query       = "select
+                        c.categories_id,
+                        cd.categories_name
+                      from ".
+                        TABLE_CATEGORIES." c,".
+                        TABLE_CATEGORIES_DESCRIPTION." cd
+                      where
+                            c.parent_id=".(int)$category_id."
+                        and c.categories_id=cd.categories_id
+                        and cd.language_id=".(int)$_SESSION['languages_id']."
+                        and cd.categories_name like '%".zen_db_input($keyword)."%'
+                      order by
+                        c.sort_order,
+                        cd.categories_name";
+    }
+    else if ($keyword != "") {
       $query       = "select
                         c.categories_id,
                         cd.categories_name
@@ -464,8 +485,8 @@ class easy_admin_products_model {
     }
 
     // カテゴリ
-    if ($post['categories'] == 0) {
-      $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
+    if ($post['categories_id'] == 0) {
+      $errors['categories_id'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
     }
 
     return $errors;
@@ -475,8 +496,8 @@ class easy_admin_products_model {
   function validate_copy($post) {
     $errors = array();
     // カテゴリ
-    if ($post['categories'] == 0) {
-      $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
+    if ($post['categories_id'] == 0) {
+      $errors['categories_id'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
     }
 
     return $errors;
@@ -675,7 +696,7 @@ class easy_admin_products_model {
     // products_to_categories
     // いったんすべてのカテゴリを削除後、追加する
     $db->Execute("delete from ".TABLE_PRODUCTS_TO_CATEGORIES." where products_id=".(int)$products_id);
-    $array = explode(",", $product['categories']);
+    $array = explode(",", $product['categories_id']);
     foreach($array as $v) {
       if ($v > 0) {
         $sql_data_array = array(
@@ -736,23 +757,28 @@ class easy_admin_products_model {
       if ($product['featured_featured_date_available'] == "")
         $product['featured_featured_date_available'] = '0001-01-01';
 
-      $sql_data_array = array(
-        'products_id'             => $products_id,
-        'expires_date'            => $product['featured_expires_date'],
-        'status'                  => $product['featured_status'],
-        'featured_date_available' => $product['featured_featured_date_available'],
-      );
+      if ($product['featured_status'] == 1) {
+        $sql_data_array = array(
+          'products_id'             => $products_id,
+          'expires_date'            => $product['featured_expires_date'],
+          'status'                  => $product['featured_status'],
+          'featured_date_available' => $product['featured_featured_date_available'],
+        );
 
       $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_FEATURED');
 
-      if ($product['featured_featured_id'] == 0) {
-        $sql_data_array['featured_date_added'] = 'now()';
-        zen_db_perform(TABLE_FEATURED, $sql_data_array);
-        $product['featured_featured_id'] = zen_db_insert_id();
+        if ($product['featured_featured_id'] == 0) {
+          $sql_data_array['featured_date_added'] = 'now()';
+          zen_db_perform(TABLE_FEATURED, $sql_data_array);
+          $product['featured_featured_id'] = zen_db_insert_id();
+        }
+        else {
+          $sql_data_array['featured_last_modified'] = 'now()';
+          zen_db_perform(TABLE_FEATURED, $sql_data_array, "update", "featured_id=".$product['featured_featured_id']);
+        }
       }
       else {
-        $sql_data_array['featured_last_modified'] = 'now()';
-        zen_db_perform(TABLE_FEATURED, $sql_data_array, "update", "featured_id=".$product['featured_featured_id']);
+        $db->Execute("delete from ".TABLE_FEATURED." where products_id=".(int)$products_id);
       }
     }
 
@@ -763,24 +789,29 @@ class easy_admin_products_model {
       if ($product['specials_specials_date_available'] == "")
         $product['specials_specials_date_available'] = '0001-01-01';
 
-      $sql_data_array = array(
-        'products_id'             => $products_id,
-        'specials_new_products_price' => $product['specials_specials_new_products_price'],
-        'expires_date'                => $product['specials_expires_date'],
-        'status'                      => $product['specials_status'],
-        'specials_date_available'     => $product['specials_specials_date_available'],
-      );
+      if ($product['specials_status'] == 1) {
+        $sql_data_array = array(
+          'products_id'             => $products_id,
+          'specials_new_products_price' => $product['specials_specials_new_products_price'],
+          'expires_date'                => $product['specials_expires_date'],
+          'status'                      => $product['specials_status'],
+          'specials_date_available'     => $product['specials_specials_date_available'],
+        );
 
-      $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_SPECIALS');
+        $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_SPECIALS');
 
-      if ($product['specials_specials_id'] == 0) {
-        $sql_data_array['specials_date_added'] = 'now()';
-        zen_db_perform(TABLE_SPECIALS, $sql_data_array);
-        $product['specials_specials_id'] = zen_db_insert_id();
+        if ($product['specials_specials_id'] == 0) {
+          $sql_data_array['specials_date_added'] = 'now()';
+          zen_db_perform(TABLE_SPECIALS, $sql_data_array);
+          $product['specials_specials_id'] = zen_db_insert_id();
+        }
+        else {
+          $sql_data_array['specials_last_modified'] = 'now()';
+          zen_db_perform(TABLE_SPECIALS, $sql_data_array, "update", "specials_id=".$product['specials_specials_id']);
+        }
       }
       else {
-        $sql_data_array['specials_last_modified'] = 'now()';
-        zen_db_perform(TABLE_SPECIALS, $sql_data_array, "update", "specials_id=".$product['specials_specials_id']);
+        $db->Execute("delete from ".TABLE_SPECIALS." where products_id=".(int)$products_id);
       }
     }
 
