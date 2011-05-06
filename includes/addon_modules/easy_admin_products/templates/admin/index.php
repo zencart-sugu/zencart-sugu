@@ -45,12 +45,12 @@
           categories_ids += ",";
         $("#"+html_id+"_id").val(categories_ids+category_id);
 
-        var format = '<div id="'+key+'">'
+        var format = '<label id="'+key+'">'
                    +   '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT; ?>'
                    +   '<a href="javascript:void(0)" onclick="category_remove('+category_id+');">'
                    +     '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP; ?>'
                    +   '<'+'/a>'
-                   + '<'+'/div>';
+                   + '<'+'/label>';
         format = format.replace("\%s", name);
         var html = $("#"+html_id+"_div").html();
         $("#"+html_id+"_div").html(html+format);
@@ -91,13 +91,19 @@
     <tr>
       <th><?php echo MODULE_EASY_ADMIN_PRODUCTS_ITEM_CATEGORY; ?></th>
        <td colspan="5">
-        <input type="hidden" id="category_id" name="category_id" value="<?php echo htmlspecialchars($_SESSION['category']); ?>" />
+        <input type="hidden" id="category_id" name="category_id" value="<?php echo htmlspecialchars($_SESSION['category_id']); ?>" />
         <a id="fancybox_category" onclick="return category_select('category', 0, 0);"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT; ?></a>
         <span id="category_div">
   <?php
-    if ($_SESSION['category'] > 0) {
-      echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT, $model->get_category($_SESSION['category']));
-      echo '<a href="javascript:void(0);" onclick="return category_reset();">'.MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET.'</a>';
+    if ($_SESSION['category_id'] > 0) {
+      foreach(explode(",", $_SESSION['category_id']) as $v) {
+        echo '<label id="cat_'.$v.'">';
+        echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT, $model->get_category($v));
+        echo '<a href="javascript:void(0);" onclick="category_remove('."'".$v."'".');">';
+        echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP;
+        echo '</a>';
+        echo '</label>';
+      }
     }
   ?>
 </span>

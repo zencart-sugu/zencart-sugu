@@ -131,10 +131,12 @@ class easy_admin_products_html {
     return $html;
   }
 
-  function file($name, $title) {
+  function file($name, $title, $before="", $after="", $parm="") {
     $html = self::pre_html($title).
             '<td>'.
-              '<input type="file" name="'.$name.'">'.
+              $before.
+              '<input type="file" name="'.$name.'" '.$parm.'>'.
+             $after.
             '</td>'."\n";
 
     return $html;
