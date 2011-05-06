@@ -18,3 +18,5 @@ define('MODULE_ADDON_MODULES_DISTRIBUTION_URL_DEFAULT', 'http://sugu.e7.com');
 define('MODULE_ADDON_MODULES_MODULE_LIST_YML_NAME',     '/addon_module_list.yml');
 define('MODULE_ADDON_MODULES_DOWNLOAD_TEMP_DIRECTORY',  '/tmp/');
 define('MODULE_ADDON_MODULES_DOWNLOAD_DIRECTORY',       'includes/addon_modules/');
+
+define('MODULE_ADDON_MODULES_SORT_ORDER_CSS_SELECTOR',  '-10000');

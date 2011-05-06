@@ -190,6 +190,8 @@ function zen_addOnModules_get_layout_location_blocks($layout_location, $page) {
         $layout_location_blocks[$layout_location][] = array(
           'module' => $module,
           'block' => $block,
+          'css_selector' => $result->fields['css_selector'],
+          'insert_position' => $result->fields['insert_position'],
           );
       }
 
@@ -249,16 +251,35 @@ function zen_addOnModules_get_layout_contents($layout_location, $page) {
     $layout_location_blocks = zen_addOnModules_get_layout_location_blocks($layout_location, $current_page_base);
   }
 
-  $return = false;
 
   $blocks = $layout_location_blocks[$layout_location];
-  for ($i = 0, $n = count($blocks); $i < $n; $i++) {
-    $module = $blocks[$i]['module'];
-    $block = $blocks[$i]['block'];
-    if ($module == 'sideboxes') {
-      $return .= zen_addOnModules_get_sidebox($block);
-    } else {
-      $return .= $GLOBALS[$module]->getBlock($block, $page);
+  if ($layout_location == "main") {
+    $return = array();
+    for ($i = 0, $n = count($blocks); $i < $n; $i++) {
+      $module = $blocks[$i]['module'];
+      $block  = $blocks[$i]['block'];
+      $key    = $module."/".$block;
+      if ($module == 'sideboxes')
+        $contents = zen_addOnModules_get_sidebox($block);
+      else
+        $contents = $GLOBALS[$module]->getBlock($block, $page);
+      $return[$key] = array(
+        'contents'        => $contents,
+        'css_selector'    => $blocks[$i]['css_selector'],
+        'insert_position' => $blocks[$i]['insert_position'],
+      );
+    }
+  }
+  else {
+    $return = false;
+    for ($i = 0, $n = count($blocks); $i < $n; $i++) {
+      $module = $blocks[$i]['module'];
+      $block = $blocks[$i]['block'];
+      if ($module == 'sideboxes') {
+        $return .= zen_addOnModules_get_sidebox($block);
+      } else {
+        $return .= $GLOBALS[$module]->getBlock($block, $page);
+      }
     }
   }
 

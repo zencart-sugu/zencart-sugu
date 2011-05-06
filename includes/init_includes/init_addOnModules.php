@@ -12,6 +12,7 @@
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
+  ob_start();
 
   $addon_module_init_files = zen_addOnModules_get_module_init_files();
   for ($addon_counter = 0, $addon_count = count($addon_module_init_files); $addon_counter < $addon_count; $addon_counter++) {

@@ -19,6 +19,11 @@ zen_session_close();
 // pconnect disabled (safety switch)
 // $db->close();
 
+$addonmodules_print_layout_main_content = ob_get_contents();
+ob_end_clean();
+$zco_notifier->notify('NOTIFY_HEADER_ADDONMODULES_PRINT_LAYOUT_MAIN');
+print $addonmodules_print_layout_main_content;
+
 if ( (GZIP_LEVEL == '1') && ($ext_zlib_loaded == true) && ($ini_zlib_output_compression < 1) ) {
   if ( (PHP_VERSION < '4.0.4') && (PHP_VERSION >= '4') ) {
     zen_gzip_output(GZIP_LEVEL);
