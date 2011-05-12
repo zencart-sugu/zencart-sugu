@@ -137,25 +137,41 @@ if (!defined('IS_ADMIN_FLAG')) {
       global $main;
       global $addonmodules_print_layout_main_content;
 
+      // DOMDocument‚ªjavascript‚ğ‚¤‚Ü‚­ˆ—‚Å‚«‚È‚¢‚Ì‚Å
+      // “K“–‚É’u‚«Š·‚¦‚Ä‚İ‚é
+      preg_match_all("/(<script.*?>.*?<\/script>)/is", $addonmodules_print_layout_main_content, $match);
+      foreach($match[1] as $k => $v) {
+        $addonmodules_print_layout_main_content = str_replace($v, "%__phpQuery_".$k."__%", $addonmodules_print_layout_main_content);
+      }
+
       $doc = phpQuery::newDocumentHTML($addonmodules_print_layout_main_content, CHARSET);
       phpQuery::selectDocument($doc);
 
-      foreach($main as $v) {
-        $css_selector    = $v['css_selector'];
-        $insert_position = $v['insert_position'];
-        $contents        = $v['contents'];
-        if ($css_selector != "") {
-          if ($insert_position == "append")
-            pq($css_selector)->append($contents);
-          else if ($insert_position == "prepend")
-            pq($css_selector)->prepend($contents);
-          else if ($insert_position == "after")
-            pq($css_selector)->after($contents);
-          else if ($insert_position == "before")
-            pq($css_selector)->before($contents);
+      if (is_array($main)) {
+        foreach($main as $v) {
+          $css_selector    = $v['css_selector'];
+          $insert_position = $v['insert_position'];
+          $contents        = $v['contents'];
+          if ($css_selector != "") {
+            if ($insert_position == "append")
+              pq($css_selector)->append($contents);
+            else if ($insert_position == "prepend")
+              pq($css_selector)->prepend($contents);
+            else if ($insert_position == "after")
+              pq($css_selector)->after($contents);
+            else if ($insert_position == "before")
+              pq($css_selector)->before($contents);
+          }
         }
       }
 
-      $addonmodules_print_layout_main_content = $doc;
+      $out = $doc->getDocument()->getDOMDocument()->saveHTML();
+
+      // ’u‚«Š·‚¦‚½‚Ì‚ğ–ß‚·
+      foreach($match[1] as $k => $v) {
+        $out = str_replace("%__phpQuery_".$k."__%", $v, $out);
+      }
+
+      $addonmodules_print_layout_main_content = $out;
     }
   }
