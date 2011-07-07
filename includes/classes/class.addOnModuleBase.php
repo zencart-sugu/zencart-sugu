@@ -13,7 +13,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 
   class addOnModuleBase extends base {
-    var $code, $title, $description, $sort_order, $icon, $status, $enabled, $configuration_keys, $require_modules, $notifier;
+    var $code, $title, $description, $sort_order, $icon, $status, $enabled, $configuration_keys, $require_modules, $notifier, $block_layouts;
     var $dir, $dir_templates, $dir_template, $dir_template_images, $dir_template_icons, $schema;
     // sugudeki-pack
     var $author;
@@ -103,6 +103,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
 
       $this->_createTables();
+      $this->_setBlockLayouts();
 
       $this->_install();
     }
@@ -301,6 +302,55 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
 
       return $create_field;
+    }
+
+    function _setBlockLayouts() {
+      global $template_dir;
+      global $db;
+
+      // static variables
+      $module   = $this->code;
+      $template = $template_dir;
+      $status   = 1;
+
+      for ($i = 0, $n = count($this->block_layouts); $i < $n; $i++) {
+	// verify name, location, pages
+        if (   empty($this->block_layouts[$i]['name'])
+            || empty($this->block_layouts[$i]['location'])
+            || !isset($this->block_layouts[$i]['visible'])
+            || empty($this->block_layouts[$i]['pages'])
+            || !is_array($this->block_layouts[$i]['pages'])
+            || count($this->block_layouts[$i]['pages']) == 0
+        ) {
+          continue;
+        }
+
+        $block = $this->block_layouts[$i]['name'];
+        // is already exists?
+        $sql = 'SELECT COUNT(*) AS count FROM ' . TABLE_BLOCKS . ' WHERE module=\'' . zen_db_input($module) . '\' AND block=\'' . zen_db_input($block) . '\' AND template=\'' . zen_db_input($template) . '\'';
+        $result = $db->Execute($sql);
+        if (isset($result->fields['count']) && $result->fields['count'] != 0) {
+          // record is already exists
+          continue;
+	}
+        // record is not exists
+        $sql_data_array = array();
+        $sql_data_array['module']   = $module;
+        $sql_data_array['block']    = $block;
+        $sql_data_array['template'] = $template;
+        $sql_data_array['status']   = $status;
+        $sql_data_array['location'] = $this->block_layouts[$i]['location'];
+        $sql_data_array['visible']  = (int)$this->block_layouts[$i]['visible'];
+        // pages must be separated by nl
+        $sql_data_array['pages']    = implode("\n", $this->block_layouts[$i]['pages']);
+
+        // calculate sort_order
+        $sql = 'SELECT MAX(sort_order) AS max FROM ' . TABLE_BLOCKS . ' WHERE location=\'' . zen_db_input($sql_data_array['location']) . '\' AND template=\'' . zen_db_input($template) . '\'';
+        $result = $db->Execute($sql);
+        $sql_data_array['sort_order'] = is_null($result->fields['max']) ? 0 : (int)$result->fields['max'] + 1;
+
+        zen_db_perform(TABLE_BLOCKS, $sql_data_array);
+      }
     }
 
     function update() {
