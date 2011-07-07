@@ -39,6 +39,30 @@ if (!defined('IS_ADMIN_FLAG')) {
             'set_function' => 'null'
           ),
         );
+    /**
+     * define default block layouts.
+     * these will be set automatically when module installed.
+     *
+     - parameters
+     -- name:     name of block method
+     -- location: where the block is included
+                  header,main_top,main_bottom,sidebar_left,sidebar_right,footer,main are available.
+     -- visible:  0) always include block excluding pages
+                  1) include block at pages
+     -- pages:    target pages
+     */
+    /* examples
+    var $block_layouts = array(array('name'     => 'block',
+                                     'location' => 'main_top',
+                                     'visible'  => '0',
+                                     'pages'    => array('checkout_confirmation',
+                                                         'checkout_payment',
+                                                         'checkout_payment_address',
+                                                         'checkout_shipping',
+                                                         'checkout_shipping_address',
+                                                         'checkout_success')),
+                         );
+    end of examples */
     var $require_modules = array(:required);
     var $notifier = array();
 
