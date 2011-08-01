@@ -110,13 +110,9 @@ function product_csv_get_files($base, $ext) {
         $filename == "..")
       continue;
     if (filetype($base."/".$filename) == "file") {
-      if (strpos($filename, "products") === 0 ||
-          strpos($filename, "categories") === 0 ||
-          strpos($filename, "options") === 0) {
-        if ($ext == "" ||
-          preg_match("/^.+\.".$ext."$/", $filename)) {
-          $files[] = $filename;
-        }
+      if ($ext == "" ||
+        preg_match("/^.+\.".$ext."$/", $filename)) {
+        $files[] = $filename;
       }
     }
   }
@@ -131,12 +127,18 @@ function product_csv_check_filename($filename) {
               'time'     => '',
             );
 
-  if (preg_match("/^[^_]*_([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})\.csv$/", $filename, $match)) {
-    if (!checkdate($match[2], $match[3], $match[1]) ||
-      $match[4] > 23 || $match[5] > 59 || $match[6] > 59)
-      $return['errormsg'] = ERROR_PRODUCT_CSV_IMPORT_TIME_FORMAT;
+  if (strpos($filename, "products_") === 0 ||
+      strpos($filename, "categories_") === 0 ||
+      strpos($filename, "options_") === 0) {
+    if (preg_match("/^.*_([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})\.csv$/", $filename, $match)) {
+      if (!checkdate($match[2], $match[3], $match[1]) ||
+        $match[4] > 23 || $match[5] > 59 || $match[6] > 59)
+        $return['errormsg'] = ERROR_PRODUCT_CSV_IMPORT_TIME_FORMAT;
+      else
+        $return['time']     = $match[1].$match[2].$match[3].$match[4].$match[5].$match[6];
+    }
     else
-      $return['time']     = $match[1].$match[2].$match[3].$match[4].$match[5].$match[6];
+      $return['errormsg'] = ERROR_PRODUCT_CSV_IMPORT_FILENAME;
   }
   else
     $return['errormsg'] = ERROR_PRODUCT_CSV_IMPORT_FILENAME;
