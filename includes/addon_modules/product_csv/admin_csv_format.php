@@ -386,7 +386,6 @@ $return_button = '<td class="pageHeading" align="center">'.$return_button.'</td>
 <!-- body_text_eof //-->
   </tr>
 </table>
-?>
 <!-- body_eof //-->
 
 <!-- footer //-->

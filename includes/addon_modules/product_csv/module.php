@@ -26,6 +26,14 @@ if (!defined('IS_ADMIN_FLAG')) {
             'set_function' => 'zen_cfg_select_option(array(\'true\', \'false\'), '
           ),
           array(
+            'configuration_title' => MODULE_PRODUCT_RESERVE_IMPORT_TITLE,
+            'configuration_key' => 'MODULE_PRODUCT_RESERVE_IMPORT',
+            'configuration_value' => MODULE_PRODUCT_RESERVE_IMPORT_DEFAULT,
+            'configuration_description' => MODULE_PRODUCT_RESERVE_IMPORT_DESCRIPTION,
+            'use_function' => 'null',
+            'set_function' => 'null'
+          ),
+          array(
             'configuration_title' => MODULE_PRODUCT_CSV_SORT_ORDER_TITLE,
             'configuration_key' => 'MODULE_PRODUCT_CSV_SORT_ORDER',
             'configuration_value' => MODULE_PRODUCT_CSV_SORT_ORDER_DEFAULT,

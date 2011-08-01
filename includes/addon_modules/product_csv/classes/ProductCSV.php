@@ -1050,6 +1050,96 @@ class ProductCSV {
   }
 }
 
+  function import($tempfile, $csv_format_type_id, $ignore_first_line, $unlink=true) {
+    global $ProductCSV;
+    global $format;
+    global $data;
+    global $messageStack;
+    global $line_count;
+    global $success_count;
+    global $error_count;
+    global $missing_count;
+    global $body;
+
+    $format = $ProductCSV->getFormatById($csv_format_type_id);
+    $conf = File_CSV::DiscoverFormat($tempfile);
+    File_CSV::getPointer($tempfile, $conf);
+    // check format
+    if ($conf['fields'] == count($format['columns'])) {
+      $count = 1;
+      // skip first line
+      if ($ignore_first_line) {
+        File_CSV::read($tempfile, $conf);
+        $count++;
+      }
+      // output table header
+      $body = '<tr><td><table border="1">';
+      $body .= '<tr>';
+      $body .= '<th>'.PRODUCT_CSV_TABLE_LINE_NUMBER.'</th>';
+      foreach ($format['columns'] as $val) {
+        $body .= '<th>'.$val['csv_column_name'].'</th>';
+      }
+      $body .= '<th>'.PRODUCT_CSV_TABLE_HEADER.'</th>';
+      $body .= '</tr>';
+      // init count
+      $line_count = 0;
+      $success_count = 0;
+      $error_count = 0;
+      $missing_count = 0;
+      // read lines
+      while (($data = File_CSV::read($tempfile, $conf)) !== false) {
+        if (count($data) == 0) {
+          continue;
+        }
+        echo ' ';
+        flush();
+        // convert charactr set to internal encoding
+        foreach ($data as $key => $val) {
+          $data[$key] = mb_convert_encoding($val, MODULE_PRODUCT_CSV_INTERNAL_CHARACTER, MODULE_PRODUCT_CSV_IMPORT_CHARACTER);
+        }
+        switch ($format['csv_format_type_id']) {
+          case 1:
+            $import_status = $ProductCSV->importProduct($data, $format);
+            break;
+          case 2:
+            $format = zen_add_number_to_format($format);
+            $import_status = $ProductCSV->importCategory($data, $format);
+            break;
+          case 3:
+            $import_status = $ProductCSV->importOption($data, $format);
+            break;
+        }
+        // store success/error/line count
+        $line_count++;
+        if ($import_status === true) {
+          $success_count++;
+        } elseif ($import_status === false) {
+          $error_count++;
+        } else {
+          $missing_count++;
+        }
+        $body .= '<tr>';
+        $body .= '<td>'.$count++.'</td>';
+        foreach ($data as $val) {
+          if ($val == '') {
+            $val = '&nbsp;';
+          }
+          $body .= '<td>'.$val.'</td>';
+        }
+        $body .= '<td>'.$ProductCSV->messageStack->output().'</td>';
+        $body .= '</tr>';
+      }
+      $body .= '</table></td></tr>';
+      $messageStack->add(sprintf(PRODUCT_CSV_MESSAGE_IMPORT_STATUS, $line_count, $success_count, $error_count), 'success');
+      if ($unlink) {
+        unlink($tempfile);
+      }
+    } else {
+      $messageStack->add(PRODUCT_CSV_ERROR_INVALID_FORMAT, 'caution');
+    }
+  }
+}
+
 // class message stack
 class ProductCSVMessageStack extends messageStack {
   function ProductCSVMessageStack() {

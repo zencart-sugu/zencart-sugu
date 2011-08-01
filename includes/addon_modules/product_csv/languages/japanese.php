@@ -6,6 +6,8 @@ define('MODULE_PRODUCT_CSV_TITLE', 'CSVによる商品一括登録');
 define('MODULE_PRODUCT_CSV_DESCRIPTION', '商品CSVの項目毎の内容を定義できるようにし、その形式で商品情報を一括登録、更新できるようにします');
 define('MODULE_PRODUCT_CSV_STATUS_TITLE', 'CSVによる商品一括登録の有効化');
 define('MODULE_PRODUCT_CSV_STATUS_DESCRIPTION', 'CSVによる商品一括登録を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_PRODUCT_RESERVE_IMPORT_TITLE', '取込予約用CSVファイル配置ディレクトリ');
+define('MODULE_PRODUCT_RESERVE_IMPORT_DESCRIPTION', '取込予約用CSVファイル配置ディレクトリを相対パスで指定します');
 define('MODULE_PRODUCT_CSV_SORT_ORDER_TITLE', '優先順');
 define('MODULE_PRODUCT_CSV_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
