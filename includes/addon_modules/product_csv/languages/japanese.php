@@ -18,7 +18,7 @@ define('MODULE_PRODUCT_CSV_FORMAT_TYPES_3', '商品オプション');
 define('PRODUCT_CSV_RETURN_TEXT', '戻る');
 
 define('ERROR_PRODUCT_CSV_IMPORT_TIME_FORMAT', '時刻フォーマットが不正です');
-define('ERROR_PRODUCT_CSV_IMPORT_FILENAME',    'ファイル名が不正です、[*]_yyyymmddHHMMSS.csvの形式にしてください');
+define('ERROR_PRODUCT_CSV_IMPORT_FILENAME',    'ファイル命名規則に合っていません');
 define('ERROR_PRODUCT_CSV_IMPORT_FILE_READ',   'ファイルを読めませんでした');
 define('ERROR_PRODUCT_CSV_IMPORT_FILE_MOVE',   'ファイルを処理用ディレクトリィに移動できませんでした');
 
