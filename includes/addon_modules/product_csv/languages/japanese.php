@@ -17,6 +17,15 @@ define('MODULE_PRODUCT_CSV_FORMAT_TYPES_3', '商品オプション');
 
 define('PRODUCT_CSV_RETURN_TEXT', '戻る');
 
+define('ERROR_PRODUCT_CSV_IMPORT_TIME_FORMAT', '時刻フォーマットが不正です');
+define('ERROR_PRODUCT_CSV_IMPORT_FILENAME',    'ファイル名が不正です、[*]_yyyymmddHHMMSS.csvの形式にしてください');
+define('ERROR_PRODUCT_CSV_IMPORT_FILE_READ',   'ファイルを読めませんでした');
+define('ERROR_PRODUCT_CSV_IMPORT_FILE_MOVE',   'ファイルを処理用ディレクトリィに移動できませんでした');
+
+define('SUCCESS_PRODUCT_CSV_IMPORT',           'CSV取り込み完了:');
+define('UNSUCCESS_PRODUCT_CSV_IMPORT',         'CSV取り込みエラー:');
+define('PRODUCT_CSV_IMPORTED',                 '%sを取り込みました。');
+
 $GLOBALS['MODULE_PRODUCT_CSV_COLUMNS'] = array(
   array('type_id'=>'1',
 	'column_id'=>'1001',

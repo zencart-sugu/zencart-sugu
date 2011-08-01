@@ -10,6 +10,9 @@
 if (file_exists("local_configure.php"))
   require "local_configure.php";
 
+// 強制的にHTMLメール
+define('ADMIN_EXTRA_EMAIL_FORMAT', 'HTML');
+
 // loginに飛ぶのをごまかす
 $_SERVER['PHP_SELF']      = "login.php";
 
@@ -51,15 +54,15 @@ foreach($files as $file) {
   if ($check['errormsg'] != "") {
     $msg = $check['errormsg']."(".$file.")";
     product_csv_import_write_log("ERROR", $msg);
-    send_html_mail("CSV取り込みエラー:".$file, $msg);
+    send_html_mail(UNSUCCESS_PRODUCT_CSV_IMPORT.$file, $msg);
 
     // 何度もメールされるのが嫌なので移す
     $from_path = str_replace("//", "/", MODULE_PRODUCT_RESERVE_IMPORT);
     $to_path   = str_replace("//", "/", MODULE_PRODUCT_RESERVE_IMPORT."/".MODULE_PRODUCT_RESERVE_IMPORT_TEMP."/");
     if (!@rename($from_path.$file, $to_path.$file)) {
-      $msg = "ファイルを処理用ディレクトリィに移動できませんでした(".$from_path.$file." -> ".$to_path.$file.")";
+      $msg = ERROR_PRODUCT_CSV_IMPORT_FILE_MOVE."(".$from_path.$file." -> ".$to_path.$file.")";
       product_csv_import_write_log("ERROR", $msg);
-      send_html_mail("CSV取り込みエラー:".$file, $msg);
+      send_html_mail(UNSUCCESS_PRODUCT_CSV_IMPORT.$file, $msg);
     }
   }
   else {
@@ -67,9 +70,9 @@ foreach($files as $file) {
       $from_path = str_replace("//", "/", MODULE_PRODUCT_RESERVE_IMPORT);
       $to_path   = str_replace("//", "/", MODULE_PRODUCT_RESERVE_IMPORT."/".MODULE_PRODUCT_RESERVE_IMPORT_TEMP."/");
       if (!@rename($from_path.$file, $to_path.$file)) {
-        $msg = "ファイルを処理用ディレクトリィに移動できませんでした(".$from_path.$file." -> ".$to_path.$file.")";
+        $msg = ERROR_PRODUCT_CSV_IMPORT_FILE_MOVE."(".$from_path.$file." -> ".$to_path.$file.")";
         product_csv_import_write_log("ERROR", $msg);
-        send_html_mail("CSV取り込みエラー:".$file, $msg);
+        send_html_mail(UNSUCCESS_PRODUCT_CSV_IMPORT.$file, $msg);
       }
       else if (is_readable($to_path.$file)) {
         if (strpos($file, "products") === 0)
@@ -83,16 +86,16 @@ foreach($files as $file) {
         $template = new template_func(DIR_WS_TEMPLATES);
         ProductCSV::import($to_path.$file, $csv_format_id, true, false);
         $email = file_get_contents("includes/addon_modules/product_csv/email/email_template_default.html");
-        $email = str_replace('$EMAIL_SUBJECT',      $file."を取り込みました。", $email);
+        $email = str_replace('$EMAIL_SUBJECT', sprintf(PRODUCT_CSV_IMPORTED, $file), $email);
         $email = str_replace('$EMAIL_MESSAGE_HTML', $body, $email);
 
         product_csv_import_write_log("INFO", $file."\n".$email);
-        send_html_mail("CSV取り込み完了:".$file, $email);
+        send_html_mail(SUCCESS_PRODUCT_CSV_IMPORT.$file, $email);
       }
       else {
-        $msg = "ファイルを読めませんでした(".$to_path.$file.")";
+        $msg = ERROR_PRODUCT_CSV_IMPORT_FILE_READ."(".$to_path.$file.")";
         product_csv_import_write_log("ERROR", $msg);
-        send_html_mail("CSV取り込みエラー:".$file, $msg);
+        send_html_mail(UNSUCCESS_PRODUCT_CSV_IMPORT.$file, $msg);
       }
     }
   }
@@ -131,12 +134,12 @@ function product_csv_check_filename($filename) {
   if (preg_match("/^[^_]*_([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})\.csv$/", $filename, $match)) {
     if (!checkdate($match[2], $match[3], $match[1]) ||
       $match[4] > 23 || $match[5] > 59 || $match[6] > 59)
-      $return['errormsg'] = "時刻フォーマットが不正です";
+      $return['errormsg'] = ERROR_PRODUCT_CSV_IMPORT_TIME_FORMAT;
     else
       $return['time']     = $match[1].$match[2].$match[3].$match[4].$match[5].$match[6];
   }
   else
-    $return['errormsg'] = "ファイル名が不正です、[*]_yyyymmddHHMMSS.csvの形式にしてください";
+    $return['errormsg'] = ERROR_PRODUCT_CSV_IMPORT_FILENAME;
 
   return $return;
 }
@@ -157,14 +160,14 @@ function send_html_mail($subject, $body) {
            );
 
   zen_mail(
-    "VOYAGER管理者",
+    STORE_NAME,
     EMAIL_FROM,
     $subject,
     '',
     STORE_NAME,
     EMAIL_FROM,
     $block,
-    ''
+    'import_extra'
   );
 }
 ?>

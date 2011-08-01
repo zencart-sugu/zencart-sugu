@@ -1,5 +1,0 @@
-<div class="content">
-  <div>$EMAIL_SUBJECT</div>
-  <div>実行結果は次のとおりです。</div>
-  <div>$EMAIL_MESSAGE_HTML</div>
-</div>

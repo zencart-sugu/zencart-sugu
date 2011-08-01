@@ -1048,7 +1048,6 @@ class ProductCSV {
       return false;
     }
   }
-}
 
   function import($tempfile, $csv_format_type_id, $ignore_first_line, $unlink=true) {
     global $ProductCSV;
