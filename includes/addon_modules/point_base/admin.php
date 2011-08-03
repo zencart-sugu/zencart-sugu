@@ -317,6 +317,7 @@ function couponpopupWindow(url) {
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
             <td colspan="2" class="smallText searchBox" align="right">
 <?php
+  echo zen_draw_hidden_field('module', 'point_base');
 // show reset search
   if ((isset($_GET['search']) && zen_not_null($_GET['search'])) or $_GET['cID'] !='') {
     echo '<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=point_base', 'NONSSL') . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a><br />';
