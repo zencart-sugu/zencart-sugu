@@ -313,11 +313,13 @@ function couponpopupWindow(url) {
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td  align="center"><table border="0" width="95%" cellspacing="0" cellpadding="0">
-         <tr><?php echo zen_draw_form('search', FILENAME_ADDON_MODULES_ADMIN, 'module=point_base', 'get', '', true); ?>
+         <tr><?php echo zen_draw_form('search', FILENAME_ADDON_MODULES_ADMIN, '', 'get', '', true); ?>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
             <td colspan="2" class="smallText searchBox" align="right">
 <?php
   echo zen_draw_hidden_field('module', 'point_base');
+  echo zen_draw_hidden_field('cID',    $_GET['cID']);
+  echo zen_draw_hidden_field('class',  $_GET['class']);
 // show reset search
   if ((isset($_GET['search']) && zen_not_null($_GET['search'])) or $_GET['cID'] !='') {
     echo '<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=point_base', 'NONSSL') . '">' . zen_image_button('button_reset.gif', IMAGE_RESET) . '</a><br />';
@@ -342,10 +344,22 @@ function couponpopupWindow(url) {
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-              <tr><?php echo zen_draw_form('points', FILENAME_ADDON_MODULES_ADMIN, 'module=point_base', 'get', '', true); ?>
-                <td class="smallText" align="right"><?php echo HEADING_TITLE_SEARCH . ' ' . zen_draw_input_field('cID', '', 'size="12"') . zen_hide_session_id(); ?></td>
+              <tr><?php echo zen_draw_form('points', FILENAME_ADDON_MODULES_ADMIN, '', 'get', '', true); ?>
+                <td class="smallText" align="right"><?php
+                  echo HEADING_TITLE_SEARCH . ' ';
+                  echo zen_draw_input_field('cID', '', 'size="12"');
+                  echo zen_hide_session_id();
+                  echo zen_draw_hidden_field('module', 'point_base');
+                  echo zen_draw_hidden_field('search', $_GET['search']);
+                  echo zen_draw_hidden_field('class', $_GET['class']);
+                ?></td>
               </form></tr>
-              <tr><?php echo zen_draw_form('class', FILENAME_ADDON_MODULES_ADMIN, 'module=point_base', 'get', '', true); ?>
+              <tr><?php
+                echo zen_draw_form('class', FILENAME_ADDON_MODULES_ADMIN, '', 'get', '', true);
+                echo zen_draw_hidden_field('module', 'point_base');
+                echo zen_draw_hidden_field('search', $_GET['search']);
+                echo zen_draw_hidden_field('cID', $_GET['cID']);
+              ?>
                 <td class="smallText" align="right">
                   <?php
                     echo HEADING_TITLE_CLASS . ' ' . zen_draw_pull_down_menu('class', array_merge(array(array('id' => '', 'text' => TEXT_ALL_POINTS)), $points_classes), $_GET['class'], 'onChange="this.form.submit();"');
@@ -413,7 +427,7 @@ function couponpopupWindow(url) {
           c.customers_firstname as firstname, c.customers_lastname as lastname,
           c.customers_email_address as email, ab.entry_company as company
           ";
-    if (isset($_GET['cID'])) {
+    if (isset($_GET['cID']) && $_GET['cID']>0) {
       $cID = zen_db_prepare_input($_GET['cID']);
       $points_query_raw = "
         select
