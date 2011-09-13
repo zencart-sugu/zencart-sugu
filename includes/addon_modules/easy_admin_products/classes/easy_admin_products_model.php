@@ -47,7 +47,8 @@ class easy_admin_products_model {
         if ($v > 0) {
           self::zen_get_subcategories($acategories, (int)$v);
           $categories[] = (int)$a;
-          $categories   = array_merge($categories, $acategories);
+          if (is_array($acategories))
+            $categories   = array_merge($categories, $acategories);
         }
       }
       $where .= " and p2c.categories_id in (".implode(",", $categories).")";
