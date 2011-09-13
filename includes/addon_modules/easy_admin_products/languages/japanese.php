@@ -93,6 +93,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN',                         '../includ
 define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         'ÊÝÂ¸');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       '¥­¥ã¥ó¥»¥ë');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_cancel.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT',              '¥ª¥×¥·¥ç¥óÂ°À­ÊÔ½¸');
 
 // ¾¦ÉÊ
 define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">É¬¿Ü</font>');
@@ -187,4 +188,96 @@ define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT',                '¾¦ÉÊ¤òºîÀ®¤·¤
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE',                '¾¦ÉÊ¤òÊÝÂ¸¤·¤Þ¤·¤¿');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE',                '%s¤òºï½ü¤·¤Þ¤·¤¿');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY',                  '%s¤ò¡Ö%s¡×¤Ë¥³¥Ô¡¼¤·¤Þ¤·¤¿');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_0',         'ID');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_1',         '¥ª¥×¥·¥ç¥óÌ¾');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_2',         '¥ª¥×¥·¥ç¥óÃÍ');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_3',         '¡Þ²Á³Ê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_4',         '¡Þ½ÅÎÌ');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_5',         'À°Íý½ç');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_6',         'Â°À­¥Õ¥é¥°');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_7',         '¹ç·×ÃÍ°ú¤­³Û');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_HEADING_OPERATION', 'Áàºî');
+
+define('LEGEND_ATTRIBUTES_DISPLAY_ONLY',       '»²¾È¤Î¤ß');
+define('LEGEND_ATTRIBUTES_IS_FREE',            'ÌµÎÁ');
+define('LEGEND_ATTRIBUTES_DEFAULT',            '¥Ç¥Õ¥©¥ë¥È');
+define('LEGEND_ATTRIBUTE_IS_DISCOUNTED',       'ÃÍ°ú¤­¤µ¤ì¤¿');
+define('LEGEND_ATTRIBUTE_PRICE_BASE_INCLUDED', '´ðËÜ²Á³Ê');
+define('LEGEND_ATTRIBUTES_REQUIRED',           'Í×µá»ö¹à');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_NOTICE_STATUS',     'Â°À­¥Õ¥é¥°¤òÊÑ¹¹¤·¤Þ¤·¤¿');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_NOTICE_INSERT',     '¥ª¥×¥·¥ç¥óÂ°À­¤òÄÉ²Ã¤·¤Þ¤·¤¿');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_NOTICE_UPDATE',     '¥ª¥×¥·¥ç¥óÂ°À­¤ÎÊÔ½¸¤¬´°Î»¤·¤Þ¤·¤¿');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_NOTICE_DELETE',     '%s¤òºï½ü¤·¤Þ¤·¤¿');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_NOTICE_DELETE_OPTION', '%s ¤Î¥°¥ë¡¼¥×¤òºï½ü¤·¤Þ¤·¤¿');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_INSERT_TITLE',      '¥ª¥×¥·¥ç¥ó¤Î¿·µ¬ºîÀ®');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT_TITLE',        '¥ª¥×¥·¥ç¥ó¤ÎÊÔ½¸');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_OPTION_SETTING',    '¢£¥ª¥×¥·¥ç¥ó¤ÎÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_OPTION_NAME',       '¥ª¥×¥·¥ç¥óÌ¾');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_OPTION_VALUE',      '¥ª¥×¥·¥ç¥óÃÍ');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_INSERT_OPTION_NAME_BTN', 'options_name_manager.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_INSERT_OPTION_NAME', '¥ª¥×¥·¥ç¥óÌ¾ÄÉ²Ã');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_INSERT_OPTION_VALUE_BTN', 'options_values_manager.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_INSERT_OPTION_VALUE', '¥ª¥×¥·¥ç¥óÃÍÄÉ²Ã');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_AND_WEIGHT_SETTING', '¢£²Á³Ê¤È½ÅÎÌ¤ÎÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE',             '²Á³Ê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_WEIGHT',            '½ÅÎÌ');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_SORT_ORDER',        'À°Íý½ç');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_PREFIX_PLUS', '¾¦ÉÊ²Á³Ê¤Ë²Ã»»¤¹¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_PREFIX_MINUS', '¾¦ÉÊ²Á³Ê¤«¤é¸º»»¤¹¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_PREFIX_REPLACE', '¾¦ÉÊ²Á³Ê¤òÃÖ¤­´¹¤¨¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_WEIGHT_PREFIX_PLUS', '¾¦ÉÊ½ÅÎÌ¤Ë²Ã»»¤¹¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_WEIGHT_PREFIX_MINUS', '¾¦ÉÊ½ÅÎÌ¤«¤é¸º»»¤¹¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_WEIGHT_PREFIX_REPLACE', '¾¦ÉÊ½ÅÎÌ¤òÃÖ¤­´¹¤¨¤ë');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_STATUS_SETTING',    '¢£Â°À­¥Õ¥é¥°');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_DISPLAY_ONLY', 'É½¼¨¤Î¤ß');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRODUCT_ATTRIBUTE_IS_FREE', '¾¦ÉÊ¤¬ÌµÎÁ¾¦ÉÊ¤Î¤È¤­Â°À­¤Ë¤è¤ë²Á³Ê¤âÌµÎÁ¤Ë¤¹¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_DEFAULT', '¥Ç¥Õ¥©¥ë¥È¤Ç
+ÁªÂò¤µ¤ì¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_DISCOUNTED', 'Â°À­¤Ë¤è¤ë²Á³ÊÁý¸º¤Ë¤âÆÃ²Á/¥»¡¼¥ë¤Î³ä°ú¤òÅ¬ÍÑ¤¹¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_PRICE_BASE_INCLUDED', 'Â°À­¤Ë¤è¤ë²Á³ÊÁý¸º¤ò¥Ù¡¼¥¹²Á³Ê¤Ë´Þ¤á¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_REQUIRED', '¥Æ¥­¥¹¥ÈÆþÎÏ¤òÉ¬¿Ü¤Ë¤¹¤ë');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_FACTOR_SETTING', '¢£ÆÃ¼ì¤ÊÃÍ°ú¤­ÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_ONETIME',     '¥ï¥ó¥¿¥¤¥àÃÍ°ú¤ÎÃÍ°ú¶â³Û');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_FACTOR_TITLE', '¥×¥é¥¤¥¹¥Õ¥¡¥¯¥¿¡¼¡¿¥ª¥Õ¥»¥Ã¥È');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_FACTOR',      '¥×¥é¥¤¥¹¥Õ¥¡¥¯¥¿¡¼');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_FACTOR_OFFSET', '¥ª¥Õ¥»¥Ã¥È');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_FACTOR_ONETIME_TITLE', '¥ï¥ó¥¿¥¤¥à¥×¥é¥¤¥¹¥Õ¥¡¥¯¥¿¡¼¡¿¥ª¥Õ¥»¥Ã¥È');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_FACTOR_ONETIME', '¥ï¥ó¥¿¥¤¥à¥×¥é¥¤¥¹¥Õ¥¡¥¯¥¿¡¼');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_FACTOR_ONETIME_OFFSET', '¥ï¥ó¥¿¥¤¥à¥ª¥Õ¥»¥Ã¥È');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_QTY_PRICES_SETTING', '¢£¥Ü¥ê¥å¡¼¥à¥Ç¥£¥¹¥«¥¦¥ó¥ÈÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_QTY_PRICES',        '¥ª¥×¥·¥ç¥ó¤Î¿ôÎÌÃÍ°úÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_QTY_PRICES_ONETIME', '¥ª¥×¥·¥ç¥ó¤Î¥ï¥ó¥¿¥¤¥à¿ôÎÌÃÍ°úÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_WORDS_SETTING', '¢£¥Æ¥­¥¹¥È¥ª¥×¥·¥ç¥ó¤ÎÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_WORDS',       'Ã±¸ìËè¤Î²Á³Ê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_WORDS_FREE',  'ÌµÎÁ¤ÎºÇÂçÃ±¸ì¿ô');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_LETTERS',     'Ê¸»úËè¤Î²Á³Ê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRICE_LETTERS_FREE', 'ÌµÎÁ¤ÎºÇÂçÊ¸»ú¿ô');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_IMAGE_SETTING',     '¢£¥ª¥×¥·¥ç¥ó²èÁü¤ÎÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_IMAGE',             '¥ª¥×¥·¥ç¥ó²èÁü');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_IMAGE_DIR',         'ÊÝÂ¸¥Ç¥£¥ì¥¯¥È¥ê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_IMAGE_OVERWRITE',   '´ûÂ¸¤Î¥ª¥×¥·¥ç¥ó²èÁü¤ò¾å½ñ¤­¤·¤Þ¤¹¤«¡©');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_IMAGE_OVERWRITE_DESCRIPTION', '¾å½ñ¤­¤·¤¿¤¯¤Ê¤¤¾ì¹ç¤Ï[¤¤¤¤¤¨]¤òÁªÂò¤·¤Æ¡¢´ûÂ¸¥Õ¥¡¥¤¥ë¤È¤Ï°Û¤Ê¤ëÌ¾Á°¤Î¥Õ¥¡¥¤¥ë¤ò[¥ª¥×¥·¥ç¥ó²èÁü]¤Ë»ØÄê¤·¤Æ¤¯¤À¤µ¤¤¡£');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_DOWNLOAD_SETTING',  '¢£¥À¥¦¥ó¥í¡¼¥É¥ª¥×¥·¥ç¥ó¤ÎÀßÄê');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_FILENAME',          '¥À¥¦¥ó¥í¡¼¥É¾¦ÉÊ ¥Õ¥¡¥¤¥ëÌ¾');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_MAXDAYS',           'Í­¸ú´ü´Ö(Æü)');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_MAXCOUNT',          'ºÇÂç¥À¥¦¥ó¥í¡¼¥É¿ô');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_OPEN_SETTING',      '--[³«¤¯]--');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_CLOSE_SETTING',     '--[ÊÄ¤¸¤ë]--');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_CREATE',            '¿·µ¬ÄÉ²Ã');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_INSERT',            'ÁÞÆþ');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_UPDATE',            '¹¹¿·');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_CANCEL_BTN',        'button_cancel.gif');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_DELETE_TITLE',      'ËÜÅö¤Ë¥ª¥×¥·¥ç¥óÂ°À­¤òºï½ü¤·¤Þ¤¹¤«?');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_DELETE_OPTION_TITLE', '°Ê²¼¤Î¥ª¥×¥·¥ç¥ó¤Î¥ª¥×¥·¥ç¥óÃÍ¤òÁ´¤Æºï½ü¤·¤Þ¤¹¤«¡©');
 ?>

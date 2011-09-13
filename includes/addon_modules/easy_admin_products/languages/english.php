@@ -86,6 +86,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_DELETE',                       '削除');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY',                         'コピー');
 define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         '保存');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       'キャンセル');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT',              'オプション属性編集');
 
 // 商品
 define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">必須</font>');

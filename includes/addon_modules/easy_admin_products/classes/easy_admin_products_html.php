@@ -168,5 +168,24 @@ class easy_admin_products_html {
     else
       return "";
   }
+
+  function onoff_radio($name, $value, $default="off", $on_value=1, $off_value=0) {
+    switch ($value) {
+      case $off_value:
+        $on = false;
+        $off = true;
+        break;
+      case $on_value:
+        $on = true;
+        $off = false;
+        break;
+      default:
+        $on = ($default == "on");
+        $off = ($default == "off");
+        break;
+    }
+    return zen_draw_radio_field($name, $off_value, $off) .'&nbsp;'. TABLE_HEADING_NO .' '.
+           zen_draw_radio_field($name, $on_value, $on) .'&nbsp;'. TABLE_HEADING_YES;
+  }
 }
 ?>

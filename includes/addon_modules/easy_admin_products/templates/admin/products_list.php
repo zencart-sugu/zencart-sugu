@@ -51,6 +51,16 @@
         $link  = $html->href_link("", $parm);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
+
+      <?php
+        $parm  = array(
+                   "products_id" => $fields['products_id'],
+                   "action"      => "",
+                   "page"        => $page,
+                 );
+        $link  = $html->href_link("attributes", $parm);
+      ?>
+      <a href="<?php echo $link; ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT; ?></a>
     </td>
   </tr>
 <?php
