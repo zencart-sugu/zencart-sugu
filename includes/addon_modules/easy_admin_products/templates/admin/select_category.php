@@ -41,7 +41,7 @@
 			?>
    			<tr>
    				<td class="categoryName">
-      			<?php if ($category['child']) { ?><a href="<?php echo $html->href_link("select_category", array('html_id'=>$_REQUEST['html_id'], 'category_id'=>$category['id'])); ?>"><?php } ?><?php echo $category['text']; ?></span><?php if ($category['child']) { ?><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?></a>
+      			<?php if ($category['child']) { ?><a href="<?php echo $html->href_link("select_category", array('html_id'=>$_REQUEST['html_id'], 'category_id'=>$category['id'], 'category_base_id'=>$_REQUEST['category_base_id'])); ?>"><?php } ?><?php echo $category['text']; ?></span><?php if ($category['child']) { ?><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?></a>
       			<?php } ?>
       		</td>
       		<td class="categoryChoice">

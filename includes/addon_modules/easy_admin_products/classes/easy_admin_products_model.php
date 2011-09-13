@@ -46,7 +46,7 @@ class easy_admin_products_model {
       foreach(explode(",", $search_param['category_id']) as $v) {
         if ($v > 0) {
           self::zen_get_subcategories($acategories, (int)$v);
-          $categories[] = (int)$a;
+          $categories[] = (int)$v;
           if (is_array($acategories))
             $categories   = array_merge($categories, $acategories);
         }
