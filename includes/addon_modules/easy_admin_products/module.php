@@ -48,6 +48,7 @@ class easy_admin_products extends addOnModuleBase {
 
     function __construct() {
         require_once($this->dir . 'classes/easy_admin_products_model.php');
+        require_once($this->dir . 'classes/easy_admin_products_attribute_model.php');
         require_once($this->dir . 'classes/easy_admin_products_html.php');
         parent::__construct();
     }

@@ -178,4 +178,6 @@ define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT',                '¾¦ÉÊ¤òºîÀ®¤·¤
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE',                '¾¦ÉÊ¤òÊÝÂ¸¤·¤Þ¤·¤¿');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE',                '%s¤òºï½ü¤·¤Þ¤·¤¿');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY',                  '%s¤ò¡Ö%s¡×¤Ë¥³¥Ô¡¼¤·¤Þ¤·¤¿');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT',              '¥ª¥×¥·¥ç¥óÂ°À­ÊÔ½¸');
 ?>
