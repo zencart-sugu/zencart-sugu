@@ -8,6 +8,7 @@
  */
 ?>
 <?php
+  $page = $_GET['page'];
   while (!$products->EOF) {
     $fields = $model->convert_product_result($products->fields);
 ?>
@@ -49,6 +50,16 @@
                  );
         $image = $html->input_image("icon_copy.gif", MODULE_EASY_ADMIN_PRODUCTS_COPY);
         $link  = $html->href_link("", $parm);
+      ?>
+      <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
+
+      <?php
+        $parm  = array(
+                   "add_related_product_ID"   => $fields['products_id'],
+                   "easy_admin_products_page" => $page,
+                 );
+        $image = $html->input_image("icon_xsell.gif", MODULE_EASY_ADMIN_PRODUCTS_XSELL);
+        $link  = $html->href_link("xsell", $parm);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
     </td>

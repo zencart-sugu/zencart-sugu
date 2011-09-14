@@ -26,7 +26,7 @@ class easy_admin_products_html {
 
   // input-image作成
   function input_image($image, $alt) {
-    return '<input type="image" src="'.DIR_WS_CATALOG.DIR_WS_ADDON_MODULES.'/easy_admin_products/images/'.$image.'" alt="'.$alt.'"/>';
+    return '<input type="image" src="'.DIR_WS_CATALOG.DIR_WS_ADDON_MODULES.'/easy_admin_products/images/'.$image.'" title="'.$alt.'" alt="'.$alt.'"/>';
   }
 
   // link作成

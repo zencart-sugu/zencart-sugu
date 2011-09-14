@@ -87,12 +87,14 @@ define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_NONDISPLAY',           '»Û…Ωº®æ¶… ');
 // ¡‡∫Ó
 define('MODULE_EASY_ADMIN_PRODUCTS_EDIT',                         ' ‘Ω∏');
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE',                       '∫ÔΩ¸');
-define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_delete.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN',                   '../includes/addon_modules/easy_admin_products/images/button_delete.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY',                         '•≥•‘°º');
-define('MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN',                         '../includes/addon_modules/easy_admin_products/images/button_copy.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN',                     '../includes/addon_modules/easy_admin_products/images/button_copy.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL',                        '¥ÿœ¢');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_BTN',                    '../includes/addon_modules/easy_admin_products/images/button_xsel.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         ' ›¬∏');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       '•≠•„•Û•ª•Î');
-define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_cancel.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                   '../includes/addon_modules/easy_admin_products/images/button_cancel.gif');
 
 // æ¶… 
 define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">…¨ø‹</font>');
@@ -187,4 +189,32 @@ define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT',                'æ¶… §Ú∫Ó¿Æ§∑§
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE',                'æ¶… §Ú ›¬∏§∑§ﬁ§∑§ø');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE',                '%s§Ú∫ÔΩ¸§∑§ﬁ§∑§ø');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY',                  '%s§Ú°÷%s°◊§À•≥•‘°º§∑§ﬁ§∑§ø');
+
+// xsell
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_HEADING_TITLE',          '¥ÿœ¢æ¶… ');
+define('MODULE_EASY_ADMIN_PRODUCTS_TEXT_SETTING_SELLS',           '¥ÿœ¢æ¶… §Ú¿ﬂƒÍ§π§Îæ¶… ');
+define('MODULE_EASY_ADMIN_PRODUCTS_TEXT_PRODUCT_ID',              'æ¶… ID');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_TEXT_SEARCH_TARGET',                   '∏°∫˜¬–æ›');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_TEXT_SEARCH_KEYWORD',                  '•≠°º•Ô°º•…');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_TEXT_SEARCH_ITEM_PRODUCT_NAME',        'æ¶… Ãæ');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_TEXT_SEARCH_ITEM_PRODUCT_DESCRIPTION', 'æ¶… ¿‚Ã¿ ∏');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_TEXT_SEARCH_ITEM_PRODUCT_MODEL',       'æ¶… •≥°º•…');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_TEXT_SEARCH_BUTTON',                   '∏°∫˜');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_TEXT_SEARCH_RESET_BUTTON',             'π π˛≤ÚΩ¸');
+define('MODULE_EASY_ADMIN_PRODUCTS_TEXT_CROSS_SELL',                            '¥ÿœ¢æ¶… ');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_PRODUCT_ID',      'æ¶… ID');
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_PRODUCT_MODEL',   'æ¶… ∑ø»÷');
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_PRODUCT_NAME',    'æ¶… Ãæ');
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_PRODUCT_IMAGE',   'æ¶… ≤Ë¡¸');
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_PRODUCT_PRICE',   'æ¶… ≤¡≥ ');
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_PRODUCT_SORT',    '•Ω°º•»ΩÁ');
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_CROSS_SELL_THIS', '§≥§Œæ¶… §Ú°¢¥ÿœ¢æ¶… §À§∑§ﬁ§π§´°©');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_CURRENT_SELLS',   '∏Ω∫ﬂ§Œ¥ÿœ¢æ¶… ');
+define('MODULE_EASY_ADMIN_PRODUCTS_TABLE_HEADING_UPDATE_SELLS',    '¥ÿœ¢æ¶… §Œππø∑');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_CROSS_SELL_SUCCESS',            '¥ÿœ¢æ¶… æ Û§Úππø∑§∑§ﬁ§∑§ø°£æ¶… ID #'.$_GET['add_related_product_ID']);
+define('MODULE_EASY_ADMIN_PRODUCTS_SORT_CROSS_SELL_SUCCESS',       '¥ÿœ¢æ¶… §Œ•Ω°º•»ΩÁ§Úππø∑§∑§ﬁ§∑§ø°£æ¶… ID #'.$_GET['add_related_product_ID']);
 ?>
