@@ -47,8 +47,9 @@ class easy_admin_products_html {
       $colspan = ' colspan="'.$colspan.'"';
     else
       $colspan = '';
-    return '<td width="10"></td>'."\n".
-           '<td width="200" nowrap valign="top"'.$colspan.'>'.$title.'</td>'."\n";
+    return '<th width="200" nowrap valign="top"'.$colspan.'>'.$title.'</th>'."\n";
+    return '<th width="10"></th>'."\n".
+           '<th width="200" nowrap valign="top"'.$colspan.'>'.$title.'</th>'."\n";
   }
 
   function radio($name, $title, $options, $value, $before="", $after="", $parm="", $separator="&nbsp;") {

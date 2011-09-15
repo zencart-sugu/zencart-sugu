@@ -71,6 +71,18 @@
         $link  = $html->href_link("attributes", $parm);
       ?>
       <a href="<?php echo $link; ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT; ?></a>
+
+      <?php
+        if (easy_admin_products_with_attributes_stock::is_have_attributes($fields['products_id'])) {
+          $parm  = array(
+                     "products_id"   => $fields['products_id'],
+                     "easy_admin_products_page" => $page,
+                   );
+          $image = $html->input_image("icon_stock.gif", MODULE_EASY_ADMIN_PRODUCTS_STOCK);
+          $link  = $html->href_link("attributes_stock", $parm);
+        ?>
+        <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
+      <?php } ?>
     </td>
   </tr>
 <?php

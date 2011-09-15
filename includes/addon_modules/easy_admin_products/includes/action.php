@@ -13,6 +13,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 if (file_exists(DIR_WS_CLASSES . 'split_page_results.php')) {
   require_once(DIR_WS_CLASSES . 'split_page_results.php');
 }
+require(dirname(__FILE__) . '/../classes/easy_admin_products_with_attributes_stock.php');
 
 global $zco_notifier;
 global $easy_admin_products_product;

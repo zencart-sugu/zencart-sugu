@@ -92,6 +92,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_COPY',                         'コピー');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN',                     '../includes/addon_modules/easy_admin_products/images/button_copy.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_XSELL',                        '関連');
 define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_BTN',                    '../includes/addon_modules/easy_admin_products/images/button_xsel.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_STOCK',                        '在庫');
+define('MODULE_EASY_ADMIN_PRODUCTS_STOCK_BTN',                    '../includes/addon_modules/easy_admin_products/images/button_stock.gif');
 define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         '保存');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       'キャンセル');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                   '../includes/addon_modules/easy_admin_products/images/button_cancel.gif');
@@ -311,4 +313,34 @@ define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_CANCEL_BTN',        'button_cancel
 
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_DELETE_TITLE',      '本当にオプション属性を削除しますか?');
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_DELETE_OPTION_TITLE', '以下のオプションのオプション値を全て削除しますか？');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_PRODUCT_ID',                  '商品ID');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_PRODUCT_NAME',                '商品名');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_PRODUCT_MODEL',               '型番');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_QUANTITY',                    '個数');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_SKUMODEL',                    'SKU型番');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_QUANTITY_FOR_ALL_VARIANTS',   '全体在庫数');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_ADD_QUANTITY',                'SKU在庫の追加');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_SYNC_QUANTITY',               '在庫数の反映');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_STOCK_ID',                    '在庫管理ID');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_VARIANT',                     'オプション組み合わせ');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_QUANTITY_IN_STOCK',           '在庫個数');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_EDIT',                        '修正');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE',                      '削除');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_SUBMIT',                      '更新');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_CANCEL',                      'キャンセル');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_SEARCH',                      '検索');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_RESET',                       'リセット');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_ACTION',                      '操作');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_EDIT_QUANTITY',               '在庫個数修正');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT',              'SKU在庫削除');
+
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_CONFIRMATION', 'オプション組み合わせの在庫を削除してもいいですか？');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_PROCESSED',    'オプション組み合わせの在庫が削除されました');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_YES',          'はい');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_NO',           'いいえ');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_UPDATE_PARENT_PROCESSED',     '親在庫数が更新されました');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_UPDATE_VARIANT_PROCESSED',    '在庫数が更新されました');
 ?>

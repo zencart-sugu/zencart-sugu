@@ -150,14 +150,14 @@
   <input type="hidden" name="products_discount_type_from"      value="0">
   <input type="hidden" name="products_mixed_discount_quantity" value="0">
 
-  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <table border="0" width="100%" cellspacing="0" cellpadding="0" class="tableLayout3">
     <tr>
       <td colspan="3"><h3><?php echo ($product['products_id'])?MODULE_EASY_ADMIN_PRODUCTS_UPDATE_TITLE:MODULE_EASY_ADMIN_PRODUCTS_INSERT_TITLE; ?></h3></td>
     </tr>
 
     <!-- 基本設定 -->
     <tr>
-      <td colspan="3"><?php echo MODULE_EASY_ADMIN_PRODUCTS_BASE_TITLE; ?></td>
+      <th colspan="3"><?php echo MODULE_EASY_ADMIN_PRODUCTS_BASE_TITLE; ?></th>
     </tr>
 
     <tr>
@@ -344,18 +344,16 @@
     </tr>
 
     <tr>
-      <td colspan="2">
+      <th colspan="2">
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_PRICE_TITLE; ?>
-      </td>
-      <td>
         <a id="a_products_price" href="javascript:void(0)" onclick="toggle_detail('products_price');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
-      </td>
+      </th>
     </tr>
 
     <tr id="tr_products_price" style="display:none;">
-      <td colspan="3">
+      <td colspan="2">
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <?php
@@ -388,18 +386,16 @@
     </tr>
 
     <tr>
-      <td colspan="2">
+      <th colspan="2">
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_SHIPPING_TITLE; ?>
-      </td>
-      <td>
         <a id="a_products_shipping" href="javascript:void(0)" onclick="toggle_detail('products_shipping');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
-      </td>
+      </th>
     </tr>
 
     <tr id="tr_products_shipping" style="display:none;">
-      <td colspan="3">
+      <td colspan="2">
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <?php
@@ -427,18 +423,16 @@
     </tr>
 
     <tr>
-      <td colspan="2">
+      <th colspan="2">
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_CART_TITLE; ?>
-      </td>
-      <td>
         <a id="a_products_cart" href="javascript:void(0)" onclick="toggle_detail('products_cart');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
-      </td>
+      </th>
     </tr>
 
     <tr id="tr_products_cart" style="display:none;">
-      <td colspan="3">
+      <td colspan="2">
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <?php
@@ -483,18 +477,16 @@
     </tr>
 
     <tr>
-      <td colspan="2">
+      <th colspan="2">
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_SEO_TITLE; ?>
-      </td>
-      <td>
         <a id="a_products_seo" href="javascript:void(0)" onclick="toggle_detail('products_seo');">
           <?php echo MODULE_EASY_ADMIN_PRODUCTS_OPEN; ?>
         </a>
-      </td>
+      </th>
     </tr>
 
     <tr id="tr_products_seo" style="display:none;">
-      <td colspan="3">
+      <td colspan="2">
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <?php
@@ -543,7 +535,6 @@
           </tr>
 
           <tr>
-            <td></td>
             <td></td>
             <td>
               <?php echo MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_IMMIDIATE; ?>
@@ -596,7 +587,7 @@
     %__EDIT_EXTERNAL_EXPAND_ITEMS__%
 
     <tr>
-      <td colspan="3">
+      <td colspan="2">
         <input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_SAVE; ?>">
       </td>
     </tr>
