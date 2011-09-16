@@ -19,7 +19,7 @@
 		<td id="categoryList">
 			<h2><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_LIST; ?></h2>
 			<p> <?php
-            $parm = array();
+            $parm = array('html_id'=>$_REQUEST['html_id']);
             if ($_REQUEST['category_base_id'] > 0) {
               $parm = array('category_base_id' => $_REQUEST['category_base_id']);
             }
