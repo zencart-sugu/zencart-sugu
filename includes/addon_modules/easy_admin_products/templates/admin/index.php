@@ -12,6 +12,12 @@
 ?>
 <script type="text/javascript">
   function category_select(html_id, category, category_base) {
+    // 既に選択されているカテゴリをオープン状態にする
+    // カテゴリは１個のみ選択可能とした***
+    var category = $("#"+html_id+"_id").val();
+    if (!category || category == '')
+      category = 0;
+
     $.fancybox({
         'padding':       0,
         'autoScale':     false,
@@ -35,12 +41,13 @@
       return;
     }
 
+    // カテゴリは１個のみ選択可能とした***
     $.ajax({
       type: "GET",
       url:  "<?php echo $html->href_link(); ?>",
       data: "module=easy_admin_products/ajax_get_category_name&category_id="+category_id,
       success: function(name) {
-        var categories_ids = $("#"+html_id+"_id").val();
+        var categories_ids = ''; //*** $("#"+html_id+"_id").val();
         if (categories_ids != "")
           categories_ids += ",";
         $("#"+html_id+"_id").val(categories_ids+category_id);
@@ -52,7 +59,7 @@
                    +   '<'+'/a>'
                    + '<'+'/label>';
         format = format.replace("\%s", name);
-        var html = $("#"+html_id+"_div").html();
+        var html = ''; //*** $("#"+html_id+"_div").html();
         $("#"+html_id+"_div").html(html+format);
         $.fancybox.close();
       }
