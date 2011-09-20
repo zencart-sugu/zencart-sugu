@@ -59,6 +59,7 @@
 			<h2><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_SEARCH; ?></h2>
 
 		  <?php echo $html->form('form_search', 'select_category'); ?>
+		    <input type="hidden" name="html_id" value="<?php echo htmlspecialchars($_REQUEST['html_id']); ?>">
 		    <input type="hidden" name="category_id" value="<?php echo htmlspecialchars($_REQUEST['category_id']); ?>">
 		    <?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_NAME; ?>
 		    <input type="text" name="keyword" value="<?php echo htmlspecialchars($_REQUEST['keyword']); ?>">
