@@ -13,5 +13,6 @@ if (!defined('IS_ADMIN_FLAG')) {
 if (!function_exists("page_allowed") ||
     function_exists("page_allowed") && page_allowed('module=easy_admin_products') == 'true') {
   $za_contents[] = array('text' => BOX_ADDON_MODULES_EASY_ADMIN_PRODUCTS, 'link' => zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products', 'SSL'));
+  $za_contents[] = array('text' => BOX_ADDON_MODULES_EASY_ADMIN_PRODUCTS_CATEGORIES, 'link' => zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products/categories', 'SSL'));
 }
 ?>

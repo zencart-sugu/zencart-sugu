@@ -137,8 +137,9 @@ class easy_admin_products_model {
     // カテゴリ
     $categories_html = array();
     $categories      = self::get_product_categories($fields['products_id']);
+    $link = easy_admin_products_html::href_link('categories');
     foreach($categories as $category_id) {
-      $categories_html[] = self::get_category($category_id);
+      $categories_html[] = self::get_category($category_id, $link);
     }
     $fields['categories'] = implode("<br/>", $categories_html);
 
@@ -246,7 +247,7 @@ class easy_admin_products_model {
 
   // カテゴリ取得
   // idもしくはキーワード検索(排他)
-  function get_categories($search_param) {
+  function get_categories_query($search_param) {
     global $db;
 
     $category_id = $search_param['category_id'];
@@ -254,6 +255,8 @@ class easy_admin_products_model {
     if ($keyword != "" && $category_id>0) {
       $query       = "select
                         c.categories_id,
+                        c.categories_status,
+                        c.sort_order,
                         cd.categories_name
                       from ".
                         TABLE_CATEGORIES." c,".
@@ -270,6 +273,8 @@ class easy_admin_products_model {
     else if ($keyword != "") {
       $query       = "select
                         c.categories_id,
+                        c.categories_status,
+                        c.sort_order,
                         cd.categories_name
                       from ".
                         TABLE_CATEGORIES." c,".
@@ -285,6 +290,8 @@ class easy_admin_products_model {
     else {
       $query       = "select
                         c.categories_id,
+                        c.categories_status,
+                        c.sort_order,
                         cd.categories_name
                       from ".
                         TABLE_CATEGORIES." c,".
@@ -297,6 +304,13 @@ class easy_admin_products_model {
                         c.sort_order,
                         cd.categories_name";
     }
+    return $query;
+  }
+
+  function get_categories($search_param) {
+    global $db;
+
+    $query = self::get_categories_query($search_param);
     $result      = $db->Execute($query);
     $categories  = array();
     while (!$result->EOF) {

@@ -343,4 +343,48 @@ define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_YES',          'はい');
 define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_NO',           'いいえ');
 define('MODULE_EASY_ADMIN_PRODUCTS_PWA_UPDATE_PARENT_PROCESSED',     '親在庫数が更新されました');
 define('MODULE_EASY_ADMIN_PRODUCTS_PWA_UPDATE_VARIANT_PROCESSED',    '在庫数が更新されました');
+
+// categories
+define('BOX_ADDON_MODULES_EASY_ADMIN_PRODUCTS_CATEGORIES',        'かんたんカテゴリ管理');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_TITLE',     'かんたんカテゴリ管理');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_0',         'ID');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_1',         'カテゴリ名');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_2',         '商品一覧へ');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_3',         'ステータス');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_4',         'ソート順');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_OPERATION', '操作');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_LINK_TO_PRODUCTS',  '商品一覧へ');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_CREATE_BTN',        '<img src="../includes/addon_modules/easy_admin_products/images/button_new_category.gif" alt="新しい>カテゴリの追加" />');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_ICON_PLUS',         'サブカテゴリへ');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SETFLAG_TITLE',     '以下のカテゴリのステータスを変える');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_STATUS_WARNING',    '<strong>警告...</strong><br />注意: カテゴリを無効にすると、このカテゴリに属する全商品が無効になります。このカテゴリ内にあり、他のカテゴリにリンクしている商品も無効になります。');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_STATUS_INTRO',      'カテゴリのステータスを以下に変える:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_STATUS_INFO',       '全商品のステータスを以下に変える:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_STATUS_ON',         'オン');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_STATUS_OFF',        'オフ');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_STATUS_NOCHANGE',   '変更なし');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_SETFLAG',    'ステータスを変更しました');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_SETFLAG_FAILED', 'ステータスを変更できませんでした');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_DELETE_TITLE',      'カテゴリを削除');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_DELETE_INTRO',      'このカテゴリを本当に削除しますか?');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_DELETE_INTRO_LINKED_PRODUCTS', '<strong>警告:</strong> このカテゴリ配下の商品について、「マスターカテゴリーID」がこのカテゴリを指定していると、カテゴリ削除後にリンク商品の金額が適切にならないことがあります。
+リンク商品がこのカテゴリ配下に含まれる場合は、予めもう一方のカテゴリを「マスターカテゴリーID」として設定しておくべきです。<br />
+<br />
+<strong>注意:</strong> このカテゴリ配下の商品について、他のカテゴリにリンクされていなければその商品は自動的に削除されます。');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_DELETE',     '%sを削除しました');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_BACK_TO_LIST',      '[カテゴリ一覧に戻る]');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_BASIC_SETTING',     '■基本設定:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_STATUS',            'ステータス:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NAME',              'カテゴリ名:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_IMAGE',             '画像:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_IMAGE_DIR',         'アップロード先ディレクトリ:');
+define('TEXT_IMAGE_NONEXISTENT',            '画像が存在しません。');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_DESCRIPTION',       'カテゴリ説明');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SORT_ORDER',        'ソート順:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADER_SETTING',    '■ヘッダ情報定義');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADER_TITLE',      'タイトル:');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADER_META_KEYWORDS', 'Metaタグ(keywords)');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADER_META_DESCRIPTION', 'Metaタグ(Description)');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_INSERT',     'カテゴリを追加しました。');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_UPDATE',     'カテゴリの編集が完了しました。');
 ?>
