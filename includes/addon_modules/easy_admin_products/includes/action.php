@@ -163,12 +163,37 @@ switch($action) {
                   "specials_column"                       => $specials_column,
                   "meta_tags_products_description_column" => $meta_tags_products_description_column,
                 );
-    $product               = $model->load_product($columns, $_REQUEST['products_id']);
+    $product  = $model->load_product($columns, $_REQUEST['products_id']);
+
+
+    $categories_html = array();
+    $categories      = $model->get_product_categories($product['products_id']);
+    foreach($categories as $category_id) {
+      $categories_html[] = $model->get_category($category_id, "");
+    }
+    $product['current_categories'] = implode("<br/>", $categories_html);
+
     $product['categories'] = "";
     break;
 
   case 'copy_process':
-    $product  = array();
+    $columns  = array(
+                  "languages"                             => $languages,
+                  "products_column"                       => $products_column,
+                  "products_description_column"           => $products_description_column,
+                  "featured_column"                       => $featured_column,
+                  "specials_column"                       => $specials_column,
+                  "meta_tags_products_description_column" => $meta_tags_products_description_column,
+                );
+    $product  = $model->load_product($columns, $_REQUEST['products_id']);
+
+    $categories_html = array();
+    $categories      = $model->get_product_categories($product['products_id']);
+    foreach($categories as $category_id) {
+      $categories_html[] = $model->get_category($category_id, "");
+    }
+    $product['current_categories'] = implode("<br/>", $categories_html);
+
     foreach($_POST as $k => $v) {
       $product[$k] = $v;
     }
@@ -191,7 +216,8 @@ switch($action) {
       }
 
       $model->copy_product($_REQUEST['products_id'], $_REQUEST['products_image'], $_REQUEST['categories']);
-      $messageStack->add(sprintf(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY, $_REQUEST['products_name']."(ID:".$_REQUEST['products_id'].")", implode(" , ", $names)), 'success');
+      $messageStack->add_session(sprintf(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY, $_REQUEST['products_name']."(ID:".$_REQUEST['products_id'].")", implode(" , ", $names)), 'success');
+      zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'));
     }
     break;
 }

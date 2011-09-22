@@ -9,6 +9,10 @@
 ?>
 <script type="text/javascript">
   function category_select(category) {
+    var category = $("#categories").val();
+    if (!category || category == '')
+      category = 0;
+
     $.fancybox({
         'padding':       0,
         'autoScale':     false,
@@ -23,7 +27,7 @@
     return false;
   }
 
-  function category_selected(categories_id) {
+  function category_selected(html_id, categories_id) {
     // 既に同じカテゴリが選択されているか?
     var key   = "cat_"+categories_id;
     var check = $("#"+key);
@@ -37,19 +41,19 @@
       url:  "<?php echo $html->href_link(); ?>",
       data: "module=easy_admin_products/ajax_get_category_name&category_id="+categories_id,
       success: function(name) {
-        var categories_ids = $("#categories").val();
+        var categories_ids = ''; // $("#categories").val();
         if (categories_ids != "")
           categories_ids += ",";
         $("#categories").val(categories_ids+categories_id);
 
         var format = '<div id="'+key+'">'
                    +   '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT; ?>'
-                   +   '<a href="javascript:void(0)" onclick="category_remove('+categories_id+');">'
-                   +     '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP; ?>'
-                   +   '<'+'/a>'
+//                   +   '<a href="javascript:void(0)" onclick="category_remove('+categories_id+');">'
+//                   +     '<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP; ?>'
+//                   +   '<'+'/a>'
                    + '<'+'/div>';
         format = format.replace("\%s", name);
-        var html = $("#selected_categories").html();
+        var html = ''; // $("#selected_categories").html();
         $("#selected_categories").html(html+format);
         $.fancybox.close();
       }
@@ -75,10 +79,6 @@
     else
       $("#a_"+id).html("<?php echo MODULE_EASY_ADMIN_PRODUCTS_CLOSE; ?>");
   }
-
-  $(document).ready(function(){
-    updateGross();
-  });
 </script>
 
 <?php echo $html->form('copy'); ?>
@@ -89,11 +89,16 @@
 
 <div class="copy">
 <h3><?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE; ?></h3>
-<p>        <?php
-          echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE, htmlspecialchars($product["products_description_products_name"][(int)$_SESSION['languages_id']])."(ID:".$_REQUEST['products_id'].")");
-        ?>
-</p>
+<p><?php
+  echo sprintf(MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE, htmlspecialchars($product["products_description_products_name"][(int)$_SESSION['languages_id']])."(ID:".$_REQUEST['products_id'].")");
+?></p>
 <table class="tableLayout3" border="0" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+      <?php
+        echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY_ORIGINAL);
+      ?>
+      <td><?php echo $product['current_categories']; ?></td>
+    </tr>
     <tr>
       <?php
         echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY);
@@ -126,7 +131,7 @@
     <tr>
       <td>
         <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY; ?>">
-        <a href="<?php echo $html->href_link(); ?>"><input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL; ?>"></a>
+        <a href="<?php echo $html->href_link(); ?>"><?php echo $html->image("button_cancel.gif", MODULE_EASY_ADMIN_PRODUCTS_CANCEL); ?></a>
       </td>
     </tr>
 
