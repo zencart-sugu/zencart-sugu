@@ -34,8 +34,7 @@ class easy_admin_products_category_model {
   }
 
   // 検索された各カテゴリの情報を追加、変更する
-  function convert_categories_result($categories_values) {
-    global $current_category_id;
+  function convert_categories_result($categories_values, $action = 'index') {
 
     $categories_id = $categories_values->fields['categories_id'];
 
@@ -43,11 +42,16 @@ class easy_admin_products_category_model {
     $parm = array(
       'category_id' => $categories_id,
     );
-    $categories_values->fields['link_to_categories'] = easy_admin_products_html::href_link("categories", $parm);
+    $link = easy_admin_products_html::href_link("categories", $parm);
+    if ($action == 'search') {
+      $categories_values->fields['link_to_categories'] = easy_admin_products_model::get_category($categories_id, $link);
+    }else{
+      $categories_values->fields['link_to_categories'] = '<a href="'.$link.'">'. zen_output_string_protected($categories_values->fields['categories_name']) .'</a>';
+      // subcategories_count
+      $subcategories_counts = self::get_subcategories_counts();
+      $categories_values->fields['subcategories_count'] = (int)$subcategories_counts[$categories_id];
+    }
 
-    // subcategories_count
-    $subcategories_counts = self::get_subcategories_counts();
-    $categories_values->fields['subcategories_count'] = (int)$subcategories_counts[$categories_id];
 
     // link_to_products
     $parm = array(
@@ -60,9 +64,8 @@ class easy_admin_products_category_model {
       'action'      => 'setflag',
       'cID'         => $categories_id,
       'flag'        => ($categories_values->fields['categories_status'] == '1' ? 0 : 1),
-      'category_id' => $current_category_id,
-      'page'        => isset($_GET['page']) ? $_GET['page'] : "",
     );
+    $parm = self::add_current_parm($parm);
     $categories_values->fields['link_to_status'] = easy_admin_products_html::href_link("categories", $parm);
 
     $categories_values->fields['is_link'] = (zen_get_products_to_categories($categories_id, true, 'products_active') == 'true');
@@ -419,6 +422,15 @@ class easy_admin_products_category_model {
     }else{
       return null;
     }
+  }
+
+  function add_current_parm($parm) {
+    global $current_parm;
+
+    foreach ($current_parm as $k => $v) {
+      $parm['current['. $k .']'] = $v;
+    }
+    return $parm;
   }
 }
 ?>

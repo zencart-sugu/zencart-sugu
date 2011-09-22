@@ -40,19 +40,16 @@
   }
 //-->
 </script>
-<?php
-  $parm = array(
-            "category_id" => $current_category_id,
-            "page"  => $page,
-          );
-?>
-<a href="<?php echo $html->href_link('categories', $parm); ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_BACK_TO_LIST; ?></a>
+<a href="<?php echo $html->href_link('categories', $current_parm); ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_BACK_TO_LIST; ?></a>
 <?php echo $html->form('form_edit', 'categories', 'enctype="multipart/form-data"'); ?>
   <input type="hidden" name="action"      value="save">
-  <input type="hidden" name="category_id" value="<?php echo $current_category_id; ?>">
-  <input type="hidden" name="page"        value="<?php echo $page; ?>">
   <input type="hidden" name="cID"         value="<?php echo $cID; ?>">
-  <input type="hidden" name="parent_id"   value="<?php echo $current_category_id; ?>">
+<?php if ($action == "new") { ?>
+  <input type="hidden" name="parent_id"   value="<?php echo $_REQUEST['parent_id']; ?>">
+<?php } ?>
+<?php foreach ($current_parm as $k => $v) { ?>
+  <input type="hidden" name="current[<?php echo $k ?>]" value="<?php echo zen_output_string_protected($v); ?>" />
+<?php } ?>
 
 <h3><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_BASIC_SETTING; ?></h3>
 
@@ -153,13 +150,7 @@
 
 <div>
 <?php echo zen_image_submit('button_save.gif', IMAGE_SAVE); ?>
-<?php
-  $parm = array(
-            "category_id" => $current_category_id,
-            "page"        => $page,
-          );
-?>
-<a href="<?php echo $html->href_link('categories', $parm); ?>"><?php echo zen_image_button('button_cancel.gif', IMAGE_CANCEL); ?></a>
+<a href="<?php echo $html->href_link('categories', $current_parm); ?>"><?php echo zen_image_button('button_cancel.gif', IMAGE_CANCEL); ?></a>
 </div>
 
 </form>

@@ -24,15 +24,15 @@
   </tr>
 <?php
   while (!$categories->EOF) {
-    $fields = $model->convert_categories_result($categories);
+    $fields = $model->convert_categories_result($categories, $action);
 ?>
   <tr>
     <td nowrap>
       <?php echo $fields['categories_id']; ?>
     </td>
     <td wrap>
-<?php $subcategory_icon = ($fields['subcategories_count'] > 0) ? $html->image('icon_plus.gif', MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_ICON_PLUS) : ''; ?>
-      <a href="<?php echo $fields['link_to_categories']; ?>"><?php echo zen_output_string_protected($fields['categories_name']) . $subcategory_icon; ?></a>
+      <?php $subcategory_icon = ($fields['subcategories_count'] > 0) ? $html->image('icon_plus.gif', MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_ICON_PLUS) : ''; ?>
+      <?php echo $fields['link_to_categories'] . $subcategory_icon; ?></a>
     </td>
     <td align="center">
       <a href="<?php echo $fields['link_to_products']; ?>"><?php echo zen_output_string_protected(MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_LINK_TO_PRODUCTS); ?></a>
@@ -57,25 +57,24 @@ if ($fields['categories_status']) {
     <td class="operation">
       <?php
         $parm  = array(
-                   "category_id" => $current_category_id,
                    "cID"         => $fields['categories_id'],
                    "action"      => "edit",
-                   "page"        => $page,
+                   "parent_id"   => $current_parm['category_id'],
                  );
-        $image = $html->input_image("icon_edit.gif", MODULE_EASY_ADMIN_PRODUCTS_EDIT);
+        $parm = $model->add_current_parm($parm);
         $link  = $html->href_link("categories", $parm);
+        $image = $html->input_image("icon_edit.gif", MODULE_EASY_ADMIN_PRODUCTS_EDIT);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
 
       <?php
         $parm  = array(
-                   "category_id" => $current_category_id,
                    "cID"         => $fields['categories_id'],
                    "action"      => "delete",
-                   "page"        => $page,
                  );
-        $image = $html->input_image("icon_delete.gif", MODULE_EASY_ADMIN_PRODUCTS_DELETE);
+        $parm = $model->add_current_parm($parm);
         $link  = $html->href_link("categories", $parm);
+        $image = $html->input_image("icon_delete.gif", MODULE_EASY_ADMIN_PRODUCTS_DELETE);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
     </td>
