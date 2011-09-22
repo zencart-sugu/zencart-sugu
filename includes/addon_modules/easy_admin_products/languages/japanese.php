@@ -176,8 +176,9 @@ define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE',                 'ËÜÅö¤Ë¾¦ÉÊ¤òº
 
 // ¥³¥Ô¡¼
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE',                   '¾¦ÉÊ¤ò¥³¥Ô¡¼¤¹¤ë');
-define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY',             '<strong>¥«¥Æ¥´¥ê</strong>¡¡<font color="red">É¬¿Ü</font>');
-define('MODULE_EASY_ADMIN_PRODUCTS_COPY_SELECT_TXT',             '¡ÊÊ£¿ôÁªÂò²Ä¡Ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY_ORIGINAL',       '<strong>¸½¥«¥Æ¥´¥ê</strong>');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY',                '<strong>¥«¥Æ¥´¥ê</strong>¡¡<font color="red">É¬¿Ü</font>');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_SELECT_TXT',              '');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE',                    '¾¦ÉÊ %s ¤ò¥³¥Ô¡¼¤·¤¿¤¤¥«¥Æ¥´¥ê¤òÁª¤ó¤Ç¤¯¤À¤µ¤¤');
 
 // ¥¨¥é¡¼

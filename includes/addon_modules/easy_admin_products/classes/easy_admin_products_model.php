@@ -511,8 +511,8 @@ class easy_admin_products_model {
   function validate_copy($post) {
     $errors = array();
     // ¥«¥Æ¥´¥ê
-    if ($post['categories_id'] == 0) {
-      $errors['categories_id'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
+    if ($post['categories'] == 0) {
+      $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
     }
 
     return $errors;
