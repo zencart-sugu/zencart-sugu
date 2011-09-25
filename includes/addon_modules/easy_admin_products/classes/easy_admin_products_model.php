@@ -342,7 +342,6 @@ class easy_admin_products_model {
       $product[$k] = $v;
     }
     $product['categories']            = "";
-    $product['specials_price_status'] = 0;
 
     foreach($columns['languages'] as $v) {
       $language_id          = $v['id'];
@@ -576,6 +575,15 @@ class easy_admin_products_model {
       }
     }
 
+    if ($product['product_is_free'] == 1)
+      $product['specials_price_status'] = 2;
+    else if ($product['product_is_call'] == 1)
+      $product['specials_price_status'] = 3;
+    else if ($product['specials_status'] == 0)
+      $product['specials_price_status'] = 0;
+    else
+      $product['specials_price_status'] = 1;
+
     // meta_tags_products_description
     $column = array();
     foreach($columns['meta_tags_products_description_column'] as $k => $v) {
@@ -624,7 +632,7 @@ class easy_admin_products_model {
       $product['product_is_call']              = 0;
     }
     else if ($product['specials_price_status'] == 1) {
-      $product['products_priced_by_attribute'] = 1;
+      $product['products_priced_by_attribute'] = 0;
       $product['product_is_free']              = 0;
       $product['product_is_call']              = 0;
     }
@@ -776,18 +784,19 @@ class easy_admin_products_model {
     }
 
     // specials
-    if (isset($product['specials_status'])) {
+    if (isset($product['specials_price_status'])) {
       if ($product['specials_expires_date'] == "")
         $product['specials_expires_date'] = '0001-01-01';
       if ($product['specials_specials_date_available'] == "")
         $product['specials_specials_date_available'] = '0001-01-01';
 
-      if ($product['specials_status'] == 1) {
+      if ($product['specials_price_status'] == 0 ||
+          $product['specials_price_status'] == 1) {
         $sql_data_array = array(
           'products_id'             => $products_id,
           'specials_new_products_price' => $product['specials_specials_new_products_price'],
           'expires_date'                => $product['specials_expires_date'],
-          'status'                      => $product['specials_status'],
+          'status'                      => $product['specials_price_status'],
           'specials_date_available'     => $product['specials_specials_date_available'],
         );
 
