@@ -245,10 +245,6 @@ switch($action)
     zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products/attributes_stock&products_id='.$products_id, 'NONSSL'));
     break;
 
-  // ひとつもない場合は追加モードで起動
   default:
-    if (!$stock->is_have_stock_attributes_by_products_id($products_id)) {
-      zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products/attributes_stock&action=add&products_id='.$products_id, 'NONSSL'));
-    }
     break;
 }
