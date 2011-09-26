@@ -344,6 +344,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_YES',          'はい');
 define('MODULE_EASY_ADMIN_PRODUCTS_PWA_DELETE_VARIANT_NO',           'いいえ');
 define('MODULE_EASY_ADMIN_PRODUCTS_PWA_UPDATE_PARENT_PROCESSED',     '親在庫数が更新されました');
 define('MODULE_EASY_ADMIN_PRODUCTS_PWA_UPDATE_VARIANT_PROCESSED',    '在庫数が更新されました');
+define('MODULE_EASY_ADMIN_PRODUCTS_PWA_SKU_NOT_DEFINED',             'この商品のSKU在庫は定義されていません。<br />
+「SKU在庫の追加」から追加してください。');
 
 // categories
 define('BOX_ADDON_MODULES_EASY_ADMIN_PRODUCTS_CATEGORIES',        'かんたんカテゴリ管理');

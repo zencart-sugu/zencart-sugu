@@ -22,6 +22,11 @@
   <input type="submit" value="<?php echo MODULE_EASY_ADMIN_PRODUCTS_LIST; ?>">
 </form>
 
+<?php
+  $stocks = $stock->get_stocks($products_id);
+  $defined_sku = $stocks->RecordCount() > 0 ? true : false;
+?>
+
   <table id="mainProductTable" class="tableLayout3">
     <tr>
       <th><?php echo MODULE_EASY_ADMIN_PRODUCTS_PWA_PRODUCT_ID; ?></th>
@@ -36,11 +41,14 @@
       <td><?php echo $products_name; ?></td>
       <td><?php echo $products_model; ?></td>
       <td align="center"><?php echo $products_quantity; ?></td>
-      <td><a href="<?php echo zen_href_link(FILENAME_ADDON_MODULES_ADMIN, "module=easy_admin_products/attributes_stock&action=resync&amp;products_id=".$products_id, 'NONSSL'); ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_PWA_SYNC_QUANTITY; ?></a></td>
+      <td>
+<?php if ($defined_sku) { ?>
+        <a href="<?php echo zen_href_link(FILENAME_ADDON_MODULES_ADMIN, "module=easy_admin_products/attributes_stock&action=resync&amp;products_id=".$products_id, 'NONSSL'); ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_PWA_SYNC_QUANTITY; ?></a>
+<?php } ?>
+      </td>
     </tr>
 
 <?php
-  $stocks = $stock->get_stocks($products_id);
   if (!$stocks->EOF) {
 ?>
     <tr>
@@ -91,5 +99,9 @@
 ?>
 
   </table>
+
+<?php if (!$defined_sku) { ?>
+<p><?php echo MODULE_EASY_ADMIN_PRODUCTS_PWA_SKU_NOT_DEFINED ?></p>
+<?php } ?>
 
   <a href="<?php echo zen_href_link(FILENAME_ADDON_MODULES_ADMIN, "module=easy_admin_products/attributes_stock&action=add&amp;products_id=".$products_id, 'NONSSL'); ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_PWA_ADD_QUANTITY; ?></a>
