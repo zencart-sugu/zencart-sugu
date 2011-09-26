@@ -88,6 +88,7 @@ switch($action) {
                   "meta_tags_products_description_column" => $meta_tags_products_description_column,
                 );
     $product  = $model->new_product($columns);
+    $product['categories'] = $_SESSION['category_id'];
     $easy_admin_products_validate = array();
     break;
 
