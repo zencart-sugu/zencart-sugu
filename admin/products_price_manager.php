@@ -755,7 +755,7 @@ echo zen_draw_hidden_field('master_categories_id', $pInfo->master_categories_id)
     $discounts_qty = $db->Execute("select * from " . TABLE_PRODUCTS_DISCOUNT_QUANTITY . " where products_id='" . $products_filter . "' order by discount_qty");
     $discount_cnt = $discounts_qty->RecordCount();
     $make = 1;
-    $i;
+    $i = 0;
     while (!$discounts_qty->EOF) {
       $i++;
       $discount_name[] = array('id' => $i,
