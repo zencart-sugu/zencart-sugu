@@ -151,3 +151,21 @@ if($products_shipping_type){
 
 </form>
 </div>
+
+<!--bof Product date added/available-->
+<?php
+  if ($products_date_available > date('Y-m-d H:i:s')) {
+    if ($flag_show_product_info_date_available == 1) {
+?>
+  <p id="productDateAvailable" class="productGeneral centeredContent"><?php echo sprintf(TEXT_DATE_AVAILABLE, zen_date_long($products_date_available)); ?></p>
+<?php
+    }
+  } else {
+    if ($flag_show_product_info_date_added == 1) {
+?>
+      <p id="productDateAdded" class="productGeneral centeredContent"><?php echo sprintf(TEXT_DATE_ADDED, zen_date_long($products_date_added)); ?></p>
+<?php
+    } // $flag_show_product_info_date_added
+  }
+?>
+<!--eof Product date added/available -->
