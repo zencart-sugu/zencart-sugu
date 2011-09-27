@@ -140,9 +140,6 @@ switch($action)
     }
 
     $skumodel = $_REQUEST['skumodel']; //s_mack:noconfirm
-    if(trim($skumodel) == '') { //s_mack:noconfirm
-      zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products/attributes_stock&products_id='.$products_id, 'NONSSL'));
-    }
     $skumodel = zen_db_input(urldecode($skumodel));
 
     if(($_POST['add_edit'] == 'add') || ($_GET['add_edit'] == 'add')) //s_mack:noconfirm
