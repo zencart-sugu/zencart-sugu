@@ -47,7 +47,7 @@
     <tr>
       <td  colspan="2" class="submit">
         <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE; ?>">
-        <a href="<?php echo $html->href_link(); ?>"><input  type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL; ?>"></a>
+        <a href="<?php echo $html->href_link(); ?>"><img src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CANCEL; ?>"></a>
       </td>
     </tr>
 
