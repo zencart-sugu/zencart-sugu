@@ -587,7 +587,7 @@ class easy_admin_products_model {
     if (!$result->EOF) {
       foreach($columns['specials_column'] as $k => $v) {
         if (isset($result->fields[$k])) {
-          if ($k == 'featured_date_available' ||
+          if ($k == 'specials_date_available' ||
               $k == 'expires_date') {
             if ($result->fields[$k] == '0001-01-01')
               $result->fields[$k] = '';
