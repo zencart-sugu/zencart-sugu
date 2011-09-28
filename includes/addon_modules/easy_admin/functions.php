@@ -420,5 +420,56 @@
         }
     }
 
+  function handle_easy_admin_ob($buf) {
+    global $easy_admin_block_header;
 
+    $pattern = '/^.*<!-- header_eof \/\/-->/s';
+    $replace = $easy_admin_block_header;
+    $buf = preg_replace($pattern, $replace, $buf);
+    return $buf;
+  }
+
+  function get_params_for_languages_dropdown() {
+    // Show Languages Dropdown for convenience only if main filename and directory exists
+    if ((basename($_SERVER['PHP_SELF']) != FILENAME_DEFINE_LANGUAGE . '.php') and (basename($_SERVER['PHP_SELF']) != FILENAME_PRODUCTS_OPTIONS_NAME . '.php') and empty($action)) {
+      $languages = zen_get_languages();
+      if (sizeof($languages) > 1) {
+        $languages_array = array();
+        $languages_selected = $_GET['language'];
+        $missing_languages='';
+        for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
+          $test_directory= DIR_WS_LANGUAGES . $languages[$i]['directory'];
+          $test_file= DIR_WS_LANGUAGES . $languages[$i]['directory'] . '.php';
+          if ( file_exists($test_file) and file_exists($test_directory) ) {
+            $count++;
+            $languages_array[] = array('id' => $languages[$i]['code'],
+                                       'text' => $languages[$i]['name']);
+            if ($languages[$i]['id'] == $_SESSION['languages_id']) {
+              $languages_selected = $languages[$i]['code'];
+            }
+          } else {
+              $missing_languages .= ' ' . ucfirst($languages[$i]['directory']) . ' ' . $languages[$i]['name'];
+          }
+        }
+
+        // if languages in table do not match valid languages show error message
+        if ($count != sizeof($languages)) {
+          $messageStack->add('MISSING LANGUAGE FILES OR DIRECTORIES ...' . $missing_languages,'caution');
+        }
+        $hide_languages= false;
+      } else {
+        $hide_languages= true;
+      } // more than one language
+    } else {
+      $hide_languages= true;
+    } // hide when other language dropdown is used
+
+    $return = array(
+      'hide_languages' => $hide_languages,
+      'languages' => $languages,
+      'languages_array' => $languages_array,
+      'languages_selected' => $languages_selected,
+    );
+    return $return;
+  }
 ?>
