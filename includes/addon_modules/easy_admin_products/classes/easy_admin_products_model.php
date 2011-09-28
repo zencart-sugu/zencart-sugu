@@ -82,7 +82,13 @@ class easy_admin_products_model {
           $join .= " inner join ".TABLE_SPECIALS." s on s.products_id=p.products_id";
           break;
         case 'quantity':
-          $join .= " inner join ".TABLE_PRODUCTS_DISCOUNT_QUANTITY." q on q.products_id=p.products_id";
+          $join .= " left join ".TABLE_PRODUCTS_DISCOUNT_QUANTITY." q on q.products_id=p.products_id";
+          $where .= " and (q.discount_id > 0 
+                             or
+                           (select count(*) from ".TABLE_PRODUCTS_ATTRIBUTES." a 
+                            where a.products_id=p.products_id 
+                            and (a.attributes_qty_prices <> '' or a.attributes_qty_prices_onetime <> '')) > 0
+                          )";
           break;
         case 'arrival':
           $where .= " and p.products_date_available >= now()";
