@@ -196,6 +196,18 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
+    function block_languages_dropdown() {
+      $return = get_params_for_languages_dropdown();
+
+      return $return;
+    }
+
+    function block_header() {
+      $return = array();
+
+      return $return;
+    }
+
     // override getBlock method
     // admin/includes/header.phpからの呼び出し
     function getBlock($block, $page) {
