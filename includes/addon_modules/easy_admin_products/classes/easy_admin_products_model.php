@@ -980,8 +980,10 @@ class easy_admin_products_model {
 
     if (is_array($cross)) {
       foreach ($cross as $key_a => $value_a){
-        $query = 'update '.TABLE_PRODUCTS_XSELL.' set sort_order='.(int)$value_a.' where xsell_id='.(int)$key_a;
-        $db->Execute($query);
+        if (is_numeric($key_a) && is_numeric($value_a)) {
+          $query = 'update '.TABLE_PRODUCTS_XSELL.' set sort_order='.(int)$value_a.' where xsell_id='.(int)$key_a;
+          $db->Execute($query);
+        }
       }
     }
   }
