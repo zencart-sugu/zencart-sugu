@@ -3,7 +3,6 @@ if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
 
-require(dirname(__FILE__) . '/classes/ProductCSV.php');
 ini_set('include_path',ini_get('include_path').':'.dirname(__FILE__).'/pear:');
 require('File/CSV.php');
 

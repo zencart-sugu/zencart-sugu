@@ -29,7 +29,6 @@ require_once 'includes/classes/class.addOnModuleBase.php';
 require_once 'includes/addon_modules/product_csv/configure.php';
 require_once 'includes/addon_modules/product_csv/functions.php';
 require_once 'includes/addon_modules/product_csv/module.php';
-require_once 'includes/addon_modules/product_csv/classes/ProductCSV.php';
 require_once 'includes/addon_modules/product_csv/database_tables.php';
 require_once 'includes/addon_modules/product_csv/languages/japanese.php';
 require_once 'includes/addon_modules/product_csv/languages/japanese/admin.php';
