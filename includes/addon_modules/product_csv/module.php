@@ -48,6 +48,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
     // class constructer for php4
     function product_csv() {
+      require_once($this->dir . 'classes/ProductCSV.php');
       $this->__construct();
     }
 
@@ -72,7 +73,6 @@ if (!defined('IS_ADMIN_FLAG')) {
 	$db->execute($insert_sql);
       }
 
-      require(dirname(__FILE__).'/classes/ProductCSV.php');
       $ProductCSV = new ProductCSV();
       for ($i = 1; $i <= 3; $i++) {
 	$columns = $ProductCSV->getFormatColumns($i);
