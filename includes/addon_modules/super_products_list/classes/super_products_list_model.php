@@ -224,7 +224,7 @@ class super_products_list_model {
     /*
        select
     */
-    $select_str = "SELECT DISTINCT p.*, pd.*";
+    $select_str = "SELECT DISTINCT p.*, pd.products_name, pd.products_description";
     if ($price_with_tax) {
       $select_str .= ", SUM(tr.tax_rate) AS tax_rate";
     }
