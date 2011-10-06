@@ -7,10 +7,13 @@
     <li>manufacturers_id: <?php echo zen_draw_pull_down_menu('manufacturers_id', $manufacturers_options, $manufacturers_id); ?></li>
     <li>price_from: <?php echo zen_draw_input_field('price_from', $price_from); ?></li>
     <li>price_to: <?php echo zen_draw_input_field('price_to', $price_to); ?></li>
+<?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
     <li>date_from: <?php echo zen_draw_input_field('date_from', $date_from); ?></li>
     <li>date_to: <?php echo zen_draw_input_field('date_to', $date_to); ?></li>
+<?php } ?>
     <li>sort: <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, ''); ?>
               <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, ''); ?></li>
+    <li>limit: <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, ''); ?></li>
   </ul>
 <?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>
 </form>

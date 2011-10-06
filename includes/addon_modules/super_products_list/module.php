@@ -46,6 +46,14 @@ if (!defined('IS_ADMIN_FLAG')) {
             'use_function' => 'null',
             'set_function' => 'zen_cfg_select_option(array(\'true\', \'false\'), '
           ),
+          array(
+            'configuration_title' => MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_TITLE,
+            'configuration_key' => 'MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE',
+            'configuration_value' => MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_DEFAULT,
+            'configuration_description' => MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_DESCRIPTION,
+            'use_function' => 'null',
+            'set_function' => 'zen_cfg_select_option(array(\'true\', \'false\'), '
+          ),
         );
     /**
      * define default block layouts.
@@ -105,18 +113,35 @@ if (!defined('IS_ADMIN_FLAG')) {
     function page_results() {
       global $messageStack;
 
-      $search_params = super_products_list_model::get_search_params($_REQUEST);
-      $errors = super_products_list_model::validate_search_params($search_params);
+      $model = new super_products_list_model();  
+
+      $model->set_search_params($_REQUEST);
+      $errors = $model->validate_search_params();
       if (!empty($errors)) {
         foreach ($errors as $error) {
           $messageStack->add('header', $error, 'error');
         }
       }
+      $search_params = $model->get_search_params();
 
       $return = $search_params;
-      $return['result_all'] = super_products_list_model::count_all($search_params);
-      $return['products']   = super_products_list_model::search($search_params);
-      $return['paging']     = super_products_list_model::get_paging($search_params, $return['result_all']);
+      $return['result_all'] = $model->count_all();
+      $return['products']   = $model->search();
+      $return['paging']     = $model->get_paging($return['result_all']);
+      if (zen_not_null($search_params['categories_id'])) {
+        $current_category = $model->get_category($search_params['categories_id']);
+        $return['current_categories_path']        = $model->get_categories_path($search_params['categories_id'], $model->get_super_products_list_link('results'));
+        $return['current_categories_name']        = $current_category['categories_name'];
+        $return['current_categories_description'] = $current_category['categories_description'];
+      } else {
+        $return['current_categories_name'] = MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_CATEGORIES;
+      }
+      if (zen_not_null($search_params['manufacturers_id'])) {
+        $current_manufacturer = $model->get_manufacturer($search_params['manufacturers_id']);
+        $return['current_manufacturers_name'] = $current_manufacturer['manufacturers_name'];
+      } else {
+        $return['current_manufacturers_name'] = MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_MANUFACTURERS;
+      }
 
       $return = $this->module_form($return);
       return $return;
@@ -135,6 +160,10 @@ if (!defined('IS_ADMIN_FLAG')) {
         array('id' => 'asc',  'text' => MODULE_SUPER_PRODUCTS_LIST_DIRECTION_ASC),
         array('id' => 'desc', 'text' => MODULE_SUPER_PRODUCTS_LIST_DIRECTION_DESC),
       );
+      $limit_options = super_products_list_model::get_limit_options();
+      foreach ($limit_options as $limit_option) {
+        $return['limit_options'][] = array('id' => $limit_option, 'text' => $limit_option);
+      }
       return $return;
     }
   }

@@ -1,16 +1,25 @@
 <p>super_products_list/results</p>
 keywords: <?php echo $keywords; ?><br />
 categories_id: <?php echo $categories_id; ?><br />
-categories_name: <?php echo $categories_name; ?><br />
+current_categories_path: <?php echo $current_categories_path; ?><br />
+current_categories_name: <?php echo $current_categories_name; ?><br />
+current_categories_description: <?php echo $current_categories_description; ?><br />
 manufacturers_id: <?php echo $manufacturers_id; ?><br />
-manufacturers_name: <?php echo $manufacturers_name; ?><br />
+current_manufacturers_name: <?php echo $current_manufacturers_name; ?><br />
 price_from: <?php echo $price_from; ?><br />
 price_to: <?php echo $price_to; ?><br />
+<?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
 date_from: <?php echo $date_from; ?><br />
 date_to: <?php echo $date_to; ?><br />
+<?php } ?>
 sort: <?php echo $sort; ?><br />
+limit: <?php echo $limit; ?><br />
 page: <?php echo $page; ?><br />
 result_all: <?php echo $result_all; ?><br />
+
+<!-- bof search form //-->
+<?php require($page_module->getModuleTemplate($page_method, 'module_form')); ?>
+<!-- eof search form //-->
 
 <?php if (empty($products)) { ?>
   <p><?php echo MODULE_SUPER_PRODUCTS_LIST_NOT_FOUND_PRODUCTS; ?></p>
@@ -41,7 +50,7 @@ if ($paging['next']['url']) {
 
 <hr />
 <!-- bof paging //-->
-<p><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_FROM_TO, $paging['from'], $paging['to'], $result_all); ?></p>
+<p><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_RESULT_FROM_TO, $paging['result_from'], $paging['result_to'], $result_all); ?></p>
 <?php echo $paging_html ?>
 <!-- eof paging //-->
 <hr />
@@ -56,12 +65,12 @@ if ($paging['next']['url']) {
     <li>model: <?php echo zen_output_string_protected($product['model']) ?></li>
     <li>quantity: <?php echo zen_output_string_protected($product['quantity']) ?></li>
     <li>date_added: <?php echo zen_output_string_protected($product['date_added']) ?></li>
-    <li>zen_get_products_display_price: <?php echo zen_get_products_display_price($product['products_id']) ?></li>
+    <li>final_price: <?php echo $product['final_price'] ?></li>
     <li>cart_button: <?php echo $product['cart_button'] ?></li>
-    <li>categories_path: 
+    <li>categories: 
       <ul>
 <?php foreach ($product['categories_path'] as $product_categories_path) { ?>
-        <li><?php echo $product_categories_path; ?></li>
+        <li>path: <?php echo $product_categories_path; ?></li>
 <?php } ?>
       </ul>
     </li>
@@ -72,13 +81,9 @@ if ($paging['next']['url']) {
 <!-- eof results //-->
 
 <!-- bof paging //-->
-<p><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_FROM_TO, $paging['from'], $paging['to'], $result_all); ?></p>
+<p><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_RESULT_FROM_TO, $paging['result_from'], $paging['result_to'], $result_all); ?></p>
 <?php echo $paging_html ?>
 <!-- eof paging //-->
 <hr />
 
 <?php } // if(empty($products)) { ?>
-
-<!-- bof search form //-->
-<?php require($page_module->getModuleTemplate($page_method, 'module_form')); ?>
-<!-- eof search form //-->
