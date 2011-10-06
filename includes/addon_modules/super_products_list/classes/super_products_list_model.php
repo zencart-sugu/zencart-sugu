@@ -272,13 +272,13 @@ class super_products_list_model {
     if (!empty($this->search_params['keywords_array'])) {
       $target_columns = array(
         "pd.products_name",
-        "pd.products_description",
-        "p.products_model",
-        "mtpd.metatags_keywords",
-        "mtpd.metatags_description",
+//        "pd.products_description",
+//        "p.products_model",
+//        "mtpd.metatags_keywords",
+//        "mtpd.metatags_description",
       );
       if (MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS == 'true') {
-        $target_columns[] = "pwas.skumodel";
+//        $target_columns[] = "pwas.skumodel";
       }
 
       $ors = array();
@@ -286,7 +286,11 @@ class super_products_list_model {
         $tmp = array();
         foreach ($this->search_params['keywords_array'] as $keywords) {
           $keywords = zen_db_input($keywords);
-          $tmp[] = $target_column ." LIKE '%". $keywords ."%'";
+          if (MODULE_SUPER_PRODUCTS_LIST_SENNA_STATUS == 'true') {
+            $tmp[] = "MATCH($target_column) AGAINST('". $keywords ."')";
+          } else{
+            $tmp[] = $target_column ." LIKE '%". $keywords ."%'";
+          }
         }
         $ors[] = '('. join(' AND ', $tmp) .')';
       }
