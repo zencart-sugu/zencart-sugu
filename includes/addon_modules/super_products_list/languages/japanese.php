@@ -17,7 +17,15 @@ define('MODULE_SUPER_PRODUCTS_LIST_STATUS_DESCRIPTION', '¥¹¡¼¥Ñ¡¼¾¦ÉÊ°ìÍ÷¤òÍ­¸ú¤
 define('MODULE_SUPER_PRODUCTS_LIST_SORT_ORDER_TITLE', 'Í¥Àè½ç');
 define('MODULE_SUPER_PRODUCTS_LIST_SORT_ORDER_DESCRIPTION', '¥â¥¸¥å¡¼¥ë¤ÎÍ¥Àè½ç¤òÀßÄê¤Ç¤­¤Þ¤¹¡£¿ô»ú¤¬¾®¤µ¤¤¤Û¤ÉÀè¤Ë¥â¥¸¥å¡¼¥ë¤ÎÆÉ¤ß¹þ¤ß¤È½èÍý¤¬¼Â¹Ô¤µ¤ì¤Þ¤¹¡£È¾³Ñ¿ô»ú¤ÇÂ¾¤Î¥â¥¸¥å¡¼¥ë¤È½Å¤Ê¤é¤Ê¤¤¤è¤¦¤ËÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£');
 define('MODULE_SUPER_PRODUCTS_LIST_SENNA_STATUS_TITLE', 'senna¤òÍøÍÑ¤·¤Þ¤¹¤«?');
-define('MODULE_SUPER_PRODUCTS_LIST_SENNA_STATUS_DESCRIPTION', 'ÊÌÅÓsenna¤Î¥¤¥ó¥¹¥È¡¼¥ë¤ò¹Ô¤¦É¬Í×¤¬¤¢¤ê¤Þ¤¹ <br />true: Í­¸ú<br />false: Ìµ¸ú');
+define('MODULE_SUPER_PRODUCTS_LIST_SENNA_STATUS_DESCRIPTION', 'ÊÌÅÓsenna¤Î¥¤¥ó¥¹¥È¡¼¥ë¤ò¹Ô¤¦É¬Í×¤¬¤¢¤ê¤Þ¤¹¡£<br />
+senna¥¤¥ó¥¹¥È¡¼¥ë¸å¡¢Á´Ê¸¸¡º÷ÍÑ¥¤¥ó¥Ç¥Ã¥¯¥¹¤ò¤Ï¤ëÉ¬Í×¤¬¤¢¤ê¤Þ¤¹¡£<br />
+¾¦ÉÊÅÀ¿ô¤Ë¤è¤Ã¤Æ¤Ï¿ô½½Ê¬Äø¤«¤«¤ë¾ì¹ç¤â¤¢¤ê¤Þ¤¹¤Î¤Ç¡¢¥³¥ó¥½¡¼¥ë¤«¤éÄ¾ÀÜSQL¤ò¼Â¹Ô¤·¤Æ¤¯¤À¤µ¤¤¡£<br />
+<p><a href="javascript:void(0)" onclick="document.getElementById(\'senna_sql\').style.display=\'block\';">SQL¤òÉ½¼¨¤¹¤ë</a></p>
+<div id="senna_sql" style="display:none;">
+CREATE FULLTEXT INDEX idx_fulltext_products_description_products_name USING NGRAM ON '. TABLE_PRODUCTS_DESCRIPTION .' (products_name);
+</div>');
+define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_TITLE', 'ÅÐÏ¿Æü¤ò¸¡º÷¾ò·ï¤Ë´Þ¤á¤Þ¤¹¤«?');
+define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_DESCRIPTION', 'ÅÐÏ¿Æü¤Ï¡ÖÄó¶¡²ÄÇ½Æü¡×¤òÍøÍÑ¤·¤Þ¤¹¡£¥æ¡¼¥¶¡¼¤Î¸¡º÷¾ò·ï¤ËÅÐÏ¿Æü¤Ç¸¡º÷¤µ¤»¤ë¤«¤É¤¦¤«¤ò»ØÄê¤·¤Þ¤¹¡£');
 
 define('MODULE_SUPER_PRODUCTS_LIST_SORT_NAME',       '¾¦ÉÊÌ¾½ç');
 define('MODULE_SUPER_PRODUCTS_LIST_SORT_PRICE',      '²Á³Ê½ç');
@@ -26,7 +34,7 @@ define('MODULE_SUPER_PRODUCTS_LIST_SORT_DATE',       'È¯ÇäÆü½ç');
 define('MODULE_SUPER_PRODUCTS_LIST_DIRECTION_ASC',   '¾º½ç');
 define('MODULE_SUPER_PRODUCTS_LIST_DIRECTION_DESC',  '¹ß½ç');
 
-define('MODULE_SUPER_PRODUCTS_LIST_FROM_TO',         '<strong>%d</strong>¤«¤é<strong>%d</strong> ¤òÉ½¼¨Ãæ (¾¦ÉÊ¤Î¿ô: <strong>%d</strong>)');
+define('MODULE_SUPER_PRODUCTS_LIST_RESULT_FROM_TO',  '<strong>%d</strong>¤«¤é<strong>%d</strong> ¤òÉ½¼¨Ãæ (¾¦ÉÊ¤Î¿ô: <strong>%d</strong>)');
 define('MODULE_SUPER_PRODUCTS_LIST_PAGING_PREV',     '&lt;&lt;Á°');
 define('MODULE_SUPER_PRODUCTS_LIST_PAGING_NEXT',     '¼¡&gt;&gt;');
 define('MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_CATEGORIES', 'Á´¥«¥Æ¥´¥ê¡¼');

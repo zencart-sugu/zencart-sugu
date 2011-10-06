@@ -10,22 +10,28 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 class super_products_list_model {
 
+  var $search_params = array();
+
   // 検索パラメータ取得
   function get_search_params() {
-    $params = array();
-    $params['keywords']         = $_REQUEST['keywords'];
-    $params['keywords_array']   = self::parse_keywords($_REQUEST['keywords']);
-    $params['categories_id']    = (int)$_REQUEST['categories_id'] ? (int)$_REQUEST['categories_id'] : "";
-    $params['manufacturers_id'] = (int)$_REQUEST['manufacturers_id'] ? (int)$_REQUEST['manufacturers_id'] : "";
-    $params['price_from']       = self::get_numeric_value($_REQUEST['price_from']);
-    $params['price_to']         = self::get_numeric_value($_REQUEST['price_to']);
-    $params['date_from']        = self::get_date_value($_REQUEST['date_from']);
-    $params['date_to']          = self::get_date_value($_REQUEST['date_to']);
-    $params['sort']             = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DEFAULT;
-    $params['direction']        = isset($_REQUEST['direction']) ? $_REQUEST['direction'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DIRECTION_DEFAULT;
-    $params['limit']            = (int)$_REQUEST['limit'] ? (int)$_REQUEST['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT;
-    $params['page']             = (int)$_REQUEST['page'] ? (int)$_REQUEST['page'] : 1;
-    return $params;
+    return $this->search_params;
+  }
+
+  function set_search_params($request) {
+    $this->search_params = array(
+      'keywords'         => $request['keywords'],
+      'keywords_array'   => self::parse_keywords($request['keywords']),
+      'categories_id'    => (int)$request['categories_id'] ? (int)$request['categories_id'] : "",
+      'manufacturers_id' => (int)$request['manufacturers_id'] ? (int)$request['manufacturers_id'] : "",
+      'price_from'       => self::get_numeric_value($request['price_from']),
+      'price_to'         => self::get_numeric_value($request['price_to']),
+      'date_from'        => self::get_date_value($request['date_from']),
+      'date_to'          => self::get_date_value($request['date_to']),
+      'sort'             => isset($request['sort']) ? $request['sort'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DEFAULT,
+      'direction'        => isset($request['direction']) ? $request['direction'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DIRECTION_DEFAULT,
+      'page'             => (int)$request['page'] ? (int)$request['page'] : 1,
+      'limit'            => in_array($request['limit'], self::get_limit_options()) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
+    );
   }
 
   // キーワードをパース
@@ -78,78 +84,70 @@ class super_products_list_model {
   }
 
   // 入力された値をチェック
-  function validate_search_params(&$params) {
+  function validate_search_params() {
     $errors = array();
 
     // カテゴリが存在するか
-    if (zen_not_null($params['categories_id'])) {
-      $category = self::get_category($params['categories_id']);
+    if (zen_not_null($this->search_params['categories_id'])) {
+      $category = self::get_category($this->search_params['categories_id']);
       if (!$category) {
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_CATEGORY_NOT_FOUND;
-        $params['categories_id'] = "";
-      }else{
-        $params['categories_name'] = $category['categories_name'];
+        $this->search_params['categories_id'] = "";
       }
-    }else{
-      $params['categories_name'] = MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_CATEGORIES;
     }
 
     // メーカーが存在するかチェック
-    if (zen_not_null($params['manufacturers_id'])) {
-      $manufacturer = self::get_manufacturer($params['manufacturers_id']);
+    if (zen_not_null($this->search_params['manufacturers_id'])) {
+      $manufacturer = self::get_manufacturer($this->search_params['manufacturers_id']);
       if (!$manufacturer) {
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_MANUFACTURER_NOT_FOUND;
-        $params['manufacturers_id'] = "";
-      }else{
-        $params['manufacturers_name'] = $manufacturer['manufacturers_name'];
+        $this->search_params['manufacturers_id'] = "";
       }
-    }else{
-      $params['manufacturers_name'] = MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_MANUFACTURERS;
     }
 
     // price_from, price_to
     $price_check_error = false;
-    if (zen_not_null($params['price_from'])) {
-      if (!settype($params['price_from'], 'float')) {
+    if (zen_not_null($this->search_params['price_from'])) {
+      if (!settype($this->search_params['price_from'], 'float')) {
         $price_check_error = true;
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_PRICE_FROM_MUST_BE_NUM;
-        $params['price_from'] = "";
+        $this->search_params['price_from'] = "";
       }
     }
-    if (zen_not_null($params['price_to'])) {
-      if (!settype($params['price_to'], 'float')) {
+    if (zen_not_null($this->search_params['price_to'])) {
+      if (!settype($this->search_params['price_to'], 'float')) {
         $price_check_error = true;
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_PRICE_TO_MUST_BE_NUM;
-        $params['price_to'] = "";
+        $this->search_params['price_to'] = "";
       }
     }
-    if (($price_check_error == false) && is_float($params['price_from']) && is_float($params['price_to'])) {
-      if ($params['price_from'] > $params['price_to']) {
+    if (($price_check_error == false) && is_float($this->search_params['price_from']) && is_float($this->search_params['price_to'])) {
+      if ($this->search_params['price_from'] > $this->search_params['price_to']) {
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_PRICE_TO_LESS_THAN_PRICE_FROM;
-        $params['price_to'] = "";
+        $this->search_params['price_to'] = "";
       }
     }
 
     // date_from, date_to
     $date_check_error = false;
-    if (zen_not_null($params['date_from'])) {
-      if (!zen_checkdate($params['date_from'], DOB_FORMAT_STRING, $dfrom_array)) {
+    if (zen_not_null($this->search_params['date_from'])) {
+      if (!zen_checkdate($this->search_params['date_from'], DOB_FORMAT_STRING, $dfrom_array)) {
         $date_check_error = true;
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_INVALID_FROM_DATE;
-        $params['date_from'] = "";
+        $this->search_params['date_from'] = "";
       }
     }
-    if (zen_not_null($params['date_to'])) {
-      if (!zen_checkdate($params['date_to'], DOB_FORMAT_STRING, $dto_array)) {
+    if (zen_not_null($this->search_params['date_to'])) {
+      if (!zen_checkdate($this->search_params['date_to'], DOB_FORMAT_STRING, $dto_array)) {
         $date_check_error = true;
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_INVALID_TO_DATE;
-        $params['date_to'] = "";
+        $this->search_params['date_to'] = "";
       }
     }
-    if (($date_check_error == false) && zen_not_null($params['date_from']) && zen_not_null($params['date_to'])) {
+    if (($date_check_error == false) && zen_not_null($this->search_params['date_from']) && zen_not_null($this->search_params['date_to'])) {
       if (mktime(0, 0, 0, $dfrom_array[1], $dfrom_array[2], $dfrom_array[0]) > mktime(0, 0, 0, $dto_array[1], $dto_array[2], $dto_array[0])) {
         $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_TO_DATE_LESS_THAN_FROM_DATE;
-        $params['date_to'] = "";
+        $this->search_params['date_to'] = "";
       }
     }
 
@@ -160,7 +158,7 @@ class super_products_list_model {
   function get_category($categories_id) {
     global $db;
 
-    $query = "SELECT c.*, cd.*
+    $query = "SELECT c.*, cd.categories_name, cd.categories_description
               FROM ". TABLE_CATEGORIES ." c, ". TABLE_CATEGORIES_DESCRIPTION ." cd
               WHERE c.categories_id = ". (int)$categories_id ."
               AND c.categories_status = 1
@@ -188,36 +186,36 @@ class super_products_list_model {
   }
 
   // 検索
-  function search($params) {
+  function search() {
     global $db;
 
-    $query = self::get_search_query($params) . 
-             self::get_search_order_by_query($params) .
-             self::get_search_limit_offset_query($params);
+    $query = $this->get_search_query() . 
+             $this->get_search_order_by_query() .
+             $this->get_search_limit_offset_query();
     $result = $db->Execute($query);
     $products = array();
     while (!$result->EOF) {
-      $products[] = self::convert_product_result($result->fields);
+      $products[] = $this->convert_product_result($result->fields);
       $result->MoveNext();
     }
     return $products;
   }
 
   // 検索ヒット数を取得
-  function count_all($params) {
+  function count_all() {
     global $db;
 
-    $query = "SELECT COUNT(*) AS count FROM(". self::get_search_query($params) .") AS products"; 
+    $query = "SELECT COUNT(*) AS count FROM(". $this->get_search_query() .") AS products"; 
     $result = $db->Execute($query);
     return (int)$result->fields['count'];
   }
 
   // 検索用クエリを作成
-  function get_search_query($params) {
+  function get_search_query() {
     global $db, $currencies;
 
     $price_with_tax = false;
-    if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset($params['price_from']) && zen_not_null($params['price_from'])) || (isset($params['price_to']) && zen_not_null($params['price_to'])))) {
+    if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset($this->search_params['price_from']) && zen_not_null($this->search_params['price_from'])) || (isset($this->search_params['price_to']) && zen_not_null($this->search_params['price_to'])))) {
       $price_with_tax = true;
     }
 
@@ -271,7 +269,7 @@ class super_products_list_model {
                    AND p2c.categories_id = c.categories_id ";
     $where_str = $db->bindVars($where_str, ':languagesID', $_SESSION['languages_id'], 'integer');
     // keywords
-    if (!empty($params['keywords_array'])) {
+    if (!empty($this->search_params['keywords_array'])) {
       $target_columns = array(
         "pd.products_name",
         "pd.products_description",
@@ -286,7 +284,7 @@ class super_products_list_model {
       $ors = array();
       foreach ($target_columns as $target_column) {
         $tmp = array();
-        foreach ($params['keywords_array'] as $keywords) {
+        foreach ($this->search_params['keywords_array'] as $keywords) {
           $keywords = zen_db_input($keywords);
           $tmp[] = $target_column ." LIKE '%". $keywords ."%'";
         }
@@ -295,18 +293,18 @@ class super_products_list_model {
       $where_str .= " AND (". join(" OR ", $ors) .")";
     }
     // categories_id
-    if ($params['categories_id']) {
-      $subcategories = array($params['categories_id']);
-      zen_get_subcategories($subcategories, $params['categories_id']);
+    if ($this->search_params['categories_id']) {
+      $subcategories = array($this->search_params['categories_id']);
+      zen_get_subcategories($subcategories, $this->search_params['categories_id']);
       $where_str .= " AND p2c.categories_id IN (". join(',', $subcategories) .")";
     }
     // manufacturers_id
-    if ($params['manufacturers_id']) {
-      $where_str .= " AND p.manufacturers_id = ". (int)$params['manufacturers_id'];
+    if ($this->search_params['manufacturers_id']) {
+      $where_str .= " AND p.manufacturers_id = ". (int)$this->search_params['manufacturers_id'];
     }
     // price
-    $pfrom = $params['price_from'];
-    $pto = $params['price_to'];
+    $pfrom = $this->search_params['price_from'];
+    $pto = $this->search_params['price_to'];
     $rate = $currencies->get_value($_SESSION['currency']);
     if ($rate) {
       $pfrom = $pfrom / $rate;
@@ -332,13 +330,13 @@ class super_products_list_model {
       }
     }
     // date
-    if ($params['date_from']) {
-      $where_str .= " AND p.products_date_added >= :dateAdded";
-      $where_str = $db->bindVars($where_str, ':dateAdded', zen_date_raw($params['date_from']), 'date');
+    if ($this->search_params['date_from']) {
+      $where_str .= " AND p.products_date_available >= :dateAvailable";
+      $where_str = $db->bindVars($where_str, ':dateAvailable', zen_date_raw($this->search_params['date_from']), 'date');
     }
-    if ($params['date_to']) {
-      $where_str .= " AND p.products_date_added <= :dateAdded";
-      $where_str = $db->bindVars($where_str, ':dateAdded', zen_date_raw($params['date_to']), 'date');
+    if ($this->search_params['date_to']) {
+      $where_str .= " AND p.products_date_available <= :dateAvailable";
+      $where_str = $db->bindVars($where_str, ':dateAvailable', zen_date_raw($this->search_params['date_to']), 'date');
     }
 
     /*
@@ -352,10 +350,10 @@ class super_products_list_model {
   }
 
   // order by
-  function get_search_order_by_query($params) {
+  function get_search_order_by_query() {
     $order_by = "";
-    $direction = ($params['direction'] == 'desc') ? 'DESC' : 'ASC';
-    switch ($params['sort']) {
+    $direction = ($this->search_params['direction'] == 'desc') ? 'DESC' : 'ASC';
+    switch ($this->search_params['sort']) {
       case 'price':
         $order_by = " ORDER BY p.products_price_sorter $direction, pd.products_name ASC";
         break;
@@ -363,7 +361,7 @@ class super_products_list_model {
         $order_by = " ORDER BY p.products_sort_order $direction, pd.products_name ASC";
         break;
       case 'date':
-        $order_by = " ORDER BY p.products_date_added $direction, pd.products_name ASC";
+        $order_by = " ORDER BY p.products_date_available IS NULL ASC, p.products_date_available $direction, pd.products_name ASC";
         break;
       default:
         $order_by = " ORDER BY pd.products_name $direction";
@@ -373,10 +371,10 @@ class super_products_list_model {
   }
 
   // limit offset
-  function get_search_limit_offset_query($params) {
+  function get_search_limit_offset_query() {
     $limit_offset = "";
-    $page = (int)$params['page'];
-    $limit = (int)$params['limit'];
+    $page   = (int)$this->search_params['page'];
+    $limit  = (int)$this->search_params['limit'];
     $offset = ($page - 1) * $limit;
     if ($limit > 0) {
       $limit_offset .= " LIMIT ". $limit;
@@ -397,11 +395,11 @@ class super_products_list_model {
     $fields['quantity']    = $fields['products_quantity'];
     $fields['date_added']  = zen_date_long($fields['products_date_added']);
     $fields['price']       = $fields['products_price'];	#FIXME
-    $fields['final_price'] = $fields['products_price_sorter'];	#FIXME
+    $fields['final_price'] = zen_get_products_display_price($fields['products_id']);
     $fields['cart_button'] = self::get_product_cart_button($fields);
     $categories = self::get_product_categories($fields['products_id']);
     foreach ($categories as $category_id) {
-      $fields['categories_path'][] = self::get_categories_path($category_id);
+      $fields['categories_path'][] = self::get_categories_path($category_id, self::get_super_products_list_link('results'));
     }
     $fields['always_free_shipping'] = $fields['product_is_always_free_shipping'];
     return $fields;
@@ -511,20 +509,32 @@ class super_products_list_model {
         if (!$first)
           $html .= $separate;
         $first = false;
-        $html .= '<a href="'.$link.'&category_id='.$category['id'].'">'.$category['text'].'</a>';
+        $html .= '<a href="'.$link.'&categories_id='.$category['id'].'">'.$category['text'].'</a>';
       }
       return $html;
     }
   }
 
   // ページング情報取得
-  function get_paging($search_params, $count_all) {
-    $max_page = (int)ceil($count_all / $search_params['limit']);
-    $current_page = (int)$search_params['page'];
-    $url = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
-    foreach ($search_params as $key => $val) {
-      if ($key != 'page' && $key != 'keywords_array' && $key != 'categories_name' && $key != 'manufacturers_name') {
-        $url .= '&'. urlencode($key) .'='. urlencode($val);
+  function get_paging($count_all) {
+    $max_page = (int)ceil($count_all / $this->search_params['limit']);
+    $current_page = (int)$this->search_params['page'];
+    $url = self::get_super_products_list_link('results');
+    foreach ($this->search_params as $key => $val) {
+      switch ($key) {
+      case 'keywords':
+      case 'categories_id':
+      case 'manufacturers_id':
+      case 'price_from':
+      case 'price_to':
+      case 'date_from':
+      case 'date_to':
+      case 'sort':
+      case 'limit':
+        if (zen_not_null($val)) {
+          $url .= '&'. urlencode($key) .'='. urlencode($val);
+        }
+        break;
       }
     }
 
@@ -560,9 +570,21 @@ class super_products_list_model {
         $after_skipped = true;
       }
     }
-    $paging['from'] = ($current_page - 1) * $search_params['limit'] + 1;
-    $paging['to'] = min($count_all, $current_page * $search_params['limit']);
+    $paging['result_from'] = ($current_page - 1) * $this->search_params['limit'] + 1;
+    $paging['result_to'] = min($count_all, $current_page * $this->search_params['limit']);
     return $paging;
+  }
+
+  function get_limit_options() {
+    return explode(',', MODULE_SUPER_PRODUCTS_LIST_LIMIT_OPTIONS);
+  }
+
+  function get_super_products_list_link($page='') {
+    $param = 'module=super_products_list';
+    if (zen_not_null($page)) {
+      $param .= '/'. $page;
+    }
+    return zen_href_link(FILENAME_ADDON, $param);
   }
 }
 ?>
