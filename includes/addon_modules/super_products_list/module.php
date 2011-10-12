@@ -222,5 +222,15 @@ if (!defined('IS_ADMIN_FLAG')) {
       echo $model->toJSON($data);
       exit;
     }
+
+    // カテゴリ一覧ブロック
+    function block_categories() {
+      $model = new super_products_list_model();  
+
+      $return = array();
+      $return['categories'] = $model->get_categories_tree($_REQUEST['categories_id']);
+      $return['search_link'] = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
+      return $return;
+    }
   }
 ?>

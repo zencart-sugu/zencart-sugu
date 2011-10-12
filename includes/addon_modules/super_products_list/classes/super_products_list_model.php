@@ -651,5 +651,38 @@ class super_products_list_model {
     }
     return $limit_offset;
   }
+
+  // カテゴリツリーを取得
+  function get_categories_tree($categories_id) {
+    $current_category  = $this->get_category($categories_id);
+    $categories = $this->get_subcategories($current_category['parent_id']);
+    for ($i = 0, $n = count($categories); $i < $n; $i++) {
+      if ($categories[$i]['categories_id'] == $categories_id) {
+        $categories[$i]['is_current'] = true;
+        $categories[$i]['subcategories'] = $this->get_subcategories($categories_id);
+      }
+    }
+    return $categories;
+  }
+
+  // サブカテゴリを取得
+  function get_subcategories($parent_id) {
+    global $db;
+
+    $query = "SELECT c.*, cd.categories_name, cd.categories_description
+              FROM ". TABLE_CATEGORIES ." c, ". TABLE_CATEGORIES_DESCRIPTION ." cd
+              WHERE c.parent_id = ". (int)$parent_id ."
+              AND c.categories_status = 1
+              AND c.categories_id = cd.categories_id
+              AND cd.language_id = " . (int)$_SESSION['languages_id']; 
+    $result = $db->Execute($query);
+
+    $subcategories = array();
+    while (!$result->EOF) {
+      $subcategories[] = $result->fields;
+      $result->MoveNext();
+    }
+    return $subcategories;
+  }
 }
 ?>
