@@ -1,25 +1,53 @@
-<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'onsubmit="return check_form();"'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/jquery.fancybox-1.3.4.css" media="screen" />
+
+<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
 <?php echo zen_draw_hidden_field('main_page', FILENAME_ADDON); ?>
 <?php echo zen_draw_hidden_field('module', 'super_products_list/results'); ?>
   <ul>
-    <li>keywords: <?php echo zen_draw_input_field('keywords', $keywords); ?></li>
-    <li>categories_id: <?php echo zen_draw_pull_down_menu('categories_id', $categories_options, $categories_id); ?></li>
-    <li>manufacturers_id: <?php echo zen_draw_pull_down_menu('manufacturers_id', $manufacturers_options, $manufacturers_id); ?></li>
-    <li>price_from: <?php echo zen_draw_input_field('price_from', $price_from); ?></li>
-    <li>price_to: <?php echo zen_draw_input_field('price_to', $price_to); ?></li>
+    <li>keywords: <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
+    <li>categories_id: <?php echo zen_draw_pull_down_menu('categories_id', $categories_options, $categories_id, 'id=categories_id'); ?></li>
+    <li>manufacturers_id: <a href="javascript:void(0)" id="open_manufacturer"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_MANUFACTURER ?></a>
+    <li>price_from: <?php echo zen_draw_input_field('price_from', $price_from, 'id="price_from"'); ?></li>
+    <li>price_to: <?php echo zen_draw_input_field('price_to', $price_to, 'id="price_to"'); ?></li>
 <?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
-    <li>date_from: <?php echo zen_draw_input_field('date_from', $date_from); ?></li>
-    <li>date_to: <?php echo zen_draw_input_field('date_to', $date_to); ?></li>
+    <li>date_from: <?php echo zen_draw_input_field('date_from', $date_from, 'id="date_from"'); ?></li>
+    <li>date_to: <?php echo zen_draw_input_field('date_to', $date_to, 'id="date_to"'); ?></li>
 <?php } ?>
-    <li>sort: <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, ''); ?>
-              <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, ''); ?></li>
-    <li>limit: <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, ''); ?></li>
+    <li>sort: <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, 'id="sort"'); ?>
+              <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, 'id="direction"'); ?></li>
+    <li>limit: <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, 'id="limit"'); ?></li>
   </ul>
 <?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>
 </form>
 <script type="text/javascript" src="includes/general.js"></script>
+<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript">
 <!--
+$(document).ready(function() {
+  $('#open_manufacturer').click(function() {
+    if (!check_form()) {
+      return false;
+    }
+
+    $.fancybox({
+      'padding':       0,
+      'autoScale':     false,
+      'transitionIn':  'none',
+      'transitionOut': 'none',
+      'width':         '75%',
+      'height':        '75%',
+      'href':          '<?php echo zen_href_link(FILENAME_ADDON, 'module=super_products_list/manufacturers', 'SSL') ?>' +
+                       '&keywords='+ encodeURIComponent($('#keywords').val()) +
+                       '&categories_id='+ encodeURIComponent($('#categories_id').val()) +
+                       '&price_from='+ encodeURIComponent($('#price_from').val()) +
+                       '&price_to='+ encodeURIComponent($('#price_to').val()) +
+                       '&date_from='+ encodeURIComponent($('#date_from').val()) +
+                       '&date_to='+ encodeURIComponent($('#date_to').val()),
+      'type':          'iframe'
+    });
+  });
+});
+
 function check_form() {
   // elements
   var price_from = document.super_products_list.elements['price_from'];

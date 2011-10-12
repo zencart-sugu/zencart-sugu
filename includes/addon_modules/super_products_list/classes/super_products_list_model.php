@@ -17,6 +17,7 @@ class super_products_list_model {
     return $this->search_params;
   }
 
+  // 検索パラメータセット
   function set_search_params($request) {
     $this->search_params = array(
       'keywords'         => $request['keywords'],
@@ -30,7 +31,7 @@ class super_products_list_model {
       'sort'             => isset($request['sort']) ? $request['sort'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DEFAULT,
       'direction'        => isset($request['direction']) ? $request['direction'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DIRECTION_DEFAULT,
       'page'             => (int)$request['page'] ? (int)$request['page'] : 1,
-      'limit'            => in_array($request['limit'], self::get_limit_options()) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
+      'limit'            => isset($request['limit']) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
     );
   }
 
@@ -589,6 +590,66 @@ class super_products_list_model {
       $param .= '/'. $page;
     }
     return zen_href_link(FILENAME_ADDON, $param);
+  }
+
+  function toJSON($data) {
+    if (function_exists('json_encode'))
+      return json_encode($data);
+    require_once('Zend/Json/Encoder.php');
+    return Zend_Json_Encoder::encode($data);
+  }
+
+  // メーカーを検索
+  function search_manufacturers() {
+    global $db;
+    $query = $this->get_search_manufacturers_query() .
+             $this->get_search_manufacturers_order_by_query() .
+             $this->get_search_manufacturers_limit_offset_query();
+    $result = $db->Execute($query);
+    $manufacturers = array();
+    while (!$result->EOF) {
+      $manufacturers[] = array(
+        'id'   => $result->fields['manufacturers_id'],
+        'name' => $result->fields['manufacturers_name'],
+      );
+      $result->MoveNext();
+    }
+    return $manufacturers;
+  }
+
+  // メーカー検索ヒット数を取得
+  function count_all_manufacturers() {
+    global $db;
+
+    $query = "SELECT COUNT(*) AS count FROM(". $this->get_search_manufacturers_query() .") AS manufacturers";
+    $result = $db->Execute($query);
+    return (int)$result->fields['count'];
+  }
+
+  function get_search_manufacturers_query() {
+    $query = "SELECT DISTINCT m.manufacturers_id, m.manufacturers_name FROM ". TABLE_MANUFACTURERS . " AS m,
+              (". $this->get_search_query() .") AS p
+              WHERE m.manufacturers_id = p.manufacturers_id";
+    return $query;
+  }
+
+  function get_search_manufacturers_order_by_query() {
+    $query = " ORDER BY manufacturers_name ASC";
+    return $query;
+  }
+
+  function get_search_manufacturers_limit_offset_query() {
+    $limit_offset = "";
+    $page   = (int)$this->search_params['page'];
+    $limit  = (int)$this->search_params['limit'];
+    $offset = ($page - 1) * $limit;
+    if ($limit > 0) {
+      $limit_offset .= " LIMIT ". $limit;
+    }
+    if ($offset > 0) {
+      $limit_offset .= " OFFSET ". $offset;
+    }
+    return $limit_offset;
   }
 }
 ?>
