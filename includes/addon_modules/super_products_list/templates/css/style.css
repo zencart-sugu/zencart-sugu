@@ -1,0 +1,11 @@
+#block-super_products_list-block_categories .content ul li {
+  margin: 5px 0px 3px 0px;
+}
+
+#block-super_products_list-block_categories .content ul li.current {
+  font-weight: bold;
+}
+
+#block-super_products_list-block_categories .content ul ul li {
+  margin-left: 30px;
+}
