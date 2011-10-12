@@ -79,7 +79,7 @@ if (!defined('IS_ADMIN_FLAG')) {
                                                          'checkout_success')),
                          );
     end of examples */
-    var $require_modules = array();
+    var $require_modules = array('jquery');
     var $notifier = array();
 
     // class constructer for php4
@@ -104,12 +104,14 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     // page methods
+    // 検索画面
     function page() {
       $return = array();
       $return = $this->module_form($return);
       return $return;
     }
 
+    // 検索結果
     function page_results() {
       global $messageStack;
 
@@ -147,9 +149,9 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
+    // 検索フォーム（検索画面、検索結果画面で共通利用）
     function module_form($return = array()) {
       $return['categories_options'] = zen_get_categories(array(array('id' => '', 'text' => MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_CATEGORIES)),0 ,'', '1');
-      $return['manufacturers_options'] = zen_get_manufacturers(array(array('id' => '', 'text' => MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_MANUFACTURERS)));
       $return['sort_options']     = array(
         array('id' => 'name',       'text' => MODULE_SUPER_PRODUCTS_LIST_SORT_NAME),
         array('id' => 'price',      'text' => MODULE_SUPER_PRODUCTS_LIST_SORT_PRICE),
@@ -165,6 +167,60 @@ if (!defined('IS_ADMIN_FLAG')) {
         $return['limit_options'][] = array('id' => $limit_option, 'text' => $limit_option);
       }
       return $return;
+    }
+
+    // メーカー指定画面
+    function page_manufacturers() {
+      foreach ($_REQUEST as $key => $val) {
+        $_REQUEST[$key] = mb_convert_encoding($_REQUEST[$key], CHARSET, 'UTF-8');
+      }
+
+      $block = $GLOBALS['super_products_list']->getBlock('block_manufacturers', $current_page_base);
+      header("Content-Type: text/html; charset=". CHARSET);
+      echo $block;
+      exit();	// blockの内容だけ出力したいのでexit
+    }
+
+    // メーカー指定画面用ブロック
+    function block_manufacturers() {
+      $return = $_REQUEST;
+      $keys = array('keywords', 'categories_id', 'price_from', 'price_to', 'date_from', 'date_to');
+      foreach ($keys as $key) {
+        $return['encoded_params'] .= '&'. $key .'='. urlencode($_REQUEST[$key]);
+      }
+      return $return;
+    }
+
+    // メーカー一覧をJSONで返す
+    function page_ajax_get_manufacturers() {
+      foreach ($_REQUEST as $key => $val) {
+        $_REQUEST[$key] = mb_convert_encoding($_REQUEST[$key], CHARSET, 'UTF-8');
+      }
+
+      $data;
+      $model = new super_products_list_model();  
+      $model->set_search_params($_REQUEST);
+      $errors = $model->validate_search_params();
+      if (!empty($errors)) {
+        $data->result  = "ng";
+        $data->message = join("<br />", $errors);
+      }else{
+        $search_params = $model->get_search_params();
+        $max_count = $model->count_all_manufacturers();
+        $max_page = ceil($max_count / MODULE_SUPER_PRODUCTS_LIST_MANUFACTURERS_LIST_LIMIT_DEFAULT);
+        $manufacturers = $model->search_manufacturers();
+        for ($i = 0, $n = count($manufacturers); $i < $n; $i++) {
+          $manufacturers[$i]['name'] = mb_convert_encoding($manufacturers[$i]['name'], 'UTF-8', CHARSET);
+        }
+        
+        $data->result  = "ok";
+        $data->message = "";
+        $data->response->max_page = $max_page;
+        $data->response->manufacturers = $manufacturers;
+      }
+      header("Content-Type: application/json; charset=UTF-8");
+      echo $model->toJSON($data);
+      exit;
     }
   }
 ?>
