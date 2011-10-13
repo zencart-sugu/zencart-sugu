@@ -31,7 +31,7 @@ class super_products_list_model {
       'sort'             => isset($request['sort']) ? $request['sort'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DEFAULT,
       'direction'        => isset($request['direction']) ? $request['direction'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DIRECTION_DEFAULT,
       'page'             => (int)$request['page'] ? (int)$request['page'] : 1,
-      'limit'            => isset($request['limit']) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
+      'limit'            => !empty($request['limit']) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
     );
   }
 
@@ -190,7 +190,8 @@ class super_products_list_model {
   function search() {
     global $db;
 
-    $query = $this->get_search_query() . 
+    $select_str = "SELECT DISTINCT p.*, pd.products_name, pd.products_description";
+    $query = $this->get_search_query($select_str) . 
              $this->get_search_order_by_query() .
              $this->get_search_limit_offset_query();
     $result = $db->Execute($query);
@@ -206,26 +207,23 @@ class super_products_list_model {
   function count_all() {
     global $db;
 
-    $query = "SELECT COUNT(*) AS count FROM(". $this->get_search_query() .") AS products"; 
+    $select_str = "SELECT COUNT(DISTINCT p.products_id) AS count";
+    $query = $this->get_search_query($select_str); 
     $result = $db->Execute($query);
     return (int)$result->fields['count'];
   }
 
   // 検索用クエリを作成
-  function get_search_query() {
+  function get_search_query($select_str, $add_where="", $force_price_with_tax=false) {
     global $db, $currencies;
 
     $price_with_tax = false;
-    if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset($this->search_params['price_from']) && zen_not_null($this->search_params['price_from'])) || (isset($this->search_params['price_to']) && zen_not_null($this->search_params['price_to'])))) {
+    if ($force_price_with_tax) {
       $price_with_tax = true;
-    }
-
-    /*
-       select
-    */
-    $select_str = "SELECT DISTINCT p.*, pd.products_name, pd.products_description";
-    if ($price_with_tax) {
-      $select_str .= ", SUM(tr.tax_rate) AS tax_rate";
+    }else{
+      if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset($this->search_params['price_from']) && zen_not_null($this->search_params['price_from'])) || (isset($this->search_params['price_to']) && zen_not_null($this->search_params['price_to'])))) {
+        $price_with_tax = true;
+      }
     }
 
     /*
@@ -344,12 +342,7 @@ class super_products_list_model {
       $where_str = $db->bindVars($where_str, ':dateAvailable', zen_date_raw($this->search_params['date_to']), 'date');
     }
 
-    /*
-       group by
-    */
-    if ($price_with_tax) {
-      $where_str .= " group by p.products_id, tr.tax_priority";
-    }
+    $where_str .= $add_where;
 
     return $select_str . $from_str . $where_str;
   }
@@ -602,7 +595,9 @@ class super_products_list_model {
   // メーカーを検索
   function search_manufacturers() {
     global $db;
-    $query = $this->get_search_manufacturers_query() .
+    $select_str = "SELECT DISTINCT m.manufacturers_id, m.manufacturers_name";
+    $add_where = " AND m.manufacturers_id > 0";
+    $query = $this->get_search_query($select_str, $add_where) .
              $this->get_search_manufacturers_order_by_query() .
              $this->get_search_manufacturers_limit_offset_query();
     $result = $db->Execute($query);
@@ -621,16 +616,11 @@ class super_products_list_model {
   function count_all_manufacturers() {
     global $db;
 
-    $query = "SELECT COUNT(*) AS count FROM(". $this->get_search_manufacturers_query() .") AS manufacturers";
+    $select_str = "SELECT COUNT(DISTINCT m.manufacturers_id) AS count";
+    $add_where = " AND m.manufacturers_id > 0";
+    $query = $this->get_search_query($select_str, $add_where);
     $result = $db->Execute($query);
     return (int)$result->fields['count'];
-  }
-
-  function get_search_manufacturers_query() {
-    $query = "SELECT DISTINCT m.manufacturers_id, m.manufacturers_name FROM ". TABLE_MANUFACTURERS . " AS m,
-              (". $this->get_search_query() .") AS p
-              WHERE m.manufacturers_id = p.manufacturers_id";
-    return $query;
   }
 
   function get_search_manufacturers_order_by_query() {
@@ -684,5 +674,89 @@ class super_products_list_model {
     }
     return $subcategories;
   }
+
+  // 最安・最高価格を取得
+  function get_min_max_price() {
+    global $db;
+
+    if (DISPLAY_PRICE_WITH_TAX == 'true') {
+      $select_str = "SELECT 
+                       MIN(p.products_price_sorter * IF(gz.geo_zone_id IS null, 1, 1 + (tr.tax_rate / 100))) AS min_price,
+                       MAX(p.products_price_sorter * IF(gz.geo_zone_id IS null, 1, 1 + (tr.tax_rate / 100))) AS max_price";
+    }else{
+      $select_str = "SELECT 
+                       MIN(p.products_price_sorter) AS min_price,
+                       MAX(p.products_price_sorter) AS max_price";
+    }
+    $query = $this->get_search_query($select_str, '', true);
+    $result = $db->Execute($query);
+    if (!$result->EOF && $result->fields['min_price'] != null && $result->fields['max_price'] != null) {
+      return array(
+        'min' => floor($result->fields['min_price']),
+        'max' => ceil($result->fields['max_price']),
+      );
+    }else{
+      return false;
+    }
+  }
+
+  // 最古・最新発売日を取得
+  function get_min_max_date() {
+    global $db;
+
+    $select_str = "SELECT 
+                     DATE_FORMAT(MIN(p.products_date_available), '%Y/%m/%d') AS min_date,
+                     DATE_FORMAT(MAX(p.products_date_available), '%Y/%m/%d') AS max_date";
+    $add_where = " AND p.products_date_available > '0000-00-00'";
+    $query = $this->get_search_query($select_str, $add_where);
+    $result = $db->Execute($query);
+    if (!$result->EOF && $result->fields['min_date'] != null && $result->fields['max_date'] != null) {
+      return array(
+        'min' => $result->fields['min_date'],
+        'max' => $result->fields['max_date'],
+      );
+    }else{
+      return false;
+    }
+  }
+
+  function min_date($date1, $date2) {
+    return $date1 < $date2 ? $date1 : $date2;
+  }
+
+  function max_date($date1, $date2) {
+    return $date1 > $date2 ? $date1 : $date2;
+  }
+
+  function parse_date($date) {
+    if (function_exists('parse_date')) {
+      return parse_date($date);
+    }else{
+      $split_pattern = '[\/\-\.]';
+      if (preg_match("/(\d{4})$split_pattern(\d{1,2})$split_pattern(\d{1,2})/", $date, $matches)) {
+        return array(
+         'year' => $matches[1],
+         'month' => $matches[2],
+         'day' => $matches[3],
+        );
+      }else{
+        return false;
+      }
+    }
+  }
+
+  // 日数を計算
+  function calc_days($from_date, $to_date) {
+    $from = self::parse_date($from_date);
+    $to   = self::parse_date($to_date);
+    if ($from && $to) {
+      $from_time = mktime(0,0,0,$from['month'], $from['day'], $from['year']);
+      $to_time   = mktime(0,0,0,$to['month'], $to['day'], $to['year']);
+      return ($to_time - $from_time) / (60*60*24);
+    }else{
+      return 0;
+    }
+  }
+
 }
 ?>

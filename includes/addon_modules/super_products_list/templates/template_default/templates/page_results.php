@@ -6,8 +6,8 @@ current_categories_name: <?php echo $current_categories_name; ?><br />
 current_categories_description: <?php echo $current_categories_description; ?><br />
 manufacturers_id: <?php echo $manufacturers_id; ?><br />
 current_manufacturers_name: <?php echo $current_manufacturers_name; ?><br />
-price_from: <?php echo $price_from; ?><br />
-price_to: <?php echo $price_to; ?><br />
+price_from: <?php echo $currencies->format($price_from); ?><br />
+price_to: <?php echo $currencies->format($price_to); ?><br />
 <?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
 date_from: <?php echo $date_from; ?><br />
 date_to: <?php echo $date_to; ?><br />

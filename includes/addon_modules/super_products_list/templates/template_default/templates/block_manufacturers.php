@@ -43,7 +43,7 @@ function ajax_get_manufacturers(page) {
       $('#paging').html("");
       $('#manufacturers').html("");
 
-      $('#message').html(result.result.message);
+      $('#message').html(result.message);
       if (result.result == "ok") {
         $.each(result.response.manufacturers, function(i, manufacturer) {
           $('#manufacturers').append('<li><a target="_parent" href="<?php echo zen_href_link(FILENAME_ADDON, 'module=super_products_list/results'. $encoded_params, 'SSL') ?>&manufacturers_id='+ manufacturer.id +'">'+ manufacturer.name +'</a></li>');
