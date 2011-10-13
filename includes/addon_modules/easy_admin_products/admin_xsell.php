@@ -272,7 +272,7 @@ while (!$products_result->EOF){
     <td class="dataTableContent" align="center">&nbsp;<?php echo ((is_file(DIR_FS_CATALOG_IMAGES.$products_result->fields['products_image'])) ?  zen_image(DIR_WS_CATALOG_IMAGES.$products_result->fields['products_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) : '<br>'.TEXT_NO_IMAGE.'<br>');?>&nbsp;</td>
     <td class="dataTableContent" align="center">&nbsp;<?php echo $products_result->fields['products_name'];?>&nbsp;</td>
     <td class="dataTableContent" align="center">&nbsp;<?php echo $currencies->format($products_result->fields['products_price']);?>&nbsp;</td>
-    <td class="dataTableContent" align="center">&nbsp;<?php echo zen_draw_pull_down_menu($products_result->fields['products_id'], $sort_order_drop_array, $products_result->fields['sort_order']);?>&nbsp;</td>
+    <td class="dataTableContent" align="center">&nbsp;<?php echo zen_draw_input_field($products_result->fields['products_id'], $products_result->fields['sort_order'], 'size="4"');?>&nbsp;</td>
      </tr>
 <?php
   $products_result->MoveNext();
