@@ -26,7 +26,7 @@
                    "action"      => "edit",
                    "page"        => $page,
                  );
-        $image = $html->input_image("icon_edit.gif", MODULE_EASY_ADMIN_PRODUCTS_EDIT);
+        $image = $html->image("icon_edit.gif", MODULE_EASY_ADMIN_PRODUCTS_EDIT);
         $link  = $html->href_link("", $parm);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
@@ -37,7 +37,7 @@
                    "action"      => "delete",
                    "page"        => $page,
                  );
-        $image = $html->input_image("icon_delete.gif", MODULE_EASY_ADMIN_PRODUCTS_DELETE);
+        $image = $html->image("icon_delete.gif", MODULE_EASY_ADMIN_PRODUCTS_DELETE);
         $link  = $html->href_link("", $parm);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
@@ -48,7 +48,7 @@
                    "action"      => "copy",
                    "page"        => $page,
                  );
-        $image = $html->input_image("icon_copy.gif", MODULE_EASY_ADMIN_PRODUCTS_COPY);
+        $image = $html->image("icon_copy.gif", MODULE_EASY_ADMIN_PRODUCTS_COPY);
         $link  = $html->href_link("", $parm);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
@@ -58,7 +58,7 @@
                    "add_related_product_ID"   => $fields['products_id'],
                    "easy_admin_products_page" => $page,
                  );
-        $image = $html->input_image("icon_xsell.gif", MODULE_EASY_ADMIN_PRODUCTS_XSELL);
+        $image = $html->image("icon_xsell.gif", MODULE_EASY_ADMIN_PRODUCTS_XSELL);
         $link  = $html->href_link("xsell", $parm);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
@@ -78,7 +78,7 @@
                      "products_id"   => $fields['products_id'],
                      "easy_admin_products_page" => $page,
                    );
-          $image = $html->input_image("icon_stock.gif", MODULE_EASY_ADMIN_PRODUCTS_STOCK);
+          $image = $html->image("icon_stock.gif", MODULE_EASY_ADMIN_PRODUCTS_STOCK);
           $link  = $html->href_link("attributes_stock", $parm);
         ?>
         <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
