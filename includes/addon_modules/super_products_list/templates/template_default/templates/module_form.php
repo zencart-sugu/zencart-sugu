@@ -9,16 +9,16 @@
 <?php echo zen_draw_hidden_field('date_from', $date_from, 'id="date_from"'); ?>
 <?php echo zen_draw_hidden_field('date_to', $date_to, 'id="date_to"'); ?>
   <ul>
-    <li>keywords: <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
-    <li>categories_id: <?php echo zen_draw_pull_down_menu('categories_id', $categories_options, $categories_id, 'id=categories_id'); ?></li>
-    <li>manufacturers: 
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_KEYWORDS ?>: <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_CATEGORY ?>: <?php echo zen_draw_pull_down_menu('categories_id', $categories_options, $categories_id, 'id=categories_id'); ?></li>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_MANUFACTURER ?>:
       <span id="current_manufacturers_name"><?php echo $current_manufacturers_name ?></span>
       <a href="javascript:void(0)" id="open_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_MANUFACTURER_SETTING ?></a>
 <?php if ($manufacturers_id) { ?>
       <a href="javascript:void(0)" id="reset_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
 <?php } ?>
     </li>
-    <li>price: 
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE ?>: 
       <span id="price_from_to"><?php echo $price_from_to ?></span>
       <a href="javascript:void(0)" id="open_price_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_PRICE_SETTING ?></a>
 <?php if (zen_not_null($price_from) || zen_not_null($price_to)) { ?>
@@ -26,7 +26,7 @@
 <?php } ?>
     </li>
 <?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
-    <li>date:
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_DATE ?>:
       <span id="date_from_to"><?php echo $date_from_to ?></span>
       <a href="javascript:void(0)" id="open_date_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_DATE_SETTING ?></a>
 <?php   if (zen_not_null($date_from) || zen_not_null($date_to)) { ?>
@@ -34,9 +34,13 @@
 <?php   } ?>
     </li>
 <?php } ?>
-    <li>sort: <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, 'id="sort"'); ?>
-              <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, 'id="direction"'); ?></li>
-    <li>limit: <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, 'id="limit"'); ?></li>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT ?>: 
+      <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, 'id="sort"'); ?>
+      <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, 'id="direction"'); ?>
+    </li>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_LIMIT ?>: 
+      <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, 'id="limit"'); ?>
+    </li>
   </ul>
 <?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>
 </form>

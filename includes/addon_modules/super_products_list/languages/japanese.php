@@ -24,8 +24,8 @@ sennaインストール後、全文検索用インデックスをはる必要があります。<br />
 <div id="senna_sql" style="display:none;">
 CREATE FULLTEXT INDEX idx_fulltext_products_description_products_name USING NGRAM ON '. TABLE_PRODUCTS_DESCRIPTION .' (products_name);
 </div>');
-define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_TITLE', '登録日を検索条件に含めますか?');
-define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_DESCRIPTION', '登録日は「提供可能日」を利用します。ユーザーの検索条件に登録日で検索させるかどうかを指定します。');
+define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_TITLE', '発売日を検索条件に含めますか?');
+define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_DESCRIPTION', '発売日は「提供可能日」を利用します。ユーザーの検索条件に発売日で検索させるかどうかを指定します。');
 
 define('MODULE_SUPER_PRODUCTS_LIST_SORT_NAME',       '商品名順');
 define('MODULE_SUPER_PRODUCTS_LIST_SORT_PRICE',      '価格順');
@@ -62,4 +62,12 @@ define('MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING',             '指定を解除する')
 define('MODULE_SUPER_PRODUCTS_LIST_NOW_LOADING', 'Loading...');
 define('MODULE_SUPER_PRODUCTS_LIST_TEXT_FROM_TO', '~');
 define('MODULE_SUPER_PRODUCTS_LIST_MANUFACTURERS_NOT_FOUND', '該当するメーカーは見つかりませんでした');
+
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_KEYWORDS',     'キーワード');
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_CATEGORY',     'カテゴリー');
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_MANUFACTURER', 'メーカー');
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE',        '価格帯');
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_DATE',         '発売日');
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT',         '並び順');
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_LIMIT',        '表示件数');
 ?>
