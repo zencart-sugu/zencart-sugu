@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/style.css" media="screen" />
 
 <?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
 <?php echo zen_draw_hidden_field('main_page', FILENAME_ADDON); ?>
