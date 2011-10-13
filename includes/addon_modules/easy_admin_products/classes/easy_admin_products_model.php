@@ -161,7 +161,7 @@ class easy_admin_products_model {
                  "action"      => "status_off",
                  "page"        => $page,
                );
-      $image = easy_admin_products_html::input_image("icon_green_on.gif", MODULE_EASY_ADMIN_PRODUCTS_STATUS_ON);
+      $image = easy_admin_products_html::image("icon_green_on.gif", MODULE_EASY_ADMIN_PRODUCTS_STATUS_ON);
     }
     else {
       $parm  = array(
@@ -169,7 +169,7 @@ class easy_admin_products_model {
                  "action"      => "status_on",
                  "page"        => $page,
                );
-      $image = easy_admin_products_html::input_image("icon_red_on.gif", MODULE_EASY_ADMIN_PRODUCTS_STATUS_OFF);
+      $image = easy_admin_products_html::image("icon_red_on.gif", MODULE_EASY_ADMIN_PRODUCTS_STATUS_OFF);
     }
     $fields['products_status'] = '<a href="'.easy_admin_products_html::href_link("", $parm).'">'.$image.'</a>';
 
