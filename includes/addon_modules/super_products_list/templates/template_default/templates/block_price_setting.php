@@ -23,6 +23,7 @@
 $(document).ready(function() {
   $("#slider-range").slider({
     range:  true,
+    step:   100,
     min:    <?php echo (int)$min_value ?>,
     max:    <?php echo (int)$max_value ?>,
     values: [ <?php echo (int)$price_from ?>, <?php echo (int)$price_to ?> ],
