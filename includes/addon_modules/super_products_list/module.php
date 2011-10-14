@@ -268,13 +268,15 @@ if (!defined('IS_ADMIN_FLAG')) {
         $return['products_exists'] = false;
         $return['message'] = MODULE_SUPER_PRODUCTS_LIST_NOT_FOUND_PRODUCTS;
       }else{
-        $price_from = zen_not_null($price_from) ? $price_from : $min_max_price['min'];
-        $price_to   = zen_not_null($price_to) ? $price_to : $min_max_price['max'];
+        $min_price = floor($min_max_price['min'] / 100) * 100;
+        $max_price = ceil($min_max_price['max'] / 100) * 100;
+        $price_from = zen_not_null($price_from) ? $price_from : $min_price;
+        $price_to   = zen_not_null($price_to) ? $price_to : $max_price;
         $return['products_exists'] = true;
-        $return['price_from'] = max($price_from, $min_max_price['min']);
-        $return['price_to']   = min($price_to,   $min_max_price['max']);
-        $return['min_value']  = $min_max_price['min'];
-        $return['max_value']  = $min_max_price['max'];
+        $return['price_from'] = max($price_from, $min_price);
+        $return['price_to']   = min($price_to,   $max_price);
+        $return['min_value']  = $min_price;
+        $return['max_value']  = $max_price;
       }
       $return['symbol_left']  = $currencies->currencies[$_SESSION['currency']]['symbol_left'];
       $return['symbol_right'] = $currencies->currencies[$_SESSION['currency']]['symbol_right'];
