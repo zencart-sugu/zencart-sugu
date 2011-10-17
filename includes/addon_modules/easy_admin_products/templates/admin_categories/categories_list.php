@@ -11,7 +11,7 @@
     <?php
       $count = 0;
       for (;;) {
-        $key = "MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_".$count;
+        $key = ($action == "search" ? "MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SEARCH_HEADING_" : "MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_").$count;
         if (!defined($key))
           break;
     ?>
@@ -63,7 +63,7 @@ if ($fields['categories_status']) {
                  );
         $parm = $model->add_current_parm($parm);
         $link  = $html->href_link("categories", $parm);
-        $image = $html->input_image("icon_edit.gif", MODULE_EASY_ADMIN_PRODUCTS_EDIT);
+        $image = $html->image("icon_edit.gif", MODULE_EASY_ADMIN_PRODUCTS_EDIT);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
 
@@ -74,7 +74,7 @@ if ($fields['categories_status']) {
                  );
         $parm = $model->add_current_parm($parm);
         $link  = $html->href_link("categories", $parm);
-        $image = $html->input_image("icon_delete.gif", MODULE_EASY_ADMIN_PRODUCTS_DELETE);
+        $image = $html->image("icon_delete.gif", MODULE_EASY_ADMIN_PRODUCTS_DELETE);
       ?>
       <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
     </td>
