@@ -11,7 +11,7 @@
     <?php
       $count = 0;
       for (;;) {
-        $key = "MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_".$count;
+        $key = ($action == "search" ? "MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SEARCH_HEADING_" : "MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_HEADING_").$count;
         if (!defined($key))
           break;
     ?>
