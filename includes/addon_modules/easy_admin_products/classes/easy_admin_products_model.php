@@ -1070,5 +1070,14 @@ class easy_admin_products_model {
     }
     return ($count > 0);
   }
+
+  function zen_not_null_array($array) {
+    foreach ($array as $k => $v) {
+      if (zen_not_null($v)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 ?>
