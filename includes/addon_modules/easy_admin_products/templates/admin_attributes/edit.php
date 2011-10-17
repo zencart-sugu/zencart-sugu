@@ -55,7 +55,7 @@
   }
 
   function change_list_options_values(options_id) {
-    if (products_options[options_id]['require_value']) {
+    if (products_options[options_id] && products_options[options_id]['require_value']) {
       ajax_get_options_values(options_id);
       $('.option_value_setting').show();
     }else{
