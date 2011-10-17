@@ -344,15 +344,16 @@ class easy_admin_products_attribute_model {
     return $attributes_id;
   }
 
-  function upload($name, $img_dir, $overwrite, $previous_name = "") {
+  function upload($name, $img_dir, $overwrite, &$image_name) {
     $image = new upload($name);
+    $image->set_output_messages('direct');
     $image->set_destination(DIR_FS_CATALOG_IMAGES . $img_dir);
     if ($image->parse() && $image->save($overwrite)) {
       $image_name = $img_dir . $image->filename;
+      return true;
     } else {
-      $image_name = $previous_name;
+      return false;
     }
-    return $image_name;
   }
 
   // ºï½ü
