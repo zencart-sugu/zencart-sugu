@@ -131,6 +131,18 @@
 
   $(document).ready(function(){
     updateGross();
+<?php if ($open_price_setting) { ?>
+    toggle_detail('products_price');
+<?php } ?>
+<?php if ($open_shipping_setting) { ?>
+    toggle_detail('products_shipping');
+<?php } ?>
+<?php if ($open_cart_setting) { ?>
+    toggle_detail('products_cart');
+<?php } ?>
+<?php if ($open_seo_setting) { ?>
+    toggle_detail('products_seo');
+<?php } ?>
   });
 </script>
 
