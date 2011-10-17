@@ -74,7 +74,16 @@ switch($action) {
       $attribute['attributes_image'] = "";
     }
     // upload attributes_image
-    $attribute['attributes_image'] = $model->upload('attributes_image', $_POST['img_dir'], $_POST['overwrite'], $_POST['attributes_previous_image']);
+    if (isset($_FILES['attributes_image']) && zen_not_null($_FILES['attributes_image']['name'])) {
+      if ($model->upload('attributes_image', $_POST['img_dir'], $_POST['overwrite'], $attributes_image)) {
+        $attribute['attributes_image'] = $attributes_image;
+      }else{
+        $error_upload = true;
+        $attribute['attributes_image'] = $_POST['attributes_previous_image'];
+      }
+    }else{
+      $attribute['attributes_image'] = $_POST['attributes_previous_image'];
+    }
 
     // validate
     $easy_admin_products_attribute  = $attribute;
@@ -82,7 +91,7 @@ switch($action) {
     $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_ATTRIBUTES_FINISH_VALIDATE_SAVE');
     $attribute                      = $easy_admin_products_attribute;
 
-    if (count($easy_admin_products_attribute_validate) > 0) {
+    if ($error_upload || count($easy_admin_products_attribute_validate) > 0) {
       $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_NOTICE_ERROR_SAVE, 'error');
       foreach ($easy_admin_products_attribute_validate as $validate) {
         $messageStack->add($validate, 'error');
