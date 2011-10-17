@@ -15,6 +15,17 @@
   });
 </script>
 
+<?php
+  $parm = array('action' => 'search');
+  $search_link = $html->href_link('categories', $parm);
+?>
+<ul>
+  <li><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_TREE; ?></li>
+  <li><a href="<?php echo $search_link; ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SEARCH; ?></a></li>
+</ul>
+
+<?php echo $breadcrumb; ?>
+
 <div class="listBox">
 <table border="0" class="tableLayout3" width="100%" cellspacing="0" cellpadding="0">
   <?php require(dirname(__FILE__) . '/categories_list.php'); ?>
@@ -23,19 +34,19 @@
 
 <div class="smallText" align="center">
 <?php
-  echo $split->display_count($query_numrows, MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_MAX_RESULTS, $page, TEXT_DISPLAY_NUMBER_OF_PRICING_GROUPS);
+  echo $split->display_count($query_numrows, MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_MAX_RESULTS, $current_parm['page'], TEXT_DISPLAY_NUMBER_OF_PRICING_GROUPS);
   echo "&nbsp;&nbsp;&nbsp;&nbsp;";
-  echo $split->display_links($query_numrows, MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_MAX_RESULTS, "", $page, "module=easy_admin_products/categories&category_id=". $current_category_id);
+  echo $split->display_links($query_numrows, MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_MAX_RESULTS, "", $current_parm['page'], "module=easy_admin_products/categories&category_id=". $current_parm['category_id']);
 ?>
 </div>
 
 <div id="action_buttons">
 <?php
   $parm  = array(
-             "category_id" => $current_category_id,
-             "action"      => "edit",
-             "page"        => $page,
+             "action"      => "new",
+             "parent_id" => $current_parm['category_id'],
            );
+  $parm = $model->add_current_parm($parm);
   $link  = $html->href_link("categories", $parm);
 ?>
   <a href="<?php echo $link ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_CREATE_BTN ?></a>

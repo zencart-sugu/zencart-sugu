@@ -254,62 +254,40 @@ class easy_admin_products_model {
   // カテゴリ取得
   // idもしくはキーワード検索(排他)
   function get_categories_query($search_param) {
-    global $db;
-
-    $category_id = $search_param['category_id'];
+    $category_id = (int)$search_param['category_id'];
     $keyword     = $search_param['keyword'];
-    if ($keyword != "" && $category_id>0) {
-      $query       = "select
-                        c.categories_id,
-                        c.categories_status,
-                        c.sort_order,
-                        cd.categories_name
-                      from ".
-                        TABLE_CATEGORIES." c,".
-                        TABLE_CATEGORIES_DESCRIPTION." cd
-                      where
-                            c.parent_id=".(int)$category_id."
-                        and c.categories_id=cd.categories_id
-                        and cd.language_id=".(int)$_SESSION['languages_id']."
-                        and cd.categories_name like '%".zen_db_input($keyword)."%'
+    $description = $search_param['description'];
+
+    $where = array(
+      "c.categories_id=cd.categories_id",
+      "cd.language_id=".(int)$_SESSION['languages_id'],
+    );
+    if ($category_id==0 && $keyword == "" && $description == "") {
+      $where[] = "c.parent_id=0";	// 条件指定なしならトップカテゴリ直下すべて
+    }else{
+      if ($category_id>0) {
+        $where[] = "c.parent_id=".(int)$category_id;
+      }
+      if ($keyword != "") {
+        $where[] = "cd.categories_name like '%".zen_db_input($keyword)."%'";
+      }
+      if ($description != "") {
+        $where[] = "cd.categories_description like '%".zen_db_input($description)."%'";
+      }
+    }
+
+    $query       = "select
+                      c.categories_id,
+                      c.categories_status,
+                      c.sort_order,
+                      cd.categories_name
+                    from ".
+                      TABLE_CATEGORIES." c,".
+                      TABLE_CATEGORIES_DESCRIPTION." cd
+                    where ". join(" and ", $where) ."
                       order by
                         c.sort_order,
                         cd.categories_name";
-    }
-    else if ($keyword != "") {
-      $query       = "select
-                        c.categories_id,
-                        c.categories_status,
-                        c.sort_order,
-                        cd.categories_name
-                      from ".
-                        TABLE_CATEGORIES." c,".
-                        TABLE_CATEGORIES_DESCRIPTION." cd
-                      where
-                            c.categories_id=cd.categories_id
-                        and cd.language_id=".(int)$_SESSION['languages_id']."
-                        and cd.categories_name like '%".zen_db_input($keyword)."%'
-                      order by
-                        c.sort_order,
-                        cd.categories_name";
-    }
-    else {
-      $query       = "select
-                        c.categories_id,
-                        c.categories_status,
-                        c.sort_order,
-                        cd.categories_name
-                      from ".
-                        TABLE_CATEGORIES." c,".
-                        TABLE_CATEGORIES_DESCRIPTION." cd
-                      where
-                            c.parent_id=".(int)$category_id."
-                        and c.categories_id=cd.categories_id
-                        and cd.language_id=".(int)$_SESSION['languages_id']."
-                      order by
-                        c.sort_order,
-                        cd.categories_name";
-    }
     return $query;
   }
 

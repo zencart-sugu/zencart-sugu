@@ -64,11 +64,6 @@ require(dirname(__FILE__) . '/includes/categories_action.php');
           </tr>
         </table></td>
       </tr>
-<?php if ($breadcrumb) { ?>
-      <tr>
-        <td class="pageHeading"><?php echo $breadcrumb; ?></td>
-      </tr>
-<?php } ?>
       <tr>
         <td>
           <?php require(dirname(__FILE__) . '/templates/admin_categories/'. $template .'.php'); ?>

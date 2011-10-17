@@ -11,8 +11,9 @@
   <input type="hidden" name="action" value="setflag_process">
   <input type="hidden" name="cID"    value="<?php echo $cID; ?>">
   <input type="hidden" name="categories_status" value="<?php echo $category['categories_status']; ?>">
-  <input type="hidden" name="category_id" value="<?php echo $current_category_id; ?>">
-  <input type="hidden" name="page"        value="<?php echo $page; ?>">
+<?php foreach ($current_parm as $k => $v) { ?>
+  <input type="hidden" name="current[<?php echo $k ?>]" value="<?php echo zen_output_string_protected($v) ?>" />
+<?php } ?>
 
 <table class="setflag" border="0" width="100%" cellspacing="0" cellpadding="2">
   <tr class="infoBoxHeading">
@@ -45,13 +46,7 @@
     <td align="center" class="infoBoxContent">
       <br />
       <?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?>
-      <?php
-        $parm = array(
-                  "category_id" => $current_category_id,
-                  "page"  => $page,
-                );
-      ?>
-      <a href="<?php echo $html->href_link('categories', $parm); ?>"><?php echo zen_image_button('button_cancel.gif', IMAGE_CANCEL); ?></a>
+      <a href="<?php echo $html->href_link('categories', $current_parm); ?>"><?php echo zen_image_button('button_cancel.gif', IMAGE_CANCEL); ?></a>
     </td>
   </tr>
 </table>

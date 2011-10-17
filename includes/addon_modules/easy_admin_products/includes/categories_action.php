@@ -23,9 +23,26 @@ $languages = zen_get_languages();
 $model     = new easy_admin_products_category_model();
 $html      = new easy_admin_products_html();
 $action    = (isset($_REQUEST['action']) ? $_REQUEST['action'] : 'index');
-$current_category_id = (int)$_REQUEST['category_id'];
-$page      = (int)($_REQUEST['page'] ? $_REQUEST['page'] : 1);
 $cID       = (int)$_REQUEST['cID'];
+
+// 一覧へ戻るための情報
+$current_parm = array();
+if ($action == 'index' || $action == 'search') {
+  $current_parm = array(
+    'action' => $action,
+    'page'   => (int)($_REQUEST['page'] ? $_REQUEST['page'] : 1),
+  );
+  if ($action == 'index') {
+    $current_parm['category_id'] = (int)$_REQUEST['category_id'];
+  }
+  elseif ($action == 'search') {
+    $current_parm['search_name'] = $_REQUEST['search_name'];
+    $current_parm['search_description'] = $_REQUEST['search_description'];
+  }
+}
+else{
+  $current_parm = $_REQUEST['current'];
+}
 
 require(dirname(__FILE__) . '/categories.php');
 
@@ -33,6 +50,11 @@ $template  = "index";
 $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_CATEGORIES_BEFORE_ACTION');
 switch($action) {
   case 'index':
+    $breadcrumb = $model->get_breadcrumb($current_parm['category_id']);
+    break;
+
+  case 'search':
+    $template = "search";
     break;
 
   case 'setflag':
@@ -54,11 +76,18 @@ switch($action) {
     }else{
       $messageStack->add_session(MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_SETFLAG_FAILED, 'error');
     }
-    $parm = array(
-      'category_id' => $current_category_id,
-      'page'        => $page,
-    );
-    zen_redirect($html->href_link('categories', $parm));
+    zen_redirect($html->href_link('categories', $current_parm));
+    break;
+
+  case 'new':
+    $template = "edit";
+    $columns  = array(
+                  "languages"          => $languages,
+                  "categories_column"  => $categories_column,
+                  "categories_description_column"  => $categories_description_column,
+                  "meta_tags_categories_description_column"  => $meta_tags_categories_description_column,
+                );
+    $category = $model->new_category($columns);
     break;
 
   case 'edit':
@@ -95,11 +124,10 @@ switch($action) {
         $messageStack->add_session(MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_INSERT, 'success');
       }
       $parm = array(
-        'category_id' => $current_category_id,
-        'page'        => $page,
-        'cID'         => $cID,
         'action'      => 'edit',
+        'cID'         => $cID,
       );
+      $parm = $model->add_current_parm($parm);
       zen_redirect($html->href_link('categories', $parm));
     }
     break;
@@ -130,24 +158,19 @@ switch($action) {
     $model->delete_category($easy_admin_products_category_id);
     $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_CATEGORIES_FINISH_DELETE');
     $messageStack->add_session(sprintf(MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_NOTICE_DELETE, sprintf("ID#%0d %s ", $cID, $category_name)), 'success');
-    $parm = array(
-      'category_id' => $current_category_id,
-      'page'        => $page,
-    );
-    zen_redirect($html->href_link('categories', $parm));
+    zen_redirect($html->href_link('categories', $current_parm));
     break;
 
 }
 
-if ($template == 'index') {
-  $breadcrumb = $model->get_breadcrumb($current_category_id);
-//  $query_raw = $model->get_categories_query($current_category_id);
+if ($template == 'index' || $template == 'search') {
   $search_param = array(
-    'category_id' => $current_category_id,
-    'keyword'     => '',
+    'category_id' => $_REQUEST['category_id'],
+    'keyword'     => $_REQUEST['search_name'],
+    'description' => $_REQUEST['search_description'],
   );
   $query_raw = easy_admin_products_model::get_categories_query($search_param);
-  $split     = new splitPageResults($page, MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_MAX_RESULTS, $query_raw, $query_numrows);
+  $split     = new splitPageResults($current_parm['page'], MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_MAX_RESULTS, $query_raw, $query_numrows);
   $categories  = $db->Execute($query_raw);
 }
 ?>
