@@ -183,6 +183,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE',                    '¾¦ÉÊ %s ¤ò¥³¥
 
 // ¥¨¥é¡¼
 define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL',                  '·¿ÈÖ¤ÏÉ¬¿Ü¤Ç¤¹');
+define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL_ALREADY_EXISTS',   '¤³¤Î·¿ÈÖ¤ÏÂ¾¤Î¾¦ÉÊ¤Ç»È¤ï¤ì¤Æ¤¤¤Þ¤¹');
 define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES',             'ºÇÄã¤Ç¤â¤Ò¤È¤Ä¤Î¥«¥Æ¥´¥ê¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤');
 
 // notice

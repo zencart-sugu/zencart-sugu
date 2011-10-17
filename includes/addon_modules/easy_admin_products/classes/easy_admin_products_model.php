@@ -480,6 +480,8 @@ class easy_admin_products_model {
     // 品番
     if ($post['products_model'] == "") {
       $errors['products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL;
+    }elseif( self::exists_products_model($post['products_model'], $post['products_id']) ){
+      $errors['products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL_ALREADY_EXISTS;
     }
 
     // カテゴリ
@@ -1054,5 +1056,19 @@ class easy_admin_products_model {
     return $get_url;
   }
   // http://shimamura.ark-web.jp/pukiwiki/51.html <-
+
+  function exists_products_model($model, $exclude_products_id="") {
+    global $db;
+
+    $query = "SELECT COUNT(*) AS count FROM ". TABLE_PRODUCTS ."
+              WHERE products_model = '". zen_db_input($model) ."'
+              AND products_id <> '". (int)$exclude_products_id ."'";
+    $result = $db->Execute($query);
+    $count = 0;
+    if (!$result->EOF) {
+      $count = $result->fields['count'];
+    }
+    return ($count > 0);
+  }
 }
 ?>
