@@ -113,6 +113,7 @@ switch($action) {
     foreach($_POST as $k => $v) {
       $product[$k] = $v;
     }
+    $product['categories'] = $product['categories_id'];
 
     $easy_admin_products_product  = $product;
     $easy_admin_products_validate = $model->validate_save($product);
