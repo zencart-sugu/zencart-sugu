@@ -38,7 +38,7 @@ class easy_admin_products_html {
       if ($v != "")
         $parm .= "&".$k."=".htmlspecialchars($v);
     }
-    return zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'.$sub.$parm);
+    return zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'.$sub.$parm, 'SSL');
   }
 
   // 入力項目作成
