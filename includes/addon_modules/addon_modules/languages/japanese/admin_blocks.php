@@ -72,6 +72,9 @@ define('TEXT_INFO_DELETE_MISSING_BLOCK', 'テンプレートリストから不明のブロックを
 define('TEXT_INFO_DELETE_MISSING_BLOCK_NOTE', 'ノート: モジュール自体は削除されません。モジュールをインストールして有効化するとブロックを再度追加することができます。<br /><br /><strong>削除するブロック: </strong>');
 define('TEXT_INFO_BLOCK_DETAILS', 'ブロック詳細: ');
 
+define('TEXT_INFO_BOX_CSS_SELECTOR', 'CSSセレクタ: ');
+define('TEXT_INFO_BOX_INSERT_POSITION', '挿入位置: ');
+
 ////////////////
 
 // file exists
@@ -90,6 +93,11 @@ define('TEXT_OFF', ' OFF ');
 define('TEXT_VISIBLE_PAGES', '以下のページのみ表示');
 define('TEXT_INVISIBLE_PAGES', '以下のページのみ非表示');
 
+define('TEXT_APPEND',  '直後');
+define('TEXT_PREPEND', '直前');
+define('TEXT_AFTER',   '要素外直後');
+define('TEXT_BEFORE',  '要素外直前');
+
 define('TEXT_NO_LAYOUT_LOCATIONS', 'レイアウト表示位置が定義されていません。');
 
 // box names
@@ -97,7 +105,7 @@ define('BOXNAME_BANNER_BOX', 'バナー');
 define('BOXNAME_BANNER_BOX2', 'バナー2');
 define('BOXNAME_BANNER_BOX_ALL', 'バナーALL');
 define('BOXNAME_BEST_SELLERS', 'ベストセラー');
-define('BOXNAME_CATEGORIES', 'カテゴリ');
+define('BOXNAME_CATEGORIES', 'カテゴリー');
 define('BOXNAME_CURRENCIES', '通貨');
 define('BOXNAME_DOCUMENT_CATEGORIES', '書類');
 define('BOXNAME_EZPAGES', '重要なリンク');
@@ -154,7 +162,7 @@ define('PAGENAME_GV_FAQ', 'ギフト券についてよくある質問と答え');
 define('PAGENAME_GV_REDEEM', 'ギフト券引き換え');
 define('PAGENAME_GV_SEND', 'ギフト券送信');
 define('PAGENAME_INDEX', 'トップページ');
-define('PAGENAME_INDEX_CATEGORIES', 'カテゴリーサブカテゴリ一覧ページ');
+define('PAGENAME_INDEX_CATEGORIES', 'カテゴリーサブカテゴリー一覧ページ');
 define('PAGENAME_INDEX_PRODUCTS', 'カテゴリー商品一覧ページ');
 define('PAGENAME_INFO_SHOPPING_CART', 'ビジターズカート / メンバーズカート');
 define('PAGENAME_LOGIN', 'ログイン');

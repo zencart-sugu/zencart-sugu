@@ -18,5 +18,6 @@ $layout_locations = array(
   'sidebar_left',
   'sidebar_right',
   'footer',
+  'main',
   );
 ?>

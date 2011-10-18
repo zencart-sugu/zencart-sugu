@@ -3,8 +3,6 @@
  * addOnModules functions.php
  *
  * @package functions
- * @copyright Copyright 2009 Liquid System Technology, Inc.
- * @author Koji Sasaki
  * @copyright Portions Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
@@ -192,6 +190,8 @@ function zen_addOnModules_get_layout_location_blocks($layout_location, $page) {
         $layout_location_blocks[$layout_location][] = array(
           'module' => $module,
           'block' => $block,
+          'css_selector' => $result->fields['css_selector'],
+          'insert_position' => $result->fields['insert_position'],
           );
       }
 
@@ -251,16 +251,35 @@ function zen_addOnModules_get_layout_contents($layout_location, $page) {
     $layout_location_blocks = zen_addOnModules_get_layout_location_blocks($layout_location, $current_page_base);
   }
 
-  $return = false;
 
   $blocks = $layout_location_blocks[$layout_location];
-  for ($i = 0, $n = count($blocks); $i < $n; $i++) {
-    $module = $blocks[$i]['module'];
-    $block = $blocks[$i]['block'];
-    if ($module == 'sideboxes') {
-      $return .= zen_addOnModules_get_sidebox($block);
-    } else {
-      $return .= $GLOBALS[$module]->getBlock($block, $page);
+  if ($layout_location == "main") {
+    $return = array();
+    for ($i = 0, $n = count($blocks); $i < $n; $i++) {
+      $module = $blocks[$i]['module'];
+      $block  = $blocks[$i]['block'];
+      $key    = $module."/".$block;
+      if ($module == 'sideboxes')
+        $contents = zen_addOnModules_get_sidebox($block);
+      else
+        $contents = $GLOBALS[$module]->getBlock($block, $page);
+      $return[$key] = array(
+        'contents'        => $contents,
+        'css_selector'    => $blocks[$i]['css_selector'],
+        'insert_position' => $blocks[$i]['insert_position'],
+      );
+    }
+  }
+  else {
+    $return = false;
+    for ($i = 0, $n = count($blocks); $i < $n; $i++) {
+      $module = $blocks[$i]['module'];
+      $block = $blocks[$i]['block'];
+      if ($module == 'sideboxes') {
+        $return .= zen_addOnModules_get_sidebox($block);
+      } else {
+        $return .= $GLOBALS[$module]->getBlock($block, $page);
+      }
     }
   }
 
@@ -340,5 +359,37 @@ function zen_addOnModules_get_block($module_name, $block_name = 'block') {
   else {
     return '';
   }
+}
+
+/**
+ * call addon_module's methods with parameter.
+ *
+ * @param string $module_name module's_name
+ * @param string $function_name function's name
+ * @param array $values function's parameter
+ */
+function zen_addOnModules_call_function($module_name, $function_name, $values = array(), $default_module_name = null, $default_function_name = null, $default_values = array()) {
+  if (is_object($GLOBALS[$module_name]) && $GLOBALS[$module_name]->enabled) {
+    if (method_exists($GLOBALS[$module_name], $function_name)) {
+      // call class method
+      return call_user_func_array(array($GLOBALS[$module_name], $function_name), $values);
+    }
+  } elseif (function_exists($function_name)) {
+    return call_user_func_array($function_name, $values);
+  } elseif (!is_null($default_function_name)) {
+    if (!is_null($default_module_name) && is_object($GLOBALS[$default_module_name]) && $GLOBALS[$default_module_name]->enabled) {
+      if (method_exists($GLOBALS[$default_module_name], $default_function_name)) {
+        // call class method
+        return call_user_func_array(array($GLOBALS[$default_module_name], $default_function_name), $default_values);
+      } elseif (functions_exists($default_function_name)) {
+        // call global functions
+        return call_user_func_array($default_function_name, $default_values);
+      }
+    } else {
+      // call global functions
+      return call_user_func_array($default_function_name, $default_values);
+    }
+  }
+  return '';
 }
 ?>
