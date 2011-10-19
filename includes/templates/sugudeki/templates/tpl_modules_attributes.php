@@ -16,6 +16,10 @@
 
 <?php } // show please select unless all are readonly ?>
 
+<?php
+    for($i=0;$i<sizeof($options_name);$i++) {
+?>
+
 <dt><?php echo $options_name[$i]; ?></dt>
 <dd><?php echo "\n" . $options_menu[$i]; ?></dd>
 
@@ -40,6 +44,9 @@ if ($options_attributes_image[$i] != '') {
     <div class="wrapperAttribsOneTime"><?php echo TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION; ?></div>
 <?php } ?>
 
+<?php
+    }
+?>
 
 <?php
   if ($show_attributes_qty_prices_description == 'true') {
