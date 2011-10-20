@@ -1079,5 +1079,57 @@ class easy_admin_products_model {
     }
     return false;
   }
+
+  function is_default_price_setting($product) {
+    global $specials_column;
+
+    if ($product['specials_price_status'] != $specials_column['status'] ||
+        (float)$product['specials_specials_new_products_price'] != (float)$specials_column['specials_new_products_price'] ||
+        $product['specials_specials_date_available'] != $specials_column['specials_date_available'] ||
+        $product['specials_expires_date'] != $specials_column['expires_date']) {
+      return true;
+    }
+    return false;
+  }
+
+  function is_default_shipping_setting($product) {
+    global $products_column;
+
+    if ($product['products_virtual'] != $products_column['products_virtual'] ||
+        $product['product_is_always_free_shipping'] != $products_column['product_is_always_free_shipping']) {
+      return true;
+    }
+    return false;
+  }
+
+  function is_default_cart_setting($product) {
+    global $products_column;
+
+    if ($product['products_qty_box_status'] != $products_column['products_qty_box_status'] ||
+        $product['products_quantity_order_min'] != (int)$products_column['products_quantity_order_min'] ||
+        $product['products_quantity_order_max'] != (int)$products_column['products_quantity_order_max'] ||
+        $product['products_quantity_order_units'] != (int)$products_column['products_quantity_order_units'] ||
+        $product['products_quantity_mixed'] != (int)$products_column['products_quantity_mixed']) {
+      return true;
+    }
+    return false;
+  }
+
+  function is_default_seo_setting($product) {
+    global $products_column;
+
+    if ($product['metatags_products_name_status'] != $products_column['metatags_products_name_status'] ||
+        $product['metatags_title_status'] != $products_column['metatags_title_status'] ||
+        $product['metatags_model_status'] != $products_column['metatags_model_status'] ||
+        $product['metatags_price_status'] != $products_column['metatags_price_status'] ||
+        $product['metatags_title_tagline_status'] != $products_column['metatags_title_tagline_status'] ||
+        self::zen_not_null_array($product['meta_tags_products_description_metatags_title']) ||
+        self::zen_not_null_array($product['meta_tags_products_description_metatags_keywords']) ||
+        self::zen_not_null_array($product['meta_tags_products_description_metatags_description']) ) {
+      return true;
+    }
+    return false;
+  }
+
 }
 ?>
