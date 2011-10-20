@@ -107,37 +107,10 @@ switch($action) {
     $easy_admin_products_validate = array();
 
     // open/close settings
-    $open_price_setting = false;
-    if ($product['specials_price_status'] != $specials_column['status'] ||
-        (float)$product['specials_specials_new_products_price'] != (float)$specials_column['specials_new_products_price'] ||
-        $product['specials_specials_date_available'] != $specials_column['specials_date_available'] ||
-        $product['specials_expires_date'] != $specials_column['expires_date']) {
-      $open_price_setting = true;
-    }
-    $open_shipping_setting = false;
-    if ($product['products_virtual'] != $products_column['products_virtual'] ||
-        $product['product_is_always_free_shipping'] != $products_column['product_is_always_free_shipping']) {
-      $open_shipping_setting = true;
-    }
-    $open_cart_setting = false;
-    if ($product['products_qty_box_status'] != $products_column['products_qty_box_status'] ||
-        $product['products_quantity_order_min'] != (int)$products_column['products_quantity_order_min'] ||
-        $product['products_quantity_order_max'] != (int)$products_column['products_quantity_order_max'] ||
-        $product['products_quantity_order_units'] != (int)$products_column['products_quantity_order_units'] ||
-        $product['products_quantity_mixed'] != (int)$products_column['products_quantity_mixed']) {
-      $open_cart_setting = true;
-    }
-    $open_seo_setting = false;
-    if ($product['metatags_products_name_status'] != $products_column['metatags_products_name_status'] ||
-        $product['metatags_title_status'] != $products_column['metatags_title_status'] ||
-        $product['metatags_model_status'] != $products_column['metatags_model_status'] ||
-        $product['metatags_price_status'] != $products_column['metatags_price_status'] ||
-        $product['metatags_title_tagline_status'] != $products_column['metatags_title_tagline_status'] ||
-        $model->zen_not_null_array($product['meta_tags_products_description_metatags_title']) ||
-        $model->zen_not_null_array($product['meta_tags_products_description_metatags_keywords']) ||
-        $model->zen_not_null_array($product['meta_tags_products_description_metatags_description']) ) {
-      $open_seo_setting = true;
-    }
+    $open_price_setting    = $model->is_default_price_setting($product);
+    $open_shipping_setting = $model->is_default_shipping_setting($product);
+    $open_cart_setting     = $model->is_default_cart_setting($product);
+    $open_seo_setting      = $model->is_default_seo_setting($product);
 
     break;
 
@@ -153,6 +126,12 @@ switch($action) {
     $easy_admin_products_validate = $model->validate_save($product);
     $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_VALIDATE_SAVE');
     $product                      = $easy_admin_products_product;
+
+    // open/close settings
+    $open_price_setting    = $model->is_default_price_setting($product);
+    $open_shipping_setting = $model->is_default_shipping_setting($product);
+    $open_cart_setting     = $model->is_default_cart_setting($product);
+    $open_seo_setting      = $model->is_default_seo_setting($product);
 
     if (count($easy_admin_products_validate) > 0) {
       $messageStack->add(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_ERROR_SAVE, 'error');
