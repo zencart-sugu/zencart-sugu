@@ -1,120 +1,87 @@
-<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/jquery.fancybox-1.3.4.css" media="screen" />
-
-<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
-<?php echo zen_draw_hidden_field('main_page', FILENAME_ADDON); ?>
-<?php echo zen_draw_hidden_field('module', 'super_products_list/results'); ?>
-<?php echo zen_draw_hidden_field('manufacturers_id', $manufacturers_id, 'id="manufacturers_id"'); ?>
-<?php echo zen_draw_hidden_field('price_from', $price_from, 'id="price_from"'); ?>
-<?php echo zen_draw_hidden_field('price_to', $price_to, 'id="price_to"'); ?>
-<?php echo zen_draw_hidden_field('date_from', $date_from, 'id="date_from"'); ?>
-<?php echo zen_draw_hidden_field('date_to', $date_to, 'id="date_to"'); ?>
-  <ul>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_KEYWORDS ?>: <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_CATEGORY ?>: <?php echo zen_draw_pull_down_menu('categories_id', $categories_options, $categories_id, 'id=categories_id'); ?></li>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_MANUFACTURER ?>:
-      <span id="current_manufacturers_name"><?php echo $current_manufacturers_name ?></span>
-      <a href="javascript:void(0)" id="open_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_MANUFACTURER_SETTING ?></a>
-<?php if ($manufacturers_id) { ?>
-      <a href="javascript:void(0)" id="reset_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
-<?php } ?>
-    </li>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE ?>: 
-      <span id="price_from_to"><?php echo $price_from_to ?></span>
-      <a href="javascript:void(0)" id="open_price_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_PRICE_SETTING ?></a>
-<?php if (zen_not_null($price_from) || zen_not_null($price_to)) { ?>
-      <a href="javascript:void(0)" id="reset_price_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
-<?php } ?>
-    </li>
-<?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_DATE ?>:
-      <span id="date_from_to"><?php echo $date_from_to ?></span>
-      <a href="javascript:void(0)" id="open_date_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_DATE_SETTING ?></a>
-<?php   if (zen_not_null($date_from) || zen_not_null($date_to)) { ?>
-      <a href="javascript:void(0)" id="reset_date_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
-<?php   } ?>
-    </li>
-<?php } ?>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT ?>: 
-      <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, 'id="sort"'); ?>
-      <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, 'id="direction"'); ?>
-    </li>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_LIMIT ?>: 
-      <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, 'id="limit"'); ?>
-    </li>
-  </ul>
-<?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>
-</form>
+<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/themes/base/jquery.ui.all.css">
+<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/ui-lightness/jquery-ui-1.8.16.custom.css">
+<link rel="stylesheet" type="text/css" href="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/jquery.bubblepopup.v2.3.1.css" media="screen" />
 <script type="text/javascript" src="includes/general.js"></script>
-<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/ui/jquery.ui.slider.js"></script>
+<script type="text/javascript" src="<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/js/jquery.bubblepopup.v2.3.1.min.js"></script>
 <script type="text/javascript">
 <!--
 $(document).ready(function() {
-  $('#open_manufacturer_setting').click(function() {
-    if (!check_form()) {
-      return false;
+  $('#open_manufacturer_setting').CreateBubblePopup({
+    themePath: '<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/jquerybubblepopup-theme/',
+    themeName: 'azure',
+    width: 400,
+    height: 200,
+    selectable: true,
+    afterShown: function() {
+      $.get('<?php echo zen_href_link(FILENAME_ADDON, '', 'SSL') ?>' + '&module=super_products_list/manufacturers' + get_search_params(), function(data) {
+        $('#open_manufacturer_setting').SetBubblePopupInnerHtml(data, false);
+      });
     }
-    $.fancybox({
-      'padding':       0,
-      'autoScale':     false,
-      'transitionIn':  'none',
-      'transitionOut': 'none',
-      'width':         '75%',
-      'height':        '75%',
-      'href':          '<?php echo zen_href_link(FILENAME_ADDON, 'module=super_products_list/manufacturers', 'SSL') ?>' + get_search_params(),
-      'type':          'iframe'
-    });
   });
 
-  $('#open_price_setting').click(function() {
-    if (!check_form()) {
-      return false;
+  $('#price_setting').CreateBubblePopup({
+    themePath: '<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/jquerybubblepopup-theme/',
+    themeName: 'azure',
+    width: 300,
+    height: 100,
+    selectable: true,
+    innerHtml: '<?php echo $currencies->format($min_price) ?> - <?php echo $currencies->format($max_price) ?><div id="price_slider">',
+    afterShown: function() {
+      $('#price_slider').slider({
+        range:  true,
+        step:   100,
+        min:    <?php echo (int)$min_price ?>,
+        max:    <?php echo (int)$max_price ?>,
+        values: [
+          ($('#price_from').val() != '' ? parseInt($('#price_from').val()) : <?php echo (int)$min_price ?>),
+          ($('#price_to').val() != '' ? parseInt($('#price_to').val()) : <?php echo (int)$max_price ?>),
+        ],
+        slide: function(event, ui) {
+          $('#price_from').val(ui.values[0]);
+          $('#price_to').val(ui.values[1]);
+        }
+      });
     }
-    $.fancybox({
-      'padding':       0,
-      'autoScale':     false,
-      'transitionIn':  'none',
-      'transitionOut': 'none',
-      'width':         '75%',
-      'height':        '75%',
-      'href':          '<?php echo zen_href_link(FILENAME_ADDON, 'module=super_products_list/price_setting', 'SSL') ?>' + get_search_params(),
-      'type':          'iframe'
-    });
   });
 
-  $('#open_date_setting').click(function() {
-    if (!check_form()) {
-      return false;
-    }
-    $.fancybox({
-      'padding':       0,
-      'autoScale':     false,
-      'transitionIn':  'none',
-      'transitionOut': 'none',
-      'width':         '75%',
-      'height':        '75%',
-      'href':          '<?php echo zen_href_link(FILENAME_ADDON, 'module=super_products_list/date_setting', 'SSL') ?>' + get_search_params(),
-      'type':          'iframe'
-    });
+  $('#date_from').datepicker({
+<?php if (zen_not_null($min_date)) { ?>
+    minDate: new Date(<?php echo (int)$min_date_yy?>, <?php echo (int)$min_date_mm - 1 ?>, <?php echo (int)$min_date_dd ?>),
+<?php } ?>
+<?php if (zen_not_null($max_date)) { ?>
+    maxDate: new Date(<?php echo (int)$max_date_yy?>, <?php echo (int)$max_date_mm - 1 ?>, <?php echo (int)$max_date_dd ?>),
+<?php } ?>
+<?php if (zen_not_null($date_from)) { ?>
+    defaultDate: new Date(<?php echo $date_from_yy?>, <?php echo $date_from_mm - 1 ?>, <?php echo $date_from_dd ?>),
+<?php } ?>
+    changeYear: true,
+    changeMonth: true,
+    dateFormat: 'yy/mm/dd'
+  });
+
+  $('#date_to').datepicker({
+<?php if (zen_not_null($min_date)) { ?>
+    minDate: new Date(<?php echo (int)$min_date_yy?>, <?php echo (int)$min_date_mm - 1 ?>, <?php echo (int)$min_date_dd ?>),
+<?php } ?>
+<?php if (zen_not_null($max_date)) { ?>
+    maxDate: new Date(<?php echo (int)$max_date_yy?>, <?php echo (int)$max_date_mm - 1 ?>, <?php echo (int)$max_date_dd ?>),
+<?php } ?>
+<?php if (zen_not_null($date_to)) { ?>
+    defaultDate: new Date(<?php echo $date_to_yy?>, <?php echo $date_to_mm - 1 ?>, <?php echo $date_to_dd ?>),
+<?php } ?>
+    changeYear: true,
+    changeMonth: true,
+    dateFormat: 'yy/mm/dd'
   });
 
   $('#reset_manufacturer_setting').click(function() {
     $('#manufacturers_id').val("");
-    $('#current_manufacturers_name').html("");
-    $('#reset_manufacturer_setting').hide();
-  });
-
-  $('#reset_price_setting').click(function() {
-    $('#price_from').val("");
-    $('#price_to').val("");
-    $('#price_from_to').html("");
-    $('#reset_price_setting').hide();
-  });
-
-  $('#reset_date_setting').click(function() {
-    $('#date_from').val("");
-    $('#date_to').val("");
-    $('#date_from_to').html("");
-    $('#reset_date_setting').hide();
+    $('#super_products_list').submit();
   });
 });
 
@@ -201,3 +168,40 @@ function zen2han(val) {
 }
 //-->
 </script>
+
+<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
+<?php echo zen_draw_hidden_field('main_page', FILENAME_ADDON); ?>
+<?php echo zen_draw_hidden_field('module', 'super_products_list/results'); ?>
+<?php echo zen_draw_hidden_field('manufacturers_id', $manufacturers_id, 'id="manufacturers_id"'); ?>
+  <ul>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_KEYWORDS ?>: <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_MANUFACTURER ?>:
+      <span id="current_manufacturers_name"><?php echo $current_manufacturers_name ?></span>
+      <a href="javascript:void(0)" id="open_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_MANUFACTURER_SETTING ?></a>
+<?php if ($manufacturers_id) { ?>
+      <a href="javascript:void(0)" id="reset_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
+<?php } ?>
+    </li>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE ?>: 
+      <span id="price_setting">
+      <?php echo $symbol_left ?><input type="text" id="price_from" name="price_from" value="<?php echo $price_from ?>" /><?php echo $symbol_right ?>
+      <?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_FROM_TO ?>
+      <?php echo $symbol_left ?><input type="text" id="price_to" name="price_to" value="<?php echo $price_to ?>" /><?php echo $symbol_right ?>
+      </span>
+    </li>
+<?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_DATE ?>:
+      <?php echo zen_draw_input_field('date_from', $date_from, 'id="date_from"'); ?>
+      <?php echo zen_draw_input_field('date_to', $date_to, 'id="date_to"'); ?>
+    </li>
+<?php } ?>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT ?>: 
+      <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, 'id="sort"'); ?>
+      <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, 'id="direction"'); ?>
+    </li>
+    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_LIMIT ?>: 
+      <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, 'id="limit"'); ?>
+    </li>
+  </ul>
+<?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>
+</form>
