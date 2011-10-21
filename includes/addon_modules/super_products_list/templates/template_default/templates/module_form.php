@@ -17,6 +17,7 @@ $(document).ready(function() {
     width: 400,
     height: 200,
     selectable: true,
+    innerHtml: 'Loading...',
     afterShown: function() {
       $.get('<?php echo zen_href_link(FILENAME_ADDON, '', 'SSL') ?>' + '&module=super_products_list/manufacturers' + get_search_params(), function(data) {
         $('#open_manufacturer_setting').SetBubblePopupInnerHtml(data, false);
