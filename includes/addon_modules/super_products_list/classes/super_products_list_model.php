@@ -692,8 +692,8 @@ class super_products_list_model {
     $result = $db->Execute($query);
     if (!$result->EOF && $result->fields['min_price'] != null && $result->fields['max_price'] != null) {
       return array(
-        'min' => floor($result->fields['min_price']),
-        'max' => ceil($result->fields['max_price']),
+        'min_price' => floor($result->fields['min_price']),
+        'max_price' => ceil($result->fields['max_price']),
       );
     }else{
       return false;
@@ -711,9 +711,17 @@ class super_products_list_model {
     $query = $this->get_search_query($select_str, $add_where);
     $result = $db->Execute($query);
     if (!$result->EOF && $result->fields['min_date'] != null && $result->fields['max_date'] != null) {
+      list($min_yy, $min_mm, $min_dd) = explode("/", $result->fields['min_date']);
+      list($max_yy, $max_mm, $max_dd) = explode("/", $result->fields['max_date']);
       return array(
-        'min' => $result->fields['min_date'],
-        'max' => $result->fields['max_date'],
+        'min_date'    => $result->fields['min_date'],
+        'min_date_yy' => $min_yy,
+        'min_date_mm' => $min_mm,
+        'min_date_dd' => $min_dd,
+        'max_date'    => $result->fields['max_date'],
+        'max_date_yy' => $max_yy,
+        'max_date_mm' => $max_mm,
+        'max_date_dd' => $max_dd,
       );
     }else{
       return false;

@@ -153,7 +153,26 @@ if (!defined('IS_ADMIN_FLAG')) {
     function module_form($return = array()) {
       global $currencies;
 
-      $return['categories_options'] = zen_get_categories(array(array('id' => '', 'text' => MODULE_SUPER_PRODUCTS_LIST_TEXT_ALL_CATEGORIES)),0 ,'', '1');
+      // 最安・最高価格、最古・最新発売日の取得
+      $request = $_REQUEST;
+      unset($request['price_from']);
+      unset($request['price_to']);
+      unset($request['date_from']);
+      unset($request['date_to']);
+      $model = new super_products_list_model();  
+      $model->set_search_params($request);
+      $model->validate_search_params();
+      $min_max_price = $model->get_min_max_price();
+      if ($min_max_price) {
+        $min_max_price['min_price'] = floor($min_max_price['min_price'] / 100) * 100;
+        $min_max_price['max_price'] = ceil($min_max_price['max_price'] / 100) * 100;
+        $return = array_merge($return, $min_max_price);
+      }
+      $min_max_date = $model->get_min_max_date();
+      if ($min_max_date) {
+        $return = array_merge($return, $min_max_date);
+      }
+
       $return['sort_options']     = array(
         array('id' => 'name',       'text' => MODULE_SUPER_PRODUCTS_LIST_SORT_NAME),
         array('id' => 'price',      'text' => MODULE_SUPER_PRODUCTS_LIST_SORT_PRICE),
@@ -168,17 +187,14 @@ if (!defined('IS_ADMIN_FLAG')) {
       foreach ($limit_options as $limit_option) {
         $return['limit_options'][] = array('id' => $limit_option, 'text' => $limit_option);
       }
-      if ($return['price_from'] != '' || $return['price_to'] != '') {
-        $return['price_from_to'] = $currencies->format($return['price_from']) . MODULE_SUPER_PRODUCTS_LIST_TEXT_FROM_TO . $currencies->format($return['price_to']);
-      }else{
-        $return['price_from_to'] = "";
+      if ($return['date_from'] != '') {
+        list($return['date_from_yy'], $return['date_from_mm'], $return['date_from_dd']) = explode('/', $return['date_from']);
       }
-      if ($return['date_from'] != '' || $return['date_to'] != '') {
-        $return['date_from_to'] = $return['date_from'] . MODULE_SUPER_PRODUCTS_LIST_TEXT_FROM_TO . $return['date_to'];
-      }else{
-        $return['date_from_to'] = "";
+      if ($return['date_to'] != '') {
+        list($return['date_to_yy'], $return['date_to_mm'], $return['date_to_dd']) = explode('/', $return['date_to']);
       }
-
+      $return['symbol_left']  = $currencies->currencies[$_SESSION['currency']]['symbol_left'];
+      $return['symbol_right'] = $currencies->currencies[$_SESSION['currency']]['symbol_right'];
 
       return $return;
     }
@@ -239,86 +255,6 @@ if (!defined('IS_ADMIN_FLAG')) {
       $return = array();
       $return['categories'] = $model->get_categories_tree($_REQUEST['categories_id']);
       $return['search_link'] = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
-      return $return;
-    }
-
-    // 価格指定画面
-    function page_price_setting() {
-      $this->echo_block_and_exit('block_price_setting');
-    }
-
-    // 価格指定画面用ブロック
-    function block_price_setting() {
-      global $currencies;
-
-      mb_convert_variables(CHARSET, 'UTF-8', $_REQUEST);
-      $price_from = $_REQUEST['price_from'];
-      $price_to   = $_REQUEST['price_to'];
-      // 検索条件から価格を外す
-      unset($_REQUEST['price_from']);
-      unset($_REQUEST['price_to']);
-
-      $model = new super_products_list_model();  
-      $model->set_search_params($_REQUEST);
-      $model->validate_search_params();
-      $min_max_price = $model->get_min_max_price();
-
-      $return = $_REQUEST;
-      if (!$min_max_price) {
-        $return['products_exists'] = false;
-        $return['message'] = MODULE_SUPER_PRODUCTS_LIST_NOT_FOUND_PRODUCTS;
-      }else{
-        $min_price = floor($min_max_price['min'] / 100) * 100;
-        $max_price = ceil($min_max_price['max'] / 100) * 100;
-        $price_from = zen_not_null($price_from) ? $price_from : $min_price;
-        $price_to   = zen_not_null($price_to) ? $price_to : $max_price;
-        $return['products_exists'] = true;
-        $return['price_from'] = max($price_from, $min_price);
-        $return['price_to']   = min($price_to,   $max_price);
-        $return['min_value']  = $min_price;
-        $return['max_value']  = $max_price;
-      }
-      $return['symbol_left']  = $currencies->currencies[$_SESSION['currency']]['symbol_left'];
-      $return['symbol_right'] = $currencies->currencies[$_SESSION['currency']]['symbol_right'];
-      return $return;
-    }
-
-    // 発売日指定画面
-    function page_date_setting() {
-      $this->echo_block_and_exit('block_date_setting');
-    }
-
-    // 発売日指定画面用ブロック
-    function block_date_setting() {
-      mb_convert_variables(CHARSET, 'UTF-8', $_REQUEST);
-      $date_from = $_REQUEST['date_from'];
-      $date_to   = $_REQUEST['date_to'];
-      // 検索条件から発売日を外す
-      unset($_REQUEST['date_from']);
-      unset($_REQUEST['date_to']);
-
-      $model = new super_products_list_model();  
-      $model->set_search_params($_REQUEST);
-      $model->validate_search_params();
-      $min_max_date = $model->get_min_max_date();
-
-      $return = $_REQUEST;
-      if (!$min_max_date) {
-        $return['products_exists'] = false;
-        $return['message'] = MODULE_SUPER_PRODUCTS_LIST_NOT_FOUND_PRODUCTS;
-      }else{
-        $date_from = empty($date_from) ? $min_max_date['min'] : $date_from;
-        $date_to   = empty($date_to) ? $min_max_date['max'] : $date_to;
-        $return['products_exists'] = true;
-        $return['date_from']      = $model->max_date($date_from, $min_max_date['min']);
-        $return['date_to']        = $model->min_date($date_to,   $min_max_date['max']);
-        $return['min_value']      = $min_max_date['min'];
-        $return['max_value']      = $min_max_date['max'];
-        $return['start_date']     = explode('/', $min_max_date['min']);
-        $return['days']           = $model->calc_days($min_max_date['min'], $min_max_date['max']);
-        $return['date_from_days'] = $model->calc_days($min_max_date['min'], $date_from);
-        $return['date_to_days']   = $model->calc_days($min_max_date['min'], $date_to);
-      }
       return $return;
     }
 
