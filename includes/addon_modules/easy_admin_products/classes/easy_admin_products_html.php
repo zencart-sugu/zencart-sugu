@@ -36,7 +36,7 @@ class easy_admin_products_html {
     $parm = "";
     foreach($params as $k => $v) {
       if ($v != "")
-        $parm .= "&".$k."=".htmlspecialchars($v);
+        $parm .= "&".$k."=".urlencode($v);
     }
     return zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'.$sub.$parm, 'SSL');
   }
