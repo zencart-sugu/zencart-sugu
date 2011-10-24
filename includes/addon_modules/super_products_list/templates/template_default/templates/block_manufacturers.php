@@ -30,7 +30,7 @@ function ajax_get_manufacturers(page) {
       $('#message').html(result.message);
       if (result.result == "ok") {
         $.each(result.response.manufacturers, function(i, manufacturer) {
-          $('#manufacturers').append('<li><a target="_parent" href="<?php echo zen_href_link(FILENAME_ADDON, 'module=super_products_list/results'. $encoded_params, 'SSL') ?>&manufacturers_id='+ manufacturer.id +'">'+ manufacturer.name +'</a></li>');
+          $('#manufacturers').append('<li><a href="javascript:void(0)" onclick="set_manufacturer(\''+ manufacturer.id +'\',\''+ manufacturer.name +'\')">'+ manufacturer.name +'</a></li>');
         });
 
         for (var i = 1; i <= result.response.max_page; i++) {
