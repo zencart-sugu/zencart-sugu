@@ -11,6 +11,11 @@
 <script type="text/javascript">
 <!--
 $(document).ready(function() {
+  $(document).mousedown(function(event) {
+    checkExternalClick(event, $('#open_manufacturer_setting'));
+    checkExternalClick(event, $('#price_setting'));
+  });
+
   $('#open_manufacturer_setting').CreateBubblePopup({
     themePath: '<?php echo DIR_WS_CATALOG . DIR_WS_ADDON_MODULES ?>super_products_list/templates/css/jquerybubblepopup-theme/',
     themeName: 'azure',
@@ -18,11 +23,15 @@ $(document).ready(function() {
     height: 200,
     selectable: true,
     innerHtml: 'Loading...',
+    manageMouseEvents: false,
     afterShown: function() {
       $.get('<?php echo zen_href_link(FILENAME_ADDON, '', 'SSL') ?>' + '&module=super_products_list/manufacturers' + get_search_params(), function(data) {
         $('#open_manufacturer_setting').SetBubblePopupInnerHtml(data, false);
       });
     }
+  });
+  $('#open_manufacturer_setting').click(function() {
+    $('#open_manufacturer_setting').ShowBubblePopup();
   });
 
   $('#price_setting').CreateBubblePopup({
@@ -32,6 +41,7 @@ $(document).ready(function() {
     height: 100,
     selectable: true,
     innerHtml: '<?php echo $currencies->format($min_price) ?> - <?php echo $currencies->format($max_price) ?><div id="price_slider">',
+    manageMouseEvents: false,
     afterShown: function() {
       $('#price_slider').slider({
         range:  true,
@@ -48,6 +58,9 @@ $(document).ready(function() {
         }
       });
     }
+  });
+  $('#price_setting').click(function() {
+    $('#price_setting').ShowBubblePopup();
   });
 
   $('#date_from').datepicker({
@@ -81,10 +94,27 @@ $(document).ready(function() {
   });
 
   $('#reset_manufacturer_setting').click(function() {
+    $('#reset_manufacturer_setting').hide();
     $('#manufacturers_id').val("");
-    $('#super_products_list').submit();
+    $('#current_manufacturers_name').html("");
   });
 });
+
+function checkExternalClick(event, popup) {
+  var popup_id = popup.GetBubblePopupID();
+  var $target = $(event.target);
+  if ($target[0].id != popup_id &&
+      $target.parents('#' + popup_id).length == 0) {
+    popup.HideBubblePopup();
+  } 
+}
+
+function set_manufacturer(id, name) {
+  $('#manufacturers_id').val(id);
+  $('#current_manufacturers_name').html(name);
+  $('#open_manufacturer_setting').HideBubblePopup();
+  $('#reset_manufacturer_setting').show();
+}
 
 function get_search_params() {
   return '&keywords='+ encodeURIComponent($('#keywords').val()) +
@@ -179,9 +209,7 @@ function zen2han(val) {
     <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_MANUFACTURER ?>:
       <span id="current_manufacturers_name"><?php echo $current_manufacturers_name ?></span>
       <a href="javascript:void(0)" id="open_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_MANUFACTURER_SETTING ?></a>
-<?php if ($manufacturers_id) { ?>
-      <a href="javascript:void(0)" id="reset_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
-<?php } ?>
+      <a href="javascript:void(0)" id="reset_manufacturer_setting" style="display: <?php echo $manufacturers_id ? 'inline' : 'none' ?>;"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
     </li>
     <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE ?>: 
       <span id="price_setting">
