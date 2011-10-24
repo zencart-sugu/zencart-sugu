@@ -75,7 +75,8 @@ if ($action == 'import') {
 	$products = zen_get_categories_products_list($id, true, false);
 	$count = count($products) == 0 ? 1 : count($products);
 	for ($i=0; $i<$count; $i++) {
-	  $data = $ProductCSV->getExportDataCategory($id, $format);
+    $products_id = $products[$i];
+	  $data = $ProductCSV->getExportDataCategory($id, $format, $products_id);
 	  if ($data !== false) {
 	    foreach ($data as $key => $d) {
 	      $data[$key] = mb_convert_encoding($d, MODULE_PRODUCT_CSV_EXPORT_CHARACTER ,MODULE_PRODUCT_CSV_INTERNAL_CHARACTER);
