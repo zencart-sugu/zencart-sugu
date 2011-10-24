@@ -70,4 +70,6 @@ define('MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE',        '²Á³ÊÂÓ');
 define('MODULE_SUPER_PRODUCTS_LIST_TEXT_DATE',         'È¯ÇäÆü');
 define('MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT',         'ÊÂ¤Ó½ç');
 define('MODULE_SUPER_PRODUCTS_LIST_TEXT_LIMIT',        'É½¼¨·ï¿ô');
+
+define('MODULE_SUPER_PRODUCTS_LIST_TEXT_TOP_CATEGORIES', '¥È¥Ã¥×');
 ?>

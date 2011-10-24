@@ -766,5 +766,16 @@ class super_products_list_model {
     }
   }
 
+  function get_products_master_categories_id($products_id) {
+    global $db;
+
+    $query = "SELECT master_categories_id FROM ". TABLE_PRODUCTS . "
+              WHERE products_id = '". (int)$products_id ."'";
+    $product = $db->Execute($query);
+    if (!$product->EOF) {
+      return $product->fields['master_categories_id'];
+    }
+    return null;
+  }
 }
 ?>
