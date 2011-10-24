@@ -92,6 +92,37 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function _install() {
+      global $db;
+
+      $sql = "SELECT * FROM ". TABLE_BLOCKS ."
+              WHERE module = 'super_products_list'
+                AND block = 'block_breadcrumb'
+                AND template = 'addon_modules'";
+      $check = $db->Execute($sql);
+      if ($check->EOF) {
+        $mode = 'insert';
+      }else{
+        $mode = 'update';
+        $id = $check->fields['id'];
+      }
+
+      $sql_data_array = array(
+        'module'          => 'super_products_list',
+        'block'           => 'block_breadcrumb',
+        'template'        => 'addon_modules',
+        'location'        => 'main',
+        'status'          => 1,
+        'sort_order'      => 0,
+        'visible'         => 1,
+        'pages'           => implode("\n", array('product_free_shipping_info', 'product_info', 'product_music_info')),
+        'css_selector'    => '#topicpath',
+        'insert_position' => 'append',
+        );
+      if ($mode == 'insert') {
+        zen_db_perform(TABLE_BLOCKS, $sql_data_array);
+      }else{
+        zen_db_perform(TABLE_BLOCKS, $sql_data_array, 'update', "id = '" . (int)$id . "'");
+      }
     }
 
     function _update() {
@@ -265,6 +296,22 @@ if (!defined('IS_ADMIN_FLAG')) {
       header("Content-Type: text/html; charset=". CHARSET);
       echo $block;
       exit();	// blockの内容を出力しexit
+    }
+
+    // パンくずブロック
+    function block_breadcrumb() {
+      $return = array();
+      $return['breadcrumb'] = '<a href="'. zen_href_link(FILENAME_DEFAULT) .'">'. MODULE_SUPER_PRODUCTS_LIST_TEXT_TOP_CATEGORIES .'</a>';
+      if (zen_not_null($_REQUEST['products_id'])) {
+        $model = new super_products_list_model();  
+        $categories_id = $model->get_products_master_categories_id($_REQUEST['products_id']);
+        if ($categories_id) {
+          $link = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
+          $separate = '&nbsp;&gt;&nbsp;';
+          $return['breadcrumb'] .= $separate . $model->get_categories_path($categories_id, $link, $separate);
+        }
+      }
+      return $return;
     }
   }
 ?>
