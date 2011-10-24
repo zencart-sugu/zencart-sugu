@@ -184,7 +184,7 @@ class ProductCSV {
     }
     return $return;
   }
-  function getExportDataCategory($category_id, $format) {
+  function getExportDataCategory($category_id, $format, $products_id=0) {
     // prepare data
     static $category = array();
     $category_id = zen_db_input($category_id);
@@ -215,7 +215,10 @@ class ProductCSV {
 	$sql = 'SELECT p.products_id, p.products_model FROM ' . TABLE_PRODUCTS_TO_CATEGORIES . ' as p2c 
                 LEFT JOIN ' . TABLE_PRODUCTS . ' as p ON p2c.products_id=p.products_id
                 WHERE p2c.categories_id='.$category_id.'';
-	$products = $this->db->Execute($sql);
+  if ($products_id>0) {
+    $sql .= " and p.products_id=".(int)$products_id;
+  }
+  $products = $this->db->Execute($sql);
 	while (!$products->EOF) {
 	  $products_id = $products->fields['products_id'];
 	  if (!in_array($products_id, $category[$category_id])) {
