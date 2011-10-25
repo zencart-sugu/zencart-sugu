@@ -161,6 +161,8 @@ if (!defined('IS_ADMIN_FLAG')) {
               pq($css_selector)->after($contents);
             else if ($insert_position == "before")
               pq($css_selector)->before($contents);
+            else if ($insert_position == "replaceWith")
+              pq($css_selector)->replaceWith($contents);
           }
         }
       }

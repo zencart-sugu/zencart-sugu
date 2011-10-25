@@ -97,6 +97,7 @@ define('TEXT_APPEND',  '直後');
 define('TEXT_PREPEND', '直前');
 define('TEXT_AFTER',   '要素外直後');
 define('TEXT_BEFORE',  '要素外直前');
+define('TEXT_REPLACEWITH', '置換');
 
 define('TEXT_NO_LAYOUT_LOCATIONS', 'レイアウト表示位置が定義されていません。');
 
