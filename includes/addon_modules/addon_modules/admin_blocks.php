@@ -215,6 +215,7 @@ if (!defined('IS_ADMIN_FLAG')) {
     array('id' => 'prepend', 'text' => TEXT_PREPEND),
     array('id' => 'after',   'text' => TEXT_AFTER),
     array('id' => 'before',  'text' => TEXT_BEFORE),
+    array('id' => 'replaceWith',  'text' => TEXT_REPLACEWITH),
   );
 
   // Check all exisiting pages are in the main /pages
