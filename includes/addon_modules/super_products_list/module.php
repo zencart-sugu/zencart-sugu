@@ -114,9 +114,15 @@ if (!defined('IS_ADMIN_FLAG')) {
         'status'          => 1,
         'sort_order'      => 0,
         'visible'         => 1,
-        'pages'           => implode("\n", array('product_free_shipping_info', 'product_info', 'product_music_info')),
-        'css_selector'    => '#topicpath',
-        'insert_position' => 'append',
+        'pages'           => implode("\n", array(
+                                      'product_free_shipping_info',
+                                      'product_info',
+                                      'product_music_info',
+                                      'index_products',
+                                      'super_products_list#page_results',
+                                    )),
+        'css_selector'    => '#breadcrumb',
+        'insert_position' => 'replaceWith',
         );
       if ($mode == 'insert') {
         zen_db_perform(TABLE_BLOCKS, $sql_data_array);
@@ -300,16 +306,26 @@ if (!defined('IS_ADMIN_FLAG')) {
 
     // パンくずブロック
     function block_breadcrumb() {
+      global $current_category_id;
+
+      $model = new super_products_list_model();
+
       $return = array();
       $return['breadcrumb'] = '<a href="'. zen_href_link(FILENAME_DEFAULT) .'">'. MODULE_SUPER_PRODUCTS_LIST_TEXT_TOP_CATEGORIES .'</a>';
-      if (zen_not_null($_REQUEST['products_id'])) {
-        $model = new super_products_list_model();  
-        $categories_id = $model->get_products_master_categories_id($_REQUEST['products_id']);
-        if ($categories_id) {
-          $link = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
-          $separate = '&nbsp;&gt;&nbsp;';
-          $return['breadcrumb'] .= $separate . $model->get_categories_path($categories_id, $link, $separate);
+      $categories_id = null;
+      if (zen_not_null($_REQUEST['categories_id'])) {
+        $categories_id = (int)$_REQUEST['categories_id'];
+      } elseif (zen_not_null($current_category_id)) {
+        $categories_id = (int)$current_category_id;
+      } else {
+        if (zen_not_null($_REQUEST['products_id'])) {
+          $categories_id = $model->get_products_master_categories_id($_REQUEST['products_id']);
         }
+      }
+      if ($categories_id) {
+        $link = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
+        $separate = MODULE_SUPER_PRODUCTS_LIST_CATEGORIES_SEPARATE;
+        $return['breadcrumb'] .= $separate . $model->get_categories_path($categories_id, $link, $separate);
       }
       return $return;
     }

@@ -387,7 +387,7 @@ class super_products_list_model {
   function convert_product_result($fields) {
     $fields['path_image']  = self::get_product_path_image($fields);
     $fields['name']        = $fields['products_name'];
-    $fields['url']         = zen_href_link(zen_get_info_page($fields['products_id']), '' . 'products_id=' . $fields['products_id']);
+    $fields['url']         = zen_href_link(zen_get_info_page($fields['products_id']), 'products_id='. $fields['products_id'] .'&categories_id='. $this->search_params['categories_id']);
     $fields['description'] = zen_trunc_string(zen_clean_html(stripslashes($fields['products_description']), PRODUCT_LIST_DESCRIPTION));
     $fields['model']       = $fields['products_model'];
     $fields['quantity']    = $fields['products_quantity'];
