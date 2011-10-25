@@ -221,7 +221,7 @@ class super_products_list_model {
     if ($force_price_with_tax) {
       $price_with_tax = true;
     }else{
-      if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset($this->search_params['price_from']) && zen_not_null($this->search_params['price_from'])) || (isset($this->search_params['price_to']) && zen_not_null($this->search_params['price_to'])))) {
+      if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset($this->search_params['price_from']) && $this->search_params['price_from'] !== '') || (isset($this->search_params['price_to']) && $this->search_params['price_to'] !== ''))) {
         $price_with_tax = true;
       }
     }
@@ -314,20 +314,20 @@ class super_products_list_model {
       $pto = $pto / $rate;
     }
     if (DISPLAY_PRICE_WITH_TAX == 'true') {
-      if ($pfrom) {
+      if ($this->search_params['price_from'] !== '') {
         $where_str .= " AND (p.products_price_sorter * IF(gz.geo_zone_id IS null, 1, 1 + (tr.tax_rate / 100)) >= :price)";
         $where_str = $db->bindVars($where_str, ':price', $pfrom, 'float');
       }
-      if ($pto) {
+      if ($this->search_params['price_to'] !== '') {
         $where_str .= " AND (p.products_price_sorter * IF(gz.geo_zone_id IS null, 1, 1 + (tr.tax_rate / 100)) <= :price)";
         $where_str = $db->bindVars($where_str, ':price', $pto, 'float');
       }
     } else {
-      if ($pfrom) {
+      if ($this->search_params['price_from'] !== '') {
         $where_str .= " and (p.products_price_sorter >= :price)";
         $where_str = $db->bindVars($where_str, ':price', $pfrom, 'float');
       }
-      if ($pto) {
+      if ($this->search_params['price_to'] !== '') {
         $where_str .= " and (p.products_price_sorter <= :price)";
         $where_str = $db->bindVars($where_str, ':price', $pto, 'float');
       }
