@@ -72,4 +72,5 @@ define('MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT',         '並び順');
 define('MODULE_SUPER_PRODUCTS_LIST_TEXT_LIMIT',        '表示件数');
 
 define('MODULE_SUPER_PRODUCTS_LIST_TEXT_TOP_CATEGORIES', 'トップ');
+define('MODULE_SUPER_PRODUCTS_LIST_NOSCRIPT_WARNING',  'JavaScriptをオンにしてください');
 ?>
