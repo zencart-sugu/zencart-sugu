@@ -207,6 +207,7 @@ function zen2han(val) {
 <?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
 <?php echo zen_draw_hidden_field('main_page', FILENAME_ADDON); ?>
 <?php echo zen_draw_hidden_field('module', 'super_products_list/results'); ?>
+<?php echo zen_draw_hidden_field('categories_id', $categories_id, 'id="categories_id"'); ?>
 <?php echo zen_draw_hidden_field('manufacturers_id', $manufacturers_id, 'id="manufacturers_id"'); ?>
   <ul>
     <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_KEYWORDS ?>: <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
