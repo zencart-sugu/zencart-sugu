@@ -92,12 +92,17 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function _install() {
+      $this->_set_breadcrumb_block('addon_modules', '#navBreadCrumb');
+      $this->_set_breadcrumb_block('sugudeki', '#breadcrumb');
+    }
+
+    function _set_breadcrumb_block($template, $css_selector) {
       global $db;
 
       $sql = "SELECT * FROM ". TABLE_BLOCKS ."
               WHERE module = 'super_products_list'
                 AND block = 'block_breadcrumb'
-                AND template = 'addon_modules'";
+                AND template = '". $template ."'";
       $check = $db->Execute($sql);
       if ($check->EOF) {
         $mode = 'insert';
@@ -109,7 +114,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       $sql_data_array = array(
         'module'          => 'super_products_list',
         'block'           => 'block_breadcrumb',
-        'template'        => 'addon_modules',
+        'template'        => $template,
         'location'        => 'main',
         'status'          => 1,
         'sort_order'      => 0,
@@ -121,7 +126,7 @@ if (!defined('IS_ADMIN_FLAG')) {
                                       'index_products',
                                       'super_products_list#page_results',
                                     )),
-        'css_selector'    => '#breadcrumb',
+        'css_selector'    => $css_selector,
         'insert_position' => 'replaceWith',
         );
       if ($mode == 'insert') {
