@@ -825,6 +825,8 @@ class easy_admin_products_model {
       }
     }
 
+    zen_update_products_price_sorter($products_id);
+
     $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_SAVE');
     if ($insert_products) {
       $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_INSERT');
