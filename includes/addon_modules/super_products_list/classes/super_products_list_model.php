@@ -528,6 +528,7 @@ class super_products_list_model {
       case 'date_from':
       case 'date_to':
       case 'sort':
+      case 'direction':
       case 'limit':
         if (zen_not_null($val)) {
           $url .= '&'. urlencode($key) .'='. urlencode($val);
