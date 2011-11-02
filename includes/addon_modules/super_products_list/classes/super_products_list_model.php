@@ -31,7 +31,8 @@ class super_products_list_model {
       'sort'             => isset($request['sort']) ? $request['sort'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DEFAULT,
       'direction'        => isset($request['direction']) ? $request['direction'] : MODULE_SUPER_PRODUCTS_LIST_SORT_DIRECTION_DEFAULT,
       'page'             => (int)$request['page'] ? (int)$request['page'] : 1,
-      'limit'            => !empty($request['limit']) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
+      'limit'            => in_array($request['limit'], $this->get_limit_options()) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
+      'limit_manufacturers' => MODULE_SUPER_PRODUCTS_LIST_MANUFACTURERS_LIST_LIMIT_DEFAULT,
     );
   }
 
@@ -632,7 +633,7 @@ class super_products_list_model {
   function get_search_manufacturers_limit_offset_query() {
     $limit_offset = "";
     $page   = (int)$this->search_params['page'];
-    $limit  = (int)$this->search_params['limit'];
+    $limit  = (int)$this->search_params['limit_manufacturers'];
     $offset = ($page - 1) * $limit;
     if ($limit > 0) {
       $limit_offset .= " LIMIT ". $limit;
