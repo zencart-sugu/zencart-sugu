@@ -20,7 +20,7 @@ function ajax_get_manufacturers(page) {
       date_from:     '<?php echo zen_output_string_protected($date_from) ?>',
       date_to:       '<?php echo zen_output_string_protected($date_to) ?>',
       page:          page,
-      limit:         <?php echo MODULE_SUPER_PRODUCTS_LIST_MANUFACTURERS_LIST_LIMIT_DEFAULT ?>
+      limit_manufacturers: <?php echo MODULE_SUPER_PRODUCTS_LIST_MANUFACTURERS_LIST_LIMIT_DEFAULT ?>
     },
     success: function(result) {
       $('#message').html("");
