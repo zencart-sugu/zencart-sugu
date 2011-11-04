@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="../includes/addon_modules/easy_admin/templates/template_default/css/stylesheet_easy_admin.css">
+
 <!-- bof languages dropdown -->
 <?php echo $GLOBALS['easy_admin']->getBlock('block_languages_dropdown', $current_page_base); ?>
 <!-- eof languages dropdown -->
