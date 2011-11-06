@@ -421,8 +421,15 @@
     }
 
   function handle_easy_admin_ob($buf) {
+    global $easy_admin_block_append_html_header;
     global $easy_admin_block_header;
 
+    // append_html_header
+    $pattern = '/<\/head>/';
+    $replace = $easy_admin_block_append_html_header . '</head>';
+    $buf = preg_replace($pattern, $replace, $buf);
+
+    // replace body header
     $pattern = '/<!-- All HEADER_ definitions in the columns below are defined in includes\/languages\/english\.php \/\/-->(?:(?!<li class="submenu">).)*<li class="submenu">(?:(?!<\/div>).)*<\/div>(?:(?!<\/div>).)*<\/div>/s';
     $replace = $easy_admin_block_header;
     $buf = preg_replace($pattern, $replace, $buf);

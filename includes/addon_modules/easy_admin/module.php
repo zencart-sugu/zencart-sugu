@@ -208,6 +208,12 @@ if (!defined('IS_ADMIN_FLAG')) {
       return $return;
     }
 
+    function block_append_html_header() {
+      $return = array();
+
+      return $return;
+    }
+
     // override getBlock method
     // admin/includes/header.phpからの呼び出し
     function getBlock($block, $page) {
