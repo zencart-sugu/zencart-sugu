@@ -22,8 +22,8 @@ class super_products_list_model {
     $this->search_params = array(
       'keywords'         => $request['keywords'],
       'keywords_array'   => self::parse_keywords($request['keywords']),
-      'categories_id'    => (int)$request['categories_id'] ? (int)$request['categories_id'] : "",
-      'manufacturers_id' => (int)$request['manufacturers_id'] ? (int)$request['manufacturers_id'] : "",
+      'categories_id'    => $request['categories_id'] ? $request['categories_id'] : "",
+      'manufacturers_id' => $request['manufacturers_id'] ? $request['manufacturers_id'] : "",
       'price_from'       => self::get_numeric_value($request['price_from']),
       'price_to'         => self::get_numeric_value($request['price_to']),
       'date_from'        => self::get_date_value($request['date_from']),
@@ -91,19 +91,29 @@ class super_products_list_model {
 
     // カテゴリが存在するか
     if (zen_not_null($this->search_params['categories_id'])) {
-      $category = self::get_category($this->search_params['categories_id']);
-      if (!$category) {
-        $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_CATEGORY_NOT_FOUND;
+      if (!is_numeric($this->search_params['categories_id'])) {
+        $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_INVALID_CATEGORIES_ID;
         $this->search_params['categories_id'] = "";
+      }else{
+        $category = self::get_category($this->search_params['categories_id']);
+        if (!$category) {
+          $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_CATEGORY_NOT_FOUND;
+          $this->search_params['categories_id'] = "";
+        }
       }
     }
 
     // メーカーが存在するかチェック
     if (zen_not_null($this->search_params['manufacturers_id'])) {
-      $manufacturer = self::get_manufacturer($this->search_params['manufacturers_id']);
-      if (!$manufacturer) {
-        $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_MANUFACTURER_NOT_FOUND;
+      if (!is_numeric($this->search_params['manufacturers_id'])) {
+        $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_INVALID_MANUFACTURERS_ID;
         $this->search_params['manufacturers_id'] = "";
+      }else{
+        $manufacturer = self::get_manufacturer($this->search_params['manufacturers_id']);
+        if (!$manufacturer) {
+          $errors[] = MODULE_SUPER_PRODUCTS_LIST_ERROR_MANUFACTURER_NOT_FOUND;
+          $this->search_params['manufacturers_id'] = "";
+        }
       }
     }
 
