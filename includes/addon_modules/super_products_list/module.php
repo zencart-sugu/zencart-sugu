@@ -293,9 +293,10 @@ if (!defined('IS_ADMIN_FLAG')) {
     // カテゴリ一覧ブロック
     function block_categories() {
       $model = new super_products_list_model();  
+      $categories_id = $model->get_current_categories_id();
 
       $return = array();
-      $return['categories'] = $model->get_categories_tree($_REQUEST['categories_id']);
+      $return['categories'] = $model->get_categories_tree($categories_id);
       $return['search_link'] = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
       return $return;
     }
@@ -311,22 +312,11 @@ if (!defined('IS_ADMIN_FLAG')) {
 
     // パンくずブロック
     function block_breadcrumb() {
-      global $current_category_id;
-
       $model = new super_products_list_model();
+      $categories_id = $model->get_current_categories_id();
 
       $return = array();
       $return['breadcrumb'] = '<a href="'. zen_href_link(FILENAME_DEFAULT) .'">'. MODULE_SUPER_PRODUCTS_LIST_TEXT_TOP_CATEGORIES .'</a>';
-      $categories_id = null;
-      if (zen_not_null($_REQUEST['categories_id'])) {
-        $categories_id = (int)$_REQUEST['categories_id'];
-      } elseif (zen_not_null($current_category_id)) {
-        $categories_id = (int)$current_category_id;
-      } else {
-        if (zen_not_null($_REQUEST['products_id'])) {
-          $categories_id = $model->get_products_master_categories_id($_REQUEST['products_id']);
-        }
-      }
       if ($categories_id) {
         $link = zen_href_link(FILENAME_ADDON, 'module=super_products_list/results');
         $separate = MODULE_SUPER_PRODUCTS_LIST_CATEGORIES_SEPARATE;

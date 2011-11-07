@@ -789,5 +789,21 @@ class super_products_list_model {
     }
     return null;
   }
+
+  function get_current_categories_id() {
+    global $current_category_id;
+
+    $categories_id = null;
+    if (zen_not_null($_REQUEST['categories_id'])) {
+      $categories_id = (int)$_REQUEST['categories_id'];
+    } elseif (zen_not_null($current_category_id)) {
+      $categories_id = (int)$current_category_id;
+    } else {
+      if (zen_not_null($_REQUEST['products_id'])) {
+        $categories_id = self::get_products_master_categories_id($_REQUEST['products_id']);
+      }
+    }
+    return $categories_id;
+  }
 }
 ?>
