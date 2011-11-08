@@ -136,6 +136,9 @@
 
     reset($_GET);
     while (list($key, $value) = each($_GET)) {
+    	  if ($key == 'search' || $key == 'enc_hint') {
+    	  	$value = urlencode($value);
+    	  }
       if (($key != zen_session_name()) && ($key != 'error') && (!in_array($key, $exclude_array))) $get_url .= $key . '=' . $value . '&';
     }
 
@@ -3033,7 +3036,7 @@ function zen_copy_products_attributes($products_id_from, $products_id_to) {
 
 ////
 // compute the days between two dates
-  function date_diff($date1, $date2) {
+  function zen_date_diff($date1, $date2) {
   //$date1  today, or any other day
   //$date2  date to check against
 

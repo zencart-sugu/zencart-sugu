@@ -98,7 +98,7 @@
 
           // 送料が条件によって無料になってしまう(ここではtotalではなくsubtotalを確認すべき)
 		  if ( (MODULE_SHIPPING_NITTSU_FREE_SHIPPING != 'True') || ((int)$order->info['subtotal'] < (int)MODULE_SHIPPING_NITTSU_OVER) ) {
-			  include(DIR_WS_CLASSES . '_nittsu.php');
+			  include_once(DIR_WS_CLASSES . '_nittsu.php');
 			  $rate = new _Nittsu($this->code, MODULE_SHIPPING_NITTSU_TEXT_WAY_NORMAL,
 								zen_get_zone_code( STORE_COUNTRY,STORE_ZONE,0), STORE_COUNTRY);
 								//STORE_ORIGIN_ZONE, STORE_ORIGIN_COUNTRY);

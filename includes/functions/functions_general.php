@@ -593,22 +593,21 @@ if (!defined('IS_ADMIN_FLAG')) {
     $uprid = $prid;
     if ( (is_array($params)) && (!strstr($prid, ':')) ) {
       while (list($option, $value) = each($params)) {
-	    if (is_array($value)) {
+        if (is_array($value)) {
           while (list($opt, $val) = each($value)) {
             $uprid = $uprid . '{' . $option . '}' . trim($opt);
-		  }
-		  break;
-	    }
+          }
+        } else {
         //CLR 030714 Add processing around $value. This is needed for text attributes.
-        $uprid = $uprid . '{' . $option . '}' . trim($value);
-      }
-    //CLR 030228 Add else stmt to process product ids passed in by other routines.
+            $uprid = $uprid . '{' . $option . '}' . trim($value);
+        }
+      }      //CLR 030228 Add else stmt to process product ids passed in by other routines.
       $md_uprid = '';
 
       $md_uprid = md5($uprid);
-	  return $prid . ':' . $md_uprid;
-	} else {
-	  return $prid;
+      return $prid . ':' . $md_uprid;
+    } else {
+      return $prid;
     }
   }
 

@@ -266,6 +266,7 @@
         if ($_GET['oldaction']=='voucheredit') {
           zen_db_perform(TABLE_COUPONS, $sql_data_array, 'update', "coupon_id='" . $_GET['cid']."'");
           for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
+            $language_id = $languages[$i]['id'];
             $sql_data_desc_array = array('coupon_name' => zen_db_prepare_input($_POST['coupon_name'][$language_id]),
                                          'coupon_description' => zen_db_prepare_input($_POST['coupon_desc'][$language_id])
                                          );

@@ -674,7 +674,7 @@ class PHPlot{
 		if ($this->use_ttf == 1 ) { 
 			$size = $this->TTFBBoxSize($which_size, $which_angle, $which_font, $which_text); 
 			if ($which_valign == 'bottom') { 
-				$which_ypos = $which_ypos + ImageFontHeight($which_font);
+				$which_ypos = $which_ypos + @ImageFontHeight($which_font);
 			}
 			if ($which_halign == 'center') { 
 				$which_xpos = $which_xpos - $size[0]/2;
@@ -683,12 +683,12 @@ class PHPlot{
 				$which_xpos, $which_ypos, $which_color, $which_font, $which_text); 
 		} else { 
 			if ($which_valign == 'top') { 
-				$which_ypos = $which_ypos - ImageFontHeight($which_font);
+				$which_ypos = $which_ypos - @ImageFontHeight($which_font);
 			}
 			$which_text = ereg_replace("\r","",$which_text);
 			$str = split("\n",$which_text); //multiple lines submitted by Remi Ricard
-			$height = ImageFontHeight($which_font);
-			$width = ImageFontWidth($which_font);
+			$height = @ImageFontHeight($which_font);
+			$width = @ImageFontWidth($which_font);
 			if ($which_angle == 90) {  //Vertical Code Submitted by Marlin Viss
 				for($i=0;$i<count($str);$i++) { 
 					ImageStringUp($this->img, $which_font, ($i*$height + $which_xpos), $which_ypos, $str[$i], $which_color);
@@ -697,9 +697,9 @@ class PHPlot{
 				for($i=0;$i<count($str);$i++) { 
 					if ($which_halign == 'center') { 
                     	$xpos = $which_xpos - strlen($str[$i]) * $width/2;
- 						ImageString($this->img, $which_font, $xpos, ($i*$height + $which_ypos), $str[$i], $which_color);
+ 						@ImageString($this->img, $which_font, $xpos, ($i*$height + $which_ypos), $str[$i], $which_color);
 					} else { 
-						ImageString($this->img, $which_font, $which_xpos, ($i*$height + $which_ypos), $str[$i], $which_color); 
+						@ImageString($this->img, $which_font, $which_xpos, ($i*$height + $which_ypos), $str[$i], $which_color); 
 					}
 				} 
 			}
@@ -716,7 +716,7 @@ class PHPlot{
 				$xpos, $ypos, $this->ndx_title_color, $this->title_ttffont_size, $this->title_txt,'center'); 
 		} else { 
 			$xpos = ($this->plot_area[0] + $this->plot_area_width / 2);
-			$ypos = ImageFontHeight($this->title_font); 
+			$ypos = @ImageFontHeight($this->title_font); 
 			$this->DrawText($this->title_font, $this->title_angle, 
 				$xpos, $ypos, $this->ndx_title_color, '', $this->title_txt,'center'); 
 		} 

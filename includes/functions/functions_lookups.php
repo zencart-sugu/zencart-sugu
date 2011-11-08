@@ -296,7 +296,7 @@
   function zen_get_products_category_id($products_id) {
     global $db;
 
-    $the_products_category_query = "select products_id, categories_id from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '" . (int)$products_id . "'" . " order by products_id,categories_id";
+    $the_products_category_query = "select products_id, master_categories_id from " . TABLE_PRODUCTS . " where products_id = '" . (int)$products_id . "'";
     $the_products_category = $db->Execute($the_products_category_query);
 
     return $the_products_category->fields['categories_id'];

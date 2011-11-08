@@ -19,7 +19,7 @@
 // +----------------------------------------------------------------------+
 
 //
-// 配送モジュール ヤマト運輸
+// 配送モジュール ヤマト運輸(宅急便)
 // TAMURA Toshihiko (tamura@bitscope.co.jp)
 // 2004/02/27 modified for ZenCart by HISASUE Takahiro ( hisa@flatz.jp )
 // 2005/02/15 modified for Yamato Transport by HIRAOKA Tadahito ( hira@s-page.net )
@@ -98,7 +98,7 @@
 
           // 送料が条件によって無料になってしまう(ここではtotalではなくsubtotalを確認すべき)
           if ( (MODULE_SHIPPING_YAMATO_FREE_SHIPPING != 'True') || ((int)$order->info['subtotal'] < (int)MODULE_SHIPPING_YAMATO_OVER) ) {
-              include(DIR_WS_CLASSES . '_yamato.php');
+              include_once(DIR_WS_CLASSES . '_yamato.php');
               $rate = new _Yamato($this->code, MODULE_SHIPPING_YAMATO_TEXT_WAY_NORMAL,
                                 zen_get_zone_code( STORE_COUNTRY,STORE_ZONE,0), STORE_COUNTRY);
                                 //STORE_ORIGIN_ZONE, STORE_ORIGIN_COUNTRY);

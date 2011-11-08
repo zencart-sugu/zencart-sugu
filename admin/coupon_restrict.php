@@ -285,7 +285,7 @@
                     <td class="smallText" align="left"><?php echo zen_draw_pull_down_menu('cPath_prod', zen_get_category_tree(), $current_category_id, 'onChange="this.form.submit();"'); ?></td></form>
                     <form name="restrict_category" method="post" action="<?php echo zen_href_link('coupon_restrict.php', zen_get_all_get_params(array('info', 'action', 'x', 'y')) . 'action=add_product&info=' . $cInfo->restrict_id, 'NONSSL'); ?>">
                     <td class="smallText" valign="top"><?php echo HEADER_PRODUCT_NAME; ?></td>
-                    <td class="smallText" align="left"><?php echo zen_draw_pull_down_menu('products', $products_array, $current_category_id); ?></td>
+                    <td class="smallText" align="left"><?php echo zen_draw_pull_down_menu('products_drop', $products_array, $current_category_id); ?></td>
                     <td class="smallText" align="left"><?php echo zen_draw_pull_down_menu('restrict_status', $restrict_array); ?></td>
                     <td class="smallText" align="left"><input type="submit" name="add" value="Add"></td>
                     <td class="smallText" align="left">&nbsp;</td>

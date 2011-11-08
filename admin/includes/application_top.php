@@ -46,7 +46,7 @@ define('PAGE_PARSE_START_TIME', microtime());
 /**
  * set the level of error reporting
  */
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(version_compare(PHP_VERSION, 5.3, '>=') ? E_ALL & ~E_DEPRECATED & ~E_NOTICE : version_compare(PHP_VERSION, 6.0, '>=') ? E_ALL & ~E_DEPRECATED & ~E_NOTICE & ~E_STRICT : E_ALL & ~E_NOTICE);
 
 // set php_self in the local scope
 if (!isset($PHP_SELF)) $PHP_SELF = $_SERVER['PHP_SELF'];
