@@ -51,7 +51,7 @@
           $check_status = $db->Execute("select customers_name, customers_email_address, orders_status,
                                       date_purchased from " . TABLE_ORDERS . "
                                       where orders_id = '" . $_GET['oID'] . "'");
-          $zc_max_days = date_diff($check_status->fields['date_purchased'], date('Y-m-d H:i:s', time())) + DOWNLOAD_MAX_DAYS;
+          $zc_max_days = zen_date_diff($check_status->fields['date_purchased'], date('Y-m-d H:i:s', time())) + DOWNLOAD_MAX_DAYS;
 
           $update_downloads_query = "update " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " set download_maxdays='" . $zc_max_days . "', download_count='" . DOWNLOAD_MAX_COUNT . "' where orders_id='" . $_GET['oID'] . "' and orders_products_download_id='" . $_GET['download_reset_on'] . "'";
           $db->Execute($update_downloads_query);
@@ -144,7 +144,7 @@
         if ($order_updated == true) {
          if ($status == DOWNLOADS_ORDERS_STATUS_UPDATED_VALUE) {
             // adjust download_maxdays based on current date
-            $zc_max_days = date_diff($check_status->fields['date_purchased'], date('Y-m-d H:i:s', time())) + DOWNLOAD_MAX_DAYS;
+            $zc_max_days = zen_date_diff($check_status->fields['date_purchased'], date('Y-m-d H:i:s', time())) + DOWNLOAD_MAX_DAYS;
 
             $update_downloads_query = "update " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " set download_maxdays='" . $zc_max_days . "', download_count='" . DOWNLOAD_MAX_COUNT . "' where orders_id='" . (int)$oID . "'";
             $db->Execute($update_downloads_query);

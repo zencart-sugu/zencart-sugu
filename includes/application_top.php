@@ -35,14 +35,23 @@ if (file_exists('includes/local/configure.php')) {
    */
   include('includes/local/configure.php');
 }
+
 /**
  * set the level of error reporting
+ * 
+ * Note STRICT_ERROR_REPORTING should never be set to true on a production site. <br />
+ * It is mainly there to show php warnings during testing/bug fixing phases.<br />
+ * note for strict error reporting we also turn on show_errors as this may be disabled<br />
+ * in php.ini. Otherwise we respect the php.ini setting 
+ * 
  */
 if (defined('STRICT_ERROR_REPORTING') && STRICT_ERROR_REPORTING == true) {
-  error_reporting(E_ALL);
+  @ini_set('display_errors', TRUE);
+  error_reporting(version_compare(PHP_VERSION, 5.3, '>=') ? E_ALL & ~E_DEPRECATED & ~E_NOTICE : E_ALL & ~E_NOTICE);
 } else {
-  error_reporting(E_ALL & ~E_NOTICE);
+  error_reporting(0);
 }
+
 /**
  * include server parameters
  */

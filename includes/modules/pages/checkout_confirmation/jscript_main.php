@@ -3,10 +3,10 @@
  * jscript_main
  *
  * @package page
- * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @copyright Copyright 2003-2010 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: jscript_main.php 3505 2006-04-24 04:00:05Z drbyte $
+ * @version $Id: jscript_main.php 15536 2010-02-20 06:11:54Z drbyte $
  */
 ?>
 <script language="javascript" type="text/javascript"><!--
@@ -21,20 +21,22 @@ function couponpopupWindow(url) {
 
 function submitFunction($gv,$total) {
    if ($gv >=$total) {
-     submitter = 1;	
+     submitter = 1;
    }
 }
 
-function submitonce(){
-  if (document.checkout_confirmation.btn_submit) {
-	  document.checkout_confirmation.btn_submit.disabled = true;
-    setTimeout('button_timeout()', 4000);
-    document.checkout_confirmation.submit();
-  }
+function submitonce()
+{
+  var button = document.getElementById("btn_submit");
+  button.style.cursor="wait";
+  button.disabled = true;
+  setTimeout('button_timeout()', 4000);
+  return false;
 }
-
 function button_timeout() {
-  document.checkout_confirmation.submit.disabled = false;
+  var button = document.getElementById("btn_submit");
+  button.style.cursor="pointer";
+  button.disabled = false;
 }
 
 //--></script>

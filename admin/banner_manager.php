@@ -77,8 +77,8 @@
         $banners_image_local = zen_db_prepare_input($_POST['banners_image_local']);
         $banners_image_target = zen_db_prepare_input($_POST['banners_image_target']);
         $db_image_location = '';
-        $expires_date = zen_db_prepare_input($_POST['expires_date']);
-        $expires_impressions = zen_db_prepare_input($_POST['expires_impressions']);
+        $expires_date = zen_db_prepare_input($_POST['expires_date']) == '' ? 'null' : zen_date_raw($_POST['expires_date']);
+        $expires_impressions = zen_db_prepare_input($_POST['expires_impressions']) == '' ? 'null' : zen_date_raw($_POST['date_scheduled']);
         $date_scheduled = zen_db_prepare_input($_POST['date_scheduled']);
         $status = zen_db_prepare_input($_POST['status']);
         $banners_open_new_windows = zen_db_prepare_input($_POST['banners_open_new_windows']);
@@ -137,41 +137,25 @@
           }
 
 // NOTE: status will be reset by the /functions/banner.php
-          if (zen_not_null($expires_date)) {
-            list($day, $month, $year) = explode('/', $expires_date);
+// build new update sql for date_scheduled, expires_date and expires_impressions
 
-            $expires_date = $year .
-                            ((strlen($month) == 1) ? '0' . $month : $month) .
-                            ((strlen($day) == 1) ? '0' . $day : $day);
-
-            $db->Execute("update " . TABLE_BANNERS . "
-                          set expires_date = '" . zen_db_input($expires_date) . "',
-                              expires_impressions = null
-                          where banners_id = '" . (int)$banners_id . "'");
-
-          } elseif (zen_not_null($expires_impressions)) {
-            $db->Execute("update " . TABLE_BANNERS . "
-                          set expires_impressions = '" . zen_db_input($expires_impressions) . "',
-                              expires_date = null
-                          where banners_id = '" . (int)$banners_id . "'");
+          $sql = "UPDATE " . TABLE_BANNERS . "
+                  SET
+                    date_scheduled = :scheduledDate,
+                    expires_date = DATE_ADD(:expiresDate, INTERVAL '23:59:59' HOUR_SECOND),
+                    expires_impressions = " . ($expires_impressions == 0 ? "null" : ":expiresImpressions") . "
+                    WHERE banners_id = :bannersID";
+          if ($expires_impressions > 0) {
+            $sql = $db->bindVars($sql, ':expiresImpressions', $expires_impressions, 'integer');
           }
-
-
-          if (zen_not_null($date_scheduled)) {
-            list($day, $month, $year) = explode('/', $date_scheduled);
-
-            $date_scheduled = $year .
-                              ((strlen($month) == 1) ? '0' . $month : $month) .
-                              ((strlen($day) == 1) ? '0' . $day : $day);
-
-            $db->Execute("update " . TABLE_BANNERS . "
-                          set date_scheduled = '" . zen_db_input($date_scheduled) . "'
-                          where banners_id = '" . (int)$banners_id . "'");
-          } else {
-            $db->Execute("update " . TABLE_BANNERS . "
-                          set date_scheduled = null
-                          where banners_id = '" . (int)$banners_id . "'");
+          if ($date_scheduled != '') {
+            $sql = $db->bindVars($sql, ':scheduledDate', $date_scheduled, 'date');
           }
+          if ($expires_date != '') {
+            $sql = $db->bindVars($sql, ':expiresDate', $expires_date, 'date');
+          }
+            $sql = $db->bindVars($sql, ':bannersID', $banners_id, 'integer');
+            $db->Execute($sql);
 
           zen_redirect(zen_href_link(FILENAME_BANNER_MANAGER, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'bID=' . $banners_id));
         } else {
@@ -341,8 +325,8 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 
       $banner = $db->Execute("select banners_title, banners_url, banners_image, banners_group,
                                      banners_html_text, status,
-                                     date_format(date_scheduled, '%d/%m/%Y') as date_scheduled,
-                                     date_format(expires_date, '%d/%m/%Y') as expires_date,
+                                     date_format(date_scheduled, '%Y/%m/%d') as date_scheduled,
+                                     date_format(expires_date, '%Y/%m/%d') as expires_date,
                                      expires_impressions, date_status_change, banners_open_new_windows, banners_on_ssl, banners_sort_order
                                      from " . TABLE_BANNERS . "
                                      where banners_id = '" . (int)$bID . "'");
@@ -383,8 +367,8 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <link rel="stylesheet" type="text/css" href="includes/javascript/spiffyCal/spiffyCal_v2_1.css">
 <script language="JavaScript" src="includes/javascript/spiffyCal/spiffyCal_v2_1.js"></script>
 <script language="javascript">
-  var dateExpires = new ctlSpiffyCalendarBox("dateExpires", "new_banner", "expires_date","btnDate1","<?php echo $bInfo->expires_date; ?>",scBTNMODE_CUSTOMBLUE);
-  var dateScheduled = new ctlSpiffyCalendarBox("dateScheduled", "new_banner", "date_scheduled","btnDate2","<?php echo $bInfo->date_scheduled; ?>",scBTNMODE_CUSTOMBLUE);
+  var dateExpires = new ctlSpiffyCalendarBox("dateExpires", "new_banner", "expires_date","btnDate1","<?php echo zen_date_short($bInfo->expires_date); ?>",scBTNMODE_CUSTOMBLUE);
+  var dateScheduled = new ctlSpiffyCalendarBox("dateScheduled", "new_banner", "date_scheduled","btnDate2","<?php echo zen_date_short($bInfo->date_scheduled); ?>",scBTNMODE_CUSTOMBLUE);
 </script>
       <tr>
         <td><?php echo zen_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -441,13 +425,13 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
           </tr>
        
           <tr>
-            <th class="main"><?php echo TEXT_BANNERS_SCHEDULED_AT; ?><br><small>(<?php echo DATE_FORMAT_SPIFFYCAL; ?>)</small></th>
-            <td valign="top" class="main"><script language="javascript">dateScheduled.writeControl(); dateScheduled.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
+            <td class="main"><?php echo TEXT_BANNERS_SCHEDULED_AT; ?></td>
+            <td valign="top" class="main"><script language="javascript">dateScheduled.writeControl();dateScheduled.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script></td>
           </tr>
           
           <tr>
-            <th valign="top" class="main"><?php echo TEXT_BANNERS_EXPIRES_ON; ?><br><small>(<?php echo DATE_FORMAT_SPIFFYCAL; ?>)</small></th>
-            <td class="main"><script language="javascript">dateExpires.writeControl(); dateExpires.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script><?php echo TEXT_BANNERS_OR_AT . '<br>' . zen_draw_input_field('expires_impressions', $bInfo->expires_impressions, 'maxlength="7" size="7"') . ' ' . TEXT_BANNERS_IMPRESSIONS; ?></td>
+            <td valign="top" class="main"><?php echo TEXT_BANNERS_EXPIRES_ON; ?></td>
+            <td class="main"><script language="javascript">dateExpires.writeControl();dateExpires.dateFormat="<?php echo DATE_FORMAT_SPIFFYCAL; ?>";</script><?php echo TEXT_BANNERS_OR_AT . '<br>' . zen_draw_input_field('expires_impressions', $bInfo->expires_impressions, 'maxlength="7" size="7"') . ' ' . TEXT_BANNERS_IMPRESSIONS; ?></td>
           </tr>
         </table></td>
       </tr>
@@ -486,6 +470,26 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
+// Split Page
+// reset page when page is unknown
+if (($_GET['page'] == '' or $_GET['page'] == '1') and $_GET['bID'] != '') {
+  $banners_query_raw = "select banners_id, banners_title, banners_image, banners_group, status, expires_date, expires_impressions, date_status_change, date_scheduled, date_added, banners_open_new_windows, banners_on_ssl, banners_sort_order from " . TABLE_BANNERS . " order by banners_title, banners_group";
+  $check_page = $db->Execute($banners_query_raw);
+  $check_count=1;
+  if ($check_page->RecordCount() > MAX_DISPLAY_SEARCH_RESULTS) {
+    while (!$check_page->EOF) {
+      if ($check_page->fields['banners_id'] == $_GET['bID']) {
+        break;
+      }
+      $check_count++;
+      $check_page->MoveNext();
+    }
+    $_GET['page'] = round((($check_count/MAX_DISPLAY_SEARCH_RESULTS)+(fmod_round($check_count,MAX_DISPLAY_SEARCH_RESULTS) !=0 ? .5 : 0)),0);
+  } else {
+    $_GET['page'] = 1;
+  }
+}
+
     $banners_query_raw = "select banners_id, banners_title, banners_image, banners_group, status, expires_date, expires_impressions, date_status_change, date_scheduled, date_added, banners_open_new_windows, banners_on_ssl, banners_sort_order from " . TABLE_BANNERS . " order by banners_title, banners_group";
     $banners_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, $banners_query_raw, $banners_query_numrows);
     $banners = $db->Execute($banners_query_raw);
@@ -578,6 +582,7 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 
         $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $bInfo->banners_id . '&action=new') . '">' . zen_image_button('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . zen_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $bInfo->banners_id . '&action=delete') . '">' . zen_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
         $contents[] = array('text' => '<br>' . TEXT_BANNERS_DATE_ADDED . ' ' . zen_date_short($bInfo->date_added));
+        $contents[] = array('center', 'text' => '<br />' . '<a href="' . zen_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $bInfo->banners_id) . '">' . zen_image_button('button_update.gif', IMAGE_UPDATE) . '</a>' );
 
         if ( (function_exists('imagecreate')) && ($dir_ok) && ($banner_extension) ) {
           $banner_id = $bInfo->banners_id;

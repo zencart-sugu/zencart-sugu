@@ -255,6 +255,18 @@
       $languages = zen_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
         $language_id = $languages[$i]['id'];
+        $check = $db->Execute("select *
+                               from " . TABLE_METATAGS_CATEGORIES_DESCRIPTION . "
+                               where categories_id = '" . (int)$categories_id . "'
+                               and language_id = '" . (int)$language_id . "'");
+        if ($check->RecordCount() > 0) {
+          $action = 'update_category_meta_tags';
+        } else {
+          $action = 'insert_categories_meta_tags';
+        }
+        if (empty($_POST['metatags_title'][$language_id]) && empty($_POST['metatags_keywords'][$language_id]) && empty($_POST['metatags_description'][$language_id])) {
+          $action = 'delete_category_meta_tags';
+        }
 
         $sql_data_array = array('metatags_title' => zen_db_prepare_input($_POST['metatags_title'][$language_id]),
                                 'metatags_keywords' => zen_db_prepare_input($_POST['metatags_keywords'][$language_id]),
@@ -263,12 +275,14 @@
         if ($action == 'insert_categories_meta_tags') {
           $insert_sql_data = array('categories_id' => $categories_id,
                                    'language_id' => $language_id);
-
           $sql_data_array = array_merge($sql_data_array, $insert_sql_data);
 
           zen_db_perform(TABLE_METATAGS_CATEGORIES_DESCRIPTION, $sql_data_array);
         } elseif ($action == 'update_category_meta_tags') {
           zen_db_perform(TABLE_METATAGS_CATEGORIES_DESCRIPTION, $sql_data_array, 'update', "categories_id = '" . (int)$categories_id . "' and language_id = '" . (int)$language_id . "'");
+        } elseif ($action == 'delete_category_meta_tags') {
+          $remove_categories_metatag = "DELETE from " . TABLE_METATAGS_CATEGORIES_DESCRIPTION . " WHERE categories_id = '" . (int)$categories_id . "' and language_id = '" . (int)$language_id . "'";
+          $db->Execute($remove_categories_metatag);
         }
       }
 
