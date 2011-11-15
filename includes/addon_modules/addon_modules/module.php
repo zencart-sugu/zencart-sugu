@@ -133,6 +133,10 @@ if (!defined('IS_ADMIN_FLAG')) {
     function _cleanUp() {
     }
 
+    function replace_key($k) {
+      return '<label id="phpQuery_'.$k.'"></label>';
+    }
+
     function notify_header_addonmodules_print_layout_main() {
       global $main;
       global $addonmodules_print_layout_main_content;
@@ -141,7 +145,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       // “K“–‚É’u‚«Š·‚¦‚Ä‚Ý‚é
       preg_match_all("/(<script.*?>.*?<\/script>)/is", $addonmodules_print_layout_main_content, $match);
       foreach($match[1] as $k => $v) {
-        $addonmodules_print_layout_main_content = str_replace($v, "%__phpQuery_".$k."__%", $addonmodules_print_layout_main_content);
+        $addonmodules_print_layout_main_content = str_replace($v, self::replace_key($k), $addonmodules_print_layout_main_content);
       }
 
       $doc = phpQuery::newDocumentHTML($addonmodules_print_layout_main_content, CHARSET);
@@ -171,7 +175,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       // ’u‚«Š·‚¦‚½‚Ì‚ð–ß‚·
       foreach($match[1] as $k => $v) {
-        $out = str_replace("%__phpQuery_".$k."__%", $v, $out);
+        $out = str_replace(self::replace_key($k), $v, $out);
       }
 
       $addonmodules_print_layout_main_content = $out;
