@@ -5,8 +5,9 @@
   case DIR_WS_ADMIN:
   case DIR_WS_HTTPS_ADMIN:
   case DIR_WS_HTTPS_ADMIN.'index.php':
-    $dashboard_redirect_url = MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL != "" ? MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL : zen_href_link('orders', '', 'SSL');
-    zen_redirect($dashboard_redirect_url);
+    if (MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL != '') {
+      zen_redirect(MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL);
+    }
     break;
   }
 
