@@ -38,6 +38,14 @@ if (!defined('IS_ADMIN_FLAG')) {
             'set_function'              => 'zen_cfg_select_option(array(\'true\', \'false\'),'
           ),
           array(
+            'configuration_title'       => MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_TITLE,
+            'configuration_key'         => 'MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL',
+            'configuration_value'       => MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_DEFAULT,
+            'configuration_description' => MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_DESCRIPTION,
+            'use_function'              => 'null',
+            'set_function'              => 'null'
+          ),
+          array(
             'configuration_title'       => MODULE_EASY_ADMIN_SORT_ORDER_TITLE,
             'configuration_key'         => 'MODULE_EASY_ADMIN_SORT_ORDER',
             'configuration_value'       => MODULE_EASY_ADMIN_SORT_ORDER_DEFAULT,

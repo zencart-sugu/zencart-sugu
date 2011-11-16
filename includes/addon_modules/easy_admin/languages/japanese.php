@@ -25,6 +25,9 @@ define('MODULE_EASY_ADMIN_DESCRIPTION',              '管理画面のメニュー構成を簡
 define('MODULE_EASY_ADMIN_STATUS_TITLE',             '管理メニューの設定の有効化');
 define('MODULE_EASY_ADMIN_STATUS_DESCRIPTION',       '管理メニューの設定を有効にしますか？ <br />true: 有効<br />false: 無効');
 
+define('MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_TITLE', 'Dashboardリダイレクト先URL');
+define('MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_DESCRIPTION', '');
+
 define('MODULE_EASY_ADMIN_SORT_ORDER_TITLE',         '優先順');
 define('MODULE_EASY_ADMIN_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
