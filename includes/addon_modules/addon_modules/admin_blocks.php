@@ -582,10 +582,11 @@ if (count($layout_locations) > 0) {
 
   $block_layouts = $db->Execute("
     SELECT *
+      FIELD(location, '', 'header', 'main_top', 'main_bottom', 'sidebar_left', 'sidebar_right', 'footer') sort_loc
     FROM " . TABLE_BLOCKS . "
     WHERE (template='" . $template_dir . "'
     AND block NOT LIKE '%ezpages_bar%')
-    ORDER BY status DESC, location, sort_order
+    ORDER BY status DESC, sort_loc, sort_order, module, block
     ;");
 
   $i = 0;
