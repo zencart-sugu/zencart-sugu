@@ -581,7 +581,7 @@ if (count($layout_locations) > 0) {
   $boxes_directory_template = DIR_FS_CATALOG_MODULES . 'sideboxes/' . $template_dir . '/';
 
   $block_layouts = $db->Execute("
-    SELECT *
+    SELECT *,
       FIELD(location, '', 'header', 'main_top', 'main_bottom', 'sidebar_left', 'sidebar_right', 'footer') sort_loc
     FROM " . TABLE_BLOCKS . "
     WHERE (template='" . $template_dir . "'
