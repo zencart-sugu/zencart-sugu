@@ -254,26 +254,35 @@ class easy_admin_products_model {
   // カテゴリ取得
   // idもしくはキーワード検索(排他)
   function get_categories_query($search_param) {
-    $category_id = (int)$search_param['category_id'];
-    $keyword     = $search_param['keyword'];
-    $description = $search_param['description'];
+    $category_id      = (int)$search_param['category_id'];
+    $category_base_id = (int)$search_param['category_base_id'];
+    $keyword          = $search_param['keyword'];
+    $description      = $search_param['description'];
 
     $where = array(
       "c.categories_id=cd.categories_id",
       "cd.language_id=".(int)$_SESSION['languages_id'],
     );
-    if ($category_id==0 && $keyword == "" && $description == "") {
-      $where[] = "c.parent_id=0";	// 条件指定なしならトップカテゴリ直下すべて
-    }else{
-      if ($category_id>0) {
-        $where[] = "c.parent_id=".(int)$category_id;
-      }
-      if ($keyword != "") {
-        $where[] = "cd.categories_name like '%".zen_db_input($keyword)."%'";
-      }
-      if ($description != "") {
-        $where[] = "cd.categories_description like '%".zen_db_input($description)."%'";
-      }
+
+    if ($category_id==0 && $keyword=='' && $description && $category_base_id==0) {
+      $where[] = "c.parent_id=0";
+    }
+
+    if ($category_id>0) {
+      $where[] = "c.parent_id=".(int)$category_id;
+    }
+    if ($keyword != "") {
+      $where[] = "cd.categories_name like '%".zen_db_input($keyword)."%'";
+    }
+    if ($description != "") {
+      $where[] = "cd.categories_description like '%".zen_db_input($description)."%'";
+    }
+
+    if ($category_base_id>0) {
+      $categories = array();
+      self::zen_get_subcategories($categories, (int)$category_base_id);
+      $categories[] = (int)$category_base_id;
+      $where[] = "c.categories_id in (".implode(",", $categories).")";
     }
 
     $query       = "select

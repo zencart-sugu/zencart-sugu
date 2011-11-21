@@ -61,6 +61,7 @@
 		  <?php echo $html->form('form_search', 'select_category'); ?>
 		    <input type="hidden" name="html_id" value="<?php echo htmlspecialchars($_REQUEST['html_id']); ?>">
 		    <input type="hidden" name="category_id" value="<?php echo htmlspecialchars($_REQUEST['category_id']); ?>">
+		    <input type="hidden" name="category_base_id" value="<?php echo htmlspecialchars($_REQUEST['category_base_id']); ?>">
 		    <?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_NAME; ?>
 		    <input type="text" name="keyword" value="<?php echo htmlspecialchars($_REQUEST['keyword']); ?>">
 		    <input  type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_SEARCH_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEARCH; ?>">
@@ -69,20 +70,27 @@
       <table border="0" cellpadding="0" cellspacing="0">
         <?php
           if ($_REQUEST['keyword'] != "") {
-            $param      = array('keyword' => $_REQUEST['keyword']);
+            $param      = array('keyword'          => $_REQUEST['keyword'],
+                                'category_base_id' => $_REQUEST['category_base_id']);
             $categories = $model->get_categories($param);
             foreach($categories as $category) {
         ?>
         <tr>
    				<td class="categoryName">
             <?php
-              $link = $html->href_link("select_category");
-              print '<a href="'.$link.'">'.MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TOP.'</a>';
-              print MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEPARATE;
-              print $model->get_category($category['id'], $link, MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEPARATE);
+              $parm = array();
+              if ($_REQUEST['category_base_id'] > 0) {
+                $parm = array('category_base_id' => $_REQUEST['category_base_id']);
+              }
+              $link = $html->href_link("select_category", $parm);
+              if ($_REQUEST['category_base_id'] == 0) {
+                print '<a href="'.$link.'">'.MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TOP.'</a>';
+                print MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEPARATE;
+              }
+              print $model->get_category($category['id'], $link, MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEPARATE, $_REQUEST['category_base_id'], false);
             ?>
             <?php if ($category['child']) { ?>
-              <a href="<?php echo $html->href_link("select_category", array('html_id'=>$_REQUEST['html_id'], 'category_id'=>$category['id'])); ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?></a>
+              <a href="<?php echo $html->href_link("select_category", array('html_id'=>$_REQUEST['html_id'], 'category_id'=>$category['id'], 'category_base_id'=>$_REQUEST['category_base_id'])); ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND; ?></a>
             <?php } ?>
           </td>
       	  <td class="categoryChoice">
