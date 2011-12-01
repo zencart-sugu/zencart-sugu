@@ -33,6 +33,8 @@ class super_products_list_model {
       'page'             => (int)$request['page'] ? (int)$request['page'] : 1,
       'limit'            => in_array($request['limit'], $this->get_limit_options()) ? (int)$request['limit'] : MODULE_SUPER_PRODUCTS_LIST_LIMIT_DEFAULT,
       'limit_manufacturers' => MODULE_SUPER_PRODUCTS_LIST_MANUFACTURERS_LIST_LIMIT_DEFAULT,
+      'featured'         => isset($request['featured']) ? $request['featured'] : false,
+      'specials'         => isset($request['specials']) ? $request['specials'] : false,
     );
   }
 
@@ -267,6 +269,16 @@ class super_products_list_model {
                        AND (gz.zone_id IS null OR gz.zone_id = 0 OR gz.zone_id = :zoneID)";
       $from_str = $db->bindVars($from_str, ':zoneCountryID', $_SESSION['customer_country_id'], 'integer');
       $from_str = $db->bindVars($from_str, ':zoneID', $_SESSION['customer_zone_id'], 'integer');
+    }
+    if ($this->search_params['featured']) {
+      $from_str .= " INNER JOIN ". TABLE_FEATURED . " f
+                       ON p.products_id = f.products_id
+                      AND f.status = 1";
+    }
+    if ($this->search_params['specials']) {
+      $from_str .= " INNER JOIN ". TABLE_SPECIALS . " sp
+                       ON p.products_id = sp.products_id
+                      AND sp.status = 1";
     }
 
     /*
@@ -541,6 +553,8 @@ class super_products_list_model {
       case 'sort':
       case 'direction':
       case 'limit':
+      case 'featured':
+      case 'specials':
         if (zen_not_null($val)) {
           $url .= '&'. urlencode($key) .'='. urlencode($val);
         }

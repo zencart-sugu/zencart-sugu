@@ -236,6 +236,14 @@ function zen2han(val) {
     <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_LIMIT ?>: 
       <?php echo zen_draw_pull_down_menu("limit", $limit_options, $limit, 'id="limit"'); ?>
     </li>
+    <li>
+      <?php echo zen_draw_checkbox_field('featured', 1, $featured, 'id=featured'); ?>
+      <?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_FEATURED ?>
+    </li>
+    <li>
+      <?php echo zen_draw_checkbox_field('specials', 1, $specials, 'id=specials'); ?>
+      <?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SPECIALS ?>
+    </li>
   </ul>
 <?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>
 </form>
