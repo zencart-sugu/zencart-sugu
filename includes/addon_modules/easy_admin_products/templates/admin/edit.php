@@ -129,6 +129,35 @@
       $("#a_"+id).html("<?php echo MODULE_EASY_ADMIN_PRODUCTS_CLOSE; ?>");
   }
 
+  function additional_image() {
+    var i=0;
+    for(;;) {
+      i++;
+      var element = $("#id_products_additional_image_"+i);
+      if (element.length == 0) {
+        var html = '<div id="id_products_additional_image_'+i+'">'
+                 + '<input type="file" name="products_additional_image_'+i+'">'
+                 + '<hr/>'
+                 + '</div>';
+        $("#id_products_additional_image").append(html);
+        break;
+      }
+      if (i>=<?php echo MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES; ?>) {
+        break;
+      }
+    }
+    return false;
+  }
+
+  function delete_image(id, filename) {
+    if (window.confirm('<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE_IMAGE; ?>\n'+filename)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   $(document).ready(function(){
     updateGross();
 <?php if ($open_price_setting) { ?>
@@ -222,7 +251,12 @@
 
     <tr>
       <?php
-        echo $html->file("products_image", MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE);
+        $after   = '<br/><input type="hidden" name="products_previous_image" value="'.htmlspecialchars($product['products_image']).'">';
+        if ($product['products_image'] != "") {
+          $after .= '<img src="../'.DIR_WS_IMAGES.$product['products_image'].'" />';
+        }
+        $after .= $product['products_image'];
+        echo $html->file("products_image", MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE, "", $after);
       ?>
     </tr>
 
@@ -230,17 +264,42 @@
       <?php
         $dir     = $model->get_upload();
         $default = substr($product['products_image'], 0, strpos($product['products_image'], '/')+1);
-        $after   = '<br/>'.$product['products_image'].'<input type="hidden" name="products_previous_image" value="'.htmlspecialchars($product['products_image']).'">';
-        echo $html->select("img_dir", MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD, $dir, $default, "", $after.MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD_NOTE);
+        $radio   = '<input name="overwrite" value="1" type="radio">'.MODULE_EASY_ADMIN_PRODUCTS_YES
+                 . '<input name="overwrite" value="0" type="radio" checked="checked">'.MODULE_EASY_ADMIN_PRODUCTS_NO;
+        echo $html->select("img_dir", MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD, $dir, $default, "", sprintf(MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD_NOTE, $radio));
       ?>
     </tr>
 
     <tr>
       <?php
-        $option = array(array('id' => 1, 'text' => MODULE_EASY_ADMIN_PRODUCTS_YES),
-                        array('id' => 0, 'text' => MODULE_EASY_ADMIN_PRODUCTS_NO));
-        echo $html->radio("overwrite", "", $option, 0);
+        echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE);
       ?>
+      <td>
+        <div id="id_products_additional_image">
+        <?php
+          $i = 0;
+          for(;;) {
+            $i++;
+            if (!isset($product['products_additional_image'][$i])) {
+              break;
+            }
+        ?>
+        <div id="id_products_additional_image_<?php echo $i; ?>">
+          <input type="hidden" name="products_additional_image_previous_<?php echo $i; ?>" value="<?php echo htmlspecialchars($product['products_additional_image'][$i]); ?>">
+          <img src="<?php echo '../'.DIR_WS_IMAGES.$product['products_additional_image'][$i]; ?>" />
+          <?php echo $product['products_additional_image'][$i]; ?>
+          <a href="<?php echo $html->href_link(""); ?>&products_id=<?php echo $product['products_id']; ?>&action=delete_image&filename=<?php echo htmlspecialchars($product['products_additional_image'][$i]); ?>" onclick="return delete_image('id_products_additional_image_<?php echo $i; ?>', '<?php echo $product['products_additional_image'][$i]; ?>');">
+            <img src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE; ?>">
+          </a><br/>
+          <input type="file" name="products_additional_image_<?php echo $i; ?>">
+          <hr/>
+        </div>
+        <?php
+          }
+        ?>
+        </div>
+        <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_ADD_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_ADD; ?>" onclick="return additional_image();">
+      </td>
     </tr>
 
     <?php

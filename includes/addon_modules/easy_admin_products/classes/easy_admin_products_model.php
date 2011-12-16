@@ -536,6 +536,24 @@ class easy_admin_products_model {
       }
     }
 
+    // additional_image
+    $product['products_additional_image'] = array();
+    if ($product['products_image'] != "") {
+      preg_match("/^(.*?)\.([^.]*)$/", $product['products_image'], $match);
+      $i = 0;
+      for(;;) {
+        $i++;
+        $filename = $match[1]."_".$i.".".$match[2];
+        if (!file_exists('../'.DIR_WS_IMAGES.$filename)) {
+          break;
+        }
+        $product['products_additional_image'][$i] = $filename;
+        if ($i>=MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES) {
+          break;
+        }
+      }
+    }
+
     // products_description
     $column = array();
     foreach($columns['products_description_column'] as $k => $v) {
@@ -628,6 +646,7 @@ class easy_admin_products_model {
     global $zco_notifier;
     global $product_save;
     global $products_id;
+    global $messageStack;
 
     $products_id     = $product['products_id'];
     $insert_products = ($products_id == 0);
@@ -635,10 +654,46 @@ class easy_admin_products_model {
     // イメージ保存
     $products_image = new upload('products_image');
     $products_image->set_destination(DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
-    if ($products_image->parse() && $products_image->save($_POST['overwrite'])) {
-      $products_image_name = $_POST['img_dir'] . $products_image->filename;
+    if ($products_image->parse()) {
+      $match = self::separate_filename($products_image->filename);
+      $name  = $match['name'];
+      $ext   = $match['ext'];
+      if ($_POST['overwrite'] == 0 && file_exists(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'] . $name . ".png")) {
+        $messageStack->add_session(TEXT_IMAGE_OVERWRITE_WARNING . $this->filename, 'caution');
+        $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
+      }
+      else if ($products_image->save(1)) {
+        // 保存画像はpngに変換する
+        $products_image_name = $_POST['img_dir'] . self::image_convert_to_png(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename);
+      }
+      else {
+        $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
+      }
     } else {
       $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
+    }
+
+    // 追加画像
+    $find_addition_images = 0;
+    for($i=1; $i<=MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES; $i++) {
+      // 画像が追加、もしくは変更された
+      if (isset($_FILES['products_additional_image_'.$i])) {
+        $products_image = new upload('products_additional_image_'.$i);
+        $products_image->set_destination(DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
+        if ($products_image->parse()) {
+          $find_addition_images++;
+          $products_image->save(1);
+          preg_match("/^(.*?)\..*$/", basename($products_image_name), $match);
+          self::image_convert_to_png(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images);
+        }
+        else if (isset($_POST['products_additional_image_previous_'.$i])) {
+          $find_addition_images++;
+        }
+      }
+      // 画像に変更がない
+      else if (isset($_POST['products_additional_image_previous_'.$i])) {
+        $find_addition_images++;
+      }
     }
 
     // products
@@ -1142,5 +1197,68 @@ class easy_admin_products_model {
     return false;
   }
 
+  function separate_filename($filename) {
+    preg_match("/^(.*?)\.(.+)$/", $filename, $match);
+    return array("name" => $match[1],
+                 "ext"  => strtolower($match[2]));
+  }
+
+  function image_convert_to_png($dir, $filename, $newname="") {
+    $match = self::separate_filename($filename);
+    $name  = $match['name'];
+    $ext   = $match['ext'];
+    if ($newname == "") {
+      $newname = $name;
+    }
+
+    $image = "";
+    if ($ext == "jpg" || $ext == "jpeg") {
+      $image = ImageCreateFromJPEG($dir.$filename);
+    }
+    else if ($ext == "gif") {
+      $image = ImageCreateFromGIF($dir.$filename);
+    }
+
+    if ($image !== "") {
+      // リサイズ
+      $width  = ImageSX($image);
+      $height = ImageSY($image);
+      if ($width == 0)
+        $width = 1;
+      if ($height == 0)
+        $height = 1;
+      if (MEDIUM_IMAGE_WIDTH > MEDIUM_IMAGE_HEIGHT) {
+        $ratio = MEDIUM_IMAGE_WIDTH/$width;
+      }
+      else {
+        $ratio = MEDIUM_IMAGE_HEIGHT/$height;
+      }
+      $width_resize  = (int)($width*$ratio);
+      $height_resize = (int)($height*$ratio);
+      if ($width_resize > MEDIUM_IMAGE_WIDTH) {
+        $ratio = MEDIUM_IMAGE_WIDTH/$width_resize;
+      }
+      else if ($height_resize > MEDIUM_IMAGE_HEIGHT) {
+        $ratio = MEDIUM_IMAGE_HEIGHT/$height_resize;
+      }
+      else {
+        $ratio = 1;
+      }
+      $width_resize  = (int)($width_resize*$ratio);
+      $height_resize = (int)($height_resize*$ratio);
+
+      $newimage = ImageCreateTrueColor($width_resize, $height_resize);
+      ImageCopyResized($newimage, $image, 0, 0, 0, 0, $width_resize, $height_resize, $width, $height);
+
+      umask(0000);
+      ImagePNG($newimage, $dir.$newname.".png");
+      ImageDestroy($image);
+      ImageDestroy($newimage);
+      return $name.".png";
+    }
+
+    // 変換せず、そのまま
+    return $filename;
+  }
 }
 ?>

@@ -235,6 +235,23 @@ switch($action) {
       zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'));
     }
     break;
+
+  case 'delete_image':
+    unlink(DIR_FS_CATALOG_IMAGES.$_REQUEST['filename']);
+    // 連番を変更
+    $info = $model->separate_filename($_REQUEST['filename']);
+    if (preg_match("/^(.*?\_)([0-9]+)$/", $info['name'], $match)) {
+      for($i=$match[2]; $i<MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES; $i++) {
+        $from = DIR_FS_CATALOG_IMAGES.$match[1].($i+1).".".$info['ext'];
+        $to   = DIR_FS_CATALOG_IMAGES.$match[1].$i.".".$info['ext'];
+        if (!file_exists($from)) {
+          break;
+        }
+        rename($from, $to);
+      }
+    }
+    zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products&products_id='.(int)$_REQUEST['products_id'].'&action=edit'));
+    break;
 }
 
 $query_raw = $model->get_products_query($_REQUEST);

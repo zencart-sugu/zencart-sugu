@@ -25,6 +25,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_TITLE',                        '¤«¤ó¤¿¤ó¾¦ÉÊ´
 define('MODULE_EASY_ADMIN_PRODUCTS_DESCRIPTION',                  '¾¦ÉÊ¤ò°·¤¦¤¿¤á¤Î´ÉÍý²èÌÌ¤òÄó¶¡¤·¤Þ¤¹¡£');
 define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_TITLE',                 '¤«¤ó¤¿¤ó¾¦ÉÊ´ÉÍý¥â¥¸¥å¡¼¥ë¤ÎÍ­¸ú²½');
 define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_DESCRIPTION',           '¤«¤ó¤¿¤ó¾¦ÉÊ´ÉÍý¥â¥¸¥å¡¼¥ë¤òÍ­¸ú²½¤¹¤ë¾ì¹ç¤Ï¡¢¡ÖTrue¡×¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£');
+define('MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES_TITLE',       'ÄÉ²Ã²èÁü¤ÎºÇÂç¸Ä¿ô');
+define('MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES_DESCRIPTION', 'ÄÉ²Ã²èÁü¤ÎºÇÂç¸Ä¿ô¤ò»ØÄê¤·¤Þ¤¹');
 define('MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_TITLE',             'Í¥Àè½ç');
 define('MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_DESCRIPTION',       '¥â¥¸¥å¡¼¥ë¤ÎÍ¥Àè½ç¤òÀßÄê¤Ç¤­¤Þ¤¹¡£¿ô»ú¤¬¾®¤µ¤¤¤Û¤ÉÀè¤Ë¥â¥¸¥å¡¼¥ë¤ÎÆÉ¤ß¹þ¤ß¤È½èÍý¤¬¼Â¹Ô¤µ¤ì¤Þ¤¹¡£È¾³Ñ¿ô»ú¤ÇÂ¾¤Î¥â¥¸¥å¡¼¥ë¤È½Å¤Ê¤é¤Ê¤¤¤è¤¦¤ËÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£');
 
@@ -71,8 +73,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_NAME',                '¥«¥Æ¥´¥êÌ¾');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEARCH',              '¸¡º÷');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP',                '³°¤¹');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET',               '¥ê¥»¥Ã¥È');
-define('MODULE_EASY_ADMIN_WINDOW_CLOSE_IMG',               '../includes/addon_modules/easy_admin_products/images/icon_close.gif');
-define('MODULE_EASY_ADMIN_WINDOW_CLOSE_ALT',               'ÊÄ¤¸¤ë');
+define('MODULE_EASY_ADMIN_WINDOW_CLOSE_IMG',                      '../includes/addon_modules/easy_admin_products/images/icon_close.gif');
+define('MODULE_EASY_ADMIN_WINDOW_CLOSE_ALT',                      'ÊÄ¤¸¤ë');
 
 // ÆÃ¼ì¾¦ÉÊ
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT',               '¡ÚÆÃ¼ì¾¦ÉÊ¹Ê¤ê¹þ¤ß¡Û');
@@ -97,6 +99,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_STOCK_BTN',                    '../includes/a
 define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         'ÊÝÂ¸');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       '¥­¥ã¥ó¥»¥ë');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                   '../includes/addon_modules/easy_admin_products/images/button_cancel.gif');
+define('MODULE_EASY_ADMIN_PRODUCTS_ADD',                          'ÄÉ²Ã');
+define('MODULE_EASY_ADMIN_PRODUCTS_ADD_BTN',                      '../includes/addon_modules/easy_admin_products/images/button_add.gif');
 
 // ¾¦ÉÊ
 define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">É¬¿Ü</font>');
@@ -123,8 +127,9 @@ define('MODULE_EASY_ADMIN_PRODUCTS_TAX_0',                        '¤Ê¤·');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_PRICE',                '²Á³Ê(ÀÇÈ´):');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_GROSS',                '²Á³Ê(ÀÇ¹þ):');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE',                '²èÁü:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE',            'ÄÉ²Ã²èÁü:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD',               '¥¢¥Ã¥×¥í¡¼¥ÉÀè¥Ç¥£¥ì¥¯¥È¥ê:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD_NOTE',          '<br/>´ûÂ¸¤Î¥ª¥×¥·¥ç¥ó²èÁü¤ò¾å½ñ¤­¤·¤Þ¤¹¤«¡©<br/>¾å½ñ¤­¤·¤¿¤¯¤Ê¤¤¾ì¹ç¤Ï[¤¤¤¤¤¨]¤òÁªÂò¤·¤Æ¡¢´ûÂ¸¥Õ¥¡¥¤¥ë¤È¤Ï°Û¤Ê¤ëÌ¾Á°¤Î¥Õ¥¡¥¤¥ë¤ò[¥ª¥×¥·¥ç¥ó²èÁü]¤Ë»ØÄê¤·¤Æ¤¯¤À¤µ¤¤¡£<br/>');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD_NOTE',          '<br/>´ûÂ¸¤Î¥ª¥×¥·¥ç¥ó²èÁü¤ò¾å½ñ¤­¤·¤Þ¤¹¤«¡©<br/>%s<br/>¾å½ñ¤­¤·¤¿¤¯¤Ê¤¤¾ì¹ç¤Ï[¤¤¤¤¤¨]¤òÁªÂò¤·¤Æ¡¢´ûÂ¸¥Õ¥¡¥¤¥ë¤È¤Ï°Û¤Ê¤ëÌ¾Á°¤Î¥Õ¥¡¥¤¥ë¤ò[¥ª¥×¥·¥ç¥ó²èÁü]¤Ë»ØÄê¤·¤Æ¤¯¤À¤µ¤¤¡£<br/>');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_DESCRIPTION',          '¾¦ÉÊÀâÌÀ:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QUANTITY',             '¾¦ÉÊ¿ôÎÌ:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_WEIGHT',               '¾¦ÉÊ½ÅÎÌ:');
@@ -173,6 +178,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_CLOSE',                        '--- [ÊÄ¤¸¤ë] 
 
 // ºï½ü
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE',                 'ËÜÅö¤Ë¾¦ÉÊ¤òºï½ü¤·¤Þ¤¹¤«?');
+define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_IMAGE',                 '¼¡¤Î²èÁü¤òºï½ü¤·¤Þ¤¹¤«¡©');
 
 // ¥³¥Ô¡¼
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE',                   '¾¦ÉÊ¤ò¥³¥Ô¡¼¤¹¤ë');

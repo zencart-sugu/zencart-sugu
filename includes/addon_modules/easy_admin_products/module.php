@@ -29,6 +29,14 @@ class easy_admin_products extends addOnModuleBase {
             'set_function'              => 'zen_cfg_select_option(array(\'true\', \'false\'), '
             ),
           array(
+            'configuration_title'       => MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES_TITLE,
+            'configuration_key'         => 'MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES',
+            'configuration_value'       => MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES_DEFAULT,
+            'configuration_description' => MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES_DESCRIPTION,
+            'use_function'              => 'null',
+            'set_function'              => 'null'
+            ),
+          array(
             'configuration_title'       => MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_TITLE,
             'configuration_key'         => 'MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER',
             'configuration_value'       => MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_DEFAULT,
