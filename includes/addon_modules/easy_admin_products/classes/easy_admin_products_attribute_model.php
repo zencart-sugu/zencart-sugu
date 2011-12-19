@@ -408,7 +408,7 @@ class easy_admin_products_attribute_model {
   function get_options_values($options_id) {
     global $db;
 
-    $query = "SELECT pov.*
+    $query = "SELECT distinct pov.*
               FROM ". TABLE_PRODUCTS_OPTIONS_VALUES ." AS pov
               LEFT JOIN ". TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " AS pov2po
                 ON pov.products_options_values_id = pov2po.products_options_values_id
