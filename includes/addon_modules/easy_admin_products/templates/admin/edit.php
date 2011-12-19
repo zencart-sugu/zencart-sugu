@@ -289,7 +289,7 @@
         ?>
         <div id="id_products_additional_image_<?php echo $i; ?>">
           <input type="hidden" name="products_additional_image_previous_<?php echo $i; ?>" value="<?php echo htmlspecialchars($product['products_additional_image'][$i]); ?>">
-          <img src="<?php echo '../'.DIR_WS_IMAGES.$product['products_additional_image'][$i]; ?>" />
+          <img src="<?php echo '../'.DIR_WS_IMAGES.$product['products_additional_image'][$i]; ?>?<?php echo date("YmdHis"); ?>" />
           <?php echo $product['products_additional_image'][$i]; ?>
           <a href="<?php echo $html->href_link(""); ?>&products_id=<?php echo $product['products_id']; ?>&action=delete_image&filename=<?php echo htmlspecialchars($product['products_additional_image'][$i]); ?>" onclick="return delete_image('id_products_additional_image_<?php echo $i; ?>', '<?php echo $product['products_additional_image'][$i]; ?>');">
             <img src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_DELETE; ?>">
