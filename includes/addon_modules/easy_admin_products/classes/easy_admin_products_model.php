@@ -658,13 +658,13 @@ class easy_admin_products_model {
       $match = self::separate_filename($products_image->filename);
       $name  = $match['name'];
       $ext   = $match['ext'];
-      if ($_POST['overwrite'] == 0 && file_exists(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'] . $name . ".png")) {
+      if ($_POST['overwrite'] == 0 && file_exists(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'] . $name . "." . $ext)) {
         $messageStack->add_session(TEXT_IMAGE_OVERWRITE_WARNING . $this->filename, 'caution');
         $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
       }
       else if ($products_image->save(1)) {
-        // 保存画像はpngに変換する
-        $products_image_name = $_POST['img_dir'] . self::image_convert_to_png(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename);
+        // 保存画像をリサイズ変換する
+        $products_image_name = $_POST['img_dir'] . self::image_resize(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename);
       }
       else {
         $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
@@ -672,8 +672,12 @@ class easy_admin_products_model {
     } else {
       $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
     }
+    $match = self::separate_filename($products_image_name);
+    $name  = $match['name'];
+    $ext   = $match['ext'];
 
     // 追加画像
+    // 追加画像は上記画像と拡張子を自動的に合わせる
     $find_addition_images = 0;
     for($i=1; $i<=MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES; $i++) {
       // 画像が追加、もしくは変更された
@@ -684,7 +688,7 @@ class easy_admin_products_model {
           $find_addition_images++;
           $products_image->save(1);
           preg_match("/^(.*?)\..*$/", basename($products_image_name), $match);
-          self::image_convert_to_png(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images);
+          self::image_resize(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images, $ext);
         }
         else if (isset($_POST['products_additional_image_previous_'.$i])) {
           $find_addition_images++;
@@ -1203,7 +1207,7 @@ class easy_admin_products_model {
                  "ext"  => strtolower($match[2]));
   }
 
-  function image_convert_to_png($dir, $filename, $newname="") {
+  function image_resize($dir, $filename, $newname="", $newext="") {
     $match = self::separate_filename($filename);
     $name  = $match['name'];
     $ext   = $match['ext'];
@@ -1217,6 +1221,9 @@ class easy_admin_products_model {
     }
     else if ($ext == "gif") {
       $image = ImageCreateFromGIF($dir.$filename);
+    }
+    else if ($ext == "png") {
+      $image = ImageCreateFromPNG($dir.$filename);
     }
 
     if ($image !== "") {
@@ -1250,11 +1257,15 @@ class easy_admin_products_model {
       $newimage = ImageCreateTrueColor($width_resize, $height_resize);
       ImageCopyResized($newimage, $image, 0, 0, 0, 0, $width_resize, $height_resize, $width, $height);
 
+      if ($newext == "") {
+        $newext = $ext;
+      }
+
       umask(0000);
-      ImagePNG($newimage, $dir.$newname.".png");
+      ImagePNG($newimage, $dir.$newname.".".$newext);
       ImageDestroy($image);
       ImageDestroy($newimage);
-      return $name.".png";
+      return $name.".".$ext;
     }
 
     // 変換せず、そのまま

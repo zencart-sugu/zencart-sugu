@@ -256,6 +256,9 @@
           $after .= '<img src="../'.DIR_WS_IMAGES.$product['products_image'].'" />';
         }
         $after .= $product['products_image'];
+        if ($product['products_image'] != "") {
+          $after .= MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE_NOTE;
+        }
         echo $html->file("products_image", MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE, "", $after);
       ?>
     </tr>
@@ -299,6 +302,7 @@
         ?>
         </div>
         <input type="image" src="<?php echo MODULE_EASY_ADMIN_PRODUCTS_ADD_BTN; ?>" alt="<?php echo MODULE_EASY_ADMIN_PRODUCTS_ADD; ?>" onclick="return additional_image();">
+        <?php echo MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE_NOTE; ?>
       </td>
     </tr>
 
