@@ -516,8 +516,7 @@
             }
 
             elseif($ot_class == "ot_add_point") {
-              $ot_add_point_text = $db->Execute("SELECT text FROM ". TABLE_ORDERS_TOTAL . " WHERE orders_total_id = '" . $ot_total_id . "'");
-              $ot_text = $ot_add_point_text->fields['text'];
+              $ot_text = $ot_value . MODULE_POINT_BASE_POINT_SYMBOL;
             }
 
             else {
