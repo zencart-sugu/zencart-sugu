@@ -502,6 +502,10 @@
                             where orders_id = '" . $oID . "'");
             }
 
+            elseif($ot_class == "ot_add_point") {
+              ;  // do NOT add to running_total
+            }
+
             else {
               $running_total += $ot_value;
             }
@@ -509,6 +513,11 @@
             // format the text version of the amount
             if ($ot_class == "ot_gv" || $ot_class == "ot_coupon" || $ot_class == "ot_group_pricing") {
               $ot_text = "-" . $currencies->format($ot_value);
+            }
+
+            elseif($ot_class == "ot_add_point") {
+              $ot_add_point_text = $db->Execute("SELECT text FROM ". TABLE_ORDERS_TOTAL . " WHERE orders_total_id = '" . $ot_total_id . "'");
+              $ot_text = $ot_add_point_text->fields['text'];
             }
 
             else {
