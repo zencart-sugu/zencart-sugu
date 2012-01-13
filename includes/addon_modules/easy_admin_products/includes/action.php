@@ -126,6 +126,7 @@ switch($action) {
     $easy_admin_products_validate = $model->validate_save($product);
     $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_FINISH_VALIDATE_SAVE');
     $product                      = $easy_admin_products_product;
+    $product['products_additional_image'] = easy_admin_products_model::get_additional_image($product['products_image']);
 
     // open/close settings
     $open_price_setting    = $model->is_default_price_setting($product);

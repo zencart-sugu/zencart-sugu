@@ -164,7 +164,7 @@ class easy_admin_products_html {
   // エラー出力
   function error($validate, $key) {
     if (isset($validate[$key])) {
-      return '<tr><td></td><td><font color="red">'.$validate[$key].'</font></td></tr>';
+      return '<tr><th></th><td><font color="red">'.$validate[$key].'</font></td></tr>';
     }
     else
       return "";
