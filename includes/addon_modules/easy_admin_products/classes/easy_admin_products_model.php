@@ -13,7 +13,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 class easy_admin_products_model {
   var $display = array(
-    'categories'          => 'nowrap',
+    'categories'          => '',
     'products_name'       => 'wrap',
     'products_model'      => '',
     'products_price'      => 'align="right"',
