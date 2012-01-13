@@ -262,6 +262,7 @@
         echo $html->file("products_image", MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE, "", $after);
       ?>
     </tr>
+    <?php echo $html->error($easy_admin_products_validate, "products_image"); ?>
 
     <tr>
       <?php
@@ -305,6 +306,7 @@
         <?php echo MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE_NOTE; ?>
       </td>
     </tr>
+    <?php echo $html->error($easy_admin_products_validate, "products_additional_image"); ?>
 
     <?php
       $first = true;

@@ -485,6 +485,8 @@ class easy_admin_products_model {
 
   // チェック
   function validate_save($post) {
+    global $easy_admin_products_product;
+
     $errors = array();
     // 品番
     if ($post['products_model'] == "") {
@@ -496,6 +498,40 @@ class easy_admin_products_model {
     // カテゴリ
     if ($post['categories_id'] == 0) {
       $errors['categories_id'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
+    }
+
+    $products_image = new upload('products_image');
+    $products_image->set_destination(DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
+    if ($products_image->parse()) {
+      $match = self::separate_filename($products_image->filename);
+      if ($match['ext'] == "jpeg" ||
+          $match['ext'] == "jpg" ||
+          $match['ext'] == "gif" ||
+          $match['ext'] == "png") {
+      }
+      else {
+        $errors['products_image'] = '画像ファイルはjpeg,gif,png形式のみです';
+        $easy_admin_products_product['products_image'] = $_POST['products_previous_image'];
+      }
+    }
+
+    for($i=1; $i<=MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES; $i++) {
+      if (isset($_FILES['products_additional_image_'.$i])) {
+        $products_image = new upload('products_additional_image_'.$i);
+        $products_image->set_destination(DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
+        if ($products_image->parse()) {
+          $match = self::separate_filename($products_image->filename);
+          if ($match['ext'] == "jpeg" ||
+              $match['ext'] == "jpg" ||
+              $match['ext'] == "gif" ||
+              $match['ext'] == "png") {
+          }
+          else {
+            $errors['products_additional_image'] = '画像ファイルはjpeg,gif,png形式のみです';
+            $easy_admin_products_product['products_image'] = $_POST['products_previous_image'];
+          }
+        }
+      }
     }
 
     return $errors;
@@ -510,6 +546,27 @@ class easy_admin_products_model {
     }
 
     return $errors;
+  }
+
+  function get_additional_image($products_image) {
+    // additional_image
+    $products_additional_image = array();
+    if ($products_image != "") {
+      preg_match("/^(.*?)\.([^.]*)$/", $products_image, $match);
+      $i = 0;
+      for(;;) {
+        $i++;
+        $filename = $match[1]."_".$i.".".$match[2];
+        if (!file_exists('../'.DIR_WS_IMAGES.$filename)) {
+          break;
+        }
+        $products_additional_image[$i] = $filename;
+        if ($i>=MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES) {
+          break;
+        }
+      }
+    }
+    return $products_additional_image;
   }
 
   // 取得
@@ -537,22 +594,7 @@ class easy_admin_products_model {
     }
 
     // additional_image
-    $product['products_additional_image'] = array();
-    if ($product['products_image'] != "") {
-      preg_match("/^(.*?)\.([^.]*)$/", $product['products_image'], $match);
-      $i = 0;
-      for(;;) {
-        $i++;
-        $filename = $match[1]."_".$i.".".$match[2];
-        if (!file_exists('../'.DIR_WS_IMAGES.$filename)) {
-          break;
-        }
-        $product['products_additional_image'][$i] = $filename;
-        if ($i>=MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES) {
-          break;
-        }
-      }
-    }
+    $product['products_additional_image'] = self::get_additional_image($product['products_image']);
 
     // products_description
     $column = array();
@@ -689,7 +731,7 @@ class easy_admin_products_model {
           $match = self::separate_filename($products_image->filename);
           $name  = $match['name'];
           $ext   = $match['ext'];
-          $products_image->filename = tempnam("./", "img_").".".$ext;
+          $products_image->filename = tempnam("", "img_").".".$ext;
           $products_image->save(1);
           preg_match("/^(.*?)\..*$/", basename($products_image_name), $match);
           self::image_resize(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images, $ext);
@@ -1272,7 +1314,16 @@ class easy_admin_products_model {
       }
 
       umask(0000);
-      ImagePNG($solidimage, $dir.$newname.".".$newext);
+      if ($newext == "jpg" || $newext == "jpeg") {
+        ImageJPEG($solidimage, $dir.$newname.".".$newext);
+      }
+      else if ($newext == "gif") {
+        ImageGIF($solidimage, $dir.$newname.".".$newext);
+      }
+      else if ($newext == "png") {
+        ImagePNG($solidimage, $dir.$newname.".".$newext);
+      }
+
       ImageDestroy($image);
       ImageDestroy($newimage);
       ImageDestroy($solidimage);
