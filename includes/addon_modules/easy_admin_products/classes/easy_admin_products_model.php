@@ -1254,17 +1254,24 @@ class easy_admin_products_model {
       $width_resize  = (int)($width_resize*$ratio);
       $height_resize = (int)($height_resize*$ratio);
 
-      $newimage = ImageCreateTrueColor($width_resize, $height_resize);
+      $solidimage = ImageCreateTrueColor(MEDIUM_IMAGE_WIDTH, MEDIUM_IMAGE_HEIGHT);
+      $color      = ImageColorAllocate($solidimage, 255, 255, 255);
+      ImageFill($solidimage, 0, 0, $color);
+      $newimage   = ImageCreateTrueColor($width_resize, $height_resize);
       ImageCopyResized($newimage, $image, 0, 0, 0, 0, $width_resize, $height_resize, $width, $height);
+      $offx = (MEDIUM_IMAGE_WIDTH  - $width_resize)  / 2;
+      $offy = (MEDIUM_IMAGE_HEIGHT - $height_resize) / 2;
+      ImageCopy($solidimage, $newimage, $offx, $offy, 0, 0, $width_resize, $height_resize);
 
       if ($newext == "") {
         $newext = $ext;
       }
 
       umask(0000);
-      ImagePNG($newimage, $dir.$newname.".".$newext);
+      ImagePNG($solidimage, $dir.$newname.".".$newext);
       ImageDestroy($image);
       ImageDestroy($newimage);
+      ImageDestroy($solidimage);
       return $name.".".$ext;
     }
 
