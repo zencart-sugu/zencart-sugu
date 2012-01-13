@@ -729,9 +729,7 @@ class easy_admin_products_model {
         if ($products_image->parse()) {
           $find_addition_images++;
           $match = self::separate_filename($products_image->filename);
-          $name  = $match['name'];
-          $ext   = $match['ext'];
-          $products_image->filename = tempnam("", "img_").".".$ext;
+          $products_image->filename = md5(time()).".".$match['ext'];
           $products_image->save(1);
           preg_match("/^(.*?)\..*$/", basename($products_image_name), $match);
           self::image_resize(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images, $ext);
