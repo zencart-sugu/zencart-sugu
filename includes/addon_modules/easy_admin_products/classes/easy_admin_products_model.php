@@ -557,7 +557,7 @@ class easy_admin_products_model {
       for(;;) {
         $i++;
         $filename = $match[1]."_".$i.".".$match[2];
-        if (!file_exists('../'.DIR_WS_IMAGES.$filename)) {
+        if (!file_exists('../'.DIR_WS_IMAGES.'large/'.$filename)) {
           break;
         }
         $products_additional_image[$i] = $filename;
@@ -725,14 +725,16 @@ class easy_admin_products_model {
       // 画像が追加、もしくは変更された
       if (isset($_FILES['products_additional_image_'.$i])) {
         $products_image = new upload('products_additional_image_'.$i);
-        $products_image->set_destination(DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
+        $products_image->set_destination(DIR_FS_CATALOG_IMAGES . 'large/' . $_POST['img_dir']);
         if ($products_image->parse()) {
           $find_addition_images++;
           $match = self::separate_filename($products_image->filename);
           $products_image->filename = md5(time()).".".$match['ext'];
           $products_image->save(1);
           preg_match("/^(.*?)\..*$/", basename($products_image_name), $match);
-          self::image_resize(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images, $ext);
+          @mkdir(DIR_FS_CATALOG_IMAGES . "large/" . $_POST['img_dir'], 0777, true);
+          self::image_resize(DIR_FS_CATALOG_IMAGES . "large/" . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images, $ext);
+          unlink($products_image->filename);
         }
         else if (isset($_POST['products_additional_image_previous_'.$i])) {
           $find_addition_images++;
@@ -1313,13 +1315,13 @@ class easy_admin_products_model {
 
       umask(0000);
       if ($newext == "jpg" || $newext == "jpeg") {
-        ImageJPEG($solidimage, $dir.$newname.".".$newext);
+        ImageJPEG($solidimage, $dir.$newname.".".$newext, 100);
       }
       else if ($newext == "gif") {
         ImageGIF($solidimage, $dir.$newname.".".$newext);
       }
       else if ($newext == "png") {
-        ImagePNG($solidimage, $dir.$newname.".".$newext);
+        ImagePNG($solidimage, $dir.$newname.".".$newext, 0);
       }
 
       ImageDestroy($image);
