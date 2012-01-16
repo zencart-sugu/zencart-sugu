@@ -22,7 +22,7 @@ sennaインストール後、全文検索用インデックスをはる必要があります。<br />
 商品点数によっては数十分程かかる場合もありますので、コンソールから直接SQLを実行してください。<br />
 <p><a href="javascript:void(0)" onclick="document.getElementById(\'senna_sql\').style.display=\'block\';">SQLを表示する</a></p>
 <div id="senna_sql" style="display:none;">
-CREATE FULLTEXT INDEX idx_fulltext_products_description_products_name USING NGRAM ON '. TABLE_PRODUCTS_DESCRIPTION .' (products_name);
+CREATE FULLTEXT INDEX idx_fulltext_products_description_products_name_description ON '. TABLE_PRODUCTS_DESCRIPTION .' (products_name, products_description);
 </div>');
 define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_TITLE', '発売日を検索条件に含めますか?');
 define('MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE_DESCRIPTION', '発売日は「提供可能日」を利用します。ユーザーの検索条件に発売日で検索させるかどうかを指定します。');
