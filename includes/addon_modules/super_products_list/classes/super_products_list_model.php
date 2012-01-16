@@ -294,7 +294,7 @@ class super_products_list_model {
     if (!empty($this->search_params['keywords_array'])) {
       $target_columns = array(
         "pd.products_name",
-//        "pd.products_description",
+        "pd.products_description",
 //        "p.products_model",
 //        "mtpd.metatags_keywords",
 //        "mtpd.metatags_description",
@@ -303,20 +303,21 @@ class super_products_list_model {
 //        $target_columns[] = "pwas.skumodel";
       }
 
-      $ors = array();
-      foreach ($target_columns as $target_column) {
-        $tmp = array();
-        foreach ($this->search_params['keywords_array'] as $keywords) {
-          $keywords = zen_db_input($keywords);
-          if (MODULE_SUPER_PRODUCTS_LIST_SENNA_STATUS == 'true') {
-            $tmp[] = "MATCH($target_column) AGAINST('". $keywords ."')";
-          } else{
-            $tmp[] = $target_column ." LIKE '%". $keywords ."%'";
+
+      $tmp = array();
+      foreach ($this->search_params['keywords_array'] as $keywords) {
+        $keywords = zen_db_input($keywords);
+        if (MODULE_SUPER_PRODUCTS_LIST_SENNA_STATUS == 'true') {
+          $tmp[] = "MATCH(". join(",", $target_columns) .") AGAINST('". $keywords ."')";
+        } else{
+          $ors = array();
+          foreach ($target_columns as $target_column) {
+            $ors[] = $target_column ." LIKE '%". $keywords ."%'";
           }
+          $tmp[] = '('. join(' OR ', $ors). ')';
         }
-        $ors[] = '('. join(' AND ', $tmp) .')';
       }
-      $where_str .= " AND (". join(" OR ", $ors) .")";
+      $where_str .= " AND (". join(" AND ", $tmp) .")";
     }
     // categories_id
     if ($this->search_params['categories_id']) {
@@ -818,6 +819,20 @@ class super_products_list_model {
       }
     }
     return $categories_id;
+  }
+
+  function get_metatags_categories_description($categories_id) {
+    global $db;
+
+    $query = "SELECT *
+                FROM ". TABLE_METATAGS_CATEGORIES_DESCRIPTION ."
+               WHERE categories_id = ". (int)$categories_id ."
+                 AND language_id = " . (int)$_SESSION['languages_id']; 
+    $result = $db->Execute($query);
+    if (!$result->EOF) {
+      return $result->fields;
+    }
+    return null;
   }
 }
 ?>
