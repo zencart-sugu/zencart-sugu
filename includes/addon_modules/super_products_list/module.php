@@ -324,5 +324,19 @@ if (!defined('IS_ADMIN_FLAG')) {
       }
       return $return;
     }
+
+    function _page_results_metatags() {
+      $return = array();
+      if ($_REQUEST['categories_id']) {
+        $model = new super_products_list_model();
+        $metatags = $model->get_metatags_categories_description($_REQUEST['categories_id']);
+        if ($metatags) {
+          $return['title']       = $metatags['metatags_title'];
+          $return['keywords']    = $metatags['metatags_keywords'];
+          $return['description'] = $metatags['metatags_description'];
+        }
+      }
+      return $return;
+    }
   }
 ?>
