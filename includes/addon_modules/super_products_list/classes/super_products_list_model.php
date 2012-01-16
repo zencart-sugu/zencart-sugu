@@ -820,5 +820,19 @@ class super_products_list_model {
     }
     return $categories_id;
   }
+
+  function get_metatags_categories_description($categories_id) {
+    global $db;
+
+    $query = "SELECT *
+                FROM ". TABLE_METATAGS_CATEGORIES_DESCRIPTION ."
+               WHERE categories_id = ". (int)$categories_id ."
+                 AND language_id = " . (int)$_SESSION['languages_id']; 
+    $result = $db->Execute($query);
+    if (!$result->EOF) {
+      return $result->fields;
+    }
+    return null;
+  }
 }
 ?>
