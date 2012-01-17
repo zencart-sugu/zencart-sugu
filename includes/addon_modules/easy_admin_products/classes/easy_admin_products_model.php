@@ -695,7 +695,7 @@ class easy_admin_products_model {
 
     // イメージ保存
     $products_image = new upload('products_image');
-    $products_image->set_destination(DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
+    $products_image->set_destination(DIR_FS_CATALOG_IMAGES . 'large/' . $_POST['img_dir']);
     if ($products_image->parse()) {
       $match = self::separate_filename($products_image->filename);
       $name  = $match['name'];
@@ -706,7 +706,10 @@ class easy_admin_products_model {
       }
       else if ($products_image->save(1)) {
         // 保存画像をリサイズ変換する
-        $products_image_name = $_POST['img_dir'] . self::image_resize(DIR_FS_CATALOG_IMAGES . $_POST['img_dir'], $products_image->filename);
+        $products_image_name = $_POST['img_dir'] . 
+            self::image_resize(DIR_FS_CATALOG_IMAGES . 'large/' . $_POST['img_dir'], 
+                               $products_image->filename, 
+                               DIR_FS_CATALOG_IMAGES . $_POST['img_dir']);
       }
       else {
         $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
@@ -715,7 +718,7 @@ class easy_admin_products_model {
       $products_image_name = (isset($_POST['products_previous_image']) ? $_POST['products_previous_image'] : '');
     }
     $match = self::separate_filename($products_image_name);
-    $name  = $match['name'];
+    $name  = basename($match['name']);
     $ext   = $match['ext'];
 
     // 追加画像
@@ -728,13 +731,12 @@ class easy_admin_products_model {
         $products_image->set_destination(DIR_FS_CATALOG_IMAGES . 'large/' . $_POST['img_dir']);
         if ($products_image->parse()) {
           $find_addition_images++;
-          $match = self::separate_filename($products_image->filename);
-          $products_image->filename = md5(time()).".".$match['ext'];
+          $products_image->filename = $name . "_" . $find_addition_images . '.' . $ext;
           $products_image->save(1);
-          preg_match("/^(.*?)\..*$/", basename($products_image_name), $match);
-          @mkdir(DIR_FS_CATALOG_IMAGES . "large/" . $_POST['img_dir'], 0777, true);
-          self::image_resize(DIR_FS_CATALOG_IMAGES . "large/" . $_POST['img_dir'], $products_image->filename, $match[1]."_".$find_addition_images, $ext);
-          unlink($products_image->filename);
+          self::image_resize(DIR_FS_CATALOG_IMAGES . 'large/' . $_POST['img_dir'],
+                             $products_image->filename, 
+                             DIR_FS_CATALOG_IMAGES . $_POST['img_dir'],
+                             $products_image->filename);
         }
         else if (isset($_POST['products_additional_image_previous_'.$i])) {
           $find_addition_images++;
@@ -1253,7 +1255,7 @@ class easy_admin_products_model {
                  "ext"  => strtolower($match[2]));
   }
 
-  function image_resize($dir, $filename, $newname="", $newext="") {
+  function image_resize($dir, $filename, $newdir, $newname="", $newext="") {
     $match = self::separate_filename($filename);
     $name  = $match['name'];
     $ext   = $match['ext'];
@@ -1315,13 +1317,13 @@ class easy_admin_products_model {
 
       umask(0000);
       if ($newext == "jpg" || $newext == "jpeg") {
-        ImageJPEG($solidimage, $dir.$newname.".".$newext, 100);
+        ImageJPEG($solidimage, $newdir.$newname, 100);
       }
       else if ($newext == "gif") {
-        ImageGIF($solidimage, $dir.$newname.".".$newext);
+        ImageGIF($solidimage, $newdir.$newname);
       }
       else if ($newext == "png") {
-        ImagePNG($solidimage, $dir.$newname.".".$newext, 0);
+        ImagePNG($solidimage, $newdir.$newname, 0);
       }
 
       ImageDestroy($image);

@@ -238,7 +238,7 @@ switch($action) {
     break;
 
   case 'delete_image':
-    unlink(DIR_FS_CATALOG_IMAGES.$_REQUEST['filename']);
+    unlink(DIR_FS_CATALOG_IMAGES.'large/'.$_REQUEST['filename']);
     // 連番を変更
     $info = $model->separate_filename($_REQUEST['filename']);
     if (preg_match("/^(.*?\_)([0-9]+)$/", $info['name'], $match)) {
