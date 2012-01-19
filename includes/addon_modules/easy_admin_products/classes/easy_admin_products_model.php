@@ -1260,7 +1260,7 @@ class easy_admin_products_model {
     $name  = $match['name'];
     $ext   = $match['ext'];
     if ($newname == "") {
-      $newname = $name;
+        $newname = $filename;
     }
 
     $image = "";
