@@ -72,16 +72,16 @@ class easy_admin_products_model {
 
     if ($search_param['special'] != "") {
       switch($search_param['special']) {
-        case 'download':
+        case 'special_download':
           $where .= " and p.product_is_always_free_shipping=2";
           break;
-        case 'featured':
+        case 'special_featured':
           $join .= " inner join ".TABLE_FEATURED." f on f.products_id=p.products_id";
           break;
-        case 'special':
+        case 'special_special':
           $join .= " inner join ".TABLE_SPECIALS." s on s.products_id=p.products_id";
           break;
-        case 'quantity':
+        case 'special_quantity':
           $join .= " left join ".TABLE_PRODUCTS_DISCOUNT_QUANTITY." q on q.products_id=p.products_id";
           $where .= " and (q.discount_id > 0 
                              or
@@ -90,13 +90,13 @@ class easy_admin_products_model {
                             and (a.attributes_qty_prices <> '' or a.attributes_qty_prices_onetime <> '')) > 0
                           )";
           break;
-        case 'arrival':
+        case 'special_arrival':
           $where .= " and p.products_date_available >= now()";
           break;
-        case 'display':
+        case 'special_display':
           $where .= " and p.products_status=1";
           break;
-        case 'nondisplay':
+        case 'special_nondisplay':
           $where .= " and p.products_status=0";
           break;
       }

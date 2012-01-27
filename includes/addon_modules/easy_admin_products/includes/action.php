@@ -48,14 +48,14 @@ $model->set_get_search_condition($searchs);
 require(dirname(__FILE__) . '/products.php');
 
 $special  = array(
-  array('id' => '',           'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT),
-  array('id' => 'download',   'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DOWNLOAD),
-  array('id' => 'featured',   'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_FEATURED),
-  array('id' => 'special',    'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SPECIAL),
-  array('id' => 'quantity',   'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_QUANTITY),
-  array('id' => 'arrival',    'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_ARRIVAL),
-  array('id' => 'display',    'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DISPLAY),
-  array('id' => 'nondisplay', 'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_NONDISPLAY),
+  array('id' => '',                   'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT),
+  array('id' => 'special_download',   'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DOWNLOAD),
+  array('id' => 'special_featured',   'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_FEATURED),
+  array('id' => 'special_special',    'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SPECIAL),
+  array('id' => 'special_quantity',   'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_QUANTITY),
+  array('id' => 'special_arrival',    'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_ARRIVAL),
+  array('id' => 'special_display',    'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DISPLAY),
+  array('id' => 'special_nondisplay', 'text' => MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_NONDISPLAY),
 );
 
 $template  = "index";
