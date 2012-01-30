@@ -866,7 +866,10 @@ class easy_admin_products_model {
         $language_id = $k;
         $zco_notifier->notify('NOTIFY_EASY_ADMIN_PRODUCTS_BEFORE_SAVE_META_TAGS_PRODUCTS_DESCRIPTION');
 
-        if ($insert_products) {
+        $query = "select * from ".TABLE_META_TAGS_PRODUCTS_DESCRIPTION." where products_id=".(int)$products_id." and language_id=".$k;
+        $check = $db->Execute($query);
+
+        if ($check->EOF) {
           zen_db_perform(TABLE_META_TAGS_PRODUCTS_DESCRIPTION, $sql_data_array);
         }
         else {
