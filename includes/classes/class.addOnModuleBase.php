@@ -136,7 +136,7 @@ if (!defined('IS_ADMIN_FLAG')) {
               $create_fields = array_merge($create_fields, $create_indexes);
               $query = "CREATE TABLE IF NOT EXISTS `$table` (" . "\n";
               $query .= implode(",\n", $create_fields) . "\n";
-              $query .= ") TYPE=MyISAM;";
+              $query .= ") ENGINE=MyISAM;";
               $db->Execute($query);
               $messageStack->add_session(sprintf(SUCCESS_CREATE_TABLE, $table), 'success');
             }
