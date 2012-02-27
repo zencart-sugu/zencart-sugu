@@ -264,13 +264,13 @@ class easy_admin_products_model {
       "cd.language_id=".(int)$_SESSION['languages_id'],
     );
 
-    if ($category_id==0 && $keyword=='' && $description && $category_base_id==0) {
-      $where[] = "c.parent_id=0";
+    $subcategories_array = array($category_id);
+    // キーワード指定した場合のみ全カテゴリ対象とする
+    if ($keyword != "") {
+      zen_get_subcategories($subcategories_array, $category_id);
     }
+    $where[] = "c.parent_id in (".implode(",", $subcategories_array).")";
 
-    if ($category_id>0) {
-      $where[] = "c.parent_id=".(int)$category_id;
-    }
     if ($keyword != "") {
       $where[] = "cd.categories_name like '%".zen_db_input($keyword)."%'";
     }
