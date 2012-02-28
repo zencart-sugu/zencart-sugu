@@ -34,7 +34,7 @@ class easy_admin_products_model {
   );
 
   var $order   = array('p.products_sort_order',
-                       'pd.products_name');
+                       'p.products_date_added desc');
 
   // 商品検索のsql生成
   function get_products_query($search_param) {
