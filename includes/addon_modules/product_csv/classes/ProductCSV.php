@@ -636,7 +636,7 @@ class ProductCSV {
               AND categories_name=\''.zen_db_input($category_name[$i][MODULE_PRODUCT_CSV_PREFERRED_LANGUAGE_ID]).'\'
               AND parent_id='.$parent_id.'';
       $category_record = $this->db->Execute($sql);
-      if ($category_record->RecordCount() == 1) {
+      if ($category_record->RecordCount() >= 1) {
 	$category_id = $category_record->fields['categories_id'];
 	foreach ($category_name[$i] as $language_id => $name) {
 	  if ($language_id == MODULE_PRODUCT_CSV_PREFERRED_LANGUAGE_ID) {
