@@ -289,7 +289,7 @@ class File_CSV
                 // When does the quote end, make sure it's not double quoted
                 if ($c == $sep && $prev == $quote && $old != $quote) {
                     $in_quote = false;
-                } elseif ($c == $sep && $buff == $quote.$quote) {
+                } elseif ($c == $sep && $prev == $quote && $old == $quote) {
                     // In case we are dealing with double quote but empty value
                     $in_quote = false;
                 } elseif ($c == "\n" || $c == "\r") {
@@ -628,7 +628,7 @@ class File_CSV
 
         // XXX commenting this line fixes bug #11526
         // $lines = str_replace('""', '', $lines);
-        while ($lines != ($newLines = preg_replace('|((["\'])[^"]*(\2))|', '\2_\2', $lines))) {
+        while ($lines != ($newLines = preg_replace('|((["])[^"]*(\2))|', '_', $lines))) {
             $lines = $newLines;
         }
 
