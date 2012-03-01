@@ -4,11 +4,12 @@ if (!defined('IS_ADMIN_FLAG')) {
 }
 
 ini_set('include_path',ini_get('include_path').':'.dirname(__FILE__).'/pear:');
-require('File/CSV.php');
+require dirname(__FILE__)."/pear/File/CSV.php";
 
 $ProductCSV = new ProductCSV();
 $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
+$zco_notifier->notify('NOTIFY_PRODUCT_CSV_BEFORE_ACTION');
 if ($action == 'return') {
   $_SESSION['product_csv'] = $_POST;
   zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=product_csv', 'NONSSL'));
@@ -121,6 +122,7 @@ if ($action == 'import') {
   header('Content-Type: application/octet-stream');
   header('Content-Disposition: attachment; filename="'.$prefix.date('YmdHis').'.csv"');
   header('Content-Length: '.filesize($tempfile));
+  ob_end_clean();
   readfile($tempfile);
   unlink($tempfile);
   exit;
@@ -164,6 +166,7 @@ PRODUCT_CSV_EXPORT_TITLE.'</th></tr><tr><td><table border="0" width="100%" cells
 </table>
 </td></tr>';
 }
+$zco_notifier->notify('NOTIFY_PRODUCT_CSV_FINISH_BODY_GENERATE');
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>

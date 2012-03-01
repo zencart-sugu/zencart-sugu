@@ -1099,6 +1099,7 @@ class ProductCSV {
         foreach ($data as $key => $val) {
           $data[$key] = mb_convert_encoding($val, MODULE_PRODUCT_CSV_INTERNAL_CHARACTER, MODULE_PRODUCT_CSV_IMPORT_CHARACTER);
         }
+        $ProductCSV->messageStack->reset();
         switch ($format['csv_format_type_id']) {
           case 1:
             $import_status = $ProductCSV->importProduct($data, $format);
