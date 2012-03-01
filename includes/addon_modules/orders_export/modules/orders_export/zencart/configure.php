@@ -1,0 +1,105 @@
+<?php
+$params = array(
+  'file_prefix' => 'orders-',
+  'file_extension' => 'csv',
+  'file_encode' => 'SJIS',
+  'fileds_terminated' => ',',
+  'fileds_enclosed' => '"',
+  'fileds_escaped' => '\\',
+  'lines_terminated' => "\n",
+);
+
+// TABLE_ORDERS
+$fields = array();
+
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'orders_id', 'header' => 'ÃíÊ¸ÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_id', 'header' => '¸ÜµÒ - ID', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_name', 'header' => '¸ÜµÒ - »áÌ¾', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_company', 'header' => '¸ÜµÒ - ²ñ¼ÒÌ¾', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_street_address', 'header' => '¸ÜµÒ - ½»½ê1', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_suburb', 'header' => '¸ÜµÒ - ½»½ê2', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_city', 'header' => '¸ÜµÒ - »Ô¶èÄ®Â¼', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_postcode', 'header' => '¸ÜµÒ - Í¹ÊØÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_state', 'header' => '¸ÜµÒ - ÅÔÆ»ÉÜ¸©', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_country', 'header' => '¸ÜµÒ - ¹ñ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_telephone', 'header' => '¸ÜµÒ - ÅÅÏÃÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_email_address', 'header' => '¸ÜµÒ - E¥á¡¼¥ë¥¢¥É¥ì¥¹', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_address_format_id', 'header' => '¸ÜµÒ - ½»½ê¥Õ¥©¡¼¥Þ¥Ã¥ÈID', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_name', 'header' => 'ÇÛÁ÷Àè - »áÌ¾', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_company', 'header' => 'ÇÛÁ÷Àè - ²ñ¼ÒÌ¾', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_street_address', 'header' => 'ÇÛÁ÷Àè - ½»½ê1', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_suburb', 'header' => 'ÇÛÁ÷Àè - ½»½ê2', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_city', 'header' => 'ÇÛÁ÷Àè - »Ô¶èÄ®Â¼', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_postcode', 'header' => 'ÇÛÁ÷Àè - Í¹ÊØÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_state', 'header' => 'ÇÛÁ÷Àè - ÅÔÆ»ÉÜ¸©', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_country', 'header' => 'ÇÛÁ÷Àè - ¹ñ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_address_format_id', 'header' => 'ÇÛÁ÷Àè - ½»½ê¥Õ¥©¡¼¥Þ¥Ã¥ÈID', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_name', 'header' => 'ÀÁµáÀè - »áÌ¾', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_company', 'header' => 'ÀÁµáÀè - ²ñ¼ÒÌ¾', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_street_address', 'header' => 'ÀÁµáÀè - ½»½ê1', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_suburb', 'header' => 'ÀÁµáÀè - ½»½ê2', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_city', 'header' => 'ÀÁµáÀè - »Ô¶èÄ®Â¼', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_postcode', 'header' => 'ÀÁµáÀè - Í¹ÊØÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_state', 'header' => 'ÀÁµáÀè - ÅÔÆ»ÉÜ¸©', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_country', 'header' => 'ÀÁµáÀè - ¹ñ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_address_format_id', 'header' => 'ÀÁµáÀè - ½»½ê¥Õ¥©¡¼¥Þ¥Ã¥ÈID', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'payment_method', 'header' => '»ÙÊ§ÊýË¡', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'payment_module_code', 'header' => '»ÙÊ§¥â¥¸¥å¡¼¥ë¥³¡¼¥É', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'shipping_method', 'header' => 'ÇÛÁ÷ÊýË¡', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'shipping_module_code', 'header' => 'ÇÛÁ÷¥â¥¸¥å¡¼¥ë¥³¡¼¥É', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'coupon_code', 'header' => '¥¯¡¼¥Ý¥ó¥³¡¼¥É', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'cc_type', 'header' => 'CC¥¿¥¤¥×', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'cc_owner', 'header' => 'CCÌ¾µÁ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'cc_number', 'header' => 'CCÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'cc_expires', 'header' => 'CCÍ­¸ú´ü¸Â', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'cc_cvv', 'header' => 'CCV', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'last_modified', 'header' => 'ºÇ½ª¹¹¿·Æü»þ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'date_purchased', 'header' => 'ÃíÊ¸Æü»þ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'orders_status', 'header' => 'ÃíÊ¸¥¹¥Æ¡¼¥¿¥¹', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'orders_date_finished', 'header' => '½èÍý´°Î»Æü»þ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'currency', 'header' => 'ÄÌ²ß', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'currency_value', 'header' => '¥ì¡¼¥È', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'order_total', 'header' => 'Áí¹ç·×¶â³Û', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'order_tax', 'header' => '¾ÃÈñÀÇ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'paypal_ipn_id', 'header' => 'paypal_ipn_id', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'ip_address', 'header' => 'IP¥¢¥É¥ì¥¹', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_telephone', 'header' => 'ÇÛÁ÷Àè - ÅÅÏÃÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_fax', 'header' => 'ÇÛÁ÷Àè - FAXÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_telephone', 'header' => 'ÀÁµáÀè - ÅÅÏÃÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_fax', 'header' => 'ÀÁµáÀè - FAXÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_fax', 'header' => '¸ÜµÒ - FAXÈÖ¹æ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'customers_name_kana', 'header' => '¸ÜµÒ - »áÌ¾¤«¤Ê', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'delivery_name_kana', 'header' => 'ÇÛÁ÷Àè - »áÌ¾¤«¤Ê', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS, 'field' => 'billing_name_kana', 'header' => 'ÀÁµáÀè - »áÌ¾¤«¤Ê', 'convert' => null);
+
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'orders_products_id', 'header' => 'ÃíÊ¸ÌÀºÙID', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_id', 'header' => '¾¦ÉÊID', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_model', 'header' => '·¿ÈÖ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_name', 'header' => '¾¦ÉÊÌ¾', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_price', 'header' => '¾¦ÉÊÃ±²Á', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'final_price', 'header' => 'ÈÎÇäÃ±²Á', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_tax', 'header' => 'ÀÇÎ¨', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_quantity', 'header' => '¿ôÎÌ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'onetime_charges', 'header' => '¥ï¥ó¥¿¥¤¥à²Ý¶â', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_priced_by_attribute', 'header' => '¾¦ÉÊÂ°À­¤Ë¤è¤ë²Á³Ê', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'product_is_free', 'header' => 'ÌµÎÁ¾¦ÉÊ', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_discount_type', 'header' => '³ä°ú¥¿¥¤¥×', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_discount_type_from', 'header' => '³ä°úÁ°¤Î²Á³Ê', 'convert' => null);
+$fields[] = array('table' => TABLE_ORDERS_PRODUCTS, 'field' => 'products_prid', 'header' => 'products_prid', 'convert' => null);
+
+$tables = array();
+$tables[] = array(
+  'table' => TABLE_ORDERS,
+  'join_type' => false,
+  'join_conditions' => false
+  );
+$tables[] = array(
+  'table' => TABLE_ORDERS_PRODUCTS,
+  'join_type' => 'inner',
+  'join_conditions' => TABLE_ORDERS . ".orders_id = " . TABLE_ORDERS_PRODUCTS . ".orders_id"
+  );
+
+$conditions = array();
+
+$order_by = array();
+?>
