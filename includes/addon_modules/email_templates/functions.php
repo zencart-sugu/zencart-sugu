@@ -615,4 +615,51 @@ function replace_general_email($oID, $text, $comments) {
 
   return $text;
 }
+
+function replace_password_forgotten($email_address, $passowrd_forgotten) {
+  global $db;
+
+  // get customer from email_address
+  $check_customer_query = "SELECT customers_firstname, customers_lastname, customers_password, customers_id 
+                           FROM " . TABLE_CUSTOMERS . "
+                           WHERE customers_email_address = :emailAddress";
+  
+  $check_customer_query = $db->bindVars($check_customer_query, ':emailAddress', $email_address, 'string');
+  $check_customer = $db->Execute($check_customer_query);
+  
+  if ($check_customer->RecordCount() == 0) {
+    return false;
+  }
+  $customer = $check_customer->fields;
+
+  // make new password
+  $new_password = email_templates_make_new_passord($customer['customers_id'], $email_address);
+  
+  // make data for custom template
+  $passowrd_forgotten = str_replace('[CUSTOMER_NAME]', 
+                        stripslashes($customer['customers_firstname'] . ' ' . $customer['customers_lastname']),
+                        $passowrd_forgotten);
+  $passowrd_forgotten = str_replace('[NEW_PASSWORD]', 
+                        $new_password,
+                        $passowrd_forgotten);
+
+  return $passowrd_forgotten;
+}
+
+function email_templates_make_new_passord($customers_id, $email_address) {
+  global $db;
+  
+  $new_password = zen_create_random_value(ENTRY_PASSWORD_MIN_LENGTH);
+  $crypted_password = zen_encrypt_password($new_password);
+
+  $sql = "UPDATE " . TABLE_CUSTOMERS . "
+          SET customers_password = :password
+          WHERE customers_id = :customersID";
+
+  $sql = $db->bindVars($sql, ':password', $crypted_password, 'string');
+  $sql = $db->bindVars($sql, ':customersID', $customers_id, 'integer');    
+  $db->Execute($sql);
+  
+  return $new_password;
+}
 ?>

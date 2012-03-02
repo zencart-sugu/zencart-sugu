@@ -36,105 +36,100 @@ define('TEXT_EMAIL_TEMPLATE_NO_TEMPLATE', BOX_TOOLS_EMAIL_TEMPLATES.'¤¬¸«¤Ä¤«¤é¤
 define('MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID', '2');
 
 define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_GRP', '¥æ¡¼¥¶¡¼ÅÐÏ¿');
-define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_TITLE', '¥æ¡¼¥¶¡¼ÅÐÏ¿¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹');
-define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_SUBJECT', '¥æ¡¼¥¶¡¼ÅÐÏ¿¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹');
-define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_BODY', '¥æ¡¼¥¶¡¼ÅÐÏ¿¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹
+define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_TITLE', '¥æ¡¼¥¶¡¼ÅÐÏ¿´°Î»¥á¡¼¥ë');
+define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_SUBJECT', '¼ê¤Ö¤é¤Ç£Â£Â£Ñ¡¡²ñ°÷ÅÐÏ¿´°Î»¤Î¤ªÃÎ¤é¤»');
+define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_BODY', 
+'[CUSTOMER_NAME] ÍÍ
 
-¤³¤ì¤«¤é¤â¤è¤í¤·¤¯¤ª´ê¤¤¤·¤Þ¤¹¡£');
+¤³¤Î¤¿¤Ó¤ÏÅö¼Ò¥¦¥§¥Ö¥µ¥¤¥È¤Ë¤Æ¡¢¤´ÅÐÏ¿¤¤¤¿¤À¤­¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤·¤¿¡£
+
+Åö¼Ò¥¦¥§¥Ö¥µ¥¤¥È¤Ë¤Æ¤´ÅÐÏ¿¤¤¤¿¤À¤¤¤¿¥¢¥«¥¦¥ó¥È¤Ç¡¢¤ªµÒÍÍ¤Ï¤³¤ì¤«¤é
+°Ê²¼¤ÎÊØÍø¤Ê¥µ¡¼¥Ó¥¹¤ò¤´ÍøÍÑ¤¤¤¿¤À¤±¤Þ¤¹¡£
+
+¡¦¤´Í½Ìó¥«¡¼¥È
+¤´Í½ÌóÅÓÃæ¤ÎÍ½ÌóÆü¡¦¿Í¿ô¡¦¥Á¥§¥Ã¥¯¥¤¥ó»þ´Ö¤ª¤è¤Ó¤´ÃíÊ¸¤Î¾¦ÉÊ¾ðÊó¤Ï¡¢
+ºï½ü¤Þ¤¿¤Ï¤´Í½Ìó´°Î»¤¹¤ë¤Þ¤ÇÊÝ»ý¤·¤Æ¤¢¤ê¤Þ¤¹¡£ºÆÅÙ¡¢¥í¥°¥¤¥ó¤·¤Æ
+¤¤¤¿¤À¤±¤ì¤Ð¤´Í½Ìó¥«¡¼¥È¤ÎÉü¸µ¤¬²ÄÇ½¤Ç¤¹¡£
+
+¡¦¤ªµÒÍÍ¾ðÊó¤Î³ÎÇ§¡¦ÊÑ¹¹
+¥Þ¥¤¥Ú¡¼¥¸¤«¤é¡¢¤ªµÒÍÍ¤Î¤´½»½ê¤Ê¤É¤ò³ÎÇ§¡¦ÊÑ¹¹¤¬²ÄÇ½¤Ç¤¹¡£
+¥Ñ¥¹¥ï¡¼¥É¤ÎÊÑ¹¹¤â¥Þ¥¤¥Ú¡¼¥¸¤Ë¤ÆÂÐ±þ²ÄÇ½¤Ç¤¹¡£
+
+¡¦ÃíÊ¸ÍúÎò
+¥Þ¥¤¥Ú¡¼¥¸¤«¤é¡¢¤´Í½Ìó¤¤¤¿¤À¤¤¤¿°ìÍ÷¤ò³ÎÇ§¤¹¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
+¤´Í½Ìó¤ÎÊÑ¹¹¡¦¥­¥ã¥ó¥»¥ë¤â¤³¤Á¤é¤«¤é¹Ô¤¨¤Þ¤¹¡£
+
+¢¨¤´¼ÁÌä¤Ê¤É¤Ï¡¢²¼µ­¤Þ¤Ç¤Ë¤ªÌä¤¤¹ç¤»¤¤¤¿¤À¤­¤Þ¤¹ÍÍ¤ª´ê¤¤¤·¤Þ¤¹¡£
+
+/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/
+Open AIR! BBQ GARDEN¡¡¼ê¤Ö¤é¤Ç£Â£Â£Ñ
+¡¡Phone¡§042-480-5455
+¡¡Mail¡§bbq-village@herofield.com
+/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/');
 
 define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_GRP', 'ÃíÊ¸´°Î»');
-define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_TITLE', '¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[²ñ°÷ÍÑ]');
-define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_SUBJECT', '¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[²ñ°÷ÍÑ]');
-define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_BODY', 'ÃíÊ¸³ÎÇ§½ñ from XXXXXXXX
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_TITLE', '¤´Í½Ìó´°Î»¤Î¤ªÃÎ¤é¤»[²ñ°÷ÍÑ]');
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_SUBJECT', '¤´Í½Ìó´°Î»¤Î¤ªÃÎ¤é¤»');
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_BODY', 
+'¤³¤Î¤¿¤Ó¤ÏÅö¼Ò¥¦¥§¥Ö¥µ¥¤¥È¤è¤ê¤´Í½Ìó¤¤¤¿¤À¤­¡¢À¿¤Ë¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
+°Ê²¼¤ÎÆâÍÆ¤Ç¤´Í½Ìó¤ò¾µ¤ê¤Þ¤·¤¿¡£
 
 [CUSTOMER_NAME] ÍÍ
 
-¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
-¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£
-------------------------------------------------------
-¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]
-¤´ÃíÊ¸Æü: [DATE_ORDERED]
-ÀÁµáÌÀºÙ½ñ:
-[INVOICE_URL]
+¼õÉÕ¤±Æü»þ¡§ [DATE_ORDERED]
 
-[COMMENT]
+¡ü¤´Í½ÌóÈÖ¹æ
+     [BOOKING_NUMBER]
+¡¡¡¡¡¡¡¡¡¡¢¨¤´Í½ÌóÈÖ¹æ¤ÏÂçÀÚ¤Ë¤ª¹µ¤¨¤¯¤À¤µ¤¤¡£
+¡¡¡¡¡¡¡¡¡¡¡¡Í½ÌóÆâÍÆ¤ÎÊÑ¹¹¡¢¥­¥ã¥ó¥»¥ë¤ÎºÝ¤ËÉ¬Í×¤È¤Ê¤ê¤Þ¤¹¡£
 
-¾¦ÉÊ
+¡ü¤´ÍøÍÑÆü
+    [BOOKING_INFO]
+
+¡ü¤´ÍøÍÑ¿Í¿ô
+    Âç¿Í¡¡¡§[ADULTS] Ì¾
+    »Ò¶¡¡Ê¾®³ØÀ¸Ëø¡Ë¡§[CHILDREN] Ì¾
+    Ì¤½¢³Ø»ù¡§[BABYES] Ì¾
 ------------------------------------------------------
+     ¹ç·× ¡§[TOTAL] Ì¾ (Âç¿Í+»Ò¶¡¤Î¿Í¿ô)
+
+¡ü¤´ÍøÍÑÆâÍÆ
 [PRODUCTS_ORDERED]
 ------------------------------------------------------
 [TOTALS]
 
-¤ªÆÏ¤±Àè
-------------------------------------------------------
-[DELIVERY_ADDRESS]
-
-ÀÁµáÀè½»½ê
-------------------------------------------------------
-[BILLING_ADDRESS]
-
-¤ª»ÙÊ§¤¤ÊýË¡
-------------------------------------------------------
+¡ü¤ª»ÙÊ§¤¤ÊýË¡
 [PAYMENT_METHOD]
 
+¡üÈ÷¹ÍÍó
+[COMMENT]
 
------
-¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£
-¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ
-xxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£
+¡ã¤´ÍøÍÑ¾å¤ÎÃí°Õ»ö¹à¡ä
+[VENUE_TERM]
 
------
-Copyright (c) XXXXXXXX Inc. All Rights Reserved
-');
+Æþ¾ì¸ý¤Ë¤ÆÍ½ÌóÈÖ¹æ¤È¤ªÌ¾Á°¤ò³ÎÇ§¤µ¤»¤Æ¤¤¤¿¤À¤­¤Þ¤¹¡£
+Äí±àÆþ±à¤ÎºÝ¤Ï¡¢¥°¥ë¡¼¥×¤Î³§¤µ¤Þ¤´°ì½ï¤Ë¤´Æþ¾ì¤¯¤À¤µ¤¤¡£
+
+¤´Í½Ìó¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
+ÅöÆü¤Î¤´Íè¾ì¤ò¤ªÂÔ¤Á¤·¤Æ¤ª¤ê¤Þ¤¹¡£
+
+¢¨¤´¼ÁÌä¤Ê¤É¤Ï¡¢²¼µ­¤Þ¤Ç¤Ë¤ªÌä¤¤¹ç¤»¤¤¤¿¤À¤­¤Þ¤¹ÍÍ¤ª´ê¤¤¤·¤Þ¤¹¡£
+
+/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/
+[VENUE_NAME]
+[VENUE_INFO]
+/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/');
 
 define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_GRP', 'ÃíÊ¸´°Î»');
-define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_TITLE', '¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[¥²¥¹¥ÈÍÑ]');
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_TITLE', 'Ì¤»ÈÍÑ');
 define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_SUBJECT', '¤´ÃíÊ¸¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹[¥²¥¹¥ÈÍÑ]');
-define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_BODY', 'ÃíÊ¸³ÎÇ§½ñ from XXXXXXXX
-
-[CUSTOMER_NAME] ÍÍ
-
-¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
-¤´ÃíÊ¸ÆâÍÆ¤Ï°Ê²¼¤ÎÄÌ¤ê¤Ç¤¹¡£
-------------------------------------------------------
-¤´ÃíÊ¸ÈÖ¹æ: [ORDER_ID]
-¤´ÃíÊ¸Æü: [DATE_ORDERED]
-
-[COMMENT]
-
-¾¦ÉÊ
-------------------------------------------------------
-[PRODUCTS_ORDERED]
-------------------------------------------------------
-[TOTALS]
-
-¤ªÆÏ¤±Àè
-------------------------------------------------------
-[DELIVERY_ADDRESS]
-
-ÀÁµáÀè½»½ê
-------------------------------------------------------
-[BILLING_ADDRESS]
-
-¤ª»ÙÊ§¤¤ÊýË¡
-------------------------------------------------------
-[PAYMENT_METHOD]
-
-
------
-¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£
-¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ
-xxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£
-
------
-Copyright (c) XXXXXXXX Inc. All Rights Reserved
-');
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_BODY', '');
 
 define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_GRP',     '¥æ¡¼¥¶ÄÌÃÎ');
 define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_TITLE',   '¥¹¥Æ¡¼¥¿¥¹ÊÑ¹¹');
 define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_SUBJECT', '¤´ÃíÊ¸¼õÉÕ¾õ¶·¤Î¤ªÃÎ¤é¤»');
-define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY', '
-[CUSTOMER_NAME] ÍÍ
+define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY', 
+'[CUSTOMER_NAME] ÍÍ
 
 ¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
 [DATE_ORDERED]¤Ë¤´ÍøÍÑ¤¤¤¿¤À¤¤¤¿
@@ -157,11 +152,12 @@ Copyright (c) XXXXXXXX Inc. All Rights Reserved
 
 define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_GRP', '¥Ñ¥¹¥ï¡¼¥É¥ê¥Þ¥¤¥ó¥À¡¼');
 define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_TITLE', '¥Ñ¥¹¥ï¡¼¥É¥ê¥Þ¥¤¥ó¥À¡¼ ¥á¡¼¥ë');
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT', '¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Î¤ªÃÎ¤é¤»');
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY', '
-[CUSTOMER_NAME] ÍÍ
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT', '¼ê¤Ö¤é¤Ç£Â£Â£Ñ¡¡¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Î¤´°ÆÆâ');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY', 
+'[CUSTOMER_NAME] ÍÍ
 
-¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
+Åö¼Ò¥¦¥§¥Ö¥µ¥¤¥È¤ò¤´ÍøÍÑ¤¤¤¿¤À¤­¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
+
 
 ¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Î¿½ÀÁ¤ò¼õ¤±ÉÕ¤±¤Þ¤·¤¿¡£
 
@@ -174,14 +170,14 @@ define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY', '
 ¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Ç¥í¥°¥¤¥ó¤·¤¿¸å
 ¡Ö¥Þ¥¤¥Ú¡¼¥¸¡×¤Ç¤´´õË¾¤Î¥Ñ¥¹¥ï¡¼¥É¤ËÊÑ¹¹¤Ç¤­¤Þ¤¹¡£
 
------
-¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£
-¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ
-xxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£
 
------
-Copyright (c) XXXXXXXX Inc. All Rights Reserved
-');
+¢¨¤´¼ÁÌä¤Ê¤É¤Ï¡¢²¼µ­¤Þ¤Ç¤Ë¤ªÌä¤¤¹ç¤»¤¤¤¿¤À¤­¤Þ¤¹ÍÍ¤ª´ê¤¤¤·¤Þ¤¹¡£
+
+/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/
+Open AIR! BBQ GARDEN¡¡¼ê¤Ö¤é¤Ç£Â£Â£Ñ
+¡¡Phone¡§042-480-5455
+¡¡Mail¡§bbq-village@herofield.com
+/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/¡ö/');
 
 define('MODULE_EMAIL_TEMPLATE_STATUS_CHANGE_NO_NOTIFY', '¤·¤Ê¤¤');
 define('MODULE_EMAIL_TEMPLATE_DATE_FORMAT_LONG',        '%YÇ¯%m·î%dÆü ');

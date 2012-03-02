@@ -116,6 +116,13 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       $db->execute($sql);
 
+      $sql = "INSERT INTO email_templates (id, grp, title) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_GRP . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_TITLE . "')";
+
+      $db->execute($sql);
+
       //============= メール内容を格納
       $sql = "CREATE TABLE " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (
       			email_templates_id smallint(6) NOT NULL,
@@ -203,6 +210,24 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       $db->execute($sql);
 
+      //----- パスワード
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_ID . "'," . 
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT . "'," . 
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY . "'," . 
+	"now())";
+
+      $db->execute($sql);
+
+      $sql = "INSERT INTO " . TABLE_EMAIL_TEMPLATES_DESCRIPTION . " (email_templates_id, language_id, subject, contents, updated) VALUES (" .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_ID . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT_EN . "'," .
+	"'" . MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY_EN . "'," .
+	"now())";
+
+      $db->execute($sql);
     }
 
     function _update() {
