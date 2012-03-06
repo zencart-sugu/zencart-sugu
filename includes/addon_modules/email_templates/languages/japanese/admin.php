@@ -80,6 +80,22 @@ else if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID) {
   	<font color="blue">[PAYMENT_METHOD]</font>:&nbsp;支払方法に変換されます<br>
   ');
 }
+else if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_ID) {
+  if (defined('EMOBILE_APPLIES_LETTER')) {
+    define('TABLE_HEADING_HELP', '
+    	<p><u>予約済みの単語:</u></p>
+    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;顧客の名前に置換されます<br>
+    	<font color="blue">[NEW_PASSWORD]</font>:&nbsp;新しいパスワードに置換されます<br>
+    ');
+  }
+  else {
+    define('TABLE_HEADING_HELP', '
+    	<p><u>予約済みの単語:</u></p>
+    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;顧客の名前に置換されます<br>
+    	<font color="blue">[NEW_PASSWORD]</font>:&nbsp;新しいパスワードに置換されます<br>
+    ');
+  }
+}
 else {
   define('TABLE_HEADING_HELP', '
   	<p><u>予約済みの単語:</u></p>

@@ -366,5 +366,56 @@ class email_templates_notifier {
       break;
     }
   }
+
+  function password_forgotten($notifier) {
+    $email_template_id = MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_ID;
+    $email_address = $_POST['email_address'];
+
+    switch ( $notifier ) {
+    case 'NOTIFY_BEFORE_CREATE_HEADER':
+      if (!empty($email_template_id) && is_numeric($email_template_id)) {
+        // template本文取得
+        $id = $email_template_id;
+        $order_id = null;
+        $language_id = $_SESSION['language_id'];
+        $subject = get_email_template_contents($id, $order_id, $language_id, 'subject');
+        if ($subject === false) {
+          // template取得できなければ何もしない
+          return false;
+        }
+      } else {
+          $GLOBALS['phpmailer']['Subject'] = zen_db_prepare_input($subject);
+      }
+      break;
+    case 'NOTIFY_BEFORE_CREATE_BODY':
+      if (!empty($email_template_id) && is_numeric($email_template_id)) {
+        // template本文取得
+        $id = $email_template_id;
+        $order_id = null;
+        $language_id = $_SESSION['language_id'];
+        $contents = get_email_template_contents($id, $order_id, $language_id, 'contents');
+        if ($contents === false) {
+          // template取得できなければ何もしない
+          return false;
+        }
+        // GLOBALSにテンプレートをセット
+        $GLOBALS['phpmailer']['Body'] = zen_db_prepare_input($contents);
+        if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+          $GLOBALS['phpmailer']['AltBody'] = zen_db_prepare_input($contents);
+        }
+        // 置換開始
+        $GLOBALS['phpmailer']['Body'] = replace_password_forgotten($email_address, $GLOBALS['phpmailer']['Body']);
+        $GLOBALS['phpmailer']['Body'] = $this->_cleanup_email($GLOBALS['phpmailer']['Body']);
+        if (!empty($GLOBALS['phpmailer']['AltBody'])) {
+          $GLOBALS['phpmailer']['AltBody'] = replace_password_forgotten($email_address, $GLOBALS['phpmailer']['AltBody']);
+          $GLOBALS['phpmailer']['AltBody'] = $this->_cleanup_email($GLOBALS['phpmailer']['AltBody']);
+        }
+      } else {
+        // idが無効なら何もしない
+        return false;
+      }
+      break;
+    }
+  }
 }
 ?>
