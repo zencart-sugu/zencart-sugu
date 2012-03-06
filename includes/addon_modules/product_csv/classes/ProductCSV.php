@@ -887,11 +887,22 @@ class ProductCSV {
       $temp = $this->db->Execute($sql);
       $products_options_values_id = empty($temp->fields['max']) ? 0 : $temp->fields['max'];
       $products_options_values_id += 1; // increment
+      $addmessage = false;
       foreach($value_name as $language_id => $name) {
 	$sql = 'INSERT INTO ' . TABLE_PRODUCTS_OPTIONS_VALUES . ' (products_options_values_id, language_id, products_options_values_name) VALUES ('.$products_options_values_id.','.$language_id.', \''.zen_db_input($name).'\')';
 	$values = $this->db->Execute($sql);
 	$value_id = $products_options_values_id;
-	$this->messageStack->add(PRODUCT_CSV_MESSAGE_OPTION_VALUE, 'success');
+        // ‘¶Ý‚µ‚È‚¢Žž
+        $sql = 'select * from '.TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS.' where products_options_id='.$option_id.' and products_options_values_id='.$products_options_values_id;
+        $chk = $this->db->Execute($sql);
+        if ($chk->EOF) {
+          $sql = 'insert into '.TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS.' (products_options_id,products_options_values_id) values ('.$option_id.','.$products_options_values_id.')';
+          $this->db->Execute($sql);
+        }
+        if (!$addmessage) {
+          $this->messageStack->add(PRODUCT_CSV_MESSAGE_OPTION_VALUE, 'success');
+          $addmessage = true;
+        }
       }
     }
     // get attributes_id
