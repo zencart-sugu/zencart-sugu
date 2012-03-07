@@ -66,6 +66,9 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function block() {
+        global $zco_notifier;
+        global $mt_pages_contents;
+
         if (isset($_GET['main_page']) && preg_match('/^([a-zA-Z0-9_-]*)$/', $_GET['main_page'], $matches)) {
             $page_file = $matches[1];
             if ($page_file == 'index' && 
@@ -83,6 +86,7 @@ if (!defined('IS_ADMIN_FLAG')) {
                 $mt_pages_contents = 
                     htmlspecialchars_decode(
                         mb_convert_encoding(MT_PAGES_CONTENTS, mb_internal_encoding(), MT_PAGES_MT_CHARSET));
+                $zco_notifier->notify('NOTIFY_MT_PAGES_BEFORE_RETURN_BLOCK');
                 return array('mt_pages_contents' => $mt_pages_contents);
             }
             else {
@@ -93,6 +97,10 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function page() {
+        global $zco_notifier;
+        global $mt_pages_title;
+        global $mt_pages_contents;
+
         if (isset($_GET['page']) && preg_match('/^([a-zA-Z0-9_-]*)$/', $_GET['page'])) {
             $page_file;
             if(is_readable(MODULE_MT_PAGES_DIR_PAGES.$_GET['page'].'-'.$_SESSION['languages_code'].'.php')) {
@@ -103,19 +111,22 @@ if (!defined('IS_ADMIN_FLAG')) {
                 zen_redirect(zen_href_link(FILENAME_PAGE_NOT_FOUND));
             }
             require_once($page_file);
+            $mt_pages_title =
+                htmlspecialchars_decode(
+                    mb_convert_encoding(MT_PAGES_TITLE,
+                                        mb_internal_encoding(),
+                                        MT_PAGES_MT_CHARSET));
+            $mt_pages_contents =
+                htmlspecialchars_decode(
+                    mb_convert_encoding(MT_PAGES_CONTENTS,
+                                        mb_internal_encoding(),
+                                        MT_PAGES_MT_CHARSET));
+            $zco_notifier->notify('NOTIFY_MT_PAGES_BEFORE_RETURN_PAGE');
             $return = array('mt_pages_basename' => MT_PAGES_BASENAME,
-                            'mt_pages_title'    => 
-                                htmlspecialchars_decode(
-                                    mb_convert_encoding(MT_PAGES_TITLE, 
-                                                        mb_internal_encoding(), 
-                                                        MT_PAGES_MT_CHARSET)),
-                            'mt_pages_contents'    => 
-                                htmlspecialchars_decode(
-                                    mb_convert_encoding(MT_PAGES_CONTENTS, 
-                                                        mb_internal_encoding(), 
-                                                        MT_PAGES_MT_CHARSET)),
+                            'mt_pages_title'    => $mt_pages_title,
+                            'mt_pages_contents' => $mt_pages_contents,
                             );
-            
+
             return $return;
         }
     }
