@@ -151,6 +151,8 @@ class ProductCSV {
     $product = $this->db->Execute($sql);
     if ($product->RecordCount() == 1) {
       $product = $product->fields;
+      // change 1e+## -> 1000000
+      $product['products_quantity'] = (float)$product['products_quantity'];
     }
     // fetch return data
     foreach ($format['columns'] as $val) {
