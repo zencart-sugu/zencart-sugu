@@ -141,6 +141,9 @@ if (!defined('IS_ADMIN_FLAG')) {
       global $main;
       global $addonmodules_print_layout_main_content;
 
+      $addonmodules_print_layout_main_content = str_replace(CHARSET, "UTF-8", $addonmodules_print_layout_main_content);
+      $addonmodules_print_layout_main_content = mb_convert_encoding($addonmodules_print_layout_main_content, "UTF-8", mb_internal_encoding());
+
       // DOMDocument‚ªjavascript‚ğ‚¤‚Ü‚­ˆ—‚Å‚«‚È‚¢‚Ì‚Å
       // “K“–‚É’u‚«Š·‚¦‚Ä‚İ‚é
       preg_match_all("/(<script.*?>.*?<\/script>)/is", $addonmodules_print_layout_main_content, $match);
@@ -148,7 +151,7 @@ if (!defined('IS_ADMIN_FLAG')) {
         $addonmodules_print_layout_main_content = str_replace($v, self::replace_key($k), $addonmodules_print_layout_main_content);
       }
 
-      $doc = phpQuery::newDocumentHTML($addonmodules_print_layout_main_content, CHARSET);
+      $doc = phpQuery::newDocumentHTML($addonmodules_print_layout_main_content, "UTF-8");
       phpQuery::selectDocument($doc);
 
       if (is_array($main)) {
@@ -178,6 +181,8 @@ if (!defined('IS_ADMIN_FLAG')) {
         $out = str_replace(self::replace_key($k), $v, $out);
       }
 
+      $out = str_replace("UTF-8", CHARSET, $out);
+      $out = mb_convert_encoding($out, mb_internal_encoding(), "UTF-8");
       $addonmodules_print_layout_main_content = $out;
     }
   }
