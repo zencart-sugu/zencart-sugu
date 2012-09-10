@@ -89,11 +89,6 @@
 <script language="JavaScript" src="includes/javascript/spiffyCal/spiffyCal_v2_1.js"></script>
 <script language="javascript" src="includes/menu.js"></script>
 <script language="javascript" src="includes/general.js"></script>
-<?php
-if (MODULE_EMAIL_TEMPLATES_STATUS == 'true') {
-?>
-<script language="javascript" src="../includes/addon_modules/jquery/templates/template_default/jscript/jquery.js"></script>
-<?php } ?>
 <script type="text/javascript">
 <!--
   function init() {
@@ -187,7 +182,7 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "order_search", "end_date", "b
 							</table>
 							<table>
 								<tr>
-									<td><input type="submit" value="¸¡º÷" /></td>
+									<td><?php echo zen_image_submit('button_search.gif', IMAGE_SEARCH); ?></td>
 								</tr>
 							</table>
 						</td>
@@ -233,7 +228,7 @@ if (isset($_GET['start_date']) ) {
   $search = '';
   if (isset($_GET['search']) && zen_not_null($_GET['search'])) {
     $keywords = zen_db_scrub_in($_GET['search'], true);
-    $search = " and (o.customers_city like '%" . $keywords . "%' or o.customers_postcode like '%" . $keywords . "%' or o.date_purchased like '%" . $keywords . "%' or o.billing_name like '%" . $keywords . "%' or o.billing_company like '%" . $keywords . "%' or o.billing_street_address like '%" . $keywords . "%' or o.delivery_city like '%" . $keywords . "%' or o.delivery_postcode like '%" . $keywords . "%' or o.delivery_name like '%" . $keywords . "%' or o.delivery_company like '%" . $keywords . "%' or o.delivery_street_address like '%" . $keywords . "%' or o.billing_city like '%" . $keywords . "%' or o.billing_postcode like '%" . $keywords . "%' or o.customers_email_address like '%" . $keywords . "%' or o.customers_name like '%" . $keywords . "%' or o.customers_company like '%" . $keywords . "%' or o.customers_street_address  like '%" . $keywords . "%' or o.customers_telephone like '%" . $keywords . "%')";
+    $search = " and (o.customers_city like '%" . $keywords . "%' or o.customers_postcode like '%" . $keywords . "%' or date_format(o.date_purchased, '%Y-%m-%d') like '%" . $keywords . "%' or o.billing_name like '%" . $keywords . "%' or o.billing_company like '%" . $keywords . "%' or o.billing_street_address like '%" . $keywords . "%' or o.delivery_city like '%" . $keywords . "%' or o.delivery_postcode like '%" . $keywords . "%' or o.delivery_name like '%" . $keywords . "%' or o.delivery_company like '%" . $keywords . "%' or o.delivery_street_address like '%" . $keywords . "%' or o.billing_city like '%" . $keywords . "%' or o.billing_postcode like '%" . $keywords . "%' or o.customers_email_address like '%" . $keywords . "%' or o.customers_name like '%" . $keywords . "%' or o.customers_company like '%" . $keywords . "%' or o.customers_street_address  like '%" . $keywords . "%' or o.customers_telephone like '%" . $keywords . "%')";
 
     $orders_query_raw .= $search;
   }
@@ -291,16 +286,13 @@ if (isset($_GET['start_date']) ) {
               </tr>
               <tr>
                 <td class="main" valign="top"><strong><?php echo HEADING_ADD_COMMENTS; ?></strong></td>
-                <td width="400" class="smallText"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4', '', 'id="comments"'); ?></td>
+                <td width="400" class="smallText"><?php echo zen_draw_textarea_field('comments', 'soft', '70', '4'); ?></td>
                 <td class="main" valign="center"><strong><?php
                   echo zen_draw_checkbox_field('notify', '', true); echo '&nbsp;' . ENTRY_NOTIFY_CUSTOMER . '<br/>';
                   echo zen_draw_checkbox_field('notify_comments', '', true); echo '&nbsp;' . ENTRY_NOTIFY_COMMENTS; ?></strong>
                   <br /><br />
                   &nbsp;<?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>
               </tr>
-							<tr>
-								<td colspan=3><?php echo zen_get_email_template_for_status(); ?></td>
-							</tr>
             </table></td>
               </tr>
               <tr>
