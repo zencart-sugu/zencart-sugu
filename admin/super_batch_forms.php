@@ -160,6 +160,11 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "order_search", "end_date", "b
 							<td colspan="2"><?php echo zen_draw_input_field('search', $_GET['search']); ?></td>
               </tr>
 							</table>
+							<table>
+								<tr>
+									<td><?php echo zen_image_submit('button_search.gif', IMAGE_SEARCH); ?></td>
+								</tr>
+							</table>
 						</td>
 					</tr>
 				</table>
