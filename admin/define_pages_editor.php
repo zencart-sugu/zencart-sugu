@@ -87,6 +87,7 @@
 
 // define template specific file name defines
   $file = zen_get_file_directory(DIR_FS_CATALOG_LANGUAGES . $edit_language . '/html_includes/', $_GET['filename'], 'false');
+  $https_file = zen_get_file_directory(DIR_FS_HTTPS_CATALOG . 'includes/languages/' . $_SESSION['language'] . '/html_includes/', $_GET['filename'], 'false');
 ?>
 <?php
   switch ($_GET['action']) {
@@ -109,6 +110,16 @@
           $new_file = fopen($file, 'w');
           $file_contents = stripslashes($_POST['file_contents']);
           fwrite($new_file, $file_contents, strlen($file_contents));
+          fclose($new_file);
+        }
+        if ($file != $https_file and file_exists($https_file)) {
+          if (file_exists('bak' . $https_file)) {
+            @unlink('bak' . $https_file);
+          }
+          @rename($https_file, 'bak' . $https_file);
+          $new_file = fopen($https_file, 'w');
+          $https_file_contents = stripslashes($_POST['file_contents']);
+          fwrite($new_file, $https_file_contents, strlen($https_file_contents));
           fclose($new_file);
         }
         zen_redirect(zen_href_link(FILENAME_DEFINE_PAGES_EDITOR, 'selected_lang=' . $selected_lang));
