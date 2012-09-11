@@ -31,15 +31,20 @@
       $this->title = MODULE_PAYMENT_COD_TEXT_TITLE;
       $this->description = MODULE_PAYMENT_COD_TEXT_DESCRIPTION;
       $this->sort_order = MODULE_PAYMENT_COD_SORT_ORDER;
-      $this->enabled = ((MODULE_PAYMENT_COD_STATUS == 'True') ? true : false);
-
+      // -> #8883
+      if ( (MODULE_ORDER_TOTAL_MONEY_COD_STATUS == 'true') && ($order->info['subtotal'] < MODULE_ORDER_TOTAL_MONEY_COD_FEE_LIMIT) ) {
+        $this->enabled = ((MODULE_PAYMENT_COD_STATUS == 'True') ? true : false);
+      }
+      else {
+        $this->enabled = false;
+      }
+      // <- #8883
       if ((int)MODULE_PAYMENT_COD_ORDER_STATUS_ID > 0) {
         $this->order_status = MODULE_PAYMENT_COD_ORDER_STATUS_ID;
       }
 
       if (is_object($order)) $this->update_status();
     }
-
 // class methods
     function update_status() {
       global $order, $db;
