@@ -33,7 +33,7 @@ define('TEXT_NO_IMAGE', 'No Image');
 define('TEXT_CROSS_SELL', '関連商品');
 
 define('TABLE_DATA_PARENT_PRODUCT_PRICE_MARK', '-');
-define('XSELL_TITLE_UPLOAD_FILE', 'CSV からの一括設定');
+define('XSELL_TITLE_UPLOAD_FILE', 'CSV からの一括設定<br />形式＝「関連元商品コード,関連リンク先商品コード,アクション,EOREOR」　※アクション(追加＝add、削除＝delete)<br />※1行目は無視します！');
 define('XSELL_CMD_LABEL_UPLOAD', 'アップロード');
 define('XSELL_TEXT_BACK_TO_MAIN', '一覧に戻る');
 define('XSELL_TITLE_UPLOAD_FILE', 'ファイルのアップロード');
@@ -43,6 +43,7 @@ define('XSELL_UPLOAD_USER_FILE', 'ユーザーファイル名: ');
 define('XSELL_SIZE', 'サイズ: ');
 define('XSELL_UPLOAD_ERR_ALREADY_HAS_RELATION', '既に関連付けされています');
 define('XSELL_UPLOAD_ERR_PRODUCT_NOT_FOUND', '商品が見つかりません');
+define('XSELL_UPLOAD_ERR_SAME_PRODUCT', '同じ商品は関連付けられません');
 define('XSELL_UPLOAD_OK_RELATED', '成功');
 define('XSELL_TEXT_SEARCH_TARGET', '検索対象: ');
 define('XSELL_TEXT_SEARCH_KEYWORD', 'キーワード: ');
