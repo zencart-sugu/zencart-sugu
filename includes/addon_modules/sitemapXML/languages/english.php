@@ -22,10 +22,10 @@
 // $Id: japanese.php $
 //
 define('MODULE_SITEMAPXML_TITLE', 'Sitemap XML');
-define('MODULE_SITEMAPXML_DESCRIPTION', 'サイトマップを作成します');
+define('MODULE_SITEMAPXML_DESCRIPTION', 'Create Sitemap XML');
 
-define('MODULE_SITEMAPXML_STATUS_TITLE', 'Sitemap XMLの有効化');
-define('MODULE_SITEMAPXML_STATUS_DESCRIPTION', 'Sitemap XMLを有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_SITEMAPXML_STATUS_TITLE', 'Activating Sitemap XML');
+define('MODULE_SITEMAPXML_STATUS_DESCRIPTION', 'Do you want to active to Sitemap XML?<br />true: Active<br />false: Inactive');
 
 define('MODULE_SITEMAPXML_COMPRESS_TITLE', 'Compress XML File');
 define('MODULE_SITEMAPXML_COMPRESS_DESCRIPTION', 'Compress Google XML Sitemap file');
@@ -72,8 +72,8 @@ define('MODULE_SITEMAPXML_TESTIMONIALS_ORDERBY_DESCRIPTION', '');
 define('MODULE_SITEMAPXML_TESTIMONIALS_CHANGEFREQ_TITLE', 'Testimonials changefreq');
 define('MODULE_SITEMAPXML_TESTIMONIALS_CHANGEFREQ_DESCRIPTION', 'How frequently the EZPages pages page is likely to change.');
 
-define('MODULE_SITEMAPXML_SORT_ORDER_TITLE', '優先順');
-define('MODULE_SITEMAPXML_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_SITEMAPXML_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_SITEMAPXML_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
 define('BOX_SITEMAPXML', 'Sitemap XML');
 ?>

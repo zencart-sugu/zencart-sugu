@@ -20,33 +20,33 @@
 //  $Id: cache.php 1105 2005-04-04 22:05:35Z birdbrain $
 //
 
-define('HEADING_TITLE',                      '管理サブメニューの設定');
+define('HEADING_TITLE',                      'Management Sub Menu Setting');
 
-define('TEXT_HEADER_SUB_MENU',               'のサブメニュー一覧');
-define('TEXT_HEADER_SUB_MENU_NAME',          'メニュー名');
-define('TEXT_HEADER_SUB_MENU_OLD',           '対応旧メニュー');
-define('TEXT_HEADER_SUB_MENU_ORDER',         '並び順');
-define('TEXT_HEADER_SUB_MENU_ACTION',        'アクション');
+define('TEXT_HEADER_SUB_MENU',               ' Sub Menu List');
+define('TEXT_HEADER_SUB_MENU_NAME',          'Menu Name');
+define('TEXT_HEADER_SUB_MENU_OLD',           'Corresponding Old Menu');
+define('TEXT_HEADER_SUB_MENU_ORDER',         'Sort Order');
+define('TEXT_HEADER_SUB_MENU_ACTION',        'Action');
 
-define('TEXT_MENU_OLD_UNDEFINE',             '[対応旧メニュー無し]');
+define('TEXT_MENU_OLD_UNDEFINE',             '[No Corresponding Old Menu]');
 
-define('TEXT_ACTION_BACK',                   '戻る');
-define('TEXT_ACTION_ADD',                    '追加');
-define('TEXT_ACTION_EDIT',                   '修正');
-define('TEXT_ACTION_DELETE',                 '削除');
-define('TEXT_ACTION_UPDATE',                 '更新');
-define('TEXT_ACTION_SUBMENU',                'サブメニュー管理');
+define('TEXT_ACTION_BACK',                   'Back');
+define('TEXT_ACTION_ADD',                    'Add');
+define('TEXT_ACTION_EDIT',                   'Edit');
+define('TEXT_ACTION_DELETE',                 'Delete');
+define('TEXT_ACTION_UPDATE',                 'Update');
+define('TEXT_ACTION_SUBMENU',                'Management Sub Menu');
 
-define('TEXT_INPUT_ADD',                     '[追加]');
-define('TEXT_INPUT_NAME',                    'メニュー名');
-define('TEXT_INPUT_OLD',                     '対応旧メニュー');
-define('TEXT_INPUT_ORDER',                   '並び順');
+define('TEXT_INPUT_ADD',                     '[Add]');
+define('TEXT_INPUT_NAME',                    'Menu Name');
+define('TEXT_INPUT_OLD',                     'Corresponding Old Menu');
+define('TEXT_INPUT_ORDER',                   'Sort Order');
 
-define('TEXT_ERROR_MENU_NAME',               'メニュー名を入力してください');
-define('TEXT_ERROR_MENU_SELECT',             '対応旧メニューを選択してください');
-define('TEXT_ERROR_MENU_ORDER',              '並び順を入力してください');
-define('TEXT_INSERT_SUCCESS_SUBMENU',        'サブメニューの追加を行いました');
-define('TEXT_UPDATE_SUCCESS_SUBMENU',        'サブメニューの変更を行いました');
-define('TEXT_DELETE_SUCCESS_SUBMENU',        'サブメニューの削除を行いました');
-define('TEXT_CONFIRM_MENU_DELETE',           'を削除してもいいですか？');
+define('TEXT_ERROR_MENU_NAME',               'Please input the menu name.');
+define('TEXT_ERROR_MENU_SELECT',             'Please select a correspondence old menu.');
+define('TEXT_ERROR_MENU_ORDER',              'Please input the sort order.');
+define('TEXT_INSERT_SUCCESS_SUBMENU',        'Sub menu was added.');
+define('TEXT_UPDATE_SUCCESS_SUBMENU',        'Sub menu was updated');
+define('TEXT_DELETE_SUCCESS_SUBMENU',        'Sub menu was deleted');
+define('TEXT_CONFIRM_MENU_DELETE',           ' Do you want to delete this?');
 ?>

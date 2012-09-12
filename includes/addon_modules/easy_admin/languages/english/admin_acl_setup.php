@@ -20,5 +20,5 @@
 //  $Id: cache.php 1105 2005-04-04 22:05:35Z birdbrain $
 //
 
-define('HEADING_TITLE',                      'アクセス権限の設定');
+define('HEADING_TITLE',                      'Access Permissions Setting');
 ?>

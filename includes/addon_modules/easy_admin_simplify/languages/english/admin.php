@@ -20,214 +20,210 @@
 //  $Id: cache.php 1105 2005-04-04 22:05:35Z birdbrain $
 //
 
-define('HEADING_TITLE',       '管理画面シンプル設定');
+define('HEADING_TITLE',       'Admin Simple Setting');
 
-define('TEXT_INFORMATION',    '管理画面各項目の表示、非表示を設定してください');
+define('TEXT_INFORMATION',    'Please set the items on display or no display the admin.');
 
-define('TEXT_DISPLAY',        '表示する');
-define('TEXT_CHANGE',         '変更しない');
+define('TEXT_DISPLAY',        'Display');
+define('TEXT_CHANGE',         'Not Change');
 
-define('TEXT_UPDATE',         '更新');
-define('TEXT_UPDATE_SUCCESS', '設定しました');
+define('TEXT_UPDATE',         'Update');
+define('TEXT_UPDATE_SUCCESS', 'Set up successful');
 
-// 以下表示項目の定義
-// 番号は連番の必要があります
-// type:D 表示,非表示
-// type:C 変更,従来
 $easy_admin_simplify_config   = array();
 $easy_admin_simplify_config[] = array(
-  'title' => 'カテゴリー管理',
+  'title' => 'Categories',
   'item'  => array(
-    array('type'=>'D', 'key'=>'CATEGORY_LANGUAGE',          'description'=>'日本語以外の入力項目'),
-    array('type'=>'D', 'key'=>'CATEGORY_PRICE_LINK',        'description'=>'商品価格管理へのリンク'),
-    array('type'=>'D', 'key'=>'CATEGORY_PRODUCT_TYPE',      'description'=>'新規商品の商品種類プルダウン'),
-    array('type'=>'C', 'key'=>'CATEGORY_PRODUCT_ATTRIBUTE', 'description'=>'商品オプションへのリンク'),
+    array('type'=>'D', 'key'=>'CATEGORY_LANGUAGE',          'description'=>'Input fields other than Japanese'),
+    array('type'=>'D', 'key'=>'CATEGORY_PRICE_LINK',        'description'=>'Link to product price management'),
+    array('type'=>'D', 'key'=>'CATEGORY_PRODUCT_TYPE',      'description'=>'Product Category pull-down of new products'),
+    array('type'=>'C', 'key'=>'CATEGORY_PRODUCT_ATTRIBUTE', 'description'=>'Link to product options'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '商品管理',
+  'title' => 'Products',
   'item'  => array(
-    array('type'=>'D', 'key'=>'PRODUCT_LANGUAGE',             'description'=>'日本語以外の入力項目'),
-    array('type'=>'D', 'key'=>'PRODUCT_PRICE_ATTRIBUTE',      'description'=>'商品属性による価格'),
-    array('type'=>'D', 'key'=>'PRODUCT_TAX_CLASS',            'description'=>'税種別'),
-    array('type'=>'D', 'key'=>'PRODUCT_PRICE_GROSS',          'description'=>'商品価格（グロス）'),
-    array('type'=>'D', 'key'=>'PRODUCT_PRICE_FREE',           'description'=>'無料商品'),
-    array('type'=>'D', 'key'=>'PRODUCT_PRICE_CALL',           'description'=>'価格お問い合わせ'),
-    array('type'=>'D', 'key'=>'PRODUCT_VIRTUAL',              'description'=>'ヴァーチャル商品'),
-    array('type'=>'D', 'key'=>'PRODUCT_ALWAYS_FREE_SHIPPING', 'description'=>'常に送料無料'),
-    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_ORDER_MAX',   'description'=>'商品の最小数量'),
-    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_ORDER_MIN',   'description'=>'商品の最大数量'),
-    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_ORDER_UNIT',  'description'=>'商品の数量単位'),
-    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_MIXED',       'description'=>'最小数量/単位ミックス'),
-    array('type'=>'D', 'key'=>'PRODUCT_WEIGHT',               'description'=>'商品重量'),
-    array('type'=>'D', 'key'=>'PRODUCT_NUMBER_UNIT',          'description'=>'小数点'),
-    array('type'=>'D', 'key'=>'PRODUCT_META_TAGS_USAGE',      'description'=>'メタタグでの注意書き'),
-    array('type'=>'D', 'key'=>'PRODUCT_CATEGORY_MANAGER',     'description'=>'複数のカテゴリーがマネージャをリンク'),
+    array('type'=>'D', 'key'=>'PRODUCT_LANGUAGE',             'description'=>'Input fields other than Japanese'),
+    array('type'=>'D', 'key'=>'PRODUCT_PRICE_ATTRIBUTE',      'description'=>'Product Priced by Attributes'),
+    array('type'=>'D', 'key'=>'PRODUCT_TAX_CLASS',            'description'=>'Tax Class'),
+    array('type'=>'D', 'key'=>'PRODUCT_PRICE_GROSS',          'description'=>'Products Price (Gross)'),
+    array('type'=>'D', 'key'=>'PRODUCT_PRICE_FREE',           'description'=>'Product is Free'),
+    array('type'=>'D', 'key'=>'PRODUCT_PRICE_CALL',           'description'=>'Product is Call for Price'),
+    array('type'=>'D', 'key'=>'PRODUCT_VIRTUAL',              'description'=>'Product is Virtual'),
+    array('type'=>'D', 'key'=>'PRODUCT_ALWAYS_FREE_SHIPPING', 'description'=>'Always Free Shipping'),
+    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_ORDER_MAX',   'description'=>'Product Qty Minimum'),
+    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_ORDER_MIN',   'description'=>'Product Qty Maximum'),
+    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_ORDER_UNIT',  'description'=>'Product Qty Units'),
+    array('type'=>'D', 'key'=>'PRODUCT_QUANTITY_MIXED',       'description'=>'Product Qty Min/Unit Mix'),
+    array('type'=>'D', 'key'=>'PRODUCT_WEIGHT',               'description'=>'Products Shipping Weight'),
+    array('type'=>'D', 'key'=>'PRODUCT_NUMBER_UNIT',          'description'=>'Number Unit'),
+    array('type'=>'D', 'key'=>'PRODUCT_META_TAGS_USAGE',      'description'=>'Meta tag notes'),
+    array('type'=>'D', 'key'=>'PRODUCT_CATEGORY_MANAGER',     'description'=>'Link to multiple categories manager'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '注文ステータス設定',
+  'title' => 'Orders Status',
   'item'  => array(
-    array('type'=>'D', 'key'=>'ORDER_STATUS_LANGUAGE', 'description'=>'日本語以外の入力項目'),
+    array('type'=>'D', 'key'=>'ORDER_STATUS_LANGUAGE', 'description'=>'Input fields other than Japanese'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '顧客管理',
+  'title' => 'Customers',
   'item'  => array(
-    array('type'=>'D', 'key'=>'CUSTOMERS_GROUP_PRICING', 'description'=>'グループ割引'),
-    array('type'=>'D', 'key'=>'CUSTOMERS_REFERRAL',      'description'=>'割引券贈呈'),
+    array('type'=>'D', 'key'=>'CUSTOMERS_GROUP_PRICING', 'description'=>'Group Pricing'),
+    array('type'=>'D', 'key'=>'CUSTOMERS_REFERRAL',      'description'=>'Gift Coupon'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => 'メーカーの管理',
+  'title' => 'Manufacturers',
   'item'  => array(
-    array('type'=>'D', 'key'=>'MANUFACTURERS_LANGUAGE', 'description'=>'日本語以外の入力項目'),
+    array('type'=>'D', 'key'=>'MANUFACTURERS_LANGUAGE', 'description'=>'Input fields other than Japanese'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '特価商品の管理',
+  'title' => 'Specials',
   'item'  => array(
-    array('type'=>'D', 'key'=>'SPECIALS_PRICE_LINK',  'description'=>'価格の管理へのリンク'),
-    array('type'=>'D', 'key'=>'SPECIALS_EDIT_LINK',   'description'=>'編集へのリンク'),
-    array('type'=>'D', 'key'=>'SPECIALS_PRE_ADD',     'description'=>'選択へのリンク'),
-    array('type'=>'D', 'key'=>'SPECIALS_NUMBER_UNIT', 'description'=>'小数点'),
+    array('type'=>'D', 'key'=>'SPECIALS_PRICE_LINK',  'description'=>'Link to the management of price'),
+    array('type'=>'D', 'key'=>'SPECIALS_EDIT_LINK',   'description'=>'Link to Edit'),
+    array('type'=>'D', 'key'=>'SPECIALS_PRE_ADD',     'description'=>'Link to Selection'),
+    array('type'=>'D', 'key'=>'SPECIALS_NUMBER_UNIT', 'description'=>'Number Unit'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => 'おすすめ商品の管理',
+  'title' => 'Featured Products',
   'item'  => array(
-    array('type'=>'D', 'key'=>'FEATURED_PRICE_LINK', 'description'=>'価格の管理へのリンク'),
-    array('type'=>'D', 'key'=>'FEATURED_EDIT_LINK',  'description'=>'編集へのリンク'),
+    array('type'=>'D', 'key'=>'FEATURED_PRICE_LINK', 'description'=>'Link to the management of price'),
+    array('type'=>'D', 'key'=>'FEATURED_EDIT_LINK',  'description'=>'Link to Edit'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '商品オプション名の管理',
+  'title' => 'Option Name Manager',
   'item'  => array(
-    array('type'=>'D', 'key'=>'OPTIONS_NAME_LANGUAGE',   'description'=>'日本語以外の入力項目'),
-    array('type'=>'D', 'key'=>'OPTIONS_NAME_BIG_MODIFY', 'description'=>'一連の大きな変更'),
-    array('type'=>'D', 'key'=>'OPTIONS_NAME_LENGTH',     'description'=>'テキスト属性の長さ'),
+    array('type'=>'D', 'key'=>'OPTIONS_NAME_LANGUAGE',   'description'=>'Input fields other than Japanese'),
+    array('type'=>'D', 'key'=>'OPTIONS_NAME_BIG_MODIFY', 'description'=>'Making global changes'),
+    array('type'=>'D', 'key'=>'OPTIONS_NAME_LENGTH',     'description'=>'The length of the text attributes'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '商品オプション値の管理',
+  'title' => 'Option Value Manager',
   'item'  => array(
-    array('type'=>'D', 'key'=>'OPTIONS_VALUES_LANGUAGE', 'description'=>'日本語以外の入力項目'),
-    array('type'=>'D', 'key'=>'OPTIONS_VALUES_COPY',     'description'=>'コピー操作'),
-    array('type'=>'D', 'key'=>'OPTIONS_VALUES_COPIER',   'description'=>'おすすめ商品プルダウン'),
+    array('type'=>'D', 'key'=>'OPTIONS_VALUES_LANGUAGE', 'description'=>'Input fields other than Japanese'),
+    array('type'=>'D', 'key'=>'OPTIONS_VALUES_COPY',     'description'=>'Copy Operations'),
+    array('type'=>'D', 'key'=>'OPTIONS_VALUES_COPIER',   'description'=>'Featured Products Pulldown'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '商品オプション属性の管理',
+  'title' => 'Attributes Controller',
   'item'  => array(
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_MODIFY',       'description'=>'商品および価格編集ボタン'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORY',     'description'=>'複数カテゴリーのリンク管理へのリンク'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_NUMBER_UNIT',  'description'=>'小数点'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_WEIGHT',       'description'=>'属性の重量'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_ONETIME',      'description'=>'属性のワンタイム値引き'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRICE_FACTOR', 'description'=>'属性のプライスファクター'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_QTY_PRICES',   'description'=>'数量値引き'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRICE_WORDS',  'description'=>'単語/文字値引き'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_FLAGS',        'description'=>'属性フラグ'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_IMAGE',        'description'=>'オプション画像'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORIES',   'description'=>'カテゴリー選択プルダウン'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRODUCTS',     'description'=>'商品選択プルダウン'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_LEGEND',       'description'=>'属性凡例'),
-    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_COLUMN',       'description'=>'重量,属性,値引き列'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_MODIFY',       'description'=>'Editing Products and Price Button'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORY',     'description'=>'Link to Link Management of Multiple Category'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_NUMBER_UNIT',  'description'=>'Number Unit'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_WEIGHT',       'description'=>'Weight'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_ONETIME',      'description'=>'One Time'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRICE_FACTOR', 'description'=>'Price Factor'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_QTY_PRICES',   'description'=>'Quantity Discounts'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRICE_WORDS',  'description'=>'Word / Characters Discount'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_FLAGS',        'description'=>'Flags'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_IMAGE',        'description'=>'Images'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_CATEGORIES',   'description'=>'Categories Selection Pulldown'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_PRODUCTS',     'description'=>'Products Selection Pulldown'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_LEGEND',       'description'=>'Legend'),
+    array('type'=>'D', 'key'=>'ATTRIBUTES_CONTROLLER_COLUMN',       'description'=>'Weight, Attribute, Column Discount'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => 'バナーの管理',
+  'title' => 'Banner Manager',
   'item'  => array(
-    array('type'=>'D', 'key'=>'BANNER_MANAGER_NEW_GROUP',    'description'=>'新しいバナー'),
-    array('type'=>'D', 'key'=>'BANNER_MANAGER_IMAGE_LOCAL',  'description'=>'画像ファイル名を入力'),
-    array('type'=>'D', 'key'=>'BANNER_MANAGER_IMAGE_TARGET', 'description'=>'画像の保存先'),
+    array('type'=>'D', 'key'=>'BANNER_MANAGER_NEW_GROUP',    'description'=>'New Banner'),
+    array('type'=>'D', 'key'=>'BANNER_MANAGER_IMAGE_LOCAL',  'description'=>'Image'),
+    array('type'=>'D', 'key'=>'BANNER_MANAGER_IMAGE_TARGET', 'description'=>'Image Target (Save To)'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => 'ショップ全般の設定',
+  'title' => 'General Store Configuration',
   'item'  => array(
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_2',  'description'=>'ショップオーナー名'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_5',  'description'=>'入荷予定商品のソート順'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_6',  'description'=>'入荷予定商品のソート順に用いるフィールド'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_7',  'description'=>'表示言語と通貨の連動'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_8',  'description'=>'表示言語の選択'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_10', 'description'=>'商品の追加後にカートを表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_11', 'description'=>'デフォルトの検索演算子'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_13', 'description'=>'カテゴリー内の商品数を表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_14', 'description'=>'税額の小数点位置'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_15', 'description'=>'価格を税込みで表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_16', 'description'=>'価格を税込みで表示 - 管理画面'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_17', 'description'=>'商品にかかる税額の算定基準'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_18', 'description'=>'送料にかかる税額の算定基準'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_19', 'description'=>'税金の表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_23', 'description'=>'ショップのステータス'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_20', 'description'=>'管理画面のタイムアウト設定(秒数)'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_21', 'description'=>'管理画面のプログラム処理の上限時間設定(秒)'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_22', 'description'=>'Zen Cart新バージョンの自動チェック(ヘッダで告知するか否か)'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_24', 'description'=>'サーバの稼動時間(アップタイム)'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_25', 'description'=>'リンク切れページのチェック'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_26', 'description'=>'HTMLエディタ'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_27', 'description'=>'phpBBへのリンクを表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_1_28', 'description'=>'カテゴリー内の商品数を表示 - 管理画面'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_2',  'description'=>'Store Owner'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_5',  'description'=>'Stock Product Sort'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_6',  'description'=>'Sort used in the field of Stock items'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_7',  'description'=>'Integration of language and currency'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_8',  'description'=>'Select language'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_10', 'description'=>'Display Cart After Adding Product'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_11', 'description'=>'The default search operator'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_13', 'description'=>'Show items in the category'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_14', 'description'=>'Tax decimal point'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_15', 'description'=>'Show price including tax'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_16', 'description'=>'Show price including tax - Admin Screen'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_17', 'description'=>'Tax applied to products assessment standard'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_18', 'description'=>'Tax applied to shipping assessment standard'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_19', 'description'=>'Show tax'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_23', 'description'=>'Store Status'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_20', 'description'=>'Admin Timeout Settings (in seconds)'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_21', 'description'=>'Maximum time (seconds) setting processing program management screen.'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_22', 'description'=>'Automatically check for new version of Zen Cart(Whether announced on the header)'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_24', 'description'=>'Server uptime'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_25', 'description'=>'Check out the links page'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_26', 'description'=>'HTML Editor'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_27', 'description'=>'Show the link to phpBB'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_1_28', 'description'=>'Show items in the category - Admin Screen'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => 'メールの設定',
+  'title' => 'E-Mail Options',
   'item'  => array(
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_206', 'description'=>'メール送信 - 接続方法'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_212', 'description'=>'メールの改行コード'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_213', 'description'=>'メール送信にMIME HTMLを使用'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_214', 'description'=>'メールアドレスをDNSで確認'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_215', 'description'=>'メールを送信'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_216', 'description'=>'メール保存の設定'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_217', 'description'=>'メール送信エラーの表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_220', 'description'=>'送信メールの送信元アドレスの実在性'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_221', 'description'=>'管理者が送信するメールフォーマット'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_227', 'description'=>'ギフト券送付メール(コピー)の送信'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_228', 'description'=>'ギフト券送付メール(コピー)の送信先'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_229', 'description'=>'ショップ運営者からのギフト券送付メール(コピー)の送信'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_230', 'description'=>'ショップ運営者からのギフト券送付メール(コピー)の送信先'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_231', 'description'=>'ショップ運営者からのクーポン券送付メール(コピー)の送信'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_232', 'description'=>'ショップ運営者からのクーポン券送付メール(コピー)の送信先'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_233', 'description'=>'ショップ運営者の注文ステータスメール(コピー)の送信'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_234', 'description'=>'ショップ運営者の注文ステータスメール(コピー)の送信先'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_235', 'description'=>'掲載待ちレビューについてメール送信'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_236', 'description'=>'掲載待ちレビューについてのメール送信先'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_237', 'description'=>'「お問い合わせ」メールのドロップダウン設定'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_238', 'description'=>'ゲストに「友達に知らせる」機能を許可'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_239', 'description'=>'「お問い合わせ」にショップ名と住所を表記'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_240', 'description'=>'在庫わずかになったらメール送信'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_242', 'description'=>'「メールマガジンの購読解除」リンクの表示'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_243', 'description'=>'オンラインユーザー数の表示設定'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_207', 'description'=>'SMTP認証 - メールアカウント'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_208', 'description'=>'SMTP認証 - パスワード'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_209', 'description'=>'SMTP認証 - DNS名'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_210', 'description'=>'SMTP認証 - IPポート番号'),
-    array('type'=>'D', 'key'=>'CONFIGURATION_12_211', 'description'=>'テキストメールでの貨幣の変換'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_206', 'description'=>'E-Mail Transport Method'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_212', 'description'=>'E-Mail Linefeeds'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_213', 'description'=>'Use MIME HTML When Sending Emails'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_214', 'description'=>'E-mail Address in DNS Check'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_215', 'description'=>'Send E-Mails'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_216', 'description'=>'Email Archiving Active?'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_217', 'description'=>'E-Mail Friendly-Errors'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_220', 'description'=>'Emails must send from known domain?'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_221', 'description'=>'Email Admin Format?'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_227', 'description'=>'Send Copy of Customer GV Send Emails To - Status'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_228', 'description'=>'Send Copy of Customer GV Send Emails To'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_229', 'description'=>'Send Copy of Admin GV Mail Emails To - Status'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_230', 'description'=>'Send Copy of Customer Admin GV Mail Emails To'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_231', 'description'=>'Send Copy of Admin Discount Coupon Mail Emails To - Status'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_232', 'description'=>'Send Copy of Customer Admin Discount Coupon Mail Emails To'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_233', 'description'=>'Send Copy of Admin Orders Status Emails To - Status'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_234', 'description'=>'Send Copy of Admin Orders Status Emails To'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_235', 'description'=>'Send Notice of Pending Reviews Emails To - Status'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_236', 'description'=>'Send Notice of Pending Reviews Emails To'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_237', 'description'=>'Set "Contact Us" Email Dropdown List'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_238', 'description'=>'Allow Guest To Tell A Friend'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_239', 'description'=>'Contact Us - Show Store Name and Address'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_240', 'description'=>'Send Low Stock Emails'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_242', 'description'=>'Display "Newsletter Unsubscribe" Link?'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_243', 'description'=>'Audience-Select Count Display'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_207', 'description'=>'SMTP Email Account Mailbox'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_208', 'description'=>'SMTP Email Account Password'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_209', 'description'=>'SMTP Email Mail Host'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_210', 'description'=>'SMTP Email Mail Server Port'),
+    array('type'=>'D', 'key'=>'CONFIGURATION_12_211', 'description'=>'Convert currencies for Text emails'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => '注文合計モジュールの設定',
+  'title' => 'Order Total Modules',
   'item'  => array(
-    array('type'=>'D', 'key'=>'MODULES_OT_SHIPPING', 'description'=>'配送モジュール'),
-    array('type'=>'D', 'key'=>'MODULES_OT_SUBTOTAL', 'description'=>'小計モジュール'),
-    array('type'=>'D', 'key'=>'MODULES_OT_TOTAL',    'description'=>'合計モジュール'),
+    array('type'=>'D', 'key'=>'MODULES_OT_SHIPPING', 'description'=>'Shipping'),
+    array('type'=>'D', 'key'=>'MODULES_OT_SUBTOTAL', 'description'=>'Sub-Total'),
+    array('type'=>'D', 'key'=>'MODULES_OT_TOTAL',    'description'=>'Total'),
   )
 );
 $easy_admin_simplify_config[] = array(
   'title' => 'Super orders',
   'item'  => array(
-    array('type'=>'D', 'key'=>'SUPER_ORDERS_PAYMENT',     'description'=>'支払情報'),
-    array('type'=>'D', 'key'=>'SUPER_ORDERS_FINAL',       'description'=>'注文最終設定'),
-    array('type'=>'D', 'key'=>'SUPER_ORDERS_SPLIT',       'description'=>'梱包を分割'),
-    array('type'=>'D', 'key'=>'SUPER_ORDERS_PRODUCTS',    'description'=>'商品を修正'),
-    array('type'=>'D', 'key'=>'SUPER_ORDERS_NUMBER_UNIT', 'description'=>'小数点'),
+    array('type'=>'D', 'key'=>'SUPER_ORDERS_PAYMENT',     'description'=>'Payment information'),
+    array('type'=>'D', 'key'=>'SUPER_ORDERS_FINAL',       'description'=>'Finalizing Order'),
+    array('type'=>'D', 'key'=>'SUPER_ORDERS_SPLIT',       'description'=>'Split pack'),
+    array('type'=>'D', 'key'=>'SUPER_ORDERS_PRODUCTS',    'description'=>'Modify Products'),
+    array('type'=>'D', 'key'=>'SUPER_ORDERS_NUMBER_UNIT', 'description'=>'Number Unit'),
   )
 );
 $easy_admin_simplify_config[] = array(
-  'title' => 'セールの管理',
+  'title' => 'SaleMaker',
   'item'  => array(
-    array('type'=>'D', 'key'=>'SALEMAKER_NUMBER_UNIT', 'description'=>'小数点'),
+    array('type'=>'D', 'key'=>'SALEMAKER_NUMBER_UNIT', 'description'=>'Number Unit'),
   )
 );
 ?>

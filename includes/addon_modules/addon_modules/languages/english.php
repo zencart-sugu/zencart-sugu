@@ -21,15 +21,16 @@
 // +----------------------------------------------------------------------+
 // $Id: english.php $
 //
-define('MODULE_ADDON_MODULES_TITLE', 'コアモジュール');
-define('MODULE_ADDON_MODULES_DESCRIPTION', '追加モジュールのコアの機能を提供します。他のモジュールがインストールされている場合はアンインストールする事は出来ません。');
-define('MODULE_ADDON_MODULES_STATUS_TITLE', 'コアモジュールの有効化');
-define('MODULE_ADDON_MODULES_STATUS_DESCRIPTION', '無効にすることは出来ません。');
-define('MODULE_ADDON_MODULES_DISTRIBUTION_URL_TITLE', '配布元URLリスト');
-define('MODULE_ADDON_MODULES_DISTRIBUTION_URL_DESCRIPTION', 'addonモジュールパッケージを取得するサイトのURLを指定してください。<br/>複数指定する場合は改行して入力してください。');
-define('MODULE_ADDON_MODULES_SORT_ORDER_TITLE', '優先順');
-define('MODULE_ADDON_MODULES_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_ADDON_MODULES_TITLE', 'Addon Core Module');
+define('MODULE_ADDON_MODULES_DESCRIPTION', 'Addon Module provides the core functionality. If you have not installed any addon modules can not uninstall it.');
+define('MODULE_ADDON_MODULES_STATUS_TITLE', 'Activating core module');
+define('MODULE_ADDON_MODULES_STATUS_DESCRIPTION', 'Can not be inactive.');
+define('MODULE_ADDON_MODULES_DISTRIBUTION_URL_TITLE', 'The distributing URL List');
+define('MODULE_ADDON_MODULES_DISTRIBUTION_URL_DESCRIPTION', 'Get a addon module package, please specify the URL of the site.<br/>Please specify if more than one new line.');
+define('MODULE_ADDON_MODULES_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_ADDON_MODULES_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('BOX_BLOCKS_MANAGER', 'ブロックの設定');
+define('BOX_BLOCKS_MANAGER', 'Block Setting');
 
-define('MODULE_ADDON_MODULES_UNKNOWN_INSTALL_VERSION', '不明');
+define('MODULE_ADDON_MODULES_UNKNOWN_INSTALL_VERSION', 'Unknown');
+?>
