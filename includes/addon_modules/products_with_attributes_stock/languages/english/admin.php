@@ -20,35 +20,35 @@
 //  $Id: cache.php 1105 2005-04-04 22:05:35Z birdbrain $
 //
 
-define('HEADING_TITLE',                      'オプション毎の在庫管理');
+define('HEADING_TITLE',                      'Stock Management of Each Option');
 
-define('PWA_DELETE_VARIANT_CONFIRMATION', 'オプション組み合わせの在庫を削除してもいいですか？');
-define('PWA_DELETE_VARIANT_PROCESSED',    'オプション組み合わせの在庫が削除されました');
-define('PWA_DELETE_VARIANT_YES',          'はい');
-define('PWA_DELETE_VARIANT_NO',           'いいえ');
-define('PWA_UPDATE_PARENT_PROCESSED',     '親在庫数が更新されました');
-define('PWA_UPDATE_VARIANT_PROCESSED',    '在庫数が更新されました');
+define('PWA_DELETE_VARIANT_CONFIRMATION', 'Do you want to delete a stock of combination options?');
+define('PWA_DELETE_VARIANT_PROCESSED',    'Stock of combination options were deleted');
+define('PWA_DELETE_VARIANT_YES',          'Yes');
+define('PWA_DELETE_VARIANT_NO',           'No');
+define('PWA_UPDATE_PARENT_PROCESSED',     'Updated Stock Quantity of Parent');
+define('PWA_UPDATE_VARIANT_PROCESSED',    'Updated Stock Quantity');
 
-define('PWA_PRODUCT_ID',                  '商品ID');
-define('PWA_PRODUCT_NAME',                '商品名');
-define('PWA_PRODUCT_MODEL',               '型番');
-define('PWA_QUANTITY',                    '個数');
-define('PWA_SKUMODEL',                    'SKU型番');
-define('PWA_QUANTITY_FOR_ALL_VARIANTS',   '全体在庫数');
-define('PWA_ADD_QUANTITY',                'SKU在庫の追加');
-define('PWA_SYNC_QUANTITY',               '在庫数の反映');
+define('PWA_PRODUCT_ID',                  'Product ID');
+define('PWA_PRODUCT_NAME',                'Product Name');
+define('PWA_PRODUCT_MODEL',               'Model');
+define('PWA_QUANTITY',                    'Quantity');
+define('PWA_SKUMODEL',                    'SKU Model');
+define('PWA_QUANTITY_FOR_ALL_VARIANTS',   'Total Stock Quantity');
+define('PWA_ADD_QUANTITY',                'SKU Additional Stock');
+define('PWA_SYNC_QUANTITY',               'Reflect Stock');
 
-define('PWA_EDIT_QUANTITY',               '在庫個数修正');
-define('PWA_DELETE_VARIANT',              'SKU在庫削除');
+define('PWA_EDIT_QUANTITY',               'Modification Stock');
+define('PWA_DELETE_VARIANT',              'SKU Delete Stock');
 
-define('PWA_STOCK_ID',                    '在庫管理ID');
-define('PWA_VARIANT',                     'オプション組み合わせ');
-define('PWA_QUANTITY_IN_STOCK',           '在庫個数');
-define('PWA_EDIT',                        '修正');
-define('PWA_DELETE',                      '削除');
-define('PWA_SUBMIT',                      '更新');
-define('PWA_CANCEL',                      'キャンセル');
-define('PWA_SEARCH',                      '検索');
-define('PWA_RESET',                       'リセット');
-define('PWA_ACTION',                      'アクション');
+define('PWA_STOCK_ID',                    'Stock ID');
+define('PWA_VARIANT',                     'Option Combinations');
+define('PWA_QUANTITY_IN_STOCK',           'Quantity in Stock');
+define('PWA_EDIT',                        'Edit');
+define('PWA_DELETE',                      'Delete');
+define('PWA_SUBMIT',                      'Submit');
+define('PWA_CANCEL',                      'Cancel');
+define('PWA_SEARCH',                      'Search');
+define('PWA_RESET',                       'Reset');
+define('PWA_ACTION',                      'Action');
 ?>

@@ -19,35 +19,32 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EASY_ADMIN_TITLE',                    '管理メニューの設定');
-define('MODULE_EASY_ADMIN_DESCRIPTION',              '管理画面のメニュー構成を簡単に変更できるようにする');
+define('MODULE_EASY_ADMIN_TITLE',                    'Admin Menu Setting');
+define('MODULE_EASY_ADMIN_DESCRIPTION',              'To be able to easily change the admin menu structure.');
 
-define('MODULE_EASY_ADMIN_STATUS_TITLE',             '管理メニューの設定の有効化');
-define('MODULE_EASY_ADMIN_STATUS_DESCRIPTION',       '管理メニューの設定を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_EASY_ADMIN_STATUS_TITLE',             'Activating Admin Menu Setting');
+define('MODULE_EASY_ADMIN_STATUS_DESCRIPTION',       'Do you want to active to Admin Menu Setting?<br />true: Active<br />false: Inactive');
 
-define('MODULE_EASY_ADMIN_SORT_ORDER_TITLE',         '優先順');
-define('MODULE_EASY_ADMIN_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_EASY_ADMIN_SORT_ORDER_TITLE',         'Sort Order');
+define('MODULE_EASY_ADMIN_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-// addon_moduleブロック管理用
-define('MODULE_EASY_ADMIN_BLOCK_TITLE',              '管理メニューの設定');
+define('MODULE_EASY_ADMIN_BLOCK_TITLE',              'Admin Menu Setting');
 
-define('BOX_EASY_ADMIN',                             '管理メニューの設定');
-define('BOX_ADMIN_ACL',                              'アクセス権限の設定');
+define('BOX_EASY_ADMIN',                             'Admin Menu Setting');
+define('BOX_ADMIN_ACL',                              'Access Permissions Setting');
 
 // TOP MENU
 //   MENU NAME,DROP DOWN
 // EXAMPLE
-//   注文・顧客管理,1
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_1',        '注文・顧客管理,1');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_2',        '商品管理,1');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_3',        'コンテンツ管理,1');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_4',        '初期設定,0');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_5',        'その他,0');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_1',        'Order Customer Management,1');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_2',        'Product Management,1');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_3',        'Content Management,1');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_4',        'Initialization,0');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_5',        'Other,0');
 
 // SUB MENU
 //   MENU NAME,MENU URL
 // EXAMPLE
-//   顧客管理,customers.php
 define('MODULE_EASY_ADMIN_SUB_DEFAULT_MENU_1_1',      BOX_CUSTOMERS_CUSTOMERS.','.FILENAME_CUSTOMERS.'.php');
 define('MODULE_EASY_ADMIN_SUB_DEFAULT_MENU_1_2',      BOX_CUSTOMERS_ORDERS.','.FILENAME_ORDERS.'.php');
 define('MODULE_EASY_ADMIN_SUB_DEFAULT_MENU_2_1',      BOX_CATALOG_CATEGORIES_PRODUCTS.','.FILENAME_CATEGORIES.'.php');

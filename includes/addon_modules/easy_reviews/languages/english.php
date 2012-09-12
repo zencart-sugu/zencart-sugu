@@ -19,16 +19,16 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EASY_REVIEWS_TITLE', '商品レビュー');
-define('MODULE_EASY_REVIEWS_DESCRIPTION', '商品レビュー');
-define('MODULE_EASY_REVIEWS_STATUS_TITLE', '商品レビューの有効化');
-define('MODULE_EASY_REVIEWS_STATUS_DESCRIPTION', '商品レビューを有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_TITLE', '商品詳細ページ　レビュー表示数');
-define('MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_DESCRIPTION', '商品詳細ページで表示される商品レビューの数を設定してください。<br />商品レビュー一覧ページのレビュー数は「一般設定」-「最大値の設定」-「新しいレビューの表示数最大値」で設定してください。');
-define('MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_TITLE', '非ログインユーザーの商品レビュー閲覧禁止');
-define('MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_DESCRIPTION', 'ログインしていないユーザーは商品レビュー閲覧ができない。');
-define('MODULE_EASY_REVIEWS_SORT_ORDER_TITLE', '優先順');
-define('MODULE_EASY_REVIEWS_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_EASY_REVIEWS_TITLE', 'Product Review');
+define('MODULE_EASY_REVIEWS_DESCRIPTION', 'Product Review');
+define('MODULE_EASY_REVIEWS_STATUS_TITLE', 'Activating Product Review');
+define('MODULE_EASY_REVIEWS_STATUS_DESCRIPTION', 'Do you want to active to product review?<br />true: Active<br />false: Inactive');
+define('MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_TITLE', 'Product detail page, Number of review displays');
+define('MODULE_EASY_REVIEWS_MAX_DISPLAY_NEW_REVIEWS_DESCRIPTION', 'Please set the number of review displays in the product detail page.<br />Reviews of product review list pageis is [Configuration] - [Maximum Values] - [New Product Reviews Per Page] setting please.');
+define('MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_TITLE', 'Non-login user is prohibited view at product review');
+define('MODULE_EASY_REVIEWS_LIST_DISPLAY_FORCE_LOGIN_DESCRIPTION', 'User not logged in can not View product reviews.');
+define('MODULE_EASY_REVIEWS_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_EASY_REVIEWS_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
 define('MODULE_EASY_REVIEWS_BLOCK_TITLE', 'Product Review');
 define('MODULE_EASY_REVIEWS_TITLE', 'Product Review');

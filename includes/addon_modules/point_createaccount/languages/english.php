@@ -19,17 +19,17 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_POINT_CREATEACCOUNT_TITLE', '会員登録ポイント');
-define('MODULE_POINT_CREATEACCOUNT_DESCRIPTION', '会員登録時にその会員にポイントをプレゼントします。');
-define('MODULE_POINT_CREATEACCOUNT_STATUS_TITLE', '会員登録ポイント発行モジュールの有効化');
-define('MODULE_POINT_CREATEACCOUNT_STATUS_DESCRIPTION', '会員登録ポイント発行モジュールを有効にしますか？<br />true: 有効<br />false: 無効');
-define('MODULE_POINT_CREATEACCOUNT_PENDING_TITLE', '発行ポイントの保留');
-define('MODULE_POINT_CREATEACCOUNT_PENDING_DESCRIPTION', 'ポイント発行時にそのポイントの使用を保留にしますか？<br />保留しない場合はポイント発行後すぐに使用できます。<br />true: 保留にする<br />false: 保留にしない（即時使用可能）');
-define('MODULE_POINT_CREATEACCOUNT_POINT_TITLE', '会員登録ポイント数');
-define('MODULE_POINT_CREATEACCOUNT_POINT_DESCRIPTION', '会員登録時にその会員へプレゼントするポイント数を設定します。<br />例: 500 (会員登録時に500ポイントプレゼント)');
-define('MODULE_POINT_CREATEACCOUNT_SORT_ORDER_TITLE', '優先順');
-define('MODULE_POINT_CREATEACCOUNT_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_POINT_CREATEACCOUNT_TITLE', 'Member Registration Point');
+define('MODULE_POINT_CREATEACCOUNT_DESCRIPTION', 'The point is given to the member at the time of member registration.');
+define('MODULE_POINT_CREATEACCOUNT_STATUS_TITLE', 'Activating the module register points issued');
+define('MODULE_POINT_CREATEACCOUNT_STATUS_DESCRIPTION', 'Do you want to active to issue module of member registration point?<br />true: Active<br />false: Inactive');
+define('MODULE_POINT_CREATEACCOUNT_PENDING_TITLE', 'Pending Issue Point');
+define('MODULE_POINT_CREATEACCOUNT_PENDING_DESCRIPTION', 'Do you want to use that point to hold point at issue?<br />If you can not hold the point after publishing.<br />true: Pending<br />false: Do not Pending（Available immediately）');
+define('MODULE_POINT_CREATEACCOUNT_POINT_TITLE', 'Member Registration Points');
+define('MODULE_POINT_CREATEACCOUNT_POINT_DESCRIPTION', 'Set the number of points  given to member.<br />Eg: 500 (Member Registration at present 500 points)');
+define('MODULE_POINT_CREATEACCOUNT_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_POINT_CREATEACCOUNT_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('MODULE_POINT_CREATEACCOUNT_HISTORY_DESCRIPTION', '会員登録ポイント - 会員ID: %s');
+define('MODULE_POINT_CREATEACCOUNT_HISTORY_DESCRIPTION', 'Member registration point - Member ID: %s');
 
-define('BOX_CUSTOMERS_CUSTOMERS_POINTRATE', '顧客毎ポイント還元率設定');
+define('BOX_CUSTOMERS_CUSTOMERS_POINTRATE', 'Point Reduction Percentage for Each Customer');

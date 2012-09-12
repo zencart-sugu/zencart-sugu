@@ -19,25 +19,24 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EASY_DESIGN_TITLE',                    'デザインの設定');
-define('MODULE_EASY_DESIGN_DESCRIPTION',              'テンプレート、色、ロゴを簡単に変更できるようにする');
+define('MODULE_EASY_DESIGN_TITLE',                    'Design Setting');
+define('MODULE_EASY_DESIGN_DESCRIPTION',              'Templates, color, logo can be changed easily');
 
-define('MODULE_EASY_DESIGN_STATUS_TITLE',             'デザインの設定の有効化');
-define('MODULE_EASY_DESIGN_STATUS_DESCRIPTION',       'デザインの設定を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_EASY_DESIGN_STATUS_TITLE',             'Activating Design Setting');
+define('MODULE_EASY_DESIGN_STATUS_DESCRIPTION',       'Do you want to active to design setting? <br />true: Active<br />false: Inactive');
 
-define('MODULE_EASY_DESIGN_SORT_ORDER_TITLE',         '優先順');
-define('MODULE_EASY_DESIGN_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_EASY_DESIGN_SORT_ORDER_TITLE',         'Sort Order');
+define('MODULE_EASY_DESIGN_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-// addon_moduleブロック管理用
-define('MODULE_EASY_DESIGN_BLOCK_TITLE',              'デザインの設定');
+define('MODULE_EASY_DESIGN_BLOCK_TITLE',              'Design Setting');
 
-define('BOX_EASY_DESIGN',                             'デザインの設定');
+define('BOX_EASY_DESIGN',                             'Design Setting');
 
-define('EASY_DESIGN_TAGLINE_NAME',                    'タグライン');
-define('EASY_DESIGN_TAGLINE_VALUE',                   'ここにタグラインを入力してください。');
-define('EASY_DESIGN_COPYLIGHT_NAME',                  'コピーライト');
-define('EASY_DESIGN_COPYLIGHT_VALUE',                 'ここにコピーライトを入力してください。');
-define('EASY_DESIGN_DEFAULT_MAIN_COLOR_NAME',         'メインカラー');
-define('EASY_DESIGN_DEFAULT_SUB_COLOR_NAME',          'サブカラー');
+define('EASY_DESIGN_TAGLINE_NAME',                    'Tag Line');
+define('EASY_DESIGN_TAGLINE_VALUE',                   'Please enter tag line here.');
+define('EASY_DESIGN_COPYLIGHT_NAME',                  'Copyright');
+define('EASY_DESIGN_COPYLIGHT_VALUE',                 'Please enter copyright here.');
+define('EASY_DESIGN_DEFAULT_MAIN_COLOR_NAME',         'Main Color');
+define('EASY_DESIGN_DEFAULT_SUB_COLOR_NAME',          'Sub Color');
 
 ?>

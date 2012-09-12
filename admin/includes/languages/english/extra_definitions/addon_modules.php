@@ -3,6 +3,8 @@
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
 // +----------------------------------------------------------------------+
+// | Copyright (c) 2009 Liquid System Technology, Inc.                    |
+// | Author Koji Sasaki                                                   |
 // |                                                                      |
 // | http://www.zen-cart.com/index.php                                    |
 // |                                                                      |
@@ -17,18 +19,18 @@
 // | to obtain it through the world-wide-web, please send a note to       |
 // | license@zen-cart.com so we can mail you a copy immediately.          |
 // +----------------------------------------------------------------------+
-// $Id: japanese.php $
+//  $Id: addon_modules.php $
 //
-define('MODULE_JQUERY_TITLE', 'jQuery');
-define('MODULE_JQUERY_DESCRIPTION', 'Load jQuery library.');
-define('MODULE_JQUERY_STATUS_TITLE', 'Activating jQuery');
-define('MODULE_JQUERY_STATUS_DESCRIPTION', 'Do you want to active to jQuery?<br />true: Active<br />false: Inactive');
 
-define('MODULE_JQUERY_LIBRARY_TITLE', 'jQuery Library');
-define('MODULE_JQUERY_LIBRARY_DESCRIPTION', 'Set the jQuery library file name. There is no need to change unless there is a specific reason.<br />Default = ' . MODULE_JQUERY_LIBRARY_DEFAULT);
+define('BOX_ADDON_MODULES_MANAGER', 'Addon Modules Manager');
 
-define('MODULE_JQUERY_NOCONFLICT_STATUS_TITLE', 'Activating noConflict');
-define('MODULE_JQUERY_NOCONFLICT_STATUS_DESCRIPTION', 'Do you want to active to noConflict?<br />true: Active<br />false: Inactive');
+define('WARNING_NOT_INSTALLED_CORE_MODULE', 'DEPENDENCY ERROR: Please install first the core module.');
+define('ERROR_REQUIRE_MODULE', 'DEPENDENCY ERROR: %s The module is insufficient.');
+define('WARNING_REQUIRE_MODULE', 'DEPENDENCY WARNING: %s Module is inactive or not installed.');
+define('ERROE_MODULE_INSTALL_FAILED', 'ERROR: %s Failed to install the module. Please check the above message.');
 
-define('MODULE_JQUERY_SORT_ORDER_TITLE', 'Sort Order');
-define('MODULE_JQUERY_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
+define('WARNING_DEPEND_MODULE', 'DEPENDENCY WARNING: %s Module is installed.');
+define('WARNING_CANNOT_REMOVE_CORE_MODULE', 'DEPENDENCY WARNING: The core modules are required.');
+define('ERROE_MODULE_REMOVE_FAILED', 'ERROR: %s Failed to uninstall the module. Please check the above message.');
+
+define('WARNING_DEPEND_MODULE_INACTIVE', 'WARNING: %s モジュールが無効に設定されました。依存するモジュールが正しく動作しなくなる可能性があります。');

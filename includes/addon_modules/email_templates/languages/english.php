@@ -19,19 +19,19 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EMAIL_TEMPLATES_TITLE', 'メールテンプレート');
-define('MODULE_EMAIL_TEMPLATES_DESCRIPTION', 'メールテンプレート機能を提供します。');
-define('MODULE_EMAIL_TEMPLATES_STATUS_TITLE', 'メールテンプレートの有効化');
-define('MODULE_EMAIL_TEMPLATES_STATUS_DESCRIPTION', 'メールテンプレートを有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_TITLE', '優先順');
-define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_EMAIL_TEMPLATES_TITLE', 'Email Template');
+define('MODULE_EMAIL_TEMPLATES_DESCRIPTION', 'Email template provides.');
+define('MODULE_EMAIL_TEMPLATES_STATUS_TITLE', 'Activating Email template');
+define('MODULE_EMAIL_TEMPLATES_STATUS_DESCRIPTION', 'Do you want to active to mail template?<br />true: Active<br />false: Inactive');
+define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('BOX_TOOLS_EMAIL_TEMPLATES', 'Emailテンプレート');
-define('TEXT_EMAIL_TEMPLATE', 'Emailテンプレート: ');
-define('TEXT_EMAIL_TEMPLATE_SETUP_PAGE', 'セットアップページ');
-define('TEXT_EMAIL_TEMPLATE_EMPTY', 'Emailテンプレートがありません');
-define('TEXT_EMAIL_TEMPLATE_DESCRIPTION', 'コメント:'.BOX_TOOLS_EMAIL_TEMPLATES.'内の[COMMENTS]に埋め込まれます<br />(テンプレート内に[COMMENTS]が無い場合はコメントの埋め込みは行われません)');
-define('TEXT_EMAIL_TEMPLATE_NO_TEMPLATE', BOX_TOOLS_EMAIL_TEMPLATES.'が見つからなかったためメールの送信は行われませんでした。');
+define('BOX_TOOLS_EMAIL_TEMPLATES', 'Email Template');
+define('TEXT_EMAIL_TEMPLATE', 'Email Template: ');
+define('TEXT_EMAIL_TEMPLATE_SETUP_PAGE', 'Setup Page');
+define('TEXT_EMAIL_TEMPLATE_EMPTY', 'No Email Templates');
+define('TEXT_EMAIL_TEMPLATE_DESCRIPTION', 'Comment:It is buried [COMMENTS] in '.BOX_TOOLS_EMAIL_TEMPLATES.'<br />(The comment is not buried when there is no [COMMENTS] in the template.)');
+define('TEXT_EMAIL_TEMPLATE_NO_TEMPLATE', BOX_TOOLS_EMAIL_TEMPLATES.' had not been found, mail was not transmitted.');
 
 define('MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID', '2');
 
@@ -162,5 +162,5 @@ define('MODULE_EMAIL_TEMPLATE_FRI', 'FRI');
 define('MODULE_EMAIL_TEMPLATE_SAT', 'SAT');
 
 define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', 'Non');
-define('MODULE_EMAIL_TEMPLATE_INVOSICE_TEXT', 'ご注文についての情報は下記URLでご覧いただけます。');
+define('MODULE_EMAIL_TEMPLATE_INVOSICE_TEXT', 'For ordering information available at the following URL.');
 ?>

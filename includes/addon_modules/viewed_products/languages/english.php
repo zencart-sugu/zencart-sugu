@@ -19,15 +19,16 @@
 // +----------------------------------------------------------------------+
 // $Id: english.php $
 //
-define('MODULE_VIEWED_PRODUCTS_TITLE', '最近見た商品');
-define('MODULE_VIEWED_PRODUCTS_DESCRIPTION', '最近見た商品を記録して表示します。');
-define('MODULE_VIEWED_PRODUCTS_STATUS_TITLE', '最近見た商品モジュールの有効化<br />有効化の後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks') . '">ブロックの設定</a>から「最近見た商品」ブロックの表示設定をしてください。');
-define('MODULE_VIEWED_PRODUCTS_STATUS_DESCRIPTION', '最近見た商品を有効にしますか？<br />true: 有効<br />false: 無効');
-define('MODULE_VIEWED_PRODUCTS_MAX_DISPLAY_VIEWED_TITLE', '最大表示件数');
-define('MODULE_VIEWED_PRODUCTS_MAX_DISPLAY_VIEWED_DESCRIPTION', '最近見た商品の最大表示件数を設定してください。<br />・初期値 = ' . MODULE_VIEWED_PRODUCTS_MAX_DISPLAY_VIEWED_DEFAULT);
-define('MODULE_VIEWED_PRODUCTS_SMALL_IMAGE_SIZE_TITLE', '最近見た商品画像(小)のサイズ');
-define('MODULE_VIEWED_PRODUCTS_SMALL_IMAGE_SIZE_DESCRIPTION', '最近見た商品画像(小)のサイズを 横幅x高さ で設定してください。<br />・初期値 = ' . MODULE_VIEWED_PRODUCTS_SMALL_IMAGE_SIZE_DEFAULT);
-define('MODULE_VIEWED_PRODUCTS_SORT_ORDER_TITLE', '優先順');
-define('MODULE_VIEWED_PRODUCTS_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_VIEWED_PRODUCTS_TITLE', 'Recently Viewed Products');
+define('MODULE_VIEWED_PRODUCTS_DESCRIPTION', 'Record display the recently viewed products.');
+define('MODULE_VIEWED_PRODUCTS_STATUS_TITLE', 'Activating Recently Viewed Products<br />Please block display setting of the "Recently Viewed Products" block from a <a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks') . '">brock setting</a> after activating.');
+define('MODULE_VIEWED_PRODUCTS_STATUS_DESCRIPTION', 'Do you want to active to recently viewed products?<br />true: Active<br />false: Inactive');
+define('MODULE_VIEWED_PRODUCTS_MAX_DISPLAY_VIEWED_TITLE', 'Maximum Display Number');
+define('MODULE_VIEWED_PRODUCTS_MAX_DISPLAY_VIEWED_DESCRIPTION', 'Please set a maximum display number of recently viewed products.<br />Default = ' . MODULE_VIEWED_PRODUCTS_MAX_DISPLAY_VIEWED_DEFAULT);
+define('MODULE_VIEWED_PRODUCTS_SMALL_IMAGE_SIZE_TITLE', 'Recently viewed product images (small) size');
+define('MODULE_VIEWED_PRODUCTS_SMALL_IMAGE_SIZE_DESCRIPTION', 'Please set the recently viewed product images (small) size by width x height.<br />Default = ' . MODULE_VIEWED_PRODUCTS_SMALL_IMAGE_SIZE_DEFAULT);
+define('MODULE_VIEWED_PRODUCTS_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_VIEWED_PRODUCTS_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
 define('MODULE_VIEWED_PRODUCTS_BLOCK_TITLE', 'Commodity seen recently');
+?>
