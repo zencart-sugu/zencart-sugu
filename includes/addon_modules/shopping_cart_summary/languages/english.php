@@ -19,12 +19,12 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_SHOPPING_CART_SUMMARY_TITLE', 'ショッピングカートサマリーブロック');
-define('MODULE_SHOPPING_CART_SUMMARY_DESCRIPTION', 'ショッピングカートサマリーブロック<br />ショッピングカートのサマリーを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">ブロックの設定</a>から表示設定をしてください。');
-define('MODULE_SHOPPING_CART_SUMMARY_STATUS_TITLE', 'ショッピングカートサマリーブロックの有効化');
-define('MODULE_SHOPPING_CART_SUMMARY_STATUS_DESCRIPTION', 'ショッピングカートサマリーブロックを有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_SHOPPING_CART_SUMMARY_SORT_ORDER_TITLE', '優先順');
-define('MODULE_SHOPPING_CART_SUMMARY_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_SHOPPING_CART_SUMMARY_TITLE', 'Shopping Cart Summary');
+define('MODULE_SHOPPING_CART_SUMMARY_DESCRIPTION', 'Shopping Cart Summary<br />Add a block that displays the shopping cart summary.<br />Please block display setting from <a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">block setting</a> after Enabling.');
+define('MODULE_SHOPPING_CART_SUMMARY_STATUS_TITLE', 'Activating Shopping Cart Summary');
+define('MODULE_SHOPPING_CART_SUMMARY_STATUS_DESCRIPTION', 'Do you want to active to shopping cart summary?<br />true: Active<br />false: Inactive');
+define('MODULE_SHOPPING_CART_SUMMARY_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_SHOPPING_CART_SUMMARY_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
 define('MODULE_SHOPPING_CART_SUMMARY_BLOCK_TITLE', 'Shopping Cart Summary');
 define('HEADER_SHOPPING_CART_A_CONTENT', '');
