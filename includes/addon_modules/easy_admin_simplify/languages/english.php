@@ -19,12 +19,12 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EASY_ADMIN_SIMPLIFY_TITLE',                    '管理画面をわかりやすく');
-define('MODULE_EASY_ADMIN_SIMPLIFY_DESCRIPTION',              '管理画面において使用しない機能をわかりやすくする機能');
+define('MODULE_EASY_ADMIN_SIMPLIFY_TITLE',                    'Simplicity Admin');
+define('MODULE_EASY_ADMIN_SIMPLIFY_DESCRIPTION',              'The unused function to make intelligible function at admin');
 
-define('MODULE_EASY_ADMIN_SIMPLIFY_STATUS_TITLE',             '管理メニューの設定の有効化');
-define('MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DESCRIPTION',       '管理メニューの設定を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_EASY_ADMIN_SIMPLIFY_STATUS_TITLE',             'Activating Admin Menu Setting');
+define('MODULE_EASY_ADMIN_SIMPLIFY_STATUS_DESCRIPTION',       'Do you want to active to Admin Menu Setting?<br />true: Active<br />false: Inactive');
 
-define('MODULE_EASY_ADMIN_SIMPLIFY_SORT_ORDER_TITLE',         '優先順');
-define('MODULE_EASY_ADMIN_SIMPLIFY_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_EASY_ADMIN_SIMPLIFY_SORT_ORDER_TITLE',         'Sort Order');
+define('MODULE_EASY_ADMIN_SIMPLIFY_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 ?>
