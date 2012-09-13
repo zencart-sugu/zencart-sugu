@@ -1,34 +1,36 @@
 <?php
-// for onfig page
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_TITLE', 'お取り寄せ商品');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DESCRIPTION', 'お取り寄せ商品の管理を行います');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_STATUS_TITLE', 'お取り寄せ商品の有効化');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_STATUS_DESCRIPTION', 'お取り寄せ商品モジュールを有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SORT_ORDER_TITLE', '優先順');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+// for config page
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_TITLE', 'Obtaining Commodity');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DESCRIPTION', 'Obtaining commodity and manages');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_STATUS_TITLE', 'Activating obtaining commodity');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_STATUS_DESCRIPTION', 'Do you want to active to obtaining commodity module? <br />true: Active<br />false: Inactive');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_ENABLE_TITLE', '在庫あり時の表記');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_ENABLE_DESCRIPTION', '商品詳細画面での在庫あり時の表記を設定します');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SEND_FOR_TITLE', 'お取り寄せ時の表記');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SEND_FOR_DESCRIPTION', '商品詳細画面でのお取り寄せ商品の表記を設定します');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISABLE_TITLE', '在庫なし時の表記');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISABLE_DESCRIPTION', '商品詳細画面での在庫なし時の表記を設定します');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISPLAY_STOCK_TITLE', '在庫表記の表示');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISPLAY_STOCK_DESCRIPTION', '在庫表記を表示しますか?<br />true: 表示する<br />false: 表示しない');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_FLAG_TITLE', 'お取り寄せ商品のマーク');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_FLAG_DESCRIPTION', 'カート画面でお取り寄せ商品に付加するマークを設定します');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_MESSAGE_TITLE', 'お取り寄せ商品の注記');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_MESSAGE_DESCRIPTION', 'カート画面でお取り寄せ商品がある場合の注記を設定します');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_ENABLE_TITLE', 'In Stock at Convention');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_ENABLE_DESCRIPTION', 'Set the in stock at convention at the product detail screen');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SEND_FOR_TITLE', 'Obtaining Commodity at Conventions');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SEND_FOR_DESCRIPTION', 'Set the obtaining commodity at conventions at the product detail screen');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISABLE_TITLE', 'No stock at Conventions,');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISABLE_DESCRIPTION', 'Set the no stock at convention at the product detail screen');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISPLAY_STOCK_TITLE', 'Display of stocked convention');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISPLAY_STOCK_DESCRIPTION', 'Do you have Conventions inventory?<br />true: Display<br />false: Hidden');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_FLAG_TITLE', 'Obtaining Commodity Mark');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_FLAG_DESCRIPTION', 'Set the mark to be displayed in obtaining commodity at cart screen.');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_MESSAGE_TITLE', 'Obtaining Commodity Notes');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_MESSAGE_DESCRIPTION', 'If you have set the obtaining commodity notes at cart screen.');
 
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_ENABLE_DEFAULT', '在庫あり');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SEND_FOR_DEFAULT', 'お取り寄せhhhhh');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISABLE_DEFAULT', '在庫なし');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_MESSAGE_DEFAULT', '「▲」のついた商品はお取り寄せ商品です。ご注文後1週間から1ヶ月の期間がかかる場合があります。');
-define('MODULE_ADDON_MODULES_ADVANCED_STOCK_FLAG_DEFAULT', '(▲)');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_ENABLE_DEFAULT', 'In stock');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_SEND_FOR_DEFAULT', 'Obtaining commodity');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_DISABLE_DEFAULT', 'No stock');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_MESSAGE_DEFAULT', '(*) are marked with obtaining commodity products. It may take from one week to one month period after your order.');
+define('MODULE_ADDON_MODULES_ADVANCED_STOCK_FLAG_DEFAULT', '(*)');
+
 // for admin page
-define('TEXT_PRODUCTS_SEND_FOR', 'お取り寄せ:');
-define('TEXT_PRODUCTS_SEND_ON', '有効');
-define('TEXT_PRODUCTS_SEND_OFF', '無効');
+define('TEXT_PRODUCTS_SEND_FOR', 'Obtaining commodity:');
+define('TEXT_PRODUCTS_SEND_ON', 'Active');
+define('TEXT_PRODUCTS_SEND_OFF', 'Inactive');
+
 // for frontend button
 define('BUTTON_IMAGE_BACK_ORDER_SMALL', 'button_back_order_sm.gif');
 define('BUTTON_BACK_ORDER_SMALL_ALT', 'Back Order');
