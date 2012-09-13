@@ -21,40 +21,39 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_CALENDAR_TITLE',                    '営業カレンダー');
-define('MODULE_CALENDAR_DESCRIPTION',              '営業カレンダー');
+define('MODULE_CALENDAR_TITLE',                    'Business Calendar');
+define('MODULE_CALENDAR_DESCRIPTION',              'Business Calendar');
 
-define('MODULE_CALENDAR_STATUS_TITLE',             '営業カレンダーの有効化');
-define('MODULE_CALENDAR_STATUS_DESCRIPTION',       '営業カレンダーを有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_CALENDAR_STATUS_TITLE',             'Activating Business Calendar');
+define('MODULE_CALENDAR_STATUS_DESCRIPTION',       'Do you want to active to business calendar?<br />true: Active<br />false: Inactive');
 
-define('MODULE_CALENDAR_START_SUNDAY_TITLE',       '週の開始が日曜日');
-define('MODULE_CALENDAR_START_SUNDAY_DESCRIPTION', '週の開始を日曜日としますか？ <br />true: 日曜<br />false: 月曜');
+define('MODULE_CALENDAR_START_SUNDAY_TITLE',       'Sunday is the start of the week');
+define('MODULE_CALENDAR_START_SUNDAY_DESCRIPTION', 'Do you want to start the week on Sunday?<br />true: Sunday<br />false: Monday');
 
-define('MODULE_CALENDAR_DELIVERY_TITLE',           '配送指定可能日');
-define('MODULE_CALENDAR_DELIVERY_INPUT',           '最短配送可能日：注文日の翌日から%s営業日<br/>最終配送可能日：最短配送可能日から%s日間');
-define('MODULE_CALENDAR_DELIVERY_DESCRIPTION',     '配送日として指定できる範囲を日数として指定します');
+define('MODULE_CALENDAR_DELIVERY_TITLE',           'Delivery dates can be specified');
+define('MODULE_CALENDAR_DELIVERY_INPUT',           'Delivery dates can be specified：%s business days from the day after the order<br/>Final delivery date available：%s days from the date of the shortest possible delivery');
+define('MODULE_CALENDAR_DELIVERY_DESCRIPTION',     'The range is specified as a delivery date in days');
 
-define('MODULE_CALENDAR_DELIVERY_START_TITLE',     '最短配送可能日: 注文日の翌日からの営業日');
-define('MODULE_CALENDAR_DELIVERY_END_TITLE',       '最終配送可能日: 最短配送可能日から日間');
-define('MODULE_CALENDAR_DELIVERY_DESCRIPTION',     '配送日として指定できる範囲を日数として指定します');
+define('MODULE_CALENDAR_DELIVERY_START_TITLE',     'The shortest possible delivery dates: Business day following the date of order.');
+define('MODULE_CALENDAR_DELIVERY_END_TITLE',       'Final delivery date available: Days from the shortest possible delivery dates');
+define('MODULE_CALENDAR_DELIVERY_DESCRIPTION',     'Specified as the number of days at range as the delivery date.');
 
-define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_TITLE',       '配送時刻の選択項目');
-define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_DESCRIPTION', '配送時刻の選択項目をカンマ区切りで入力してください');
+define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_TITLE',       'Choice of delivery time');
+define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_DESCRIPTION', 'Please enter comma separated at choice of delivery time.');
 
-define('MODULE_CALENDAR_SORT_ORDER_TITLE',         '優先順');
-define('MODULE_CALENDAR_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_CALENDAR_SORT_ORDER_TITLE',         'Sort Order');
+define('MODULE_CALENDAR_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-// addon_moduleブロック管理用
 define('MODULE_CALENDAR_BLOCK_TITLE', 'Business Calendar');
 
 define('MODULE_CALENDAR_TITLE_STYLE', '%s/%s');
-define('MODULE_CALENDAR_SUN', 'SUN');
-define('MODULE_CALENDAR_MON', 'MON');
-define('MODULE_CALENDAR_TUE', 'TUE');
-define('MODULE_CALENDAR_WED', 'WED');
-define('MODULE_CALENDAR_THU', 'THU');
-define('MODULE_CALENDAR_FRI', 'FRI');
-define('MODULE_CALENDAR_SAT', 'SAT');
+define('MODULE_CALENDAR_SUN', 'Sun');
+define('MODULE_CALENDAR_MON', 'Mon');
+define('MODULE_CALENDAR_TUE', 'Tue');
+define('MODULE_CALENDAR_WED', 'Wed');
+define('MODULE_CALENDAR_THU', 'Thu');
+define('MODULE_CALENDAR_FRI', 'Fri');
+define('MODULE_CALENDAR_SAT', 'Sat');
 
 define('MODULE_CALENDAR_SHIPPING',             'You order today, the earliest delivery date is %s.');
 define('MODULE_CALENDAR_SHIPPING_END',         '%s can be specified as the delivery date.');
@@ -72,7 +71,7 @@ define('MODULE_CALENDAR_DAY', '<span class="today">X</span>Order date&nbsp;&nbsp
 define('BOX_CALENDAR', 'Business Calendar');
 
 define('BUTTON_IMAGE_FOOTER_SHIPPING', 'button_footer_shipping.gif');
-define('BUTTON_FOOTER_SHIPPING_ALT', 'Available Shipping Methods');
+define('BUTTON_FOOTER_SHIPPING_ALT', 'Shipping Method');
 
 define('MODULE_CALENDAR_HOPE_DELIVERY_DAY_HEADER',  'Specified Delivery Date');
 define('MODULE_CALENDAR_HOPE_DELIVERY_TIME_HEADER', 'Specified Delivery Time');
