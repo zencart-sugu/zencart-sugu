@@ -19,19 +19,19 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EMAIL_TEMPLATES_TITLE', '¥á¡¼¥ë¥Æ¥ó¥×¥ì¡¼¥È');
-define('MODULE_EMAIL_TEMPLATES_DESCRIPTION', '¥á¡¼¥ë¥Æ¥ó¥×¥ì¡¼¥Èµ¡Ç½¤òÄó¶¡¤·¤Þ¤¹¡£');
-define('MODULE_EMAIL_TEMPLATES_STATUS_TITLE', '¥á¡¼¥ë¥Æ¥ó¥×¥ì¡¼¥È¤ÎÍ­¸ú²½');
-define('MODULE_EMAIL_TEMPLATES_STATUS_DESCRIPTION', '¥á¡¼¥ë¥Æ¥ó¥×¥ì¡¼¥È¤òÍ­¸ú¤Ë¤·¤Þ¤¹¤«¡© <br />true: Í­¸ú<br />false: Ìµ¸ú');
-define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_TITLE', 'Í¥Àè½ç');
-define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_DESCRIPTION', '¥â¥¸¥å¡¼¥ë¤ÎÍ¥Àè½ç¤òÀßÄê¤Ç¤­¤Þ¤¹¡£¿ô»ú¤¬¾®¤µ¤¤¤Û¤ÉÀè¤Ë¥â¥¸¥å¡¼¥ë¤ÎÆÉ¤ß¹þ¤ß¤È½èÍý¤¬¼Â¹Ô¤µ¤ì¤Þ¤¹¡£È¾³Ñ¿ô»ú¤ÇÂ¾¤Î¥â¥¸¥å¡¼¥ë¤È½Å¤Ê¤é¤Ê¤¤¤è¤¦¤ËÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£');
+define('MODULE_EMAIL_TEMPLATES_TITLE', 'Email Template');
+define('MODULE_EMAIL_TEMPLATES_DESCRIPTION', 'Email template provides.');
+define('MODULE_EMAIL_TEMPLATES_STATUS_TITLE', 'Activating Email template');
+define('MODULE_EMAIL_TEMPLATES_STATUS_DESCRIPTION', 'Do you want to active to mail template?<br />true: Active<br />false: Inactive');
+define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_EMAIL_TEMPLATES_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('BOX_TOOLS_EMAIL_TEMPLATES', 'Email¥Æ¥ó¥×¥ì¡¼¥È');
-define('TEXT_EMAIL_TEMPLATE', 'Email¥Æ¥ó¥×¥ì¡¼¥È: ');
-define('TEXT_EMAIL_TEMPLATE_SETUP_PAGE', '¥»¥Ã¥È¥¢¥Ã¥×¥Ú¡¼¥¸');
-define('TEXT_EMAIL_TEMPLATE_EMPTY', 'Email¥Æ¥ó¥×¥ì¡¼¥È¤¬¤¢¤ê¤Þ¤»¤ó');
-define('TEXT_EMAIL_TEMPLATE_DESCRIPTION', '¥³¥á¥ó¥È:'.BOX_TOOLS_EMAIL_TEMPLATES.'Æâ¤Î[COMMENTS]¤ËËä¤á¹þ¤Þ¤ì¤Þ¤¹<br />(¥Æ¥ó¥×¥ì¡¼¥ÈÆâ¤Ë[COMMENTS]¤¬Ìµ¤¤¾ì¹ç¤Ï¥³¥á¥ó¥È¤ÎËä¤á¹þ¤ß¤Ï¹Ô¤ï¤ì¤Þ¤»¤ó)');
-define('TEXT_EMAIL_TEMPLATE_NO_TEMPLATE', BOX_TOOLS_EMAIL_TEMPLATES.'¤¬¸«¤Ä¤«¤é¤Ê¤«¤Ã¤¿¤¿¤á¥á¡¼¥ë¤ÎÁ÷¿®¤Ï¹Ô¤ï¤ì¤Þ¤»¤ó¤Ç¤·¤¿¡£');
+define('BOX_TOOLS_EMAIL_TEMPLATES', 'Email Template');
+define('TEXT_EMAIL_TEMPLATE', 'Email Template: ');
+define('TEXT_EMAIL_TEMPLATE_SETUP_PAGE', 'Setup Page');
+define('TEXT_EMAIL_TEMPLATE_EMPTY', 'No Email Templates');
+define('TEXT_EMAIL_TEMPLATE_DESCRIPTION', 'Comment:It is buried [COMMENTS] in '.BOX_TOOLS_EMAIL_TEMPLATES.'<br />(The comment is not buried when there is no [COMMENTS] in the template.)');
+define('TEXT_EMAIL_TEMPLATE_NO_TEMPLATE', BOX_TOOLS_EMAIL_TEMPLATES.' had not been found, mail was not transmitted.');
 
 define('MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID', '2');
 
@@ -150,29 +150,29 @@ If you do not remember this email,please contact us at xxxxxxx@example.org.
 Copyright (c) XXXXXXXX Inc. All Rights Reserved
 ');
 
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_GRP', '¥Ñ¥¹¥ï¡¼¥É¥ê¥Þ¥¤¥ó¥À¡¼');
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_TITLE', '¥Ñ¥¹¥ï¡¼¥É¥ê¥Þ¥¤¥ó¥À¡¼ ¥á¡¼¥ë');
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT', '¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Î¤ªÃÎ¤é¤»');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_GRP', 'ƒpƒXƒ[ƒhƒŠƒ}ƒCƒ“ƒ_[');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_TITLE', 'ƒpƒXƒ[ƒhƒŠƒ}ƒCƒ“ƒ_[ ƒ[ƒ‹');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT', 'V‚µ‚¢ƒpƒXƒ[ƒh‚Ì‚¨’m‚ç‚¹');
 define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY', '
-[CUSTOMER_NAME] ÍÍ
+[CUSTOMER_NAME] —l
 
-¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
+‚²—˜—p‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚·B
 
-¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Î¿½ÀÁ¤ò¼õ¤±ÉÕ¤±¤Þ¤·¤¿¡£
+V‚µ‚¢ƒpƒXƒ[ƒh‚Ì\¿‚ðŽó‚¯•t‚¯‚Ü‚µ‚½B
 
-¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Ï
+V‚µ‚¢ƒpƒXƒ[ƒh‚Í
 
    [NEW_PASSWORD]
 
-¤Ç¤¹¡£
+‚Å‚·B
 
-¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Ç¥í¥°¥¤¥ó¤·¤¿¸å
-¡Ö¥Þ¥¤¥Ú¡¼¥¸¡×¤Ç¤´´õË¾¤Î¥Ñ¥¹¥ï¡¼¥É¤ËÊÑ¹¹¤Ç¤­¤Þ¤¹¡£
+V‚µ‚¢ƒpƒXƒ[ƒh‚ÅƒƒOƒCƒ“‚µ‚½Œã
+uƒ}ƒCƒy[ƒWv‚Å‚²Šó–]‚ÌƒpƒXƒ[ƒh‚É•ÏX‚Å‚«‚Ü‚·B
 
 -----
-¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£
-¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ
-xxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£
+‚±‚Ìƒ[ƒ‹‚Í“–ƒVƒ‡ƒbƒv‚É“o˜^‚³‚ê‚½‚¨‹q—l‚É‘Î‚µ‚Ä‚¨‘—‚è‚µ‚Ä‚¢‚Ü‚·B
+‚¨S“–‚½‚è‚ª–³‚¢‚æ‚¤‚Å‚µ‚½‚ç‘å•Ï‚¨Žè”‚Å‚·‚ªƒ[ƒ‹‚É‚Ä
+xxxxxxx@example.org ‚Ü‚Å‚²˜A—‚­‚¾‚³‚¢B
 
 -----
 Copyright (c) XXXXXXXX Inc. All Rights Reserved
@@ -190,5 +190,5 @@ define('MODULE_EMAIL_TEMPLATE_FRI', 'FRI');
 define('MODULE_EMAIL_TEMPLATE_SAT', 'SAT');
 
 define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', 'Non');
-define('MODULE_EMAIL_TEMPLATE_INVOSICE_TEXT', '¤´ÃíÊ¸¤Ë¤Ä¤¤¤Æ¤Î¾ðÊó¤Ï²¼µ­URL¤Ç¤´Í÷¤¤¤¿¤À¤±¤Þ¤¹¡£');
+define('MODULE_EMAIL_TEMPLATE_INVOSICE_TEXT', 'For ordering information available at the following URL.');
 ?>

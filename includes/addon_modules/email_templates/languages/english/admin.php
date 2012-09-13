@@ -1,114 +1,114 @@
 <?php
-define('TEXT_EMAIL_TEMPLATE_NEW_GROUP', ' or ø∑µ¨•∞•Î°º•◊: ');
-define('TEXT_EMAIL_TEMPLATE_NO_GROUP', ' •∞•Î°º•◊§¨§¢§Í§ﬁ§ª§Û°£ •∞•Î°º•◊§ÚªÿƒÍ§∑§∆§Ø§¿§µ§§°£');
-define('TEXT_EMAIL_TEMPLATE_OTHER_GROUP', ' §Ω§Œ•∞•Î°º•◊Ãæ§œªÿƒÍ§«§≠§ﬁ§ª§Û°£ Ã§ •∞•Î°º•◊Ãæ§ÚªÿƒÍ§∑§∆§Ø§¿§µ§§°£');
-define('HEADING_TITLE', 'Email•∆•Û•◊•Ï°º•»');
-define('TITLE_ADD_EMAIL_TEMPLATE', 'Email•∆°º•◊•Ï°º•»ƒ…≤√');
-define('TITLE_LIST_EMAIL_TEMPLATE', 'Email•∆°º•◊•Ï°º•»∞ÏÕ˜');
-define('TABLE_HEADING_UPDATE', 'Email•∆°º•◊•Ï°º•»ππø∑');
+define('TEXT_EMAIL_TEMPLATE_NEW_GROUP', ' or New Group: ');
+define('TEXT_EMAIL_TEMPLATE_NO_GROUP', ' There are no groups. Please specify the group.');
+define('TEXT_EMAIL_TEMPLATE_OTHER_GROUP', ' The group name can be specified. Please specify the name of another group.');
+define('HEADING_TITLE', 'Email Template');
+define('TITLE_ADD_EMAIL_TEMPLATE', 'Add Email Template');
+define('TITLE_LIST_EMAIL_TEMPLATE', 'Email Template List');
+define('TABLE_HEADING_UPDATE', 'Email Template Update');
 define('TABLE_HEADING_ADD', TITLE_ADD_EMAIL_TEMPLATE);
-define('TABLE_HEADING_GROUP', '•∞•Î°º•◊');
-define('TABLE_HEADING_TITLE', '•ø•§•»•Î');
-define('TABLE_HEADING_EMAIL_SUBJECT', '•·°º•Î∑ÔÃæ');
-define('TABLE_HEADING_EMAIL_CONTENTS', '•·°º•ÎÀ‹ ∏');
-define('TABLE_HEADING_LAST_UPDATE', '∫«Ω™ππø∑∆¸');
-define('TABLE_HEADING_ACTION', '¡‡∫Ó');
+define('TABLE_HEADING_GROUP', 'Group');
+define('TABLE_HEADING_TITLE', 'Title');
+define('TABLE_HEADING_EMAIL_SUBJECT', 'Subject');
+define('TABLE_HEADING_EMAIL_CONTENTS', 'Body');
+define('TABLE_HEADING_LAST_UPDATE', 'Last Update');
+define('TABLE_HEADING_ACTION', 'Action');
 
 if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_ID) {
   if (defined('EMOBILE_APPLIES_LETTER')) {
     define('TABLE_HEADING_HELP', '
-    	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_EMAIL]</font>:&nbsp;∏‹µ“§Œ•·°º•Î•¢•…•Ï•π§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_DOB]</font>:&nbsp;∏‹µ“§Œ√¬¿∏∆¸§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_PHONE]</font>:&nbsp;∏‹µ“§Œ≈≈œ√»÷πÊ§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_FAX]</font>:&nbsp;∏‹µ“§ŒFAX»÷πÊ§À√÷¥π§µ§Ï§ﬁ§π<br>
+    	<p><u>Reserved words:</u></p>
+    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;Replaced by Customers Name<br>
+    	<font color="blue">[CUSTOMER_EMAIL]</font>:&nbsp;Replaced by Customers Email<br>
+    	<font color="blue">[CUSTOMER_DOB]</font>:&nbsp;Replaced by Customers Birthday<br>
+    	<font color="blue">[CUSTOMER_PHONE]</font>:&nbsp;Replaced by Customers Telephone Number<br>
+    	<font color="blue">[CUSTOMER_FAX]</font>:&nbsp;Replaced by Customers FAX Number<br>
     ');
   }
   else {
     define('TABLE_HEADING_HELP', '
-    	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_EMAIL]</font>:&nbsp;∏‹µ“§Œ•·°º•Î•¢•…•Ï•π§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_DOB]</font>:&nbsp;∏‹µ“§Œ√¬¿∏∆¸§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_PHONE]</font>:&nbsp;∏‹µ“§Œ≈≈œ√»÷πÊ§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[CUSTOMER_FAX]</font>:&nbsp;∏‹µ“§ŒFAX»÷πÊ§À√÷¥π§µ§Ï§ﬁ§π<br>
+    	<p><u>Reserved words:</u></p>
+    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;Replaced by Customers Name<br>
+    	<font color="blue">[CUSTOMER_EMAIL]</font>:&nbsp;Replaced by Customers Email<br>
+    	<font color="blue">[CUSTOMER_DOB]</font>:&nbsp;Replaced by Customers Birthday<br>
+    	<font color="blue">[CUSTOMER_PHONE]</font>:&nbsp;Replaced by Customers Telephone Number<br>
+    	<font color="blue">[CUSTOMER_FAX]</font>:&nbsp;Replaced by Customers FAX Number<br>
     ');
   }
 }
 else if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_ID) {
   define('TABLE_HEADING_HELP', '
-  	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[ORDER_ID]</font>:&nbsp;√Ì ∏ID§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[DATE_ORDERED]</font>:&nbsp;√Ì ∏∆¸…’§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[INVOICE_URL]</font>:&nbsp;√Ì ∏æ ÛURL§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[PRODUCTS_ORDERED]</font>:&nbsp;æ¶… Ãæ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[TOTALS]</font>:&nbsp;∂‚≥€πÁ∑◊§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[DELIVERY_ADDRESS]</font>:&nbsp;«€¡˜¿ËΩªΩÍ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[BILLING_ADDRESS]</font>:&nbsp;¿¡µ·¿ËΩªΩÍ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[PAYMENT_METHOD]</font>:&nbsp;ªŸ ß ˝À°§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[COMMENT]</font>:&nbsp;»˜πÕÕÛ§À —¥π§µ§Ï§ﬁ§π<br>
+  	<p><u>Reserved words:</u></p>
+  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;Replaced by Customers Name<br>
+  	<font color="blue">[ORDER_ID]</font>:&nbsp;Replaced by Order ID<br>
+  	<font color="blue">[DATE_ORDERED]</font>:&nbsp;Replaced by Order Date<br>
+  	<font color="blue">[INVOICE_URL]</font>:&nbsp;Replaced by Order Information URL<br>
+  	<font color="blue">[PRODUCTS_ORDERED]</font>:&nbsp;Replaced by Product Name<br>
+  	<font color="blue">[TOTALS]</font>:&nbsp;Replaced by Total Amount<br>
+  	<font color="blue">[DELIVERY_ADDRESS]</font>:&nbsp;Replaced by Shipping Address<br>
+  	<font color="blue">[BILLING_ADDRESS]</font>:&nbsp;Replaced by Billing Address<br>
+  	<font color="blue">[PAYMENT_METHOD]</font>:&nbsp;Replaced by Payment Method<br>
+  	<font color="blue">[COMMENT]</font>:&nbsp;Replaced by Comment<br>
   ');
 }
 else if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_ID) {
   define('TABLE_HEADING_HELP', '
-  	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[ORDER_ID]</font>:&nbsp;√Ì ∏ID§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[DATE_ORDERED]</font>:&nbsp;√Ì ∏∆¸…’§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[PRODUCTS_ORDERED]</font>:&nbsp;æ¶… Ãæ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[TOTALS]</font>:&nbsp;∂‚≥€πÁ∑◊§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[DELIVERY_ADDRESS]</font>:&nbsp;«€¡˜¿ËΩªΩÍ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[BILLING_ADDRESS]</font>:&nbsp;¿¡µ·¿ËΩªΩÍ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[PAYMENT_METHOD]</font>:&nbsp;ªŸ ß ˝À°§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[COMMENT]</font>:&nbsp;»˜πÕÕÛ§À —¥π§µ§Ï§ﬁ§π<br>
+  	<p><u>Reserved words:</u></p>
+  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;Replaced by Customers Name<br>
+  	<font color="blue">[ORDER_ID]</font>:&nbsp;Replaced by Order ID<br>
+  	<font color="blue">[DATE_ORDERED]</font>:&nbsp;Replaced by Order Date<br>
+  	<font color="blue">[PRODUCTS_ORDERED]</font>:&nbsp;Replaced by Product Name<br>
+  	<font color="blue">[TOTALS]</font>:&nbsp;Replaced by Total Amount<br>
+  	<font color="blue">[DELIVERY_ADDRESS]</font>:&nbsp;Replaced by Shipping Address<br>
+  	<font color="blue">[BILLING_ADDRESS]</font>:&nbsp;Replaced by Billing Address<br>
+  	<font color="blue">[PAYMENT_METHOD]</font>:&nbsp;Replaced by Payment Method<br>
+  	<font color="blue">[COMMENT]</font>:&nbsp;Replaced by Comment<br>
   ');
 }
 else if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_STATUS_MAIL_ID) {
   define('TABLE_HEADING_HELP', '
-  	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[ORDER_ID]</font>:&nbsp;√Ì ∏ID§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[INVOICE_URL]</font>:&nbsp;√Ì ∏æ ÛURL§À —¥π§µ§Ï§ﬁ§π<br>
-        <font color="blue">[COMMENTS]</font>:&nbsp;•π•∆°º•ø•π —ππª˛§Œ•≥•·•Û•»§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[DATE_ORDERED]</font>:&nbsp;√Ì ∏∆¸§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[PRODUCTS_ORDERED]</font>:&nbsp;æ¶… Ãæ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[TOTALS]</font>:&nbsp;∂‚≥€πÁ∑◊§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[DELIVERY_ADDRESS]</font>:&nbsp;«€¡˜¿ËΩªΩÍ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[BILLING_ADDRESS]</font>:&nbsp;¿¡µ·¿ËΩªΩÍ§À —¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[PAYMENT_METHOD]</font>:&nbsp;ªŸ ß ˝À°§À —¥π§µ§Ï§ﬁ§π<br>
+  	<p><u>Reserved words:</u></p>
+  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;Replaced by Customers Name<br>
+  	<font color="blue">[ORDER_ID]</font>:&nbsp;Replaced by Order ID<br>
+  	<font color="blue">[INVOICE_URL]</font>:&nbsp;Replaced by Order Information URL<br>
+  	<font color="blue">[COMMENTS]</font>:&nbsp;Replaced by Comment on Change Status<br>
+  	<font color="blue">[DATE_ORDERED]</font>:&nbsp;Replaced by Order Date<br>
+  	<font color="blue">[PRODUCTS_ORDERED]</font>:&nbsp;Replaced by Product Name<br>
+  	<font color="blue">[TOTALS]</font>:&nbsp;Replaced by Total Amount<br>
+  	<font color="blue">[DELIVERY_ADDRESS]</font>:&nbsp;Replaced by Shipping Address<br>
+  	<font color="blue">[BILLING_ADDRESS]</font>:&nbsp;Replaced by Billing Address<br>
+  	<font color="blue">[PAYMENT_METHOD]</font>:&nbsp;Replaced by Payment Method<br>
   ');
 }
 else if ((int)$_REQUEST['id'] == MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_ID) {
   if (defined('EMOBILE_APPLIES_LETTER')) {
     define('TABLE_HEADING_HELP', '
-    	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[NEW_PASSWORD]</font>:&nbsp;ø∑§∑§§•—•π•Ô°º•…§À√÷¥π§µ§Ï§ﬁ§π<br>
+    	<p><u>ó\ñÒçœÇ›ÇÃíPåÍ:</u></p>
+    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;å⁄ãqÇÃñºëOÇ…íuä∑Ç≥ÇÍÇ‹Ç∑<br>
+    	<font color="blue">[NEW_PASSWORD]</font>:&nbsp;êVÇµÇ¢ÉpÉXÉèÅ[ÉhÇ…íuä∑Ç≥ÇÍÇ‹Ç∑<br>
     ');
   }
   else {
     define('TABLE_HEADING_HELP', '
-    	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-    	<font color="blue">[NEW_PASSWORD]</font>:&nbsp;ø∑§∑§§•—•π•Ô°º•…§À√÷¥π§µ§Ï§ﬁ§π<br>
+    	<p><u>ó\ñÒçœÇ›ÇÃíPåÍ:</u></p>
+    	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;å⁄ãqÇÃñºëOÇ…íuä∑Ç≥ÇÍÇ‹Ç∑<br>
+    	<font color="blue">[NEW_PASSWORD]</font>:&nbsp;êVÇµÇ¢ÉpÉXÉèÅ[ÉhÇ…íuä∑Ç≥ÇÍÇ‹Ç∑<br>
     ');
   }
 }
 else {
   define('TABLE_HEADING_HELP', '
-  	<p><u>ÕΩÃÛ∫—§ﬂ§Œ√±∏Ï:</u></p>
-  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;∏‹µ“§ŒÃæ¡∞§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[ORDER_ID]</font>:&nbsp;√Ì ∏ID§À√÷¥π§µ§Ï§ﬁ§π<br>
-  	<font color="blue">[INVOICE_URL]</font>:&nbsp;√Ì ∏æ ÛURL§À —¥π§µ§Ï§ﬁ§π<br>
-        <font color="blue">[COMMENTS]</font>:&nbsp;•π•∆°º•ø•π —ππª˛§Œ•≥•·•Û•»§À —¥π§µ§Ï§ﬁ§π<br>
+  	<p><u>Reserved words:</u></p>
+  	<font color="blue">[CUSTOMER_NAME]</font>:&nbsp;Replaced by Customers Name<br>
+  	<font color="blue">[ORDER_ID]</font>:&nbsp;Replaced by Order ID<br>
+  	<font color="blue">[INVOICE_URL]</font>:&nbsp;Replaced by Order Information URL<br>
+  	<font color="blue">[COMMENTS]</font>:&nbsp;Replaced by Comment on Change Status<br>
   ');
 }
 
-define('TEXT_EMAIL_TEMPLATE_DELETE', '∫ÔΩ¸§π§Î');
-define('TEXT_EMAIL_TEMPLATE_ADDED_MESSAGE', 'Email•∆•Û•◊•Ï°º•»° %s°À§Úƒ…≤√§∑§ﬁ§∑§ø°£');
-define('TEXT_EMAIL_TEMPLATE_UPDATED_MESSAGE', 'Email•∆•Û•◊•Ï°º•»° %s°À§Úππø∑§∑§ﬁ§∑§ø°£');
-define('TEXT_EMAIL_TEMPLATE_TITLE_EMPTY', 'Email•∆•Û•◊•Ï°º•»§Œ•ø•§•»•Î§¨Ã§∆˛Œœ§«§π°£');
-define('TEXT_EMAIL_TEMPLATE_GROUP_EMPTY', 'Email•∆•Û•◊•Ï°º•»§Œ•∞•Î°º•◊§¨Ã§∆˛Œœ§«§π°£');
+define('TEXT_EMAIL_TEMPLATE_DELETE', 'Delete');
+define('TEXT_EMAIL_TEMPLATE_ADDED_MESSAGE', 'Added Email Template (%s).');
+define('TEXT_EMAIL_TEMPLATE_UPDATED_MESSAGE', 'Updated Email Template (%s).');
+define('TEXT_EMAIL_TEMPLATE_TITLE_EMPTY', 'The title of the email template is not entered.');
+define('TEXT_EMAIL_TEMPLATE_GROUP_EMPTY', 'The group is not entered in the email template.');
 ?>

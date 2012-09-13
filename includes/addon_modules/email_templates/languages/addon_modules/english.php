@@ -19,20 +19,21 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_ADDON_MODULES_EXAMPLE_TITLE', '追加モジュール Example');
-define('MODULE_ADDON_MODULES_EXAMPLE_DESCRIPTION', '追加モジュール Example');
-define('MODULE_ADDON_MODULES_EXAMPLE_STATUS_TITLE', '追加モジュール Exampleの有効化');
-define('MODULE_ADDON_MODULES_EXAMPLE_STATUS_DESCRIPTION', '追加モジュール Exampleを有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_ADDON_MODULES_EXAMPLE_SORT_ORDER_TITLE', '優先順');
-define('MODULE_ADDON_MODULES_EXAMPLE_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
 
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_TITLE', 'オーバーライドされたExampleブロックのタイトル');
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_VAR_1', '適当な内容1');
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_VAR_2', '適当な内容2');
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_VAR_3', '適当な内容3');
+define('MODULE_ADDON_MODULES_EXAMPLE_TITLE', 'Addon Modules Example');
+define('MODULE_ADDON_MODULES_EXAMPLE_DESCRIPTION', 'Addon Modules Example');
+define('MODULE_ADDON_MODULES_EXAMPLE_STATUS_TITLE', 'Activating Addon Modules Example');
+define('MODULE_ADDON_MODULES_EXAMPLE_STATUS_DESCRIPTION', 'Do you want to active to Addon Modules Example? <br />true: Active<br />false: Inactive');
+define('MODULE_ADDON_MODULES_EXAMPLE_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_ADDON_MODULES_EXAMPLE_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_TITLE', 'Exampleブロックhogegoe');
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_LIST_1', '適当なリスト1');
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_LIST_2', '適当なリスト2');
-define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_LIST_3', '適当なリスト3');
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_TITLE', 'Overridden of Example Block Title');
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_VAR_1', 'Appropriate content 1');
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_VAR_2', 'Appropriate content 2');
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_VAR_3', 'Appropriate content 3');
+
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_TITLE', 'Example Block hogegoe');
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_LIST_1', 'Appropriate list 1');
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_LIST_2', 'Appropriate list 2');
+define('MODULE_ADDON_MODULES_EXAMPLE_BLOCK_HOGEHOGE_LIST_3', 'Appropriate list 3');
 ?>
