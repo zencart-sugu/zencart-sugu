@@ -22,18 +22,15 @@
 // $Id: japanese.php $
 //
 
-  // 管理画面用
-define('MODULE_CHECKOUT_STEP_TITLE', '注文ステップ表示');
-define('MODULE_CHECKOUT_STEP_DESCRIPTION', '注文ステップ表示<br />注文完了までステップを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">ブロックの設定</a>から表示設定をしてください。');
-define('MODULE_CHECKOUT_STEP_STATUS_TITLE', '注文ステップ表示の有効化');
-define('MODULE_CHECKOUT_STEP_STATUS_DESCRIPTION', '注文ステップ表示を有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_CHECKOUT_STEP_SORT_ORDER_TITLE', '優先順');
-define('MODULE_CHECKOUT_STEP_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_CHECKOUT_STEP_TITLE', 'Display of Step Order');
+define('MODULE_CHECKOUT_STEP_DESCRIPTION', 'Display the step order.<br />The block where the step until completing the order is displayed is added.<br />Please display setting for the <a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">Block Setting</a> after activation.');
+define('MODULE_CHECKOUT_STEP_STATUS_TITLE', 'Activating Display of Step Order');
+define('MODULE_CHECKOUT_STEP_STATUS_DESCRIPTION', 'Do you want to active to display of step order?<br />true: Active<br />false: Inactive');
+define('MODULE_CHECKOUT_STEP_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_CHECKOUT_STEP_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-// addon_moduleブロック管理用
 define('MODULE_CHECKOUT_STEP_BLOCK_TITLE', 'Checkout Step');
 
-// ブロック表示用
 define('MODULE_CHECKOUT_STEP_BLOCK_CART', 'Check Cart');
 define('MODULE_CHECKOUT_STEP_BLOCK_SHIPPING', 'Shipping Method');
 define('MODULE_CHECKOUT_STEP_BLOCK_PAYMENT', 'Payment Method');
