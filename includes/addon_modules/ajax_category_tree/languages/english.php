@@ -21,16 +21,16 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_TITLE',                  '商品カテゴリー');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_DESCRIPTION',            'カテゴリーをツリー表示にします');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_TITLE',           '商品カテゴリーの有効化');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_DESCRIPTION',     '商品カテゴリー表示を有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_SORT_ORDER_TITLE',       '優先順');
-define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_TITLE',                  'Product Categories');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_DESCRIPTION',            'The category tree view');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_TITLE',           'Activating product categories');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_STATUS_DESCRIPTION',     'Do you want to active to product category?<br />true: Active<br />false: Inactive');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_SORT_ORDER_TITLE',       'Sort Order');
+define('MODULE_ADDON_MODULES_AJAXCATEGORYTREE_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('MODULE_AJAX_CATEGORY_TREE_TITLE',          '商品カテゴリー');
-define('MODULE_AJAX_CATEGORY_TREE_BLOCK_TITLE',    '商品カテゴリー');
-define('MODULE_ADDON_MODULES_TEXT_ALL_CATEGORIES', '全カテゴリー');
+define('MODULE_AJAX_CATEGORY_TREE_TITLE',          'Product Categories');
+define('MODULE_AJAX_CATEGORY_TREE_BLOCK_TITLE',    'Product Categories');
+define('MODULE_ADDON_MODULES_TEXT_ALL_CATEGORIES', 'All Categories');
 
 // header_navigation extra_boxes
 define('BOX_AJAXCATEGORYTREE',               'Product Categories');
