@@ -21,25 +21,24 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_BLOG_TITLE',                  'ブログ');
-define('MODULE_BLOG_DESCRIPTION',            'ブログ');
+define('MODULE_BLOG_TITLE',                  'Blog');
+define('MODULE_BLOG_DESCRIPTION',            'Blog');
 
-define('MODULE_BLOG_STATUS_TITLE',           'ブログの有効化');
-define('MODULE_BLOG_STATUS_DESCRIPTION',     'ブログを有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_BLOG_STATUS_TITLE',           'Activating Blog');
+define('MODULE_BLOG_STATUS_DESCRIPTION',     'Do you want to active to blog? <br />true: Active<br />false: Inactive');
 
-define('MODULE_BLOG_URL_TITLE',              'ブログURL');
-define('MODULE_BLOG_URL_DESCRIPTION',        '取得対象のURLを http:// から入力してください(https未対応)');
+define('MODULE_BLOG_URL_TITLE',              'Blog URL');
+define('MODULE_BLOG_URL_DESCRIPTION',        'Be retrieved from the URL http:// Please enter (https unsupported)');
 
-define('MODULE_BLOG_TIMEOUT_TITLE',          'タイムアウト');
-define('MODULE_BLOG_TIMEOUT_DESCRIPTION',    '取得リミット時間を設定します、ここで指定した時間以上に取得に時間がかかった場合は取得を中止します');
+define('MODULE_BLOG_TIMEOUT_TITLE',          'Timeout');
+define('MODULE_BLOG_TIMEOUT_DESCRIPTION',    'Set a time limit acquisition. If the acquisition takes longer than the time specified here is to get stops.');
 
-define('MODULE_BLOG_COUNT_TITLE',            '表示件数');
-define('MODULE_BLOG_COUNT_DESCRIPTION',      '最大表示件数を設定します、0の場合はすべてとなります');
+define('MODULE_BLOG_COUNT_TITLE',            'Number of Display');
+define('MODULE_BLOG_COUNT_DESCRIPTION',      'Sets the maximum number of display. In the case of 0, it become all.');
 
-define('MODULE_BLOG_SORT_ORDER_TITLE',       '優先順');
-define('MODULE_BLOG_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_BLOG_SORT_ORDER_TITLE',       'Sort Order');
+define('MODULE_BLOG_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-// addon_moduleブロック管理用
 define('MODULE_BLOG_BLOCK_TITLE', 'Blog');
 
 define('BOX_BLOG', 'Blog');
