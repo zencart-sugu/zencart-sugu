@@ -20,14 +20,14 @@
 // $Id: japanese.php $
 //
 
-define('MODULE_VISITORS_PURCHASE_TITLE', 'ビジターによる商品購入');
-define('MODULE_VISITORS_PURCHASE_DESCRIPTION', '会員登録をしないビジターによる商品購入を可能にします。');
-define('MODULE_VISITORS_PURCHASE_STATUS_TITLE', 'ビジターによる商品購入の有効化');
-define('MODULE_VISITORS_PURCHASE_STATUS_DESCRIPTION', 'ビジターによる商品購入を有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_VISITORS_PURCHASE_ORDERS_DATA_KEEP_DAYS_TITLE', 'ビジターの注文データを保存しておく日数');
-define('MODULE_VISITORS_PURCHASE_ORDERS_DATA_KEEP_DAYS_DESCRIPTION', 'ビジターの注文データを商品購入日から何日間保存するかを設定します。指定した日数を超えると自動的にビジターの注文データがデータベースから削除されます。自動削除しない場合は空欄にします。<br />・初期値 = ' . MODULE_VISITORS_PURCHASE_ORDERS_DATA_KEEP_DAYS_DEFAULT);
-define('MODULE_VISITORS_PURCHASE_SORT_ORDER_TITLE', '優先順');
-define('MODULE_VISITORS_PURCHASE_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_VISITORS_PURCHASE_TITLE', 'Merchandise purchase by visitor');
+define('MODULE_VISITORS_PURCHASE_DESCRIPTION', 'The merchandise purchase by the visitor who doesn\'t register the member is enabled.');
+define('MODULE_VISITORS_PURCHASE_STATUS_TITLE', 'Activating Purchases by Visitors');
+define('MODULE_VISITORS_PURCHASE_STATUS_DESCRIPTION', 'Do you want to active to purchases by visitors?<br />true: Active<br />false: Inactive');
+define('MODULE_VISITORS_PURCHASE_ORDERS_DATA_KEEP_DAYS_TITLE', 'Days in which visitor\'s order data is preserved');
+define('MODULE_VISITORS_PURCHASE_ORDERS_DATA_KEEP_DAYS_DESCRIPTION', 'How many days from the commodity purchase date visitor\'s order data is preserved is set. When specified days are exceeded, visitor\'s order data is automatically deleted from the data base. It makes it to an empty column when not deleting it automatically.<br />Default = ' . MODULE_VISITORS_PURCHASE_ORDERS_DATA_KEEP_DAYS_DEFAULT);
+define('MODULE_VISITORS_PURCHASE_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_VISITORS_PURCHASE_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
 // additional defines login
 define('HEADING_NEW_CUSTOMER_WITH_VISITORS', '[For first visit or unregistered customers,]<br />If you want to create your account,then press [Next] Button.');
@@ -35,7 +35,7 @@ define('TEXT_NEW_CUSTOMER_INTRODUCTION_WITH_VISITORS', '
 Do not miss the chance!<br />Once you have customer account for ' . STORE_NAME . ', then later enjoy a comfortable shopping without having to enter your customer information.');
 define('HEADING_NEW_VISITORS', '【Shopping without creating account】<br /> Enter Your Information and press [Compleete] button.');
 define('TEXT_NEW_VISITORS_INTRODUCTION', 'In ' . STORE_NAME . ',You can buy anything without creating an account.However,services for members are not available.');
-define('ENTRY_EMAIL_FORMAT','Eメールの形式');
+define('ENTRY_EMAIL_FORMAT','Email Format');
 
 // additional defines checkout_confirmation
 define('TEXT_INFO_VISITORS_CREDIT_SELECTION', 'If you want to use [%s] Service,you need to create customer account.');
@@ -46,7 +46,7 @@ define('HEADING_CUSTOMER_ADDRESS', 'Cutomer Information');
 
 // additional defines checkout_process
 define('EMAIL_TEXT_CUSTOMER_ADDRESS', 'Customer Information');
-define('EMAIL_VISITORS_DISCLAIMER', 'このメールは当ショップにご注文いただいたお客様に対してお送りしています。お心当たりが無いようでしたら大変お手数ですがメールにて %s までご連絡ください。');
+define('EMAIL_VISITORS_DISCLAIMER', 'This E-mail is sent to the customer ordered to this shop. Very sorry to trouble you, but please contact the %s with mail when there is no idea.');
 define('SEND_EXTRA_VISITORS_NEW_ORDERS_EMAILS_TO_SUBJECT','[New Order] (Visitors)');
 
 // additional defines checkout_success
