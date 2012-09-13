@@ -10,69 +10,69 @@
  * @version $Id: points.php $
  */
 
-define('HEADING_TITLE', 'ポイント管理');
-define('HEADING_TITLE_SEARCH', '顧客ID:');
-define('HEADING_TITLE_CLASS', 'モジュールクラス:');
+define('HEADING_TITLE', 'Point Manager');
+define('HEADING_TITLE_SEARCH', 'Customer ID:');
+define('HEADING_TITLE_CLASS', 'Module class:');
 
 define('TABLE_HEADING_POINTS_ID', 'ID');
-define('TABLE_HEADING_CUSTOMERS', '顧客名');
-define('TABLE_HEADING_DESCRIPTION', '適用');
-define('TABLE_HEADING_DEPOSIT', '有効');
-define('TABLE_HEADING_PENDING', '保留');
-define('TABLE_HEADING_WITHDRAW', '使用');
-define('TABLE_HEADING_CLASS', 'モジュールクラス');
-define('TABLE_HEADING_CREATED', '登録日時');
-define('TABLE_HEADING_UPDATED', '更新日時');
-define('TABLE_HEADING_STATUS', 'ステータス');
-define('TABLE_HEADING_ACTION', '操作');
+define('TABLE_HEADING_CUSTOMERS', 'Customer Name');
+define('TABLE_HEADING_DESCRIPTION', 'Apply');
+define('TABLE_HEADING_DEPOSIT', 'Enable');
+define('TABLE_HEADING_PENDING', 'Pending');
+define('TABLE_HEADING_WITHDRAW', 'Use');
+define('TABLE_HEADING_CLASS', 'Module class');
+define('TABLE_HEADING_CREATED', 'Registration Date');
+define('TABLE_HEADING_UPDATED', 'Date Modified');
+define('TABLE_HEADING_STATUS', 'Status');
+define('TABLE_HEADING_ACTION', 'Action');
 
-define('TEXT_ALL_POINTS', '全て');
-define('TEXT_DISPLAY_NUMBER_OF_POINTS', '<b>%d</b>から<b>%d</b>件を表示 (全<b>%d</b>件)');
+define('TEXT_ALL_POINTS', 'All');
+define('TEXT_DISPLAY_NUMBER_OF_POINTS', 'Show <b>%d</b to <b>%d</b (All <b>%d</b>)');
 
 define('ENTRY_POINT_ID','ID: ');
 
-define('ENTRY_CUSTOMERS_ID','顧客ID: ');
-define('ENTRY_CUSTOMERS_NAME','顧客名: ');
-define('ENTRY_CUSTOMERS_EMAIL','顧客メールアドレス: ');
-define('ENTRY_DESCRIPTION','適用: ');
-define('ENTRY_POINT','ポイント: ');
-define('ENTRY_DEPOSIT','有効ポイント: ');
-define('ENTRY_PENDING','保留ポイント: ');
-define('ENTRY_WITHDRAW','使用ポイント: ');
-define('ENTRY_STATUS','ステータス: ');
+define('ENTRY_CUSTOMERS_ID','Customer ID: ');
+define('ENTRY_CUSTOMERS_NAME','Customer Name: ');
+define('ENTRY_CUSTOMERS_EMAIL','Customer Email: ');
+define('ENTRY_DESCRIPTION','Apply: ');
+define('ENTRY_POINT','Point: ');
+define('ENTRY_DEPOSIT','Valid point: ');
+define('ENTRY_PENDING','Pending Point: ');
+define('ENTRY_WITHDRAW','Use Point: ');
+define('ENTRY_STATUS','Status: ');
 
-define('TEXT_INFO_HEADING_NEW_POINT', '新規ポイント登録');
-define('TEXT_NEW_INTRO', '新規ポイントを登録します。');
+define('TEXT_INFO_HEADING_NEW_POINT', 'Register New Point');
+define('TEXT_NEW_INTRO', 'Register a new point.');
 
-define('TEXT_INFO_HEADING_NEWCONFIRM_POINT', '新規ポイント登録確認');
-define('TEXT_NEWCONFIRM_INTRO', '以下の内容で新規ポイントを登録しますか？<br />ポイント残額計算に反映するには登録後にステータスONにします。');
+define('TEXT_INFO_HEADING_NEWCONFIRM_POINT', 'Confirmation Register New Point');
+define('TEXT_NEWCONFIRM_INTRO', 'Do you want to register a new point with the contents of the following?<br />To reflect the balance calculation point after register status ON.');
 
-define('TEXT_INFO_HEADING_EDIT_POINT', 'ポイント編集');
-define('TEXT_EDIT_INTRO', 'このポイントを編集します。');
+define('TEXT_INFO_HEADING_EDIT_POINT', 'Edit Point');
+define('TEXT_EDIT_INTRO', 'Edit this point.');
 
-define('TEXT_INFO_HEADING_DELETE_POINT', 'ポイント削除確認');
-define('TEXT_INFO_DELETE_INTRO', 'このポイントを本当に削除しますか?<br />データが完全に削除されます。この操作の実行は元に戻せません。');
-define('TEXT_INFO_HEADING_STATUS_OFF_POINT', 'ステータスOFF確認');
-define('TEXT_INFO_STATUS_OFF_INTRO', 'このポイントを本当にステータスOFFにしますか?<br />ステータスOFFにするとポイント残額計算に反映されなくなります。');
-define('TEXT_INFO_HEADING_STATUS_ON_POINT', 'ステータスON確認');
-define('TEXT_INFO_STATUS_ON_INTRO', 'このポイントを本当にステータスONにしますか?<br />ステータスONにするとポイント残額計算に反映されます。');
-define('TEXT_INFO_HEADING_PENDING_TO_DEPOSIT_POINT', 'ポイント有効確認');
-define('TEXT_INFO_PENDING_TO_DEPOSIT_INTRO', 'このポイントを本当に有効にしますか?');
-define('TEXT_INFO_HEADING_DEPOSIT_TO_PENDING_POINT', 'ポイント保留確認');
-define('TEXT_INFO_DEPOSIT_TO_PENDING_INTRO', 'このポイントを本当に保留にしますか?');
-define('TEXT_STATUS_OFF', 'ステータスをOFFにする');
-define('TEXT_STATUS_ON', 'ステータスをONにする');
-define('TEXT_PENDING_TO_DEPOSIT', 'ポイントを有効にする');
-define('TEXT_DEPOSIT_TO_PENDING', 'ポイントを保留にする');
-define('TEXT_DATE_POINT_CREATED', '登録日:');
-define('TEXT_DATE_POINT_UPDATED', '更新日:');
-define('TEXT_INFO_POINT_CLASS', 'モジュールクラス:');
+define('TEXT_INFO_HEADING_DELETE_POINT', 'Confirmation Point Delete');
+define('TEXT_INFO_DELETE_INTRO', 'Do you want to delete this point?<br />The data is completely removed. Performing this operation can not be undone.');
+define('TEXT_INFO_HEADING_STATUS_OFF_POINT', 'Confirmation Status OFF');
+define('TEXT_INFO_STATUS_OFF_INTRO', 'Do you want to status OFF of this point?<br />If set to OFF status then balance calculation point will not be reflected.');
+define('TEXT_INFO_HEADING_STATUS_ON_POINT', 'Confirmation Status ON');
+define('TEXT_INFO_STATUS_ON_INTRO', 'Do you want to status ON of this point?<br />If set to ON status then balance calculation point will be reflected.');
+define('TEXT_INFO_HEADING_PENDING_TO_DEPOSIT_POINT', 'Confirmation Point Valid');
+define('TEXT_INFO_PENDING_TO_DEPOSIT_INTRO', 'Do you want to enable this point?');
+define('TEXT_INFO_HEADING_DEPOSIT_TO_PENDING_POINT', 'Confirmation Point Pending');
+define('TEXT_INFO_DEPOSIT_TO_PENDING_INTRO', 'Do you want to pending this point?');
+define('TEXT_STATUS_OFF', 'Set OFF status');
+define('TEXT_STATUS_ON', 'Set ON status');
+define('TEXT_PENDING_TO_DEPOSIT', 'Enabling Point');
+define('TEXT_DEPOSIT_TO_PENDING', 'Pending Point');
+define('TEXT_DATE_POINT_CREATED', 'Registration Date:');
+define('TEXT_DATE_POINT_UPDATED', 'Last Updated:');
+define('TEXT_INFO_POINT_CLASS', 'Module class:');
 
-define('SUCCESS_POINT_INSERTED', 'ポイントが登録されました。ポイント残額計算に反映するにはステータスONにしてください。');
-define('SUCCESS_POINT_UPDATED', 'ポイントが更新されました。');
-define('SUCCESS_POINT_DELETED', 'ポイントが削除されました。');
+define('SUCCESS_POINT_INSERTED', 'Point was registered. To reflect the balance calculation point set ON status.');
+define('SUCCESS_POINT_UPDATED', 'Points have been updated.');
+define('SUCCESS_POINT_DELETED', 'Points have been removed.');
 
-define('ERROR_CUSTOMERS_ID', '顧客IDが存在しません。');
-define('ERROR_DESCRIPTION', '適用を入力してください。');
-define('ERROR_POINT_VALUE', 'ポイント数は1以上を入力してください。');
-define('ERROR_POINT_SPECIFY', 'ポイント種別が不正です。');
+define('ERROR_CUSTOMERS_ID', 'Customer ID does not exist.');
+define('ERROR_DESCRIPTION', 'Please enter the application.');
+define('ERROR_POINT_VALUE', 'The number of points enter greater than 1.');
+define('ERROR_POINT_SPECIFY', 'Invalid point type.');
