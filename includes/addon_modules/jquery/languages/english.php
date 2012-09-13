@@ -20,15 +20,15 @@
 // $Id: japanese.php $
 //
 define('MODULE_JQUERY_TITLE', 'jQuery');
-define('MODULE_JQUERY_DESCRIPTION', 'jQueryライブラリをロードします。');
-define('MODULE_JQUERY_STATUS_TITLE', 'jQueryの有効化');
-define('MODULE_JQUERY_STATUS_DESCRIPTION', 'jQueryを有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_JQUERY_DESCRIPTION', 'Load jQuery library.');
+define('MODULE_JQUERY_STATUS_TITLE', 'Activating jQuery');
+define('MODULE_JQUERY_STATUS_DESCRIPTION', 'Do you want to active to jQuery?<br />true: Active<br />false: Inactive');
 
-define('MODULE_JQUERY_LIBRARY_TITLE', 'jQueryライブラリ');
-define('MODULE_JQUERY_LIBRARY_DESCRIPTION', 'jQueryライブラリのファイル名を設定します。特に理由がない限り変更する必要はありません。<br />・初期値 = ' . MODULE_JQUERY_LIBRARY_DEFAULT);
+define('MODULE_JQUERY_LIBRARY_TITLE', 'jQuery Library');
+define('MODULE_JQUERY_LIBRARY_DESCRIPTION', 'Set the jQuery library file name. There is no need to change unless there is a specific reason.<br />Default = ' . MODULE_JQUERY_LIBRARY_DEFAULT);
 
-define('MODULE_JQUERY_NOCONFLICT_STATUS_TITLE', 'noConflictの有効化');
-define('MODULE_JQUERY_NOCONFLICT_STATUS_DESCRIPTION', 'noConflictを有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_JQUERY_NOCONFLICT_STATUS_TITLE', 'Activating noConflict');
+define('MODULE_JQUERY_NOCONFLICT_STATUS_DESCRIPTION', 'Do you want to active to noConflict?<br />true: Active<br />false: Inactive');
 
-define('MODULE_JQUERY_SORT_ORDER_TITLE', '優先順');
-define('MODULE_JQUERY_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_JQUERY_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_JQUERY_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
