@@ -12,34 +12,34 @@
  * @version $Id: products_pointrate.php $
  */
 
-define('HEADING_TITLE', '商品毎ポイント還元率の設定');
-define('HEADING_TITLE_GOTO', 'ジャンプ:');
+define('HEADING_TITLE', 'Rate of Point Reduction for Each Product Configuration');
+define('HEADING_TITLE_GOTO', 'Go To:');
 
 define('TABLE_HEADING_ID', 'ID');
-define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'カテゴリー / 商品');
+define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'Categories / Products');
 define('TABLE_HEADING_CATEGORIES_SORT_ORDER', 'Sort');
 
-define('TABLE_HEADING_PRICE','価格/特価/セール');
-define('TABLE_HEADING_QUANTITY','数量');
+define('TABLE_HEADING_PRICE','Price/Special/Sale');
+define('TABLE_HEADING_QUANTITY','Quantity');
 
-define('TABLE_HEADING_POINTRATE', 'ポイント還元率(%)');
-define('TABLE_HEADING_STATUS', 'ステータス');
+define('TABLE_HEADING_POINTRATE', 'Point Reduction Rate(%)');
+define('TABLE_HEADING_STATUS', 'Status');
 
-define('TEXT_CATEGORIES', 'カテゴリー:');
-define('TEXT_SUBCATEGORIES', 'サブカテゴリー:');
-define('TEXT_PRODUCTS', '商品:');
+define('TEXT_CATEGORIES', 'Categories:');
+define('TEXT_SUBCATEGORIES', 'Sub Categories:');
+define('TEXT_PRODUCTS', 'Products:');
 
-  define('TABLE_HEADING_MODEL', '型番');
+define('TABLE_HEADING_MODEL', 'Model');
 
 
 // categories status
-define('TEXT_CATEGORIES_STATUS_OFF', 'オフ');
-define('TEXT_CATEGORIES_STATUS_ON', 'オン');
-define('TEXT_PRODUCTS_STATUS_OFF', 'オフ');
-define('TEXT_PRODUCTS_STATUS_ON', 'オン');
+define('TEXT_CATEGORIES_STATUS_OFF', 'OFF');
+define('TEXT_CATEGORIES_STATUS_ON', 'ON');
+define('TEXT_PRODUCTS_STATUS_OFF', 'OFF');
+define('TEXT_PRODUCTS_STATUS_ON', 'ON');
 
-define('TEXT_PRODUCTS_STATUS_ON_OF',' の ');
-define('TEXT_PRODUCTS_STATUS_ACTIVE',' アクティブ ');
+define('TEXT_PRODUCTS_STATUS_ON_OF',' of ');
+define('TEXT_PRODUCTS_STATUS_ACTIVE',' Active ');
 
-define('SUCCESS_PRODUCTS_POINTRATE_UPDATED', '商品毎ポイント還元率が更新されました。');
+define('SUCCESS_PRODUCTS_POINTRATE_UPDATED', 'Updated rate of point reduction of each products.');
 ?>
