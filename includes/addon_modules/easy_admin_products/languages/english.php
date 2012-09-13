@@ -40,9 +40,9 @@ define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_MANUFACTURER',            'Products Manu
 define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_DESCRIPTION',             'Products Description');
 define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_SPECIAL',                 'Special Products');
 
-// 一覧画面のヘッダ
-// MODULE_EASY_ADMIN_PRODUCTS_HEADING_0から連番とする
-// defineされているのを確認し自動で表示する
+// for list
+// MODULE_EASY_ADMIN_PRODUCTS_HEADING_0, 1, 2, ...
+// 
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_0',                    'Category');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_1',                    'Products Name');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_2',                    'Products Model');
@@ -61,7 +61,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              'Select');
 define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_ON',                    'Status On');
 define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_OFF',                   'Status Off');
 
-// カテゴリ一覧
+// category list
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_LIST',          '*Select Category From List');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_SEARCH',        '*Select Category To Search');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND',              'Expand');
@@ -76,6 +76,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET',               'Reset');
 define('MODULE_EASY_ADMIN_WINDOW_CLOSE_IMG',                      '../includes/addon_modules/easy_admin_products/images/icon_close.gif');
 define('MODULE_EASY_ADMIN_WINDOW_CLOSE_ALT',                      'Close');
 
+// special list
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT',               '[Special Product Refine]');
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DOWNLOAD',             'Download Products');
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_FEATURED',             'Featured Products');
@@ -85,7 +86,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_ARRIVAL',              'Schedule of A
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DISPLAY',              'Display Products');
 define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_NONDISPLAY',           'No Display Products');
 
-// 操作
+// controll
 define('MODULE_EASY_ADMIN_PRODUCTS_EDIT',                         'Edit');
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE',                       'Delete');
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN',                   '../includes/addon_modules/easy_admin_products/images/button_delete.gif');
@@ -101,7 +102,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                   '../includes/a
 define('MODULE_EASY_ADMIN_PRODUCTS_ADD',                          'Add');
 define('MODULE_EASY_ADMIN_PRODUCTS_ADD_BTN',                      '../includes/addon_modules/easy_admin_products/images/button_add.gif');
 
-// 商品
+// products
 define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">Required</font>');
 define('MODULE_EASY_ADMIN_PRODUCTS_YES',                          'Yes');
 define('MODULE_EASY_ADMIN_PRODUCTS_NO',                           'No');
@@ -127,6 +128,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_PRICE',                'Price(Net):')
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_GROSS',                'Price(Gross):');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE',                'Image:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE_NOTE',           '<br/><font color="red">アップロードする画像の拡張子が現在アップロード済みのものと異なる場合は、<br/>再度追加画像をアップロードしてください</font>');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE',            '追加画像:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE_NOTE',       '<br/><font color="red">追加画像はメイン画像と同じ拡張子に自動的に変換されます</font>');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD',               'Upload Directory:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD_NOTE',          '<br/>Do you want to overwrite the existing option image?<br/>If you do not want to overwrite [No] to select and please setting existing file with different name at [Option Image].<br/>');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_DESCRIPTION',          'Products Description:');
@@ -139,6 +142,9 @@ define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_URL',                  'Products URL:
 define('MODULE_EASY_ADMIN_PRODUCTS_MANUFACTURER_0',               '--none--');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_DATE_AVAILABLE',       'Date Available(YYYY-MM-DD):');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_FEATURED',             'Featured Products:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION',               '商品属性による価格:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION_TEXT',          '設定(別ウィンドウで開きます)');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION_NOSAVE',        '<font color="red">保存後に設定可能です</font>');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS',             'Specials:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION',      'Special Price Setting:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_0',    'Disable');
@@ -171,22 +177,22 @@ define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_IMMIDIATE',       'Immediate Spe
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_KEYWORD',     '&lt;meta&gt;Tag(keywords):');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_DESCRIPTION', '&lt;meta&gt;Tag(description):');
 
+// open/close
 define('MODULE_EASY_ADMIN_PRODUCTS_OPEN',                         '--- [Open] ---');
 define('MODULE_EASY_ADMIN_PRODUCTS_CLOSE',                        '--- [Close] ---');
 
-
-// 削除
+// delete
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE',                 'Do you want to really delete a product?');
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_IMAGE',                 '次の画像を削除しますか？');
 
-// コピー
+// copy
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE',                   'Copying Products');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY_ORIGINAL',       '<strong>現カテゴリ</strong>');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY',                '<strong>カテゴリ</strong>　<font color="red">必須</font>');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_SELECT_TXT',              '');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE',                    'Please choose the category you want to copy products [%s]');
 
-// エラー
+// error
 define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL',                  'Products model is required');
 define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL_ALREADY_EXISTS',   'この型番は他の商品で使われています');
 define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES',             'Please select at least one category');
@@ -198,14 +204,6 @@ define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT',                'Product Creat
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE',                'Product Saved');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE',                'Deleted %s');
 define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY',                  '%s were copied to %s.');
-
-// notice
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_ERROR_SAVE',            '保存時にエラーが発生しました');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_STATUS',                'ステータス変更しました');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT',                '商品を作成しました');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE',                '商品を保存しました');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE',                '%sを削除しました');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY',                  '%sを「%s」にコピーしました');
 
 // xsell
 define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_HEADING_TITLE',          '関連商品');

@@ -150,29 +150,29 @@ If you do not remember this email,please contact us at xxxxxxx@example.org.
 Copyright (c) XXXXXXXX Inc. All Rights Reserved
 ');
 
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_GRP', '¥Ñ¥¹¥ï¡¼¥É¥ê¥Þ¥¤¥ó¥À¡¼');
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_TITLE', '¥Ñ¥¹¥ï¡¼¥É¥ê¥Þ¥¤¥ó¥À¡¼ ¥á¡¼¥ë');
-define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT', '¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Î¤ªÃÎ¤é¤»');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_GRP', 'ƒpƒXƒ[ƒhƒŠƒ}ƒCƒ“ƒ_[');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_TITLE', 'ƒpƒXƒ[ƒhƒŠƒ}ƒCƒ“ƒ_[ ƒ[ƒ‹');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT', 'V‚µ‚¢ƒpƒXƒ[ƒh‚Ì‚¨’m‚ç‚¹');
 define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY', '
-[CUSTOMER_NAME] ÍÍ
+[CUSTOMER_NAME] —l
 
-¤´ÍøÍÑ¤¢¤ê¤¬¤È¤¦¤´¤¶¤¤¤Þ¤¹¡£
+‚²—˜—p‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚·B
 
-¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Î¿½ÀÁ¤ò¼õ¤±ÉÕ¤±¤Þ¤·¤¿¡£
+V‚µ‚¢ƒpƒXƒ[ƒh‚Ì\¿‚ðŽó‚¯•t‚¯‚Ü‚µ‚½B
 
-¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Ï
+V‚µ‚¢ƒpƒXƒ[ƒh‚Í
 
    [NEW_PASSWORD]
 
-¤Ç¤¹¡£
+‚Å‚·B
 
-¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É¤Ç¥í¥°¥¤¥ó¤·¤¿¸å
-¡Ö¥Þ¥¤¥Ú¡¼¥¸¡×¤Ç¤´´õË¾¤Î¥Ñ¥¹¥ï¡¼¥É¤ËÊÑ¹¹¤Ç¤­¤Þ¤¹¡£
+V‚µ‚¢ƒpƒXƒ[ƒh‚ÅƒƒOƒCƒ“‚µ‚½Œã
+uƒ}ƒCƒy[ƒWv‚Å‚²Šó–]‚ÌƒpƒXƒ[ƒh‚É•ÏX‚Å‚«‚Ü‚·B
 
 -----
-¤³¤Î¥á¡¼¥ë¤ÏÅö¥·¥ç¥Ã¥×¤ËÅÐÏ¿¤µ¤ì¤¿¤ªµÒÍÍ¤ËÂÐ¤·¤Æ¤ªÁ÷¤ê¤·¤Æ¤¤¤Þ¤¹¡£
-¤ª¿´Åö¤¿¤ê¤¬Ìµ¤¤¤è¤¦¤Ç¤·¤¿¤éÂçÊÑ¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ë¤Ë¤Æ
-xxxxxxx@example.org ¤Þ¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤¡£
+‚±‚Ìƒ[ƒ‹‚Í“–ƒVƒ‡ƒbƒv‚É“o˜^‚³‚ê‚½‚¨‹q—l‚É‘Î‚µ‚Ä‚¨‘—‚è‚µ‚Ä‚¢‚Ü‚·B
+‚¨S“–‚½‚è‚ª–³‚¢‚æ‚¤‚Å‚µ‚½‚ç‘å•Ï‚¨Žè”‚Å‚·‚ªƒ[ƒ‹‚É‚Ä
+xxxxxxx@example.org ‚Ü‚Å‚²˜A—‚­‚¾‚³‚¢B
 
 -----
 Copyright (c) XXXXXXXX Inc. All Rights Reserved

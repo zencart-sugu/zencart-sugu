@@ -6,6 +6,8 @@ define('MODULE_PRODUCT_CSV_TITLE', 'Products Shelf Registration by CSV');
 define('MODULE_PRODUCT_CSV_DESCRIPTION', 'CSV product to define the contents of each item, Product information in the form of shelf registration, and updated.');
 define('MODULE_PRODUCT_CSV_STATUS_TITLE', 'Activating products shelf registration by CSV');
 define('MODULE_PRODUCT_CSV_STATUS_DESCRIPTION', 'Do you want to active to products shelf registration by CSV<br />true: Active<br />false: Inactive');
+define('MODULE_PRODUCT_RESERVE_IMPORT_TITLE', '取込予約用CSVファイル配置ディレクトリ');
+define('MODULE_PRODUCT_RESERVE_IMPORT_DESCRIPTION', '取込予約用CSVファイル配置ディレクトリを相対パスで指定します');
 define('MODULE_PRODUCT_CSV_SORT_ORDER_TITLE', 'Sort Order');
 define('MODULE_PRODUCT_CSV_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
@@ -14,6 +16,15 @@ define('MODULE_PRODUCT_CSV_FORMAT_TYPES_2', 'Product Categories');
 define('MODULE_PRODUCT_CSV_FORMAT_TYPES_3', 'Product Options');
 
 define('PRODUCT_CSV_RETURN_TEXT', 'Return');
+
+define('ERROR_PRODUCT_CSV_IMPORT_TIME_FORMAT', '時刻フォーマットが不正です');
+define('ERROR_PRODUCT_CSV_IMPORT_FILENAME',    'ファイル命名規則に合っていません');
+define('ERROR_PRODUCT_CSV_IMPORT_FILE_READ',   'ファイルを読めませんでした');
+define('ERROR_PRODUCT_CSV_IMPORT_FILE_MOVE',   'ファイルを処理用ディレクトリィに移動できませんでした');
+
+define('SUCCESS_PRODUCT_CSV_IMPORT',           'CSV取り込み完了:');
+define('UNSUCCESS_PRODUCT_CSV_IMPORT',         'CSV取り込みエラー:');
+define('PRODUCT_CSV_IMPORTED',                 '%sを取り込みました。');
 
 $GLOBALS['MODULE_PRODUCT_CSV_COLUMNS'] = array(
   array('type_id'=>'1',

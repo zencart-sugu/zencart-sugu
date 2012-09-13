@@ -60,5 +60,4 @@ define('TEXT_DISPLAY_NUMBER_OF_FEATURES', ' Display  <strong>%d</strong> to <str
 define('SUCCESS_FEATURE_AREA_STATUS_UPDATED', 'SUCCESS: Features status has changed.');
 define('ERROR_UNKNOWN_STATUS_FLAG', 'ERROR: The status is unknown.');
 
-
 ?>

@@ -433,6 +433,24 @@
       <td colspan="2">
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
+            <th><?php echo MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION; ?></th>
+            <td>
+            <?php
+              if ($product['products_id'] > 0) {
+                $parm = array(
+                          "products_id" => $product['products_id'],
+                          "action"      => "",
+                        );
+                $link = $html->href_link("attributes", $parm);
+            ?>
+              <a href="<?php echo $link; ?>" target="_blank"><?php echo MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION_TEXT; ?></a>
+            <?php } else { ?>
+              <?php echo MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION_NOSAVE; ?>
+            <?php } ?>
+            </td>
+          </tr>
+
+          <tr>
             <?php
               $option = array(array('id' => 0, 'text' => MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_0),
                               array('id' => 1, 'text' => MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_1),

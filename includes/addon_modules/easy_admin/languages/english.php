@@ -25,6 +25,9 @@ define('MODULE_EASY_ADMIN_DESCRIPTION',              'To be able to easily chang
 define('MODULE_EASY_ADMIN_STATUS_TITLE',             'Activating Admin Menu Setting');
 define('MODULE_EASY_ADMIN_STATUS_DESCRIPTION',       'Do you want to active to Admin Menu Setting?<br />true: Active<br />false: Inactive');
 
+define('MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_TITLE', 'Dashboardリダイレクト先URL');
+define('MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_DESCRIPTION', '');
+
 define('MODULE_EASY_ADMIN_SORT_ORDER_TITLE',         'Sort Order');
 define('MODULE_EASY_ADMIN_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
