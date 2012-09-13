@@ -1,18 +1,15 @@
 <?php
-  // 管理画面用
-define('MODULE_GLOBALNAVI_TITLE', 'グローバルナビ');
-define('MODULE_GLOBALNAVI_DESCRIPTION', 'グローバルナビ<br />グローバルナビを表示するブロックを追加します。<br />有効化後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">ブロックの設定</a>から表示設定をしてください。');
-define('MODULE_GLOBALNAVI_STATUS_TITLE', 'グローバルナビブロックの有効化');
-define('MODULE_GLOBALNAVI_STATUS_DESCRIPTION', 'グローバルナビを有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_GLOBALNAVI_SORT_ORDER_TITLE', '優先順');
-define('MODULE_GLOBALNAVI_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_GLOBALNAVI_TITLE', 'Global Navi');
+define('MODULE_GLOBALNAVI_DESCRIPTION', 'Global Navi<br />Add a block to display the global navi.<br />Please set your display settings from the <a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks', 'NONSSL') . '">block setting</a> after activation.');
+define('MODULE_GLOBALNAVI_STATUS_TITLE', 'Activating Global Navi Block');
+define('MODULE_GLOBALNAVI_STATUS_DESCRIPTION', 'Do you want to active to global navi?<br />true: Active<br />false: Inactive');
+define('MODULE_GLOBALNAVI_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_GLOBALNAVI_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-// install用
-define('MODULE_GLOBALNAVI_LIMIT_TITLE', '表示するカテゴリーの上限');
-define('MODULE_GLOBALNAVI_LIMIT_DESCRIPTION', 'グローバルナビに表示するカテゴリー数の上限を設定します');
+define('MODULE_GLOBALNAVI_LIMIT_TITLE', 'Maximum of Display Category');
+define('MODULE_GLOBALNAVI_LIMIT_DESCRIPTION', 'Sets the maximum number of categories to display global navi');
 
 
-// addon_moduleブロック管理用
 define('MODULE_GLOBALNAVI_BLOCK_TITLE', 'Global Navi');
 
 ?>
