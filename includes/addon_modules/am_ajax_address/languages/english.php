@@ -21,9 +21,9 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_AM_AJAX_ADDRESS_TITLE',             '郵便番号による住所自動入力');
-define('MODULE_AM_AJAX_ADDRESS_DESCRIPTION',       '郵便番号による住所自動入力');
+define('MODULE_AM_AJAX_ADDRESS_TITLE',             'Autofill address by zip code');
+define('MODULE_AM_AJAX_ADDRESS_DESCRIPTION',       'Autofill address by zip code');
 
-define('MODULE_AM_AJAX_ADDRESS_STATUS_TITLE',             '郵便番号による住所自動入力の有効化');
-define('MODULE_AM_AJAX_ADDRESS_STATUS_DESCRIPTION',       '郵便番号による住所自動入力を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_AM_AJAX_ADDRESS_STATUS_TITLE',             'Activating autofill address by zip code');
+define('MODULE_AM_AJAX_ADDRESS_STATUS_DESCRIPTION',       'Do you want to active to autofill address by zip code?<br />true: Active<br />false: Inactive');
 ?>
