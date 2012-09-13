@@ -19,25 +19,25 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_POINT_BASE_TITLE', 'ポイント');
-define('MODULE_POINT_BASE_DESCRIPTION', 'ポイントモジュール');
-define('MODULE_POINT_BASE_STATUS_TITLE', 'ポイントモジュールの有効化<br />有効化の後に<a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks') . '">ブロックの設定</a>から「現在のポイント残額」ブロックの表示設定をしてください。');
-define('MODULE_POINT_BASE_STATUS_DESCRIPTION', 'ポイントを有効にしますか？ (ポイントモジュールは他の全てのポイントモジュールにとって必須です)<br />true: 有効<br />false: 無効');
-define('MODULE_POINT_BASE_POINT_SYMBOL_TITLE', 'ポイント単位名称');
-define('MODULE_POINT_BASE_POINT_SYMBOL_DESCRIPTION', 'ポイントの単位名称を入力してください。<br />・初期値 = ' . MODULE_POINT_BASE_POINT_SYMBOL_DEFAULT);
-define('MODULE_POINT_BASE_MAX_DISPLAY_SEARCH_RESULTS_POINTS_TITLE', 'ポイント管理ページで表示するポイント履歴の最大値');
-define('MODULE_POINT_BASE_MAX_DISPLAY_SEARCH_RESULTS_POINTS_DESCRIPTION', 'ポイント管理ページで表示するポイント履歴の最大値を設定してください。<br />・初期値 = ' . MODULE_POINT_BASE_MAX_DISPLAY_SEARCH_RESULTS_POINTS_DEFAULT);
-define('MODULE_POINT_BASE_SORT_ORDER_TITLE', '優先順');
-define('MODULE_POINT_BASE_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_POINT_BASE_TITLE', 'Point');
+define('MODULE_POINT_BASE_DESCRIPTION', 'Point Module');
+define('MODULE_POINT_BASE_STATUS_TITLE', 'Activating Point Module<br />Please display setting of the "Current points balance" block for the <a href="' . zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks') . '">Block Setting</a> after activation.');
+define('MODULE_POINT_BASE_STATUS_DESCRIPTION', 'Do you want to active to point? (Point module is required for all other point modules)<br />true: Enable<br />false: Disable');
+define('MODULE_POINT_BASE_POINT_SYMBOL_TITLE', 'Point Unit Name');
+define('MODULE_POINT_BASE_POINT_SYMBOL_DESCRIPTION', 'Please enter the name of the point unit.<br />Default = ' . MODULE_POINT_BASE_POINT_SYMBOL_DEFAULT);
+define('MODULE_POINT_BASE_MAX_DISPLAY_SEARCH_RESULTS_POINTS_TITLE', 'Maximum of the point history displayed by point management page');
+define('MODULE_POINT_BASE_MAX_DISPLAY_SEARCH_RESULTS_POINTS_DESCRIPTION', 'Please set up the maximum of the point history displayed on a point management page.<br />Default = ' . MODULE_POINT_BASE_MAX_DISPLAY_SEARCH_RESULTS_POINTS_DEFAULT);
+define('MODULE_POINT_BASE_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_POINT_BASE_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('BOX_CUSTOMERS_POINTS', 'ポイント管理');
+define('BOX_CUSTOMERS_POINTS', 'Point Manager');
 
 if (defined('MODULE_POINT_BASE_POINT_SYMBOL')) {
   define('TEXT_POINT', MODULE_POINT_BASE_POINT_SYMBOL);
 } elseif (defined('MODULE_POINT_BASE_POINT_SYMBOL_DEFAULT')) {
   define('TEXT_POINT', MODULE_POINT_BASE_POINT_SYMBOL_DEFAULT);
 } else {
-  define('TEXT_POINT', 'ポイント');
+  define('TEXT_POINT', 'Point');
 }
 
 define('SUCCESS_ADDPOINT_DEPOSIT', 'Purchase Points are now available');
