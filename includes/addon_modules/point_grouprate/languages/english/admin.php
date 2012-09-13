@@ -10,18 +10,18 @@
  * @version $Id: group_pointrate $
  */
 
-define('HEADING_TITLE', '顧客グループ毎ポイント還元率の管理');
+define('HEADING_TITLE', 'Point Reduction Rate for Customer Group is Managed');
 
 define('TABLE_HEADING_GROUP_ID', 'ID');
-define('TABLE_HEADING_GROUP_NAME', 'グループ名');
-define('TABLE_HEADING_GROUP_AMOUNT', '割引率(%)');
-define('TABLE_HEADING_ACTION', '操作');
-define('TABLE_HEADING_POINTRATE', 'ポイント還元率(%)');
+define('TABLE_HEADING_GROUP_NAME', 'Group Name');
+define('TABLE_HEADING_GROUP_AMOUNT', 'Discount Rate(%)');
+define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_POINTRATE', 'Point Reduction Rate(%)');
 
-define('TEXT_GROUP_PRICING_NAME', 'グループ名: ');
-define('TEXT_GROUP_PRICING_AMOUNT', '割引率(%): ');
-define('TEXT_DATE_ADDED', '情報追加日:');
-define('TEXT_LAST_MODIFIED', '情報変更日:');
-define('TEXT_CUSTOMERS', 'グループ内の顧客数:');
+define('TEXT_GROUP_PRICING_NAME', 'Group Name: ');
+define('TEXT_GROUP_PRICING_AMOUNT', 'Discount Rate(%): ');
+define('TEXT_DATE_ADDED', 'Created:');
+define('TEXT_LAST_MODIFIED', 'Last Modified:');
+define('TEXT_CUSTOMERS', 'Number of Customers in Group:');
 
-define('SUCCESS_GROUP_POINTRATE_UPDATED', '顧客グループ毎ポイント還元率が更新されました。');
+define('SUCCESS_GROUP_POINTRATE_UPDATED', 'Updated point reduction rate for customer group.');
