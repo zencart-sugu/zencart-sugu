@@ -19,35 +19,35 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EASY_ADMIN_TITLE',                    '¥…Õ˝•·•À•Â°º§Œ¿ﬂƒÍ');
-define('MODULE_EASY_ADMIN_DESCRIPTION',              '¥…Õ˝≤ËÃÃ§Œ•·•À•Â°ºπΩ¿Æ§Ú¥ √±§À —ππ§«§≠§Î§Ë§¶§À§π§Î');
+define('MODULE_EASY_ADMIN_TITLE',                    'Admin Menu Setting');
+define('MODULE_EASY_ADMIN_DESCRIPTION',              'To be able to easily change the admin menu structure.');
 
-define('MODULE_EASY_ADMIN_STATUS_TITLE',             '¥…Õ˝•·•À•Â°º§Œ¿ﬂƒÍ§ŒÕ≠∏˙≤Ω');
-define('MODULE_EASY_ADMIN_STATUS_DESCRIPTION',       '¥…Õ˝•·•À•Â°º§Œ¿ﬂƒÍ§ÚÕ≠∏˙§À§∑§ﬁ§π§´°© <br />true: Õ≠∏˙<br />false: Ãµ∏˙');
+define('MODULE_EASY_ADMIN_STATUS_TITLE',             'Activating Admin Menu Setting');
+define('MODULE_EASY_ADMIN_STATUS_DESCRIPTION',       'Do you want to active to Admin Menu Setting?<br />true: Active<br />false: Inactive');
 
-define('MODULE_EASY_ADMIN_SORT_ORDER_TITLE',         'Õ•¿ËΩÁ');
-define('MODULE_EASY_ADMIN_SORT_ORDER_DESCRIPTION',   '•‚•∏•Â°º•Î§ŒÕ•¿ËΩÁ§Ú¿ﬂƒÍ§«§≠§ﬁ§π°£øÙª˙§¨æÆ§µ§§§€§…¿Ë§À•‚•∏•Â°º•Î§Œ∆…§ﬂπ˛§ﬂ§»ΩËÕ˝§¨º¬π‘§µ§Ï§ﬁ§π°£»æ≥—øÙª˙§«¬æ§Œ•‚•∏•Â°º•Î§»Ω≈§ §È§ §§§Ë§¶§À¿ﬂƒÍ§∑§∆§Ø§¿§µ§§°£');
+define('MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_TITLE', 'DashboardÉäÉ_ÉCÉåÉNÉgêÊURL');
+define('MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL_DESCRIPTION', '');
 
-// addon_module•÷•Ì•√•Ø¥…Õ˝Õ—
-define('MODULE_EASY_ADMIN_BLOCK_TITLE',              '¥…Õ˝•·•À•Â°º§Œ¿ﬂƒÍ');
+define('MODULE_EASY_ADMIN_SORT_ORDER_TITLE',         'Sort Order');
+define('MODULE_EASY_ADMIN_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('BOX_EASY_ADMIN',                             '¥…Õ˝•·•À•Â°º§Œ¿ﬂƒÍ');
-define('BOX_ADMIN_ACL',                              '•¢•Ø•ª•π∏¢∏¬§Œ¿ﬂƒÍ');
+define('MODULE_EASY_ADMIN_BLOCK_TITLE',              'Admin Menu Setting');
+
+define('BOX_EASY_ADMIN',                             'Admin Menu Setting');
+define('BOX_ADMIN_ACL',                              'Access Permissions Setting');
 
 // TOP MENU
 //   MENU NAME,DROP DOWN
 // EXAMPLE
-//   √Ì ∏°¶∏‹µ“¥…Õ˝,1
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_1',        '√Ì ∏°¶∏‹µ“¥…Õ˝,1');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_2',        'æ¶… ¥…Õ˝,1');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_3',        '•≥•Û•∆•Û•ƒ¥…Õ˝,1');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_4',        'ΩÈ¥¸¿ﬂƒÍ,0');
-define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_5',        '§Ω§Œ¬æ,0');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_1',        'Order Customer Management,1');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_2',        'Product Management,1');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_3',        'Content Management,1');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_4',        'Initialization,0');
+define('MODULE_EASY_ADMIN_TOP_DEFAULT_MENU_5',        'Other,0');
 
 // SUB MENU
 //   MENU NAME,MENU URL
 // EXAMPLE
-//   ∏‹µ“¥…Õ˝,customers.php
 define('MODULE_EASY_ADMIN_SUB_DEFAULT_MENU_1_1',      BOX_CUSTOMERS_CUSTOMERS.','.FILENAME_CUSTOMERS.'.php');
 define('MODULE_EASY_ADMIN_SUB_DEFAULT_MENU_1_2',      BOX_CUSTOMERS_ORDERS.','.FILENAME_ORDERS.'.php');
 define('MODULE_EASY_ADMIN_SUB_DEFAULT_MENU_2_1',      BOX_CATALOG_CATEGORIES_PRODUCTS.','.FILENAME_CATEGORIES.'.php');
