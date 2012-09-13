@@ -137,27 +137,16 @@ $today = getdate();
 // on RedHat try 'en_US'
 // on FreeBSD try 'en_US.ISO_8859-1'
 // on Windows try 'en', or 'English'
-<<<<<<< HEAD
-  @setlocale(LC_TIME, 'ja_JP.EUC-JP');
-mb_language('Japanese');
-=======
   @setlocale(LC_TIME, 'en_US.ISO_8859-1');
 #mb_language('Japanese');
->>>>>>> dfeace5aa411e6d0b450426dee0dc6948c0f7d37
 mb_internal_encoding("EUC-JP");
 mb_http_output("EUC-JP");
 
 // if mbstring is not load, use mb-emulator 
 
-<<<<<<< HEAD
-  define('DATE_FORMAT_SHORT', '%Y/%m/%d');  // this is used for strftime()
-  define('DATE_FORMAT_LONG', '%Y/%m/%d&nbsp;%a'); // this is used for strftime()
-  define('DATE_FORMAT', 'Y/m/d'); // this is used for date()
-=======
   define('DATE_FORMAT_SHORT', '%m/%d/%Y');  // this is used for strftime()
   define('DATE_FORMAT_LONG', '%A %d %B, %Y'); // this is used for strftime()
   define('DATE_FORMAT', 'm/d/Y'); // this is used for date()
->>>>>>> dfeace5aa411e6d0b450426dee0dc6948c0f7d37
   define('DATE_TIME_FORMAT', DATE_FORMAT_SHORT . ' %H:%M:%S');
 
 // EMAIL config
@@ -167,42 +156,24 @@ mb_http_output("EUC-JP");
   define('EMAIL_IS_MULTIBYTE', TRUE);
 
 ////
-<<<<<<< HEAD
-// Return date in raw format mm/dd/yyyy
-// $date should be in format yyyy/mm/dd -- Change for Japanese date format
-=======
 // Return date in raw format
 // $date should be in format mm/dd/yyyy
->>>>>>> dfeace5aa411e6d0b450426dee0dc6948c0f7d37
 // raw date is in format YYYYMMDD, or DDMMYYYY
   if (!function_exists('zen_date_raw')) {
     function zen_date_raw($date, $reverse = false) {
       if ($reverse) {
-<<<<<<< HEAD
-    return substr($date, 8, 2) . substr($date, 5, 2) . substr($date, 0, 4);
-      } else {
-    return substr($date, 0, 4) . substr($date, 5, 2) . substr($date, 8, 2);
-=======
         return substr($date, 3, 2) . substr($date, 0, 2) . substr($date, 6, 4);
       } else {
         return substr($date, 6, 4) . substr($date, 0, 2) . substr($date, 3, 2);
->>>>>>> dfeace5aa411e6d0b450426dee0dc6948c0f7d37
       }
     }
   }
 
 // if USE_DEFAULT_LANGUAGE_CURRENCY is true, use the following currency, instead of the applications default currency (used when changing language)
-<<<<<<< HEAD
-  define('LANGUAGE_CURRENCY', 'JPY');
-
-// Global entries for the <html> tag
-  define('HTML_PARAMS','dir="ltr" lang="ja"');
-=======
   define('LANGUAGE_CURRENCY', 'USD');
 
 // Global entries for the <html> tag
   define('HTML_PARAMS','dir="ltr" lang="en"');
->>>>>>> dfeace5aa411e6d0b450426dee0dc6948c0f7d37
 
 // charset for web pages and emails
   define('CHARSET', 'EUC-JP');
@@ -224,11 +195,7 @@ mb_http_output("EUC-JP");
   define('FEMALE_ADDRESS', 'Ms.');
 
 // text for date of birth example
-<<<<<<< HEAD
-  define('DOB_FORMAT_STRING', 'yyyy/mm/dd');
-=======
   define('DOB_FORMAT_STRING', 'mm/dd/yyyy');
->>>>>>> dfeace5aa411e6d0b450426dee0dc6948c0f7d37
 
 //text for sidebox heading links
   define('BOX_HEADING_LINKS', '&nbsp;&nbsp;[more]');
