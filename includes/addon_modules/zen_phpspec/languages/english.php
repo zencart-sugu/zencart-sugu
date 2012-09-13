@@ -20,11 +20,10 @@
 // $Id: japanese.php $
 //
 
-// 管理画面用
-define('MODULE_ZEN_PHPSPEC_TITLE',                  'テスティングフレームワークモジュール');
-define('MODULE_ZEN_PHPSPEC_DESCRIPTION',            'テスティングフレームワークモジュール');
-define('MODULE_ZEN_PHPSPEC_STATUS_TITLE',           'テスティングフレームワークモジュールの有効化');
-define('MODULE_ZEN_PHPSPEC_STATUS_DESCRIPTION',     'テスティングフレームワークモジュールを有効にしますか？ <br />true: 有効<br />false: 無効');
-define('MODULE_ZEN_PHPSPEC_SORT_ORDER_TITLE',       '優先順');
-define('MODULE_ZEN_PHPSPEC_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_ZEN_PHPSPEC_TITLE',                  'Testing Framework Module');
+define('MODULE_ZEN_PHPSPEC_DESCRIPTION',            'Testing Framework Module');
+define('MODULE_ZEN_PHPSPEC_STATUS_TITLE',           'Activating Testing Framework Module');
+define('MODULE_ZEN_PHPSPEC_STATUS_DESCRIPTION',     'Do you want to active to testing framework module?<br />true: Active<br />false: Inactive');
+define('MODULE_ZEN_PHPSPEC_SORT_ORDER_TITLE',       'Sort Order');
+define('MODULE_ZEN_PHPSPEC_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 ?>
