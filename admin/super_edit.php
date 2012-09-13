@@ -502,6 +502,10 @@
                             where orders_id = '" . $oID . "'");
             }
 
+            elseif($ot_class == "ot_add_point") {
+              ;  // do NOT add to running_total
+            }
+
             else {
               $running_total += $ot_value;
             }
@@ -509,6 +513,10 @@
             // format the text version of the amount
             if ($ot_class == "ot_gv" || $ot_class == "ot_coupon" || $ot_class == "ot_group_pricing") {
               $ot_text = "-" . $currencies->format($ot_value);
+            }
+
+            elseif($ot_class == "ot_add_point") {
+              $ot_text = $ot_value . MODULE_POINT_BASE_POINT_SYMBOL;
             }
 
             else {
@@ -638,48 +646,51 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 		  <th class="main"><strong><?php echo ENTRY_SHIPPING_ADDRESS; ?></strong></th>
         </tr>
         <tr>
+          <th class="main"><?php echo ENTRY_COMPANY; ?></th>
+          <td class="main"><input name="customers_company" size="25" value="<?php echo zen_db_scrub_out($order->customer['company'], true); ?>"></td>
+		  <td class="main"><input name="billing_company" size="25" value="<?php echo zen_db_scrub_out($order->billing['company'], true); ?>"></td>
+          <td class="main"><input name="delivery_company" size="25" value="<?php echo zen_db_scrub_out($order->delivery['company'], true); ?>"></td>
+        </tr>
+        <tr>
           <th class="main"><?php echo ENTRY_NAME; ?></th>
           <td class="main"><input name="customers_name" size="25" value="<?php echo zen_db_scrub_out($order->customer['name'], true); ?>"></td>
           <td class="main"><input name="billing_name" size="25" value="<?php echo zen_db_scrub_out($order->billing['name'], true); ?>"></td>
           <td class="main"><input name="delivery_name" size="25" value="<?php echo zen_db_scrub_out($order->delivery['name'], true); ?>"></td>
         </tr>
         <tr>
-          <th class="main"><?php echo ENTRY_COMPANY; ?></th>
-          <td class="main"><input name="customers_company" size="25" value="<?php echo zen_db_scrub_out($order->customer['company'], true); ?>"></td>
-		  <td class="main"><input name="billing_company" size="25" value="<?php echo zen_db_scrub_out($order->billing['company'], true); ?>"></td>
-          <td class="main"><input name="delivery_company" size="25" value="<?php echo zen_db_scrub_out($order->delivery['company'], true); ?>"></td>
-        </tr>
-          <th class="main"><?php echo ENTRY_SUBURB; ?></th>
-          <td class="main"><input name="customers_suburb" size="25" value="<?php echo zen_db_scrub_out($order->customer['suburb'], true); ?>"></td>
-		  <td class="main"><input name="billing_suburb" size="25" value="<?php echo zen_db_scrub_out($order->billing['suburb'], true); ?>"></td>
-        <tr>
-          <td class="main"><input name="delivery_street_address" size="25" value="<?php echo zen_db_scrub_out($order->delivery['street_address'], true); ?>"></td>
-        </tr>
-          <th class="main"><?php echo ENTRY_CITY; ?></th>
-          <td class="main"><input name="customers_city" size="25" value="<?php echo zen_db_scrub_out($order->customer['city'], true); ?>"></td>
-		  <td class="main"><input name="billing_city" size="25" value="<?php echo zen_db_scrub_out($order->billing['city'], true); ?>"></td>
-        <tr>
-          <td class="main"><input name="delivery_suburb" size="25" value="<?php echo zen_db_scrub_out($order->delivery['suburb'], true); ?>"></td>
-        </tr>
-          <th class="main"><?php echo ENTRY_STATE; ?></th>
-          <td class="main"><input name="customers_state" size="25" value="<?php echo zen_db_scrub_out($order->customer['state'], true); ?>"></td>
-		  <td class="main"><input name="billing_state" size="25" value="<?php echo zen_db_scrub_out($order->billing['state'], true); ?>"></td>
-        <tr>
-          <td class="main"><input name="delivery_city" size="25" value="<?php echo zen_db_scrub_out($order->delivery['city'], true); ?>"></td>
-        </tr>
           <th class="main"><?php echo ENTRY_POSTCODE; ?></th>
           <td class="main"><input name="customers_postcode" size="25" value="<?php echo zen_db_scrub_out($order->customer['postcode'], true); ?>"></td>
 		  <td class="main"><input name="billing_postcode" size="25" value="<?php echo zen_db_scrub_out($order->billing['postcode'], true); ?>"></td>
-        <tr>
-          <td class="main"><input name="delivery_state" size="25" value="<?php echo zen_db_scrub_out($order->delivery['state'], true); ?>"></td>
-        </tr>
-          <th class="main"><?php echo ENTRY_COUNTRY; ?></th>
-          <td class="main"><input name="customers_country" size="25" value="<?php echo zen_db_scrub_out($order->customer['country'], true); ?>"></td>
-		  <td class="main"><input name="billing_country" size="25" value="<?php echo zen_db_scrub_out($order->billing['country'], true); ?>"></td>
-        <tr>
           <td class="main"><input name="delivery_postcode" size="25" value="<?php echo zen_db_scrub_out($order->delivery['postcode'], true); ?>"></td>
         </tr>
         <tr>
+          <th class="main"><?php echo ENTRY_STATE; ?></th>
+          <td class="main"><input name="customers_state" size="25" value="<?php echo zen_db_scrub_out($order->customer['state'], true); ?>"></td>
+		  <td class="main"><input name="billing_state" size="25" value="<?php echo zen_db_scrub_out($order->billing['state'], true); ?>"></td>
+          <td class="main"><input name="delivery_state" size="25" value="<?php echo zen_db_scrub_out($order->delivery['state'], true); ?>"></td>
+        </tr>
+        <tr>
+          <th class="main"><?php echo ENTRY_CITY; ?></th>
+          <td class="main"><input name="customers_city" size="25" value="<?php echo zen_db_scrub_out($order->customer['city'], true); ?>"></td>
+		  <td class="main"><input name="billing_city" size="25" value="<?php echo zen_db_scrub_out($order->billing['city'], true); ?>"></td>
+          <td class="main"><input name="delivery_city" size="25" value="<?php echo zen_db_scrub_out($order->delivery['city'], true); ?>"></td>
+        </tr>
+        <tr>
+          <th class="main"><?php echo ENTRY_STREET_ADDRESS; ?></th>
+          <td class="main"><input name="customers_street_address" size="25" value="<?php echo zen_db_scrub_out($order->customer['street_address'], true); ?>"></td>
+          <td class="main"><input name="billing_street_address" size="25" value="<?php echo zen_db_scrub_out($order->billing['street_address'], true); ?>"></td>
+          <td class="main"><input name="delivery_street_address" size="25" value="<?php echo zen_db_scrub_out($order->delivery['street_address'], true); ?>"></td>
+        </tr>
+        <tr>
+          <th class="main"><?php echo ENTRY_SUBURB; ?></th>
+          <td class="main"><input name="customers_suburb" size="25" value="<?php echo zen_db_scrub_out($order->customer['suburb'], true); ?>"></td>
+		  <td class="main"><input name="billing_suburb" size="25" value="<?php echo zen_db_scrub_out($order->billing['suburb'], true); ?>"></td>
+          <td class="main"><input name="delivery_suburb" size="25" value="<?php echo zen_db_scrub_out($order->delivery['suburb'], true); ?>"></td>
+        </tr>
+        <tr>
+          <th class="main"><?php echo ENTRY_COUNTRY; ?></th>
+          <td class="main"><input name="customers_country" size="25" value="<?php echo zen_db_scrub_out($order->customer['country'], true); ?>"></td>
+		  <td class="main"><input name="billing_country" size="25" value="<?php echo zen_db_scrub_out($order->billing['country'], true); ?>"></td>
           <td class="main"><input name="delivery_country" size="25" value="<?php echo zen_db_scrub_out($order->delivery['country'], true); ?>"></td>
         </tr>
       </table></td>
