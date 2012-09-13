@@ -19,12 +19,12 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_POINT_PRODUCTSRATE_TITLE', '商品毎ポイント還元率設定');
-define('MODULE_POINT_PRODUCTSRATE_DESCRIPTION', '商品毎ポイント還元率設定モジュール');
-define('MODULE_POINT_PRODUCTSRATE_STATUS_TITLE', '商品毎ポイント還元率設定モジュールの有効化');
-define('MODULE_POINT_PRODUCTSRATE_STATUS_DESCRIPTION', '商品毎ポイント還元率設定を有効にしますか？<br />true: 有効<br />false: 無効');
-define('MODULE_POINT_PRODUCTSRATE_SORT_ORDER_TITLE', '優先順');
-define('MODULE_POINT_PRODUCTSRATE_SORT_ORDER_DESCRIPTION', 'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_POINT_PRODUCTSRATE_TITLE', 'Rate of Point Reduction for Each Product Configuration');
+define('MODULE_POINT_PRODUCTSRATE_DESCRIPTION', 'Rate of point reduction for each product configuration module');
+define('MODULE_POINT_PRODUCTSRATE_STATUS_TITLE', 'Activating rate of point reduction for each product configuration module');
+define('MODULE_POINT_PRODUCTSRATE_STATUS_DESCRIPTION', 'Do you want to active to rate of point reduction for each product configuration?<br />true: Active<br />false: Inactive');
+define('MODULE_POINT_PRODUCTSRATE_SORT_ORDER_TITLE', 'Sort Order');
+define('MODULE_POINT_PRODUCTSRATE_SORT_ORDER_DESCRIPTION', 'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('BOX_CATALOG_PRODUCTS_POINTRATE', '商品毎ポイント還元率設定');
+define('BOX_CATALOG_PRODUCTS_POINTRATE', 'Rate of Point Reduction for Each Product Configuration');
 
