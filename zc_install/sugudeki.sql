@@ -508,6 +508,8 @@ CREATE TABLE `blocks` (
   `sort_order` int(11) NOT NULL DEFAULT '0',
   `visible` tinyint(1) NOT NULL DEFAULT '0',
   `pages` text NOT NULL,
+  `css_selector` varchar(128) NOT NULL default '',
+  `insert_position` varchar(64) NOT NULL default 'append',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_module_block_template` (`module`,`block`,`template`),
   KEY `IDX_module_template_status_location_sort_order` (`module`,`template`,`status`,`location`,`sort_order`)
