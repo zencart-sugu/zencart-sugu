@@ -52,7 +52,7 @@ class email_templates_notifier {
   function general($notifier) {
     // テンプレートID取得
     if (!empty($GLOBALS['email_template_id']) && is_numeric($GLOBALS['email_template_id'])) {
-      $email_template_id = $email_template_id;
+      $email_template_id = $GLOBALS['email_template_id'];
     } elseif (!empty($_REQUEST['id']) && is_numeric($_REQUEST['id'])) {
       $email_template_id = $_REQUEST['id'];
     } else {
