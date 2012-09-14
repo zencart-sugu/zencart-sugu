@@ -127,9 +127,9 @@ if (!defined('IS_ADMIN_FLAG')) {
 	if (!$this->_isLogin()) {
 	  $steps[] = array('page' => FILENAME_LOGIN, 'text' => MODULE_CHECKOUT_STEP_BLOCK_LOGIN);
 	}
-	if ($this->_isShipping()) {
+//	if ($this->_isShipping()) {
 	  $steps[] = array('page' => FILENAME_CHECKOUT_SHIPPING, 'text' => MODULE_CHECKOUT_STEP_BLOCK_SHIPPING);
-	}
+//	}
 	$steps[] = array('page' => FILENAME_CHECKOUT_PAYMENT, 'text' => MODULE_CHECKOUT_STEP_BLOCK_PAYMENT);
 	$steps[] = array('page' => FILENAME_CHECKOUT_CONFIRMATION, 'text' => MODULE_CHECKOUT_STEP_BLOCK_CONFIRMATION);
 	$steps[] = array('page' => FILENAME_CHECKOUT_SUCCESS, 'text' => MODULE_CHECKOUT_STEP_BLOCK_SUCCESS);
