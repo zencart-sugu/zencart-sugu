@@ -2137,7 +2137,7 @@ PRIMARY KEY (currencies_id)
 
 INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (1,'US Dollar','USD','$','','.',',','2',0.00936500,'2009-11-19 12:39:40');
 INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (2,'Euro','EUR','','EUR','.',',','2',0.00759400,'2009-11-19 12:39:40');
-INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (3,'Japanese Yen','JPY','','±ß','.',',','',1.00000000,'2009-11-19 12:39:40');
+INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (3,'Japanese Yen','JPY','','±ß','.',',','0',1.00000000,'2009-11-19 12:39:40');
 
 --
 -- Table structure for table currencies_m17n
