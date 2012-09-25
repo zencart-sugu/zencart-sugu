@@ -79,7 +79,8 @@ if (sizeof($statusArray)) {
     echo "<br>";
     echo TABLE_HEADING_STATUS_COMMENTS; 
     echo ":";
-    echo (empty($statuses['comments']) ? '&nbsp;' : nl2br(zen_output_string_protected($statuses['comments']))); 
+    echo (empty($statuses['comments']) ? '&nbsp;' : $statuses['comments']); 
+//    echo (empty($statuses['comments']) ? '&nbsp;' : nl2br(zen_output_string_protected($statuses['comments']))); 
     }
 } 
 ?>
