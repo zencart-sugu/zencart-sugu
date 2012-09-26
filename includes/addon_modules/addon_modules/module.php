@@ -150,6 +150,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       foreach($match[1] as $k => $v) {
         $addonmodules_print_layout_main_content = str_replace($v, self::replace_key($k), $addonmodules_print_layout_main_content);
       }
+      $addonmodules_print_layout_main_content = str_replace("&nbsp;", "%NBSP%", $addonmodules_print_layout_main_content);
 
       $doc = phpQuery::newDocumentHTML($addonmodules_print_layout_main_content, "UTF-8");
       phpQuery::selectDocument($doc);
@@ -180,6 +181,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       foreach($match[1] as $k => $v) {
         $out = str_replace(self::replace_key($k), $v, $out);
       }
+      $out = str_replace("%NBSP%", "&nbsp;", $out);
 
       $out = str_replace("UTF-8", CHARSET, $out);
       $out = mb_convert_encoding($out, mb_internal_encoding(), "UTF-8");
