@@ -41,6 +41,7 @@ class language extends base {
     'hu' => array('hu|hungarian', 'hungarian', 'hu'),
     'id' => array('id|indonesian', 'indonesian', 'id'),
     'it' => array('it|italian', 'italian', 'it'),
+    'ja' => array('ja|japanese', 'japanese', 'ja'),
     'ja-euc' => array('ja|japanese', 'japanese-euc', 'ja'),
     'ja-sjis' => array('ja|japanese', 'japanese-sjis', 'ja'),
     'ko' => array('ko|korean', 'korean', 'ko'),
