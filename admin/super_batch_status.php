@@ -182,7 +182,7 @@ var EndDate = new ctlSpiffyCalendarBox("EndDate", "order_search", "end_date", "b
 							</table>
 							<table>
 								<tr>
-									<td><input type="submit" value="¸¡º÷" /></td>
+									<td><?php echo zen_image_submit('button_search.gif', IMAGE_SEARCH); ?></td>
 								</tr>
 							</table>
 						</td>

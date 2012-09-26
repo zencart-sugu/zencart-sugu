@@ -508,6 +508,8 @@ CREATE TABLE `blocks` (
   `sort_order` int(11) NOT NULL DEFAULT '0',
   `visible` tinyint(1) NOT NULL DEFAULT '0',
   `pages` text NOT NULL,
+  `css_selector` varchar(128) NOT NULL default '',
+  `insert_position` varchar(64) NOT NULL default 'append',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_module_block_template` (`module`,`block`,`template`),
   KEY `IDX_module_template_status_location_sort_order` (`module`,`template`,`status`,`location`,`sort_order`)
@@ -2891,7 +2893,7 @@ LOCK TABLES `currencies` WRITE;
 /*!40000 ALTER TABLE `currencies` DISABLE KEYS */;
 INSERT INTO `currencies` (`currencies_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_point`, `thousands_point`, `decimal_places`, `value`, `last_updated`) VALUES (1,'US Dollar','USD','$','','.',',','2',0.00936500,'2009-11-19 12:39:40');
 INSERT INTO `currencies` (`currencies_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_point`, `thousands_point`, `decimal_places`, `value`, `last_updated`) VALUES (2,'Euro','EUR','','EUR','.',',','2',0.00759400,'2009-11-19 12:39:40');
-INSERT INTO `currencies` (`currencies_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_point`, `thousands_point`, `decimal_places`, `value`, `last_updated`) VALUES (3,'Japanese Yen','JPY','','±ß','.',',','',1.00000000,'2009-11-19 12:39:40');
+INSERT INTO `currencies` (`currencies_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_point`, `thousands_point`, `decimal_places`, `value`, `last_updated`) VALUES (3,'Japanese Yen','JPY','','±ß','.',',','0',1.00000000,'2009-11-19 12:39:40');
 /*!40000 ALTER TABLE `currencies` ENABLE KEYS */;
 UNLOCK TABLES;
 

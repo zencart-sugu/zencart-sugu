@@ -20,45 +20,44 @@
 //  $Id: cache.php 1105 2005-04-04 22:05:35Z birdbrain $
 //
 
-define('HEADING_TITLE',               'フィーチャーエリアUI');
-define('TABLE_HEADING_ID',        'ID');
-define('TABLE_HEADING_ACTION',        '操作');
-define('TABLE_HEADING_STATUS',        'ステータス');
-define('TABLE_HEADING_SORT_ORDER',    'ソート順');
-define('TABLE_HEADING_FEATURE_NAME',  '特集');
-define('TABLE_HEADING_FEATURE_MAIN_IMAGE',  'メインエリア画像');
-define('TABLE_HEADING_FEATURE_THUMB_IMAGE',  'サムネイル画像');
-define('TABLE_HEADING_FEATURE_LINK_URL',  'リンク先');
-define('TEXT_DATE_ADDED',             '作成日');
-define('TEXT_LAST_MODIFIED',          '更新日');
-define('TEXT_HEADING_NEW_FEATURE',    '新しい特集');
-define('TEXT_NEW_INTRO',              '特集の説明を入力してください。');
-define('TEXT_FEATURE_NAME',           '特集');
-define('TEXT_FEATURE_URL',            'リンク先');
-define('TEXT_FEATURE_MAIN_IMAGE',     '特集のメイン画像');
-define('TEXT_FEATURE_THUMB_IMAGE',    '特集のサムネイル画像');
-define('TEXT_FEATURE_MAIN_IMAGE_DIR', 'メイン画像ディレクトリ');
-define('TEXT_FEATURE_THUMB_IMAGE_DIR','サムネイル画像ディレクトリ');
-define('TEXT_FEATURE_STATUS',         '特集の表示');
-define('TEXT_FEATURE_STATUS_TRUE',    '表示');
-define('TEXT_FEATURE_STATUS_FALSE',   '非表示');
-define('TEXT_FEATURE_NEW_WINDOW',         '特集を新しいウインドウで開く');
-define('TEXT_FEATURE_NEW_WINDOW_TRUE',    'はい');
-define('TEXT_FEATURE_NEW_WINDOW_FALSE',   'いいえ');
-define('TEXT_FEATURE_SORT_ORDER',     'ソート順');
+define('HEADING_TITLE',                     'Feature Area UI');
+define('TABLE_HEADING_ID',                  'ID');
+define('TABLE_HEADING_ACTION',              'Action');
+define('TABLE_HEADING_STATUS',              'Status');
+define('TABLE_HEADING_SORT_ORDER',          'Sort Order');
+define('TABLE_HEADING_FEATURE_NAME',        'Feature');
+define('TABLE_HEADING_FEATURE_MAIN_IMAGE',  'Image of Main Area');
+define('TABLE_HEADING_FEATURE_THUMB_IMAGE', 'Thumbnail Image');
+define('TABLE_HEADING_FEATURE_LINK_URL',    'Link');
+define('TEXT_DATE_ADDED',                   'Creation Date');
+define('TEXT_LAST_MODIFIED',                'Last Update');
+define('TEXT_HEADING_NEW_FEATURE',          'New Feature');
+define('TEXT_NEW_INTRO',                    'Please enter a description of the feature.');
+define('TEXT_FEATURE_NAME',                 'Feature');
+define('TEXT_FEATURE_URL',                  'Link');
+define('TEXT_FEATURE_MAIN_IMAGE',           'Main Feature Image');
+define('TEXT_FEATURE_THUMB_IMAGE',          'Features Thumbnail Image');
+define('TEXT_FEATURE_MAIN_IMAGE_DIR',       'Main Image Directory');
+define('TEXT_FEATURE_THUMB_IMAGE_DIR',      'Thumbnails Directory');
+define('TEXT_FEATURE_STATUS',               'Show Features');
+define('TEXT_FEATURE_STATUS_TRUE',          'Display');
+define('TEXT_FEATURE_STATUS_FALSE',         'No Display');
+define('TEXT_FEATURE_NEW_WINDOW',           'Features open new window');
+define('TEXT_FEATURE_NEW_WINDOW_TRUE',      'Yes');
+define('TEXT_FEATURE_NEW_WINDOW_FALSE',     'No');
+define('TEXT_FEATURE_SORT_ORDER',           'Sort Order');
 
-define('TEXT_HEADING_EDIT_FEATURE', '特集を修正');
-define('TEXT_EDIT_INTRO', '特集の内容を修正してください。');
-define('TEXT_IMAGE_NONEXISTENT', '画像なし');
+define('TEXT_HEADING_EDIT_FEATURE', 'Edit Features');
+define('TEXT_EDIT_INTRO', 'Please correct the contents of the Features.');
+define('TEXT_IMAGE_NONEXISTENT', 'No Image');
 
-define('TEXT_HEADING_DELETE_FEATURE', '特集を削除');
-define('TEXT_DELETE_INTRO', 'この特集を本当に削除しますか?');
-define('TEXT_DELETE_IMAGE', '画像を削除しますか?');
+define('TEXT_HEADING_DELETE_FEATURE', 'Delete Features');
+define('TEXT_DELETE_INTRO', 'Do you want to delete this Features?');
+define('TEXT_DELETE_IMAGE', 'Do you want to delete the image?');
 
-define('TEXT_DISPLAY_NUMBER_OF_FEATURES', ' <strong>%d</strong> から <strong>%d</strong> までを表示 ( 全<strong>%d</strong> 件)');
+define('TEXT_DISPLAY_NUMBER_OF_FEATURES', ' Display  <strong>%d</strong> to <strong>%d</strong> ( all <strong>%d</strong> )');
 
-define('SUCCESS_FEATURE_AREA_STATUS_UPDATED', '成功: 特集のステータスが変更されました。');
-define('ERROR_UNKNOWN_STATUS_FLAG', 'エラー: 不明なステータスです。');
-
+define('SUCCESS_FEATURE_AREA_STATUS_UPDATED', 'SUCCESS: Features status has changed.');
+define('ERROR_UNKNOWN_STATUS_FLAG', 'ERROR: The status is unknown.');
 
 ?>

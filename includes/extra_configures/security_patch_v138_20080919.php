@@ -26,6 +26,15 @@ if (isset($_POST['products_id']) && is_array($_POST['products_id']) && count($_P
 {
   $_POST['products_id'] = securityPatchSanitizePostVariableProductsId($_POST['products_id']);
 }
+// -> #21373
+if (isset($_POST['cart_quantity']) && is_array($_POST['cart_quantity']) && count($_POST['cart_quantity']) > 0)
+{
+  $_POST['cart_quantity'] = securityPatchSanitizePostVariableProductsId($_POST['cart_quantity']);
+}
+if (isset($_POST['cart_quantity']) && !is_array($_POST['cart_quantity'])) {
+  $_POST['cart_quantity'] = mb_convert_kana($_POST['cart_quantity'], "a", "EUC-JP");
+}
+// <- #21373
 function securityPatchSanitizePostVariableId ($arrayToSanitize)
 {
   foreach ($arrayToSanitize as $key => $variableToSanitize)
@@ -53,6 +62,9 @@ function securityPatchSanitizePostVariableProductsId ($arrayToSanitize)
   foreach ($arrayToSanitize as $key => $variableToSanitize)
   {
     {
+// -> #21373
+      $variableToSanitize = mb_convert_kana($variableToSanitize, "a", "EUC-JP");
+// <- #21373
       $arrayToSanitize[$key] = ereg_replace('[^0-9a-fA-F:.]', '', $variableToSanitize);
     }
     if (ereg_replace('[0-9a-zA-z_]', '', $key) != '')
@@ -60,4 +72,3 @@ function securityPatchSanitizePostVariableProductsId ($arrayToSanitize)
   }
   return $arrayToSanitize;
 }
-  

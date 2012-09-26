@@ -24,7 +24,7 @@ define('HEADING_TITLE',                      '管理メニューの設定');
 
 define('TEXT_HEADER_TOP_MENU',               'トップレベルメニュー一覧');
 define('TEXT_HEADER_TOP_MENU_NAME',          'メニュー名');
-define('TEXT_HEADER_TOP_MENU_TYPE',          '表ｦ位置');
+define('TEXT_HEADER_TOP_MENU_TYPE',          '表示位置');
 define('TEXT_HEADER_TOP_MENU_ORDER',         '並び順');
 define('TEXT_HEADER_TOP_MENU_ACTION',        'アクション');
 

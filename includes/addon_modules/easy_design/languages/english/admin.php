@@ -20,27 +20,27 @@
 //  $Id: cache.php 1105 2005-04-04 22:05:35Z birdbrain $
 //
 
-define('HEADING_TITLE',                      'デザインの設定');
+define('HEADING_TITLE',                      'Design Setting');
 
-define('TEXT_HEADER_CHANGE_TEMPLATE',        'テンプレートの変更');
-define('TEXT_HEADER_CHANGE_COLOR',           'カラーの変更');
-define('TEXT_HEADER_CHANGE_OBJECTION',       '文言の変更');
-define('TEXT_HEADER_CHANGE_LOGO',            'ロゴ画像の変更');
+define('TEXT_HEADER_CHANGE_TEMPLATE',        'Chang Template');
+define('TEXT_HEADER_CHANGE_COLOR',           'Chang Color');
+define('TEXT_HEADER_CHANGE_OBJECTION',       'Chang Wording');
+define('TEXT_HEADER_CHANGE_LOGO',            'Chang Logo Image');
 
-define('TEXT_ACTION_CHANGE',                 '変更');
-define('TEXT_ACTION_SAVE',                   '保存');
-define('TEXT_ACTION_RECOVERY',               '初期設定に戻す');
+define('TEXT_ACTION_CHANGE',                 'Change');
+define('TEXT_ACTION_SAVE',                   'Save');
+define('TEXT_ACTION_RECOVERY',               'Restore Defaults');
 
-define('TEXT_UPDATE_SUCCESS_TEMPLATE',       'テンプレートの変更を行いました');
-define('TEXT_UPDATE_SUCCESS_COLOR',          'カラーの変更を行いました');
-define('TEXT_UPDATE_FAILURE_COLOR',          'カラーの変更が失敗しました（cssファイルの書き込みができません）');
-define('TEXT_UPDATE_SUCCESS_OBJECTION',      '文言の変更を行いました');
-define('TEXT_UPDATE_SUCCESS_LOGO',           'ロゴ画像の変更を行いました');
-define('TEXT_UPDATE_FAILURE_LOGO',           'ロゴ画像の変更が失敗しました');
-define('TEXT_UPDATE_FAILURE_LOGO_EXT',       'アップロードできるのは画像のみです(gif,jpg,bmp,tif,png)');
-define('TEXT_UPDATE_FAILURE_LOGO_UNLINK',    '既に存在するファイルの削除ができません');
-define('TEXT_UPDATE_FAILURE_LOGO_DIR',       'テンプレート内にimages/logoディレクトリが存在しません');
-define('TEXT_UPDATE_FAILURE_LOGO_PERMIT',    'テンプレート内のimages/logoディレクトリに書き込み権限がありません');
+define('TEXT_UPDATE_SUCCESS_TEMPLATE',       'Template Changed');
+define('TEXT_UPDATE_SUCCESS_COLOR',          'Color changed');
+define('TEXT_UPDATE_FAILURE_COLOR',          'Failed to change the color（Can not write css file）');
+define('TEXT_UPDATE_SUCCESS_OBJECTION',      'Wording Changed');
+define('TEXT_UPDATE_SUCCESS_LOGO',           'Changed Logo Image');
+define('TEXT_UPDATE_FAILURE_LOGO',           'Failed to change the logo image');
+define('TEXT_UPDATE_FAILURE_LOGO_EXT',       'You can upload only images (gif,jpg,bmp,tif,png)');
+define('TEXT_UPDATE_FAILURE_LOGO_UNLINK',    'Not delete existing file');
+define('TEXT_UPDATE_FAILURE_LOGO_DIR',       'Images/logo directory does not exist in the template');
+define('TEXT_UPDATE_FAILURE_LOGO_PERMIT',    'Images/logo directory in the template is not writable');
 
-define('TEXT_CONFIRM_COLOR_RECOVERY',        'カラーを初期状態に戻してもいいですか？');
+define('TEXT_CONFIRM_COLOR_RECOVERY',        'Can I return to initial state color?');
 ?>

@@ -256,6 +256,8 @@ location varchar(64) NOT NULL DEFAULT '',
 sort_order int(11) NOT NULL DEFAULT '0',
 visible tinyint(1) NOT NULL DEFAULT '0',
 pages text NOT NULL,
+css_selector varchar(128) NOT NULL default '',
+insert_position varchar(64) NOT NULL default 'append',
 PRIMARY KEY (id),
 UNIQUE KEY UNQ_module_block_template (module,block,template),
 KEY IDX_module_template_status_location_sort_order (module,template,status,location,sort_order)
@@ -390,7 +392,7 @@ INSERT INTO blocks (id, module, block, template, status, location, sort_order, v
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (137,'sideboxes','product_notifications.php','sugudeki',0,'',0,0,'');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (138,'sideboxes','record_companies.php','sugudeki',0,'',0,0,'');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (139,'sideboxes','reviews.php','sugudeki',1,'main_bottom',0,1,'product_info');
-INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (140,'sideboxes','search.php','sugudeki',1,'header',0,0,'');
+INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (140,'sideboxes','search.php','sugudeki',1,'header',0,0,'checkout_confirmation\ncheckout_payment\ncheckout_payment_address\ncheckout_shipping\ncheckout_shipping_address\ncheckout_success\ncreate_account\ncreate_account_success\nlogin\nlogoff\npassword_forgotten\nshopping_cart\nvisitors#page_create_visitor\nvisitors#page_visitor_edit\nvisitors#page_visitor_to_account');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (141,'sideboxes','search_header.php','sugudeki',0,'',0,0,'');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (142,'sideboxes','shopping_cart.php','sugudeki',0,'',1,0,'');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (143,'sideboxes','specials.php','sugudeki',0,'',0,0,'');
@@ -427,7 +429,7 @@ INSERT INTO blocks (id, module, block, template, status, location, sort_order, v
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (176,'blog','block','sugudeki',0,'',0,0,'');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (185,'easy_admin_simplify','block','sugudeki',0,'',0,0,'');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (178,'point_base','block','sugudeki',1,'main_bottom',0,1,'account');
-INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (180,'shopping_cart_summary','block','sugudeki',1,'header',1,0,'');
+INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (180,'shopping_cart_summary','block','sugudeki',1,'header',1,0,'checkout_confirmation\ncheckout_payment\ncheckout_payment_address\ncheckout_shipping\ncheckout_shipping_address\ncheckout_success\ncreate_account\ncreate_account_success\nlogin\nlogoff\npassword_forgotten\nshopping_cart\nvisitors#page_create_visitor\nvisitors#page_visitor_edit\nvisitors#page_visitor_to_account');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (184,'easy_reviews','block','sugudeki',1,'main_bottom',0,1,'document_general_info\ndocument_product_info\nproduct_free_shipping_info\nproduct_info\nproduct_music_info');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (186,'zen_like_button','block','sugudeki',1,'main_bottom',-1,1,'document_general_info\ndocument_product_info\nproduct_free_shipping_info\nproduct_info\nproduct_music_info');
 INSERT INTO blocks (id, module, block, template, status, location, sort_order, visible, pages) VALUES (187,'zen_tweet','block','sugudeki',1,'main_bottom',-2,1,'document_general_info\ndocument_product_info\nproduct_free_shipping_info\nproduct_info\nproduct_music_info');
@@ -2135,7 +2137,7 @@ PRIMARY KEY (currencies_id)
 
 INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (1,'US Dollar','USD','$','','.',',','2',0.00936500,'2009-11-19 12:39:40');
 INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (2,'Euro','EUR','','EUR','.',',','2',0.00759400,'2009-11-19 12:39:40');
-INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (3,'Japanese Yen','JPY','','±ß','.',',','',1.00000000,'2009-11-19 12:39:40');
+INSERT INTO currencies (currencies_id, title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value, last_updated) VALUES (3,'Japanese Yen','JPY','','±ß','.',',','0',1.00000000,'2009-11-19 12:39:40');
 
 --
 -- Table structure for table currencies_m17n

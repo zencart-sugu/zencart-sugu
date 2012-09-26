@@ -21,186 +21,189 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_EASY_ADMIN_PRODUCTS_TITLE',                        '¤«¤ó¤¿¤ó¾¦ÉÊ´ÉÍý¥â¥¸¥å¡¼¥ë');
-define('MODULE_EASY_ADMIN_PRODUCTS_DESCRIPTION',                  '¾¦ÉÊ¤ò°·¤¦¤¿¤á¤Î´ÉÍý²èÌÌ¤òÄó¶¡¤·¤Þ¤¹¡£');
-define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_TITLE',                 '¤«¤ó¤¿¤ó¾¦ÉÊ´ÉÍý¥â¥¸¥å¡¼¥ë¤ÎÍ­¸ú²½');
-define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_DESCRIPTION',           '¤«¤ó¤¿¤ó¾¦ÉÊ´ÉÍý¥â¥¸¥å¡¼¥ë¤òÍ­¸ú²½¤¹¤ë¾ì¹ç¤Ï¡¢¡ÖTrue¡×¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£');
+define('MODULE_EASY_ADMIN_PRODUCTS_TITLE',                        'Easy Product Management Module');
+define('MODULE_EASY_ADMIN_PRODUCTS_DESCRIPTION',                  'Provides the ability to easily handle the goods.');
+define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_TITLE',                 'Activating Easy Product Management Module');
+define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_DESCRIPTION',           '"Easy Product Management Module" is activate when, \'True\' Please select.');
 define('MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES_TITLE',       'ÄÉ²Ã²èÁü¤ÎºÇÂç¸Ä¿ô');
 define('MODULE_EASY_ADMIN_PRODUCTS_MAX_ADDITIONAL_IMAGES_DESCRIPTION', 'ÄÉ²Ã²èÁü¤ÎºÇÂç¸Ä¿ô¤ò»ØÄê¤·¤Þ¤¹');
-define('MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_TITLE',             'Í¥Àè½ç');
-define('MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_DESCRIPTION',       '¥â¥¸¥å¡¼¥ë¤ÎÍ¥Àè½ç¤òÀßÄê¤Ç¤­¤Þ¤¹¡£¿ô»ú¤¬¾®¤µ¤¤¤Û¤ÉÀè¤Ë¥â¥¸¥å¡¼¥ë¤ÎÆÉ¤ß¹þ¤ß¤È½èÍý¤¬¼Â¹Ô¤µ¤ì¤Þ¤¹¡£È¾³Ñ¿ô»ú¤ÇÂ¾¤Î¥â¥¸¥å¡¼¥ë¤È½Å¤Ê¤é¤Ê¤¤¤è¤¦¤ËÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£');
+define('MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_TITLE',             'Sort Order');
+define('MODULE_EASY_ADMIN_PRODUCTS_SORT_ORDER_DESCRIPTION',       'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-define('BOX_ADDON_MODULES_EASY_ADMIN_PRODUCTS',                   '¤«¤ó¤¿¤ó¾¦ÉÊ´ÉÍý');
+define('BOX_ADDON_MODULES_EASY_ADMIN_PRODUCTS',                   'Easy Product Management');
 
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_TITLE',                '¤«¤ó¤¿¤ó¾¦ÉÊ´ÉÍý');
-define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_CATEGORY',                '¥«¥Æ¥´¥ê');
-define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_TITLE',                   '¾¦ÉÊ¥¿¥¤¥È¥ë');
-define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_MODEL',                   '¾¦ÉÊ·¿ÈÖ');
-define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_MANUFACTURER',            '¾¦ÉÊ¥á¡¼¥«¡¼');
-define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_DESCRIPTION',             '¾¦ÉÊÀâÌÀ');
-define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_SPECIAL',                 'ÆÃ¼ì¾¦ÉÊ');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_TITLE',                'Easy Product Management');
+define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_CATEGORY',                'Category');
+define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_TITLE',                   'Products Title');
+define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_MODEL',                   'Products Model');
+define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_MANUFACTURER',            'Products Manufacturer');
+define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_DESCRIPTION',             'Products Description');
+define('MODULE_EASY_ADMIN_PRODUCTS_ITEM_SPECIAL',                 'Special Products');
 
-// °ìÍ÷²èÌÌ¤Î¥Ø¥Ã¥À
-// MODULE_EASY_ADMIN_PRODUCTS_HEADING_0¤«¤éÏ¢ÈÖ¤È¤¹¤ë
-// define¤µ¤ì¤Æ¤¤¤ë¤Î¤ò³ÎÇ§¤·¼«Æ°¤ÇÉ½¼¨¤¹¤ë
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_0',                    '¥«¥Æ¥´¥ê');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_1',                    '¾¦ÉÊÌ¾');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_2',                    '·¿ÈÖ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_3',                    '²Á³Ê');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_4',                    'ºß¸Ë¿ô');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_5',                    '¥¹¥Æ¡¼¥¿¥¹');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_6',                    '¥½¡¼¥È½ç');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_7',                    'Áàºî');
-define('MODULE_EASY_ADMIN_PRODUCTS_SEARCH',                       '¸¡º÷');
+// for list
+// MODULE_EASY_ADMIN_PRODUCTS_HEADING_0, 1, 2, ...
+// 
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_0',                    'Category');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_1',                    'Products Name');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_2',                    'Products Model');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_3',                    'Products Price');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_4',                    'Quantity of Stock');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_5',                    'Status');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_6',                    'Sort Order');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_7',                    'Action');
+define('MODULE_EASY_ADMIN_PRODUCTS_SEARCH',                       'Search');
 define('MODULE_EASY_ADMIN_PRODUCTS_SEARCH_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_search.gif');
-define('MODULE_EASY_ADMIN_PRODUCTS_INSERT',                       '¿·¤·¤¤¾¦ÉÊ¤ÎÄÉ²Ã');
+define('MODULE_EASY_ADMIN_PRODUCTS_INSERT',                       'New Product');
 define('MODULE_EASY_ADMIN_PRODUCTS_INSERT_BTN',                       '../includes/addon_modules/easy_admin_products/images/button_new_product_add.gif');
-define('MODULE_EASY_ADMIN_PRODUCTS_LIST',                         '¾¦ÉÊ°ìÍ÷¤ËÌá¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_LIST',                         'Back to Products List');
 
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              '<img src="../includes/addon_modules/easy_admin_products/images/button_choice.gif" alt="ÁªÂò">');
-define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_ON',                    '¥¹¥Æ¡¼¥¿¥¹¥ª¥ó');
-define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_OFF',                   '¥¹¥Æ¡¼¥¿¥¹¥ª¥Õ');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              'Select');
+define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_ON',                    'Status On');
+define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_OFF',                   'Status Off');
 
-// ¥«¥Æ¥´¥ê°ìÍ÷
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_LIST',          '¢£¥«¥Æ¥´¥ê¤ò°ìÍ÷¤«¤éÁªÂò');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_SEARCH',        '¢£¥«¥Æ¥´¥ê¤ò¸¡º÷¤·¤ÆÁªÂò');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND',              '<img src="../includes/addon_modules/easy_admin_products/images/icon_plus.gif" alt="Å¸³«">');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              'ÁªÂò');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TOP',                 '¥È¥Ã¥×');
+// category list
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_LIST',          '*Select Category From List');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TITLE_SEARCH',        '*Select Category To Search');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_EXPAND',              'Expand');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SELECT',              'Select');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_TOP',                 'Top');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEPARATE',            '&nbsp;>&nbsp;');
 define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_FORMAT',              '¡Ú%s¡Û');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_NAME',                '¥«¥Æ¥´¥êÌ¾');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEARCH',              '¸¡º÷');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP',                '³°¤¹');
-define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET',               '¥ê¥»¥Ã¥È');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_NAME',                'Category Name');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_SEARCH',              'Search');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_DROP',                'Drop');
+define('MODULE_EASY_ADMIN_PRODUCTS_CATEGORY_RESET',               'Reset');
 define('MODULE_EASY_ADMIN_WINDOW_CLOSE_IMG',                      '../includes/addon_modules/easy_admin_products/images/icon_close.gif');
-define('MODULE_EASY_ADMIN_WINDOW_CLOSE_ALT',                      'ÊÄ¤¸¤ë');
+define('MODULE_EASY_ADMIN_WINDOW_CLOSE_ALT',                      'Close');
 
-// ÆÃ¼ì¾¦ÉÊ
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT',               '¡ÚÆÃ¼ì¾¦ÉÊ¹Ê¤ê¹þ¤ß¡Û');
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DOWNLOAD',             '¥À¥¦¥ó¥í¡¼¥É¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_FEATURED',             '¤ª¤¹¤¹¤á¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SPECIAL',              'ÆÃ²Á¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_QUANTITY',             '¿ôÎÌ³ä°ú¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_ARRIVAL',              'Æþ²ÙÍ½Äê¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DISPLAY',              'É½¼¨¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_NONDISPLAY',           'ÈóÉ½¼¨¾¦ÉÊ');
+// special list
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SELECT',               '[Special Product Refine]');
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DOWNLOAD',             'Download Products');
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_FEATURED',             'Featured Products');
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_SPECIAL',              'Specials');
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_QUANTITY',             'Quantity Discounts Products');
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_ARRIVAL',              'Schedule of Arrival of Products');
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_DISPLAY',              'Display Products');
+define('MODULE_EASY_ADMIN_PRODUCTS_SPECIAL_NONDISPLAY',           'No Display Products');
 
-// Áàºî
-define('MODULE_EASY_ADMIN_PRODUCTS_EDIT',                         'ÊÔ½¸');
-define('MODULE_EASY_ADMIN_PRODUCTS_DELETE',                       'ºï½ü');
+// controll
+define('MODULE_EASY_ADMIN_PRODUCTS_EDIT',                         'Edit');
+define('MODULE_EASY_ADMIN_PRODUCTS_DELETE',                       'Delete');
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_BTN',                   '../includes/addon_modules/easy_admin_products/images/button_delete.gif');
-define('MODULE_EASY_ADMIN_PRODUCTS_COPY',                         '¥³¥Ô¡¼');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY',                         'Copy');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_BTN',                     '../includes/addon_modules/easy_admin_products/images/button_copy.gif');
-define('MODULE_EASY_ADMIN_PRODUCTS_XSELL',                        '´ØÏ¢');
+define('MODULE_EASY_ADMIN_PRODUCTS_XSELL',                        'XSell');
 define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_BTN',                    '../includes/addon_modules/easy_admin_products/images/button_xsel.gif');
-define('MODULE_EASY_ADMIN_PRODUCTS_STOCK',                        'ºß¸Ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_STOCK',                        'Stock');
 define('MODULE_EASY_ADMIN_PRODUCTS_STOCK_BTN',                    '../includes/addon_modules/easy_admin_products/images/button_stock.gif');
-define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         'ÊÝÂ¸');
-define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       '¥­¥ã¥ó¥»¥ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_SAVE',                         'Save');
+define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL',                       'Cancel');
 define('MODULE_EASY_ADMIN_PRODUCTS_CANCEL_BTN',                   '../includes/addon_modules/easy_admin_products/images/button_cancel.gif');
-define('MODULE_EASY_ADMIN_PRODUCTS_ADD',                          'ÄÉ²Ã');
+define('MODULE_EASY_ADMIN_PRODUCTS_ADD',                          'Add');
 define('MODULE_EASY_ADMIN_PRODUCTS_ADD_BTN',                      '../includes/addon_modules/easy_admin_products/images/button_add.gif');
 
-// ¾¦ÉÊ
-define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">É¬¿Ü</font>');
-define('MODULE_EASY_ADMIN_PRODUCTS_YES',                          '¤Ï¤¤');
-define('MODULE_EASY_ADMIN_PRODUCTS_NO',                           '¤¤¤¤¤¨');
-define('MODULE_EASY_ADMIN_PRODUCTS_DATE_START',                   '³«»ÏÆü');
-define('MODULE_EASY_ADMIN_PRODUCTS_DATE_END',                     '½ªÎ»Æü');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_STARTDATE',            '³«»ÏÆü(YYYY-MM-DD):');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ENDDATE',              '½ªÎ»Æü(YYYY-MM-DD):');
-define('MODULE_EASY_ADMIN_PRODUCTS_INSERT_TITLE',                 '¿·µ¬¾¦ÉÊÅÐÏ¿');
-define('MODULE_EASY_ADMIN_PRODUCTS_UPDATE_TITLE',                 '´ûÂ¸¾¦ÉÊ½¤Àµ');
-define('MODULE_EASY_ADMIN_PRODUCTS_BASE_TITLE',                   '¢£´ðËÜÀßÄê');
-define('MODULE_EASY_ADMIN_PRODUCTS_PRICE_TITLE',                  '¢£²Á³Ê¾ÜºÙÀßÄê');
-define('MODULE_EASY_ADMIN_PRODUCTS_SHIPPING_TITLE',               '¢£ÇÛÁ÷ÀßÄê');
-define('MODULE_EASY_ADMIN_PRODUCTS_CART_TITLE',                   '¢£¥«¡¼¥ÈÄÉ²ÃÀßÄê');
-define('MODULE_EASY_ADMIN_PRODUCTS_SEO_TITLE',                    '¢£SEOÀßÄê');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_STATUS',               '¥¹¥Æ¡¼¥¿¥¹:');
-define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_1',                     'É½¼¨');
-define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_0',                     'ÈóÉ½¼¨');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_MODEL',                '·¿ÈÖ:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_NAME',                 '¾¦ÉÊÌ¾:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_TAX',                  'ÀÇ¼ïÊÌ:');
-define('MODULE_EASY_ADMIN_PRODUCTS_TAX_0',                        '¤Ê¤·');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_PRICE',                '²Á³Ê(ÀÇÈ´):');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_GROSS',                '²Á³Ê(ÀÇ¹þ):');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE',                '²èÁü:');
+// products
+define('MODULE_EASY_ADMIN_PRODUCTS_INDISPENSABILITY',             '<font color="red">Required</font>');
+define('MODULE_EASY_ADMIN_PRODUCTS_YES',                          'Yes');
+define('MODULE_EASY_ADMIN_PRODUCTS_NO',                           'No');
+define('MODULE_EASY_ADMIN_PRODUCTS_DATE_START',                   'Start Date');
+define('MODULE_EASY_ADMIN_PRODUCTS_DATE_END',                     'End Date');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_STARTDATE',            'Start Date (YYYY-MM-DD):');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ENDDATE',              'End Date (YYYY-MM-DD):');
+define('MODULE_EASY_ADMIN_PRODUCTS_INSERT_TITLE',                 'New Products Registration');
+define('MODULE_EASY_ADMIN_PRODUCTS_UPDATE_TITLE',                 'A Existing Product Modify');
+define('MODULE_EASY_ADMIN_PRODUCTS_BASE_TITLE',                   '*Basic Setting');
+define('MODULE_EASY_ADMIN_PRODUCTS_PRICE_TITLE',                  '*Price Details Setting');
+define('MODULE_EASY_ADMIN_PRODUCTS_SHIPPING_TITLE',               '*Delivery Setting');
+define('MODULE_EASY_ADMIN_PRODUCTS_CART_TITLE',                   '*Additional Cart Setting');
+define('MODULE_EASY_ADMIN_PRODUCTS_SEO_TITLE',                    '*SEO Setting');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_STATUS',               'Status:');
+define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_1',                     'Display');
+define('MODULE_EASY_ADMIN_PRODUCTS_STATUS_0',                     'No Display');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_MODEL',                'Model:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_NAME',                 'Products Name:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_TAX',                  'Tax Type:');
+define('MODULE_EASY_ADMIN_PRODUCTS_TAX_0',                        'None');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_PRICE',                'Price(Net):');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_GROSS',                'Price(Gross):');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE',                'Image:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_IMAGE_NOTE',           '<br/><font color="red">¥¢¥Ã¥×¥í¡¼¥É¤¹¤ë²èÁü¤Î³ÈÄ¥»Ò¤¬¸½ºß¥¢¥Ã¥×¥í¡¼¥ÉºÑ¤ß¤Î¤â¤Î¤È°Û¤Ê¤ë¾ì¹ç¤Ï¡¢<br/>ºÆÅÙÄÉ²Ã²èÁü¤ò¥¢¥Ã¥×¥í¡¼¥É¤·¤Æ¤¯¤À¤µ¤¤</font>');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE',            'ÄÉ²Ã²èÁü:');
 define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ADD_IMAGE_NOTE',       '<br/><font color="red">ÄÉ²Ã²èÁü¤Ï¥á¥¤¥ó²èÁü¤ÈÆ±¤¸³ÈÄ¥»Ò¤Ë¼«Æ°Åª¤ËÊÑ´¹¤µ¤ì¤Þ¤¹</font>');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD',               '¥¢¥Ã¥×¥í¡¼¥ÉÀè¥Ç¥£¥ì¥¯¥È¥ê:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD_NOTE',          '<br/>´ûÂ¸¤Î¥ª¥×¥·¥ç¥ó²èÁü¤ò¾å½ñ¤­¤·¤Þ¤¹¤«¡©<br/>%s<br/>¾å½ñ¤­¤·¤¿¤¯¤Ê¤¤¾ì¹ç¤Ï[¤¤¤¤¤¨]¤òÁªÂò¤·¤Æ¡¢´ûÂ¸¥Õ¥¡¥¤¥ë¤È¤Ï°Û¤Ê¤ëÌ¾Á°¤Î¥Õ¥¡¥¤¥ë¤ò[¥ª¥×¥·¥ç¥ó²èÁü]¤Ë»ØÄê¤·¤Æ¤¯¤À¤µ¤¤¡£<br/>');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_DESCRIPTION',          '¾¦ÉÊÀâÌÀ:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QUANTITY',             '¾¦ÉÊ¿ôÎÌ:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_WEIGHT',               '¾¦ÉÊ½ÅÎÌ:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_CATEGORY',             '¥«¥Æ¥´¥ê:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SORT',                 '¥½¡¼¥È½ç:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_MANUFACTURER',         '¾¦ÉÊ¥á¡¼¥«¡¼:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_URL',                  '¾¦ÉÊURL:');
-define('MODULE_EASY_ADMIN_PRODUCTS_MANUFACTURER_0',               '¤Ê¤·');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_DATE_AVAILABLE',       'Äó¶¡²ÄÇ½Æü(YYYY-MM-DD):');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_FEATURED',             '¤ª¤¹¤¹¤á:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS',             'ÆÃ²Á²Á³Ê:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION',      'ÆÃ²Á²Á³ÊÀßÄê:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_0',    'Ìµ¸ú');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_1',    'Í­¸ú');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_2',    'ÌµÎÁ¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_3',    '²Á³ÊÌä¤¤¹ç¤ï¤»¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_VIRTUAL',              '¥Ç¥¸¥¿¥ë¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_VIRTUAL_1',            '¤Ï¤¤¡¢Á÷ÉÕÀè½»½ê¤ò¥¹¥­¥Ã¥×');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_VIRTUAL_0',            '¤¤¤¤¤¨¡¢Á÷ÉÕÀè½»½ê¤¬É¬Í×');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING',             'Á÷ÎÁÌµÎÁ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING_1',           '¤Ï¤¤¡¢¾ï¤ËÁ÷ÎÁÌµÎÁ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING_0',           '¤¤¤¤¤¨¡¢ÄÌ¾ïÁ÷ÎÁ¤òÅ¬ÍÑ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING_2',           '¥À¥¦¥ó¥í¡¼¥É¾¦ÉÊ');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QTY_BOX',              '¾¦ÉÊ¤Î¿ôÎÌÍó¤ÎÉ½¼¨:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QTY_BOX_1',            '¤Ï¤¤¡¢¿ôÎÌÍó¤òÉ½¼¨');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QTY_BOX_0',            '¤¤¤¤¤¨¡¢¿ôÎÌÍó¤ÏÈóÉ½¼¨');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_MIN',            '¾¦ÉÊ¤ÎºÇ¾®¿ôÎÌ:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_MAX',            '¾¦ÉÊ¤ÎºÇÂç¿ôÎÌ:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_MAX_NOTE',       '0=ÌµÀ©¸Â&nbsp;1=¾¦ÉÊÍóÈóÉ½¼¨');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_UNIT',           '¾¦ÉÊ¤Î¿ôÎÌÃ±°Ì:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QUANTITY_MIX',         'ºÇ¾®¿ôÎÌ/Ã±°Ì¥ß¥Ã¥¯¥¹:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_TITLE',       '&lt;title&gt;¥¿¥°:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_TITLE_NOTE',  'ÁÞÆþ¤¹¤ë¾ðÊó¤òÁªÂò¤·¤Æ»ØÄê<br/>');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_NAME',            '¾¦ÉÊÌ¾:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TITLE',           '¥¿¥¤¥È¥ë:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_MODEL',           '¥â¥Ç¥ë:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_PRICE',           '²Á³Ê:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAGLINE',         'ÄêµÁºÑ¥¿¥°¥é¥¤¥ó:');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_IMMIDIATE',       'Ä¾ÀÜ»ØÄê');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_KEYWORD',     '&lt;meta&gt;¥¿¥°(keywords):');
-define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_DESCRIPTION', '&lt;meta&gt;¥¿¥°(description):');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD',               'Upload Directory:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_UPLOAD_NOTE',          '<br/>Do you want to overwrite the existing option image?<br/>If you do not want to overwrite [No] to select and please setting existing file with different name at [Option Image].<br/>');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_DESCRIPTION',          'Products Description:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QUANTITY',             'Products Quantity:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_WEIGHT',               'Products Weight:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_CATEGORY',             'Category:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SORT',                 'Sort Order:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_MANUFACTURER',         'Products Manufacturer:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_URL',                  'Products URL:');
+define('MODULE_EASY_ADMIN_PRODUCTS_MANUFACTURER_0',               '--none--');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_DATE_AVAILABLE',       'Date Available(YYYY-MM-DD):');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_FEATURED',             'Featured Products:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION',               '¾¦ÉÊÂ°À­¤Ë¤è¤ë²Á³Ê:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION_TEXT',          'ÀßÄê(ÊÌ¥¦¥£¥ó¥É¥¦¤Ç³«¤­¤Þ¤¹)');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_OPTION_NOSAVE',        '<font color="red">ÊÝÂ¸¸å¤ËÀßÄê²ÄÇ½¤Ç¤¹</font>');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS',             'Specials:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION',      'Special Price Setting:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_0',    'Disable');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_1',    'Option pricing');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_2',    'Product is Free');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SPECIALS_OPTION_3',    'Product is Call for Price');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_VIRTUAL',              'Product is Virtual');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_VIRTUAL_1',            'Yes, Skip Shipping Address');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_VIRTUAL_0',            'No, Shipping Address Required');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING',             'Always Free Shipping');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING_1',           'Yes, Always Free Shipping');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING_0',           'No, Normal Shipping Rules');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_SHIPPING_2',           'Special, Product/Download Combo Requires a Shipping Address');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QTY_BOX',              'Products Quantity Box Shows:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QTY_BOX_1',            'Yes, Show Quantity Box');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QTY_BOX_0',            'No, Do not show Quantity Box');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_MIN',            'Product Qty Minimum:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_MAX',            'Product Qty Maximum:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_MAX_NOTE',       '0 = Unlimited, 1 = No Qty Boxes');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_ORDER_UNIT',           'Product Qty Units:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_QUANTITY_MIX',         'Product Qty Min/Unit Mix:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_TITLE',       '&lt;title&gt;Tag:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_TITLE_NOTE',  'Choose to insert the specified information<br/>');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_NAME',            'Products Name:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TITLE',           'Title:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_MODEL',           'Model:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_PRICE',           'Price:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAGLINE',         'Predefined Tagline:');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_IMMIDIATE',       'Immediate Specify');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_KEYWORD',     '&lt;meta&gt;Tag(keywords):');
+define('MODULE_EASY_ADMIN_PRODUCTS_HEADING_META_TAG_DESCRIPTION', '&lt;meta&gt;Tag(description):');
 
-// Å¸³«/ÊÄ¤¸¤ë
-define('MODULE_EASY_ADMIN_PRODUCTS_OPEN',                         '--- [³«¤¯] ---');
-define('MODULE_EASY_ADMIN_PRODUCTS_CLOSE',                        '--- [ÊÄ¤¸¤ë] ---');
+// open/close
+define('MODULE_EASY_ADMIN_PRODUCTS_OPEN',                         '--- [Open] ---');
+define('MODULE_EASY_ADMIN_PRODUCTS_CLOSE',                        '--- [Close] ---');
 
-// ºï½ü
-define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE',                 'ËÜÅö¤Ë¾¦ÉÊ¤òºï½ü¤·¤Þ¤¹¤«?');
+// delete
+define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_TITLE',                 'Do you want to really delete a product?');
 define('MODULE_EASY_ADMIN_PRODUCTS_DELETE_IMAGE',                 '¼¡¤Î²èÁü¤òºï½ü¤·¤Þ¤¹¤«¡©');
 
-// ¥³¥Ô¡¼
-define('MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE',                   '¾¦ÉÊ¤ò¥³¥Ô¡¼¤¹¤ë');
+// copy
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_TITLE',                   'Copying Products');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY_ORIGINAL',       '<strong>¸½¥«¥Æ¥´¥ê</strong>');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY',                '<strong>¥«¥Æ¥´¥ê</strong>¡¡<font color="red">É¬¿Ü</font>');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_SELECT_TXT',              '');
-define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE',                    '¾¦ÉÊ %s ¤ò¥³¥Ô¡¼¤·¤¿¤¤¥«¥Æ¥´¥ê¤òÁª¤ó¤Ç¤¯¤À¤µ¤¤');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE',                    'Please choose the category you want to copy products [%s]');
 
-// ¥¨¥é¡¼
-define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL',                  '·¿ÈÖ¤ÏÉ¬¿Ü¤Ç¤¹');
+// error
+define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL',                  'Products model is required');
 define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL_ALREADY_EXISTS',   '¤³¤Î·¿ÈÖ¤ÏÂ¾¤Î¾¦ÉÊ¤Ç»È¤ï¤ì¤Æ¤¤¤Þ¤¹');
-define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES',             'ºÇÄã¤Ç¤â¤Ò¤È¤Ä¤Î¥«¥Æ¥´¥ê¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤');
+define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES',             'Please select at least one category');
 
 // notice
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_ERROR_SAVE',            'ÊÝÂ¸»þ¤Ë¥¨¥é¡¼¤¬È¯À¸¤·¤Þ¤·¤¿');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_STATUS',                '¥¹¥Æ¡¼¥¿¥¹ÊÑ¹¹¤·¤Þ¤·¤¿');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT',                '¾¦ÉÊ¤òºîÀ®¤·¤Þ¤·¤¿');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE',                '¾¦ÉÊ¤òÊÝÂ¸¤·¤Þ¤·¤¿');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE',                '%s¤òºï½ü¤·¤Þ¤·¤¿');
-define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY',                  '%s¤ò¡Ö%s¡×¤Ë¥³¥Ô¡¼¤·¤Þ¤·¤¿');
+define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_ERROR_SAVE',            'An Error occurred when saving');
+define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_STATUS',                'Status Changed');
+define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_INSERT',                'Product Created');
+define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_UPDATE',                'Product Saved');
+define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_DELETE',                'Deleted %s');
+define('MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY',                  '%s were copied to %s.');
 
 // xsell
 define('MODULE_EASY_ADMIN_PRODUCTS_XSELL_HEADING_TITLE',          '´ØÏ¢¾¦ÉÊ');
@@ -281,8 +284,7 @@ define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_WEIGHT_PREFIX_REPLACE', '¾¦ÉÊ½ÅÎÌ¤
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_STATUS_SETTING',    '¢£Â°À­¥Õ¥é¥°');
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_DISPLAY_ONLY', 'É½¼¨¤Î¤ß');
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_PRODUCT_ATTRIBUTE_IS_FREE', '¾¦ÉÊ¤¬ÌµÎÁ¾¦ÉÊ¤Î¤È¤­Â°À­¤Ë¤è¤ë²Á³Ê¤âÌµÎÁ¤Ë¤¹¤ë');
-define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_DEFAULT', '¥Ç¥Õ¥©¥ë¥È¤Ç
-ÁªÂò¤µ¤ì¤ë');
+define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_DEFAULT', '¥Ç¥Õ¥©¥ë¥È¤ÇÁªÂò¤µ¤ì¤ë');
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_DISCOUNTED', 'Â°À­¤Ë¤è¤ë²Á³ÊÁý¸º¤Ë¤âÆÃ²Á/¥»¡¼¥ë¤Î³ä°ú¤òÅ¬ÍÑ¤¹¤ë');
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_PRICE_BASE_INCLUDED', 'Â°À­¤Ë¤è¤ë²Á³ÊÁý¸º¤ò¥Ù¡¼¥¹²Á³Ê¤Ë´Þ¤á¤ë');
 define('MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_ATTRIBUTES_REQUIRED', '¥Æ¥­¥¹¥ÈÆþÎÏ¤òÉ¬¿Ü¤Ë¤¹¤ë');

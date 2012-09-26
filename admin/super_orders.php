@@ -200,6 +200,10 @@
   function popupWindow(url, features) {
     window.open(url,'popupWindow',features)
   }
+
+  function couponpopupWindow(url) {
+    window.open(url,'popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=450,height=280,screenX=150,screenY=150,top=150,left=150')
+  }
   // -->
 </script>
 </head>
@@ -387,11 +391,10 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
 <?php
     } // END if ($notes->RecordCount() > 0)
 ?>
-            <td align="right" align="center"><table width="95%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
 <?php
     if (zen_not_null($order->info['cc_type']) || zen_not_null($order->info['cc_owner']) || zen_not_null($order->info['cc_number'])) {
 ?>
-
+            <td align="right" align="center"><table width="95%" border="0" cellspacing="0" cellpadding="0" class="tableLayout1">
               <tr>
                 <th class="main"><?php echo ENTRY_CREDIT_CARD_TYPE; ?></th>
                 <td class="main"><?php echo $order->info['cc_type']; ?></td>
@@ -412,10 +415,10 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
                 <th class="main"><?php echo ENTRY_CREDIT_CARD_EXPIRES; ?></th>
                 <td class="main"><?php echo $order->info['cc_expires']; ?></td>
               </tr>
+            </table></td>
 <?php
     }
 ?>
-            </table></td>
           </tr>
         </table></td>
       </tr>

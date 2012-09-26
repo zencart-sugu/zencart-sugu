@@ -19,18 +19,17 @@
 // +----------------------------------------------------------------------+
 // $Id: japanese.php $
 //
-define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_TITLE',                    'オプション毎の在庫管理');
-define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_DESCRIPTION',              '商品のオプション組み合わせによる在庫管理を行う事ができるようにする');
+define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_TITLE',                    'Stock Management of Each Option');
+define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_DESCRIPTION',              'Stock management of combination of product options.');
 
-define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS_TITLE',             'オプション毎の在庫管理の有効化');
-define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS_DESCRIPTION',       'オプション毎の在庫管理を有効にしますか？ <br />true: 有効<br />false: 無効');
+define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS_TITLE',             'Activating Stock Management of Each Option');
+define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_STATUS_DESCRIPTION',       'Do you want to active to stock management of each option?<br />true: Active<br />false: Inactive');
 
-define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_SORT_ORDER_TITLE',         '優先順');
-define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_SORT_ORDER_DESCRIPTION',   'モジュールの優先順を設定できます。数字が小さいほど先にモジュールの読み込みと処理が実行されます。半角数字で他のモジュールと重ならないように設定してください。');
+define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_SORT_ORDER_TITLE',         'Sort Order');
+define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
-// addon_moduleブロック管理用
-define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_BLOCK_TITLE',              'オプション毎の在庫管理');
+define('MODULE_PRODUCTS_WITH_ATTRIBUTES_STOCK_BLOCK_TITLE',              'Stock Management of Each Option');
 
-define('BOX_PRODUCTS_WITH_ATTRIBUTES_STOCK',                             'オプション毎の在庫管理');
+define('BOX_PRODUCTS_WITH_ATTRIBUTES_STOCK',                             'Stock Management of Each Option');
 
 ?>

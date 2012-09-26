@@ -31,7 +31,7 @@
 
   if ($show_best_sellers == true) {
     if (isset($current_category_id) && ($current_category_id > 0)) {
-      $best_sellers_query = "select distinct p.products_id, pd.products_name, p.products_ordered
+      $best_sellers_query = "select distinct p.products_id, pd.products_name, p.products_ordered, p.products_image
                              from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, "
                                     . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_CATEGORIES . " c
                              where p.products_status = '1'
@@ -47,7 +47,7 @@
       $best_sellers = $db->Execute($best_sellers_query);
 
     } else {
-      $best_sellers_query = "select distinct p.products_id, pd.products_name, p.products_ordered
+      $best_sellers_query = "select distinct p.products_id, pd.products_name, p.products_ordered, p.products_image
                              from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
                              where p.products_status = '1'
                              and p.products_ordered > 0
@@ -67,6 +67,7 @@
         $rows++;
         $bestsellers_list[$rows]['id'] = $best_sellers->fields['products_id'];
         $bestsellers_list[$rows]['name']  = $best_sellers->fields['products_name'];
+        $bestsellers_list[$rows]['image'] = $best_sellers->fields['products_image'];
         $best_sellers->MoveNext();
       }
 

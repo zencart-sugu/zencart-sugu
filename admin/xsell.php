@@ -296,6 +296,7 @@ $products_result->MoveNext();
 #$products_query_raw = 'select p.products_id, p.products_model, p.products_image, p.products_price, pd.products_name, p.products_id from '.TABLE_PRODUCTS.' p, '.TABLE_PRODUCTS_DESCRIPTION.' pd where p.products_id = pd.products_id and pd.language_id = "'.(int)$languages_id.'" order by p.products_id asc';
 $products_query_raw = 'select p.products_id, p.products_model, p.products_image, p.products_price, pd.products_name, p.products_id from '.TABLE_PRODUCTS.' p, '.TABLE_PRODUCTS_DESCRIPTION.' pd where p.products_id = pd.products_id and pd.language_id = "'.(int)$languages_id.'"';
 $products_query_raw = xsell_add_search_condition($products_query_raw, $_REQUEST['searchProduct'], $_REQUEST['searchKeyword']);
+$products_query_raw .= ' and NOT p.products_id='. (int)$_GET['add_related_product_ID'] .' ';
 $products_query_raw .= " order by p.products_id asc";
 //echo "debug2: $products_query_raw<BR>\n";
 $products_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, $products_query_raw, $products_query_numrows);
@@ -481,6 +482,11 @@ else if ($_POST['csvupload']==1) {
                 $relateProductsModel = $row[1];
                 $action = $row[2];
                 $eoreor = $row[3];
+                if ($mainProductsModel == $relateProductsModel) {
+                    $msg = XSELL_UPLOAD_ERR_SAME_PRODUCT;
+                    $message = xsell_make_error_deco($msg);
+                    break;
+                }
                 $mainProductId = xsell_get_products_id($mainProductsModel);
                 if ( $mainProductId == null ) {
                     $msg = XSELL_UPLOAD_ERR_PRODUCT_NOT_FOUND;
