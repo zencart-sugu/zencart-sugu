@@ -844,6 +844,51 @@ ul.categories li.subs-parent .subs-parent li.products a{
 	font-weight: 800;*/
 }
 
+/*block-super_products_list-block_categories*/
+#block-super_products_list-block_categories ul{
+	border:solid 1px #CCCCCC;
+}
+#block-super_products_list-block_categories ul li a{
+	display:block;
+	width:200px;
+	padding:0.25em 10px 0.25em 18px;
+	border-bottom:dotted 1px #CCCCCC;
+	color:#333333;
+	text-decoration:none;
+	background: url(../images/list_04.gif) 10px 0.75em no-repeat #F7F7F7;
+}
+#block-super_products_list-block_categories ul li a:hover{
+	color:#42A0FF;
+	text-decoration:none;
+	background: url(../images/list_08.gif) 10px 0.75em no-repeat  #FFFFFF;
+}
+#block-super_products_list-block_categories ul li.current a{
+	color:#0066CC;
+	background: url(../images/list_08.gif) 10px 0.75em no-repeat #FFFFFF;
+	font-weight:bold;
+	border-bottom:none!important;
+}
+#block-super_products_list-block_categories ul li.current a:hover{
+	background: url(../images/list_08.gif) 10px 0.75em no-repeat #FFFFFF;
+	text-decoration:underline;
+}
+#block-super_products_list-block_categories ul ul{
+	padding-left:20px;
+	border:none;
+	border-bottom:dotted 1px #CCCCCC;
+}
+#block-super_products_list-block_categories ul ul li a{
+	width:180px;
+	border-bottom:none;
+}
+#block-super_products_list-block_categories ul ul li a{
+	color:#0066CC;
+	background: url(../images/list_08.gif) 10px 0.75em no-repeat #FFFFFF;
+}
+#block-super_products_list-block_categories ul ul li a:hover{
+	text-decoration:underline;
+}
+
 /* main
 ---------------------- */
 

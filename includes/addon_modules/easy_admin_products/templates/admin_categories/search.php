@@ -19,9 +19,9 @@
   $parm = array('action' => 'index');
   $tree_link = $html->href_link('categories', $parm);
 ?>
-<ul>
+<ul class="tab">
   <li><a href="<?php echo $tree_link; ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_TREE; ?></a></li>
-  <li><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SEARCH; ?></li>
+  <li><span><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SEARCH; ?></span></li>
 </ul>
 
 <?php echo $html->form('form_category_search', 'categories'); ?>

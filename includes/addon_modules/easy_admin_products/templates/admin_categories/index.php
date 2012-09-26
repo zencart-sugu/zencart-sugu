@@ -19,12 +19,12 @@
   $parm = array('action' => 'search');
   $search_link = $html->href_link('categories', $parm);
 ?>
-<ul>
-  <li><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_TREE; ?></li>
+<ul class="tab">
+  <li><span><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_TREE; ?></span></li>
   <li><a href="<?php echo $search_link; ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_CATEGORIES_SEARCH; ?></a></li>
 </ul>
 
-<?php echo $breadcrumb; ?>
+<p id="catgory_breadcrumbs"><?php echo $breadcrumb; ?></p>
 
 <div class="listBox">
 <table border="0" class="tableLayout3" width="100%" cellspacing="0" cellpadding="0">

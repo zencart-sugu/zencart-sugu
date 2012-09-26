@@ -23,6 +23,7 @@ for ($i=0; $i<count($menus); $i++) {
   echo '</li>'."\n";
 }
 ?>
+    <?php echo '<li><a href="' . zen_href_link(FILENAME_LOGOFF) . '" class="headerLink">' . HEADER_TITLE_LOGOFF . '</a></li>'; ?>
   </ul>
 </div>
 

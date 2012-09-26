@@ -18,7 +18,7 @@
         <?php echo $fields[$k]; ?>
       </td>
     <?php } ?>
-    <!-- Áàºî -->
+    <!-- æ“ä½œ -->
     <td class="operation">
       <?php
         $parm  = array(
@@ -68,9 +68,10 @@
                    "products_id" => $fields['products_id'],
                    "action"      => "",
                  );
+        $image = $html->image("icon_option_edit.gif", MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT);
         $link  = $html->href_link("attributes", $parm);
       ?>
-      <a href="<?php echo $link; ?>"><?php echo MODULE_EASY_ADMIN_PRODUCTS_ATTRIBUTES_EDIT; ?></a>
+      <a href="<?php echo $link; ?>"><?php echo $image; ?></a>
 
       <?php
         if (easy_admin_products_with_attributes_stock::is_have_attributes($fields['products_id'])) {

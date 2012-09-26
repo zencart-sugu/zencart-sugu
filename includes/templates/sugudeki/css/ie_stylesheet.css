@@ -29,3 +29,12 @@ span.ui-dynatree-checkbox
 	font-size: 160%;
 }
 
+/* sub */
+/*block-super_products_list-block_categories*/
+#block-super_products_list-block_categories ul li a,
+#block-super_products_list-block_categories ul li a:hover,
+#block-super_products_list-block_categories ul li.current a,
+#block-super_products_list-block_categories ul li.current a:hover,
+#block-super_products_list-block_categories ul ul li a{
+	background-position:10px 0.5em;
+}
