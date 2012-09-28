@@ -117,5 +117,57 @@
 
       return sprintf($text_output, $from_num, $to_num, $query_numrows);
     }
+
+// -> A #9327 display_links()のPOSTしないバージョンを作成しました
+    function display_pager($query_numrows, $max_rows_per_page, $max_page_links, $current_page_number, $parameters = '', $page_name = 'page') {
+      global $PHP_SELF;
+
+      if ( zen_not_null($parameters) && (substr($parameters, -1) != '&') ) $parameters .= '&';
+
+// calculate number of pages needing links
+      $num_pages = ceil($query_numrows / $max_rows_per_page);
+
+      $pages_array = array();
+      for ($i=1; $i<=$num_pages; $i++) {
+        $pages_array[] = array('id' => $i, 'text' => $i);
+      }
+
+      if ($num_pages > 1) {
+        $display_links = '';
+
+        if ($current_page_number > 1) {
+          $display_links .= '<a href="' . zen_href_link(basename($PHP_SELF), $parameters . $page_name . '=' . ($current_page_number - 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+        } else {
+          $display_links .= PREVNEXT_BUTTON_PREV . '&nbsp;&nbsp;';
+        }
+
+        $href = 'location.href=\'' . basename($PHP_SELF) . '?' . $parameters . $page_name . '=\'+this.options[this.selectedIndex].value';
+        $display_links .= sprintf(TEXT_RESULT_PAGE, zen_draw_pull_down_menu($page_name, $pages_array, $current_page_number, 'onChange="' . $href . '"'), $num_pages);
+
+        if (($current_page_number < $num_pages) && ($num_pages != 1)) {
+          $display_links .= '&nbsp;&nbsp;<a href="' . zen_href_link(basename($PHP_SELF), $parameters . $page_name . '=' . ($current_page_number + 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_NEXT . '</a>';
+        } else {
+          $display_links .= '&nbsp;&nbsp;' . PREVNEXT_BUTTON_NEXT;
+        }
+
+//        if ($parameters != '') {
+//          if (substr($parameters, -1) == '&') $parameters = substr($parameters, 0, -1);
+//          $pairs = explode('&', $parameters);
+//          while (list(, $pair) = each($pairs)) {
+//            list($key,$value) = explode('=', $pair);
+//            $display_links .= zen_draw_hidden_field(rawurldecode($key), rawurldecode($value));
+//          }
+//        }
+
+//        if (SID) $display_links .= zen_draw_hidden_field(zen_session_name(), zen_session_id());
+
+        $display_links .= '';
+      } else {
+        $display_links = sprintf(TEXT_RESULT_PAGE, $num_pages, $num_pages);
+      }
+
+      return $display_links;
+    }
+// <- A #9327 display_links()のPOSTしないバージョンを作成しました
   }
 ?>
