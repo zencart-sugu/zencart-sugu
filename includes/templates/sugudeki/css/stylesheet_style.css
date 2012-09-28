@@ -3011,3 +3011,7 @@ p.primary{
 * html #reviewsWrite .forward img{
 	margin-bottom: 10px;
 }
+
+body#popupCouponHelp {
+	min-width: 300px;
+}
