@@ -1,5 +1,5 @@
 /* ================================================================ *
-    ajaxzip2.js ---- AjaxZip2 éƒµä¾¿ç•ªå·â†’ä½æ‰€å¤‰æ›ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+    ajaxzip2.js ---- AjaxZip2 Í¹ÊØÈÖ¹æ¢ª½»½êÊÑ´¹¥é¥¤¥Ö¥é¥ê
 
     Copyright (c) 2006-2007 Kawasaki Yusuke <u-suke [at] kawa.net>
     http://www.kawa.net/works/ajax/ajaxzip2/ajaxzip2.html
@@ -32,16 +32,16 @@ AjaxZip2.JSONDATA = JSONDATA;
 AjaxZip2.CACHE = [];
 AjaxZip2.prev = '';
 AjaxZip2.PREFMAP = [
-    null,       'åŒ—æµ·é“',   'é’æ£®çœŒ',   'å²©æ‰‹çœŒ',   'å®®åŸçœŒ',
-    'ç§‹ç”°çœŒ',   'å±±å½¢çœŒ',   'ç¦å³¶çœŒ',   'èŒ¨åŸçœŒ',   'æ ƒæœ¨çœŒ',
-    'ç¾¤é¦¬çœŒ',   'åŸ¼ç‰çœŒ',   'åƒè‘‰çœŒ',   'æ±äº¬éƒ½',   'ç¥å¥ˆå·çœŒ',
-    'æ–°æ½ŸçœŒ',   'å¯Œå±±çœŒ',   'çŸ³å·çœŒ',   'ç¦äº•çœŒ',   'å±±æ¢¨çœŒ',
-    'é•·é‡çœŒ',   'å²é˜œçœŒ',   'é™å²¡çœŒ',   'æ„›çŸ¥çœŒ',   'ä¸‰é‡çœŒ',
-    'æ»‹è³€çœŒ',   'äº¬éƒ½åºœ',   'å¤§é˜ªåºœ',   'å…µåº«çœŒ',   'å¥ˆè‰¯çœŒ',
-    'å’Œæ­Œå±±çœŒ', 'é³¥å–çœŒ',   'å³¶æ ¹çœŒ',   'å²¡å±±çœŒ',   'åºƒå³¶çœŒ',
-    'å±±å£çœŒ',   'å¾³å³¶çœŒ',   'é¦™å·çœŒ',   'æ„›åª›çœŒ',   'é«˜çŸ¥çœŒ',
-    'ç¦å²¡çœŒ',   'ä½è³€çœŒ',   'é•·å´çœŒ',   'ç†Šæœ¬çœŒ',   'å¤§åˆ†çœŒ',
-    'å®®å´çœŒ',   'é¹¿å…å³¶çœŒ', 'æ²–ç¸„çœŒ'
+    null,       'ËÌ³¤Æ»',   'ÀÄ¿¹¸©',   '´ä¼ê¸©',   'µÜ¾ë¸©',
+    '½©ÅÄ¸©',   '»³·Á¸©',   'Ê¡Åç¸©',   '°ñ¾ë¸©',   'ÆÊÌÚ¸©',
+    '·²ÇÏ¸©',   'ºë¶Ì¸©',   'ÀéÍÕ¸©',   'ÅìµşÅÔ',   '¿ÀÆàÀî¸©',
+    '¿·³ã¸©',   'ÉÙ»³¸©',   'ÀĞÀî¸©',   'Ê¡°æ¸©',   '»³Íü¸©',
+    'Ä¹Ìî¸©',   '´ôÉì¸©',   'ÀÅ²¬¸©',   '°¦ÃÎ¸©',   '»°½Å¸©',
+    '¼¢²ì¸©',   'µşÅÔÉÜ',   'ÂçºåÉÜ',   'Ê¼¸Ë¸©',   'ÆàÎÉ¸©',
+    'ÏÂ²Î»³¸©', 'Ä»¼è¸©',   'Åçº¬¸©',   '²¬»³¸©',   '¹­Åç¸©',
+    '»³¸ı¸©',   'ÆÁÅç¸©',   '¹áÀî¸©',   '°¦É²¸©',   '¹âÃÎ¸©',
+    'Ê¡²¬¸©',   'º´²ì¸©',   'Ä¹ºê¸©',   '·§ËÜ¸©',   'ÂçÊ¬¸©',
+    'µÜºê¸©',   '¼¯»ùÅç¸©', '²­Æì¸©'
 ];
 AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
     var fzip1 = AjaxZip2.getElementByName(azip1);
@@ -54,7 +54,7 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
     if ( ! fpref ) return;
     if ( ! faddr ) return;
 
-    // éƒµä¾¿ç•ªå·ã‚’æ•°å­—ã®ã¿7æ¡å–ã‚Šå‡ºã™
+    // Í¹ÊØÈÖ¹æ¤ò¿ô»ú¤Î¤ß7·å¼è¤ê½Ğ¤¹
     var vzip = fzip1.value;
     if ( fzip2 && fzip2.value ) vzip += fzip2.value;
     if ( ! vzip ) return;
@@ -67,7 +67,7 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
     }
     if ( nzip.length < 7 ) return;
 
-    // å‰å›ã¨åŒã˜å€¤ï¼†ãƒ•ã‚©ãƒ¼ãƒ ãªã‚‰ã‚­ãƒ£ãƒ³ã‚»ãƒ«
+    // Á°²ó¤ÈÆ±¤¸ÃÍ¡õ¥Õ¥©¡¼¥à¤Ê¤é¥­¥ã¥ó¥»¥ë
     var uniq = nzip+fzip1.name+fpref.name+faddr.name;
     if ( fzip1.form ) uniq += fzip1.form.id+fzip1.form.name+fzip1.form.action;
     if ( fzip2 ) uniq += fzip2.name;
@@ -75,29 +75,29 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
     if ( uniq == AjaxZip2.prev ) return;
     AjaxZip2.prev = uniq;
 
-    // JSONå–å¾—å¾Œã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°
+    // JSON¼èÆÀ¸å¤Î¥³¡¼¥ë¥Ğ¥Ã¥¯´Ø¿ô
     var func1 = function ( data ) {
         var array = data[nzip];
-        // Opera ãƒã‚°å¯¾ç­–ï¼š0x00800000 ã‚’è¶…ãˆã‚‹æ·»å­—ã¯ +0xff000000 ã•ã‚Œã¦ã—ã¾ã†
+        // Opera ¥Ğ¥°ÂĞºö¡§0x00800000 ¤òÄ¶¤¨¤ëÅº»ú¤Ï +0xff000000 ¤µ¤ì¤Æ¤·¤Ş¤¦
         var opera = (nzip-0+0xff000000)+"";
         if ( ! array && data[opera] ) array = data[opera];
         if ( ! array ) return;
-        var pref_id = array[0];                 // éƒ½é“åºœçœŒID
+        var pref_id = array[0];                 // ÅÔÆ»ÉÜ¸©ID
         if ( ! pref_id ) return;
-        var jpref = AjaxZip2.PREFMAP[pref_id];  // éƒ½é“åºœçœŒå
+        var jpref = AjaxZip2.PREFMAP[pref_id];  // ÅÔÆ»ÉÜ¸©Ì¾
         if ( ! jpref ) return;
         var jcity = array[1];
-        if ( ! jcity ) jcity = '';              // å¸‚åŒºç”ºæ‘å
+        if ( ! jcity ) jcity = '';              // »Ô¶èÄ®Â¼Ì¾
         var jarea = array[2];
-        if ( ! jarea ) jarea = '';              // ç”ºåŸŸå
+        if ( ! jarea ) jarea = '';              // Ä®°èÌ¾
         var jstrt = array[3];
-        if ( ! jstrt ) jstrt = '';              // ç•ªåœ°
+        if ( ! jstrt ) jstrt = '';              // ÈÖÃÏ
 
         var cursor = faddr;
-        var jaddr = jcity;                      // å¸‚åŒºç”ºæ‘å
+        var jaddr = jcity;                      // »Ô¶èÄ®Â¼Ì¾
 
         if ( fpref.type == 'select-one' || fpref.type == 'select-multiple' ) {
-            // éƒ½é“åºœçœŒãƒ—ãƒ«ãƒ€ã‚¦ãƒ³ã®å ´åˆ
+            // ÅÔÆ»ÉÜ¸©¥×¥ë¥À¥¦¥ó¤Î¾ì¹ç
             var opts = fpref.options;
             for( var i=0; i<opts.length; i++ ) {
                 var vpref = opts[i].value;
@@ -106,10 +106,10 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
             }
         } else {
             if ( fpref.name == faddr.name ) {
-                // éƒ½é“åºœçœŒåï¼‹å¸‚åŒºç”ºæ‘åï¼‹ç”ºåŸŸååˆä½“ã®å ´åˆ
+                // ÅÔÆ»ÉÜ¸©Ì¾¡Ü»Ô¶èÄ®Â¼Ì¾¡ÜÄ®°èÌ¾¹çÂÎ¤Î¾ì¹ç
                 jaddr = jpref + jaddr;
             } else {
-                // éƒ½é“åºœçœŒåãƒ†ã‚­ã‚¹ãƒˆå…¥åŠ›ã®å ´åˆ
+                // ÅÔÆ»ÉÜ¸©Ì¾¥Æ¥­¥¹¥ÈÆşÎÏ¤Î¾ì¹ç
                 fpref.value = jpref;
             }
         }
@@ -122,10 +122,10 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
         if ( fstrt ) {
             cursor = fstrt;
             if ( faddr.name == fstrt.name ) {
-                // å¸‚åŒºç”ºæ‘åï¼‹ç”ºåŸŸåï¼‹ç•ªåœ°åˆä½“ã®å ´åˆ
+                // »Ô¶èÄ®Â¼Ì¾¡ÜÄ®°èÌ¾¡ÜÈÖÃÏ¹çÂÎ¤Î¾ì¹ç
                 jaddr = jaddr + jstrt;
             } else if ( jstrt ) {
-                // ç•ªåœ°ãƒ†ã‚­ã‚¹ãƒˆå…¥åŠ›æ¬„ãŒã‚ã‚‹å ´åˆ
+                // ÈÖÃÏ¥Æ¥­¥¹¥ÈÆşÎÏÍó¤¬¤¢¤ë¾ì¹ç
                 fstrt.value = jstrt;
             }
         }
@@ -146,16 +146,16 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
         }
     };
 
-    // éƒµä¾¿ç•ªå·ä¸Šä½3æ¡ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ‡ãƒ¼ã‚¿ã‚’ç¢ºèª
+    // Í¹ÊØÈÖ¹æ¾å°Ì3·å¤Ç¥­¥ã¥Ã¥·¥å¥Ç¡¼¥¿¤ò³ÎÇ§
     var zip3 = nzip.substr(0,3);
     var data = AjaxZip2.CACHE[zip3];
     if ( data ) return func1( data );
 
-    // JSONãƒ•ã‚¡ã‚¤ãƒ«ã‚’å—ä¿¡ã™ã‚‹
+    // JSON¥Õ¥¡¥¤¥ë¤ò¼õ¿®¤¹¤ë
     var url = AjaxZip2.JSONDATA+'/zip-'+zip3+'.json';
 
     if ( window.Ajax && Ajax.Request ) {
-        // JSONãƒ•ã‚¡ã‚¤ãƒ«å—ä¿¡å¾Œã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ï¼ˆPrototype.JSç”¨ï¼‰
+        // JSON¥Õ¥¡¥¤¥ë¼õ¿®¸å¤Î¥³¡¼¥ë¥Ğ¥Ã¥¯´Ø¿ô¡ÊPrototype.JSÍÑ¡Ë
         var func2 = function (req) {
             if ( ! req ) return;
             if ( ! req.responseText ) return;
@@ -172,7 +172,7 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
         new Ajax.Request( url, opt );
     }
     else if ( window.jQuery ) {
-        // JSONãƒ•ã‚¡ã‚¤ãƒ«å—ä¿¡å¾Œã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ï¼ˆjQueryç”¨ï¼‰
+        // JSON¥Õ¥¡¥¤¥ë¼õ¿®¸å¤Î¥³¡¼¥ë¥Ğ¥Ã¥¯´Ø¿ô¡ÊjQueryÍÑ¡Ë
         var func3 = function (data) {
             if ( ! data ) return;
             AjaxZip2.CACHE[zip3] = data;
@@ -182,7 +182,7 @@ AjaxZip2.zip2addr = function ( azip1, apref, aaddr, azip2, astrt, aarea ) {
     }
 };
 
-// Safari æ–‡å­—åŒ–ã‘å¯¾å¿œ
+// Safari Ê¸»ú²½¤±ÂĞ±ş
 // http://kawa.at.webry.info/200511/article_9.html
 AjaxZip2.getResponseText = function ( req ) {
     var text = req.responseText;
@@ -195,7 +195,7 @@ AjaxZip2.getResponseText = function ( req ) {
     return text;
 }
 
-// ãƒ•ã‚©ãƒ¼ãƒ nameã‹ã‚‰è¦ç´ ã‚’å–ã‚Šå‡ºã™
+// ¥Õ¥©¡¼¥àname¤«¤éÍ×ÁÇ¤ò¼è¤ê½Ğ¤¹
 AjaxZip2.getElementByName = function ( elem, sibling ) {
     if ( typeof(elem) == 'string' ) {
         var list = document.getElementsByName(elem);
