@@ -353,29 +353,12 @@ if (!defined('IS_ADMIN_FLAG')) {
     }
 
     function _install() {
-      global $db;
-      $sql = 'DROP TABLE IF EXISTS ' . TABLE_PRODUCTS_XSELL . ';';
-      $db->execute($sql);
-
-      $sql= ' CREATE TABLE ' .TABLE_PRODUCTS_XSELL . ' ('
-          . '   ID int(10) NOT NULL auto_increment,'
-          . '   products_id int(10) unsigned NOT NULL default 1,'
-          . '   xsell_id int(10) unsigned NOT NULL default 1,'
-          . '   sort_order int(10) unsigned NOT NULL default 1,'
-          . '   PRIMARY KEY  (ID),'
-          . '   KEY idx_products_id_xsell (products_id)'
-          . ' ) TYPE=MyISAM;';
-      $db->execute($sql);
-
     }
 
     function _update() {
     }
 
     function _remove() {
-      global $db;
-      $sql = 'DROP TABLE IF EXISTS ' . TABLE_PRODUCTS_XSELL . ';';
-      $db->execute($sql);
     }
 
     function _cleanUp() {
