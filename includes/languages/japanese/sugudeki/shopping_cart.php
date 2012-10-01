@@ -21,7 +21,7 @@ define('SUB_TITLE_SUB_TOTAL', '小計：');
 define('SUB_TITLE_TOTAL', '合計：');
 
 define('OUT_OF_STOCK_CANT_CHECKOUT', ' ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' の印がついた商品は在庫切れ、あるいはご注文数に在庫が不足してします。<br />おそれいりますが(' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ')印のついた商品のご注文数量を変更お願いいたします。');
-define('OUT_OF_STOCK_CAN_CHECKOUT', '' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . 'の印がついた商品は在庫切れです。<br />在庫切れ商品はバックオーダーとなります。');
+define('OUT_OF_STOCK_CAN_CHECKOUT', '「' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '」表示の商品はご要望の数量の在庫がありません。<br />在庫数を超えた分については入荷待ちとなります。');
 
 define('TEXT_TOTAL_ITEMS', '合計点数: ');
 define('TEXT_TOTAL_WEIGHT', '&nbsp;&nbsp;重量: ');
