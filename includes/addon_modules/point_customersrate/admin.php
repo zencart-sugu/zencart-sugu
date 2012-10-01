@@ -320,7 +320,13 @@ if (($_GET['page'] == '' or $_GET['page'] == '1') and $_GET['cID'] != '') {
                 <td colspan="9"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $customers_split->display_count($customers_query_numrows, $count_by_page, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_CUSTOMERS); ?></td>
-                    <td class="smallText" align="right"><?php echo $customers_split->display_links($customers_query_numrows, $count_by_page, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], zen_get_all_get_params(array('page', 'info', 'x', 'y', 'cID'))); ?></td>
+<?php // -> M https://redmine.ark-web.jp/issues/show/8959 by H.Ebinuma 2010-03-01 ?>
+<?php if(0): ?>
+//                    <td class="smallText" align="right"><?php echo $customers_split->display_links($customers_query_numrows, $count_by_page, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], zen_get_all_get_params(array('page', 'info', 'x', 'y', 'cID'))); ?></td>
+<?php endif; ?>
+                    <td class="smallText" align="right"><?php echo $customers_split->display_pager($customers_query_numrows, $count_by_page, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], zen_get_all_get_params(array('page', 'info', 'x', 'y', 'cID'))); ?></td>
+<?php // <- M https://redmine.ark-web.jp/issues/show/8959 by H.Ebinuma 2010-03-01 ?>
+
                     <td class="smallText" align="right"><?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE, 'name="submit_update"'); ?></td>
                   </tr>
 <?php
