@@ -454,12 +454,12 @@ if (!defined('IS_ADMIN_FLAG')) {
             pt.type_handler,
             mf.manufacturers_name
           FROM " . TABLE_PRODUCTS . " p FORCE INDEX(idx_status_dateadded_id_type)
-          INNER JOIN zen_product_types AS pt 
+          INNER JOIN ". TABLE_PRODUCT_TYPES ." AS pt 
             ON p.products_type = pt.type_id
-          INNER JOIN zen_products_description AS pd
+          INNER JOIN ". TABLE_PRODUCTS_DESCRIPTION ." AS pd
             ON p.products_id = pd.products_id
            AND pd.language_id = :languageID
-          LEFT JOIN zen_manufacturers AS mf
+          LEFT JOIN ". TABLE_MANUFACTURERS ." AS mf
             ON p.manufacturers_id = mf.manufacturers_id
          WHERE p.products_status = 1
          ".$display_limit."
