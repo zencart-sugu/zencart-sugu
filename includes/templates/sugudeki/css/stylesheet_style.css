@@ -217,7 +217,13 @@ h2.headline,
 #block-shopping_cart_summary-block .total{
 
 }
-
+#productListing{
+	clear:both;
+}
+#productListing .buttonRow{
+	float: right;
+	margin: 0;
+}
 table.tabTable{
 	border-collapse: separate;
 	border-spacing: 0 10px;
@@ -225,6 +231,11 @@ table.tabTable{
 
 table.tabTable th{
 	padding: 15px 0;
+}
+
+table.tabTable .productListing-rowheading th.productListing-heading{
+	padding: 5px 10px 5px;
+	border-bottom: 3px solid #ccc;
 }
 
 table.tabTable td.productListing-data,
@@ -1181,7 +1192,7 @@ span.normalprice-text{
 
 .navSplitPagesResult{
 	float: left;
-	/*padding-top: 5px;*/
+	padding: 0 5px;
 }
 
 .navSplitPagesResult strong{
@@ -1247,7 +1258,7 @@ span.normalprice-text{
 }
 
 #productsListingListingTopLinks{
-	margin-top: 10px;
+	margin: 10px 0;
 }
 
 #productsListingListingBottomLinks{
