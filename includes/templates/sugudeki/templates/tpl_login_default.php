@@ -37,7 +37,7 @@ $bt = "submit";
 <p class="<?php echo $bt ; ?>"><?php echo '<a href="' . zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CREATE_ACCOUNT, BUTTON_CREATE_ACCOUNT_ALT,'class="imgover"') . '</a>'; ?></p>
 
 <?php
-  if (count($order->products)) {
+  if (MODULE_VISITORS_STATUS == "true" && count($order->products)) {
 ?>
 <p class="forward"><?php echo '<a href="' . zen_href_link(FILENAME_ADDON, 'module=visitors/create_visitor', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_VISITOR, BUTTON_VISITOR_ALT,'class="imgover"') . '</a>'; ?></p>
 <?php
