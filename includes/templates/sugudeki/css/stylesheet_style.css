@@ -1959,11 +1959,12 @@ td.head{
 /* login */
 #mainBody .new{
 	float: left;
-	width: 365px;
+	width: 325px;
+	margin: 0 20px;
 }
 
 #mainBody .new #visitorBox{
-	width: 323px;
+	width: auto;
 /*	min-height: 241px; */
 	min-height: 280px;
 	padding: 20px;
@@ -1984,6 +1985,7 @@ td.head{
 #mainBody .returning{
 	float: right;
 	width: 445px;
+	margin: 0 20px 0 0;
 }
 
 #mainBody .returning #loginBox{
@@ -2114,12 +2116,13 @@ p.attention strong{
 
 #visitorBoxButtons{
 	background-color: #F4F4F4;
-	padding: 20px 40px;
+	padding: 20px 15px;
 	margin-top: 15px;
 	overflow: hidden;
 }
 
-#visitorBoxButtons .submit{
+#visitorBoxButtons p.submit{
+	margin: 0;
 	text-align: center;
 }
 

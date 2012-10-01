@@ -12,8 +12,6 @@
 
 <h1 id="loginDefaultHeading"><?php echo HEADING_TITLE; ?></h1>
 
-</div>
-
 <!-- mainBody -->
 <div id="mainBody">
 
