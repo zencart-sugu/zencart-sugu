@@ -10,7 +10,7 @@ if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
 
-if (strtolower(MODULE_PAYMENT_COD_STATUS) == 'true' && strtolower(MODULE_ORDER_TOTAL_MONEY_COD_FEE_STATUS) != 'true') {
+if (strtolower(MODULE_PAYMENT_COD_STATUS) == 'true' && strtolower(MODULE_ORDER_TOTAL_MONEY_COD_STATUS) != 'true') {
   $messageStack->add(ERROR_OT_MONEY_COD_FEE_NOT_AVAILABLE,"error");
 }
 ?>
