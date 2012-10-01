@@ -61,12 +61,4 @@
 <li><?php echo ' <a href="' . zen_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL') . '">' . MY_ACCOUNT_PASSWORD . '</a>'; ?></li>
 </ul>
 
-<?php
-  if ($main_bottom) {
-?>
-<?php echo $main_bottom; ?>
-<?php
-  }
-?>
-
 </div></div>
