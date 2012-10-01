@@ -2474,6 +2474,7 @@ span.update,
 	padding: 10px;
 	margin: 10px 0 10px 20px;
 	background: #E1EBF5;
+	word-break: break-all;
 }
 
 #checkoutConfirmDefault .area div.important{
