@@ -695,6 +695,8 @@ define('ENTRY_NOTHING_TO_SEND','メッセージの入力内容がありません。');
 
   define('WARNING_REGISTER_GLOBALS_ON', 'ご使用中のサーバーはregister_globalsがOnで運用されています。<br/>register_globalsはセキュリティ上重大な問題を引き起こす可能性があるため、Zen Cartは、register_globalsの設定をOffにしなければ動作しません。<br/>Zen Cartのインストールディレクトリに.htaccessファイルが正しくアップロードされているのにこのメッセージが表示されている場合、ご使用中のサーバーでは.htaccessでregister_globalsの設定を変更できないことを意味しています。<br/>この問題を解決するためには、次のうち2つのどちらかの対応が必要です。<br/><br/><br/>1. サーバーの設定を変更する<br/>2. register_globalsがOffで運用可能なサーバーに再インストールする');
 
+  define('ERROR_OT_MONEY_COD_FEE_NOT_AVAILABLE', '支払いモジュール「代金引換」を利用するには、注文合計モジュール「合計金額による代金引換え手数料」を有効にする必要があります');
+
 ///////////////////////////////////////////////////////////
 // include additional files:
   require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . FILENAME_EMAIL_EXTRAS);

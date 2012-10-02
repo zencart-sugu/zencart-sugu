@@ -447,19 +447,25 @@ if (!defined('IS_ADMIN_FLAG')) {
 
       if ( (!isset($parent_id)) || ($parent_id == '0') ) {
         $query = "
-          SELECT DISTINCT
-            p.products_id, p.products_image,
+          SELECT
+            p.products_id,
+            p.products_image,
             pd.products_name,
             pt.type_handler,
             mf.manufacturers_name
-          FROM " . TABLE_PRODUCTS . " p
-            LEFT JOIN " . TABLE_PRODUCT_TYPES . " pt ON p.products_type = pt.type_id
-            LEFT JOIN " . TABLE_MANUFACTURERS . " mf ON p.manufacturers_id = mf.manufacturers_id
-            , " . TABLE_PRODUCTS_DESCRIPTION . " pd
-          WHERE p.products_status = 1
-            AND p.products_id = pd.products_id
-            AND pd.language_id = :languageID
-            " . $display_limit;
+          FROM " . TABLE_PRODUCTS . " p FORCE INDEX(idx_status_dateadded_id_type)
+          INNER JOIN ". TABLE_PRODUCT_TYPES ." AS pt 
+            ON p.products_type = pt.type_id
+          INNER JOIN ". TABLE_PRODUCTS_DESCRIPTION ." AS pd
+            ON p.products_id = pd.products_id
+           AND pd.language_id = :languageID
+          LEFT JOIN ". TABLE_MANUFACTURERS ." AS mf
+            ON p.manufacturers_id = mf.manufacturers_id
+         WHERE p.products_status = 1
+         ".$display_limit."
+      ORDER BY p.products_date_added DESC
+         LIMIT :limitNew
+            ";
       } else {
         $query = "
           SELECT DISTINCT
@@ -481,7 +487,7 @@ if (!defined('IS_ADMIN_FLAG')) {
             AND c.parent_id = :parentID
             " . $display_limit;
       }
-
+      $query = $db->bindVars($query, ':limitNew', MODULE_CAROUSEL_UI_MAX_DISPLAY_NEW_PRODUCTS, 'integer');
       $query = $db->bindVars($query, ':languageID', $_SESSION['languages_id'], 'integer');
       $query = $db->bindVars($query, ':parentID', $parent_id, 'integer');
       $result = $db->ExecuteRandomMulti($query, MODULE_CAROUSEL_UI_MAX_DISPLAY_NEW_PRODUCTS);
