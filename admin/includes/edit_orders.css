@@ -1,0 +1,23 @@
+/**
+
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @copyright Portions Copyright 2003 osCommerce
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: edit_orders.css 5454 2006-12-29 20:10:17Z drbyte $
+ */
+
+td.ot-custom-Amount {
+}
+
+td.ot-custom-Text {
+font-weight:bold;
+}
+
+.smallText a{
+font-size:9px;
+text-decoration:underline;
+}
+
+input.amount {
+text-align: right;
+}
