@@ -46,18 +46,9 @@ define('HEADER_TEXT_FOR_ACCOUNT', '
 ');
 
 define('HEADER_TEXT_FOR_NOACCOUNT', '
-<p id="greeting">'.zen_customer_greeting().'&nbsp;<a href="'.zen_href_link(FILENAME_LOGIN, '', 'SSL').'" title="ログイン">ログイン</a>しますか。&nbsp;初めての方は<a href="'.zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL').'" title="無料で会員登録">無料で会員登録</a>できます。</p>
+<p id="greeting">ようこそ！'.zen_customer_greeting().'&nbsp;<a href="'.zen_href_link(FILENAME_LOGIN, '', 'SSL').'" title="ログイン">ログイン</a>はこちら。&nbsp;初めての方は<a href="'.zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL').'" title="無料で会員登録">無料で会員登録</a>できます。</p>
 ');
 
-/*
-define('GLOBAL_HEADER_NAV', '
-<ul class="nav">
-<li><a href="#" title="会員サービス">会員サービス</a></li>
-<li><a href="#" title="全部のカート">全部のカート</a></li>
-<li><a href="#" title="モールについて">モールについて</a></li>
-</ul>
-');
-*/
 define('GLOBAL_HEADER_NAV', '');
 
 define('GLOBAL_HEADER_FONT', '

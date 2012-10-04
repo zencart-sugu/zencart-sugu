@@ -7,6 +7,9 @@ Description: layout
 
 /* base layout
 ----------------------------------------- */
+body{
+	min-width: 980px;
+}
 #container{
 	padding: 0px;
 	margin: 0px;
@@ -16,8 +19,8 @@ Description: layout
 
 
 #header{
-	width: 1070px;
-	padding-top: 20px;
+	width: 980px;
+	padding-top: 10px;
 	margin: 0px auto;
 	text-align: left;
 }
@@ -25,7 +28,7 @@ Description: layout
 
 
 #content{
-	width: 1070px;
+	width: 980px;
 	margin: 0px auto;
 	overflow: hidden;
 	text-align: left;
@@ -50,7 +53,7 @@ Description: layout
 
 #main{
 	float: right;
-	width: 830px;
+	width: 740px;
 	overflow: hidden;
 }
 
@@ -87,6 +90,6 @@ Description: layout
 }
 
 .onecolumn #mainBody{
-	width: 830px;
+	width: 740px;
 	margin: 0px auto;
 }

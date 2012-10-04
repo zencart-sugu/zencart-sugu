@@ -37,62 +37,25 @@
 if (!isset($flag_disable_header) || !$flag_disable_header) {
 ?>
 
-<!-- global-header -->
-<div id="global-header">
-
-<?php echo GLOBAL_HEADER_LOGO; ; ?>
-
-<?php // if (zen_visitors_is_enabled() && zen_visitors_is_visitor()) { ?>
-<?php // echo HEADER_TEXT_FOR_VISITOR ?>
-<?php // } elseif ($_SESSION['customer_id']) { ?>
-<?php // echo HEADER_TEXT_FOR_ACCOUNT ?>
-<?php // }else{ ?>
-<?php // echo HEADER_TEXT_FOR_NOACCOUNT ?>
-<?php // } ?>
-
-<!-- global-header-login -->
-<div id="global-header-login">
-<?php if (IS_VISITORS_SESSION === true) { ?>
-<?php  echo HEADER_TEXT_FOR_VISITOR ?>
-<?php } elseif ($_SESSION['customer_id']) { ?>
-<?php  echo HEADER_TEXT_FOR_ACCOUNT ?><?php
-      } else {
-?>
-<?php  echo HEADER_TEXT_FOR_NOACCOUNT ?>
-<?php } ?>
-</div>
-<!-- /global-header-login -->
-
 <?php echo GLOBAL_HEADER_FONT;  ?>
-
-<?php echo GLOBAL_HEADER_NAV;  ?>
-
-</div>
-<!-- /global-header -->
 
 <!-- header -->
 <div id="header">
+
 <?php if (MODULE_EASY_DESIGN_STATUS == 'true') { ?>
+<?php if (EASY_DESIGN_TAGLINE != '') { ?>
+<p id="tagline"><?php echo EASY_DESIGN_TAGLINE;?></p>
+<?php } ?>
 <?php if($category_depth == 'top'){?>
 <h1 id="logo"><?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '"><img src="'.getLogoImage(getDefaultTemplate()).'" alt="'.TITLE.'" title="'.TITLE.'"/></a>'; ?></h1>
 <?php }else{ ?>
 <p id="logo"><?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '"><img src="'.getLogoImage(getDefaultTemplate()).'" alt="'.TITLE.'" title="'.TITLE.'"/></a>'; ?></p>
 <?php } ?>
-
-<?php
- if (EASY_DESIGN_TAGLINE != '') {
-?>
-
-<?php if($category_depth == 'top'){?>
-<h2 id="tagline"><?php echo EASY_DESIGN_TAGLINE;?></h2>
-<?php }else{ ?>
-<p id="tagline"><?php echo EASY_DESIGN_TAGLINE;?></p>
 <?php } ?>
 
-<?php
-}
-}
-?>
+<div id="header-content">
+<?php echo $header; ?>
+</div>
 
 <!-- header-nav -->
 <?php if (EZPAGES_STATUS_HEADER == '1' or (EZPAGES_STATUS_HEADER == '2' and (strstr(EXCLUDE_ADMIN_IP_FOR_MAINTENANCE, $_SERVER['REMOTE_ADDR'])))) { ?>
@@ -110,7 +73,18 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 ?>
 <!-- header-bar-->
 <div id="header-bar" class="transparent"><div id="header-bar-inner">
-<?php echo $header; ?>
+<!-- global-header-login -->
+<div id="global-header-login">
+<?php if (IS_VISITORS_SESSION === true) { ?>
+<?php  echo HEADER_TEXT_FOR_VISITOR ?>
+<?php } elseif ($_SESSION['customer_id']) { ?>
+<?php  echo HEADER_TEXT_FOR_ACCOUNT ?><?php
+      } else {
+?>
+<?php  echo HEADER_TEXT_FOR_NOACCOUNT ?>
+<?php } ?>
+</div>
+<!-- /global-header-login -->
 </div></div>
 <!-- header-bar-->
 <?php
