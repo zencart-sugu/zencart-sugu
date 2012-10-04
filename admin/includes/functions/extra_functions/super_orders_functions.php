@@ -131,7 +131,8 @@ function get_admin_notes($cID) {
   }
 }
 
-
+// use function common_orders_functions.php
+/*
 /////////////////
 // Function    : zen_db_scrub_in
 // Arguments   : string
@@ -164,8 +165,9 @@ function zen_db_scrub_in($string, $strip_tags = false) {
     return $string;
   }
 }
-
-
+*/
+// use function common_orders_functions.php
+/*
 /////////////////
 // Function    : zen_db_scrub_out
 // Arguments   : string
@@ -178,7 +180,7 @@ function zen_db_scrub_out($string, $strip_tags = false) {
   }
   return stripslashes($string);
 }
-
+*/
 
 /////////////////
 // Function    : all_products_array
@@ -415,7 +417,8 @@ function recalc_total($target_oID) {
   //return $ot_total;
 }
 
-
+// use function common_orders_functions.php
+/*
 /////////////////
 // Function    : update_status
 // Arguments   : oID, new_status, notified(optional), comments(optional)
@@ -437,8 +440,10 @@ function update_status($oID, $new_status, $notified = 0, $comments = '') {
                 orders_status = '" . $new_status . "'
                 WHERE orders_id = '" . (int)$oID . "'");
 }
+*/
 
-
+// use function common_orders_functions.php
+/*
 /////////////////
 // Function    : email_latest_status
 // Arguments   : oID, orders_status_array
@@ -503,7 +508,7 @@ function email_latest_status($oID, $notify_comments_flag) {
   //_TODO accept an optional array of additional recipients
 
 }
-
+*/
 
 /////////////////
 // Function    :
