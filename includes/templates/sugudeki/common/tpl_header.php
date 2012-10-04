@@ -49,7 +49,7 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 <?php if($category_depth == 'top'){?>
 <h1 id="logo"><?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '"><img src="'.getLogoImage(getDefaultTemplate()).'" alt="'.TITLE.'" title="'.TITLE.'"/></a>'; ?></h1>
 <?php }else{ ?>
-<p id="logo"><?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '"><img src="'.getLogoImage(getDefaultTemplate()).'" alt="'.TITLE.'" title="'.TITLE.'"/></a>'; ?></p>
+<p id="logo"><?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '"><img src="'.getLogoImage(getDefaultTemplate()).'" alt="'.LINK_TO_HOME.'" title="'.LINK_TO_HOME.'"/></a>'; ?></p>
 <?php } ?>
 <?php } ?>
 

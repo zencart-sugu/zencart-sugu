@@ -24,7 +24,7 @@ $images = $prefix_image_host . $template->get_template_dir('images/',DIR_WS_TEMP
 define('HEADER_SKIP_MAIN', '本文への移動');
 define('HEADER_SKIP_MENU', 'メニューへの移動');
 
-//define('GLOBAL_HEADER_LOGO', '<p class="logo"><img src="'.$images.'global-header_logo.gif" alt="あんしん家電" width="145" height="22" /></p>');
+define('LINK_TO_HOME', 'トップページへ');
 
 define('GLOBAL_HEADER_LOGO', '');
 
