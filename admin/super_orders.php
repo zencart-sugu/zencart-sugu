@@ -978,8 +978,8 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
             </tr>
             <tr>
               <td align="center">
-              <div class="invoiceCompleted"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_completed&oID=' . $oID) . '">' . TEXT_MARK_COMPLETED . '</a>'; ?></div>
-              <div class="invoiceCancelled"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_cancelled&oID=' . $oID) . '">' . TEXT_MARK_CANCELLED . '</a>'; ?></div>
+              <div class="invoiceCompleted"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_completed&oID=' . $oID) . '"><button>' . TEXT_MARK_COMPLETED . '</button></a>'; ?></div>
+              <div class="invoiceCancelled"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_cancelled&oID=' . $oID) . '"><button>' . TEXT_MARK_CANCELLED . '</button></a>'; ?></div>
               </td>
             </tr>
 							</table>

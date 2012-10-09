@@ -21,20 +21,6 @@
 font-family: Verdana, Arial, sans-serif; font-size: 14px;
 color: #000000; font-weight: bold;
 }
-.invoiceCompleted {
-border:2px solid #008800;
-background-color:#aaffaa;
-margin: 4px 4px 8px 4px;
-padding: 3px;
-font-size: 16px;
-}
-.invoiceCancelled {
-border:2px solid #440000;
-background-color:#880000;
-margin: 0px 4px 8px 4px;
-padding: 3px;
-font-size: 16px;
-}
 .dataTableRowUnique{
 background-color: #FFFFCC;
 }
