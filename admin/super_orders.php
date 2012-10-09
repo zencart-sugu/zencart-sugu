@@ -977,10 +977,10 @@ if (MODULE_EASY_ADMIN_SIMPLIFY_STATUS == 'true') {
               <td class="invoiceHeading" align="center"><strong><?php echo TABLE_HEADING_FINAL_STATUS; ?></strong></td>
             </tr>
             <tr>
-              <td align="center"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_completed&oID=' . $oID) . '">' . zen_image_button('btn_completed.gif', ICON_MARK_COMPLETED) . '</a>'; ?></td>
-            </tr>
-            <tr>
-              <td align="center"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_cancelled&oID=' . $oID) . '">' . zen_image_button('btn_cancelled.gif', ICON_MARK_CANCELLED) . '</a>'; ?></td>
+              <td align="center">
+              <div class="invoiceCompleted"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_completed&oID=' . $oID) . '">' . TEXT_MARK_COMPLETED . '</a>'; ?></div>
+              <div class="invoiceCancelled"><?php echo '<a href="' . zen_href_link(FILENAME_SUPER_ORDERS, 'action=mark_cancelled&oID=' . $oID) . '">' . TEXT_MARK_CANCELLED . '</a>'; ?></div>
+              </td>
             </tr>
 							</table>
 						</td>
