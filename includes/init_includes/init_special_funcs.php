@@ -33,15 +33,17 @@ zen_expire_banners();
  *
  * this is processed in the admin for dates that expire while being worked on
  */
+//-> comment out today check, Because an administrator does'nt login in the midnight, And if there are few users, commodity prices will not change easily.
 // check if a reset on one time sessions settings should occur due to the midnight hour happening
-  if (!isset($_SESSION['today_is'])) {
-    $_SESSION['today_is'] = date('Y-m-d');
-  }
-  if ($_SESSION['today_is'] != date('Y-m-d')) {
-    $_SESSION['today_is'] = date('Y-m-d');
-    $_SESSION['updateExpirations'] = false;
-  }
-if (!isset($_SESSION['updateExpirations']) || $_SESSION['updateExpirations'] !== true) {
+//  if (!isset($_SESSION['today_is'])) {
+//    $_SESSION['today_is'] = date('Y-m-d');
+//  }
+//  if ($_SESSION['today_is'] != date('Y-m-d')) {
+//    $_SESSION['today_is'] = date('Y-m-d');
+//    $_SESSION['updateExpirations'] = false;
+//  }
+//<- comment out today check, Because an administrator does'nt login in the midnight, And if there are few users, commodity prices will not change easily.
+//if (!isset($_SESSION['updateExpirations']) || $_SESSION['updateExpirations'] !== true) {
   /**
    * require the specials products functions, auto-activate and auto-expire
    */
@@ -61,6 +63,6 @@ if (!isset($_SESSION['updateExpirations']) || $_SESSION['updateExpirations'] !==
   zen_start_salemaker();
   zen_expire_salemaker();
 
-  $_SESSION['updateExpirations'] = true;
-}
+//  $_SESSION['updateExpirations'] = true;
+//}
 ?>
