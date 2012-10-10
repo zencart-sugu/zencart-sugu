@@ -19,10 +19,6 @@
 <h1 id="checkoutShippingHeading"><?php echo HEADING_TITLE; ?></h1>
 <div id="centerColumnBody">
 
-<?php
-  echo zen_addOnModules_get_block('checkout_step');
-?>
-
 <p class="attention"><?php echo FLOW_TEXT ; ?></p>
 
 <h2 id="checkoutShippingHeadingAddress" class="headline"><?php echo TITLE_SHIPPING_ADDRESS; ?></h2>

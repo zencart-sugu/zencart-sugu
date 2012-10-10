@@ -87,9 +87,9 @@ body{
 .onecolumn #main{
 	float: none;
 	margin: 0px auto;
+	width: auto;
 }
 
 .onecolumn #mainBody{
-	width: 740px;
 	margin: 0px auto;
 }

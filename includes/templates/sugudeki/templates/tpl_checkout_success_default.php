@@ -17,10 +17,6 @@
 <h1 id="checkoutSuccessHeading"><?php echo HEADING_TITLE; ?></h1>
 <div id="centerColumnBody">
 
-<?php
-  echo zen_addOnModules_get_block('checkout_step');
-?>
-
 <h2 class="headline"><?php echo TEXT_THANKS_FOR_SHOPPING; ?></h2>
 
 <?php if (DEFINE_CHECKOUT_SUCCESS_STATUS >= 1 and DEFINE_CHECKOUT_SUCCESS_STATUS <= 2) { ?>

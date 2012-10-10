@@ -81,6 +81,12 @@ select,input{
   font-size: 100%;
 }
 
+input[type="radio"],
+input[type="checkbox"]{
+	margin-right: 5px;
+	vertical-align: text-top;
+}
+
 /* link style
 ----------------------------------------- */
 a:link{
