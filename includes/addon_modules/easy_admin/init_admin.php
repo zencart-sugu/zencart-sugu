@@ -6,7 +6,11 @@
   case DIR_WS_HTTPS_ADMIN:
   case DIR_WS_HTTPS_ADMIN.'index.php':
     if (MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL != '') {
-      zen_redirect(MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL);
+      if (ENABLE_SSL_ADMIN == 'true') {
+        zen_redirect(HTTPS_SERVER . DIR_WS_HTTPS_ADMIN . MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL);
+      } else {
+        zen_redirect(HTTP_SERVER . DIR_WS_ADMIN . MODULE_EASY_ADMIN_DASHBOARD_REDIRECT_URL);
+      }
     }
     break;
   }
