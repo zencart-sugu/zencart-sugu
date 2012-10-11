@@ -30,7 +30,7 @@
                        where sale_status = '1'
                        and ((now() >= sale_date_end and sale_date_end != '0001-01-01')
                        or (now() < sale_date_start and sale_date_start != '0001-01-01'))
-                       and now() < sale_date_status_change";
+                       and CURDATE() > sale_date_status_change";
 
     $salemaker = $db->Execute($salemaker_query);
 
@@ -54,7 +54,7 @@
                        and (((sale_date_start <= now() and sale_date_start != '0001-01-01') and (sale_date_end >= now()))
                        or ((sale_date_start <= now() and sale_date_start != '0001-01-01') and (sale_date_end = '0001-01-01'))
                        or (sale_date_start = '0001-01-01' and sale_date_end >= now()))
-                       and now() < sale_date_status_change
+                       and CURDATE() > sale_date_status_change
                        ";
 
     $salemaker = $db->Execute($salemaker_query);

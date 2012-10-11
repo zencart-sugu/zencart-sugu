@@ -30,7 +30,7 @@
                        where status = '1'
                        and ((now() >= expires_date and expires_date != '0001-01-01')
                        or (now() < specials_date_available and specials_date_available != '0001-01-01'))
-                       and now() < date_status_change";
+                       and CURDATE() > date_status_change";
 
     $specials = $db->Execute($specials_query);
 
@@ -55,7 +55,7 @@
                        and (((specials_date_available <= now() and specials_date_available != '0001-01-01') and (expires_date >= now()))
                        or ((specials_date_available <= now() and specials_date_available != '0001-01-01') and (expires_date = '0001-01-01'))
                        or (specials_date_available = '0001-01-01' and expires_date >= now()))
-                       and now() < date_status_change
+                       and CURDATE() > date_status_change
                        ";
 
     $specials = $db->Execute($specials_query);
