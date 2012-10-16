@@ -74,6 +74,20 @@
 	  					}
 					}else{
 						for($i=0; $i<count($languages); $i++) {
+							// -> IF not found email_templates_description THEN insert.
+							$query = "select email_templates_id from ". TABLE_EMAIL_TEMPLATES_DESCRIPTION ." ".
+									 "where language_id = :language_id and email_templates_id = :ID";
+							$query = $db->bindVars($query, ':ID', (int)$id, 'integer');
+							$query = $db->bindVars($query, ':language_id', (int)$languages[$i]['id'], 'integer');
+							$result = $db->Execute($query);
+							if($result->RecordCount() <= 0){
+								$query = "insert into ". TABLE_EMAIL_TEMPLATES_DESCRIPTION  ." ".
+									     "values (:email_templates_id, :language_id, '', '', NOW())";
+								$query = $db->bindVars($query, ':email_templates_id', (int)$id, 'integer');
+								$query = $db->bindVars($query, ':language_id', (int)$languages[$i]['id'], 'integer');
+								$db->Execute($query);
+							}
+							// <- IF not found email_templates_description THEN insert.
 							$sql = "update "
 										. TABLE_EMAIL_TEMPLATES . " "
 									. "inner join "
