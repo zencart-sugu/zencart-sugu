@@ -196,4 +196,148 @@ define('MODULE_EMAIL_TEMPLATE_SAT', '土曜日');
 
 define('MODULE_EMAIL_TEMPLATE_NOT_DELIVERY', '無し');
 define('MODULE_EMAIL_TEMPLATE_INVOICE_TEXT', 'ご注文についての情報は下記URLでご覧いただけます。');
+
+
+// ---------------------------------------------------
+// ここから英語. japanese.php と english.php は一緒に読み込まれないので、1言語の中に2定義が必要となる。
+// 逆に、英語の方は英語だけでいいっしょ。
+// ---------------------------------------------------
+
+define('MODULE_EMAIL_TEMPLATE_CREATE_LANGUAGE_ID_EN', '1');
+
+define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_SUBJECT_EN', 'Thank you for registration');
+define('MODULE_EMAIL_TEMPLATE_CREATE_ACCOUNT_MAIL_BODY_EN', 'Thank you for registration.
+
+Please enjoy shopping.');
+
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_SUBJECT_EN', 'Thank you for your order.[For Members]');
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_MAIL_BODY_EN', 'Order Confirmation from XXXXXXXX
+
+Dear [CUSTOMER_NAME]
+
+Thank you for your order.
+Your order is as follows.
+------------------------------------------------------
+Order Number: [ORDER_ID]
+Order Date: [DATE_ORDERED]
+Invoice:
+[INVOICE_URL]
+
+[COMMENT]
+
+Products Ordered
+------------------------------------------------------
+[PRODUCTS_ORDERED]
+------------------------------------------------------
+[TOTALS]
+
+Delivery Address
+------------------------------------------------------
+[DELIVERY_ADDRESS]
+
+Billing Address
+------------------------------------------------------
+[BILLING_ADDRESS]
+
+Payment Method
+------------------------------------------------------
+[PAYMENT_METHOD]
+
+Thank you.
+
+-----
+This email sent to customers who register to our shopping site.
+If you do not remember this email,please contact us at xxxxxxx@example.org.
+-----
+Copyright (c) XXXXXXXX Inc. All Rights Reserved
+');
+
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_SUBJECT_EN', 'Thank you for your order.[For Guests]');
+define('MODULE_EMAIL_TEMPLATE_CHECKOUT_SUCCESS_VISITOR_MAIL_BODY_EN', 'Order Confirmation from XXXXXXXX
+
+Dear [CUSTOMER_NAME]
+
+Thank you for your order.
+Your order is as follows.
+------------------------------------------------------
+Order Number: [ORDER_ID]
+Order Date: [DATE_ORDERED]
+
+[COMMENT]
+
+Products Ordered
+------------------------------------------------------
+[PRODUCTS_ORDERED]
+------------------------------------------------------
+[TOTALS]
+
+Delivery Address
+------------------------------------------------------
+[DELIVERY_ADDRESS]
+
+Billing Address
+------------------------------------------------------
+[BILLING_ADDRESS]
+
+Payment Method
+------------------------------------------------------
+[PAYMENT_METHOD]
+
+Thank you.
+
+-----
+This email sent to customers who register to our shopping site.
+If you do not remember this email,please contact us at xxxxxxx@example.org.
+-----
+Copyright (c) XXXXXXXX Inc. All Rights Reserved
+');
+
+
+define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_SUBJECT_EN', 'Notice of order receipt status');
+define('MODULE_EMAIL_TEMPLATE_STATUS_MAIL_BODY_EN', '
+Dear [CUSTOMER_NAME]
+
+Thank you for your order.
+To announce the status of Order Number:[ORDER_ID] ,your order on [DATE_ORDERED].
+
+[INVOICE_URL]
+
+[COMMENTS]
+
+Thank you.
+
+-----
+This email sent to customers who register to our shopping site.
+If you do not remember this email,please contact us at xxxxxxx@example.org.
+-----
+Copyright (c) XXXXXXXX Inc. All Rights Reserved
+');
+
+
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_SUBJECT_EN', '新しいパスワードのお知らせ');
+define('MODULE_EMAIL_TEMPLATE_PASSWORD_FORGOTTEN_MAIL_BODY_EN', '
+[CUSTOMER_NAME] 様
+
+ご利用ありがとうございます。
+
+新しいパスワードの申請を受け付けました。
+
+新しいパスワードは
+
+   [NEW_PASSWORD]
+
+です。
+
+新しいパスワードでログインした後
+「マイページ」でご希望のパスワードに変更できます。
+
+-----
+このメールは当ショップに登録されたお客様に対してお送りしています。
+お心当たりが無いようでしたら大変お手数ですがメールにて
+xxxxxxx@example.org までご連絡ください。
+
+-----
+Copyright (c) XXXXXXXX Inc. All Rights Reserved
+');
+
 ?>
