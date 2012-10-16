@@ -161,6 +161,7 @@
 	}
 
 	function zen_get_email_group_for_status($order_id) {
+		global $request_type;
 
 		$templates = get_email_templates();
   	$out .= zen_draw_pull_down_menu('grp', $templates, $grp, 'id="grp" onChange="changeEmailTemplate()"');
@@ -194,7 +195,7 @@
               else {
                 $.ajax({
                   type: "GET",
-                  url:  "'.zen_href_link("../index.php?main_page=addon").'",
+                  url:  "'.zen_href_link("../index.php?main_page=addon", '', $request_type).'",
                   data: {
                     module: "email_templates",
                     id:   grp.value,
@@ -241,6 +242,7 @@
 	}
 
 	function zen_get_email_template_for_status() {
+		global $request_type;
 
 		$templates = get_email_templates();
 		$out = "<strong>" . TEXT_SELECT_EMAIL_TEMPLATES . "</strong>";
@@ -288,7 +290,7 @@
                                               } else {
 						$.ajax({
 						  type: "GET",
-						  url:  "'.zen_href_link("../index.php?main_page=addon").'",
+						  url:  "'.zen_href_link("../index.php?main_page=addon", '', $request_type).'",
 						  data: {
 						    module: "email_templates",
 						    id:   email_template_id.value,
