@@ -250,7 +250,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       if (isset($_GET['id'])) {
 	$language_id = isset($_GET['language_id']) ? $_GET['language_id'] : null;
 	$order_id = isset($_GET['oID']) ? $_GET['oID'] : null;
-	echo get_email_template_contents($_GET['id'], $language_id, $order_id);
+	echo get_email_template_contents($_GET['id'], $order_id, $language_id);
       	exit;
       } else {
       	return "";
