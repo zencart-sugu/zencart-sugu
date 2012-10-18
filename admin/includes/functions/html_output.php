@@ -339,8 +339,7 @@
     if (zen_not_null($parameters)) $field .= ' ' . $parameters;
 
     $field .= '>';
-
-    if (empty($default) && isset($GLOBALS[$name])) $default = stripslashes($GLOBALS[$name]);
+    if (empty($default) && isset($GLOBALS[$name]) && is_string($GLOBALS[$name])) $default = stripslashes($GLOBALS[$name]);
 
     for ($i=0, $n=sizeof($values); $i<$n; $i++) {
       $field .= '<option value="' . zen_output_string($values[$i]['id']) . '"';
