@@ -191,6 +191,8 @@ define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY_ORIGINAL',       '<strong>∏Ω•´•
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_CATEGORY',                '<strong>•´•∆•¥•Í</strong>°°<font color="red">…¨ø‹</font>');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_SELECT_TXT',              '');
 define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NOTE',                    'æ¶…  %s §Ú•≥•‘°º§∑§ø§§•´•∆•¥•Í§Ú¡™§Û§«§Ø§¿§µ§§');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NEW_PRODUCTS_MODEL',      '<strong>ø∑æ¶… §Œ∑ø»÷</strong>°°<font color="red">…¨ø‹</font>');
+define('MODULE_EASY_ADMIN_PRODUCTS_COPY_NEW_PRODUCTS_MODEL_REMARK', '¢®ø∑æ¶… §œ∏µ§Œæ¶… §»§œ Ãæ¶… §»§§§¶∞∑§§§«•≥•‘°º§µ§Ï§ﬁ§π°£<br />∑ø»÷§œ¬æ§Œæ¶… §»∆±§∏§‚§Œ§œÕ¯Õ—§«§≠§ﬁ§ª§Û°£ø∑æ¶… §Œ∑ø»÷§ÚªÿƒÍ§∑§∆§Ø§¿§µ§§°£');
 
 // •®•È°º
 define('MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL',                  '∑ø»÷§œ…¨ø‹§«§π');

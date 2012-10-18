@@ -540,6 +540,13 @@ class easy_admin_products_model {
   // チェック
   function validate_copy($post) {
     $errors = array();
+    // 品番
+    if ($post['new_products_model'] == "") {
+      $errors['new_products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL;
+    }elseif( self::exists_products_model($post['new_products_model']) ){
+      $errors['new_products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL_ALREADY_EXISTS;
+    }
+    
     // カテゴリ
     if ($post['categories'] == 0) {
       $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;

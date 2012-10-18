@@ -126,6 +126,16 @@
       </td>
     </tr>
     <?php echo $html->error($easy_admin_products_validate, "categories"); ?>
+    <tr>
+      <?php
+        echo $html->pre_html(MODULE_EASY_ADMIN_PRODUCTS_COPY_NEW_PRODUCTS_MODEL);
+      ?>
+      <td>
+        <input type="text" value="<?php echo $_POST['new_products_model'] ? $_POST['new_products_model'] : $product['products_model'];?>" name="new_products_model" id="new_products_model">
+        <p><?php echo MODULE_EASY_ADMIN_PRODUCTS_COPY_NEW_PRODUCTS_MODEL_REMARK; ?></p>
+      </td>
+    </tr>
+    <?php echo $html->error($easy_admin_products_validate, "new_products_model"); ?>
 </table>    
 <table>
     <tr>
