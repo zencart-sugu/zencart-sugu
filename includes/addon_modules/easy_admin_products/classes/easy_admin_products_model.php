@@ -540,6 +540,13 @@ class easy_admin_products_model {
   // チェック
   function validate_copy($post) {
     $errors = array();
+    // 品番
+    if ($post['new_products_model'] == "") {
+      $errors['new_products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL;
+    }elseif( self::exists_products_model($post['new_products_model']) ){
+      $errors['new_products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL_ALREADY_EXISTS;
+    }
+    
     // カテゴリ
     if ($post['categories'] == 0) {
       $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
@@ -983,7 +990,7 @@ class easy_admin_products_model {
   }
 
   // コピー
-  function copy_product($products_id, $products_image, $categories) {
+  function copy_product($products_id, $products_image, $categories, $products_model) {
     global $db;
 
     // TABLE_PRODUCTSは必ず最初
@@ -1016,6 +1023,9 @@ class easy_admin_products_model {
         $db->Execute($query);
       }
     }
+
+    // products_model
+    $db->Execute("update ".TABLE_PRODUCTS." set products_model='".zen_db_input($products_model)."' where products_id=".$new_products_id);
 
     // products_image
     if ($products_image != "") {

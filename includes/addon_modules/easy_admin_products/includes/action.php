@@ -231,7 +231,7 @@ switch($action) {
         }
       }
 
-      $model->copy_product($_REQUEST['products_id'], $_REQUEST['products_image'], $_REQUEST['categories']);
+      $model->copy_product($_REQUEST['products_id'], $_REQUEST['products_image'], $_REQUEST['categories'],  $_REQUEST['new_products_model']);
       $messageStack->add_session(sprintf(MODULE_EASY_ADMIN_PRODUCTS_NOTICE_COPY, $_REQUEST['products_name']."(ID:".$_REQUEST['products_id'].")", implode(" , ", $names)), 'success');
       zen_redirect(zen_href_link(FILENAME_ADDON_MODULES_ADMIN, 'module=easy_admin_products'));
     }
