@@ -36,6 +36,7 @@ $statuses_query = "SELECT os.orders_status_name, osh.date_added, osh.comments
                    WHERE      osh.orders_id = :ordersID
                    AND        osh.orders_status_id = os.orders_status_id
                    AND        os.language_id = :languagesID
+                   AND        osh.customer_notified = 1
                    ORDER BY   osh.date_added";
 
 $statuses_query = $db->bindVars($statuses_query, ':ordersID', $_GET['order_id'], 'integer');
