@@ -183,9 +183,8 @@ global-header-inner{
 }
 
 #font-size{
-	float: right;
 	margin-left: 5px;
-	position: relative;
+	position: absolute;
 	top: 5px;
 	right: 5px;
 }

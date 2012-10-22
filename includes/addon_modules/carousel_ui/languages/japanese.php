@@ -108,12 +108,12 @@ define('MODULE_CAROUSEL_UI_CONF_VISIBLE_XSELL_PRODUCTS_DESCRIPTION', '関連商品の
 define('MODULE_CAROUSEL_UI_CONF_SCROLL_XSELL_PRODUCTS_TITLE', '関連商品 - スクロール件数');
 define('MODULE_CAROUSEL_UI_CONF_SCROLL_XSELL_PRODUCTS_DESCRIPTION', '関連商品の一度にスクロールさせる件数を設定します。<br />・初期値 = ' . MODULE_CAROUSEL_UI_CONF_SCROLL_XSELL_PRODUCTS_DEFAULT);
 
-define('BUTTON_IMAGE_CAROUSEL_UI_PREVIOUS', 'button_carousel_ui_prev.gif');
+define('BUTTON_IMAGE_CAROUSEL_UI_PREVIOUS', 'button_carousel_ui_prev.png');
 define('BUTTON_CAROUSEL_UI_PREVIOUS_ALT', '前へ');
-define('BUTTON_IMAGE_CAROUSEL_UI_NEXT', 'button_carousel_ui_next.gif');
+define('BUTTON_IMAGE_CAROUSEL_UI_NEXT', 'button_carousel_ui_next.png');
 define('BUTTON_CAROUSEL_UI_NEXT_ALT', '次へ');
-define('BUTTON_IMAGE_CAROUSEL_UI_PREVIOUS_DISABLED', 'button_carousel_ui_prev-disabled.gif');
-define('BUTTON_IMAGE_CAROUSEL_UI_NEXT_DISABLED',     'button_carousel_ui_next-disabled.gif');
+define('BUTTON_IMAGE_CAROUSEL_UI_PREVIOUS_DISABLED', 'button_carousel_ui_prev-disabled.png');
+define('BUTTON_IMAGE_CAROUSEL_UI_NEXT_DISABLED',     'button_carousel_ui_next-disabled.png');
 define('BUTTON_CAROUSEL_UI_DISABLED_ALT', '無効');
 
 define('MODULE_CAROUSEL_UI_BLOCK_NEW_PRODUCTS_TITLE', '%sの新着商品');

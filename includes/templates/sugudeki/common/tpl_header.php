@@ -40,6 +40,7 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 <?php echo GLOBAL_HEADER_FONT;  ?>
 
 <!-- header -->
+<div id="headerArea">
 <div id="header">
 
 <?php if (MODULE_EASY_DESIGN_STATUS == 'true') { ?>
@@ -73,6 +74,8 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 
 </div>
 <!-- /header -->
+</div>
+<!-- /headerArea -->
 <?php } ?>
 
 
