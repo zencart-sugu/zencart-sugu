@@ -30,12 +30,11 @@ if (!defined('IS_ADMIN_FLAG')) {
                                    where zone_country_id = '" . (int)SHOW_CREATE_ACCOUNT_DEFAULT_COUNTRY . "'
                                    order by zone_id");
       while (!$zones_values->EOF) {
-        $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+        $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
         $zones_values->MoveNext();
       }
     }
   }
-
 
   $process = false;
 
@@ -242,7 +241,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
                                    order by zone_id");
 
       while (!$zones_values->EOF) {
-        $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+        $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
         $zones_values->MoveNext();
       }
       $zone_query = "select distinct zone_id, zone_name
@@ -253,21 +252,21 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
       $zone = $db->Execute($zone_query);
       if ($zone->RecordCount() > 0) {
         $zone_id = $zone->fields['zone_id'];
-        $zone_name = $zone->fields['zone_name'];
+        $zone_name = zen_convert_to_zone_name_m17n($zone->fields['zone_name']);
 
       } else {
 
         $zone_query = "select distinct zone_id, zone_name
                          from " . TABLE_ZONES . "
                          where zone_country_id = '" . (int)$country . "'
-                         and (zone_name like '" . zen_db_input($state) . "'
-                         or zone_code like '" . zen_db_input($state) . "')";
+                         and (zone_name like '" . zen_convert_to_zone_name(zen_db_input($state)) . "'
+                         or zone_code like '" . strtoupper(zen_db_input($state)) . "')";
 
         $zone = $db->Execute($zone_query);
 
         if ($zone->RecordCount() > 0) {
           $zone_id = $zone->fields['zone_id'];
-          $zone_name = $zone->fields['zone_name'];
+          $zone_name = zen_convert_to_zone_name_m17n($zone->fields['zone_name']);
         }
       }
       if (!$zone_name) {
