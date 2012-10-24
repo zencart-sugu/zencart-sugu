@@ -39,7 +39,7 @@ if (!defined('IS_ADMIN_FLAG')) {
                                    where zone_country_id = '" . (int)$entry->fields['entry_country_id'] . "'
                                    order by zone_id");
       while (!$zones_values->EOF) {
-        $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+        $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
         $zones_values->MoveNext();
       }
     }
@@ -143,17 +143,18 @@ if (isset($_POST['action']) && ($_POST['action'] == 'submit')) {
                                      order by zone_id");
 
         while (!$zones_values->EOF) {
-          $zones_array[] = array('id' => $zones_values->fields['zone_name'], 'text' => $zones_values->fields['zone_name']);
+          $zones_array[] = array('id' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']), 'text' => zen_convert_to_zone_name_m17n($zones_values->fields['zone_name']));
           $zones_values->MoveNext();
         }
         $zone_query = "SELECT distinct zone_id
                        FROM " . TABLE_ZONES . "
                        WHERE zone_country_id = :zoneCountryID
-                       AND (zone_name like ':zone'
-                       OR zone_code like ':zone')";
+                       AND (zone_name like ':zone1'
+                       OR zone_code like ':zone2')";
 
         $zone_query = $db->bindVars($zone_query, ':zoneCountryID', $country, 'integer');
-        $zone_query = $db->bindVars($zone_query, ':zone', $state, 'noquotestring');
+        $zone_query = $db->bindVars($zone_query, ':zone1', zen_convert_to_zone_name($state), 'noquotestring');
+        $zone_query = $db->bindVars($zone_query, ':zone2', strtoupper($state), 'noquotestring');
         $zone = $db->Execute($zone_query);
         if ($zone->RecordCount() == 1) {
           $zone_id = $zone->fields['zone_id'];
