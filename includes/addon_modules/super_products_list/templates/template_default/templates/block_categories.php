@@ -1,4 +1,4 @@
-block categories
+<h2>block categories</h2>
 
 <ul>
 <?php foreach ($categories as $category) { ?>

@@ -83,7 +83,7 @@
 <td><?php
     if ($process == true || $entry_state_has_zones == true ) {
       if ($entry_state_has_zones == true) {
-        echo zen_draw_pull_down_menu('state', $zones_array, zen_convert_to_zone_name_m17n($zone_name) . ' id="state"');
+        echo zen_draw_pull_down_menu('state', $zones_array, zen_convert_to_zone_name_m17n($zone_name), ' id="state"');
       } else {
         echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
       }

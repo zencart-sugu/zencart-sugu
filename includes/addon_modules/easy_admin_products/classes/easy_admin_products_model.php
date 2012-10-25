@@ -540,6 +540,13 @@ class easy_admin_products_model {
   // チェック
   function validate_copy($post) {
     $errors = array();
+    // 品番
+    if ($post['new_products_model'] == "") {
+      $errors['new_products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL;
+    }elseif( self::exists_products_model($post['new_products_model']) ){
+      $errors['new_products_model'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_MODEL_ALREADY_EXISTS;
+    }
+    
     // カテゴリ
     if ($post['categories'] == 0) {
       $errors['categories'] = MODULE_EASY_ADMIN_PRODUCTS_ERROR_CATEGORIES;
@@ -969,11 +976,13 @@ class easy_admin_products_model {
       TABLE_PRODUCTS_ATTRIBUTES,
       TABLE_PRODUCTS_DISCOUNT_QUANTITY,
       TABLE_PRODUCTS_NOTIFICATIONS,
-      TABLE_PRODUCTS_POINT_RATE,
       TABLE_META_TAGS_PRODUCTS_DESCRIPTION,
       TABLE_FEATURED,
       TABLE_SPECIALS,
     );
+    if (defined(TABLE_PRODUCTS_POINT_RATE)) {
+      $tables[] = 'TABLE_PRODUCTS_POINT_RATE';
+    }
 
     foreach($tables as $v) {
       $db->Execute("delete from ".$v." where products_id=".(int)$products_id);
@@ -990,13 +999,17 @@ class easy_admin_products_model {
       TABLE_PRODUCTS_DESCRIPTION           => array("products_id"),
       TABLE_PRODUCTS_ATTRIBUTES            => array("products_id", "products_attributes_id"),
       TABLE_PRODUCTS_DISCOUNT_QUANTITY     => array("products_id"),
-      TABLE_PRODUCTS_POINT_RATE            => array("products_id"),
-      TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK => array("products_id", "stock_id"),
       TABLE_PRODUCTS_XSELL                 => array("products_id", "ID"),
       TABLE_META_TAGS_PRODUCTS_DESCRIPTION => array("products_id"),
       TABLE_FEATURED                       => array("products_id", "featured_id"),
       TABLE_SPECIALS                       => array("products_id", "specials_id"),
     );
+    if (defined(TABLE_PRODUCTS_POINT_RATE)) {
+      $tables['TABLE_PRODUCTS_POINT_RATE'] = array("products_id");
+    }
+    if (defined(TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK)) {
+      $tables['TABLE_PRODUCTS_WITH_ATTRIBUTES_STOCK'] = array("products_id", "stock_id");
+    }
 
     foreach($tables as $v => $c) {
       $columns = self::get_table_columns($v, $c);
