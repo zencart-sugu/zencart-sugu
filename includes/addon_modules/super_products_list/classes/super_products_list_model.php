@@ -203,10 +203,19 @@ class super_products_list_model {
   function search() {
     global $db;
 
-    $select_str = "SELECT DISTINCT p.*, pd.products_name, pd.products_description";
-    $query = $this->get_search_query($select_str) . 
+    $select_str = "SELECT p.products_id";
+    $sub_query = $this->get_search_query($select_str) . 
              $this->get_search_order_by_query() .
              $this->get_search_limit_offset_query();
+
+    $query = "SELECT p1.*, pd1.products_name, pd1.products_description
+                FROM ". TABLE_PRODUCTS ." p1
+           LEFT JOIN ". TABLE_PRODUCTS_DESCRIPTION ." pd1
+                  ON pd1.products_id = p1.products_id
+                 AND pd1.language_id = ". (int)$_SESSION['languages_id'] .",
+               (". $sub_query .") AS p2
+               WHERE p2.products_id = p1.products_id";
+
     $result = $db->Execute($query);
     $products = array();
     while (!$result->EOF) {
@@ -220,7 +229,7 @@ class super_products_list_model {
   function count_all() {
     global $db;
 
-    $select_str = "SELECT COUNT(DISTINCT p.products_id) AS count";
+    $select_str = "SELECT COUNT(p.products_id) AS count";
     $query = $this->get_search_query($select_str); 
     $result = $db->Execute($query);
     return (int)$result->fields['count'];
