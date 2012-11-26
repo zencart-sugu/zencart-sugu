@@ -66,9 +66,11 @@ switch ($_GET['main_page']) {
   break;
 
   case 'address_book_process':
-  define('META_TAG_TITLE', NAVBAR_TITLE_ADD_ENTRY . PRIMARY_SECTION . TITLE . TAGLINE);
-  define('META_TAG_DESCRIPTION', TITLE . PRIMARY_SECTION . NAVBAR_TITLE_ADD_ENTRY . SECONDARY_SECTION . KEYWORDS);
-  define('META_TAG_KEYWORDS', KEYWORDS . ',' . NAVBAR_TITLE_ADD_ENTRY);
+  $navbar_title = NAVBAR_TITLE_ADD_ENTRY;
+  if (isset($_GET['edit'])) { $navbar_title = HEADING_TITLE_MODIFY_ENTRY; } elseif (isset($_GET['delete'])) { $navbar_title = HEADING_TITLE_DELETE_ENTRY; }
+  define('META_TAG_TITLE', $navbar_title . PRIMARY_SECTION . TITLE . TAGLINE);
+  define('META_TAG_DESCRIPTION', TITLE . PRIMARY_SECTION . $navbar_title . SECONDARY_SECTION . KEYWORDS);
+  define('META_TAG_KEYWORDS', KEYWORDS . ',' . $navbar_title);
   break;
 
   case 'advanced_search_result':
