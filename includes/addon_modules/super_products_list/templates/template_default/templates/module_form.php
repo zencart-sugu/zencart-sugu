@@ -25,7 +25,7 @@ $(document).ready(function() {
     innerHtml: 'Loading...',
     manageMouseEvents: false,
     afterShown: function() {
-      $.get('<?php echo zen_href_link(FILENAME_ADDON, '', 'SSL') ?>' + '&module=super_products_list/manufacturers' + get_search_params(), function(data) {
+      $.get('<?php echo zen_href_link(FILENAME_ADDON, '', $request_type) ?>' + '&module=super_products_list/manufacturers' + get_search_params(), function(data) {
         $('#open_manufacturer_setting').SetBubblePopupInnerHtml(data, false);
       });
     }
@@ -204,7 +204,7 @@ function zen2han(val) {
 <h3><?php echo MODULE_SUPER_PRODUCTS_LIST_NOSCRIPT_WARNING ?></h3>
 </noscript>
 
-<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
+<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', $request_type), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
 <?php echo zen_draw_hidden_field('main_page', FILENAME_ADDON); ?>
 <?php echo zen_draw_hidden_field('module', 'super_products_list/results'); ?>
 <?php echo zen_draw_hidden_field('categories_id', $categories_id, 'id="categories_id"'); ?>
