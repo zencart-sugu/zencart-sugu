@@ -259,7 +259,9 @@ function all_customers_array($first_option = false, $show_email = false, $show_i
   $customers = $db->Execute($customers_sql);
   while (!$customers->EOF) {
     $customers_array[] = array('id' => $customers->fields['customers_id'],
-                               'text' => $customers->fields['customers_lastname'] . ', ' . $customers->fields['customers_firstname'] .
+// firstname lastname for japanese
+//                               'text' => $customers->fields['customers_lastname'] . ', ' . $customers->fields['customers_firstname'] .
+                               'text' => $customers->fields['customers_firstname'] . ', ' . $customers->fields['customers_lastname'] .
                                ($show_email ? ' (' . $customers->fields['customers_email_address'] . ')' : '') .
                                ($show_id ? ' [' . $customers->fields['customers_id'] . ']' : '') );
     $customers->MoveNext();
