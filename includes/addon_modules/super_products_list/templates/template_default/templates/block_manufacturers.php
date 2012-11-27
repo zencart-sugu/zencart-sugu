@@ -10,7 +10,7 @@ function ajax_get_manufacturers(page) {
   $('#message').html("<?php echo MODULE_SUPER_PRODUCTS_LIST_NOW_LOADING ?>");
   $.ajax({
     type: "GET",
-    url: "<?php echo zen_href_link(FILENAME_ADDON, '', 'SSL') ?>",
+    url: "<?php echo $addon_url_link; ?>",
     data: {
       module:        'super_products_list/ajax_get_manufacturers',
       keywords:      '<?php echo zen_output_string_protected($keywords) ?>',
