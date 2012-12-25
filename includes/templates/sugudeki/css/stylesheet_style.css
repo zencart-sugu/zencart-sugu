@@ -1332,14 +1332,22 @@ table.search td span{
 }
 
 /* productinfo */
-#shoppingcartBody .category #main,
-#productinfoBody .category #main{
+#shoppingcartBody .category #main{
 	border: 0px;
 }
+#productinfoBody .category #main{
+	border: 0px;
+	/*width: 830px; /*730px*/
+}
 
-#shoppingcartBody .category #mainBody,
+#shoppingcartBody .category #mainBody{
+	border: 1px solid #CCC;
+	/*margin-bottom: 10px;*/
+	padding-bottom: 15px;
+}
 #productinfoBody .category #mainBody{
 	border: 1px solid #CCC;
+	/*width: 828px; /*728px*/
 	/*margin-bottom: 10px;*/
 	padding-bottom: 15px;
 }
@@ -3185,4 +3193,37 @@ body#popupCouponHelp {
 .paging span.prev,
 .paging span.next{
 	color: #999;
+}
+
+
+/* easy_review */
+#block-easy_reviews-block{
+	margin-top:20px;
+}
+#reviewsDefault_product_reviews{
+	margin:10px;
+	overflow:hidden;
+}
+#reviewsDefault_product_reviews #productReviews_productBox{
+	position:relative;
+	overflow:hidden;
+}
+#reviewsDefault_product_reviews #productReviewsDefaultProductImage{
+	float:none;
+}
+#reviewsDefault_product_reviews #productReviewsDefault_buttonBox{
+	float:none;
+	position:absolute;
+	right:0;
+	bottom:1.5em;
+}
+#reviewsDefault_product_reviews #productReviewsDefaultProductMainContent{
+	white-space: pre;           /* CSS 2.0 */
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
 }

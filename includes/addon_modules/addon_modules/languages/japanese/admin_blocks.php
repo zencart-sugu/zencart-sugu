@@ -192,3 +192,6 @@ define('PAGENAME_SSL_CHECK', 'セキュリティチェック');
 define('PAGENAME_TELL_A_FRIEND', '商品について友達に教える');
 define('PAGENAME_TIME_OUT', '接続を切断させていただきました');
 define('PAGENAME_UNSUBSCRIBE', 'ニュースレター配信停止');
+
+// #22241
+define('BUTTON_CHANGE', '切り替え');
