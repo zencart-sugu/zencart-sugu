@@ -25,7 +25,7 @@ $(document).ready(function() {
     innerHtml: 'Loading...',
     manageMouseEvents: false,
     afterShown: function() {
-      $.get('<?php echo zen_href_link(FILENAME_ADDON, '', 'SSL') ?>' + '&module=super_products_list/manufacturers' + get_search_params(), function(data) {
+      $.get('<?php echo zen_href_link(FILENAME_ADDON, '', $request_type) ?>' + '&module=super_products_list/manufacturers' + get_search_params(), function(data) {
         $('#open_manufacturer_setting').SetBubblePopupInnerHtml(data, false);
       });
     }
@@ -204,19 +204,19 @@ function zen2han(val) {
 <h3><?php echo MODULE_SUPER_PRODUCTS_LIST_NOSCRIPT_WARNING ?></h3>
 </noscript>
 
-<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', 'SSL'), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
+<?php echo zen_draw_form('super_products_list', zen_href_link(FILENAME_ADDON, 'module=super_products_list/results', $request_type), 'get', 'id="super_products_list" onsubmit="return check_form();"'); ?>
 <?php echo zen_draw_hidden_field('main_page', FILENAME_ADDON); ?>
 <?php echo zen_draw_hidden_field('module', 'super_products_list/results'); ?>
 <?php echo zen_draw_hidden_field('categories_id', $categories_id, 'id="categories_id"'); ?>
 <?php echo zen_draw_hidden_field('manufacturers_id', $manufacturers_id, 'id="manufacturers_id"'); ?>
-  <ul>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_KEYWORDS ?>: <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_MANUFACTURER ?>:
+  <ul class="primary">
+    <li><label for="keywords"><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_KEYWORDS ?>:</label> <?php echo zen_draw_input_field('keywords', $keywords, 'id="keywords"'); ?></li>
+    <li><span class="label"><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_MANUFACTURER ?>:</span>
       <span id="current_manufacturers_name"><?php echo $current_manufacturers_name ?></span>
       <a href="javascript:void(0)" id="open_manufacturer_setting"><?php echo MODULE_SUPER_PRODUCTS_LIST_OPEN_MANUFACTURER_SETTING ?></a>
       <a href="javascript:void(0)" id="reset_manufacturer_setting" style="display: <?php echo $manufacturers_id ? 'inline' : 'none' ?>;"><?php echo MODULE_SUPER_PRODUCTS_LIST_RESET_SETTING ?></a>
     </li>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE ?>: 
+    <li><label for="price_from"><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_PRICE ?>: </label>
       <span id="price_setting">
       <?php echo $symbol_left ?><input type="text" id="price_from" name="price_from" value="<?php echo $price_from ?>" /><?php echo $symbol_right ?>
       <?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_FROM_TO ?>
@@ -224,12 +224,14 @@ function zen2han(val) {
       </span>
     </li>
 <?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_DATE ?>:
+    <li><label for="date_from"><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_DATE ?>:</label>
       <?php echo zen_draw_input_field('date_from', $date_from, 'id="date_from"'); ?>
       <?php echo zen_draw_input_field('date_to', $date_to, 'id="date_to"'); ?>
     </li>
 <?php } ?>
-    <li><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT ?>: 
+  </ul>
+  <ul class="secondary">
+    <li><label for="sort" class="label"><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SORT ?>: </label>
       <?php echo zen_draw_pull_down_menu("sort", $sort_options, $sort, 'id="sort"'); ?>
       <?php echo zen_draw_pull_down_menu("direction", $direction_options, $direction, 'id="direction"'); ?>
     </li>
@@ -238,12 +240,12 @@ function zen2han(val) {
     </li>
     <li>
       <?php echo zen_draw_checkbox_field('featured', 1, $featured, 'id=featured'); ?>
-      <?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_FEATURED ?>
+      <label for="featured"><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_FEATURED ?></label>
     </li>
     <li>
       <?php echo zen_draw_checkbox_field('specials', 1, $specials, 'id=specials'); ?>
-      <?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SPECIALS ?>
+      <label for="specials"><?php echo MODULE_SUPER_PRODUCTS_LIST_TEXT_SPECIALS ?></label>
     </li>
   </ul>
-<?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>
+<div class="buttonArea"><?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?></div>
 </form>

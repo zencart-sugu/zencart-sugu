@@ -1,2 +1,3 @@
-<p>breadcrumb</p>
+<div id="breadcrumb">
 <?php echo $breadcrumb ?>
+</div>

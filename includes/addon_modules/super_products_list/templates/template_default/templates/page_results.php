@@ -1,10 +1,7 @@
 <h1> <?php echo $current_categories_name; ?></h1>
-<?php echo $current_categories_description; ?>
+<div id="categories_description"><?php echo $current_categories_description; ?></div>
 
-
-
-<hr>
-
+<?php /* ------------------------
 <p>super_products_list/results</p>
 keywords: <?php echo $keywords; ?><br />
 categories_id: <?php echo $categories_id; ?><br />
@@ -15,8 +12,6 @@ manufacturers_id: <?php echo $manufacturers_id; ?><br />
 current_manufacturers_name: <?php echo $current_manufacturers_name; ?><br />
 price_from: <?php echo $currencies->format($price_from); ?><br />
 price_to: <?php echo $currencies->format($price_to); ?><br />
-
-
 <?php if (MODULE_SUPER_PRODUCTS_LIST_ENABLE_SEARCH_BY_DATE_AVAILABLE == 'true') { ?>
 date_from: <?php echo $date_from; ?><br />
 date_to: <?php echo $date_to; ?><br />
@@ -25,8 +20,10 @@ sort: <?php echo $sort; ?><br />
 limit: <?php echo $limit; ?><br />
 page: <?php echo $page; ?><br />
 result_all: <?php echo $result_all; ?><br />
+------------------------ */ ?>
 
-<div class="" style="border:1px solid #ccc;margin: 15px; padding:15px;background: #f5f5f5;">
+
+<div id="super_products_list_form">
 <!-- bof search form //-->
 <?php require($page_module->getModuleTemplate($page_method, 'module_form')); ?>
 <!-- eof search form //-->
@@ -37,6 +34,8 @@ result_all: <?php echo $result_all; ?><br />
 <?php }else{ ?>
 
 <?php
+if( $result_all > $limit){
+
 $paging_html = '';
 $paging_html .= '<div class="paging">';
 if ($paging['prev']['url']) {
@@ -44,6 +43,7 @@ if ($paging['prev']['url']) {
 }else{
   $paging_html .= '';
 }
+
 foreach ($paging['page_list'] as $page_list) {
   $paging_html .= '&nbsp;';
   if ($page_list['url']) {
@@ -59,11 +59,13 @@ if ($paging['next']['url']) {
   $paging_html .= '';
 }
 $paging_html .= '</div>';
+
+} // if result_all > $limit
 ?>
 
 
 <!-- bof paging //-->
-<p><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_RESULT_FROM_TO, $paging['result_from'], $paging['result_to'], $result_all); ?></p>
+<p class="pageNum"><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_RESULT_FROM_TO, $paging['result_from'], $paging['result_to'], $result_all); ?></p>
 <?php echo $paging_html ?>
 <!-- eof paging //-->
 
@@ -105,7 +107,7 @@ $paging_html .= '</div>';
 <!-- eof results //-->
 
 <!-- bof paging //-->
-<p><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_RESULT_FROM_TO, $paging['result_from'], $paging['result_to'], $result_all); ?></p>
+<p class="pageNum"><?php echo sprintf(MODULE_SUPER_PRODUCTS_LIST_RESULT_FROM_TO, $paging['result_from'], $paging['result_to'], $result_all); ?></p>
 <?php echo $paging_html ?>
 <!-- eof paging //-->
 

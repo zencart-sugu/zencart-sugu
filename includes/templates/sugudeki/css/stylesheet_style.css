@@ -654,6 +654,7 @@ td.productListing-data br + br {
 }
 
 #block-ajax_category_tree-block h2,
+#block-super_products_list-block_categories h2,
 .sub .block-sideboxes h2{
 	font-size: 117%;
 	font-weight: 800;
@@ -663,6 +664,7 @@ td.productListing-data br + br {
 }
 
 * html #block-ajax_category_tree-block h2,
+* html #block-super_products_list-block_categories h2,
 * html .sub .block-sideboxes h2{
 	zoom: 1;
 }
@@ -879,10 +881,21 @@ ul.categories li.subs-parent .subs-parent li.products a{
 }
 
 /*block-super_products_list-block_categories*/
-#block-super_products_list-block_categories ul{
+
+#block-super_products_list-block_categories{
 	border:solid 1px #CCCCCC;
 	border-radius: 5px;
+	margin-bottom: 15px;
 	background: #fff;
+}
+#block-super_products_list-block_categories h2{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #fff;
+}
+#block-super_products_list-block_categories ul{
+	padding: 2px;
+	border-top:1px solid #ccc;
 }
 #block-super_products_list-block_categories ul li a{
 	display:block;
@@ -973,6 +986,10 @@ ul.categories li.subs-parent .subs-parent li.products a{
 	background-repeat: no-repeat;
 	background-position: 0px 0.4em;
 	padding-left: 10px;
+}
+
+.buttonArea{
+	text-align: center;
 }
 
 #cookieusageBody #centerColumnBodyInner .buttonRow,
@@ -1343,23 +1360,31 @@ table.search td span{
 }
 
 #multi_image_view_expand p{
-	background-image: url(../images/centercolumnbody_bg.gif);
-	background-repeat: repeat-x;
-	background-position: 0px 100%;
 	text-align: center;
-	padding: 25px 0 30px;
+	padding: 25px 0;
 	margin-bottom: 5px;
 }
+#multi_image_view_expand p img{
+	height: auto;
+	max-width: 100%;
+}
 
-#block-multiple_image_view-block_thmb{
+#multi_image_view_thmb{
+	margin-top: 15px;
 	padding-top: 15px;
+	background: url(../images/centercolumnbody_bg.gif) repeat-x;
 }
 
 #multi_image_view_thmb div a{
-	padding: 4px;
+	padding: 2px;
 	border: 1px solid #CCC;
 	display: block;
 	margin-right: 4px;
+	margin-bottom: 4px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	overflow: hidden;
 }
 
 #multi_image_view_thmb .last a{
@@ -1368,6 +1393,11 @@ table.search td span{
 
 #multi_image_view_thmb div a:hover{
 	border: 1px solid #06C;
+}
+
+#multi_image_view_thmb div a img{
+	max-width: 100%;
+	max-height: 100%;
 }
 
 #block-sideboxes-reviews{
@@ -3060,8 +3090,51 @@ body#popupCouponHelp {
 	#super_products_list_results
 	-------------------------------------*/
 
-#super_products_list_results{
+#categories_description{
 	margin: 15px;
+}
+
+#super_products_list_form{
+	border:1px solid #ccc;
+	margin: 15px; 
+	padding:15px;
+	background: #f5f5f5;"
+}
+
+#super_products_list_form ul.primary li{
+	width: 48%;
+	display: inline-block;
+	padding: 0 0 5px;
+}
+#super_products_list_form ul.primary li label,
+#super_products_list_form ul.primary li .label,
+#super_products_list_form ul.secondary li .label{
+	width: 5em;
+	display: inline-block;
+}
+#super_products_list_form ul.secondary li{
+	display: inline-block;
+	margin-right: 10px;
+}
+#super_products_list_form #price_setting input{
+	width: 80px;
+	margin-right:5px;
+}
+#super_products_list_form .hasDatepicker{
+	width: 100px;
+	margin-right:5px;
+}
+#super_products_list_form .buttonArea{
+	margin-top: 10px;
+}
+
+.jquerybubblepopup .jquerybubblepopup-innerHtml{
+	padding: 10px;
+}
+
+#super_products_list_results{
+	margin: 10px 15px;
+	border-top: 1px dotted #CCC;
 }
 #super_products_list_results dl{
 	padding: 15px;
@@ -3069,11 +3142,11 @@ body#popupCouponHelp {
 	overflow:hidden;
 }
 #super_products_list_results dl dt{
-	padding-left: 100px;
+	padding-left: 120px;
 	font-weight: bold;
 }
 #super_products_list_results dl dd{
-	padding-left: 100px;
+	padding-left: 120px;
 }
 #super_products_list_results dl dd.image{
 	float: left;
@@ -3092,6 +3165,11 @@ body#popupCouponHelp {
 #super_products_list_results dl dd.description{
 
 }
+
+#main .pageNum{
+	margin: 10px 15px;
+}
+
 .paging{
 	margin: 0 10px 10px;
 	padding: 5px 10px;

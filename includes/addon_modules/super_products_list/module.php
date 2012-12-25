@@ -248,6 +248,8 @@ if (!defined('IS_ADMIN_FLAG')) {
 
     // メーカー指定画面用ブロック
     function block_manufacturers() {
+      global $request_type;
+      
       mb_convert_variables(CHARSET, 'UTF-8', $_REQUEST);
 
       $return = $_REQUEST;
@@ -255,6 +257,7 @@ if (!defined('IS_ADMIN_FLAG')) {
       foreach ($keys as $key) {
         $return['encoded_params'] .= '&'. $key .'='. urlencode($_REQUEST[$key]);
       }
+      $return['addon_url_link'] = zen_href_link(FILENAME_ADDON, '', $request_type);
       return $return;
     }
 
