@@ -28,7 +28,8 @@
                        from " . TABLE_FEATURED . "
                        where status = '1'
                        and ((now() >= expires_date and expires_date != '0001-01-01')
-                       or (now() < featured_date_available and featured_date_available != '0001-01-01'))";
+                       or (now() < featured_date_available and featured_date_available != '0001-01-01'))
+                       and CURDATE() > date_status_change";
 
     $featured = $db->Execute($featured_query);
 
@@ -51,6 +52,7 @@
                        and (((featured_date_available <= now() and featured_date_available != '0001-01-01') and (expires_date >= now()))
                        or ((featured_date_available <= now() and featured_date_available != '0001-01-01') and (expires_date = '0001-01-01'))
                        or (featured_date_available = '0001-01-01' and expires_date >= now()))
+                       and CURDATE() > date_status_change
                        ";
 
     $featured = $db->Execute($featured_query);

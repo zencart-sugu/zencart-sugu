@@ -201,16 +201,16 @@ mb_http_output("EUC-JP");
 // javascript messages
   define('JS_ERROR', 'フォームの処理中にエラーが発生しました。\n\n次の項目を訂正してください:\n\n');
 
-  define('JS_REVIEW_TEXT', '* レビューの文章が短すぎます。最低' . REVIEW_TEXT_MIN_LENGTH . '文字以上入力してください。');
-  define('JS_REVIEW_RATING', '* 商品の評価を選択してください。');
+  define('JS_REVIEW_TEXT', '* レビューの文章が短すぎます。最低' . REVIEW_TEXT_MIN_LENGTH . '文字以上入力してください');
+  define('JS_REVIEW_RATING', '* 商品の評価を選択してください');
 
-  define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* お支払い方法を選択してください。');
+  define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* お支払い方法を選択してください');
 
-  define('JS_ERROR_SUBMITTED', '入力フォームは既に送信されています。OK ボタンをクリックして処理が完了するまでお待ちください。');
+  define('JS_ERROR_SUBMITTED', '入力フォームは既に送信されています。OK ボタンをクリックして処理が完了するまでお待ちください');
 
   define('ERROR_NO_PAYMENT_MODULE_SELECTED', 'お支払い方法を選択してください。');
-  define('ERROR_CONDITIONS_NOT_ACCEPTED', 'ご利用規約に同意される場合はチェックボックスをクリックしてください。');
-  define('ERROR_PRIVACY_STATEMENT_NOT_ACCEPTED', '個人情報保護方針に同意される場合はチェックボックスをクリックしてください。');
+  define('ERROR_CONDITIONS_NOT_ACCEPTED', 'ご利用規約に同意される場合はチェックボックスをクリックしてください');
+  define('ERROR_PRIVACY_STATEMENT_NOT_ACCEPTED', '個人情報保護方針に同意される場合はチェックボックスをクリックしてください');
 
   define('CATEGORY_COMPANY', '□会社名（会社でご利用の場合）');
   define('CATEGORY_PERSONAL', '□個人情報');
@@ -242,12 +242,12 @@ mb_http_output("EUC-JP");
   define('ENTRY_LAST_NAME_KANA_TEXT', '<font color="#FF0000">*</font>');
   // <-furikana
   define('ENTRY_DATE_OF_BIRTH', '誕生日:');
-  define('ENTRY_DATE_OF_BIRTH_ERROR', '誕生日は[19700521](西暦月日)の書式で入力してください。');
+  define('ENTRY_DATE_OF_BIRTH_ERROR', '誕生日は[19700521](西暦月日)の書式で入力してください');
   define('ENTRY_DATE_OF_BIRTH_TEXT', '<font color="#FF0000">*</font><br> (記入例 19700521)');
   define('ENTRY_EMAIL_ADDRESS', 'Eメールアドレス:');
   define('ENTRY_EMAIL_ADDRESS_ERROR', 'Eメールアドレスは半角で' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . '文字以上入力してください');
-  define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'メールアドレスが正しく入力されていないようです。');
-  define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'このメールアドレスはすでに登録されています。このメールアドレスでログインされるか、違うアドレスでアカウントを登録してください。');
+  define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'メールアドレスが正しく入力されていないようです');
+  define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'このメールアドレスはすでに登録されています。このメールアドレスでログインされるか、違うアドレスでアカウントを登録してください');
   define('ENTRY_EMAIL_ADDRESS_TEXT', '<font color="#FF0000">*</font>');
   define('ENTRY_NICK', 'フォーラムニックネーム:');
   define('ENTRY_NICK_TEXT', ''); // note to display beside nickname input field
@@ -371,7 +371,7 @@ define('TEXT_NO_REVIEWS', '商品のレビューはまだありません。');
   define('BOX_HEADING_GIFT_VOUCHER', TEXT_GV_NAME . 'アカウント');
   define('GV_FAQ', TEXT_GV_NAME . ' よくある質問');
   define('ERROR_REDEEMED_AMOUNT', '引き換えに成功しました');
-  define('ERROR_NO_REDEEM_CODE', '' . TEXT_GV_REDEEM . 'が入力されていません。');
+  define('ERROR_NO_REDEEM_CODE', '' . TEXT_GV_REDEEM . 'が入力されていません');
   define('ERROR_NO_INVALID_REDEEM_GV', '無効な' . TEXT_GV_NAME . ' ' . TEXT_GV_REDEEM . 'です');
   define('TABLE_HEADING_CREDIT', 'ご利用可能なクレジットカード');
 define('GV_HAS_VOUCHERA', 'お客様の' . TEXT_GV_NAME . 'アカウントに残高があります。ご希望でしたら <br />

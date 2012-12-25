@@ -19,11 +19,29 @@
 // | to obtain it through the world-wide-web, please send a note to       |
 // | license@zen-cart.com so we can mail you a copy immediately.          |
 // +----------------------------------------------------------------------+
-//  $Id: admin_block.php $
+//  $Id: admin_blocks.php $
 //
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
 }
+
+  if ($_REQUEST['action'] == "change_template") {
+    $_SESSION['block_name'] = $_REQUEST['ln'];
+  }
+
+  // セッションの初期設定
+  $dir = @dir(DIR_FS_CATALOG_TEMPLATES);
+  if (!$dir) die('DIR_FS_CATALOG_TEMPLATES NOT SET');
+  while ($file = $dir->read()) {
+    if (is_dir(DIR_FS_CATALOG_TEMPLATES . $file) && strtoupper($file) != 'CVS' && $file != 'template_default') {
+      if (file_exists(DIR_FS_CATALOG_TEMPLATES . $file . '/template_info.php')) {
+        if (!isset($_SESSION['block_name'])) {
+          $_SESSION['block_name'] = $file;
+        }
+      }
+    }
+  }
+  $template_dir = $_SESSION['block_name'];
 
   // get an array of template info
   $location_options = array();
@@ -47,6 +65,11 @@ if (!defined('IS_ADMIN_FLAG')) {
         }
       }
     }
+  }
+
+  $template_array = array();
+  while (list ($key, $value) = each($template_info) ) {
+    $template_array[] = array('id' => $key, 'text' => $value['name']);
   }
 
 // Check all exisiting boxes are in the main /sideboxes
@@ -543,7 +566,12 @@ if ($warning_new_block) {
 }
 ?>
           <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE . ' ' . $template_dir; ?></td>
+            <td class="pageHeading"><?php echo HEADING_TITLE . ' ' . $template_dir; ?>
+              <?php echo zen_draw_form('block_layouts', FILENAME_ADDON_MODULES_ADMIN, 'module=addon_modules/blocks&page=' . $_GET['page'] . '&bID=' . $_GET['bID'] . '&action=change_template'); ?>
+              <?php echo zen_draw_pull_down_menu('ln', $template_array, $_SESSION['block_name']); ?>
+              <input type="submit" value="<?php echo BUTTON_CHANGE; ?>">
+              </form>
+            </td>
             <td class="pageHeading" align="right"><?php echo zen_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
         </table></td>
@@ -556,7 +584,7 @@ if (count($layout_locations) > 0) {
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="main" align="left">
-              <strong>Boxes Path: </strong><?php echo DIR_FS_CATALOG_MODULES . 'sideboxes/ ... ' . '<br />'; ?>
+              <strong>Boxes Path: </strong><?php echo DIR_FS_CATALOG_MODULES . $template_dir. '/sideboxes/ ... ' . '<br />'; ?>
               <strong>Modules Path: </strong><?php echo DIR_FS_CATALOG_ADDON_MODULES . ' ... ' . '<br />&nbsp;'; ?>
           </td>
           </tr>

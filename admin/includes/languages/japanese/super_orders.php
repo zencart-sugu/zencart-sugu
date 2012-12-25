@@ -30,7 +30,7 @@ define('HEADING_REOPEN_ORDER', '再度開く');
 define('TABLE_HEADING_ORDERS_ID','ID');
 define('TABLE_HEADING_STATUS_HISTORY', 'ステータス履歴');
 define('TABLE_HEADING_ADD_COMMENTS', 'コメント');
-define('TABLE_HEADING_FINAL_STATUS', '終わる');
+define('TABLE_HEADING_FINAL_STATUS', '');
 define('TABLE_HEADING_COMMENTS', 'コメント');
 define('TABLE_HEADING_CUSTOMERS', '顧客名');
 define('TABLE_HEADING_ORDER_TOTAL', '注文合計');
@@ -158,6 +158,8 @@ define('ICON_EDIT_HISTORY', 'ステータス履歴を修正');
 define('ICON_CLOSE_STATUS', 'ステータスを閉じる');
 define('ICON_MARK_COMPLETED', '注文完了マーク');
 define('ICON_MARK_CANCELLED', '注文キャンセルマーク');
+define('TEXT_MARK_COMPLETED', '変更を確定して終了');
+define('TEXT_MARK_CANCELLED', 'キャンセル');
 
 define('MINI_ICON_ORDERS', '顧客のオーダーを表示');
 define('MINI_ICON_INFO', '顧客の情報を表示');

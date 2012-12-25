@@ -44,7 +44,7 @@ define('MODULE_VISITORS_ENTRY_NAME', '姓名（漢字）');
 define('MODULE_VISITORS_ENTRY_KANA', '姓名（ひらがな）');
 define('MODULE_VISITORS_ENTRY_SAMPLE_01', '半角英数字　例：who@example.co.jp');
 define('MODULE_VISITORS_ENTRY_SAMPLE_02', '半角英数字　5文字以上');
-define('MODULE_VISITORS_ENTRY_SAMPLE_03', '確認のためもう一度パスワードを入力してください。');
+define('MODULE_VISITORS_ENTRY_SAMPLE_03', '確認のためもう一度パスワードを入力してください');
 define('MODULE_VISITORS_ENTRY_SAMPLE_04', ''); // 例：日本');
 define('MODULE_VISITORS_ENTRY_SAMPLE_05', ''); // 例：太郎');
 define('MODULE_VISITORS_ENTRY_SAMPLE_06', ''); // 例：にほん');
