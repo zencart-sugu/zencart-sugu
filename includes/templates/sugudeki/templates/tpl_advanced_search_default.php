@@ -51,7 +51,7 @@
 </table>
 
 <div class="submit">
-<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_SEARCH, BUTTON_SEARCH_ALT,'class="imgover"'); ?></div>
+<?php echo zen_image_submit(BUTTON_IMAGE_SEARCH, BUTTON_SEARCH_ALT,'class="imgover"'); ?>
 </div>
 
 </form>

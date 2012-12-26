@@ -53,10 +53,10 @@ if (count($result) > 0 ):
 <script language="javascript" type="text/javascript">
   //<![CDATA[
   document.write('<ul class="buttons">');
-  document.write('<li><a class="prev prev-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_PREV, BUTTON_CAROUSEL_UI_PREV_ALT); ?></a></li>');
-  document.write('<li><a class="stop stop-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_STOP, BUTTON_CAROUSEL_UI_STOP_ALT); ?></a></li>');
-  document.write('<li><a class="start start-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_START, BUTTON_CAROUSEL_UI_START_ALT); ?></a></li>');
-  document.write('<li><a class="next next-<?php echo $module . '-' . $block; ?>" tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_NEXT, BUTTON_CAROUSEL_UI_NEXT_ALT); ?></a></li>');
+  document.write('<li class="prev prev-<?php echo $module . '-' . $block; ?>"><a tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_PREV, BUTTON_CAROUSEL_UI_PREV_ALT); ?></a></li>');
+  document.write('<li class="stop stop-<?php echo $module . '-' . $block; ?>"><a tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_STOP, BUTTON_CAROUSEL_UI_STOP_ALT); ?></a></li>');
+  document.write('<li class="start start-<?php echo $module . '-' . $block; ?>"><a tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_START, BUTTON_CAROUSEL_UI_START_ALT); ?></a></li>');
+  document.write('<li class="next next-<?php echo $module . '-' . $block; ?>"><a tabindex="-1"><?php echo $block_module->imageButton(BUTTON_IMAGE_FEATURE_AREA_UI_NEXT, BUTTON_CAROUSEL_UI_NEXT_ALT); ?></a></li>');
   document.write('</ul>');
   //]]>
 //--></script>

@@ -28,6 +28,7 @@ define('MODULE_EASY_DESIGN_STATUS_DESCRIPTION',       'Do you want to active to 
 define('MODULE_EASY_DESIGN_SORT_ORDER_TITLE',         'Sort Order');
 define('MODULE_EASY_DESIGN_SORT_ORDER_DESCRIPTION',   'I can set the priority order of the module. Reading and the disposal of modules are carried out earlier so that a number is small. Please set it not to fall on other modules with a half size number.');
 
+// addon_module blocks.
 define('MODULE_EASY_DESIGN_BLOCK_TITLE',              'Design Setting');
 
 define('BOX_EASY_DESIGN',                             'Design Setting');

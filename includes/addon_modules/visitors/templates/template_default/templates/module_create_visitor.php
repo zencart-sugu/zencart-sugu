@@ -22,8 +22,8 @@
 ?>
 <fieldset id="privacyBox">
 <div class="information"><?php echo TEXT_PRIVACY_CONDITIONS_DESCRIPTION;?></div>
-<?php echo zen_draw_checkbox_field('privacy_conditions', '1', false, 'id="privacy"');?>
-<label class="checkboxLabel" for="privacy"><?php echo TEXT_PRIVACY_CONDITIONS_CONFIRM;?></label>
+<p class="check"><?php echo zen_draw_checkbox_field('privacy_conditions', '1', false, 'id="privacy"');?>
+<label class="checkboxLabel" for="privacy"><?php echo TEXT_PRIVACY_CONDITIONS_CONFIRM;?></label></p>
 </fieldset>
 <?php
   }

@@ -1,5 +1,4 @@
-block categories
-
+<h2><?php echo BOX_HEADING_CATEGORIES ?></h2>
 <ul>
 <?php foreach ($categories as $category) { ?>
   <li<?php echo ($category['is_current']) ? ' class="current"' : '' ?>><a href="<?php echo $search_link .'&categories_id='. $category['categories_id'] ?>"><?php echo zen_output_string_protected($category['categories_name']) ?></a></li>

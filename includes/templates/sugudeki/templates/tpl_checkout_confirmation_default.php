@@ -17,10 +17,6 @@
 <h1 id="checkoutConfirmDefaultHeading"><?php echo HEADING_TITLE; ?></h1>
 <div id="centerColumnBody">
 
-<?php
-  echo zen_addOnModules_get_block('checkout_step');
-?>
-
 <?php if ($messageStack->size('redemptions') > 0) echo $messageStack->output('redemptions'); ?>
 <?php if ($messageStack->size('checkout_confirmation') > 0) echo $messageStack->output('checkout_confirmation'); ?>
 <?php if ($messageStack->size('checkout') > 0) echo $messageStack->output('checkout'); ?>
@@ -32,6 +28,11 @@
         <th scope="col" id="scProductsHeading"><?php echo TABLE_HEADING_PRODUCTS; ?></th>
         <th scope="col" id="scUnitHeading"><?php echo TABLE_HEADING_PRICE; ?></th>
 				<th scope="col" id="scQuantityHeading"><?php echo TABLE_HEADING_QUANTITY; ?></th>
+<?php // display tax info if exists ?>
+<?php if (sizeof($order->info['tax_groups']) > 1)  { ?>
+        <th scope="col" class="scTaxHeading"><span>
+          <?php echo HEADING_TAX; ?></td>
+<?php    }  // endif tax info display  ?>
         <th scope="col" id="scTotalHeading"><?php echo TABLE_HEADING_TOTAL; ?></th>
      </tr>
 <?php // now loop thru all products to display quantity and price ?>
@@ -59,7 +60,7 @@ nl2br(zen_output_string_protected($order->products[$i]['attributes'][$j]['value'
 		<td class="cartQuantity"><?php echo $order->products[$i]['qty']; ?></td>
 <?php // display tax info if exists ?>
 <?php if (sizeof($order->info['tax_groups']) > 1)  { ?>
-    <td class="cartTotalDisplay"><span>
+    <td class="cartTax"><span>
           <?php echo zen_display_tax_value($order->products[$i]['tax']); ?>%</td>
 <?php    }  // endif tax info display  ?>
     <td class="cartTotalDisplay"><span>

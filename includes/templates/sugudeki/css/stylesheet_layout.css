@@ -9,6 +9,7 @@ Description: layout
 ----------------------------------------- */
 body{
 	min-width: 980px;
+	background: #f5f5f5;
 }
 #container{
 	padding: 0px;
@@ -18,27 +19,25 @@ body{
 }
 
 
+#headerArea{
+	background: #fff;
+}
 #header{
 	width: 980px;
 	padding-top: 10px;
 	margin: 0px auto;
 	text-align: left;
+	zoom:1;
 }
-
 
 
 #content{
 	width: 980px;
 	margin: 0px auto;
+	padding-top: 15px;
 	overflow: hidden;
 	text-align: left;
-}
-
-
-
-#content{
 	clear: both;
-	padding-top: 20px;
 	overflow: hidden;
 }
 
@@ -47,6 +46,7 @@ body{
 #footer{
 	margin-top: 10px;
 	clear: both;
+	border-top: 1px solid #CCC;
 }
 
 
@@ -55,6 +55,8 @@ body{
 	float: right;
 	width: 740px;
 	overflow: hidden;
+	background: #fff;
+	border: 1px solid #CCC;
 }
 
 
@@ -87,9 +89,9 @@ body{
 .onecolumn #main{
 	float: none;
 	margin: 0px auto;
+	width: auto;
 }
 
 .onecolumn #mainBody{
-	width: 740px;
 	margin: 0px auto;
 }

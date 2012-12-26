@@ -19,10 +19,6 @@
 <h1 id="checkoutPaymentHeading"><?php echo HEADING_TITLE; ?></h1>
 <div id="centerColumnBody">
 
-<?php
-  echo zen_addOnModules_get_block('checkout_step');
-?>
-
 <p class="attention"><?php echo FLOW_TEXT ; ?></p>
 
 <?php if ($messageStack->size('redemptions') > 0) echo $messageStack->output('redemptions'); ?>

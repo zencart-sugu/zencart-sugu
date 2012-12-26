@@ -40,6 +40,7 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 <?php echo GLOBAL_HEADER_FONT;  ?>
 
 <!-- header -->
+<div id="headerArea">
 <div id="header">
 
 <?php if (MODULE_EASY_DESIGN_STATUS == 'true') { ?>
@@ -53,9 +54,17 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 <?php } ?>
 <?php } ?>
 
+<?php
+  // displays addon_modules layout blocks
+  if ($header) {
+?>
 <div id="header-content">
 <?php echo $header; ?>
 </div>
+<!-- header-bar-->
+<?php
+  }
+?>
 
 <!-- header-nav -->
 <?php if (EZPAGES_STATUS_HEADER == '1' or (EZPAGES_STATUS_HEADER == '2' and (strstr(EXCLUDE_ADMIN_IP_FOR_MAINTENANCE, $_SERVER['REMOTE_ADDR'])))) { ?>
@@ -65,12 +74,11 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 
 </div>
 <!-- /header -->
+</div>
+<!-- /headerArea -->
 <?php } ?>
 
-<?php
-  // displays addon_modules layout blocks
-  if ($header) {
-?>
+
 <!-- header-bar-->
 <div id="header-bar" class="transparent"><div id="header-bar-inner">
 <!-- global-header-login -->
@@ -86,7 +94,3 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 </div>
 <!-- /global-header-login -->
 </div></div>
-<!-- header-bar-->
-<?php
-  }
-?>

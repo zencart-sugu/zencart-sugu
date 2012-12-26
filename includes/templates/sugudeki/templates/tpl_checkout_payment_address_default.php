@@ -19,10 +19,6 @@
 <h1 id="checkoutPayAddressDefaultHeading"><?php echo HEADING_TITLE; ?></h1>
 <div id="centerColumnBody">
 
-<?php
-echo zen_addOnModules_get_block('checkout_step');
-?>
-
 <?php if ($messageStack->size('checkout_address') > 0) echo $messageStack->output('checkout_address'); ?>
 
 <h2 class="headline" id="checkoutPayAddressDefaultAddress"><?php echo TITLE_PAYMENT_ADDRESS; ?></h2>
