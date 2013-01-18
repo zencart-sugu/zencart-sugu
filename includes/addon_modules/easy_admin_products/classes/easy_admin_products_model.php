@@ -990,7 +990,7 @@ class easy_admin_products_model {
   }
 
   // コピー
-  function copy_product($products_id, $products_image, $categories) {
+  function copy_product($products_id, $products_image, $categories, $products_model) {
     global $db;
 
     // TABLE_PRODUCTSは必ず最初
@@ -1023,6 +1023,9 @@ class easy_admin_products_model {
         $db->Execute($query);
       }
     }
+
+    // products_model
+    $db->Execute("update ".TABLE_PRODUCTS." set products_model='".zen_db_input($products_model)."' where products_id=".$new_products_id);
 
     // products_image
     if ($products_image != "") {
